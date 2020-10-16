@@ -1,11 +1,12 @@
 import React from 'react';
+import Page from '../components/Page';
 import { Header } from '../components';
 
 export default function About() {
   return (
-    <div>
+    <Page>
       <Header>About</Header>
       <div>Hello world!</div>
-    </div>
+    </Page>
   );
 }
