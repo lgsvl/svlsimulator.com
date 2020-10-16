@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "gatsby"
+import { Link } from 'gatsby';
 import { Header } from '../components';
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Header>Gatsby Website</Header>
       <div>Hello world!</div>
-      <br/>
+      <br />
       <Link to="/product/simulation/">Product -- Simulation</Link>
       {' | '}
       <Link to="/product/cloud/">Product -- Cloud simulation as-a-service</Link>
