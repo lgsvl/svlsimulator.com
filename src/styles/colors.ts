@@ -5,28 +5,30 @@ export const palette = createPalette({
     main: '#ED3866',
     dark: '#AB1138',
     light: '#D71345'
+    // contrastText: ''
   },
   secondary: {
-    main: '#729BFC',
+    main: '#C5C6CA',
     dark: '#5BCFAA',
     light: '#6D8B97'
+    // contrastText: ''
   },
   text: {
-    primary: '#9CAED2',
-    secondary: '#FFFFFF'
-    //   slateGrey: '#6D7B97',
-    //   steelBlue: '#CED8ED',
-    //   lightSteelBlue: '#B6C5E4',
-    //   azureishWhite: '#E2E8F4'
+    primary: '#FFFFFF',
+    secondary: '#B6C5E4'
+    // disabled: '',
+    // hint: ''
   },
   background: {
-    //   light: '#6D7B97',
-    default: '#1F2940'
-    //   secondary: '#FFFFFF',
-    //   main: '#141B2D',
-    //   assetGrouping: 'rgba(20, 27, 45, 0.2)'
+    default: '#141A2D'
+    // card: ''
   },
+  // divider: '',
   action: {
+    // active: '',
+    // hover: '',
+    // hoverOpacity: '',
+    // selected: '',
     disabled: '#8F949F',
     disabledBackground: '#863052'
   },

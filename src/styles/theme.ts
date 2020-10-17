@@ -6,6 +6,11 @@ const theme = createMuiTheme({
   palette,
   spacing: factor => `${8 * factor}px`,
   overrides: {
+    MuiAppBar: {
+      colorDefault: {
+        backgroundColor: palette.background.default
+      }
+    },
     MuiDrawer: {
       root: {
         width: 240
@@ -39,6 +44,13 @@ const theme = createMuiTheme({
     MuiButton: {
       root: {
         textTransform: 'none'
+      },
+      outlined: {
+        borderColor: palette.secondary.main,
+        color: palette.secondary.main
+      },
+      outlinedPrimary: {
+        borderColor: palette.text.primary
       }
     },
     // MuiToggleButton: {
@@ -111,12 +123,13 @@ const theme = createMuiTheme({
       }
     },
     MuiTypography: {
-      root: {
-        // Added important to prevent ovverride by sub classes of Typography
-        fontFamily: 'Open Sans !important'
-      },
+      // root: {
+      //   // Added important to prevent ovverride by sub classes of Typography
+      //   fontFamily: 'Open Sans !important'
+      // },
       body1: {
-        fontFamily: 'Open Sans'
+        fontFamily: 'Open Sans',
+        color: palette.secondary.main
       },
       body2: {
         fontFamily: 'Open Sans'
@@ -197,12 +210,12 @@ const theme = createMuiTheme({
   }
 });
 
-theme.typography.h3 = {
-  fontSize: '32px',
-  fontWeight: 'bold',
-  [theme.breakpoints.down('xs')]: {
-    fontSize: '24px'
-  }
-};
+// theme.typography.h3 = {
+//   fontSize: '32px',
+//   fontWeight: 'bold',
+//   [theme.breakpoints.down('xs')]: {
+//     fontSize: '24px'
+//   }
+// };
 
 export { theme };
