@@ -6,11 +6,13 @@ import Header from './Header';
 import Footer from './Footer';
 import { GridBox } from './GridBox';
 import SEO from './SEO';
+import { themed, px } from '../utils/theme';
+import useMeasurable from '../hooks/useMeasurable';
 
 import { createGlobalStyle } from 'styled-components';
 import { Theme, useTheme } from '@material-ui/core/styles';
-import Grid, { GridProps } from '@material-ui/core/Grid';
-import Container, { ContainerProps } from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 const GlobalStyle = createGlobalStyle`
@@ -46,23 +48,25 @@ a {
 // }
 `}`;
 
-const AppContainer = styled(Container)<{ component: string }>``;
+const AppContainer = themed(Container)``;
 
-const AppGrid = styled(Grid)`
+const AppGrid = themed(Grid)`
   min-height: 100vh;
 `;
 
-const StyledPaper = styled(Paper)``;
+const StyledPaper = themed(Paper)``;
 
 const App = ({ children }: { children?: React.ReactNode }) => {
   const theme = useTheme();
+  const { ref, measurement } = useMeasurable();
+
   return (
     <React.Fragment>
       <GlobalStyle theme={theme} />
-      <AppContainer component='main' maxWidth='sm'>
+      <AppContainer component='main' maxWidth='md'>
         <AppGrid container direction='column'>
-          <Grid item>
-            <Header>Testing</Header>
+          <Grid item style={{ height: px((measurement?.height || 0) + theme.spacing(2)) }}>
+            <Header forwardRef={ref}>Testing</Header>
           </Grid>
           <Grid item>
             <StyledPaper elevation={3}>

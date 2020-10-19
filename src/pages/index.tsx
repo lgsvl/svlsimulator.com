@@ -3,12 +3,12 @@ import Page from '../components/Page';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { useTranslation } from 'react-i18next';
+import { themed } from '../utils/theme';
 
-const Center = styled.div`
+const Center = themed('div')`
   text-align: center;
 `;
 

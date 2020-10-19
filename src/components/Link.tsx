@@ -11,13 +11,7 @@ import MuiLink from '@material-ui/core/Link';
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
 // const Link: React.FC<Omit<GatsbyLinkProps<{}>, 'ref'>> = ({ children, to, activeClassName, partiallyActive, ...rest }: LinkProps) => {
-const Link: React.FC<GatsbyLinkProps<{}>> = ({
-  children,
-  to,
-  activeClassName,
-  partiallyActive,
-  ...rest
-}: LinkProps) => {
+const Link: React.FC<GatsbyLinkProps<{}>> = ({ children, to, activeClassName, partiallyActive, ...rest }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.

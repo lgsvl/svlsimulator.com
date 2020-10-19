@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { forwardRef } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -11,32 +10,68 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { themed } from '../utils/theme';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Paper from '@material-ui/core/Paper';
+import Grow from '@material-ui/core/Grow';
+import Popper from '@material-ui/core/Popper';
+import MenuList from '@material-ui/core/MenuList';
 
-const StyledAppBar = styled(AppBar)`
-  font-weight: bold;
-`;
+// const StyledAppBar = themed(AppBar)`
+//   font-weight: bold;
+// `;
 
-const Logo = styled(Box)`
+const Logo = themed(Box)`
   position: absolute;
 `;
 
-const MenuButton = styled(Button)<ButtonProps>`
-  // display: flex;
-`;
+const MenuButton = themed<ButtonProps>(Button)``;
 
-const Header = ({ children }: { children?: React.ReactNode }) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardRef: React.Ref<{}> }) => {
+  // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    setAnchorEl(event.currentTarget);
+  // const handleClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleToggle = () => {
+    setOpen(prevOpen => !prevOpen);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose = (event: React.MouseEvent<EventTarget>) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+      return;
+    }
+
+    setOpen(false);
   };
+
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false && anchorRef.current) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
-    <StyledAppBar position='fixed' color='default'>
+    <AppBar position='fixed' color='default' ref={forwardRef}>
       <Grid component='nav' container justify='space-between'>
         <Grid item>
           <MenuButton component={Link} to='/' startIcon='(LOGO)'>
@@ -45,8 +80,44 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
         </Grid>
         <Grid item>
           <Grid container spacing={2}>
-            <Grid item xs={3}>
-              <MenuButton fullWidth onMouseEnter={handleClick}>
+            <Grid item xs={3} sm='auto'>
+              <MenuButton fullWidth onMouseEnter={handleToggle} onMouseLeave={handleToggle} ref={anchorRef}>
+                Products
+              </MenuButton>
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                transition
+                disablePortal
+                onMouseEnter={handleToggle}
+                onMouseLeave={handleToggle}
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{ transformOrigin: placement === 'bottom' ? 'left top' : 'left bottom' }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClose}>
+                        <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
+                          <MenuItem component={Link} to='/product/simulation/' onClick={handleClose}>
+                            Simulation
+                          </MenuItem>
+                          <MenuItem component={Link} to='/product/cloud/' onClick={handleClose}>
+                            Cloud simulation as-a-service
+                          </MenuItem>
+                          <MenuItem component={Link} to='/product/digitaltwin/' onClick={handleClose}>
+                            Digital Twin creation service
+                          </MenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
+              {/*
+              <MenuButton fullWidth onMouseEnter={handleClick} onMouseLeave={handleClose}>
                 Products
               </MenuButton>
               <Menu
@@ -56,32 +127,31 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
                 MenuListProps={{ onMouseLeave: handleClose }}
+                // onMouseEnter={handleClick}
+                // onMouseLeave={handleClose}
               >
-                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
                 <MenuItem component={Link} to='/product/simulation/'>
-                  Product -- Simulation
+                  Simulation
                 </MenuItem>
                 <MenuItem component={Link} to='/product/cloud/'>
-                  Product -- Cloud simulation as-a-service
+                  Cloud simulation as-a-service
                 </MenuItem>
                 <MenuItem component={Link} to='/product/digitaltwin/'>
-                  Product -- Digital Twin creation service
+                  Digital Twin creation service
                 </MenuItem>
-              </Menu>
+              </Menu> */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} sm='auto'>
               <MenuButton fullWidth component={Link} to='/applications/'>
                 Applications
               </MenuButton>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} sm='auto'>
               <MenuButton fullWidth component={Link} to='/news/'>
                 News
               </MenuButton>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} sm='auto'>
               <MenuButton fullWidth component={Link} to='/about'>
                 About
               </MenuButton>
@@ -99,7 +169,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
     <Tab label="Item Two" />
     <Tab label="Item Three" />
   </Tabs> */}
-    </StyledAppBar>
+    </AppBar>
   );
 };
 
