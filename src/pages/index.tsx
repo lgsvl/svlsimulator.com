@@ -6,12 +6,14 @@ import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { useTranslation } from 'react-i18next';
 
 const Center = styled.div`
   text-align: center;
 `;
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
     <Page>
       <Typography>Hello world!</Typography>
@@ -19,7 +21,7 @@ export default function Home() {
       <Box my={10}>
         <Center>
           <Button color='primary' variant='contained'>
-            Get This SIMULATOR!
+          {t('main.simulator.button')}
           </Button>
         </Center>
       </Box>

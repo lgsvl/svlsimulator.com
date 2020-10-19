@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link as GatsbyLink, GatsbyLinkProps } from 'gatsby';
+import { GatsbyLinkProps } from 'gatsby';
+import { useTranslation, Link as GatsbyLink } from "@3nvi/gatsby-theme-intl"
 import MuiLink from '@material-ui/core/Link';
 
 // Gatsby bug needs a custom thing to work...
