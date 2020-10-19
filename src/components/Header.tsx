@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -10,16 +10,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import {themed} from '../utils/theme';
+import { themed } from '../utils/theme';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Paper from '@material-ui/core/Paper';
 import Grow from '@material-ui/core/Grow';
 import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 
-const StyledAppBar = themed(AppBar)`
-  font-weight: bold;
-`;
+// const StyledAppBar = themed(AppBar)`
+//   font-weight: bold;
+// `;
 
 const Logo = themed(Box)`
   position: absolute;
@@ -27,7 +27,7 @@ const Logo = themed(Box)`
 
 const MenuButton = themed<ButtonProps>(Button)``;
 
-const Header = ({ children }: { children?: React.ReactNode }) => {
+const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardRef: React.Ref<{}> }) => {
   // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   // const handleClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
@@ -38,13 +38,11 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
   //   setAnchorEl(null);
   // };
 
-
-
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   };
 
   const handleClose = (event: React.MouseEvent<EventTarget>) => {
@@ -73,7 +71,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
   }, [open]);
 
   return (
-    <StyledAppBar position='fixed' color='default'>
+    <AppBar position='fixed' color='default' ref={forwardRef}>
       <Grid component='nav' container justify='space-between'>
         <Grid item>
           <MenuButton component={Link} to='/' startIcon='(LOGO)'>
@@ -86,7 +84,15 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
               <MenuButton fullWidth onMouseEnter={handleToggle} onMouseLeave={handleToggle} ref={anchorRef}>
                 Products
               </MenuButton>
-              <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal onMouseEnter={handleToggle} onMouseLeave={handleToggle}>
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                transition
+                disablePortal
+                onMouseEnter={handleToggle}
+                onMouseLeave={handleToggle}
+              >
                 {({ TransitionProps, placement }) => (
                   <Grow
                     {...TransitionProps}
@@ -94,7 +100,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
                   >
                     <Paper>
                       <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                        <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
                           <MenuItem component={Link} to='/product/simulation/' onClick={handleClose}>
                             Simulation
                           </MenuItem>
@@ -163,7 +169,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
     <Tab label="Item Two" />
     <Tab label="Item Three" />
   </Tabs> */}
-    </StyledAppBar>
+    </AppBar>
   );
 };
 

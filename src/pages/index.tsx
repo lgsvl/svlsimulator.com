@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import {themed} from '../utils/theme';
+import { themed } from '../utils/theme';
 
 const Center = themed('div')`
   text-align: center;

@@ -4,7 +4,7 @@ import { palette } from './colors';
 
 const theme = createMuiTheme({
   palette,
-  spacing: factor => `${8 * factor}px`,
+  // spacing: factor => `${8 * factor}px`,
   overrides: {
     MuiAppBar: {
       colorDefault: {
@@ -201,12 +201,17 @@ const theme = createMuiTheme({
       root: {
         minWidth: '33px'
       }
-    }
+    },
     // MuiPickersModal: {
     //   dialogRoot: {
     //     backgroundColor: palette.background.main
     //   }
     // }
+    MuiTableCell: {
+      root: {
+        borderBottomColor: 'rgba(255, 255, 255, 0.1)'
+      }
+    }
   }
 });
 

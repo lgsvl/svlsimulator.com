@@ -18,9 +18,7 @@ type IThemedComponent<P> = {
  * @param Component{Object} - React component
  * @public
  */
-export function themed<P>(
-  Component: React.ComponentType<P> | keyof JSX.IntrinsicElements
-) {
+export function themed<P>(Component: React.ComponentType<P> | keyof JSX.IntrinsicElements) {
   // eslint-disable-next-line
   return (str: any, ...keys: Interpolation<IThemedComponent<P>>[]) => {
     const Styled = styled(
@@ -53,10 +51,10 @@ export function themed<P>(
 export function appendUnit(val: number | string, unit: string) {
   if (typeof val === 'string') {
     // an array of 1 is just the value, no actual shorthand, but can be processed the same way.
-    const cleanedValues = val.split(/\s+/g).map(v => (
+    const cleanedValues = val.split(/\s+/g).map(v =>
       // If it ends in a non-digit character, it already has unit, just return that, otherwise append the unit
       v.match(/\D$/) ? v : `${v}${unit}`
-    ));
+    );
     return cleanedValues.join(' ');
   }
   return `${val}${unit}`;
