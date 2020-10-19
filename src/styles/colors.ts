@@ -20,8 +20,8 @@ export const palette = createPalette({
     // hint: ''
   },
   background: {
-    default: '#141A2D'
-    // card: ''
+    default: '#141A2D',
+    paper: '#242A3D'
   },
   // divider: '',
   action: {

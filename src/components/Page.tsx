@@ -5,6 +5,7 @@ import PageContextProvider from '../context/Page';
 import Header from './Header';
 import Footer from './Footer';
 import { GridBox } from './GridBox';
+import {themed} from '../utils/theme';
 
 import { createGlobalStyle } from 'styled-components';
 import { Theme, useTheme } from '@material-ui/core/styles';
@@ -45,13 +46,13 @@ a {
 // }
 `}`;
 
-const AppContainer = styled(Container)<{ component: string }>``;
+const AppContainer = themed(Container)``;
 
-const AppGrid = styled(Grid)`
+const AppGrid = themed(Grid)`
   min-height: 100vh;
 `;
 
-const StyledPaper = styled(Paper)``;
+const StyledPaper = themed(Paper)``;
 
 const App = ({ children }: { children?: React.ReactNode }) => {
   const theme = useTheme();

@@ -150,9 +150,9 @@ const theme = createMuiTheme({
       }
     },
     MuiPaper: {
-      root: {
-        backgroundColor: palette.background.default
-      },
+      // root: {
+      //   backgroundColor: palette.background.default
+      // },
       rounded: {
         borderRadius: '8px' // spacing(1)
       },

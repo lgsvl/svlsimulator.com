@@ -16,7 +16,7 @@ const Link: React.FC<GatsbyLinkProps<{}>> = ({
   activeClassName,
   partiallyActive,
   ...rest
-}: LinkProps) => {
+}) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
