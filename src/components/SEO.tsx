@@ -6,8 +6,7 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import {Helmet} from 'gatsby-plugin-react-i18next';
 import { useStaticQuery, graphql } from "gatsby"
 
 type MetaProps = JSX.IntrinsicElements['meta'];

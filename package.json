@@ -16,15 +16,16 @@
     "deploy": "gatsby build && gh-pages -d public -b public"
   },
   "dependencies": {
-    "@3nvi/gatsby-theme-intl": "^0.4.13",
     "@material-ui/core": "^4.11.0",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.73",
     "gatsby-plugin-manifest": "^2.4.34",
     "gatsby-plugin-offline": "^3.2.32",
     "gatsby-plugin-react-helmet": "^3.3.14",
+    "gatsby-plugin-react-i18next": "0.0.27",
     "gatsby-plugin-sharp": "^2.6.42",
     "gatsby-plugin-styled-components": "^3.3.14",
+    "i18next": "^19.8.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
