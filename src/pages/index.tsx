@@ -1,10 +1,11 @@
 import React from 'react';
 import Page from '../components/Page';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+// import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { useTranslation } from '../hooks/useTranslations';
 import { themed } from '../utils/theme';
 
 const Center = themed('div')`
@@ -12,6 +13,7 @@ const Center = themed('div')`
 `;
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
     <Page>
       <Typography>Hello world!</Typography>
@@ -19,7 +21,7 @@ export default function Home() {
       <Box my={10}>
         <Center>
           <Button color='primary' variant='contained'>
-            Get This SIMULATOR!
+            {t('main.simulator.button')}
           </Button>
         </Center>
       </Box>
@@ -30,7 +32,7 @@ export default function Home() {
             <Typography variant='h3'>Tools</Typography>
             <Typography>some description</Typography>
             <Button color='primary' variant='contained'>
-              Request Demo
+              {t('main.buttons.getDemo')}
             </Button>
           </Grid>
         </Grid>
@@ -42,7 +44,7 @@ export default function Home() {
             <Typography variant='h3'>High-fidelity</Typography>
             <Typography>some description</Typography>
             <Button color='primary' variant='contained'>
-              Request Demo
+              {t('main.buttons.getDemo')}
             </Button>
           </Grid>
         </Grid>

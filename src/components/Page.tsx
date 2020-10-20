@@ -4,6 +4,7 @@ import PageContextProvider from '../context/Page';
 import Header from './Header';
 import Footer from './Footer';
 import { GridBox } from './GridBox';
+import SEO from './SEO';
 import { themed, px } from '../utils/theme';
 import useMeasurable from '../hooks/useMeasurable';
 
@@ -83,6 +84,7 @@ const App = ({ children }: { children?: React.ReactNode }) => {
 const Page = ({ children }: { children?: React.ReactNode }) => {
   return (
     <PageContextProvider>
+      <SEO title='' />
       <App>{children}</App>
     </PageContextProvider>
   );

@@ -3,8 +3,14 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+const fs = require('fs');
 
 module.exports = {
+  siteMetadata: {
+    title: 'LGSVL Simulator',
+    description: 'Simulation software to accelerate safe autonomous vehicle development',
+    author: 'LGSVL'
+  },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
@@ -20,6 +26,23 @@ module.exports = {
         icon: 'src/images/icon.png'
       }
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-react-i18next',
+      options: {
+        path: `${__dirname}/locales`,
+        languages: fs.readdirSync(`${__dirname}/locales`),
+        defaultLanguage: 'en',
+        siteUrl: process.env.URL || 'localhost:8000',
+        i18nextOptions: {
+          lowerCaseLng: true,
+          interpolation: {
+            escapeValue: false // not needed for react as it escapes by default
+          },
+          returnObjects: true
+        }
+      }
+    }
   ]
 };

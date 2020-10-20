@@ -27,6 +27,9 @@ interface ResizeObserverEntry {
   readonly target: Element;
   readonly contentRect: DOMRectReadOnly;
 }
+interface MeasurableNode extends Node {
+  readonly getBoundingClientRect?: () => DOMRect;
+}
 
 declare class ResizeObserver {
   constructor(callback: ResizeObserverCallback);
@@ -41,19 +44,20 @@ const useMeasurable = () => {
 
   useLayoutEffect(
     () => {
-      const refToMeasure = ref.current;
+      const refToMeasure: HTMLElement | null = ref.current;
       if (!refToMeasure) {
         return;
       }
 
       // Support for ResizeObserver
-      let observer: ResizeObserver | undefined;
+      let observer: ResizeObserver | null;
       if ('ResizeObserver' in window) {
         observer = new ResizeObserver(entries => {
           entries.forEach(entry => {
             if (entry.target === refToMeasure) {
+              const node: Element = entry.target;
               // we want to measure including the padding, hence refers to `target` instead of `contentRect`
-              setMeasurement(entry.target.getBoundingClientRect());
+              setMeasurement(node.getBoundingClientRect());
             }
           });
         });
@@ -61,20 +65,23 @@ const useMeasurable = () => {
         observer.observe(refToMeasure);
 
         return () => {
-          observer.disconnect();
+          observer?.disconnect();
           observer = null;
         };
         // Fallback support for MutationObserver
       } else if ('MutationObserver' in window) {
-        let mutationObserver = new MutationObserver(mutationsList => {
+        let mutationObserver: MutationObserver | null = new MutationObserver(mutationsList => {
           for (let mutation of mutationsList) {
+            const node: MeasurableNode = mutation.target;
             if (mutation.type === 'childList') {
-              setMeasurement(mutation.target.getBoundingClientRect());
+              if (typeof node.getBoundingClientRect === 'function') {
+                setMeasurement(node.getBoundingClientRect());
+              }
             } else if (
               mutation.type === 'attributes' &&
               (mutation.attributeName === 'style' || mutation.attributeName === 'class')
             ) {
-              setMeasurement(refToMeasure.getBoundingClientRect());
+              setMeasurement(refToMeasure?.getBoundingClientRect());
             }
           }
         });
@@ -82,7 +89,7 @@ const useMeasurable = () => {
         mutationObserver.observe(refToMeasure, { attributes: true, childList: true, subtree: true });
 
         return () => {
-          mutationObserver.disconnect();
+          mutationObserver?.disconnect();
           mutationObserver = null;
         };
       }
