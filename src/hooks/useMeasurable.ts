@@ -28,7 +28,7 @@ interface ResizeObserverEntry {
   readonly contentRect: DOMRectReadOnly;
 }
 interface MeasurableNode extends Node {
-  readonly getBoundingClientRect?: () => DOMRect
+  readonly getBoundingClientRect?: () => DOMRect;
 }
 
 declare class ResizeObserver {
