@@ -3,18 +3,18 @@ import Page from '../../components/Page';
 import Typography from '@material-ui/core/Typography';
 import Section from '../../components/Section';
 import Button from '@material-ui/core/Button';
+import { useTranslation } from '../../hooks/useTranslations';
+
+const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 
 export default function CloudSimAAS() {
+  const { t, tMap } = useTranslation();
   return (
     <Page>
-      <Section title='Cloud Simulation-as-a-Service' variant='h2'>
-        <Typography>Ability to resimulate with local simulation - not just on remote servers</Typography>
-        <Typography>Sensor data visualization</Typography>
-        <Typography>Test case analysis reports and event detection</Typography>
-        <Typography>Content ecosystem - maps, vehicles, sensors, plugins from partners and community</Typography>
-
+      <Section title={t('cloud.title')} variant='h2'>
+        {tMap('cloud.body', TypoWrapper)}
         <Button color='primary' variant='contained'>
-          Request Demo
+          {t('main.buttons.getDemo')}
         </Button>
       </Section>
     </Page>
