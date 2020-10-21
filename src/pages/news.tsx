@@ -1,9 +1,10 @@
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
+import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { px, themed } from 'src/utils/theme';
 import Page from 'src/components/Page';
+import { useTranslation } from 'src/hooks/useTranslations';
 
 const NewsGrid = themed(Box)`
   display: grid;
@@ -20,11 +21,26 @@ const NewsGrid = themed(Box)`
   `}
 `;
 
-const NewsBox = themed<{ colSpan: number; rowSpan: number }>(Paper)`
-${({ theme, colSpan, rowSpan }) => `
+const newsBoxCategoryColors = {
+  news: '',
+  event: 'rgba(0, 0, 255, 0.05)',
+  article: 'rgba(255, 255, 0, 0.05)',
+  announcement: 'rgba(0, 255, 0, 0.05)'
+};
+type NewsBoxCategory = keyof typeof newsBoxCategoryColors;
+
+interface NewsBoxProps extends PaperProps {
+  colSpan: number;
+  rowSpan: number;
+  category: NewsBoxCategory;
+}
+
+const StyledNewsBox = themed<NewsBoxProps>(Paper)`
+${({ theme, category, colSpan, rowSpan }) => `
   grid-column-end: ${colSpan ? `span ${colSpan}` : 'auto'};
   grid-row-end: ${rowSpan ? `span ${rowSpan}` : 'auto'};
   padding: ${px(theme.spacing(1))};
+  background-color: ${newsBoxCategoryColors[category]};
 
   ${theme.breakpoints.only('sm')} {
     grid-column-end: ${colSpan > 2 ? 'auto' : `span ${colSpan}`};
@@ -34,28 +50,41 @@ ${({ theme, colSpan, rowSpan }) => `
   }
   `}
 `;
+// ` as React.FC<NewsBoxProps>;
+
+const NewsBox = ({ children, category = 'news', colSpan = 0, rowSpan = 0, title, ...rest }: Partial<NewsBoxProps>) => {
+  const { t } = useTranslation();
+  return (
+    <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
+      <Typography variant='caption'>{t(`news.categories.${category}`)}</Typography>
+      {title && <Typography variant='h3'>{title}</Typography>}
+      {children}
+    </StyledNewsBox>
+  );
+};
 
 export default function News() {
+  const { t } = useTranslation();
   return (
     <Page>
-      <Typography variant='h1'>News</Typography>
+      <Typography variant='h1'>{t('news.title')}</Typography>
       <NewsGrid>
-        <NewsBox elevation={4}>
-          <Typography>News 1</Typography>
+        <NewsBox title='News 1'>
+          <Typography>News 1 Body</Typography>
         </NewsBox>
-        <NewsBox elevation={4}>
+        <NewsBox category='event'>
           <Typography>News 2</Typography>
         </NewsBox>
-        <NewsBox elevation={4} colSpan={2}>
+        <NewsBox colSpan={2} category='article'>
           <Typography>News 3</Typography>
         </NewsBox>
-        <NewsBox elevation={4} colSpan={2}>
+        <NewsBox colSpan={2} category='announcement'>
           <Typography>News 4</Typography>
         </NewsBox>
-        <NewsBox elevation={4}>
+        <NewsBox category='news'>
           <Typography>News 5</Typography>
         </NewsBox>
-        <NewsBox elevation={4}>
+        <NewsBox category='article'>
           <Typography>News 6</Typography>
         </NewsBox>
       </NewsGrid>
