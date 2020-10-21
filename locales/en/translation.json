@@ -50,6 +50,15 @@
       "Content ecosystem - maps, vehicles, sensors, plugins from partners and community"
     ]
   },
+  "news": {
+    "title": "News",
+    "categories": {
+      "news": "News",
+      "event": "Event",
+      "article": "Article",
+      "announcement": "Announcement"
+    }
+  },
   "simulation": {
     "title": "End-to-end simulation platform",
     "body": "3D photorealistic simulation software for AD and robotics. Support for all kinds of testing: unit, modular, integration, system, distributed simulation, Out-of-the-box integration with open source and popular AD stacks.",
