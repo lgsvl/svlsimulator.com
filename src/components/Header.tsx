@@ -12,16 +12,13 @@ import Popper from '@material-ui/core/Popper';
 import React from 'react';
 import styled from 'styled-components';
 import Link from './Link';
+import LinkButton from './LinkButton';
 
-// const StyledAppBar = withTheme(styled(AppBar)`
-//   font-weight: bold;
-// `);
+const MenuButton = withTheme(styled(Button)``);
 
 const Logo = withTheme(styled(Box)`
   position: absolute;
 `);
-
-const MenuButton = withTheme(styled(Button)``);
 
 const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardRef: React.Ref<{}> }) => {
   // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -70,9 +67,9 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
     <AppBar position='fixed' color='default' ref={forwardRef}>
       <Grid component='nav' container justify='space-between'>
         <Grid item>
-          <MenuButton component={Link} to='/' startIcon='(LOGO)'>
+          <LinkButton to='/' startIcon='(LOGO)'>
             Home
-          </MenuButton>
+          </LinkButton>
         </Grid>
         <Grid item>
           <Grid container spacing={2}>
@@ -113,9 +110,9 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
                 )}
               </Popper>
               {/*
-              <MenuButton fullWidth onMouseEnter={handleClick} onMouseLeave={handleClose}>
+              <LinkButton fullWidth onMouseEnter={handleClick} onMouseLeave={handleClose}>
                 Products
-              </MenuButton>
+              </LinkButton>
               <Menu
                 id='simple-menu'
                 anchorEl={anchorEl}
@@ -138,26 +135,26 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
               </Menu> */}
             </Grid>
             <Grid item xs={3} sm='auto'>
-              <MenuButton fullWidth component={Link} to='/applications/'>
+              <LinkButton fullWidth to='/applications/'>
                 Applications
-              </MenuButton>
+              </LinkButton>
             </Grid>
             <Grid item xs={3} sm='auto'>
-              <MenuButton fullWidth component={Link} to='/news/'>
+              <LinkButton fullWidth to='/news/'>
                 News
-              </MenuButton>
+              </LinkButton>
             </Grid>
             <Grid item xs={3} sm='auto'>
-              <MenuButton fullWidth component={Link} to='/about'>
+              <LinkButton fullWidth to='/about'>
                 About
-              </MenuButton>
+              </LinkButton>
             </Grid>
           </Grid>
         </Grid>
         <Grid item>
-          <MenuButton component={Link} to='/about' endIcon='(ICON)'>
+          <LinkButton to='/about' endIcon='(ICON)'>
             Log in
-          </MenuButton>
+          </LinkButton>
         </Grid>
       </Grid>
       {/* <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">

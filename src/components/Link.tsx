@@ -9,6 +9,8 @@ const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
   <GatsbyLink {...props} ref={ref as React.Ref<HTMLAnchorElement>} />
 ));
 
+export type LinkProps = LinkBaseProps & I18nGatsbyLinkProps;
+
 // Gatsby bug needs a custom thing to work...
 // https://github.com/gatsbyjs/gatsby/issues/16682
 // type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
@@ -16,7 +18,7 @@ const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link: React.FC<LinkBaseProps & I18nGatsbyLinkProps> = ({ to, activeClassName, partiallyActive, ...rest }) => {
+const Link: React.FC<LinkProps> = ({ to, activeClassName, partiallyActive, ...rest }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
