@@ -14,6 +14,7 @@ module.exports = {
     author: 'LGSVL'
   },
   plugins: [
+    'gatsby-plugin-root-import',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     {

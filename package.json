@@ -26,6 +26,7 @@
     "gatsby-plugin-offline": "^3.2.32",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-react-i18next": "0.0.27",
+    "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.6.42",
     "gatsby-plugin-styled-components": "^3.3.14",
     "gatsby-plugin-typescript-checker": "^1.1.1",
