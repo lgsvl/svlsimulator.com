@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{fxnR:function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return o}));var a=t("ofer"),r=t("q1tI"),i=t.n(r),c=t("NqE+");function o(){return i.a.createElement(c.a,null,i.a.createElement(a.a,{variant:"h1"},"Product -- Digital Twin creation service"),i.a.createElement(a.a,null,"Product -- Digital Twin creation service"))}}}]);
+//# sourceMappingURL=component---src-pages-product-digitaltwin-tsx-2df1a53479b2791009b6.js.map
