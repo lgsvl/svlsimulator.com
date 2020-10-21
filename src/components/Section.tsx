@@ -1,27 +1,28 @@
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { px, themed } from 'src/utils/theme';
-
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+import { withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
+import React from 'react';
+import { px } from 'src/utils/theme';
+import styled from 'styled-components';
 
-const SectionContainer = themed(Container)`
+const SectionContainer = withTheme(styled(Container)`
   margin-bottom: ${({ theme }) => px(theme.spacing(9))};
   &:last-child {
     margin-bottom: 0;
   }
-`;
+`);
 
-const StyledPaper = themed(Paper)``;
+const StyledPaper = withTheme(styled(Paper)``);
 
-const Image = themed(Box)`
+const Image = withTheme(styled(Box)`
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(-205deg, white, #9C27B0 30%, black);
+  background-image: linear-gradient(-205deg, white, #9c27b0 30%, black);
   border-radius: 20px;
-`;
+`);
 
 interface SectionProps {
   children?: React.ReactNode;

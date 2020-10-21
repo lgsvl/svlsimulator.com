@@ -1,12 +1,12 @@
-import React from 'react';
-import styled, { Interpolation } from 'styled-components';
+// import React from 'react';
+// import styled, { Interpolation } from 'styled-components';
 // import { SpacingProps } from '@material-ui/core/system';
 // import { Spacing, SpacingArgument, SpacingOptions } from '@material-ui/core/styles/createSpacing';
-import { Theme, withTheme } from '@material-ui/core/styles';
+// import { Theme, withTheme } from '@material-ui/core/styles';
 
-type IThemedComponent<P> = {
-  theme: Theme;
-} & P;
+// type IThemedComponent<P> = {
+//   theme: Theme;
+// } & P;
 
 /**
  * Provides a common simple interface to Styled-components
@@ -18,26 +18,35 @@ type IThemedComponent<P> = {
  * @param Component{Object} - React component
  * @public
  */
-export function themed<P>(Component: React.ComponentType<P> | keyof JSX.IntrinsicElements) {
-  // eslint-disable-next-line
-  return (str: any, ...keys: Interpolation<IThemedComponent<P>>[]) => {
-    const Styled = styled(
-      React.forwardRef(
-        // eslint-disable-next-line
-        // @ts-ignore
-        // eslint-disable-next-line
-        ({ theme, ...rest }: any, ref) => <Component {...rest} ref={ref} />
-        // Ultimately, the goal here is to properly type the `theme`, `Component`, and `ref`,
-        // But it's just not working out. Saving this for a future time. -BS
-        // ({ theme, ...rest }: IThemedComponent<P>, ref) => <Component {...rest} ref={ref} />
-      )
-    )(str, ...keys);
+// export function themed<P>(Component: React.ComponentType<P> | keyof JSX.IntrinsicElements) {
+//   // eslint-disable-next-line
+//   return (str: any, ...keys: Interpolation<IThemedComponent<P>>[]) => {
+//     const Styled = styled(
+//       React.forwardRef(
+//         // eslint-disable-next-line
+//         // @ts-ignore
+//         // eslint-disable-next-line
+//         ({ theme, ...rest }: any, ref) => <Component {...rest} ref={ref} />
+//         // Ultimately, the goal here is to properly type the `theme`, `Component`, and `ref`,
+//         // But it's just not working out. Saving this for a future time. -BS
+//         // ({ theme, ...rest }: IThemedComponent<P>, ref) => <Component {...rest} ref={ref} />
+//       )
+//     )(str, ...keys);
 
-    const themedComponent = withTheme(Styled);
-    themedComponent.displayName = 'themed' + typeof Component;
-    return themedComponent;
-  };
-}
+//     const themedComponent = withTheme(Styled);
+//     themedComponent.displayName = 'themed' + typeof Component;
+//     return themedComponent;
+//   };
+// }
+
+// Use the following format instead of themed to maintain support for static-rendering deployment:
+//
+// const StyledPaper = themed(Paper)``);
+//
+// becomes:
+//
+// const StyledPaper = withTheme(styled(Paper)``);
+//
 
 /**
  * Returns a in value with the specified unit given a number or a value in a string.

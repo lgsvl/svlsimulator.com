@@ -1,18 +1,17 @@
-import React from 'react';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { Theme, useTheme, withTheme } from '@material-ui/core/styles';
+import React from 'react';
 import PageContextProvider from 'src/context/Page';
-import Header from './Header';
+import useMeasurable from 'src/hooks/useMeasurable';
+import { px } from 'src/utils/theme';
+import styled, { createGlobalStyle } from 'styled-components';
 import Footer from './Footer';
 import { GridBox } from './GridBox';
+import Header from './Header';
 import SEO from './SEO';
-import { themed, px } from 'src/utils/theme';
-import useMeasurable from 'src/hooks/useMeasurable';
-
-import { createGlobalStyle } from 'styled-components';
-import { Theme, useTheme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 
 const GlobalStyle = createGlobalStyle`
 ${({ theme }: { theme: Theme }) => `
@@ -47,13 +46,13 @@ a {
 // }
 `}`;
 
-const AppContainer = themed(Container)``;
+const AppContainer = withTheme(styled(Container)``);
 
-const AppGrid = themed(Grid)`
+const AppGrid = withTheme(styled(Grid)`
   min-height: 100vh;
-`;
+`);
 
-const StyledPaper = themed(Paper)``;
+const StyledPaper = withTheme(styled(Paper)``);
 
 const App = ({ children }: { children?: React.ReactNode }) => {
   const theme = useTheme();

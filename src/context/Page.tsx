@@ -1,6 +1,6 @@
+import { StylesProvider } from '@material-ui/styles';
 import React from 'react';
 import { ThemeProvider } from './Theme';
-import { StylesProvider } from '@material-ui/styles';
 
 // injectFirst tip
 // https://gist.github.com/Danilo-Araujo-Silva/2ce11fd0540dcc7eb3ad3e67fd75d02a#gistcomment-2935337

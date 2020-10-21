@@ -1,17 +1,17 @@
+import { Table, TableBody, TableCell, TableHead, TableRow, withTheme } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import Section from 'src/components/Section';
 import Page from 'src/components/Page';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-import { themed } from 'src/utils/theme';
+import Section from 'src/components/Section';
 import { useTranslation } from 'src/hooks/useTranslations';
+import styled from 'styled-components';
 
 const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 
-const Caption = themed(Typography)`
+const Caption = withTheme(styled(Typography)`
   display: block;
-`;
+`);
 
 const Yes: React.FC = ({ children, ...rest }) => (
   <span role='img' aria-label='yes' {...rest}>

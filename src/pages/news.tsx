@@ -1,12 +1,14 @@
+import { withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { px, themed } from 'src/utils/theme';
 import Page from 'src/components/Page';
 import { useTranslation } from 'src/hooks/useTranslations';
+import { px } from 'src/utils/theme';
+import styled from 'styled-components';
 
-const NewsGrid = themed(Box)`
+const NewsGrid = withTheme(styled(Box)`
   display: grid;
   grid-gap: ${({ theme }) => px(theme.spacing(2))};
   grid-template-columns: repeat(4, 1fr);
@@ -19,7 +21,7 @@ const NewsGrid = themed(Box)`
     grid-template-columns: repeat(1, 1fr);
   }
   `}
-`;
+`);
 
 const newsBoxCategoryColors = {
   news: '',
@@ -35,8 +37,8 @@ interface NewsBoxProps extends PaperProps {
   category: NewsBoxCategory;
 }
 
-const StyledNewsBox = themed<NewsBoxProps>(Paper)`
-${({ theme, category, colSpan, rowSpan }) => `
+const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
+  ${({ theme, category, colSpan, rowSpan }) => `
   grid-column-end: ${colSpan ? `span ${colSpan}` : 'auto'};
   grid-row-end: ${rowSpan ? `span ${rowSpan}` : 'auto'};
   padding: ${px(theme.spacing(1))};
@@ -49,7 +51,7 @@ ${({ theme, category, colSpan, rowSpan }) => `
     grid-column-end: ${colSpan > 1 ? 'auto' : `span ${colSpan}`};
   }
   `}
-`;
+`);
 // ` as React.FC<NewsBoxProps>;
 
 const NewsBox = ({ children, category = 'news', colSpan = 0, rowSpan = 0, title, ...rest }: Partial<NewsBoxProps>) => {

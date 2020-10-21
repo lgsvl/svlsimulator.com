@@ -6,7 +6,7 @@
  * @exports Measurable
  */
 
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 interface DOMRectReadOnly {
   readonly x: number;

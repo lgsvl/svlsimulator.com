@@ -1,7 +1,7 @@
-import React from 'react';
+import MuiLink, { LinkBaseProps } from '@material-ui/core/Link';
 import { GatsbyLinkProps } from 'gatsby';
 import { Link as GatsbyLink } from 'gatsby-plugin-react-i18next';
-import MuiLink, { LinkBaseProps } from '@material-ui/core/Link';
+import React from 'react';
 
 type I18nGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement> & { language?: string };
 

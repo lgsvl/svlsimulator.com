@@ -1,31 +1,27 @@
-import React, { forwardRef } from 'react';
+import { withTheme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Link from './Link';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Grid from '@material-ui/core/Grid';
-import Button, { ButtonProps } from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import { themed } from 'src/utils/theme';
+import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Grow from '@material-ui/core/Grow';
-import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import React from 'react';
+import styled from 'styled-components';
+import Link from './Link';
 
-// const StyledAppBar = themed(AppBar)`
+// const StyledAppBar = withTheme(styled(AppBar)`
 //   font-weight: bold;
-// `;
+// `);
 
-const Logo = themed(Box)`
+const Logo = withTheme(styled(Box)`
   position: absolute;
-`;
+`);
 
-const MenuButton = themed<ButtonProps>(Button)``;
+const MenuButton = withTheme(styled(Button)``);
 
 const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardRef: React.Ref<{}> }) => {
   // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

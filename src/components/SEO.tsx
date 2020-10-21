@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'gatsby-plugin-react-i18next';
-import { useStaticQuery, graphql } from 'gatsby';
+import React from 'react';
 
 type MetaProps = JSX.IntrinsicElements['meta'];
 
