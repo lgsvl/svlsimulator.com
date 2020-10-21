@@ -47,33 +47,33 @@ export default function Simulation() {
         <TableBody>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.0')}</TableCell>
-            <TableCell>✅</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.1')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell><span role='img' aria-label='no'>🚫</span></TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.2')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell><span role='img' aria-label='no'>🚫</span></TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.3')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell><span role='img' aria-label='no'>🚫</span></TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.4')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell><span role='img' aria-label='no'>🚫</span></TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.5')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell><span role='img' aria-label='no'>🚫</span></TableCell>
+            <TableCell><span role='img' aria-label='yes'>✅</span></TableCell>
           </TableRow>
         </TableBody>
       </Table>
