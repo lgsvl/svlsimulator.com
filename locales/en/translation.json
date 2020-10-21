@@ -50,6 +50,18 @@
       "Content ecosystem - maps, vehicles, sensors, plugins from partners and community"
     ]
   },
+  "digitaltwin": {
+    "title": "Digital Twin creation service",
+    "body": "We offer environment creation services for different levels of environment fidelity based on your needs. These Digital Twin environments can be used to create scenarios and resimulations of real-world test cases.",
+    "section1": {
+      "title": "Digital Twin Full environment",
+      "body": "Creation service for high-fidelity, photorealistic 3D environment."
+    },
+    "section2": {
+      "title": "Digital Twin Lite environment",
+      "body": "Creation services for colorized point cloud environments based on real-world data."
+    }
+  },
   "news": {
     "title": "News",
     "categories": {

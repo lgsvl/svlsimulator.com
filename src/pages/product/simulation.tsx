@@ -13,11 +13,23 @@ const Caption = themed(Typography)`
   display: block;
 `;
 
+const Yes: React.FC = ({ children, ...rest }) => (
+  <span role='img' aria-label='yes' {...rest}>
+    ✅{children}
+  </span>
+);
+
+const No: React.FC = ({ children, ...rest }) => (
+  <span role='img' aria-label='no' {...rest}>
+    🚫{children}
+  </span>
+);
+
 export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page>
-      <Section title='End-to-end simulation platform' variant='h2'>
+      <Section title={t('about.title')} variant='h2'>
         {tMap('about.mission.body', TypoWrapper)}
         <Button color='primary' variant='contained'>
           {t('main.buttons.getDemo')}
@@ -48,79 +60,55 @@ export default function Simulation() {
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.0')}</TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.1')}</TableCell>
             <TableCell>
-              <span role='img' aria-label='no'>
-                🚫
-              </span>
+              <No />
             </TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.2')}</TableCell>
             <TableCell>
-              <span role='img' aria-label='no'>
-                🚫
-              </span>
+              <No />
             </TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.3')}</TableCell>
             <TableCell>
-              <span role='img' aria-label='no'>
-                🚫
-              </span>
+              <No />
             </TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.4')}</TableCell>
             <TableCell>
-              <span role='img' aria-label='no'>
-                🚫
-              </span>
+              <No />
             </TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.5')}</TableCell>
             <TableCell>
-              <span role='img' aria-label='no'>
-                🚫
-              </span>
+              <No />
             </TableCell>
             <TableCell>
-              <span role='img' aria-label='yes'>
-                ✅
-              </span>
+              <Yes />
             </TableCell>
           </TableRow>
         </TableBody>
