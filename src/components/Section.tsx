@@ -30,25 +30,23 @@ interface SectionProps {
   variant?: TypographyProps['variant'];
 }
 
-const Section = ({ children, flip, title, variant = 'h3' }: SectionProps) => {
-  return (
-    <SectionContainer component='section'>
-      <StyledPaper elevation={3}>
-        <Grid container spacing={2} direction={flip ? 'row-reverse' : 'row'}>
-          <Grid item xs={12} md={6}>
-            <Image />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box p={2}>
-              <Typography variant={variant}>{title}</Typography>
-              {children}
-            </Box>
-          </Grid>
+const Section = ({ children, flip, title, variant = 'h3' }: SectionProps) => (
+  <SectionContainer component='section'>
+    <StyledPaper elevation={3}>
+      <Grid container spacing={2} direction={flip ? 'row-reverse' : 'row'}>
+        <Grid item xs={12} md={6}>
+          <Image />
         </Grid>
-      </StyledPaper>
-    </SectionContainer>
-  );
-};
+        <Grid item xs={12} md={6}>
+          <Box p={2}>
+            <Typography variant={variant}>{title}</Typography>
+            {children}
+          </Box>
+        </Grid>
+      </Grid>
+    </StyledPaper>
+  </SectionContainer>
+);
 
 export default Section;
 export { Section };

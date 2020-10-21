@@ -71,7 +71,7 @@ const useMeasurable = () => {
         // Fallback support for MutationObserver
       } else if ('MutationObserver' in window) {
         let mutationObserver: MutationObserver | null = new MutationObserver(mutationsList => {
-          for (let mutation of mutationsList) {
+          for (const mutation of mutationsList) {
             const node: MeasurableNode = mutation.target;
             if (mutation.type === 'childList') {
               if (typeof node.getBoundingClientRect === 'function') {

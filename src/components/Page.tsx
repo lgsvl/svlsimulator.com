@@ -81,14 +81,12 @@ const App = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-const Page = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <PageContextProvider>
-      <SEO title='' />
-      <App>{children}</App>
-    </PageContextProvider>
-  );
-};
+const Page = ({ children }: { children?: React.ReactNode }) => (
+  <PageContextProvider>
+    <SEO title='' />
+    <App>{children}</App>
+  </PageContextProvider>
+);
 
 export default Page;
 export { Page };

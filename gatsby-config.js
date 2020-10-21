@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/camelcase */
 const fs = require('fs');
 const path = require('path');
 
@@ -51,7 +52,7 @@ module.exports = {
       options: {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         exclude: /(node_modules|.cache|public)/,
-         options: {
+        options: {
           eslintPath: require.resolve('eslint'),
           resolvePluginsRelativeTo: __dirname,
           baseConfig: {

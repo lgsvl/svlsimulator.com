@@ -12,51 +12,49 @@ const StyledContainer = themed(Paper)`
   --styled-container: 1;
 `;
 
-const Footer = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <Box mt={2}>
-      <StyledContainer>
-        <Box p={2}>
-          <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Typography variant='h6'>Image</Typography>
-              <Typography>Simulator description</Typography>
-              <Typography>&copy; copyright</Typography>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Typography variant='h6'>Social 2</Typography>
-              <List>
-                <ListItem component={Link} to='/'>
-                  A
-                </ListItem>
-                <ListItem component={Link} to='/'>
-                  B
-                </ListItem>
-                <ListItem component={Link} to='/'>
-                  C
-                </ListItem>
-              </List>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Typography variant='h6'>For Developers</Typography>
-              <List>
-                <ListItem component={Link} to='/'>
-                  A
-                </ListItem>
-                <ListItem component={Link} to='/'>
-                  B
-                </ListItem>
-                <ListItem component={Link} to='/'>
-                  C
-                </ListItem>
-              </List>
-            </Grid>
+const Footer = ({ children }: { children?: React.ReactNode }) => (
+  <Box mt={2}>
+    <StyledContainer>
+      <Box p={2}>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <Typography variant='h6'>Image</Typography>
+            <Typography>Simulator description</Typography>
+            <Typography>&copy; copyright</Typography>
           </Grid>
-        </Box>
-      </StyledContainer>
-    </Box>
-  );
-};
+          <Grid item xs={6} sm={3}>
+            <Typography variant='h6'>Social 2</Typography>
+            <List>
+              <ListItem component={Link} to='/'>
+                A
+              </ListItem>
+              <ListItem component={Link} to='/'>
+                B
+              </ListItem>
+              <ListItem component={Link} to='/'>
+                C
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Typography variant='h6'>For Developers</Typography>
+            <List>
+              <ListItem component={Link} to='/'>
+                A
+              </ListItem>
+              <ListItem component={Link} to='/'>
+                B
+              </ListItem>
+              <ListItem component={Link} to='/'>
+                C
+              </ListItem>
+            </List>
+          </Grid>
+        </Grid>
+      </Box>
+    </StyledContainer>
+  </Box>
+);
 
 export default Footer;
 export { Footer };

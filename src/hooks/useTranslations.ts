@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next'; // UseTranslationResponse
 import { asArray } from '../utils'; // UseTranslationResponse
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type MapFunctionType = (element: any, index?: number, array?: any[]) => unknown;
 
 interface TranslationMapArgs {
