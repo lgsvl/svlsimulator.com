@@ -23,6 +23,7 @@
     "gatsby": "^2.24.73",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-manifest": "^2.4.34",
+    "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-offline": "^3.2.32",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-react-i18next": "0.0.27",

@@ -10,7 +10,6 @@ import styled from 'styled-components';
 
 const Center = withTheme(styled.div`
   text-align: center;
-  background-color: ${({ theme }) => theme.palette.background.default};
 `);
 
 export default function Home() {
