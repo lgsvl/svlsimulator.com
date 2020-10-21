@@ -1,6 +1,6 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import { px, themed } from '../utils/theme';
+import { px, themed } from 'src/utils/theme';
 
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';

@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Link from './Link';
-import { themed } from '../utils/theme';
+import { themed } from 'src/utils/theme';
 
 const StyledContainer = themed(Paper)`
   --styled-container: 1;
