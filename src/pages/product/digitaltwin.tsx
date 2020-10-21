@@ -1,6 +1,6 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import Page from '../../components/Page';
+import Page from 'src/components/Page';
 
 export default function DigitalTwin() {
   return (

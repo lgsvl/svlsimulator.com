@@ -1,9 +1,9 @@
 import React from 'react';
-import Page from '../../components/Page';
+import Page from 'src/components/Page';
 import Typography from '@material-ui/core/Typography';
-import Section from '../../components/Section';
+import Section from 'src/components/Section';
 import Button from '@material-ui/core/Button';
-import { useTranslation } from '../../hooks/useTranslations';
+import { useTranslation } from 'src/hooks/useTranslations';
 
 const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 

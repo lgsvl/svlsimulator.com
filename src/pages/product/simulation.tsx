@@ -1,11 +1,11 @@
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import Section from '../../components/Section';
-import Page from '../../components/Page';
+import Section from 'src/components/Section';
+import Page from 'src/components/Page';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-import { themed } from '../../utils/theme';
-import { useTranslation } from '../../hooks/useTranslations';
+import { themed } from 'src/utils/theme';
+import { useTranslation } from 'src/hooks/useTranslations';
 
 const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 
@@ -47,33 +47,81 @@ export default function Simulation() {
         <TableBody>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.0')}</TableCell>
-            <TableCell>✅</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.1')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell>
+              <span role='img' aria-label='no'>
+                🚫
+              </span>
+            </TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.2')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell>
+              <span role='img' aria-label='no'>
+                🚫
+              </span>
+            </TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.3')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell>
+              <span role='img' aria-label='no'>
+                🚫
+              </span>
+            </TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.4')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell>
+              <span role='img' aria-label='no'>
+                🚫
+              </span>
+            </TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t('simulation.featuresTable.features.5')}</TableCell>
-            <TableCell>🚫</TableCell>
-            <TableCell>✅</TableCell>
+            <TableCell>
+              <span role='img' aria-label='no'>
+                🚫
+              </span>
+            </TableCell>
+            <TableCell>
+              <span role='img' aria-label='yes'>
+                ✅
+              </span>
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>

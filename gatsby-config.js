@@ -3,7 +3,9 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/camelcase */
 const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -12,6 +14,7 @@ module.exports = {
     author: 'LGSVL'
   },
   plugins: [
+    'gatsby-plugin-root-import',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     {
@@ -41,6 +44,24 @@ module.exports = {
             escapeValue: false // not needed for react as it escapes by default
           },
           returnObjects: true
+        }
+      }
+    },
+    'gatsby-plugin-typescript-checker',
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        exclude: /(node_modules|.cache|public)/,
+        options: {
+          eslintPath: require.resolve('eslint'),
+          resolvePluginsRelativeTo: __dirname,
+          baseConfig: {
+            extends: [path.resolve(__dirname, '.eslintrc.js')]
+          },
+          useEslintrc: false,
+          emitWarning: true,
+          failOnError: true
         }
       }
     }

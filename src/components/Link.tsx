@@ -16,7 +16,6 @@ const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-// const Link: React.FC<Omit<GatsbyLinkProps<{}>, 'ref'>> = ({ children, to, activeClassName, partiallyActive, ...rest }: LinkProps) => {
 const Link: React.FC<LinkBaseProps & I18nGatsbyLinkProps> = ({ to, activeClassName, partiallyActive, ...rest }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)

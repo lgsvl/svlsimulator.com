@@ -2,8 +2,8 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { px, themed } from '../utils/theme';
-import Page from '../components/Page';
+import { px, themed } from 'src/utils/theme';
+import Page from 'src/components/Page';
 
 const NewsGrid = themed(Box)`
   display: grid;

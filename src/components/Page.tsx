@@ -1,12 +1,12 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import PageContextProvider from '../context/Page';
+import PageContextProvider from 'src/context/Page';
 import Header from './Header';
 import Footer from './Footer';
 import { GridBox } from './GridBox';
 import SEO from './SEO';
-import { themed, px } from '../utils/theme';
-import useMeasurable from '../hooks/useMeasurable';
+import { themed, px } from 'src/utils/theme';
+import useMeasurable from 'src/hooks/useMeasurable';
 
 import { createGlobalStyle } from 'styled-components';
 import { Theme, useTheme } from '@material-ui/core/styles';
@@ -81,14 +81,12 @@ const App = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-const Page = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <PageContextProvider>
-      <SEO title='' />
-      <App>{children}</App>
-    </PageContextProvider>
-  );
-};
+const Page = ({ children }: { children?: React.ReactNode }) => (
+  <PageContextProvider>
+    <SEO title='' />
+    <App>{children}</App>
+  </PageContextProvider>
+);
 
 export default Page;
 export { Page };
