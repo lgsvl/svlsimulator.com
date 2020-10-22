@@ -5,7 +5,6 @@
  */
 /* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/camelcase */
 const fs = require('fs');
-const path = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -26,6 +25,18 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     {
+      resolve: 'gatsby-plugin-webfonts',
+      options: {
+        fonts: {
+          google: [
+            {
+              family: 'Open Sans'
+            }
+          ]
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'LGSVL Simulator',
@@ -45,7 +56,11 @@ module.exports = {
         path: `${__dirname}/locales`,
         languages: fs.readdirSync(`${__dirname}/locales`),
         defaultLanguage: 'en',
-        siteUrl: process.env.URL || 'localhost:8000',
+        siteUrl:
+          process.env.URL ||
+          (fs.existsSync(`${__dirname}/static/CNAME`) &&
+            fs.readFileSync(`${__dirname}/static/CNAME`, { encoding: 'utf8' }).trim()) ||
+          'localhost:8000',
         i18nextOptions: {
           lowerCaseLng: true,
           interpolation: {
@@ -65,7 +80,7 @@ module.exports = {
           eslintPath: require.resolve('eslint'),
           resolvePluginsRelativeTo: __dirname,
           baseConfig: {
-            extends: [path.resolve(__dirname, '.eslintrc.js')]
+            extends: [`${__dirname}/.eslintrc.js`]
           },
           useEslintrc: false,
           emitWarning: true,
