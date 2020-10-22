@@ -57,6 +57,7 @@ const theme = createMuiTheme({
     },
     MuiButton: {
       root: {
+        fontFamily: fontMain,
         textTransform: 'none'
       },
       outlined: {
