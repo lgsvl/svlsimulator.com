@@ -30,7 +30,8 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: 'Open Sans'
+              family: 'Open Sans',
+              variants: ['400', '600', '700']
             }
           ]
         }
