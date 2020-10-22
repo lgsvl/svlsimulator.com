@@ -1,7 +1,8 @@
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableHead, TableRow, useTheme } from '@material-ui/core';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { ButtonGetDemo } from 'src/components/Button';
+import { IconCheck, IconX } from 'src/components/Icons';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import { useTranslation } from 'src/hooks/useTranslations';
@@ -10,17 +11,23 @@ const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 
 const Caption = (props: TypographyProps) => <Typography variant='caption' display='block' {...props} />;
 
-const Yes: React.FC = ({ children, ...rest }) => (
-  <span role='img' aria-label='yes' {...rest}>
-    ✅{children}
-  </span>
-);
+const Yes: React.FC = ({ children, ...rest }) => {
+  const theme = useTheme();
+  return (
+    <span role='img' aria-label='yes' {...rest}>
+      <IconCheck color={theme.palette.success.light} />
+    </span>
+  );
+};
 
-const No: React.FC = ({ children, ...rest }) => (
-  <span role='img' aria-label='no' {...rest}>
-    🚫{children}
-  </span>
-);
+const No: React.FC = ({ children, ...rest }) => {
+  const theme = useTheme();
+  return (
+    <span role='img' aria-label='no' {...rest}>
+      <IconX color={theme.palette.error.light} />
+    </span>
+  );
+};
 
 export default function Simulation() {
   const { t, tMap } = useTranslation();

@@ -2,15 +2,7 @@
 import React from 'react';
 
 export const IconLgColor: React.FC<BaseSvg> = ({ ...rest }) => (
-  <svg
-    width='56'
-    height='24'
-    viewBox='0 0 56 24'
-    fill='none'
-    preserveAspectRatio='true'
-    xmlns='http://www.w3.org/2000/svg'
-    {...rest}
-  >
+  <svg width='56' height='24' viewBox='0 0 56 24' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <g>
       <path
         d='M12.2885 24C19.0696 24 24.577 18.6335 24.577 12.0026C24.577 5.37148 19.0696 0 12.2885 0C5.49692 0 0 5.37148 0 12.0026C0 18.6335 5.49692 24 12.2885 24Z'

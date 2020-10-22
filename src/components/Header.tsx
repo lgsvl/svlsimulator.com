@@ -15,6 +15,7 @@ import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import Link from './Link';
 import LinkButton from './LinkButton';
+import { IconLGSVLSimulator, IconLogin } from './Icons';
 
 const MenuButton = withTheme(styled(Button)``);
 
@@ -77,9 +78,7 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
       <Toolbar component='nav'>
         <NavGrid container alignItems='center' justify='space-between'>
           <Grid item>
-            <LinkButton to='/' color='primary' startIcon='(LOGO)'>
-              Home
-            </LinkButton>
+            <LinkButton to='/' color='primary' startIcon={<IconLGSVLSimulator />} title='Home' />
           </Grid>
           <Grid item>
             <Grid container spacing={2}>
@@ -162,7 +161,7 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
             </Grid>
           </Grid>
           <Grid item>
-            <LinkButton color='primary' to='/about' endIcon='(ICON)'>
+            <LinkButton color='primary' to='/about' endIcon={<IconLogin />}>
               Log in
             </LinkButton>
           </Grid>

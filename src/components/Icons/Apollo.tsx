@@ -2,15 +2,7 @@
 import React from 'react';
 
 export const IconApollo: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
-  <svg
-    width='150'
-    height='80'
-    viewBox='0 0 150 80'
-    fill='none'
-    preserveAspectRatio='true'
-    xmlns='http://www.w3.org/2000/svg'
-    {...rest}
-  >
+  <svg width='150' height='80' viewBox='0 0 150 80' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <path
       fillRule='evenodd'
       clipRule='evenodd'

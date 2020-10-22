@@ -2,15 +2,7 @@
 import React from 'react';
 
 export const IconUnity: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
-  <svg
-    width='150'
-    height='80'
-    viewBox='0 0 150 80'
-    fill='none'
-    preserveAspectRatio='true'
-    xmlns='http://www.w3.org/2000/svg'
-    {...rest}
-  >
+  <svg width='150' height='80' viewBox='0 0 150 80' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <g>
       <path
         d='M54.5505 29.1987L48.58 7L26.3111 12.9686L22.9779 18.7585L16.2887 18.778L0 35.0016L16.2042 51.2382H22.9063L26.2167 57.0834L48.4532 63L54.5602 40.6357L51.1588 34.9594L54.5505 29.1987ZM23.4624 19.6645L40.5869 15.3131L30.8605 32.2219L11.141 32.2804L23.4624 19.6645ZM23.4982 50.3842L11.141 37.7651H30.8149L40.5869 54.6511L23.4982 50.3842ZM45.3769 52.102L35.5139 35.0016L45.3704 18.0182L50.1019 35.0828L45.3769 52.102Z'

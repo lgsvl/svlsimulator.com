@@ -7,7 +7,6 @@ export const IconAutoware: React.FC<BaseSvg> = ({ color = 'currentColor', ...res
     height='80'
     viewBox='0 0 172 80'
     fill='none'
-    preserveAspectRatio='true'
     xmlns='http://www.w3.org/2000/svg'
     xmlnsXlink='http://www.w3.org/1999/xlink'
     {...rest}

@@ -2,15 +2,7 @@
 import React from 'react';
 
 export const IconVelodyne: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
-  <svg
-    width='332'
-    height='80'
-    viewBox='0 0 332 80'
-    fill='none'
-    preserveAspectRatio='true'
-    xmlns='http://www.w3.org/2000/svg'
-    {...rest}
-  >
+  <svg width='332' height='80' viewBox='0 0 332 80' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <g>
       <path
         d='M332.147 31.9389V26.4824H329.143C321.394 26.4824 316.454 32.0988 316.454 40.1134V53.756H321.853V40.7123C321.853 35.6221 324.514 31.9389 329.199 31.9389H332.147Z'

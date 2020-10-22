@@ -2,15 +2,7 @@
 import React from 'react';
 
 export const IconBaidu: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
-  <svg
-    width='174'
-    height='80'
-    viewBox='0 0 174 80'
-    fill='none'
-    preserveAspectRatio='true'
-    xmlns='http://www.w3.org/2000/svg'
-    {...rest}
-  >
+  <svg width='174' height='80' viewBox='0 0 174 80' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <g>
       <path
         fillRule='evenodd'
