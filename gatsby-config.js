@@ -59,7 +59,7 @@ module.exports = {
         siteUrl:
           process.env.URL ||
           (fs.existsSync(`${__dirname}/static/CNAME`) &&
-            fs.readFileSync(`${__dirname}/static/CNAME`, { encoding: 'utf8' }).trim()) ||
+            `https://${fs.readFileSync(`${__dirname}/static/CNAME`, { encoding: 'utf8' }).trim()}`) ||
           'localhost:8000',
         i18nextOptions: {
           lowerCaseLng: true,
