@@ -12,11 +12,8 @@ export default function Applications() {
 
   return (
     <Page>
-      <Section title={t('applications.title')} variant='h2'>
+      <Section title={t('applications.title')} variant='h2' buttonText='getDemo'>
         {tMap('applications.body', TypoWrapper)}
-        <Button color='primary' variant='contained'>
-          {t('main.buttons.getDemo')}
-        </Button>
       </Section>
 
       <Section flip title={t('applications.section1.title')}>

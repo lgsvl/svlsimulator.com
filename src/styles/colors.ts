@@ -1,31 +1,58 @@
 import createPalette from '@material-ui/core/styles/createPalette';
 
-const white = '#FFFFFF';
-const lightSteelBlue = '#B6C5E4';
-const slateGray = '#6D7B97';
+const colors = {
+  accent: {
+    amaranthPink: '#F69BB2',
+    lightCrimson: '#F16689',
+    paradisePink: '#ED3866',
+    crimson: '#D71345'
+  },
+  neutrals: {
+    white: '#FFFFFF',
+    azureishWhite: '#E2E8F4',
+    lightSteelBlue: '#B6C5E4',
+    slateGrey: '#6D7B97',
+    yankeesBlue: '#1F2940',
+    eerieBlack: '#141B2D'
+  },
+  semantic: {
+    successGreen: '#7FB58A',
+    successGreenDark: '#5A9C68',
+    successGreenDarkest: '#3C6845',
+    errorRed: '#DC7C7C',
+    errorRedDark: '#CF4D4D',
+    errorRedDarkest: '#A82D2D',
+    infoBlue: '#66C4EB',
+    infoBlueDark: '#3EB5E6',
+    infoBlueDarkest: '#1785B3',
+    warningYellow: '#F2C766',
+    warningYellowDark: '#EEB83C',
+    warningYellowDarkest: '#BE8910'
+  }
+};
 
 export const palette = createPalette({
   primary: {
-    main: '#ED3866',
-    dark: '#AB1138',
-    light: '#D71345'
+    main: colors.accent.paradisePink,
+    dark: colors.accent.crimson,
+    light: colors.accent.lightCrimson
     // contrastText: ''
   },
   secondary: {
-    main: '#C5C6CA',
-    dark: slateGray,
-    light: '#6D8B97'
+    main: colors.neutrals.azureishWhite,
+    dark: colors.neutrals.slateGrey,
+    light: colors.neutrals.lightSteelBlue
     // contrastText: ''
   },
   text: {
-    primary: white,
-    secondary: lightSteelBlue
+    primary: colors.neutrals.white,
+    secondary: colors.neutrals.lightSteelBlue
     // disabled: '',
     // hint: ''
   },
   background: {
-    default: '#141A2D',
-    paper: '#242A3D'
+    default: colors.neutrals.eerieBlack,
+    paper: colors.neutrals.yankeesBlue
   },
   // divider: '',
   action: {
@@ -37,23 +64,23 @@ export const palette = createPalette({
     disabledBackground: '#863052'
   },
   warning: {
-    light: '#F2C766',
-    main: '#CF4D4D',
-    dark: '#FC6565'
+    light: colors.semantic.warningYellow,
+    main: colors.semantic.warningYellowDark,
+    dark: colors.semantic.warningYellowDarkest
   },
   success: {
-    light: '#7FB58A',
-    main: '#4CAF50',
-    dark: '#5A9C68;'
+    light: colors.semantic.successGreen,
+    main: colors.semantic.successGreenDark,
+    dark: colors.semantic.successGreenDarkest
   },
   error: {
-    light: '#DC7C7C',
-    main: '#F44336',
-    dark: '#C22525'
+    light: colors.semantic.errorRed,
+    main: colors.semantic.errorRedDark,
+    dark: colors.semantic.errorRedDarkest
   },
   info: {
-    light: '#66C4EB',
-    main: '#f38a21',
-    dark: '#1976d2'
+    light: colors.semantic.infoBlue,
+    main: colors.semantic.infoBlueDark,
+    dark: colors.semantic.infoBlueDarkest
   }
 });
