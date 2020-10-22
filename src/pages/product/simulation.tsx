@@ -1,17 +1,14 @@
-import { Table, TableBody, TableCell, TableHead, TableRow, withTheme } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
+import { ButtonGetDemo } from 'src/components/Button';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import { useTranslation } from 'src/hooks/useTranslations';
-import styled from 'styled-components';
 
 const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 
-const Caption = withTheme(styled(Typography)`
-  display: block;
-`);
+const Caption = (props: TypographyProps) => <Typography variant='caption' display='block' {...props} />;
 
 const Yes: React.FC = ({ children, ...rest }) => (
   <span role='img' aria-label='yes' {...rest}>
@@ -29,11 +26,8 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page>
-      <Section title={t('about.title')} variant='h2'>
+      <Section title={t('about.title')} variant='h2' buttonText='getDemo'>
         {tMap('about.mission.body', TypoWrapper)}
-        <Button color='primary' variant='contained'>
-          {t('main.buttons.getDemo')}
-        </Button>
       </Section>
 
       <Section title={t('simulation.section1.title')} flip>
@@ -48,11 +42,11 @@ export default function Simulation() {
             <TableCell></TableCell>
             <TableCell>
               {t('simulation.featuresTable.products.0.title')}
-              <Caption variant='caption'>{t('simulation.featuresTable.products.0.body')}</Caption>
+              <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
             </TableCell>
             <TableCell>
               {t('simulation.featuresTable.products.1.title')}
-              <Caption variant='caption'>{t('simulation.featuresTable.products.1.body')}</Caption>
+              <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -114,9 +108,7 @@ export default function Simulation() {
         </TableBody>
       </Table>
 
-      <Button color='primary' variant='contained'>
-        {t('main.buttons.getDemo')}
-      </Button>
+      <ButtonGetDemo />
     </Page>
   );
 }

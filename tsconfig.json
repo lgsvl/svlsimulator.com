@@ -16,6 +16,6 @@
     "module": "esnext",
     "isolatedModules": true
   },
-  "exclude": ["**/node_modules","**/.cache","**/public", "**/.*/"],
+  "exclude": ["**/node_modules", "**/.cache", "**/public", "**/.*/"],
   "include": ["src", "gatsby-config.js"]
 }

@@ -2,6 +2,7 @@
   "main": {
     "buttons": {
       "getDemo": "Request Demo",
+      "readMore": "Read More",
       "download": "Download!"
     },
     "simulator": {

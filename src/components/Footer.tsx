@@ -28,7 +28,9 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
 
   const forDevs = (
     <>
-      <Typography variant='h6'>For Developers</Typography>
+      <Typography variant='body1' component='h6'>
+        For Developers
+      </Typography>
       <List>
         <ListItem disableGutters component={Link} to='/'>
           Github
@@ -44,7 +46,9 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
   );
   const social = (
     <>
-      <Typography variant='h6'>Social</Typography>
+      <Typography variant='body1' component='h6'>
+        Social
+      </Typography>
       <List>
         <ListItem disableGutters component={Link} to='/'>
           Twitter

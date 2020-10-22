@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // import { hexOpacity } from 'src/utils/utils';
 import { palette } from './colors';
 
-const fontMain = ['"Open Sans"'].join(', ');
+const fontMain = ['"Open Sans"', '"OpenSans-Bold"'].join(', ');
 
 const theme = createMuiTheme({
   palette,
@@ -13,7 +13,8 @@ const theme = createMuiTheme({
         backgroundColor: palette.background.default
       }
     },
-    // Doesn't work reliably because of the built in breakpoints. Will have to override them if this 80px is important.
+    // Doesn't work reliably because of the breakpoints built-into the component styling.
+    // Will have to override them if this 80px is important.
     // MuiToolbar: {
     //   regular: {
     //     minHeight: '80px'
@@ -143,31 +144,32 @@ const theme = createMuiTheme({
       h1: {
         fontSize: 64,
         fontWeight: 700,
-        lineHeight: 1.5,
+        lineHeight: 96 / 64,
         textAlign: 'center'
       },
-      h3: {
-        fontFamily: fontMain,
-        fontSize: 32,
+      h2: {
+        fontSize: 56,
         fontWeight: 700,
-        lineHeight: 1.375
+        lineHeight: 84 / 56
       },
-      body1: {
-        color: palette.secondary.main
-      },
-      body2: {},
+      // h3: {},
+      // h4: {},
       h5: {
         color: palette.text.primary,
-        fontSize: 18,
+        fontSize: 32,
         fontWeight: 700,
-        lineHeight: 1.3
+        lineHeight: 44 / 32
       },
       h6: {
         color: palette.text.secondary,
-        fontSize: 14,
+        fontSize: 28,
         fontWeight: 600,
-        lineHeight: 1.15
+        lineHeight: 36 / 28
+      },
+      body1: {
+        color: palette.secondary.main
       }
+      // body2: {},
     },
     MuiPaper: {
       // root: {
@@ -235,12 +237,33 @@ const theme = createMuiTheme({
   }
 });
 
-// theme.typography.h3 = {
-//   fontSize: '32px',
-//   fontWeight: 'bold',
-//   [theme.breakpoints.down('xs')]: {
-//     fontSize: '24px'
-//   }
+//
+// "Mobile" Sizing
+//
+const mobileBreakpoint = theme.breakpoints.down('sm');
+theme.typography.h1[mobileBreakpoint] = {
+  fontSize: 40,
+  lineHeight: 52 / 40
+};
+theme.typography.h2[mobileBreakpoint] = {
+  fontSize: 32,
+  lineHeight: 48 / 32
+};
+theme.typography.h3[mobileBreakpoint] = {
+  fontSize: 24,
+  lineHeight: 36 / 24
+};
+theme.typography.h4[mobileBreakpoint] = {
+  fontSize: 20,
+  lineHeight: 32 / 20
+};
+theme.typography.h5[mobileBreakpoint] = {
+  fontSize: 16,
+  lineHeight: 28 / 16
+};
+// theme.typography.h6[mobileBreakpoint] = {
+//   fontSize: 40,
+//   lineHeight: 1.3
 // };
 
 export { theme };
