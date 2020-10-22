@@ -9,12 +9,21 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
+import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import Link from './Link';
 import LinkButton from './LinkButton';
 
 const MenuButton = withTheme(styled(Button)``);
+
+const NavGrid = withTheme(styled(Grid)`
+  // height: ${({ theme }) => px(theme.spacing(10))};
+  .MuiButton-textPrimary {
+    color: ${({ theme }) => theme.palette.secondary.main};
+  }
+`);
 
 const Logo = withTheme(styled(Box)`
   position: absolute;
@@ -65,51 +74,52 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
 
   return (
     <AppBar position='fixed' color='default' ref={forwardRef}>
-      <Grid component='nav' container justify='space-between'>
-        <Grid item>
-          <LinkButton to='/' startIcon='(LOGO)'>
-            Home
-          </LinkButton>
-        </Grid>
-        <Grid item>
-          <Grid container spacing={2}>
-            <Grid item xs={3} sm='auto'>
-              <MenuButton fullWidth onMouseEnter={handleToggle} onMouseLeave={handleToggle} ref={anchorRef}>
-                Products
-              </MenuButton>
-              <Popper
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                transition
-                disablePortal
-                onMouseEnter={handleToggle}
-                onMouseLeave={handleToggle}
-              >
-                {({ TransitionProps, placement }) => (
-                  <Grow
-                    {...TransitionProps}
-                    style={{ transformOrigin: placement === 'bottom' ? 'left top' : 'left bottom' }}
-                  >
-                    <Paper>
-                      <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
-                          <MenuItem component={Link} to='/product/simulation/' onClick={handleClose}>
-                            Simulation
-                          </MenuItem>
-                          <MenuItem component={Link} to='/product/cloud/' onClick={handleClose}>
-                            Cloud simulation as-a-service
-                          </MenuItem>
-                          <MenuItem component={Link} to='/product/digitaltwin/' onClick={handleClose}>
-                            Digital Twin creation service
-                          </MenuItem>
-                        </MenuList>
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>
-              {/*
+      <Toolbar component='nav'>
+        <NavGrid container alignItems='center' justify='space-between'>
+          <Grid item>
+            <LinkButton to='/' color='primary' startIcon='(LOGO)'>
+              Home
+            </LinkButton>
+          </Grid>
+          <Grid item>
+            <Grid container spacing={2}>
+              <Grid item xs={3} sm='auto'>
+                <MenuButton fullWidth onMouseEnter={handleToggle} onMouseLeave={handleToggle} ref={anchorRef}>
+                  Products
+                </MenuButton>
+                <Popper
+                  open={open}
+                  anchorEl={anchorRef.current}
+                  role={undefined}
+                  transition
+                  disablePortal
+                  onMouseEnter={handleToggle}
+                  onMouseLeave={handleToggle}
+                >
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{ transformOrigin: placement === 'bottom' ? 'left top' : 'left bottom' }}
+                    >
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleClose}>
+                          <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
+                            <MenuItem component={Link} to='/product/simulation/' onClick={handleClose}>
+                              Simulation
+                            </MenuItem>
+                            <MenuItem component={Link} to='/product/cloud/' onClick={handleClose}>
+                              Cloud simulation as-a-service
+                            </MenuItem>
+                            <MenuItem component={Link} to='/product/digitaltwin/' onClick={handleClose}>
+                              Digital Twin creation service
+                            </MenuItem>
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
+                {/*
               <LinkButton fullWidth onMouseEnter={handleClick} onMouseLeave={handleClose}>
                 Products
               </LinkButton>
@@ -133,35 +143,36 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
                   Digital Twin creation service
                 </MenuItem>
               </Menu> */}
-            </Grid>
-            <Grid item xs={3} sm='auto'>
-              <LinkButton fullWidth to='/applications/'>
-                Applications
-              </LinkButton>
-            </Grid>
-            <Grid item xs={3} sm='auto'>
-              <LinkButton fullWidth to='/news/'>
-                News
-              </LinkButton>
-            </Grid>
-            <Grid item xs={3} sm='auto'>
-              <LinkButton fullWidth to='/about'>
-                About
-              </LinkButton>
+              </Grid>
+              <Grid item xs={3} sm='auto'>
+                <LinkButton color='primary' fullWidth to='/applications/'>
+                  Applications
+                </LinkButton>
+              </Grid>
+              <Grid item xs={3} sm='auto'>
+                <LinkButton color='primary' fullWidth to='/news/'>
+                  News
+                </LinkButton>
+              </Grid>
+              <Grid item xs={3} sm='auto'>
+                <LinkButton color='primary' fullWidth to='/about'>
+                  About
+                </LinkButton>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item>
-          <LinkButton to='/about' endIcon='(ICON)'>
-            Log in
-          </LinkButton>
-        </Grid>
-      </Grid>
-      {/* <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+          <Grid item>
+            <LinkButton color='primary' to='/about' endIcon='(ICON)'>
+              Log in
+            </LinkButton>
+          </Grid>
+        </NavGrid>
+        {/* <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
     <Tab label="Item One" />
     <Tab label="Item Two" />
     <Tab label="Item Three" />
   </Tabs> */}
+      </Toolbar>
     </AppBar>
   );
 };

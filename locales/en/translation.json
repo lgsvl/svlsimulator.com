@@ -62,6 +62,39 @@
       "body": "Creation services for colorized point cloud environments based on real-world data."
     }
   },
+  "home": {
+    "title": "LGSVL SIMULATOR",
+    "body": "End-to-end autonomous driving simulation software for testing and validating the entire autonomous driving software stack",
+    "section1": {
+      "title": "Tools and methodology for autonomous driving",
+      "body": [
+        "Simulation software platform offering tools and methodology for autonomous driving and future mobility development.",
+        "As an open platform, LGSVL Simulator allows the industry and the community to access the most advanced, sustainable, and affordable simulation platform with high-quality simulation contents, intelligence, and scalable cloud environments."
+      ]
+    },
+    "section2": {
+      "title": "High-fidelity simulation engine for automated testing and validation",
+      "body": "LGSVL Simulator consists of a high-fidelity simulation engine, content replicating the complexity of real-world environments, and seamless integration of local and Cloud simulation for automated testing and validation at scale that enables customers to focus on software and system development instead of testing infrastructure."
+    },
+    "features": [
+      {
+        "title": "Cloud simulator",
+        "body": "Simulation in Cloud environments allows users to easily manage and share the autonomous driving contents within the teams or communities, also enables large-scale automated testing of test data sets and scenarios."
+      },
+      {
+        "title": "Digital twin",
+        "body": "A digital twin that reconstructs 3D environment from Point Cloud and image data from real world enables vehicle manufacturers and future mobility players to accelerate development using simulation."
+      },
+      {
+        "title": "Simulation",
+        "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
+      }
+    ]
+  },
+  "footer": {
+    "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
+    "copyright": "Copyright © 2020 LG Electronics. All rights reserved."
+  },
   "news": {
     "title": "News",
     "categories": {

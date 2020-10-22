@@ -2,6 +2,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // import { hexOpacity } from 'src/utils/utils';
 import { palette } from './colors';
 
+const fontMain = ['"Open Sans"'].join(', ');
+
 const theme = createMuiTheme({
   palette,
   // spacing: factor => `${8 * factor}px`,
@@ -11,6 +13,12 @@ const theme = createMuiTheme({
         backgroundColor: palette.background.default
       }
     },
+    // Doesn't work reliably because of the built in breakpoints. Will have to override them if this 80px is important.
+    // MuiToolbar: {
+    //   regular: {
+    //     minHeight: '80px'
+    //   }
+    // },
     MuiDrawer: {
       root: {
         width: 240
@@ -28,6 +36,11 @@ const theme = createMuiTheme({
           WebkitTextFillColor: '#fff',
           caretColor: '#fff'
         }
+      }
+    },
+    MuiLink: {
+      root: {
+        color: palette.secondary.dark
       }
     },
     MuiTab: {
@@ -123,27 +136,34 @@ const theme = createMuiTheme({
       }
     },
     MuiTypography: {
-      // root: {
-      //   // Added important to prevent ovverride by sub classes of Typography
-      //   fontFamily: 'Open Sans !important'
-      // },
+      root: {
+        // Added important to prevent ovverride by sub classes of Typography
+        fontFamily: fontMain
+      },
+      h1: {
+        fontSize: 64,
+        fontWeight: 700,
+        lineHeight: 1.5,
+        textAlign: 'center'
+      },
+      h3: {
+        fontFamily: fontMain,
+        fontSize: 32,
+        fontWeight: 700,
+        lineHeight: 1.375
+      },
       body1: {
-        fontFamily: 'Open Sans',
         color: palette.secondary.main
       },
-      body2: {
-        fontFamily: 'Open Sans'
-      },
+      body2: {},
       h5: {
         color: palette.text.primary,
-        fontFamily: 'Open Sans',
         fontSize: 18,
         fontWeight: 700,
         lineHeight: 1.3
       },
       h6: {
         color: palette.text.secondary,
-        fontFamily: 'Open Sans',
         fontSize: 14,
         fontWeight: 600,
         lineHeight: 1.15

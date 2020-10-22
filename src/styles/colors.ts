@@ -1,5 +1,9 @@
 import createPalette from '@material-ui/core/styles/createPalette';
 
+const white = '#FFFFFF';
+const lightSteelBlue = '#B6C5E4';
+const slateGray = '#6D7B97';
+
 export const palette = createPalette({
   primary: {
     main: '#ED3866',
@@ -9,13 +13,13 @@ export const palette = createPalette({
   },
   secondary: {
     main: '#C5C6CA',
-    dark: '#5BCFAA',
+    dark: slateGray,
     light: '#6D8B97'
     // contrastText: ''
   },
   text: {
-    primary: '#FFFFFF',
-    secondary: '#B6C5E4'
+    primary: white,
+    secondary: lightSteelBlue
     // disabled: '',
     // hint: ''
   },

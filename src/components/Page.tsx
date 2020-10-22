@@ -19,6 +19,7 @@ body {
   margin: 0;
   background-color: ${theme.palette.background.default};
   color: ${theme.palette.text.primary};
+  overflow-y: scroll; // So the page doesn't shift when switching between scrollable and non-scrollable pages.
 }
 
 a {
@@ -35,15 +36,16 @@ a {
 }
 
 /* Let's get this party started */
-// ::-webkit-scrollbar {
-//   width: 5px;
-// }
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
 
 /* Handle */
-// ::-webkit-scrollbar-thumb {
-//   border-radius: 10px;
-//   background: rgba(138, 136, 136, 0.8);
-// }
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(138, 136, 136, 0.8);
+}
 `}`;
 
 const AppContainer = withTheme(styled(Container)``);
@@ -61,7 +63,7 @@ const App = ({ children }: { children?: React.ReactNode }) => {
   return (
     <React.Fragment>
       <GlobalStyle theme={theme} />
-      <AppContainer component='main' maxWidth='md'>
+      <AppContainer component='main' maxWidth='lg'>
         <AppGrid container direction='column'>
           <Grid item style={{ height: px((measurement?.height || 0) + theme.spacing(2)) }}>
             <Header forwardRef={ref}>Testing</Header>
