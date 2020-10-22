@@ -37,6 +37,8 @@ const SEO: React.FC<SEOProps> = ({ title, meta = [], description }) => {
     <Helmet
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      defaultTitle={site.siteMetadata.title}
+      defer={false}
       meta={([
         {
           name: 'description',
