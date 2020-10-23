@@ -53,7 +53,7 @@ const NewsBox = ({ children, category = 'news', colSpan = 1, rowSpan = 1, title,
 export default function News() {
   const { t } = useTranslation();
   return (
-    <Page>
+    <Page title={t('news.title')}>
       <Typography variant='h1'>{t('news.title')}</Typography>
       <LayoutGrid sm={2} md={4} spacing={2}>
         <NewsBox title='News 1'>

@@ -9,7 +9,7 @@ const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
-    <Page>
+    <Page title={t('cloud.title')}>
       <Section title={t('cloud.title')} variant='h2' buttonText='getDemo'>
         {tMap('cloud.body', TypoWrapper)}
       </Section>

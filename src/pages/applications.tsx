@@ -11,7 +11,7 @@ export default function Applications() {
   const { t, tMap } = useTranslation();
 
   return (
-    <Page>
+    <Page title={t('applications.title')}>
       <Section title={t('applications.title')} variant='h2' buttonText='getDemo'>
         {tMap('applications.body', TypoWrapper)}
       </Section>

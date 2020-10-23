@@ -12,12 +12,12 @@ import React from 'react';
 type MetaProps = JSX.IntrinsicElements['meta'];
 
 interface SEOProps {
-  title: string;
+  title?: string;
   meta?: MetaProps[];
   description?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, meta = [], description }) => {
+const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

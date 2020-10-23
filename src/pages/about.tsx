@@ -8,7 +8,7 @@ const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 export default function About() {
   const { t, tMap } = useTranslation();
   return (
-    <Page>
+    <Page title={t('about.title')}>
       <Typography variant='h1'>{t('about.title')}</Typography>
       <Typography variant='h2'>{t('about.mission.title')}</Typography>
       {tMap('about.mission.body', TypoWrapper)}

@@ -170,9 +170,9 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
 export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
-    <Page>
-      <Section title={t('about.title')} variant='h2' buttonText='getDemo'>
-        {tMap('about.mission.body', TypoWrapper)}
+    <Page title={t('simulation.title')}>
+      <Section title={t('simulation.title')} variant='h2' buttonText='getDemo'>
+        {tMap('simulation.body', TypoWrapper)}
       </Section>
 
       <Section title={t('simulation.section1.title')} flip>

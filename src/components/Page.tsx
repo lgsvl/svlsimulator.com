@@ -107,9 +107,9 @@ const App = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-const Page = ({ children }: { children?: React.ReactNode }) => (
+const Page = ({ children, title }: { children?: React.ReactNode, title?: string }) => (
   <PageContextProvider>
-    <SEO title='' />
+    <SEO title={title} />
     <App>{children}</App>
   </PageContextProvider>
 );

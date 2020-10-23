@@ -9,7 +9,7 @@ const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 export default function DigitalTwin() {
   const { t, tMap } = useTranslation();
   return (
-    <Page>
+    <Page title={t('digitaltwin.title')}>
       <Section title={t('digitaltwin.title')} variant='h2' buttonText='getDemo'>
         {tMap('digitaltwin.body', TypoWrapper)}
       </Section>
