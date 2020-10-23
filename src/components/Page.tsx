@@ -73,6 +73,13 @@ const AppGrid = withTheme(styled(Grid)`
   min-height: 100vh;
 `);
 
+const HeaderGrid = withTheme(styled(Grid)`
+  // Make the layout have the same height rules as the toolbar, so it can be fixed
+  // (outside the layout) and the content shifts down to accomodate its variable height.
+  ${({ theme }) => theme.mixins.toolbar};
+  margin-bottom: ${({ theme }) => px(theme.spacing(2))};
+`);
+
 const StyledPaper = withTheme(styled(Paper)``);
 
 const App = ({ children }: { children?: React.ReactNode }) => {
@@ -83,9 +90,9 @@ const App = ({ children }: { children?: React.ReactNode }) => {
       <GlobalStyle theme={theme} />
       <AppContainer component='main' maxWidth='lg'>
         <AppGrid container direction='column'>
-          <Grid item style={{ height: px(theme.spacing(10)) }}>
+          <HeaderGrid item>
             <Header />
-          </Grid>
+          </HeaderGrid>
           <Grid item>
             <StyledPaper elevation={0}>
               <Box>{children}</Box>

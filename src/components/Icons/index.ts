@@ -2,6 +2,8 @@ export * from './Apollo';
 export * from './Autoware';
 export * from './Baidu';
 export * from './Check';
+export * from './ChevronDown';
+export * from './ChevronUp';
 export * from './LG';
 export * from './LGColor';
 export * from './LGSVLSimulator';

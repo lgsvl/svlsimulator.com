@@ -128,12 +128,22 @@
         }
       ],
       "features": [
-        "Basic simulation",
-        "Simulation analysis",
-        "Cloud simulation",
-        "Content creation/environment generation",
-        "Scenario generation",
-        "Plugins/Third Party Support"
+        {
+          "name": "Basic simulation",
+          "subFeatures": [
+            "Local simulation",
+            "Deterministic simulation",
+            "Default content",
+            "ROS 1 support",
+            "ROS 2 support",
+            "Baidu Apollo support"
+          ]
+        },
+        { "name": "Simulation analysis" },
+        { "name": "Cloud simulation" },
+        { "name": "Content creation/environment generation" },
+        { "name": "Scenario generation" },
+        { "name": "Plugins/Third Party Support" }
       ]
     }
   }

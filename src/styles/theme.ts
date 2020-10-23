@@ -44,6 +44,11 @@ const theme = createMuiTheme({
         color: palette.secondary.dark
       }
     },
+    MuiListItem: {
+      root: {
+        fontFamily: fontMain // Normally, we wouldn't set font rules here, but typeography doesn't influence ListItems.
+      }
+    },
     MuiTab: {
       root: {
         paddingBottom: 0,
@@ -137,41 +142,11 @@ const theme = createMuiTheme({
         border: `1px solid ${palette.background.default}`
       }
     },
-    MuiTypography: {
-      root: {
-        // Added important to prevent ovverride by sub classes of Typography
-        fontFamily: fontMain
-      },
-      h1: {
-        fontSize: 64,
-        fontWeight: 700,
-        lineHeight: 96 / 64,
-        textAlign: 'center'
-      },
-      h2: {
-        fontSize: 56,
-        fontWeight: 700,
-        lineHeight: 84 / 56
-      },
-      // h3: {},
-      // h4: {},
-      h5: {
-        color: palette.text.primary,
-        fontSize: 32,
-        fontWeight: 700,
-        lineHeight: 44 / 32
-      },
-      h6: {
-        color: palette.text.secondary,
-        fontSize: 28,
-        fontWeight: 600,
-        lineHeight: 36 / 28
-      },
-      body1: {
-        color: palette.secondary.main
-      }
-      // body2: {},
-    },
+    // MuiTypography: {
+    //   root: {
+    //     // Added important to prevent ovverride by sub classes of Typography
+    //   },
+    // },
     MuiPaper: {
       rounded: {
         borderRadius: '8px' // spacing(1)
@@ -232,16 +207,69 @@ const theme = createMuiTheme({
     // }
     MuiTableCell: {
       root: {
-        borderBottomColor: 'rgba(255, 255, 255, 0.1)'
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.1)',
+        fontFamily: fontMain
       }
     }
+  },
+  typography: {
+    fontFamily: fontMain,
+
+    h1: {
+      fontSize: 64,
+      fontWeight: 700,
+      lineHeight: 96 / 64,
+      textAlign: 'center'
+    },
+    h2: {
+      fontSize: 56,
+      fontWeight: 700,
+      lineHeight: 84 / 56
+    },
+    h5: {
+      color: palette.text.primary,
+      fontSize: 32,
+      fontWeight: 700,
+      lineHeight: 44 / 32
+    },
+    h6: {
+      color: palette.text.secondary,
+      fontSize: 28,
+      fontWeight: 600,
+      lineHeight: 36 / 28
+    },
+    body1: {
+      color: palette.secondary.main,
+      fontSize: 18,
+      lineHeight: 28 / 18
+    },
+    body2: {
+      fontSize: 14,
+      lineHeight: 24 / 14
+    }
+    // button: {
+    // },
+    // caption: {
+    // },
+    // overline: {
+    // },
+    // subtitle1: {
+    // },
+    // subtitle2: {
+    // }
   }
 });
+
+const mobileBreakpoint = theme.breakpoints.down('sm');
+
+// This sets the root Toolbar element's minHeight, but its overridden by breakpoints.
+// Will need to figure out how to "properly" override those or recreate them.
+theme.mixins.toolbar.minHeight = 80;
 
 //
 // "Mobile" Sizing
 //
-const mobileBreakpoint = theme.breakpoints.down('sm');
 theme.typography.h1[mobileBreakpoint] = {
   fontSize: 40,
   lineHeight: 52 / 40
