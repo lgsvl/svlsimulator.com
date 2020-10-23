@@ -173,13 +173,13 @@ const theme = createMuiTheme({
       // body2: {},
     },
     MuiPaper: {
-      // root: {
-      //   backgroundColor: palette.background.default
-      // },
       rounded: {
         borderRadius: '8px' // spacing(1)
       },
       // Reserving elevation24 for the "page content" area, the body of most pages.
+      elevation0: {
+        backgroundColor: 'transparent'
+      },
       elevation24: {
         boxShadow: '0 0 1px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.06)'
       }

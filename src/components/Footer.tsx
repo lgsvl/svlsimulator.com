@@ -65,8 +65,8 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <Box mt={2}>
-      <StyledContainer>
-        <Box p={2}>
+      <StyledContainer elevation={0}>
+        <Box>
           <Grid container>
             <Hidden mdDown xlUp>
               <Grid item xs={1} />

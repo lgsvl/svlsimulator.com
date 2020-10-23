@@ -21,6 +21,7 @@ const StyledPaper = withTheme(styled(Paper)``);
 const Image = withTheme(styled(Box)`
   height: 100%;
   width: 100%;
+  min-height: 300px;
   background-image: linear-gradient(-205deg, white, #9c27b0 30%, black);
   border-radius: 20px;
 `);
@@ -57,11 +58,12 @@ const Content = ({ buttonText, children, title, variant = 'h5' }: ContentProps) 
 
 interface SectionProps extends ContentProps {
   flip?: boolean;
+  tuckImage?: boolean;
 }
 
-const Section = ({ buttonText, children, flip, title, variant }: SectionProps) => (
+const Section = ({ buttonText, children, flip, title, tuckImage, variant }: SectionProps) => (
   <SectionContainer component='section'>
-    <StyledPaper elevation={3}>
+    <StyledPaper elevation={0}>
       <Grid container spacing={2} direction={flip ? 'row-reverse' : 'row'}>
         <Grid item xs={12} md={6}>
           <Image />

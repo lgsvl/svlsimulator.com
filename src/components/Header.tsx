@@ -1,5 +1,5 @@
 import { withTheme } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
+import AppBar, { AppBarProps } from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -26,11 +26,7 @@ const NavGrid = withTheme(styled(Grid)`
   }
 `);
 
-const Logo = withTheme(styled(Box)`
-  position: absolute;
-`);
-
-const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardRef: React.Ref<{}> }) => {
+const Header = React.forwardRef((props, ref) => {
   // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   // const handleClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
@@ -74,7 +70,7 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
   }, [open]);
 
   return (
-    <AppBar position='fixed' color='default' ref={forwardRef}>
+    <AppBar position='fixed' color='default' {...props} ref={ref}>
       <Toolbar component='nav'>
         <NavGrid container alignItems='center' justify='space-between'>
           <Grid item>
@@ -166,15 +162,10 @@ const Header = ({ children, forwardRef }: { children?: React.ReactNode; forwardR
             </LinkButton>
           </Grid>
         </NavGrid>
-        {/* <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-    <Tab label="Item One" />
-    <Tab label="Item Two" />
-    <Tab label="Item Three" />
-  </Tabs> */}
       </Toolbar>
     </AppBar>
   );
-};
+});
 
 export default Header;
 export { Header };

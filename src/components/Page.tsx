@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import { Theme, useTheme, withTheme } from '@material-ui/core/styles';
 import React from 'react';
 import PageContextProvider from 'src/context/Page';
-import useMeasurable from 'src/hooks/useMeasurable';
 import { px } from 'src/utils/theme';
 import styled, { createGlobalStyle } from 'styled-components';
 import Footer from './Footer';
@@ -35,16 +34,36 @@ a {
   }
 }
 
-/* Let's get this party started */
+/* Scroll bar frame */
 ::-webkit-scrollbar {
-  height: 5px;
-  width: 5px;
+  height: 7px;
+  width: 7px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: rgba(138, 136, 136, 0.8);
+  border-radius: 3px;
+  background-color: ${theme.palette.secondary.dark};
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-resizer {
+  border-radius: 3px;
+  background-color: ${theme.palette.primary.main};
+  border: 1px solid transparent;
+  background-clip: padding-box;
 }
 `}`;
 
@@ -58,19 +77,18 @@ const StyledPaper = withTheme(styled(Paper)``);
 
 const App = ({ children }: { children?: React.ReactNode }) => {
   const theme = useTheme();
-  const { ref, measurement } = useMeasurable();
 
   return (
     <React.Fragment>
       <GlobalStyle theme={theme} />
       <AppContainer component='main' maxWidth='lg'>
         <AppGrid container direction='column'>
-          <Grid item style={{ height: px((measurement?.height || 0) + theme.spacing(2)) }}>
-            <Header forwardRef={ref}>Testing</Header>
+          <Grid item style={{ height: px(theme.spacing(10)) }}>
+            <Header />
           </Grid>
           <Grid item>
-            <StyledPaper elevation={3}>
-              <Box p={2}>{children}</Box>
+            <StyledPaper elevation={0}>
+              <Box>{children}</Box>
             </StyledPaper>
           </Grid>
           <GridBox item component='footer' mt='auto'>

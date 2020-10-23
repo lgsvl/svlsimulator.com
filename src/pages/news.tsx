@@ -1,27 +1,12 @@
 import { withTheme } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import Page from 'src/components/Page';
+import LayoutGrid from 'src/components/LayoutGrid';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
-
-const NewsGrid = withTheme(styled(Box)`
-  display: grid;
-  grid-gap: ${({ theme }) => px(theme.spacing(2))};
-  grid-template-columns: repeat(4, 1fr);
-
-  ${({ theme }) => `
-  ${theme.breakpoints.down('sm')} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  ${theme.breakpoints.down('xs')} {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  `}
-`);
 
 const newsBoxCategoryColors = {
   news: '',
@@ -54,7 +39,7 @@ const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
 `);
 // ` as React.FC<NewsBoxProps>;
 
-const NewsBox = ({ children, category = 'news', colSpan = 0, rowSpan = 0, title, ...rest }: Partial<NewsBoxProps>) => {
+const NewsBox = ({ children, category = 'news', colSpan = 1, rowSpan = 1, title, ...rest }: Partial<NewsBoxProps>) => {
   const { t } = useTranslation();
   return (
     <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
@@ -70,7 +55,7 @@ export default function News() {
   return (
     <Page>
       <Typography variant='h1'>{t('news.title')}</Typography>
-      <NewsGrid>
+      <LayoutGrid sm={2} md={4} spacing={2}>
         <NewsBox title='News 1'>
           <Typography>News 1 Body</Typography>
         </NewsBox>
@@ -89,7 +74,7 @@ export default function News() {
         <NewsBox category='article'>
           <Typography>News 6</Typography>
         </NewsBox>
-      </NewsGrid>
+      </LayoutGrid>
     </Page>
   );
 }

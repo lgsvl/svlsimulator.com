@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import { px } from 'src/utils/theme';
 import { ButtonGetDemo } from 'src/components/Button';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
+import LayoutGrid from 'src/components/LayoutGrid';
 
 const Center = withTheme(styled(Container)`
   text-align: center;
@@ -24,6 +25,26 @@ const Image = withTheme(styled(Box)`
   width: 100%;
   background-image: linear-gradient(-205deg, white, #9c27b0 30%, black);
   border-radius: 20px;
+`);
+
+const roundTo = (num: number, toPlaces = 0) => Math.round(num * Math.pow(10, toPlaces)) / Math.pow(10, toPlaces);
+
+const twoColumns = roundTo(2 / 12, 4);
+// Must double this, since it's being applied inside a box that's half the normal width.
+const doubleTwoColumns = twoColumns * 2;
+
+const TuckingImage = withTheme(styled(Image)`
+  min-height: 300px;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    width: ${(1 + doubleTwoColumns) * 100}%;
+  }
+`);
+
+const ReverseTuckingImage = withTheme(styled(TuckingImage)`
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    margin-inline-start: ${roundTo(doubleTwoColumns * -100, 4)}%;
+  }
 `);
 
 const SmallImage = withTheme(styled(Image)`
@@ -50,30 +71,7 @@ const HeroGrid = withTheme(styled(Grid)`
 
 const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
 
-// type SectionProps = {
-//   buttonText?: string;
-//   children: React.ReactNode;
-//   direction?: GridProps['direction'];
-//   title: string;
-// };
-// const Section = ({ buttonText, children, direction, title }: SectionProps) => (
-//   <Grid container direction='column' spacing={5}>
-//     <Grid item>
-//       <Typography variant='h3'>{title}</Typography>
-//     </Grid>
-//     <Grid item>{children}</Grid>
-//     {buttonText && (
-//       <Grid item>
-//         <Button color='primary' variant='contained'>
-//           {buttonText}
-//         </Button>
-//         {/* <Button variant='outlined'>{buttonText}</Button> */}
-//       </Grid>
-//     )}
-//   </Grid>
-// );
-
-const brandIconProps = { color: '#6D7B97', height: '100%', width: '100%' };
+const brandIconProps = { color: '#6D7B97', height: 40, width: '100%' };
 
 export default function Home() {
   const { t, tMap } = useTranslation();
@@ -98,10 +96,10 @@ export default function Home() {
 
       <Box my={15}>
         <Grid container>
-          <Grid item xs={6}>
-            <Image />
+          <Grid item xs={12} sm={6}>
+            <TuckingImage />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <SectionContent title={t('home.section1.title')} buttonText='getDemo'>
               {tMap('home.section1.body', TypoWrapper)}
             </SectionContent>
@@ -111,10 +109,10 @@ export default function Home() {
 
       <Box my={15}>
         <Grid container direction='row-reverse'>
-          <Grid item xs={6}>
-            <Image />
+          <Grid item xs={12} sm={6}>
+            <ReverseTuckingImage />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <SectionContent title={t('home.section2.title')} buttonText='getDemo'>
               {tMap('home.section2.body', TypoWrapper)}
             </SectionContent>
@@ -124,20 +122,12 @@ export default function Home() {
 
       <Box my={15}>
         <Center disableGutters>
-          <Grid container spacing={8}>
-            <Grid item xs={6} sm={3}>
-              <IconBaidu {...brandIconProps} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <IconApollo {...brandIconProps} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <IconUnity {...brandIconProps} />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <IconVelodyne {...brandIconProps} />
-            </Grid>
-          </Grid>
+          <LayoutGrid xs={2} sm={4} spacing={2}>
+            <IconBaidu {...brandIconProps} />
+            <IconApollo {...brandIconProps} />
+            <IconUnity {...brandIconProps} />
+            <IconVelodyne {...brandIconProps} />
+          </LayoutGrid>
         </Center>
       </Box>
 
