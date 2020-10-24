@@ -7,6 +7,9 @@ const fontMain = ['"Open Sans"', '"OpenSans-Bold"'].join(', ');
 const theme = createMuiTheme({
   palette,
   // spacing: factor => `${8 * factor}px`,
+  shape: {
+    borderRadius: 8
+  },
   overrides: {
     MuiAppBar: {
       colorDefault: {

@@ -4,7 +4,7 @@ import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import { useTranslation } from 'src/hooks/useTranslations';
 
-const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
+const TypoWrapper = (str: string) => <Typography paragraph>{str}</Typography>;
 
 export default function DigitalTwin() {
   const { t, tMap } = useTranslation();

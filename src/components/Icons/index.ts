@@ -4,6 +4,7 @@ export * from './Baidu';
 export * from './Check';
 export * from './ChevronDown';
 export * from './ChevronUp';
+export * from './Document';
 export * from './LG';
 export * from './LGColor';
 export * from './LGSVLSimulator';

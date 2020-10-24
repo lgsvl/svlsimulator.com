@@ -3,7 +3,11 @@
     "buttons": {
       "getDemo": "Request Demo",
       "readMore": "Read More",
-      "download": "Download!"
+      "download": "Download",
+      "view": "View"
+    },
+    "documentTypes": {
+      "technical": "Technical document"
     },
     "simulator": {
       "button": "Get This SIMULATOR!"
@@ -46,7 +50,11 @@
         "Simulation in the cloud at scale is one of the important features requested by developers working on autonomous vehicle software. Perception module development requires a vast amount of labeled data specific to vehicle sensor configuration, however data labeling is mostly manual process and time consuming. Simulators could be used to produce synthetic labeled data at large scale in the cloud.",
         "LGSVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. LGSVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
       ]
-    }
+    },
+    "files": [
+      "LGSVL Simulator – High fidelity simulator for autonomous driving",
+      "Formal scenario-based testing of autonomous vehicles: From simulation to the real world"
+    ]
   },
   "cloud": {
     "title": "Cloud Simulation-as-a-Service",

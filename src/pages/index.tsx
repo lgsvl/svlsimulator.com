@@ -23,8 +23,8 @@ const Center = withTheme(styled(Container)`
 const Image = withTheme(styled(Box)`
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(-205deg, white, #9c27b0 30%, black);
-  border-radius: 20px;
+  background-image: linear-gradient(-205deg, #e83d95, #862155 30%, black);
+  border-radius: 8px;
 `);
 
 const roundTo = (num: number, toPlaces = 0) => Math.round(num * Math.pow(10, toPlaces)) / Math.pow(10, toPlaces);
@@ -62,7 +62,7 @@ const SmallImage = withTheme(styled(Image)`
 
 const HeroBox = withTheme(styled(Box)`
   // height: 70vh;
-  background-image: linear-gradient(-205deg, white, #9c27b0 30%, black);
+  background-image: linear-gradient(-205deg, #e83d95, #862155 30%, black);
 `);
 
 const HeroGrid = withTheme(styled(Grid)`
