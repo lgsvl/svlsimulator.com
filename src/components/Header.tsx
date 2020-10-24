@@ -41,6 +41,7 @@ const StyledDrawer = withTheme(styled(({ className, ...other }: DrawerProps) => 
     background: ${theme.palette.background.default};
     width: auto;
     max-width: 100%;
+    overflow: hidden;
     transition: ${theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen
