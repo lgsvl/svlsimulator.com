@@ -8,6 +8,7 @@ export * from './LG';
 export * from './LGColor';
 export * from './LGSVLSimulator';
 export * from './Login';
+export * from './Menu';
 export * from './Unity';
 export * from './Velodyne';
 export * from './X';
