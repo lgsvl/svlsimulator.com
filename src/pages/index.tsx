@@ -1,8 +1,7 @@
 import { withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Grid, { GridProps } from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import MoreArrows from 'src/components/MoreArrows';
@@ -61,7 +60,6 @@ const SmallImage = withTheme(styled(Image)`
 `);
 
 const HeroBox = withTheme(styled(Box)`
-  // height: 70vh;
   background-image: linear-gradient(-205deg, #e83d95, #862155 30%, black);
 `);
 
@@ -91,7 +89,9 @@ export default function Home() {
             </Center>
           </Grid>
         </HeroGrid>
-        <MoreArrows />
+        <Box p={2} textAlign='center'>
+          <MoreArrows />
+        </Box>
       </HeroBox>
 
       <Box my={15}>
