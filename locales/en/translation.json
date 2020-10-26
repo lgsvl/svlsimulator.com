@@ -3,7 +3,11 @@
     "buttons": {
       "getDemo": "Request Demo",
       "readMore": "Read More",
-      "download": "Download!"
+      "download": "Download",
+      "view": "View"
+    },
+    "documentTypes": {
+      "technical": "Technical document"
     },
     "simulator": {
       "button": "Get This SIMULATOR!"
@@ -11,13 +15,19 @@
   },
   "about": {
     "title": "About",
-    "vision": {
-      "title": "Vision",
-      "body": "Simulation is the key accelerator for Future mobility driven by autonomy We will become the de-facto simulation platform for future mobility."
-    },
+    "body": "The LGSVL simulator is developed by the Advanced Platform Lab at the LG Electronics America R&D Lab, formerly the LG Silicon Valley Lab",
+    "details": [
+      "Our team consists of highly-qualified engineers and specialists, with years of experience from industries including Automotive, Computer, Consumer Electronics, Mobile Technology, Telecommunication, etc.",
+      "The simulator facilitates testing and development of autonomous driving software systems. It enables developers to simulate billions of miles and arbitrary edge case scenarios to speed up algorithm development and system integration.",
+      "We started developing the simulator by leveraging an open source strategy, which gives tremendous benefits of transparent simulation experience and easy for customization. We hope to grow our developer community to best serve the autonomous vehicle and robotics industries in accelerating the testing and validation of autonomous systems."
+    ],
     "mission": {
-      "title": "Mission",
+      "title": "Our mission",
       "body": "To bring Future Mobility powered by Autonomy into reality faster, safer and less costly."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "body": "Simulation is the key accelerator for Future mobility driven by autonomy We will become the de-facto simulation platform for future mobility."
     }
   },
   "applications": {
@@ -40,7 +50,11 @@
         "Simulation in the cloud at scale is one of the important features requested by developers working on autonomous vehicle software. Perception module development requires a vast amount of labeled data specific to vehicle sensor configuration, however data labeling is mostly manual process and time consuming. Simulators could be used to produce synthetic labeled data at large scale in the cloud.",
         "LGSVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. LGSVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
       ]
-    }
+    },
+    "files": [
+      "LGSVL Simulator – High fidelity simulator for autonomous driving",
+      "Formal scenario-based testing of autonomous vehicles: From simulation to the real world"
+    ]
   },
   "cloud": {
     "title": "Cloud Simulation-as-a-Service",

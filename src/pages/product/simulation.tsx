@@ -20,7 +20,7 @@ import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import { useTranslation } from 'src/hooks/useTranslations';
 
-const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
+const TypoWrapper = (str: string) => <Typography paragraph>{str}</Typography>;
 
 const Caption = (props: TypographyProps) => <Typography variant='body2' display='block' {...props} />;
 

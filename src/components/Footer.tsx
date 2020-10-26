@@ -9,19 +9,21 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from './Link';
 import { useTranslation } from 'src/hooks/useTranslations';
+import { IconLgColor } from './Icons';
 
-const StyledContainer = withTheme(styled(Paper)`
-  --styled-container: 1;
+const StyledPaperWrapper = withTheme(styled(Paper)`
+  --styled-paper-wrapper: 1;
 `);
 
-const Image = withTheme(styled(Box)`
-  height: 40px;
-  width: 94px;
-  background-image: linear-gradient(-205deg, white, #9c27b0 30%, black);
-  border-radius: 20px;
+const Copyright = withTheme(styled(Typography)`
+  color: ${({ theme }) => theme.palette.secondary.dark};
 `);
 
-const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
+const TypoWrapper = (str: string) => (
+  <Typography paragraph color='secondary'>
+    {str}
+  </Typography>
+);
 
 const Footer = ({ children }: { children?: React.ReactNode }) => {
   const { t, tMap } = useTranslation();
@@ -64,20 +66,22 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
   );
 
   return (
-    <Box mt={2}>
-      <StyledContainer elevation={0}>
+    <Box mt={2} p={{ xs: 3, sm: 5, md: 10 }}>
+      <StyledPaperWrapper elevation={0}>
         <Box>
           <Grid container>
             <Hidden mdDown xlUp>
               <Grid item xs={1} />
             </Hidden>
-            <Grid item xs={6} sm={5} lg={4}>
-              <Image />
+            <Grid item xs={6} md={5} lg={4}>
+              <Box mb={{ xs: 3, sm: 2 }}>
+                <IconLgColor />
+              </Box>
               {tMap('footer.body', TypoWrapper)}
-              <Typography variant='caption'> {t('footer.copyright')}</Typography>
+              <Copyright variant='body2'>{t('footer.copyright')}</Copyright>
             </Grid>
-            <Grid item xs={1} />
-            <Hidden xsDown>
+            <Grid item xs={1} sm={2} md={1} />
+            <Hidden smDown>
               <Grid item xs={6} sm={3}>
                 {forDevs}
               </Grid>
@@ -88,15 +92,15 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
                 {social}
               </Grid>
             </Hidden>
-            <Hidden smUp>
-              <Grid item xs={5}>
+            <Hidden mdUp>
+              <Grid item xs={4}>
                 {forDevs}
                 {social}
               </Grid>
             </Hidden>
           </Grid>
         </Box>
-      </StyledContainer>
+      </StyledPaperWrapper>
     </Box>
   );
 };
