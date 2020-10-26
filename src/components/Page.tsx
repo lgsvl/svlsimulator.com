@@ -39,6 +39,10 @@ a {
   height: 7px;
   width: 7px;
   background-color: transparent;
+  ${theme.breakpoints.down('sm')} {
+    height: 15px;
+    width: 15px;
+  }
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;
@@ -49,7 +53,7 @@ a {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  border-radius: 3px;
+  border-radius: 8px;
   background-color: ${theme.palette.secondary.dark};
   border: 1px solid transparent;
   background-clip: padding-box;
