@@ -46,10 +46,8 @@ module.exports = {
     }
   },
   rules: {
-    // When we switch to always using prettier, here's where we'll enable it.
-    // "prettier/prettier": "warn",
-    // Disable actual Prettier enforcement
-    'prettier/prettier': 'off',
+    // Use prettier formatting
+    "prettier/prettier": "warn",
 
     'arrow-parens': ['error', 'as-needed'],
     'arrow-spacing': [
@@ -63,13 +61,13 @@ module.exports = {
     'eol-last': ['error', 'always'],
     eqeqeq: ['warn', 'always', { null: 'ignore' }],
     // "indent": "off", // set "indent" to "off" when using the Typescript rule below.
-    indent: [
-      'warn',
-      2,
-      {
-        SwitchCase: 1
-      }
-    ],
+    // indent: [
+    //   'warn',
+    //   2,
+    //   {
+    //     SwitchCase: 1
+    //   }
+    // ],
     'jsx-quotes': ['error', 'prefer-single'],
     'max-len': [
       'warn',
