@@ -2,8 +2,9 @@ import { withTheme } from '@material-ui/core';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import Page from 'src/components/Page';
 import LayoutGrid from 'src/components/LayoutGrid';
+import Page from 'src/components/Page';
+import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
@@ -75,6 +76,8 @@ export default function News() {
           <Typography>News 6</Typography>
         </NewsBox>
       </LayoutGrid>
+
+      <SubscribeBox />
     </Page>
   );
 }

@@ -47,7 +47,7 @@ module.exports = {
   },
   rules: {
     // Use prettier formatting
-    "prettier/prettier": "warn",
+    'prettier/prettier': 'warn',
 
     'arrow-parens': ['error', 'as-needed'],
     'arrow-spacing': [

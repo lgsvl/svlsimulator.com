@@ -4,15 +4,20 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import MoreArrows from 'src/components/MoreArrows';
-import Page from 'src/components/Page';
-import { SectionContent } from 'src/components/Section';
-import { useTranslation } from 'src/hooks/useTranslations';
-import styled from 'styled-components';
-import { px } from 'src/utils/theme';
+import BackgroundVideo from 'src/components/BackgroundVideo';
 import { ButtonGetDemo } from 'src/components/Button';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
+import MoreArrows from 'src/components/MoreArrows';
+import Page from 'src/components/Page';
+import { SectionContent } from 'src/components/Section';
+import SubscribeBox from 'src/components/SubscribeBox';
+import { useTranslation } from 'src/hooks/useTranslations';
+import { px } from 'src/utils/theme';
+import styled from 'styled-components';
+import videoSrcHero from '../videos/Hero.mp4';
+import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
+import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
 const Center = withTheme(styled(Container)`
   text-align: center;
@@ -20,10 +25,7 @@ const Center = withTheme(styled(Container)`
 `);
 
 const Image = withTheme(styled(Box)`
-  height: 100%;
   width: 100%;
-  background-image: linear-gradient(-205deg, #e83d95, #862155 30%, black);
-  border-radius: 8px;
 `);
 
 const roundTo = (num: number, toPlaces = 0) => Math.round(num * Math.pow(10, toPlaces)) / Math.pow(10, toPlaces);
@@ -34,6 +36,8 @@ const doubleTwoColumns = twoColumns * 2;
 
 const TuckingImage = withTheme(styled(Image)`
   min-height: 300px;
+  height: 100%;
+  position: relative;
 
   ${({ theme }) => theme.breakpoints.up('sm')} {
     width: ${(1 + doubleTwoColumns) * 100}%;
@@ -59,12 +63,11 @@ const SmallImage = withTheme(styled(Image)`
   `}
 `);
 
-const HeroBox = withTheme(styled(Box)`
-  background-image: linear-gradient(-205deg, #e83d95, #862155 30%, black);
-`);
+const HeroBox = withTheme(styled(Box)``);
 
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
+  position: relative;
 `);
 
 const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
@@ -75,7 +78,8 @@ export default function Home() {
   const { t, tMap } = useTranslation();
   return (
     <Page>
-      <HeroBox mb={15} height='70vh'>
+      <HeroBox mb={15} height='70vh' position='relative'>
+        <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }} />
         <HeroGrid container direction='column' alignItems='center' justify='center'>
           <Grid item>
             <Typography variant='h1'>{t('home.title')}</Typography>
@@ -97,7 +101,9 @@ export default function Home() {
       <Box my={15}>
         <Grid container>
           <Grid item xs={12} sm={6}>
-            <TuckingImage />
+            <TuckingImage>
+              <BackgroundVideo src={videoSrcPlaceholder1} />
+            </TuckingImage>
           </Grid>
           <Grid item xs={12} sm={6}>
             <SectionContent title={t('home.section1.title')} buttonText='getDemo'>
@@ -110,7 +116,9 @@ export default function Home() {
       <Box my={15}>
         <Grid container direction='row-reverse'>
           <Grid item xs={12} sm={6}>
-            <ReverseTuckingImage />
+            <ReverseTuckingImage>
+              <BackgroundVideo src={videoSrcPlaceholder2} />
+            </ReverseTuckingImage>
           </Grid>
           <Grid item xs={12} sm={6}>
             <SectionContent title={t('home.section2.title')} buttonText='getDemo'>
@@ -153,6 +161,8 @@ export default function Home() {
           </Grid>
         </Grid>
       </Box>
+
+      <SubscribeBox />
     </Page>
   );
 }

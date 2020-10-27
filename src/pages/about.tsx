@@ -1,14 +1,15 @@
+import { Hidden, withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { Hidden, withTheme } from '@material-ui/core';
 import React from 'react';
+import { ButtonGetDemo } from 'src/components/Button';
 import Page from 'src/components/Page';
+import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
-import { ButtonGetDemo } from 'src/components/Button';
 
 const Center = withTheme(styled(Container)`
   text-align: center;
@@ -57,6 +58,8 @@ export default function About() {
           <Box mb={7}>{tMap('about.details', TypoWrapper)}</Box>
         </Grid>
       </Grid>
+
+      <SubscribeBox />
     </Page>
   );
 }

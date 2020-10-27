@@ -11,7 +11,7 @@ import {
   useTheme,
   withTheme
 } from '@material-ui/core';
-import styled from 'styled-components';
+import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { ButtonGetDemo } from 'src/components/Button';
@@ -19,9 +19,9 @@ import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components
 import Li from 'src/components/Li';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
+import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import styled from 'styled-components';
 
 const ListItemWrapper = (str: string) => (
   <ListItem>
@@ -30,6 +30,10 @@ const ListItemWrapper = (str: string) => (
 );
 
 const Caption = (props: TypographyProps) => <Typography variant='body2' display='block' {...props} />;
+
+const StyledTable = withTheme(styled(Table)`
+  border-collapse: separate;
+`);
 
 const StyledTableCell = withTheme(styled(({ noBorder, ...rest }: TableCellProps & { noBorder: boolean }) => (
   <TableCell {...rest} />
@@ -231,7 +235,7 @@ export default function Simulation() {
 
       <Section title={t('simulation.section2.title')}>{tMap('simulation.section2.body', ListItemWrapper)}</Section>
 
-      <Table>
+      <StyledTable>
         <TableHead>
           <TableRow>
             <StyledTableCell noBorder></StyledTableCell>
@@ -250,9 +254,11 @@ export default function Simulation() {
             <Row key={row.name} row={row} index={index} />
           ))}
         </TableBody>
-      </Table>
+      </StyledTable>
 
       <ButtonGetDemo />
+
+      <SubscribeBox />
     </Page>
   );
 }
