@@ -11,6 +11,10 @@
     },
     "simulator": {
       "button": "Get This SIMULATOR!"
+    },
+    "subscribe": {
+      "title": "Subscribe to our newsletter",
+      "emailPlaceholder": "Enter your email"
     }
   },
   "about": {

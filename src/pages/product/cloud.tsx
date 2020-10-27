@@ -22,6 +22,8 @@ export default function CloudSimAAS() {
       <Section title={t('cloud.title')} variant='h2' buttonText='getDemo'>
         <List>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
+
+      <SubscribeBox />
     </Page>
   );
 }
