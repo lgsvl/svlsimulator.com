@@ -9,8 +9,37 @@
     "documentTypes": {
       "technical": "Technical document"
     },
+    "footer": {
+      "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
+      "copyright": "Copyright © 2020 LG Electronics. All rights reserved.",
+      "forDevelopers": "For Developers",
+      "social": "Social"
+    },
+    "header": {
+      "title": "LGSVL Simulator",
+      "products": "Products",
+      "news": "News",
+      "applications": "Applications",
+      "about": "About",
+      "login": "Log in",
+      "simulation": "Simulation",
+      "cloud": "Cloud simulation as-a-service",
+      "digitaltwin": "Digital Twin creation service"
+    },
+    "links": {
+      "github": "Github",
+      "documentation": "Documentation",
+      "requestDemo": "Request demo",
+      "twitter": "Twitter",
+      "youtube": "YouTube",
+      "subscribe": "Subscribe"
+    },
     "simulator": {
       "button": "Get This SIMULATOR!"
+    },
+    "subscribe": {
+      "title": "Subscribe to our newsletter",
+      "emailPlaceholder": "Enter your email"
     }
   },
   "about": {
@@ -106,10 +135,6 @@
       }
     ]
   },
-  "footer": {
-    "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
-    "copyright": "Copyright © 2020 LG Electronics. All rights reserved."
-  },
   "news": {
     "title": "News",
     "categories": {
@@ -121,14 +146,30 @@
   },
   "simulation": {
     "title": "End-to-end simulation platform",
-    "body": "3D photorealistic simulation software for AD and robotics. Support for all kinds of testing: unit, modular, integration, system, distributed simulation, Out-of-the-box integration with open source and popular AD stacks.",
+    "body": [
+      "3D photorealistic simulation software for AD and robotics",
+      "Support for all kinds of testing: unit, modular, integration, system",
+      "Distributed simulation",
+      "Out-of-the-box integration with open source and popular AD stacks"
+    ],
     "section1": {
       "title": "Open source and extensible simulation engine",
-      "body": "Open source and customizable Easy-to-use Python API Plugin system for vehicles, sensors, bridge interfaces Co-simulation support - FMI/FMU, CarMaker, SUMO."
+      "body": [
+        "Open source and customizable",
+        "Easy-to-use Python API",
+        "Plugin system for vehicles, sensors, bridge interfaces",
+        "Co-simulation support - FMI/FMU, CarMaker, SUMO"
+      ]
     },
     "section2": {
       "title": "Diverse set of scenario generation tools for scalable testing",
-      "body": "Visual scenario editor HD map import, export, and annotation tools Support for scenario description languages Resimulation from simulation and real world datasets Random mode for smoke testing and increased edge case test coverage."
+      "body": [
+        "Visual scenario editor",
+        "HD map import, export, and annotation tools",
+        "Support for scenario description languages",
+        "Resimulation from simulation and real world datasets",
+        "Random mode for smoke testing and increased edge case test coverage"
+      ]
     },
     "featuresTable": {
       "products": [
@@ -150,14 +191,72 @@
             "Default content",
             "ROS 1 support",
             "ROS 2 support",
-            "Baidu Apollo support"
+            "Baidu Apollo support",
+            "Autoware.AI support",
+            "Autoware.Auto support",
+            "Distributed simulation",
+            "Python API",
+            "Enhanced set of available content",
+            "Documentation and video tutorials",
+            "Ground truth synthetic data generation",
+            "Optimized ROS2 bridge interface",
+            "Synchronous simulation",
+            "Access to core simulator engine source code"
           ]
         },
-        { "name": "Simulation analysis" },
-        { "name": "Cloud simulation" },
-        { "name": "Content creation/environment generation" },
-        { "name": "Scenario generation" },
-        { "name": "Plugins/Third Party Support" }
+        {
+          "name": "Simulation analysis",
+          "subFeatures": [
+            "Test case reports",
+            "Event detection",
+            "Sensor visualization",
+            "Raw sensor data download",
+            "Simulation visual replay",
+            "Customizable KPI analysis"
+          ]
+        },
+        {
+          "name": "Cloud simulation",
+          "subFeatures": [
+            "On-premise cloud simulation solution",
+            "Public cloud simulation support",
+            "Test cycle support",
+            "Account and content management",
+            "Content sharing and team collaboration"
+          ]
+        },
+        {
+          "name": "Content creation/environment generation",
+          "subFeatures": [
+            "HD map annotation tool",
+            "HD map import/export tool",
+            "Point cloud map import",
+            "Environment creation",
+            "Vehicle model creation",
+            "Road network generation"
+          ]
+        },
+        {
+          "name": "Scenario generation",
+          "subFeatures": [
+            "Random traffic scenario generation",
+            "Visual scenario editor",
+            "SCENIC support",
+            "Resimulation from simulation"
+          ]
+        },
+        {
+          "name": "Plugins/Third Party support",
+          "subFeatures": [
+            "Sensor plugin system",
+            "Controllable plugin system",
+            "Bridge plugin system",
+            "Vehicle dynamics extensibility",
+            "Traffic behavior extensibility",
+            "FMI/FMU support",
+            "Cosimulation with IPG Carmaker"
+          ]
+        }
       ]
     }
   }

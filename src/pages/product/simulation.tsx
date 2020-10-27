@@ -16,11 +16,18 @@ import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { ButtonGetDemo } from 'src/components/Button';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
+import Li from 'src/components/Li';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import { useTranslation } from 'src/hooks/useTranslations';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-const TypoWrapper = (str: string) => <Typography paragraph>{str}</Typography>;
+const ListItemWrapper = (str: string) => (
+  <ListItem>
+    <Li>{str}</Li>
+  </ListItem>
+);
 
 const Caption = (props: TypographyProps) => <Typography variant='body2' display='block' {...props} />;
 
@@ -108,13 +115,56 @@ const rows: FeatureRow[] = [
     buildRow('0.subFeatures.2', true, true),
     buildRow('0.subFeatures.3', true, true),
     buildRow('0.subFeatures.4', true, true),
-    buildRow('0.subFeatures.5', true, true)
+    buildRow('0.subFeatures.5', true, true),
+    buildRow('0.subFeatures.6', true, true),
+    buildRow('0.subFeatures.7', true, true),
+    buildRow('0.subFeatures.8', true, true),
+    buildRow('0.subFeatures.9', true, true),
+    buildRow('0.subFeatures.10', true, true),
+    buildRow('0.subFeatures.11', true, true),
+    buildRow('0.subFeatures.12', true, true),
+    buildRow('0.subFeatures.13', true, true),
+    buildRow('0.subFeatures.14', true, true),
+    buildRow('0.subFeatures.15', true, true)
   ]),
-  buildRow('1.name', false, true),
-  buildRow('2.name', false, true),
-  buildRow('3.name', false, true),
-  buildRow('4.name', false, true),
-  buildRow('5.name', false, true)
+  buildRow('1.name', false, true, [
+    buildRow('1.subFeatures.0', false, true),
+    buildRow('1.subFeatures.1', false, true),
+    buildRow('1.subFeatures.2', false, true),
+    buildRow('1.subFeatures.3', false, true),
+    buildRow('1.subFeatures.4', false, true),
+    buildRow('1.subFeatures.5', false, true)
+  ]),
+  buildRow('2.name', false, true, [
+    buildRow('2.subFeatures.0', false, true),
+    buildRow('2.subFeatures.1', false, true),
+    buildRow('2.subFeatures.2', false, true),
+    buildRow('2.subFeatures.3', false, true),
+    buildRow('2.subFeatures.4', false, true)
+  ]),
+  buildRow('3.name', false, true, [
+    buildRow('3.subFeatures.0', false, true),
+    buildRow('3.subFeatures.1', false, true),
+    buildRow('3.subFeatures.2', false, true),
+    buildRow('3.subFeatures.3', false, true),
+    buildRow('3.subFeatures.4', false, true),
+    buildRow('3.subFeatures.5', false, true)
+  ]),
+  buildRow('4.name', false, true, [
+    buildRow('4.subFeatures.0', false, true),
+    buildRow('4.subFeatures.1', false, true),
+    buildRow('4.subFeatures.2', false, true),
+    buildRow('4.subFeatures.3', false, true)
+  ]),
+  buildRow('5.name', false, true, [
+    buildRow('5.subFeatures.0', false, true),
+    buildRow('5.subFeatures.1', false, true),
+    buildRow('5.subFeatures.2', false, true),
+    buildRow('5.subFeatures.3', false, true),
+    buildRow('5.subFeatures.4', false, true),
+    buildRow('5.subFeatures.5', false, true),
+    buildRow('5.subFeatures.6', false, true)
+  ])
 ];
 
 function Row({ row, index }: { row: FeatureRow; index: number }) {
@@ -172,14 +222,14 @@ export default function Simulation() {
   return (
     <Page title={t('simulation.title')}>
       <Section title={t('simulation.title')} variant='h2' buttonText='getDemo'>
-        {tMap('simulation.body', TypoWrapper)}
+        {tMap('simulation.body', ListItemWrapper)}
       </Section>
 
       <Section title={t('simulation.section1.title')} flip>
-        {tMap('simulation.section1.body', TypoWrapper)}
+        {tMap('simulation.section1.body', ListItemWrapper)}
       </Section>
 
-      <Section title={t('simulation.section2.title')}>{tMap('simulation.section2.body', TypoWrapper)}</Section>
+      <Section title={t('simulation.section2.title')}>{tMap('simulation.section2.body', ListItemWrapper)}</Section>
 
       <Table>
         <TableHead>

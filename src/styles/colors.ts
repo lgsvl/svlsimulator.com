@@ -56,8 +56,8 @@ export const palette = createPalette({
   },
   // divider: '',
   action: {
-    // active: '',
-    // hover: '',
+    active: colors.neutrals.lightSteelBlue,
+    hover: colors.neutrals.slateGrey,
     // hoverOpacity: '',
     // selected: '',
     disabled: '#8F949F',

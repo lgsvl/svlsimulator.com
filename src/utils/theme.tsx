@@ -77,6 +77,16 @@ export function appendUnit(val: number | string, unit: string) {
  */
 export const px = (val: number | string) => appendUnit(val, 'px');
 
+export const hexOpacity = (opacity: number) => {
+  const maxHexOpacity = parseInt('FF', 16);
+  const boundedOpacity = Math.max(Math.min(1, opacity), 0);
+  const hexOpacity = Math.round(boundedOpacity * maxHexOpacity).toString(16);
+  return hexOpacity.padStart(2, '0');
+  // return hexOpacity.length === 2 ? hexOpacity : `0${hexOpacity}`;
+};
+
+export const fade = (color: string, opacity: number) => color + hexOpacity(opacity);
+
 // export function spacing(...args: SpacingArgument[]): Spacing {
 //   return ({ theme }: IThemedComponent<{}>) => px(theme.spacing.apply(null, args))
 // };

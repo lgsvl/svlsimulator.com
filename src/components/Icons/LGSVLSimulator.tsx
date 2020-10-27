@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-export const IconLGSVLSimulator: React.FC<BaseSvg> = ({ color = 'white', ...rest }) => (
+export const IconLGSVLSimulator: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
   <svg width='160' height='48' viewBox='0 0 160 48' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <g>
       <path d='M43.8056 7.99805H45.2298V20.8148H50.689V22.2001H43.8056V7.99805Z' fill={color} />
