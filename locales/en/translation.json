@@ -9,6 +9,31 @@
     "documentTypes": {
       "technical": "Technical document"
     },
+    "footer": {
+      "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
+      "copyright": "Copyright © 2020 LG Electronics. All rights reserved.",
+      "forDevelopers": "For Developers",
+      "social": "Social"
+    },
+    "header": {
+      "title": "LGSVL Simulator",
+      "products": "Products",
+      "news": "News",
+      "applications": "Applications",
+      "about": "About",
+      "login": "Log in",
+      "simulation": "Simulation",
+      "cloud": "Cloud simulation as-a-service",
+      "digitaltwin": "Digital Twin creation service"
+    },
+    "links": {
+      "github": "Github",
+      "documentation": "Documentation",
+      "requestDemo": "Request demo",
+      "twitter": "Twitter",
+      "youtube": "YouTube",
+      "subscribe": "Subscribe"
+    },
     "simulator": {
       "button": "Get This SIMULATOR!"
     },
@@ -109,10 +134,6 @@
         "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
       }
     ]
-  },
-  "footer": {
-    "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
-    "copyright": "Copyright © 2020 LG Electronics. All rights reserved."
   },
   "news": {
     "title": "News",

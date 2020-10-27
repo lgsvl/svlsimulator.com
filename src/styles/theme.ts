@@ -28,11 +28,16 @@ const theme = createMuiTheme({
       outlinedPrimary: {
         borderColor: palette.text.primary
       },
-      textSecondary: {
-        // color: 'orange',
+      textPrimary: {
         color: palette.text.primary,
         '&:hover': {
-          // color: 'red',
+          color: palette.primary.light,
+          backgroundColor: fade(palette.secondary.main, 0.2)
+        }
+      },
+      textSecondary: {
+        color: palette.text.primary,
+        '&:hover': {
           color: palette.text.secondary,
           backgroundColor: fade(palette.secondary.main, 0.2)
         }
@@ -49,6 +54,13 @@ const theme = createMuiTheme({
     MuiInputBase: {
       input: {
         borderRadius: 4
+      }
+    },
+    MuiListItem: {
+      button: {
+        '&:hover': {
+          backgroundColor: fade(palette.secondary.main, 0.2)
+        }
       }
     },
     // MuiLink: {

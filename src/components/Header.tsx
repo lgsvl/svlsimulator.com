@@ -1,5 +1,5 @@
 import { withTheme } from '@material-ui/core';
-import AppBar, { AppBarProps } from '@material-ui/core/AppBar';
+import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -10,30 +10,38 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
-import { useTheme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
-import { px } from 'src/utils/theme';
-import styled from 'styled-components';
+import { useTranslation } from 'src/hooks/useTranslations';
+import styled, { css } from 'styled-components';
+import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
 import Link from './Link';
 import LinkButton from './LinkButton';
-import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
 
-const MenuButton = withTheme(styled(Button)``);
-
-const NavGrid = withTheme(styled(Grid)`
-  // height: ${({ theme }) => px(theme.spacing(10))};
-  .MuiButton-textPrimary {
-    color: ${({ theme }) => theme.palette.secondary.main};
+const buttonColors = css`
+  &.MuiButton-textPrimary,
+  &.MuiButton-textSecondary {
+    &:hover {
+      background-color: transparent;
+    }
   }
+`;
+
+const MenuButton = withTheme(styled(Button)`
+  ${buttonColors}
 `);
+
+const StyledLinkButton = withTheme(styled(LinkButton)`
+  ${buttonColors}
+`);
+
+const NavGrid = withTheme(styled(Grid)``);
 
 const StyledDrawer = withTheme(styled(({ className, ...other }: DrawerProps) => (
   <Drawer classes={{ paper: className }} {...other} />
@@ -50,13 +58,9 @@ const StyledDrawer = withTheme(styled(({ className, ...other }: DrawerProps) => 
   `}
 `);
 
-const CloseDrawerDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: ${({ theme }) => theme.spacing(0, 1)};
+const DrawerHeader = withTheme(styled(Box)`
   ${({ theme }) => theme.mixins.toolbar}
-`;
+`);
 
 const Header = React.forwardRef((props, ref) => {
   // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -69,7 +73,7 @@ const Header = React.forwardRef((props, ref) => {
   //   setAnchorEl(null);
   // };
 
-  const theme = useTheme();
+  const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -112,10 +116,10 @@ const Header = React.forwardRef((props, ref) => {
       <Toolbar component='nav'>
         <NavGrid container alignItems='center' justify='space-between'>
           <Grid item>
-            <LinkButton to='/' color='primary' startIcon={<IconLGSVLSimulator />} title='Home' />
+            <StyledLinkButton to='/' color='secondary' startIcon={<IconLGSVLSimulator />} title='Home' />
           </Grid>
           <Hidden mdUp>
-            <IconButton edge='end' color='primary' onClick={handleDrawer}>
+            <IconButton edge='end' color='secondary' onClick={handleDrawer}>
               <IconMenu />
             </IconButton>
             <StyledDrawer
@@ -126,33 +130,33 @@ const Header = React.forwardRef((props, ref) => {
               }}
               open={drawerOpen}
             >
-              <CloseDrawerDiv theme={theme}>
+              <DrawerHeader display='flex' alignItems='center' justifyContent='space-between' pl={1} pr={3}>
                 <LinkButton to='/' color='primary' startIcon={<IconLGSVLSimulator />} title='Home' />
-                <IconButton edge='end' color='primary' onClick={handleDrawer}>
+                <IconButton edge='end' color='secondary' onClick={handleDrawer}>
                   <IconX />
                 </IconButton>
-              </CloseDrawerDiv>
+              </DrawerHeader>
               <List>
                 <ListItem button component={Link} to='/product/simulation/'>
-                  <ListItemText primary='Simulation' />
+                  <ListItemText primary={t('main.header.simulation')} />
                 </ListItem>
                 <ListItem button component={Link} to='/product/cloud/'>
-                  <ListItemText primary='Cloud simulation as-a-service' />
+                  <ListItemText primary={t('main.header.cloud')} />
                 </ListItem>
                 <ListItem button component={Link} to='/product/digitaltwin/'>
-                  <ListItemText primary='Digital Twin creation service' />
+                  <ListItemText primary={t('main.header.digitaltwin')} />
                 </ListItem>
                 <ListItem button component={Link} to='/applications/'>
-                  <ListItemText primary='Applications' />
+                  <ListItemText primary={t('main.header.applications')} />
                 </ListItem>
                 <ListItem button component={Link} to='/news/'>
-                  <ListItemText primary='News' />
+                  <ListItemText primary={t('main.header.news')} />
                 </ListItem>
                 <ListItem button component={Link} to='/about'>
-                  <ListItemText primary='About' />
+                  <ListItemText primary={t('main.header.about')} />
                 </ListItem>
                 <ListItem button component={Link} to='/about'>
-                  <ListItemText primary='Log in' />
+                  <ListItemText primary={t('main.header.login')} />
                   <ListItemIcon>
                     <IconLogin />
                   </ListItemIcon>
@@ -164,8 +168,14 @@ const Header = React.forwardRef((props, ref) => {
             <Grid item>
               <Grid container spacing={2}>
                 <Grid item xs={3} sm='auto'>
-                  <MenuButton fullWidth onMouseEnter={handleToggle} onMouseLeave={handleToggle} ref={anchorRef}>
-                    Products
+                  <MenuButton
+                    color='secondary'
+                    fullWidth
+                    onMouseEnter={handleToggle}
+                    onMouseLeave={handleToggle}
+                    ref={anchorRef}
+                  >
+                    {t('main.header.products')}
                   </MenuButton>
                   <Popper
                     open={open}
@@ -185,13 +195,13 @@ const Header = React.forwardRef((props, ref) => {
                           <ClickAwayListener onClickAway={handleClose}>
                             <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
                               <MenuItem component={Link} to='/product/simulation/' onClick={handleClose}>
-                                Simulation
+                                {t('main.header.simulation')}
                               </MenuItem>
                               <MenuItem component={Link} to='/product/cloud/' onClick={handleClose}>
-                                Cloud simulation as-a-service
+                                {t('main.header.cloud')}
                               </MenuItem>
                               <MenuItem component={Link} to='/product/digitaltwin/' onClick={handleClose}>
-                                Digital Twin creation service
+                                {t('main.header.digitaltwin')}
                               </MenuItem>
                             </MenuList>
                           </ClickAwayListener>
@@ -225,26 +235,26 @@ const Header = React.forwardRef((props, ref) => {
                   </Menu> */}
                 </Grid>
                 <Grid item xs={3} sm='auto'>
-                  <LinkButton color='primary' fullWidth to='/applications/'>
-                    Applications
-                  </LinkButton>
+                  <StyledLinkButton color='secondary' fullWidth to='/applications/'>
+                    {t('main.header.news')}
+                  </StyledLinkButton>
                 </Grid>
                 <Grid item xs={3} sm='auto'>
-                  <LinkButton color='primary' fullWidth to='/news/'>
-                    News
-                  </LinkButton>
+                  <StyledLinkButton color='secondary' fullWidth to='/news/'>
+                    {t('main.header.applications')}
+                  </StyledLinkButton>
                 </Grid>
                 <Grid item xs={3} sm='auto'>
-                  <LinkButton color='primary' fullWidth to='/about'>
-                    About
-                  </LinkButton>
+                  <StyledLinkButton color='secondary' fullWidth to='/about'>
+                    {t('main.header.about')}
+                  </StyledLinkButton>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item>
-              <LinkButton color='primary' to='/about' endIcon={<IconLogin />}>
-                Log in
-              </LinkButton>
+              <StyledLinkButton color='primary' to='/about' endIcon={<IconLogin />}>
+                {t('main.header.login')}
+              </StyledLinkButton>
             </Grid>
           </Hidden>
         </NavGrid>
