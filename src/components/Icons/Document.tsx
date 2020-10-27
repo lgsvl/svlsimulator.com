@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-export const IconDocument: React.FC<BaseSvg> = ({ color = 'white', ...rest }) => (
+export const IconDocument: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
   <svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
     <path
       d='M46.6665 10V23.3333C46.6665 24.2174 47.0177 25.0652 47.6428 25.6904C48.2679 26.3155 49.1158 26.6667 49.9998 26.6667H63.3332'
