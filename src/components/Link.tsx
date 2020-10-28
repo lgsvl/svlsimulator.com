@@ -1,4 +1,4 @@
-import MuiLink, { LinkBaseProps } from '@material-ui/core/Link';
+import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link';
 import { GatsbyLinkProps } from 'gatsby';
 import { Link as GatsbyLink } from 'gatsby-plugin-react-i18next';
 import React from 'react';
@@ -9,7 +9,7 @@ const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
   <GatsbyLink {...props} ref={ref as React.Ref<HTMLAnchorElement>} />
 ));
 
-export type LinkProps = LinkBaseProps & I18nGatsbyLinkProps;
+export type LinkProps = MuiLinkProps & Exclude<I18nGatsbyLinkProps, MuiLinkProps>;
 
 // Gatsby bug needs a custom thing to work...
 // https://github.com/gatsbyjs/gatsby/issues/16682

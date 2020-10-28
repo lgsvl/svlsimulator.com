@@ -3,12 +3,16 @@ import { withTheme } from '@material-ui/core/styles';
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'src/hooks/useTranslations';
+import Link from './Link';
+import LinkButton, { LinkButtonProps } from './LinkButton';
 
 const StyledButton = withTheme(styled(MuiButton)``);
 
-const Button = React.forwardRef((props: ButtonProps, ref) => <StyledButton variant='outlined' {...props} ref={ref} />);
+const Button: React.ExoticComponent<ButtonProps> = React.forwardRef((props, ref) => (
+  <StyledButton variant='outlined' {...props} ref={ref} />
+));
 
-const ButtonGetDemo = React.forwardRef((props: ButtonProps, ref) => {
+const ButtonGetDemo: typeof Button = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
   return (
     <Button color='primary' variant='contained' {...props} ref={ref}>
@@ -17,12 +21,12 @@ const ButtonGetDemo = React.forwardRef((props: ButtonProps, ref) => {
   );
 });
 
-const ButtonReadMore = React.forwardRef((props: ButtonProps, ref) => {
+const ButtonReadMore: typeof LinkButton = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
   return (
-    <Button {...props} ref={ref}>
+    <LinkButton buttonVariant='outlined' {...props} ref={ref}>
       {t('main.buttons.readMore')}
-    </Button>
+    </LinkButton>
   );
 });
 

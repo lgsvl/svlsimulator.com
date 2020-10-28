@@ -143,19 +143,31 @@ export default function Home() {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>
             <SmallImage />
-            <SectionContent title={t('home.features.0.title')} buttonText='Read More'>
+            <SectionContent
+              title={t('home.features.0.title')}
+              buttonText='readMore'
+              buttonProps={{ to: '/product/simulation/' }}
+            >
               {tMap('home.features.0.body', TypoWrapper)}
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
             <SmallImage />
-            <SectionContent title={t('home.features.1.title')} buttonText='Read More'>
+            <SectionContent
+              title={t('home.features.1.title')}
+              buttonText='readMore'
+              buttonProps={{ to: '/product/cloud/' }}
+            >
               {tMap('home.features.1.body', TypoWrapper)}
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
             <SmallImage />
-            <SectionContent title={t('home.features.2.title')} buttonText='Read More'>
+            <SectionContent
+              title={t('home.features.2.title')}
+              buttonText='readMore'
+              buttonProps={{ to: '/product/digitaltwin/' }}
+            >
               {tMap('home.features.2.body', TypoWrapper)}
             </SectionContent>
           </Grid>

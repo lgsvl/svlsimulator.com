@@ -155,7 +155,7 @@ const Header = React.forwardRef((props, ref) => {
                 <ListItem button component={Link} to='/about'>
                   <ListItemText primary={t('main.header.about')} />
                 </ListItem>
-                <ListItem button component={Link} to='/about'>
+                <ListItem button component={Link} to='/'>
                   <ListItemText primary={t('main.header.login')} />
                   <ListItemIcon>
                     <IconLogin />
@@ -236,12 +236,12 @@ const Header = React.forwardRef((props, ref) => {
                 </Grid>
                 <Grid item xs={3} sm='auto'>
                   <StyledLinkButton color='secondary' fullWidth to='/applications/'>
-                    {t('main.header.news')}
+                    {t('main.header.applications')}
                   </StyledLinkButton>
                 </Grid>
                 <Grid item xs={3} sm='auto'>
                   <StyledLinkButton color='secondary' fullWidth to='/news/'>
-                    {t('main.header.applications')}
+                    {t('main.header.news')}
                   </StyledLinkButton>
                 </Grid>
                 <Grid item xs={3} sm='auto'>
@@ -252,7 +252,7 @@ const Header = React.forwardRef((props, ref) => {
               </Grid>
             </Grid>
             <Grid item>
-              <StyledLinkButton color='primary' to='/about' endIcon={<IconLogin />}>
+              <StyledLinkButton color='primary' to='/' endIcon={<IconLogin />}>
                 {t('main.header.login')}
               </StyledLinkButton>
             </Grid>

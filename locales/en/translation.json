@@ -122,16 +122,16 @@
     },
     "features": [
       {
+        "title": "Simulation",
+        "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
+      },
+      {
         "title": "Cloud simulator",
         "body": "Simulation in Cloud environments allows users to easily manage and share the autonomous driving contents within the teams or communities, also enables large-scale automated testing of test data sets and scenarios."
       },
       {
         "title": "Digital twin",
         "body": "A digital twin that reconstructs 3D environment from Point Cloud and image data from real world enables vehicle manufacturers and future mobility players to accelerate development using simulation."
-      },
-      {
-        "title": "Simulation",
-        "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
       }
     ]
   },

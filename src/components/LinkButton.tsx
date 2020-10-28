@@ -6,11 +6,14 @@ import Link, { LinkProps } from './Link';
 
 const StyledButton = withTheme(styled(Button)``);
 
-type LinkButtonProps = ButtonProps & Partial<LinkProps>;
+export type LinkButtonProps = Exclude<ButtonProps, 'variant'> &
+  Partial<LinkProps> & { buttonVariant?: ButtonProps['variant'] };
 
-const LinkButton = React.forwardRef((props: LinkButtonProps, ref) => (
-  <StyledButton {...props} underline='none' component={Link} ref={ref} />
-));
+const LinkButton: React.ExoticComponent<LinkButtonProps> = React.forwardRef(
+  ({ buttonVariant, ...rest }: LinkButtonProps, ref) => (
+    <StyledButton {...rest} variant={buttonVariant} underline='none' component={Link} ref={ref} />
+  )
+);
 
 export default LinkButton;
 export { LinkButton };

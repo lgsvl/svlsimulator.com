@@ -1,4 +1,4 @@
-import { withTheme } from '@material-ui/core';
+import { ButtonProps, withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid, { GridProps } from '@material-ui/core/Grid';
@@ -9,6 +9,7 @@ import Button, { ButtonGetDemo, ButtonReadMore } from 'src/components/Button';
 import GridBox from 'src/components/GridBox';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
+import { LinkProps } from './Link';
 
 const SectionContainer = withTheme(styled(Container)`
   margin-bottom: ${({ theme }) => px(theme.spacing(9))};
@@ -28,23 +29,24 @@ const Image = withTheme(styled(Box)`
 `);
 
 type ContentProps = {
+  buttonProps?: ButtonProps & LinkProps;
   buttonText?: string;
   children: React.ReactNode;
   direction?: GridProps['direction'];
   title: string;
   variant?: TypographyProps['variant'];
 };
-const Content = ({ buttonText, children, title, variant = 'h5' }: ContentProps) => {
+const Content = ({ buttonProps, buttonText, children, title, variant = 'h5' }: ContentProps) => {
   let button;
   switch (buttonText) {
     case 'getDemo':
-      button = <ButtonGetDemo />;
+      button = <ButtonGetDemo {...buttonProps} />;
       break;
     case 'readMore':
-      button = <ButtonReadMore />;
+      button = <ButtonReadMore {...buttonProps} />;
       break;
     default:
-      button = <Button>{buttonText}</Button>;
+      button = <Button {...buttonProps}>{buttonText}</Button>;
   }
   return (
     <Grid container direction='column'>
