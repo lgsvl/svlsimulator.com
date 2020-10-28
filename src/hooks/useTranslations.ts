@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next'; // UseTranslationResponse
 import { asArray } from '../utils'; // UseTranslationResponse
+import english from '../../locales/en/translation.json';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type MapFunctionType = (element: any, index?: number, array?: any[]) => unknown;
@@ -11,7 +12,12 @@ interface TranslationMapArgs {
 }
 
 const useTrans = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+
+  // When not english, add English resources to use for string translation fallback
+  if (i18n.language !== 'en') {
+    i18n.addResourceBundle('en', 'translation', english);
+  }
 
   // `tMap` ensures that a translation string will be returned as an array with 1 or more elements.
   // This allows you to stamp out multiple components dynamically, rather than manually.
