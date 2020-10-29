@@ -12,12 +12,13 @@ import MoreArrows from 'src/components/MoreArrows';
 import Page from 'src/components/Page';
 import { SectionContent } from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
+import Ouija, { OuijaAnchor } from 'src/components/Ouija';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import videoSrcHero from '../videos/Hero.mp4';
-import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
-import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
+// import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
+// import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
 const Center = withTheme(styled(Container)`
   text-align: center;
@@ -78,8 +79,20 @@ export default function Home() {
   const { t, tMap } = useTranslation();
   return (
     <Page>
+      <Ouija>
+        <video
+          controls={false}
+          loop
+          autoPlay
+          muted
+          style={{ width: '100%', height: '100%', filter: 'saturate(0.7) contrast(1.01)' }}
+        >
+          <source src={videoSrcHero} type={'video/mp4'} />
+        </video>
+      </Ouija>
       <HeroBox mb={15} height='70vh' position='relative'>
-        <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }} />
+        <OuijaAnchor position='absolute' />
+        {/* <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }} /> */}
         <HeroGrid container direction='column' alignItems='center' justify='center'>
           <Grid item>
             <Typography variant='h1'>{t('home.title')}</Typography>
@@ -102,7 +115,8 @@ export default function Home() {
         <Grid container>
           <Grid item xs={12} sm={6}>
             <TuckingImage>
-              <BackgroundVideo src={videoSrcPlaceholder1} />
+              <OuijaAnchor />
+              {/* <BackgroundVideo src={videoSrcPlaceholder1} /> */}
             </TuckingImage>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -117,7 +131,8 @@ export default function Home() {
         <Grid container direction='row-reverse'>
           <Grid item xs={12} sm={6}>
             <ReverseTuckingImage>
-              <BackgroundVideo src={videoSrcPlaceholder2} />
+              <OuijaAnchor />
+              {/* <BackgroundVideo src={videoSrcPlaceholder2} /> */}
             </ReverseTuckingImage>
           </Grid>
           <Grid item xs={12} sm={6}>

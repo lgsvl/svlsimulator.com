@@ -9,8 +9,9 @@ import BackgroundVideo from 'src/components/BackgroundVideo';
 import { IconCheck } from 'src/components/Icons';
 import Input from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
-import videoSrcSubscribe from 'src/videos/Subscription.mp4';
+// import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
+import { OuijaAnchor } from './Ouija';
 
 const FullHeightGrid = withTheme(styled(Grid)`
   height: 100%;
@@ -43,7 +44,8 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
 
   return (
     <Box my={4} position='relative' {...rest}>
-      <BackgroundVideo src={videoSrcSubscribe} position='absolute' />
+      <OuijaAnchor position='absolute' />
+      {/* <BackgroundVideo src={videoSrcSubscribe} position='absolute' /> */}
       <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
         <FullHeightGrid container alignItems='center' justify='center'>
           <Grid item xs={12} sm={10} md={6}>
