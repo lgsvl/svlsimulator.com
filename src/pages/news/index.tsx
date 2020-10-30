@@ -21,8 +21,19 @@ const newsBoxCategoryColors = {
   event: 'rgba(0, 0, 255, 0.05)',
   article: 'rgba(255, 255, 0, 0.05)',
   announcement: 'rgba(0, 255, 0, 0.05)'
-};
+} as const;
+
 type NewsBoxCategory = keyof typeof newsBoxCategoryColors;
+
+const newsItemProminence = {
+  normal: { colSpan: 1, rowSpan: 1 },
+  big: { colSpan: 2, rowSpan: 1 },
+  biggest: { colSpan: 4, rowSpan: 1 }
+} as const;
+
+type NewsItemProminence = keyof typeof newsItemProminence;
+
+type NewsItemNode = NewsIndexQuery['allMdx']['edges'][0]['node'];
 
 interface NewsBoxProps extends PaperProps {
   colSpan: number;
@@ -31,6 +42,17 @@ interface NewsBoxProps extends PaperProps {
   link?: string;
   src?: string;
 }
+
+type NewsItemData = {
+  bodyPreview: string;
+  category: NewsBoxProps['category'];
+  date?: Date;
+  featuredImageSrc?: string;
+  id: string;
+  link?: string;
+  prominence: NewsItemProminence;
+  title: string;
+};
 
 const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
   ${({ theme, category, colSpan, rowSpan, src }) => `
@@ -62,6 +84,19 @@ const FadeBox = withTheme(styled(Box)<BoxProps>`
   mask-box-image-width: 0 0 1em 0;
 `) as React.FC<BoxProps>;
 
+const validateEnum = (optionName: string, option: string, allowedList: string[] | Record<string, unknown>) => {
+  if (!(allowedList instanceof Array)) {
+    // Just assume it's an object/hash until we care more later.
+    allowedList = Object.keys(allowedList);
+  }
+  // Check for known enum values
+  if (allowedList.indexOf(option) === -1) {
+    console.error('Unknown news %s: "%s". Use one of the following: %s.', optionName, option, allowedList.join(', '));
+    return false;
+  }
+  return true;
+};
+
 const NewsBox = ({
   children,
   category = 'news',
@@ -72,6 +107,12 @@ const NewsBox = ({
   ...rest
 }: Partial<NewsBoxProps>) => {
   const { t } = useTranslation();
+
+  // Check for known enum values
+  validateEnum('category', category, newsBoxCategoryColors);
+
+  const externalLink = link && link.match('://');
+
   return (
     <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
       <Typography variant='caption'>{t(`news.categories.${category}`)}</Typography>
@@ -79,7 +120,7 @@ const NewsBox = ({
       <FadeBox>{children}</FadeBox>
       {link ? (
         <Box alignSelf='start' mt='auto'>
-          <LinkButton buttonVariant='outlined' to={link}>
+          <LinkButton buttonVariant='outlined' to={link} target={externalLink ? '_blank' : undefined}>
             {t('main.buttons.readNews')}
           </LinkButton>
         </Box>
@@ -121,30 +162,17 @@ export const queryNews = graphql`
   }
 `;
 
-type NewsItemProminence = 'normal' | 'big' | 'biggest';
-type NewsItemNode = NewsIndexQuery['allMdx']['edges'][0]['node'];
-
-type NewsItemData = {
-  bodyPreview: string;
-  category?: NewsBoxCategory;
-  date?: Date;
-  featuredImageSrc?: string;
-  id: string;
-  link?: string;
-  prominence?: NewsItemProminence;
-  title: string;
-};
-
-// const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ id, frontmatter, headings, excerpt }) => {
-const getNewsItemData = ({ id, frontmatter, headings, excerpt, slug }: NewsItemNode) => {
-  let title = '';
+const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ id, frontmatter, headings, excerpt, slug }) => {
   const date = undefined;
-  let bodyPreview = '';
   const link = slug?.replace(/^pages/, '') || undefined;
-  // console.log('slug:', slug, 'link:', link);
-  let prominence: NewsItemProminence = 'normal';
-  let category: NewsBoxCategory = 'news';
+  let title = '';
+  let bodyPreview = '';
+
+  // Set a default and assert that this (the incoming value and the default) are one of the enum options.
+  const prominence = ((frontmatter?.prominence || 'normal') as unknown) as NewsItemData['prominence'];
+  const category = ((frontmatter?.category || 'news') as unknown) as NewsItemData['category'];
   const featuredImageSrc = frontmatter?.featuredImage?.childImageSharp?.fluid?.src || undefined;
+
   if (frontmatter?.title) {
     // Use the defined metadata title from the "---" section at the top
     title = frontmatter.title;
@@ -159,15 +187,7 @@ const getNewsItemData = ({ id, frontmatter, headings, excerpt, slug }: NewsItemN
     bodyPreview = excerpt.slice(title.length);
   }
 
-  if (frontmatter?.prominence) {
-    prominence = frontmatter?.prominence as NewsItemProminence;
-  }
-
-  if (frontmatter?.category) {
-    category = frontmatter?.category as NewsBoxCategory;
-  }
-
-  const data: NewsItemData = {
+  return {
     bodyPreview,
     category,
     date,
@@ -177,12 +197,10 @@ const getNewsItemData = ({ id, frontmatter, headings, excerpt, slug }: NewsItemN
     prominence,
     title
   };
-  return data;
 };
 
 export default function News({ data }: { data: NewsIndexQuery }) {
   const { t } = useTranslation();
-  // console.log('data:', data);
 
   return (
     <Page title={t('news.title')}>
@@ -191,20 +209,21 @@ export default function News({ data }: { data: NewsIndexQuery }) {
         {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
           const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
 
-          let colSpan = 1;
-          switch (prominence) {
-            case 'biggest': {
-              colSpan = 4;
-              break;
-            }
-            case 'big': {
-              colSpan = 2;
-              break;
-            }
-          }
+          // Check for known enum values
+          validateEnum('prominence', prominence, newsItemProminence);
+          const colSpan = newsItemProminence[prominence].colSpan;
+          const rowSpan = newsItemProminence[prominence].rowSpan;
+
           return (
-            <NewsBox key={id} title={title} src={featuredImageSrc} category={category} colSpan={colSpan} link={link}>
-              {/* {(console.log(node), null)} */}
+            <NewsBox
+              key={id}
+              title={title}
+              src={featuredImageSrc}
+              category={category}
+              colSpan={colSpan}
+              rowSpan={rowSpan}
+              link={link}
+            >
               <Typography>{bodyPreview}</Typography>
             </NewsBox>
           );
