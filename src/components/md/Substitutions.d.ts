@@ -15,8 +15,8 @@ export type ComponentSubstitutionKeys =
   | 'ul' //	List	-
   | 'ol' //	Ordered list	1.
   | 'li' //	List item
-  | 'table' //	Table	`---
-  | 'tr' //	Table row	`This
+  | 'table' //	Table	`--- | --- | ---`
+  | 'tr' //	Table row	`This | is | a | table row`
   | 'td' // Table cell
   | 'th' // Table header cell
   | 'pre' //	Pre	```js console.log()```
@@ -24,7 +24,7 @@ export type ComponentSubstitutionKeys =
   | 'em' //	Emphasis	_emphasis_
   | 'strong' //	Strong	**strong**
   | 'delete' //	Delete	~~strikethrough~~
-  // 'code' | |FC; //	InlineCode	`console.log()`
+  | 'inlineCode' //	InlineCode	`console.log()`
   | 'hr' //	Break	---
   | 'a' //	Link	https://mdxjs.com or [MDX](https://mdxjs.com)
   | 'img'; //	Image	![alt](https://mdx-logo.now.sh)

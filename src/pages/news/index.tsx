@@ -2,17 +2,19 @@ import { withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { graphql } from 'gatsby';
 import React from 'react';
-import Button from 'src/components/Button';
 import LayoutGrid from 'src/components/LayoutGrid';
+import Link from 'src/components/Link';
+import LinkButton from 'src/components/LinkButton';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+import imgPlaceholder from 'src/images/placeholder1.jpg';
 import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
-import imgPlaceholder from 'src/images/placeholder1.jpg';
-import Link from 'src/components/Link';
-import { graphql } from 'gatsby';
+// import Img from "gatsby-image";
+import { NewsIndexQuery } from '../../../graphql-types';
 
 const newsBoxCategoryColors = {
   news: '',
@@ -26,6 +28,7 @@ interface NewsBoxProps extends PaperProps {
   colSpan: number;
   rowSpan: number;
   category: NewsBoxCategory;
+  link?: string;
   src?: string;
 }
 
@@ -59,55 +62,150 @@ const FadeBox = withTheme(styled(Box)<BoxProps>`
   mask-box-image-width: 0 0 1em 0;
 `) as React.FC<BoxProps>;
 
-const NewsBox = ({ children, category = 'news', colSpan = 1, rowSpan = 1, title, ...rest }: Partial<NewsBoxProps>) => {
+const NewsBox = ({
+  children,
+  category = 'news',
+  colSpan = 1,
+  link,
+  rowSpan = 1,
+  title,
+  ...rest
+}: Partial<NewsBoxProps>) => {
   const { t } = useTranslation();
   return (
     <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
       <Typography variant='caption'>{t(`news.categories.${category}`)}</Typography>
       {title && <Typography variant='h5'>{title}</Typography>}
       <FadeBox>{children}</FadeBox>
-      <Box alignSelf='start' mt='auto'>
-        <Button variant='outlined'>{t('main.buttons.readNews')}</Button>
-      </Box>
+      {link ? (
+        <Box alignSelf='start' mt='auto'>
+          <LinkButton buttonVariant='outlined' to={link}>
+            {t('main.buttons.readNews')}
+          </LinkButton>
+        </Box>
+      ) : null}
     </StyledNewsBox>
   );
 };
 
+// The generated typescript type from the below query automatically has "Query"
+// appended to the query name: "NewsIndex" -> "NewsIndexQuery", imported by name above.
 export const queryNews = graphql`
-  query MyQuery {
-    allMdx {
+  query NewsIndex {
+    allMdx(limit: 10, sort: { fields: frontmatter___date }) {
       edges {
         node {
-          headings(depth: h1) {
+          id
+          slug
+          headings {
             value
           }
           excerpt
+          frontmatter {
+            title
+            date
+            category
+            preview
+            prominence
+            featuredImage {
+              childImageSharp {
+                fluid(maxHeight: 720) {
+                  src
+                }
+              }
+            }
+          }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        description
       }
     }
   }
 `;
 
-export default function News({ data }: { data: any }) {
+type NewsItemProminence = 'normal' | 'big' | 'biggest';
+type NewsItemNode = NewsIndexQuery['allMdx']['edges'][0]['node'];
+
+type NewsItemData = {
+  bodyPreview: string;
+  category?: NewsBoxCategory;
+  date?: Date;
+  featuredImageSrc?: string;
+  id: string;
+  link?: string;
+  prominence?: NewsItemProminence;
+  title: string;
+};
+
+// const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ id, frontmatter, headings, excerpt }) => {
+const getNewsItemData = ({ id, frontmatter, headings, excerpt, slug }: NewsItemNode) => {
+  let title = '';
+  const date = undefined;
+  let bodyPreview = '';
+  const link = slug?.replace(/^pages/, '') || undefined;
+  // console.log('slug:', slug, 'link:', link);
+  let prominence: NewsItemProminence = 'normal';
+  let category: NewsBoxCategory = 'news';
+  const featuredImageSrc = frontmatter?.featuredImage?.childImageSharp?.fluid?.src || undefined;
+  if (frontmatter?.title) {
+    // Use the defined metadata title from the "---" section at the top
+    title = frontmatter.title;
+  } else if (headings?.length && headings[0] && headings[0].value) {
+    // Just grab the first heading off the MD file
+    title = headings[0].value;
+  }
+
+  if (frontmatter?.preview) {
+    bodyPreview = frontmatter?.preview;
+  } else if (excerpt) {
+    bodyPreview = excerpt.slice(title.length);
+  }
+
+  if (frontmatter?.prominence) {
+    prominence = frontmatter?.prominence as NewsItemProminence;
+  }
+
+  if (frontmatter?.category) {
+    category = frontmatter?.category as NewsBoxCategory;
+  }
+
+  const data: NewsItemData = {
+    bodyPreview,
+    category,
+    date,
+    featuredImageSrc,
+    id,
+    link,
+    prominence,
+    title
+  };
+  return data;
+};
+
+export default function News({ data }: { data: NewsIndexQuery }) {
   const { t } = useTranslation();
-  console.log('data:', data);
+  // console.log('data:', data);
 
   return (
     <Page title={t('news.title')}>
       <Typography variant='h1'>{t('news.title')}</Typography>
       <LayoutGrid sm={2} md={4} spacing={2}>
-        {data.allMdx.edges.map(({ node }: { node: any }) => {
-          const title = node.headings.length ? node.headings[0].value : '';
-          const body = node.excerpt.slice(title.length);
+        {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
+          const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
+
+          let colSpan = 1;
+          switch (prominence) {
+            case 'biggest': {
+              colSpan = 4;
+              break;
+            }
+            case 'big': {
+              colSpan = 2;
+              break;
+            }
+          }
           return (
-            <NewsBox key={node.id} title={title}>
-              {console.log(node)}
-              <Typography>{body}</Typography>
+            <NewsBox key={id} title={title} src={featuredImageSrc} category={category} colSpan={colSpan} link={link}>
+              {/* {(console.log(node), null)} */}
+              <Typography>{bodyPreview}</Typography>
             </NewsBox>
           );
         })}

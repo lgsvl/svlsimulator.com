@@ -24,6 +24,15 @@ module.exports = {
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    // Adds automatic typescript type generation for graphql queries
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-graphql-codegen/
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        documentPaths: ['./src/**/*.{ts,tsx}', './node_modules/gatsby-*/**/*.js']
+      }
+    },
     {
       resolve: 'gatsby-plugin-webfonts',
       options: {
@@ -104,6 +113,12 @@ module.exports = {
       options: {
         name: 'src',
         path: `${__dirname}/src/`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/images`
       }
     }
   ]
