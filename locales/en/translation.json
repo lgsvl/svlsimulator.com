@@ -3,6 +3,7 @@
     "buttons": {
       "getDemo": "Request Demo",
       "readMore": "Read More",
+      "readNews": "Read",
       "download": "Download",
       "view": "View"
     },
