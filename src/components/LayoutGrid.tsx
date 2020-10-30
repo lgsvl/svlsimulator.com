@@ -12,14 +12,16 @@ interface LayoutGridProps {
   lg?: GridProps['lg'];
   xl?: GridProps['xl'];
   spacing?: GridProps['spacing'];
+  dense?: boolean;
 }
 
-const JustBox = ({ xs, sm, md, lg, xl, spacing, ...rest }: LayoutGridProps) => <Box {...rest} />;
+const JustBox = ({ xs, sm, md, lg, xl, spacing, dense, ...rest }: LayoutGridProps) => <Box {...rest} />;
 
 const StyledBox = withTheme(styled(JustBox)`
-  ${({ theme, xs, sm, md, lg, xl, spacing }) => `
+  ${({ theme, xs, sm, md, lg, xl, spacing, dense }) => `
   display: grid;
   grid-gap: ${px(theme.spacing(spacing))};
+  ${dense ? 'grid-auto-flow: dense;' : ''}
   // grid-template-columns: repeat(4, 1fr);
 
   ${xs && theme.breakpoints.up('xs')} {

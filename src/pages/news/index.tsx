@@ -116,8 +116,10 @@ const NewsBox = ({
   return (
     <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
       <Typography variant='caption'>{t(`news.categories.${category}`)}</Typography>
-      {title && <Typography variant='h5'>{title}</Typography>}
-      <FadeBox>{children}</FadeBox>
+      <FadeBox>
+        {title && <Typography variant='h5'>{title}</Typography>}
+        {children}
+      </FadeBox>
       {link ? (
         <Box alignSelf='start' mt='auto'>
           <LinkButton buttonVariant='outlined' to={link} target={externalLink ? '_blank' : undefined}>
@@ -146,6 +148,7 @@ export const queryNews = graphql`
             title
             date
             category
+            link
             preview
             prominence
             featuredImage {
@@ -164,13 +167,13 @@ export const queryNews = graphql`
 
 const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ id, frontmatter, headings, excerpt, slug }) => {
   const date = undefined;
-  const link = slug?.replace(/^pages/, '') || undefined;
+  const link = frontmatter?.link || slug?.replace(/^pages/, '') || undefined;
   let title = '';
   let bodyPreview = '';
 
   // Set a default and assert that this (the incoming value and the default) are one of the enum options.
-  const prominence = ((frontmatter?.prominence || 'normal') as unknown) as NewsItemData['prominence'];
   const category = ((frontmatter?.category || 'news') as unknown) as NewsItemData['category'];
+  const prominence = ((frontmatter?.prominence || 'normal') as unknown) as NewsItemData['prominence'];
   const featuredImageSrc = frontmatter?.featuredImage?.childImageSharp?.fluid?.src || undefined;
 
   if (frontmatter?.title) {
@@ -205,7 +208,7 @@ export default function News({ data }: { data: NewsIndexQuery }) {
   return (
     <Page title={t('news.title')}>
       <Typography variant='h1'>{t('news.title')}</Typography>
-      <LayoutGrid sm={2} md={4} spacing={2}>
+      <LayoutGrid sm={2} md={4} spacing={2} dense>
         {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
           const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
 
