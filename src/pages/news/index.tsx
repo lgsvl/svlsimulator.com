@@ -12,6 +12,7 @@ import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
 import imgPlaceholder from 'src/images/placeholder1.jpg';
 import Link from 'src/components/Link';
+import { graphql } from 'gatsby';
 
 const newsBoxCategoryColors = {
   news: '',
@@ -72,12 +73,44 @@ const NewsBox = ({ children, category = 'news', colSpan = 1, rowSpan = 1, title,
   );
 };
 
-export default function News() {
+export const queryNews = graphql`
+  query MyQuery {
+    allMdx {
+      edges {
+        node {
+          headings(depth: h1) {
+            value
+          }
+          excerpt
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        description
+      }
+    }
+  }
+`;
+
+export default function News({ data }: { data: any }) {
   const { t } = useTranslation();
+  console.log('data:', data);
+
   return (
     <Page title={t('news.title')}>
       <Typography variant='h1'>{t('news.title')}</Typography>
       <LayoutGrid sm={2} md={4} spacing={2}>
+        {data.allMdx.edges.map(({ node }: { node: any }) => {
+          const title = node.headings.length ? node.headings[0].value : '';
+          const body = node.excerpt.slice(title.length);
+          return (
+            <NewsBox key={node.id} title={title}>
+              {console.log(node)}
+              <Typography>{body}</Typography>
+            </NewsBox>
+          );
+        })}
         <NewsBox title='News 1' src={imgPlaceholder}>
           <Typography>News 1 Body</Typography>
           <Typography>
@@ -85,7 +118,9 @@ export default function News() {
           </Typography>
         </NewsBox>
         <NewsBox category='event'>
-          <Typography>News 2</Typography>
+          <Typography>
+            <Link to='/news/october-event'>Go to CES Event</Link>
+          </Typography>
         </NewsBox>
         <NewsBox colSpan={2} category='article'>
           <Typography>News 3</Typography>
