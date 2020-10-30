@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@xviz/parser": "^1.0.6",
     "babel-plugin-styled-components": "^1.11.1",
+    "deck.gl": "^8.3.4",
     "gatsby": "^2.24.73",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-manifest": "^2.4.34",
@@ -40,6 +42,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.7.3",
+    "streetscape.gl": "^1.0.6",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
