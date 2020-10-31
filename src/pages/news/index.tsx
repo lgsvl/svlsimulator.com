@@ -59,20 +59,41 @@ const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
   grid-column-end: ${colSpan ? `span ${colSpan}` : 'auto'};
   grid-row-end: ${rowSpan ? `span ${rowSpan}` : 'auto'};
   padding: ${px(theme.spacing(2))};
-  // background-color: ${newsBoxCategoryColors[category]};
-  background-color: ${fade(theme.palette.background.paper, 0.6)};
-  background-image: url(${src});
-  background-position: center center;
-  background-size: cover;
+  // background-color: ${fade(theme.palette.background.paper, 0.6)};
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   height: 360px;
+  position: relative;
+  overflow: hidden;
 
   ${theme.breakpoints.only('sm')} {
     grid-column-end: ${colSpan > 2 ? 'auto' : `span ${colSpan}`};
   }
   ${theme.breakpoints.only('xs')} {
     grid-column-end: ${colSpan > 1 ? 'auto' : `span ${colSpan}`};
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // background-color: ${newsBoxCategoryColors[category]};
+    // background-color: ${fade(theme.palette.background.paper, 0.6)};
+    background-color: ${theme.palette.background.paper};
+    background-image: url(${src});
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.4;
+    filter: blur(1px);
+    will-change: opacity, filter;
+  }
+  &:hover::before {
+    filter: blur(0);
+    opacity: 0.6;
   }
   `}
 `) as React.FC<NewsBoxProps>;
@@ -115,7 +136,9 @@ const NewsBox = ({
 
   return (
     <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
-      <Typography variant='caption'>{t(`news.categories.${category}`)}</Typography>
+      <Box position='relative'>
+        <Typography variant='overline'>{t(`news.categories.${category}`)}</Typography>
+      </Box>
       <FadeBox>
         {title && <Typography variant='h5'>{title}</Typography>}
         {children}

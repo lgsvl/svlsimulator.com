@@ -39,7 +39,7 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
 
   const forDevs = (
     <>
-      <Typography variant='body1' component='h6'>
+      <Typography variant='overline' component='h6' color='textSecondary'>
         {t('main.footer.forDevelopers')}
       </Typography>
       <List>
@@ -51,7 +51,7 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
   );
   const social = (
     <>
-      <Typography variant='body1' component='h6'>
+      <Typography variant='overline' component='h6' color='textSecondary'>
         {t('main.footer.social')}
       </Typography>
       <List>
