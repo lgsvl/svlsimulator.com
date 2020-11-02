@@ -1,14 +1,12 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next'; // UseTranslationResponse
-import { asArray } from '../utils'; // UseTranslationResponse
+import { MapFunction } from 'src/@types/utils';
 import english from '../../locales/en/translation.json';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type MapFunctionType = (element: any, index?: number, array?: any[]) => unknown;
+import { asArray } from '../utils'; // UseTranslationResponse
 
 interface TranslationMapArgs {
   translationString: string;
-  mapFn: MapFunctionType;
+  mapFn: MapFunction;
 }
 
 const useTrans = () => {
@@ -21,7 +19,7 @@ const useTrans = () => {
 
   // `tMap` ensures that a translation string will be returned as an array with 1 or more elements.
   // This allows you to stamp out multiple components dynamically, rather than manually.
-  const tMap = useMemo(() => (str: string, mapFn: MapFunctionType): unknown[] => asArray(t(str)).map(mapFn), [t]);
+  const tMap = useMemo(() => (str: string, mapFn: MapFunction<string>): unknown[] => asArray(t(str)).map(mapFn), [t]);
 
   return { t, tMap };
 

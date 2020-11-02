@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import BackgroundVideo from 'src/components/BackgroundVideo';
 import { ButtonGetDemo } from 'src/components/Button';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
@@ -70,7 +71,7 @@ const HeroGrid = withTheme(styled(Grid)`
   position: relative;
 `);
 
-const TypoWrapper = (str: string) => <Typography>{str}</Typography>;
+const TypoWrapper: MapFunction<string> = (str, i) => <Typography key={`paragraph${i}`}>{str}</Typography>;
 
 const brandIconProps = { color: '#6D7B97', height: 40, width: '100%' };
 

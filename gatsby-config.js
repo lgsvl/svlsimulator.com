@@ -30,7 +30,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
-        documentPaths: ['./src/**/*.{ts,tsx}', './node_modules/gatsby-*/**/*.js']
+        // documentPaths: ['./src/**/*.{ts,tsx}', './node_modules/gatsby-*/**/*.js']
+        // documentPaths: ['./src/pages/news/index.tsx']
+        documentPaths: ['./src/**/*.{ts,tsx}']
       }
     },
     {

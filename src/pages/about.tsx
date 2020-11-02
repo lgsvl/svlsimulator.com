@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import { ButtonGetDemo } from 'src/components/Button';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
@@ -20,7 +21,11 @@ const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
 `);
 
-const TypoWrapper = (str: string) => <Typography paragraph>{str}</Typography>;
+const TypoWrapper: MapFunction<string> = (str, i) => (
+  <Typography paragraph key={`paragraph${i}`}>
+    {str}
+  </Typography>
+);
 
 export default function About() {
   const { t, tMap } = useTranslation();

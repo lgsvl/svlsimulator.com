@@ -1,12 +1,17 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import DocumentBox from 'src/components/DocumentBox';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 
-const TypoWrapper = (str: string) => <Typography paragraph>{str}</Typography>;
+const TypoWrapper: MapFunction<string> = (str, i) => (
+  <Typography paragraph key={`paragraph${i}`}>
+    {str}
+  </Typography>
+);
 
 export default function Applications() {
   const { t, tMap } = useTranslation();
