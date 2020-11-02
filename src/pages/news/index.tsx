@@ -254,7 +254,7 @@ export default function News({ data }: { data: NewsIndexQuery }) {
             </NewsBox>
           );
         })}
-        <NewsBox title='News 1' src={imgPlaceholder}>
+        {/* <NewsBox title='News 1' src={imgPlaceholder}>
           <Typography>News 1 Body</Typography>
           <Typography>
             <Link to='/news/readme'>Go to example README</Link>
@@ -281,7 +281,7 @@ export default function News({ data }: { data: NewsIndexQuery }) {
         </NewsBox>
         <NewsBox category='article'>
           <Typography>News 6</Typography>
-        </NewsBox>
+        </NewsBox> */}
       </LayoutGrid>
 
       <SubscribeBox />

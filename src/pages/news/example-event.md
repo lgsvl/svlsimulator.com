@@ -7,14 +7,14 @@ prominence: big
 featuredImage: ../../images/placeholder1.jpg
 ---
 
-### We'll be at CES
+## We'll be at CES
 
 You guessed it, back again this year with even more greatness.
 
-![GitHub Logo](./icon.png)
+![LGSVL Logo](../../images/icon.png)
 
 See you soon!
 
-#### Forgot to mention
+### Forgot to mention
 
 There's another thing, but... I don't remember now.
