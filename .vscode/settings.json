@@ -1,0 +1,13 @@
+{
+  "editor.rulers": [80, 100, 120],
+  "prettier.eslintIntegration": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true
+}
