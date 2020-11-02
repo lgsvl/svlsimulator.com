@@ -14,6 +14,7 @@ import {
 import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import { ButtonGetDemo } from 'src/components/Button';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li from 'src/components/Li';
@@ -23,8 +24,8 @@ import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled from 'styled-components';
 
-const ListItemWrapper = (str: string) => (
-  <ListItem>
+const ListItemWrapper: MapFunction = (str, i) => (
+  <ListItem key={`${str}${i}`}>
     <Li>{str}</Li>
   </ListItem>
 );

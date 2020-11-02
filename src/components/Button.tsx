@@ -8,7 +8,7 @@ import LinkButton, { LinkButtonProps } from './LinkButton';
 
 const StyledButton = withTheme(styled(MuiButton)``);
 
-const Button: React.ExoticComponent<ButtonProps> = React.forwardRef((props, ref) => (
+const Button: React.ForwardRefExoticComponent<ButtonProps> = React.forwardRef((props, ref) => (
   <StyledButton variant='outlined' {...props} ref={ref} />
 ));
 

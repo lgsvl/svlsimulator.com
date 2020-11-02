@@ -8,7 +8,6 @@ import PageContextProvider from 'src/context/Page';
 import { px } from 'src/utils/theme';
 import styled, { createGlobalStyle } from 'styled-components';
 import Footer from './Footer';
-import { GridBox } from './GridBox';
 import Header from './Header';
 import SEO from './SEO';
 
@@ -86,6 +85,10 @@ const HeaderGrid = withTheme(styled(Grid)`
 
 const StyledPaper = withTheme(styled(Paper)``);
 
+const FooterGrid = withTheme(styled(Grid)`
+  margin-top: auto;
+`);
+
 const App = ({ children }: { children?: React.ReactNode }) => {
   const theme = useTheme();
 
@@ -102,9 +105,9 @@ const App = ({ children }: { children?: React.ReactNode }) => {
               <Box>{children}</Box>
             </StyledPaper>
           </Grid>
-          <GridBox item component='footer' mt='auto'>
+          <FooterGrid item component='footer'>
             <Footer />
-          </GridBox>
+          </FooterGrid>
         </AppGrid>
       </AppContainer>
     </React.Fragment>
