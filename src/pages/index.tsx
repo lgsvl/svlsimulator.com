@@ -20,6 +20,7 @@ import srcSimulationPoster from 'src/images/simulation-platform.jpg';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import videoSrcHero from '../videos/Hero.mp4';
+import Visualizer from 'src/components/Visualizer';
 // import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 // import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
@@ -62,7 +63,7 @@ export default function Home() {
   return (
     <Page>
       <Ouija>
-        <video
+        {/* <video
           controls={false}
           loop
           autoPlay
@@ -70,7 +71,8 @@ export default function Home() {
           style={{ width: '100%', height: '100%', filter: 'saturate(0.7) contrast(1.01)' }}
         >
           <source src={videoSrcHero} type={'video/mp4'} />
-        </video>
+        </video> */}
+        <Visualizer />
       </Ouija>
       <HeroBox mb={15} height='70vh' position='relative'>
         <OuijaAnchor position='absolute' />
