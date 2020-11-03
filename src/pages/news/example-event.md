@@ -2,7 +2,7 @@
 title: See you at CES 2021
 category: event
 date: '2017-09-18T23:19:51.246Z'
-preview: 'You guessed it, back again this year with even more greatness.'
+preview: You guessed it, back again this year with even more greatness.
 prominence: big
 featuredImage: ../../images/placeholder1.jpg
 ---
