@@ -1,6 +1,7 @@
 import {
   Box,
   Collapse,
+  Grid,
   IconButton,
   Table,
   TableBody,
@@ -21,6 +22,7 @@ import Li from 'src/components/Li';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
+import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
@@ -255,6 +257,15 @@ export default function Simulation() {
       </StyledTable>
 
       <ButtonGetDemo />
+
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <CloudPreviewBox />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <DigitalTwinPreviewBox />
+        </Grid>
+      </Grid>
 
       <SubscribeBox />
     </Page>

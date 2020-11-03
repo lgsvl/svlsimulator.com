@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import Page from 'src/components/Page';
+import { CloudPreviewBox, SimulationPreviewBox } from 'src/components/PagePreviewBox';
 import Section, { FullWidthSection } from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
@@ -36,6 +37,16 @@ export default function DigitalTwin() {
           </FullWidthSection>
         </Grid>
       </Grid>
+
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <CloudPreviewBox />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <SimulationPreviewBox />
+        </Grid>
+      </Grid>
+
       <SubscribeBox />
     </Page>
   );
