@@ -7,6 +7,7 @@ import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 
 const ListItemWrapper: MapFunction = (str, i) => (
   <ListItem key={`${str}${i}`}>
@@ -18,7 +19,7 @@ export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
-      <Section title={t('cloud.title')} variant='h2' buttonText='getDemo'>
+      <Section title={t('cloud.title')} variant='h2' buttonText='getDemo' src={srcCloudPoster} tuckImage flip>
         <List>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 
