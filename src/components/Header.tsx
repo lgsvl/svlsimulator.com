@@ -152,10 +152,10 @@ const Header = React.forwardRef((props, ref) => {
                 <ListItem button component={Link} to='/news/'>
                   <ListItemText primary={t('main.header.news')} />
                 </ListItem>
-                <ListItem button component={Link} to='/about'>
+                <ListItem button component={Link} to='/about/'>
                   <ListItemText primary={t('main.header.about')} />
                 </ListItem>
-                <ListItem button component={Link} to='/'>
+                <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'>
                   <ListItemText primary={t('main.header.login')} />
                   <ListItemIcon>
                     <IconLogin />
@@ -245,14 +245,18 @@ const Header = React.forwardRef((props, ref) => {
                   </StyledLinkButton>
                 </Grid>
                 <Grid item xs={3} sm='auto'>
-                  <StyledLinkButton color='secondary' fullWidth to='/about'>
+                  <StyledLinkButton color='secondary' fullWidth to='/about/'>
                     {t('main.header.about')}
                   </StyledLinkButton>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item>
-              <StyledLinkButton color='primary' to='/' endIcon={<IconLogin />}>
+              <StyledLinkButton
+                color='primary'
+                to='https://wise.staging.lgsvlsimulator.com/sign-in'
+                endIcon={<IconLogin />}
+              >
                 {t('main.header.login')}
               </StyledLinkButton>
             </Grid>
