@@ -44,8 +44,8 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
         {t('main.footer.forDevelopers')}
       </Typography>
       <List>
-        <FooterLink to='/' primary={t('main.links.github')} />
-        <FooterLink to='/' primary={t('main.links.documentation')} />
+        <FooterLink to='https://github.com/lgsvl/simulator' primary={t('main.links.github')} />
+        <FooterLink to='https://www.lgsvlsimulator.com/docs/' primary={t('main.links.documentation')} />
         <FooterLink to='/' primary={t('main.links.requestDemo')} />
       </List>
     </>
@@ -56,9 +56,9 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
         {t('main.footer.social')}
       </Typography>
       <List>
-        <FooterLink to='/' primary={t('main.links.twitter')} />
-        <FooterLink to='/' primary={t('main.links.youtube')} />
-        <FooterLink to='/' primary={t('main.links.subscribe')} />
+        <FooterLink to='https://twitter.com/LGSVLSimulator' primary={t('main.links.twitter')} />
+        <FooterLink to='https://www.youtube.com/channel/UChrPZIYAnKEKiQjmPmBwPKA' primary={t('main.links.youtube')} />
+        <FooterLink to='http://eepurl.com/go_1w9' primary={t('main.links.subscribe')} />
       </List>
     </>
   );

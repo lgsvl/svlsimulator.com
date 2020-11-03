@@ -20,6 +20,14 @@ const SectionContainer = withTheme(styled(Container)`
 
 const StyledPaper = withTheme(styled(Paper)``);
 
+const TitleGridBox = withTheme(styled(GridBox)`
+  text-shadow: 0px 2px black, 0px 2px 10px rgba(0, 0, 0, 0.6);
+`) as typeof GridBox;
+
+const BodyGridBox = withTheme(styled(GridBox)`
+  text-shadow: 0px 1px 1px black, 0px 3px 9px rgba(0, 0, 0, 0.6);
+`) as typeof GridBox;
+
 const Image = withTheme(styled(({ src, ...rest }) => <Box {...rest} />)`
   height: 100%;
   width: 100%;
@@ -89,12 +97,12 @@ const Content = ({ buttonProps, buttonText, children, title, variant = 'h5' }: C
   }
   return (
     <Grid container direction='column'>
-      <GridBox item>
+      <TitleGridBox item>
         <Typography variant={variant}>{title}</Typography>
-      </GridBox>
-      <GridBox item my={{ xs: 2, md: 5 }}>
+      </TitleGridBox>
+      <BodyGridBox item my={{ xs: 2, md: 5 }}>
         {children}
-      </GridBox>
+      </BodyGridBox>
       {buttonText && <GridBox item>{button}</GridBox>}
     </Grid>
   );
