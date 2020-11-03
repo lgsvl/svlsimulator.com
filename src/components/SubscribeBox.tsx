@@ -64,7 +64,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
                       style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : null}
                       aria-label='submit subscription'
                       edge='end'
-                      size='large'
+                      size='medium'
                     >
                       <IconCheck />
                     </TransitioningIconButton>

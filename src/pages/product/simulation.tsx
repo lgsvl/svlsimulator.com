@@ -14,6 +14,7 @@ import {
 import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import { ButtonGetDemo } from 'src/components/Button';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li from 'src/components/Li';
@@ -21,10 +22,13 @@ import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
+import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
+import srcSimulationPoster from 'src/images/simulation-platform.jpg';
 import styled from 'styled-components';
 
-const ListItemWrapper = (str: string) => (
-  <ListItem>
+const ListItemWrapper: MapFunction = (str, i) => (
+  <ListItem key={`${str}${i}`}>
     <Li>{str}</Li>
   </ListItem>
 );
@@ -39,15 +43,7 @@ const StyledTableCell = withTheme(styled(({ noBorder, ...rest }: TableCellProps 
   <TableCell {...rest} />
 ))`
   border-bottom-style: none;
-
-  ${({ noBorder }) =>
-    noBorder
-      ? ''
-      : 'border-top-style: solid;'}//   border-top-style: solid;
-
-  // .MuiTableRow-root:nth-child(n + 2) & {
-  //   border-top-style: solid;
-  // }
+  ${({ noBorder }) => (noBorder ? '' : 'border-top-style: solid;')}
 `);
 const StyledSubTableCell = withTheme(styled(TableCell)`
   border-bottom-style: none;
@@ -225,15 +221,17 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section title={t('simulation.title')} variant='h2' buttonText='getDemo'>
+      <Section title={t('simulation.title')} variant='h2' buttonText='getDemo' tuckImage src={srcSimulationPoster}>
         {tMap('simulation.body', ListItemWrapper)}
       </Section>
 
-      <Section title={t('simulation.section1.title')} flip>
+      <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
         {tMap('simulation.section1.body', ListItemWrapper)}
       </Section>
 
-      <Section title={t('simulation.section2.title')}>{tMap('simulation.section2.body', ListItemWrapper)}</Section>
+      <Section title={t('simulation.section2.title')} src={srcTools}>
+        {tMap('simulation.section2.body', ListItemWrapper)}
+      </Section>
 
       <StyledTable>
         <TableHead>

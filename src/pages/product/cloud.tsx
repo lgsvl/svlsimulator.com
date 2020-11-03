@@ -1,16 +1,16 @@
 import List from '@material-ui/core/List';
-import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography, { TypographyProps } from '@material-ui/core/Typography';
+import ListItem from '@material-ui/core/ListItem';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import Li from 'src/components/Li';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 
-const ListItemWrapper = (str: string) => (
-  <ListItem>
+const ListItemWrapper: MapFunction = (str, i) => (
+  <ListItem key={`${str}${i}`}>
     <Li>{str}</Li>
   </ListItem>
 );
@@ -19,7 +19,7 @@ export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
-      <Section title={t('cloud.title')} variant='h2' buttonText='getDemo'>
+      <Section title={t('cloud.title')} variant='h2' buttonText='getDemo' src={srcCloudPoster} tuckImage flip>
         <List>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 

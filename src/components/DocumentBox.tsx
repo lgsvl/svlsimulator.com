@@ -12,6 +12,10 @@ const StyledDocumentBox = withTheme(styled(Box)`
   border-color: ${({ theme }) => theme.palette.background.paper};
 `);
 
+const LabelTypo = withTheme(styled(Typography)`
+  color: ${({ theme }) => theme.palette.secondary.dark};
+`);
+
 const DocumentBox = ({ title, label, buttonText, ...rest }: BoxProps & { label?: string; buttonText?: string }) => {
   const theme = useTheme();
   const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
@@ -33,7 +37,7 @@ const DocumentBox = ({ title, label, buttonText, ...rest }: BoxProps & { label?:
       </Box>
       <Box flexGrow={1} ml={isXs ? 0 : 2} mt={isXs ? 1 : 0} textAlign={isXs ? 'center' : null}>
         <Typography>{title}</Typography>
-        {label ? <Typography variant='body2'>{label}</Typography> : null}
+        {label ? <LabelTypo variant='overline'>{label}</LabelTypo> : null}
       </Box>
       {buttonText ? (
         <Box ml={isXs ? 0 : 2} mt={isXs ? 3 : 0}>

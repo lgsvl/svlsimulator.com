@@ -145,11 +145,16 @@ const theme = createMuiTheme({
       fontWeight: 700,
       lineHeight: 44 / 32
     },
+    h4: {
+      fontSize: 28,
+      fontWeight: 700,
+      lineHeight: 36 / 28
+    },
     h5: {
       color: palette.text.primary,
-      fontSize: 32,
+      fontSize: 20,
       fontWeight: 700,
-      lineHeight: 44 / 32
+      lineHeight: 32 / 20
     },
     h6: {
       color: palette.text.secondary,
@@ -165,13 +170,20 @@ const theme = createMuiTheme({
     body2: {
       fontSize: 14,
       lineHeight: 24 / 14
-    }
+    },
     // button: {
     // },
-    // caption: {
-    // },
-    // overline: {
-    // },
+    caption: {
+      fontSize: 16,
+      lineHeight: 24 / 16
+    },
+    overline: {
+      // color: palette.text.hint,
+      fontSize: 14,
+      lineHeight: 24 / 14,
+      letterSpacing: '2px',
+      textTransform: 'uppercase'
+    }
     // subtitle1: {
     // },
     // subtitle2: {

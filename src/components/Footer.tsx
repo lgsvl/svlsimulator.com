@@ -7,6 +7,7 @@ import ListItemText, { ListItemTextProps } from '@material-ui/core/ListItemText'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { MapFunction } from 'src/@types/utils';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled from 'styled-components';
 import { IconLgColor } from './Icons';
@@ -20,8 +21,8 @@ const Copyright = withTheme(styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
 `);
 
-const TypoWrapper = (str: string) => (
-  <Typography paragraph color='secondary'>
+const TypoWrapper: MapFunction<string> = (str, i) => (
+  <Typography paragraph color='secondary' key={`paragraph${i}`}>
     {str}
   </Typography>
 );
@@ -39,7 +40,7 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
 
   const forDevs = (
     <>
-      <Typography variant='body1' component='h6'>
+      <Typography variant='overline' component='h6' color='textSecondary'>
         {t('main.footer.forDevelopers')}
       </Typography>
       <List>
@@ -51,7 +52,7 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
   );
   const social = (
     <>
-      <Typography variant='body1' component='h6'>
+      <Typography variant='overline' component='h6' color='textSecondary'>
         {t('main.footer.social')}
       </Typography>
       <List>

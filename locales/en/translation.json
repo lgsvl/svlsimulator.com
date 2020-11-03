@@ -3,6 +3,7 @@
     "buttons": {
       "getDemo": "Request Demo",
       "readMore": "Read More",
+      "readNews": "Read",
       "download": "Download",
       "view": "View"
     },
@@ -79,6 +80,14 @@
         "Simulation in the cloud at scale is one of the important features requested by developers working on autonomous vehicle software. Perception module development requires a vast amount of labeled data specific to vehicle sensor configuration, however data labeling is mostly manual process and time consuming. Simulators could be used to produce synthetic labeled data at large scale in the cloud.",
         "LGSVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. LGSVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
       ]
+    },
+    "section4": {
+      "title": "Academics",
+      "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. LGSVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
+    },
+    "section5": {
+      "title": "Robotics",
+      "body": "LGSVL Simulator is a tool necessary for the design and validation of development processes in a dynamic and highly visual environment. This tool supports a variety of robotic and automation test scenarios allowing for early validation of automation concepts on local machines or in the cloud. This simulator allows developers to set KPIs, re-generate scenarios for testing, validate and optimize the development and robot operation sequences with realistic behaviors."
     },
     "files": [
       "LGSVL Simulator – High fidelity simulator for autonomous driving",
