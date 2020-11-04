@@ -16,12 +16,6 @@
     "module": "esnext",
     "isolatedModules": true
   },
-  "exclude": [
-    "**/node_modules",
-    "**/.cache",
-    "**/public",
-    "**/.*/",
-    "graphql-types.ts"
-  ],
+  "exclude": ["**/node_modules", "**/.cache", "**/public", "**/.*/", "graphql-types.ts"],
   "include": ["src", "src/404.tsx", "gatsby-config.js", "tsconfig.json"]
 }
