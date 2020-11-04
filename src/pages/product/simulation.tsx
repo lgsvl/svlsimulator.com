@@ -1,8 +1,4 @@
 import {
-  Box,
-  Collapse,
-  Grid,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -12,17 +8,23 @@ import {
   useTheme,
   withTheme
 } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { ButtonGetDemo } from 'src/components/Button';
+import Center from 'src/components/Center';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li from 'src/components/Li';
 import Page from 'src/components/Page';
+import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
-import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
@@ -223,7 +225,7 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section title={t('simulation.title')} variant='h2' buttonText='getDemo' tuckImage src={srcSimulationPoster}>
+      <Section title={t('simulation.title')} variant='h3' buttonText='getDemo' tuckImage src={srcSimulationPoster}>
         {tMap('simulation.body', ListItemWrapper)}
       </Section>
 
@@ -240,12 +242,16 @@ export default function Simulation() {
           <TableRow>
             <StyledTableCell noBorder></StyledTableCell>
             <StyledTableCell noBorder>
-              <Typography variant='h6'>{t('simulation.featuresTable.products.0.title')}</Typography>
-              <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
+              <Typography variant='h4'>{t('simulation.featuresTable.products.0.title')}</Typography>
+              <Hidden smDown>
+                <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
+              </Hidden>
             </StyledTableCell>
             <StyledTableCell noBorder>
-              <Typography variant='h6'>{t('simulation.featuresTable.products.1.title')}</Typography>
-              <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
+              <Typography variant='h4'>{t('simulation.featuresTable.products.1.title')}</Typography>
+              <Hidden smDown>
+                <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
+              </Hidden>
             </StyledTableCell>
           </TableRow>
         </TableHead>
@@ -256,7 +262,9 @@ export default function Simulation() {
         </TableBody>
       </StyledTable>
 
-      <ButtonGetDemo />
+      <Center>
+        <ButtonGetDemo />
+      </Center>
 
       <Grid container>
         <Grid item xs={12} sm={6}>

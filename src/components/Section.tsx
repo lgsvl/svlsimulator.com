@@ -83,7 +83,7 @@ interface SectionProps extends ContentProps {
   tuckImage?: boolean;
 }
 
-const Content = ({ buttonProps, buttonText, children, title, variant = 'h5' }: ContentProps) => {
+const Content = ({ buttonProps, buttonText, children, title, variant = 'h4' }: ContentProps) => {
   let button;
   switch (buttonText) {
     case 'getDemo':

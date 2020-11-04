@@ -21,7 +21,7 @@ export default function DigitalTwin() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('digitaltwin.title')}>
-      <Section title={t('digitaltwin.title')} variant='h2' buttonText='getDemo' src={srcDigitalTwinPoster} tuckImage>
+      <Section title={t('digitaltwin.title')} variant='h3' buttonText='getDemo' src={srcDigitalTwinPoster} tuckImage>
         {tMap('digitaltwin.body', TypoWrapper)}
       </Section>
 

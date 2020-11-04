@@ -1,12 +1,12 @@
 import { withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import BackgroundVideo from 'src/components/BackgroundVideo';
 import { ButtonGetDemo } from 'src/components/Button';
+import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
@@ -17,16 +17,10 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
-import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import videoSrcHero from '../videos/Hero.mp4';
 import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
-
-const Center = withTheme(styled(Container)`
-  text-align: center;
-  max-width: ${({ theme }) => px(theme.spacing(90))};
-`);
 
 const SmallImage = withTheme(styled(({ src, ...rest }) => <Box {...rest} />)`
   height: 456px;
@@ -68,7 +62,7 @@ export default function Home() {
             <Typography variant='h1'>{t('home.title')}</Typography>
           </Grid>
           <Grid item>
-            <Center disableGutters>
+            <Center disableGutters maxWidth={90}>
               {tMap('home.body', TypoWrapper)}
               <Box mt={6}>
                 <ButtonGetDemo />
@@ -87,6 +81,7 @@ export default function Home() {
           buttonText='getDemo'
           image={<BackgroundVideo src={videoSrcPlaceholder1} />}
           tuckImage
+          variant='h3'
         >
           {tMap('home.section1.body', TypoWrapper)}
         </Section>
@@ -99,13 +94,14 @@ export default function Home() {
           flip
           image={<BackgroundVideo src={videoSrcPlaceholder2} />}
           tuckImage
+          variant='h3'
         >
           {tMap('home.section2.body', TypoWrapper)}
         </Section>
       </Box>
 
       <Box my={15}>
-        <Center disableGutters>
+        <Center disableGutters maxWidth={90}>
           <LayoutGrid xs={2} sm={4} spacing={2}>
             <IconBaidu {...brandIconProps} />
             <IconApollo {...brandIconProps} />

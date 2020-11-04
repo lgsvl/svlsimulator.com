@@ -24,7 +24,7 @@ export default function Applications() {
 
   return (
     <Page title={t('applications.title')}>
-      <Section title={t('applications.title')} variant='h2' buttonText='getDemo' src={srcFuture} tuckImage>
+      <Section title={t('applications.title')} variant='h3' buttonText='getDemo' src={srcFuture} tuckImage>
         {tMap('applications.body', TypoWrapper)}
       </Section>
 

@@ -1,25 +1,25 @@
 import { Hidden, withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { ButtonGetDemo } from 'src/components/Button';
+import Center from 'src/components/Center';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import { px } from 'src/utils/theme';
 import styled from 'styled-components';
-
-const Center = withTheme(styled(Container)`
-  text-align: center;
-  max-width: ${({ theme }) => px(theme.spacing(100))};
-`);
 
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
 `);
+
+const HeadingWrapper: MapFunction<string> = (str, i) => (
+  <Typography variant='h5' key={`heading${i}`}>
+    {str}
+  </Typography>
+);
 
 const TypoWrapper: MapFunction<string> = (str, i) => (
   <Typography paragraph key={`paragraph${i}`}>
@@ -33,24 +33,24 @@ export default function About() {
     <Page title={t('about.title')}>
       <Box height='70vh'>
         <HeroGrid container alignItems='center' justify='center'>
-          <Center>
-            <Typography variant='h6'>{t('about.body')}</Typography>
+          <Center maxWidth={100}>
+            <Typography variant='h4'>{t('about.body')}</Typography>
           </Center>
         </HeroGrid>
       </Box>
       <Grid container>
         <Grid item xs={12} sm={5}>
           <Box mb={7}>
-            <Typography variant='h6' gutterBottom>
-              {t('about.mission.title')}
-            </Typography>
-            {tMap('about.mission.body', TypoWrapper)}
+            <Box mb={2}>
+              <Typography variant='overline'>{t('about.mission.title')}</Typography>
+            </Box>
+            {tMap('about.mission.body', HeadingWrapper)}
           </Box>
           <Box mb={7}>
-            <Typography variant='h6' gutterBottom>
-              {t('about.vision.title')}
-            </Typography>
-            {tMap('about.vision.body', TypoWrapper)}
+            <Box mb={2}>
+              <Typography variant='overline'>{t('about.vision.title')}</Typography>
+            </Box>
+            {tMap('about.vision.body', HeadingWrapper)}
           </Box>
           <Box mb={7}>
             <ButtonGetDemo />

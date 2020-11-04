@@ -230,7 +230,9 @@ export default function News({ data }: { data: NewsIndexQuery }) {
 
   return (
     <Page title={t('news.title')}>
-      <Typography variant='h1'>{t('news.title')}</Typography>
+      <Box mt={{ xs: 2, md: 6 }} mb={4}>
+        <Typography variant='h3'>{t('news.title')}</Typography>
+      </Box>
       <LayoutGrid sm={2} md={4} spacing={2} dense>
         {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
           const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
