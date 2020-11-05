@@ -1,15 +1,17 @@
 import { styled as muiStyled } from '@material-ui/core/styles';
-import { spacing, SpacingProps } from '@material-ui/system';
+import { compose, spacing, SpacingProps, sizing, SizingProps } from '@material-ui/system';
 
-type SpacedComponent<T> = React.FC<
-  T &
-    SpacingProps & {
-      component?: React.ComponentType | keyof JSX.IntrinsicElements;
-    }
->;
+type SpacedProps<T = {}> = T &
+  SpacingProps &
+  SizingProps & {
+    component?: React.ComponentType | React.ReactHTMLElement<HTMLElement>;
+  };
 
-// Add the `spacing` props to the component
-const addSpacing = <T>(Comp: React.FC<T>) => muiStyled(Comp)(spacing) as SpacedComponent<T>;
+type SpacedComponent<T> = React.FC<SpacedProps<T>>;
+
+// Add the `spacing` and `sizing` props to the component
+const addSpacing = <T>(Comp: SpacedComponent<T>) => muiStyled(Comp)(compose(spacing, sizing));
 
 export default addSpacing;
 export { addSpacing };
+export type { SpacedComponent, SpacedProps };

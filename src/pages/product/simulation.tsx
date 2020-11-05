@@ -225,7 +225,7 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section title={t('simulation.title')} variant='h3' buttonText='getDemo' tuckImage src={srcSimulationPoster}>
+      <Section buttonText='getDemo' src={srcSimulationPoster} title={t('simulation.title')} tuckImage variant='h3'>
         {tMap('simulation.body', ListItemWrapper)}
       </Section>
 

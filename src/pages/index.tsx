@@ -1,5 +1,5 @@
 import { withTheme } from '@material-ui/core';
-import Box, { BoxProps } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
@@ -8,6 +8,7 @@ import BackgroundVideo from 'src/components/BackgroundVideo';
 import { ButtonGetDemo } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
+import Image, { ImageProps } from 'src/components/Image';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
 import Page from 'src/components/Page';
@@ -22,23 +23,9 @@ import videoSrcHero from '../videos/Hero.mp4';
 import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
-const SmallImage = withTheme(styled(({ src, ...rest }) => <Box {...rest} />)`
-  height: 456px;
-  width: 100%;
-  background-image: url(${({ src }) => src});
-  background-size: cover;
-  background-position: center center;
-  border-radius: 8px;
-
-  ${({ theme }) => `
-    ${theme.breakpoints.down('sm')} {
-      height: 300px;
-    }
-    ${theme.breakpoints.down('xs')} {
-      height: 200px;
-    }
-  `}
-`) as React.FC<BoxProps & { src?: string }>;
+const SmallImage = (props: ImageProps) => (
+  <Image height={{ xs: 200, sm: 300, md: 456 }} mb={{ xs: 2, md: 5 }} borderRadius='borderRadius' {...props} />
+);
 
 const HeroBox = withTheme(styled(Box)``);
 
@@ -114,7 +101,7 @@ export default function Home() {
       <Box my={15}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>
-            <SmallImage mb={{ xs: 2, md: 5 }} src={srcCloudPoster} />
+            <SmallImage src={srcCloudPoster} />
             <SectionContent
               title={t('home.features.0.title')}
               buttonText='readMore'
@@ -124,7 +111,7 @@ export default function Home() {
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <SmallImage mb={{ xs: 2, md: 5 }} src={srcDigitalTwinPoster} />
+            <SmallImage src={srcDigitalTwinPoster} />
             <SectionContent
               title={t('home.features.1.title')}
               buttonText='readMore'
@@ -134,7 +121,7 @@ export default function Home() {
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <SmallImage mb={{ xs: 2, md: 5 }} src={srcSimulationPoster} />
+            <SmallImage src={srcSimulationPoster} />
             <SectionContent
               title={t('home.features.2.title')}
               buttonText='readMore'

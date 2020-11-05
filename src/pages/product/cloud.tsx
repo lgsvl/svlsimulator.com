@@ -21,7 +21,7 @@ export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
-      <Section title={t('cloud.title')} variant='h3' buttonText='getDemo' src={srcCloudPoster} tuckImage flip>
+      <Section buttonText='getDemo' flip src={srcCloudPoster} title={t('cloud.title')} tuckImage variant='h3'>
         <List>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 

@@ -1,12 +1,13 @@
 import { ButtonProps, withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import Grid, { GridProps } from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Button, { ButtonGetDemo, ButtonReadMore } from 'src/components/Button';
-import GridBox from 'src/components/GridBox';
+import GridBox, { GridBoxProps } from 'src/components/GridBox';
+import Image, { ImageProps } from 'src/components/Image';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import { LinkProps } from './Link';
@@ -22,21 +23,17 @@ const StyledPaper = withTheme(styled(Paper)``);
 
 const TitleGridBox = withTheme(styled(GridBox)`
   text-shadow: 0px 2px black, 0px 2px 10px rgba(0, 0, 0, 0.6);
-`) as typeof GridBox;
+`);
 
 const BodyGridBox = withTheme(styled(GridBox)`
   text-shadow: 0px 1px 1px black, 0px 3px 9px rgba(0, 0, 0, 0.6);
+
+  .MuiTypography-paragraph:last-child {
+    margin-bottom: 0;
+  }
 `) as typeof GridBox;
 
-const Image = withTheme(styled(({ src, ...rest }) => <Box {...rest} />)`
-  height: 100%;
-  width: 100%;
-  min-height: 300px;
-  background-image: url(${({ src }) => src});
-  background-size: cover;
-  background-position: center center;
-  border-radius: 8px;
-`);
+const StyledImage = (props: ImageProps) => <Image minHeight={300} borderRadius='borderRadius' {...props} />;
 
 const countChildren = (children: React.ReactNode | React.ReactChildren) =>
   React.Children.toArray(children).filter(c => Boolean(c)).length;
@@ -56,13 +53,13 @@ const TuckingBox = withTheme(styled(Box)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: ${(1 + doubleTwoColumns) * 100}%;
   }
-`);
+`) as typeof Box;
 
 const ReverseTuckingBox = withTheme(styled(TuckingBox)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     margin-inline-start: ${roundTo(doubleTwoColumns * -100, 4)}%;
   }
-`);
+`) as typeof TuckingBox;
 
 type BaseSectionProps = {
   children: React.ReactNode;
@@ -74,16 +71,25 @@ type BaseSectionProps = {
 interface ContentProps extends BaseSectionProps {
   buttonProps?: ButtonProps & LinkProps;
   buttonText?: string;
-  direction?: GridProps['direction'];
 }
 
 interface SectionProps extends ContentProps {
   flip?: boolean;
   image?: React.ReactNode;
+  minHeight?: GridBoxProps['minHeight'];
   tuckImage?: boolean;
 }
 
-const Content = ({ buttonProps, buttonText, children, title, variant = 'h4' }: ContentProps) => {
+const Content = ({
+  buttonProps,
+  buttonText,
+  children,
+  direction = 'column',
+  justify = 'center',
+  title,
+  variant = 'h4',
+  ...rest // Rest allows all props from GridBoxProps to be applied to the containing GridBox component
+}: ContentProps & GridBoxProps) => {
   let button;
   switch (buttonText) {
     case 'getDemo':
@@ -96,20 +102,24 @@ const Content = ({ buttonProps, buttonText, children, title, variant = 'h4' }: C
       button = <Button {...buttonProps}>{buttonText}</Button>;
   }
   return (
-    <Grid container direction='column'>
+    <GridBox {...rest} direction={direction} justify={justify} container>
       <TitleGridBox item>
         <Typography variant={variant}>{title}</Typography>
       </TitleGridBox>
-      <BodyGridBox item my={{ xs: 2, md: 5 }}>
+      <BodyGridBox item mt={{ xs: 2, md: 5 }}>
         {children}
       </BodyGridBox>
-      {buttonText && <GridBox item>{button}</GridBox>}
-    </Grid>
+      {buttonText && (
+        <GridBox item mt={{ xs: 2, md: 5 }}>
+          {button}
+        </GridBox>
+      )}
+    </GridBox>
   );
 };
 
-const Section = ({ buttonText, children, flip, image, src, title, tuckImage, variant }: SectionProps) => {
-  let imageTag = image || <Image src={src} />;
+const Section = ({ buttonText, children, flip, minHeight, image, src, title, tuckImage, variant }: SectionProps) => {
+  let imageTag = image || <StyledImage src={src} />;
   if (tuckImage) {
     let ImageContainerComponent = TuckingBox;
     if (flip) {
@@ -117,6 +127,12 @@ const Section = ({ buttonText, children, flip, image, src, title, tuckImage, var
     }
     imageTag = <ImageContainerComponent>{imageTag}</ImageContainerComponent>;
   }
+
+  // Add a min-height for any h3 variant, if a custom one doesn't exist.
+  if (variant === 'h3' && minHeight == null) {
+    minHeight = { md: 458 };
+  }
+
   return (
     <SectionContainer component='section' disableGutters>
       <StyledPaper elevation={0}>
@@ -126,7 +142,7 @@ const Section = ({ buttonText, children, flip, image, src, title, tuckImage, var
           </Grid>
           <Grid item xs={12} md={6}>
             <Box position='relative'>
-              <Content title={title} buttonText={buttonText} variant={variant}>
+              <Content title={title} buttonText={buttonText} minHeight={minHeight} variant={variant}>
                 {children}
               </Content>
             </Box>
@@ -145,7 +161,7 @@ const FullWidthSection = ({ children, src, title, variant = 'h5' }: BaseSectionP
             <Typography variant={variant}>{title}</Typography>
           </Box>
         ) : null}
-        <Image src={src} />
+        <StyledImage src={src} />
         {countChildren(children) ? <Box mt={{ xs: 2, md: 5 }}>{children}</Box> : null}
       </Box>
     </StyledPaper>
