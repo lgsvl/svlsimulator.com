@@ -1,6 +1,7 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
+import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -43,7 +44,12 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
 
   return (
     <Box my={4} position='relative' {...rest}>
-      <BackgroundVideo src={videoSrcSubscribe} position='absolute' />
+      <BackgroundVideo src={videoSrcSubscribe} position='absolute'>
+        <Typography>
+          A really cool looking video of a Lidar point-cloud following a simulated autonomous vehicle that makes you
+          really want to subscribe to our email list for more information.
+        </Typography>
+      </BackgroundVideo>
       <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
         <FullHeightGrid container alignItems='center' justify='center'>
           <Grid item xs={12} sm={10} md={6}>
@@ -51,6 +57,8 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
               {t('main.subscribe.title')}
             </Typography>
             <Input
+              id='subscribeEmailAddress'
+              label={t('main.subscribe.emailPlaceholder')}
               placeholder={t('main.subscribe.emailPlaceholder')}
               fullWidth
               variant='outlined'

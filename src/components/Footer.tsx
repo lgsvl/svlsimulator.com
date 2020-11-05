@@ -21,15 +21,24 @@ const Copyright = withTheme(styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
 `);
 
+const StyledLink = withTheme(styled(Link)`
+  display: block;
+  color: inherit;
+`);
+
 const TypoWrapper: MapFunction<string> = (str, i) => (
   <Typography paragraph color='secondary' key={`paragraph${i}`}>
     {str}
   </Typography>
 );
 
-const FooterLink = withTheme(styled(({ to, ...rest }: LinkProps & ListItemTextProps) => (
-  <ListItem disableGutters component={Link} to={to} color='textSecondary' dense>
-    <ListItemText primaryTypographyProps={{ variant: 'body2' }} {...rest} />
+const FooterLink = withTheme(styled(({ children, primary, to, ...rest }: LinkProps & ListItemTextProps) => (
+  <ListItem disableGutters dense>
+    <ListItemText primaryTypographyProps={{ variant: 'body2' }} {...rest}>
+      <StyledLink to={to} color='textSecondary'>
+        {primary || children}
+      </StyledLink>
+    </ListItemText>
   </ListItem>
 ))`
   color: ${({ theme }) => theme.palette.secondary.dark};

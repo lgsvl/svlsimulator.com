@@ -22,7 +22,7 @@ export default function CloudSimAAS() {
   return (
     <Page title={t('cloud.title')}>
       <Section buttonText='getDemo' flip src={srcCloudPoster} title={t('cloud.title')} tuckImage variant='h3'>
-        <List>{tMap('cloud.body', ListItemWrapper)}</List>
+        <List disablePadding>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 
       <Grid container>

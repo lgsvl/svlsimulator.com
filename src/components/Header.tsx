@@ -113,6 +113,7 @@ const DesktopMenu = () => {
               onMouseEnter={handleMenuActivate}
               onMouseLeave={handleMenuDeactivate}
               ref={anchorRef}
+              alia-label='Open Product List Menu'
             >
               {t('main.header.products')}
             </MenuButton>
@@ -138,13 +139,28 @@ const DesktopMenu = () => {
                   <Paper>
                     <ClickAwayListener onClickAway={handleMenuDeactivate}>
                       <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
-                        <MenuItem component={Link} to='/product/simulation/' onClick={handleMenuDeactivate}>
+                        <MenuItem
+                          component={Link}
+                          to='/product/simulation/'
+                          onClick={handleMenuDeactivate}
+                          alia-label='Go to Simulation product page'
+                        >
                           {t('main.header.simulation')}
                         </MenuItem>
-                        <MenuItem component={Link} to='/product/cloud/' onClick={handleMenuDeactivate}>
+                        <MenuItem
+                          component={Link}
+                          to='/product/cloud/'
+                          onClick={handleMenuDeactivate}
+                          alia-label='Go to Cloud product page'
+                        >
                           {t('main.header.cloud')}
                         </MenuItem>
-                        <MenuItem component={Link} to='/product/digitaltwin/' onClick={handleMenuDeactivate}>
+                        <MenuItem
+                          component={Link}
+                          to='/product/digitaltwin/'
+                          onClick={handleMenuDeactivate}
+                          alia-label='Go to Digital-twin product page'
+                        >
                           {t('main.header.digitaltwin')}
                         </MenuItem>
                       </MenuList>
@@ -179,24 +195,29 @@ const DesktopMenu = () => {
             </Menu> */}
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <StyledLinkButton color='secondary' fullWidth to='/applications/'>
+            <StyledLinkButton color='secondary' fullWidth to='/applications/' alia-label='Go to Applications page'>
               {t('main.header.applications')}
             </StyledLinkButton>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <StyledLinkButton color='secondary' fullWidth to='/news/'>
+            <StyledLinkButton color='secondary' fullWidth to='/news/' alia-label='Go to News page'>
               {t('main.header.news')}
             </StyledLinkButton>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <StyledLinkButton color='secondary' fullWidth to='/about/'>
+            <StyledLinkButton color='secondary' fullWidth to='/about/' alia-label='Go to About page'>
               {t('main.header.about')}
             </StyledLinkButton>
           </Grid>
         </Grid>
       </Grid>
       <Grid item>
-        <StyledLinkButton color='primary' to='https://wise.staging.lgsvlsimulator.com/sign-in' endIcon={<IconLogin />}>
+        <StyledLinkButton
+          color='primary'
+          to='https://wise.staging.lgsvlsimulator.com/sign-in'
+          endIcon={<IconLogin />}
+          alia-label='Log in Button'
+        >
           {t('main.header.login')}
         </StyledLinkButton>
       </Grid>
@@ -214,7 +235,7 @@ const MobileMenu = () => {
   return (
     <>
       <Grid item>
-        <IconButton edge='end' color='secondary' onClick={handleDrawer}>
+        <IconButton edge='end' color='secondary' onClick={handleDrawer} alia-label='Go to the main homepage'>
           <IconMenu />
         </IconButton>
       </Grid>

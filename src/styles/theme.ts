@@ -19,11 +19,13 @@ const theme = createMuiTheme({
     MuiButton: {
       root: {
         fontFamily: fontMain,
-        textTransform: 'none'
+        textTransform: 'none',
+        padding: '12px 24px'
       },
       outlined: {
         borderColor: palette.secondary.main,
-        color: palette.secondary.main
+        color: palette.secondary.main,
+        padding: '11px 23px'
       },
       outlinedPrimary: {
         borderColor: palette.text.primary

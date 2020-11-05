@@ -46,7 +46,7 @@ export default function Applications() {
         buttonText={t('main.buttons.download')}
       />
 
-      <Section title={t('applications.section4.title')} src={srcAcademics} tuckImage buttonText='getDemo'>
+      <Section contained title={t('applications.section4.title')} src={srcAcademics} tuckImage buttonText='getDemo'>
         {tMap('applications.section4.body', TypoWrapper)}
       </Section>
 
@@ -56,7 +56,7 @@ export default function Applications() {
         buttonText={t('main.buttons.download')}
       />
 
-      <Section flip title={t('applications.section5.title')} src={srcRobotics} tuckImage buttonText='getDemo'>
+      <Section contained flip title={t('applications.section5.title')} src={srcRobotics} tuckImage buttonText='getDemo'>
         {tMap('applications.section5.body', TypoWrapper)}
       </Section>
 

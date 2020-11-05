@@ -13,6 +13,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
@@ -183,7 +184,7 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
           <Typography>
             {t(row.name)}
             <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
-              {open ? <IconChevronUp /> : <IconChevronDown />}
+              {open ? <IconChevronUp title='collapse feature list' /> : <IconChevronDown title='expand feature list' />}
             </IconButton>
           </Typography>
         </FeatureCell>
@@ -226,15 +227,15 @@ export default function Simulation() {
   return (
     <Page title={t('simulation.title')}>
       <Section buttonText='getDemo' src={srcSimulationPoster} title={t('simulation.title')} tuckImage variant='h3'>
-        {tMap('simulation.body', ListItemWrapper)}
+        <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
       </Section>
 
       <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
-        {tMap('simulation.section1.body', ListItemWrapper)}
+        <List disablePadding>{tMap('simulation.section1.body', ListItemWrapper)}</List>
       </Section>
 
       <Section title={t('simulation.section2.title')} src={srcTools}>
-        {tMap('simulation.section2.body', ListItemWrapper)}
+        <List disablePadding>{tMap('simulation.section2.body', ListItemWrapper)}</List>
       </Section>
 
       <StyledTable>

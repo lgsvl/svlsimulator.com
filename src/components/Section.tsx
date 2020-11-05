@@ -1,14 +1,14 @@
 import { ButtonProps, withTheme } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
+import Box, { BoxProps } from '@material-ui/core/Box';
+import Container, { ContainerProps } from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Button, { ButtonGetDemo, ButtonReadMore } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
-import { px } from 'src/utils/theme';
+import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
 import { LinkProps } from './Link';
 
@@ -17,21 +17,44 @@ const SectionContainer = withTheme(styled(Container)`
   &:last-child {
     margin-bottom: 0;
   }
-`);
+`) as typeof Container;
 
-const StyledPaper = withTheme(styled(Paper)``);
+const StyledPaper = withTheme(styled(Paper)``) as React.FC<PaperProps>;
 
 const TitleGridBox = withTheme(styled(GridBox)`
   text-shadow: 0px 2px black, 0px 2px 10px rgba(0, 0, 0, 0.6);
-`);
+`) as React.FC<GridBoxProps>;
 
-const BodyGridBox = withTheme(styled(GridBox)`
+interface StyledBodyGridBoxProps {
+  contained?: boolean;
+  flip?: boolean;
+  tuckImage?: boolean;
+}
+
+interface BodyGridBoxProps extends GridBoxProps, StyledBodyGridBoxProps {}
+
+const BodyGridBox = withTheme(styled(({ contained, flip, tuckImage, ...rest }: BodyGridBoxProps) => (
+  <GridBox {...rest} />
+))`
+  ${({ contained, flip, tuckImage, theme }) => `
   text-shadow: 0px 1px 1px black, 0px 3px 9px rgba(0, 0, 0, 0.6);
+
+  ${
+    tuckImage && contained
+      ? `
+    padding: ${px(theme.spacing(2, flip ? 2 : 0, 2, !flip ? 2 : 0))};
+    background-color: ${fade(theme.palette.background.default, 0.6)};
+    border-radius: 8px;
+    ${!flip ? `margin-left: ${px(theme.spacing(-2))};` : ''}
+  `
+      : ''
+  }
 
   .MuiTypography-paragraph:last-child {
     margin-bottom: 0;
   }
-`) as typeof GridBox;
+`}
+`) as React.FC<BodyGridBoxProps>;
 
 const StyledImage = (props: ImageProps) => <Image minHeight={300} borderRadius='borderRadius' {...props} />;
 
@@ -53,13 +76,13 @@ const TuckingBox = withTheme(styled(Box)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: ${(1 + doubleTwoColumns) * 100}%;
   }
-`) as typeof Box;
+`) as React.FC<BoxProps>;
 
 const ReverseTuckingBox = withTheme(styled(TuckingBox)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     margin-inline-start: ${roundTo(doubleTwoColumns * -100, 4)}%;
   }
-`) as typeof TuckingBox;
+`) as React.FC<BoxProps>;
 
 type BaseSectionProps = {
   children: React.ReactNode;
@@ -68,7 +91,7 @@ type BaseSectionProps = {
   variant?: TypographyProps['variant'];
 };
 
-interface ContentProps extends BaseSectionProps {
+interface ContentProps extends BaseSectionProps, StyledBodyGridBoxProps {
   buttonProps?: ButtonProps & LinkProps;
   buttonText?: string;
 }
@@ -84,9 +107,12 @@ const Content = ({
   buttonProps,
   buttonText,
   children,
+  contained,
   direction = 'column',
+  flip,
   justify = 'center',
   title,
+  tuckImage,
   variant = 'h4',
   ...rest // Rest allows all props from GridBoxProps to be applied to the containing GridBox component
 }: ContentProps & GridBoxProps) => {
@@ -106,19 +132,30 @@ const Content = ({
       <TitleGridBox item>
         <Typography variant={variant}>{title}</Typography>
       </TitleGridBox>
-      <BodyGridBox item mt={{ xs: 2, md: 5 }}>
+      <BodyGridBox item mt={{ xs: 2, md: 5 }} flip={flip} contained={contained} tuckImage={tuckImage}>
         {children}
       </BodyGridBox>
       {buttonText && (
         <GridBox item mt={{ xs: 2, md: 5 }}>
-          {button}
+          <Box textAlign={!flip && contained ? 'end' : undefined}>{button}</Box>
         </GridBox>
       )}
     </GridBox>
   );
 };
 
-const Section = ({ buttonText, children, flip, minHeight, image, src, title, tuckImage, variant }: SectionProps) => {
+const Section = ({
+  buttonText,
+  children,
+  contained,
+  flip,
+  image,
+  minHeight,
+  src,
+  title,
+  tuckImage,
+  variant
+}: SectionProps) => {
   let imageTag = image || <StyledImage src={src} />;
   if (tuckImage) {
     let ImageContainerComponent = TuckingBox;
@@ -142,7 +179,15 @@ const Section = ({ buttonText, children, flip, minHeight, image, src, title, tuc
           </Grid>
           <Grid item xs={12} md={6}>
             <Box position='relative'>
-              <Content title={title} buttonText={buttonText} minHeight={minHeight} variant={variant}>
+              <Content
+                title={title}
+                buttonText={buttonText}
+                minHeight={minHeight}
+                variant={variant}
+                contained={contained}
+                flip={flip}
+                tuckImage={tuckImage}
+              >
                 {children}
               </Content>
             </Box>
@@ -152,6 +197,7 @@ const Section = ({ buttonText, children, flip, minHeight, image, src, title, tuc
     </SectionContainer>
   );
 };
+
 const FullWidthSection = ({ children, src, title, variant = 'h5' }: BaseSectionProps) => (
   <SectionContainer component='section' disableGutters>
     <StyledPaper elevation={0}>

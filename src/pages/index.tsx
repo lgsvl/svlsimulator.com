@@ -43,7 +43,11 @@ export default function Home() {
   return (
     <Page>
       <HeroBox mb={15} height='70vh' position='relative'>
-        <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }} />
+        <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }}>
+          <Typography>
+            A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
+          </Typography>
+        </BackgroundVideo>
         <HeroGrid container direction='column' alignItems='center' justify='center'>
           <Grid item>
             <Typography variant='h1'>{t('home.title')}</Typography>
@@ -66,7 +70,14 @@ export default function Home() {
         <Section
           title={t('home.section1.title')}
           buttonText='getDemo'
-          image={<BackgroundVideo src={videoSrcPlaceholder1} />}
+          contained
+          image={
+            <BackgroundVideo src={videoSrcPlaceholder1}>
+              <Typography>
+                A different video of Lidar scanning an environment, identifying objects as it moves.
+              </Typography>
+            </BackgroundVideo>
+          }
           tuckImage
           variant='h3'
         >
@@ -78,8 +89,13 @@ export default function Home() {
         <Section
           title={t('home.section2.title')}
           buttonText='getDemo'
+          contained
           flip
-          image={<BackgroundVideo src={videoSrcPlaceholder2} />}
+          image={
+            <BackgroundVideo src={videoSrcPlaceholder2}>
+              <Typography>A video of a simulated vehicle autonomously driving down a street.</Typography>
+            </BackgroundVideo>
+          }
           tuckImage
           variant='h3'
         >
@@ -105,7 +121,7 @@ export default function Home() {
             <SectionContent
               title={t('home.features.0.title')}
               buttonText='readMore'
-              buttonProps={{ to: '/product/simulation/' }}
+              buttonProps={{ to: '/product/simulation/', title: t('home.features.0.title') }}
             >
               {tMap('home.features.0.body', TypoWrapper)}
             </SectionContent>
@@ -115,7 +131,7 @@ export default function Home() {
             <SectionContent
               title={t('home.features.1.title')}
               buttonText='readMore'
-              buttonProps={{ to: '/product/cloud/' }}
+              buttonProps={{ to: '/product/cloud/', title: t('home.features.1.title') }}
             >
               {tMap('home.features.1.body', TypoWrapper)}
             </SectionContent>
@@ -125,7 +141,7 @@ export default function Home() {
             <SectionContent
               title={t('home.features.2.title')}
               buttonText='readMore'
-              buttonProps={{ to: '/product/digitaltwin/' }}
+              buttonProps={{ to: '/product/digitaltwin/', title: t('home.features.2.title') }}
             >
               {tMap('home.features.2.body', TypoWrapper)}
             </SectionContent>
