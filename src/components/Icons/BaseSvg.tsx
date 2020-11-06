@@ -1,11 +1,16 @@
 /* eslint-disable max-len */
 import React from 'react';
 
+export interface BaseSvgProps extends React.SVGProps<SVGSVGElement> {
+  color?: string;
+  title?: string;
+}
+
 const getUniqueId = () => new Date().getMilliseconds() + '-' + Math.round(Math.pow(Math.random(), -5));
 
 // Accessible SVG Icon
 // https://css-tricks.com/accessible-svgs/
-export const BaseSvg: React.FC<BaseSvg> = ({ children, title = '', ...rest }) => {
+export const BaseSvg: React.FC<BaseSvgProps> = ({ children, title = '', ...rest }) => {
   const uniqueId = `icon-${getUniqueId()}-title`;
   return (
     <svg
