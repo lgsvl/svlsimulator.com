@@ -1,5 +1,5 @@
 import Container, { ContainerProps } from '@material-ui/core/Container';
-import { useTheme, withTheme } from '@material-ui/core/styles';
+import { withTheme } from '@material-ui/core/styles';
 import React from 'react';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
