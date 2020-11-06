@@ -17,7 +17,7 @@ import React, { useCallback, useState, useMemo } from 'react';
 import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
 import Input from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
-import { px } from 'src/utils/theme';
+import { px, fade } from 'src/utils/theme';
 import styled from 'styled-components';
 
 const FormDialog = withTheme(styled(Dialog)`
@@ -33,8 +33,8 @@ const FormDialog = withTheme(styled(Dialog)`
 
 const FormDialogTitle = withTheme(styled(DialogTitle)`
   padding: 14px ${({ theme }) => px(theme.spacing(3))};
-  background-color: rgba(31, 41, 64, 0.6);
-`); // palette.neutral.yankeesBlue but with 60% opacity
+  background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.6)};
+`);
 
 const CloseIconButton = withTheme(styled(IconButton)`
   padding: 0px;
