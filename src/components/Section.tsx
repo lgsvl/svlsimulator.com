@@ -5,9 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
-import Button, { ButtonGetDemo, ButtonReadMore } from 'src/components/Button';
+import Button, { ButtonReadMore } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
+import RequestDemoButton from 'src/components/RequestDemoButton';
 import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
 import { LinkProps } from './Link';
@@ -119,7 +120,7 @@ const Content = ({
   let button;
   switch (buttonText) {
     case 'getDemo':
-      button = <ButtonGetDemo {...buttonProps} />;
+      button = <RequestDemoButton {...buttonProps} />;
       break;
     case 'readMore':
       button = <ButtonReadMore {...buttonProps} />;

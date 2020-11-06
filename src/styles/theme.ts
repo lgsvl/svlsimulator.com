@@ -55,7 +55,24 @@ const theme = createMuiTheme({
     },
     MuiInputBase: {
       input: {
-        borderRadius: 4
+        borderRadius: 4,
+
+        '&:-webkit-autofill': {
+          '-webkit-text-fill-color': palette.text.secondary,
+          'text-fill-color': palette.text.secondary,
+          '-webkit-box-shadow': `0 0 0px 1000px ${fade(palette.background.paper, 0.95)} inset`,
+          'box-shadow': `0 0 0px 1000px ${fade(palette.background.paper, 0.95)} inset`,
+          transition: 'background-color 0.25s ease-in-out'
+        }
+      }
+    },
+    MuiInputLabel: {
+      root: {
+        color: palette.text.secondary,
+
+        '&$focused': {
+          color: palette.text.primary
+        }
       }
     },
     MuiListItem: {
@@ -93,7 +110,7 @@ const theme = createMuiTheme({
       rounded: {
         borderRadius: '8px' // spacing(1)
       },
-      // Reserving elevation24 for the "page content" area, the body of most pages.
+      // Reserving elevation24 for the 'page content' area, the body of most pages.
       elevation0: {
         backgroundColor: 'transparent'
       },
@@ -196,11 +213,11 @@ const theme = createMuiTheme({
 const mobileBreakpoint = theme.breakpoints.down('sm');
 
 // This sets the root Toolbar element's minHeight, but its overridden by breakpoints.
-// Will need to figure out how to "properly" override those or recreate them.
+// Will need to figure out how to 'properly' override those or recreate them.
 theme.mixins.toolbar.minHeight = 80;
 
 //
-// "Mobile" Sizing
+// 'Mobile' Sizing
 //
 theme.typography.h1[mobileBreakpoint] = {
   fontSize: 40,
