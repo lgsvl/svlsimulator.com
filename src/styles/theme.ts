@@ -55,7 +55,15 @@ const theme = createMuiTheme({
     },
     MuiInputBase: {
       input: {
-        borderRadius: 4
+        borderRadius: 4,
+
+        '&:-webkit-autofill': {
+          '-webkit-text-fill-color': palette.text.secondary,
+          'text-fill-color': palette.text.secondary,
+          '-webkit-box-shadow': `0 0 0px 1000px ${fade(palette.background.paper, 0.95)} inset`,
+          'box-shadow': `0 0 0px 1000px ${fade(palette.background.paper, 0.95)} inset`,
+          transition: 'background-color 0.25s ease-in-out'
+        }
       }
     },
     MuiListItem: {
