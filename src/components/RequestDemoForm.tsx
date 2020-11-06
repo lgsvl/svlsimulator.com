@@ -1,13 +1,13 @@
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Dialog, { DialogProps } from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogTitle, { DialogTitleProps } from '@material-ui/core/DialogTitle';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -30,22 +30,19 @@ const FormDialog = withTheme(styled(Dialog)`
     max-height: 90vh;
     background-color: ${({ theme }) => theme.palette.background.default};
   }
-`);
+`) as React.FC<DialogProps>;
 
 const FormDialogTitle = withTheme(styled(DialogTitle)`
   background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.6)};
-`);
+  padding-top: 0;
+  padding-bottom: 0;
+`) as React.FC<DialogTitleProps>;
 
 const CloseIconButton = withTheme(styled(IconButton)`
   padding: ${({ theme }) => px(theme.spacing(1))};
-`);
+`) as React.FC<IconButtonProps>;
 
 const FormDialogContent = addSpacing(DialogContent);
-
-const LogoImage = withTheme(styled(IconLGSVLSimulator)`
-  display: block;
-  margin-bottom: ${({ theme }) => px(theme.spacing(5))};
-`);
 
 const FormDialogActions = addSpacing(DialogActions);
 
@@ -91,9 +88,9 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
       onClose={onClose}
       {...rest}
     >
-      <form onSubmit={handleSubmit} autoComplete='off'>
+      <form onSubmit={handleSubmit}>
         <FormDialogTitle disableTypography>
-          <Box display='flex' alignItems='center' justifyContent='space-between'>
+          <Box display='flex' alignItems='center' justifyContent='space-between' height={56}>
             <Typography id='form-title' variant='body1'>
               {t('requestdemo.title')}
             </Typography>
@@ -106,7 +103,9 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
           <Grid container spacing={3}>
             <Hidden smDown>
               <Grid item sm={4}>
-                <LogoImage />
+                <Box mb={5}>
+                  <IconLGSVLSimulator />
+                </Box>
                 <Typography id='form-description' variant='caption' paragraph>
                   {t('requestdemo.message')}
                 </Typography>
