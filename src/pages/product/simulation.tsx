@@ -18,7 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import { ButtonGetDemo } from 'src/components/Button';
+import RequestDemoButton from 'src/components/RequestDemoButton';
 import Center from 'src/components/Center';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li from 'src/components/Li';
@@ -264,7 +264,7 @@ export default function Simulation() {
       </StyledTable>
 
       <Center>
-        <ButtonGetDemo />
+        <RequestDemoButton />
       </Center>
 
       <Grid container>

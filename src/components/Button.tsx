@@ -12,15 +12,6 @@ const Button: React.ForwardRefExoticComponent<ButtonProps> = React.forwardRef((p
   <StyledButton variant='outlined' {...props} ref={ref} />
 ));
 
-const ButtonGetDemo: typeof Button = React.forwardRef((props, ref) => {
-  const { t } = useTranslation();
-  return (
-    <Button color='primary' variant='contained' {...props} ref={ref}>
-      {t('main.buttons.getDemo')}
-    </Button>
-  );
-});
-
 const ButtonReadMore: typeof LinkButton = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
   return (
@@ -31,4 +22,4 @@ const ButtonReadMore: typeof LinkButton = React.forwardRef((props, ref) => {
 });
 
 export default Button;
-export { Button, ButtonGetDemo, ButtonReadMore };
+export { Button, ButtonReadMore };
