@@ -66,6 +66,15 @@ const theme = createMuiTheme({
         }
       }
     },
+    MuiInputLabel: {
+      root: {
+        color: palette.text.secondary,
+
+        '&$focused': {
+          color: palette.text.primary
+        }
+      }
+    },
     MuiListItem: {
       button: {
         '&:hover': {

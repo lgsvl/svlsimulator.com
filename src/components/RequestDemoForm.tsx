@@ -1,3 +1,4 @@
+import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Dialog, { DialogProps } from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -10,14 +11,15 @@ import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Typography from '@material-ui/core/Typography';
 import { withTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { useFormik } from 'formik';
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
 import Input from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
-import { px, fade } from 'src/utils/theme';
+import addSpacing from 'src/utils/addSpacing';
+import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
 
 const FormDialog = withTheme(styled(Dialog)`
@@ -27,35 +29,25 @@ const FormDialog = withTheme(styled(Dialog)`
     max-width: 90vw;
     max-height: 90vh;
     background-color: ${({ theme }) => theme.palette.background.default};
-    border-radius: 8px;
   }
 `);
 
 const FormDialogTitle = withTheme(styled(DialogTitle)`
-  padding: 14px ${({ theme }) => px(theme.spacing(3))};
   background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.6)};
 `);
 
 const CloseIconButton = withTheme(styled(IconButton)`
-  padding: 0px;
-  position: absolute;
-  right: ${({ theme }) => px(theme.spacing(3))};
-  top: 14px;
+  padding: ${({ theme }) => px(theme.spacing(1))};
 `);
 
-const FormDialogContent = withTheme(styled(DialogContent)`
-  padding: ${({ theme }) => px(theme.spacing(3))};
-`);
+const FormDialogContent = addSpacing(DialogContent);
 
 const LogoImage = withTheme(styled(IconLGSVLSimulator)`
   display: block;
-  padding-bottom: ${({ theme }) => px(theme.spacing(3))};
+  margin-bottom: ${({ theme }) => px(theme.spacing(5))};
 `);
 
-const FormDialogActions = withTheme(styled(DialogActions)`
-  padding-right: ${({ theme }) => px(theme.spacing(3))};
-  padding-bottom: ${({ theme }) => px(theme.spacing(3))};
-`);
+const FormDialogActions = addSpacing(DialogActions);
 
 const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
   const { t } = useTranslation();
@@ -101,19 +93,21 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
     >
       <form onSubmit={handleSubmit} autoComplete='off'>
         <FormDialogTitle disableTypography>
-          <Typography id='form-title' variant='body1'>
-            {t('requestdemo.title')}
-          </Typography>
-          <CloseIconButton aria-label='close' onClick={dispatchClose}>
-            <IconX />
-          </CloseIconButton>
+          <Box display='flex' alignItems='center' justifyContent='space-between'>
+            <Typography id='form-title' variant='body1'>
+              {t('requestdemo.title')}
+            </Typography>
+            <CloseIconButton aria-label='close' onClick={dispatchClose}>
+              <IconX />
+            </CloseIconButton>
+          </Box>
         </FormDialogTitle>
-        <FormDialogContent>
+        <FormDialogContent p={3}>
           <Grid container spacing={3}>
             <Hidden smDown>
               <Grid item sm={4}>
                 <LogoImage />
-                <Typography id='form-description' variant='caption' gutterBottom>
+                <Typography id='form-description' variant='caption' paragraph>
                   {t('requestdemo.message')}
                 </Typography>
               </Grid>
@@ -227,7 +221,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
             </Grid>
           </Grid>
         </FormDialogContent>
-        <FormDialogActions>
+        <FormDialogActions px={3}>
           <FormControl>
             <Button color='primary' variant='contained' disabled={isSubmitting} type='submit'>
               {t('requestdemo.confirm')}
