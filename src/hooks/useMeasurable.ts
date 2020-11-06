@@ -81,6 +81,8 @@ const useMeasurable = () => {
               mutation.type === 'attributes' &&
               (mutation.attributeName === 'style' || mutation.attributeName === 'class')
             ) {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+              // @ts-ignore
               setMeasurement(refToMeasure?.getBoundingClientRect());
             }
           }

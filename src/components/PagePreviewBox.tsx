@@ -1,42 +1,27 @@
-import Box, { BoxProps } from '@material-ui/core/Box';
-import { withTheme } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { ButtonReadMore } from 'src/components/Button';
-import styled from 'styled-components';
+import { ImageBase, ImageProps } from 'src/components/Image';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
 
-const StyledPagePreviewBox = withTheme(styled(({ src, ...rest }) => <Box {...rest} />)`
-  background-image: url(${({ src }) => src});
-  background-size: cover;
-  background-position: center center;
-`);
+export interface PagePreviewBoxProps extends ImageProps {
+  buttonText?: string;
+  link: string;
+}
 
-const PagePreviewBox = ({
-  title,
-  buttonText,
-  link,
-  ...rest
-}: BoxProps & { buttonText?: string; link: string; src: string }) => (
-  <StyledPagePreviewBox
-    mt={{ xs: 8, md: 16 }}
-    p={4}
-    alignItems='center'
-    wrap='nowrap'
-    display='flex'
-    flexDirection='column'
-    {...rest}
-  >
+const PagePreviewBox = ({ title, buttonText, link, ...rest }: PagePreviewBoxProps) => (
+  <ImageBase mt={{ xs: 8, md: 16 }} p={4} alignItems='center' display='flex' flexDirection='column' {...rest}>
     <Box mb={3}>
       <Typography>{title}</Typography>
     </Box>
     <Box>
       <ButtonReadMore to={link} />
     </Box>
-  </StyledPagePreviewBox>
+  </ImageBase>
 );
 
 const CloudPreviewBox = () => {

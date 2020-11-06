@@ -1,15 +1,14 @@
 import { withTheme } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
 import React from 'react';
 import styled from 'styled-components';
 
-const ArrowsContainer = withTheme(styled(Box)`
+const ArrowsContainer = withTheme(styled.div`
   width: 40px;
   height: 80px;
   display: inline-block;
 `);
 
-const Arrow = withTheme(styled(Box)`
+const Arrow = withTheme(styled.div`
   display: block;
   width: 20px;
   height: 20px;

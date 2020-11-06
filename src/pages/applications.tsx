@@ -24,19 +24,19 @@ export default function Applications() {
 
   return (
     <Page title={t('applications.title')}>
-      <Section title={t('applications.title')} variant='h2' buttonText='getDemo' src={srcFuture} tuckImage>
+      <Section buttonText='getDemo' src={srcFuture} title={t('applications.title')} tuckImage variant='h3'>
         {tMap('applications.body', TypoWrapper)}
       </Section>
 
-      <Section flip title={t('applications.section1.title')} src={srcSimulationPoster}>
+      <Section flip title={t('applications.section1.title')} src={srcSimulationPoster} buttonText='readMore'>
         {tMap('applications.section1.body', TypoWrapper)}
       </Section>
 
-      <Section title={t('applications.section2.title')} src={srcDigitalTwinPoster}>
+      <Section title={t('applications.section2.title')} src={srcDigitalTwinPoster} buttonText='readMore'>
         {tMap('applications.section2.body', TypoWrapper)}
       </Section>
 
-      <Section flip title={t('applications.section3.title')} src={srcCloudPoster}>
+      <Section flip title={t('applications.section3.title')} src={srcCloudPoster} buttonText='readMore'>
         {tMap('applications.section3.body', TypoWrapper)}
       </Section>
 
@@ -46,7 +46,7 @@ export default function Applications() {
         buttonText={t('main.buttons.download')}
       />
 
-      <Section title={t('applications.section4.title')} src={srcAcademics} tuckImage>
+      <Section contained title={t('applications.section4.title')} src={srcAcademics} tuckImage buttonText='getDemo'>
         {tMap('applications.section4.body', TypoWrapper)}
       </Section>
 
@@ -56,7 +56,7 @@ export default function Applications() {
         buttonText={t('main.buttons.download')}
       />
 
-      <Section flip title={t('applications.section5.title')} src={srcRobotics} tuckImage>
+      <Section contained flip title={t('applications.section5.title')} src={srcRobotics} tuckImage buttonText='getDemo'>
         {tMap('applications.section5.body', TypoWrapper)}
       </Section>
 

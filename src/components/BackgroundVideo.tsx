@@ -20,10 +20,11 @@ export interface BackgroundVideoProps extends BoxProps {
   type?: HTMLSourceElement['type'];
 }
 
-const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ title, src, type = 'video/mp4', ...rest }) => (
+const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ children, title, src, type = 'video/mp4', ...rest }) => (
   <Box height={1} width={1} position='relative' overflow='hidden' {...rest}>
     <StyledVideo controls={false} loop autoPlay muted>
       <source src={src} type={type} />
+      {children}
     </StyledVideo>
   </Box>
 );

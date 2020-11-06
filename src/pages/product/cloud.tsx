@@ -21,8 +21,8 @@ export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
-      <Section title={t('cloud.title')} variant='h2' buttonText='getDemo' src={srcCloudPoster} tuckImage flip>
-        <List>{tMap('cloud.body', ListItemWrapper)}</List>
+      <Section buttonText='getDemo' flip src={srcCloudPoster} title={t('cloud.title')} tuckImage variant='h3'>
+        <List disablePadding>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 
       <Grid container>
