@@ -123,6 +123,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 <Grid item xs={12} sm={6}>
                   <Input
                     name='name'
+                    id='form-field-name'
                     label={t('requestdemo.labels.first')}
                     placeholder={t('requestdemo.placeholders.first')}
                     value={values.name}
@@ -135,6 +136,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 <Grid item xs={12} sm={6}>
                   <Input
                     name='email'
+                    id='form-field-email'
                     label={t('requestdemo.labels.email')}
                     placeholder={t('requestdemo.placeholders.email')}
                     value={values.email}
@@ -147,6 +149,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 <Grid item xs={12} sm={6}>
                   <Input
                     name='company'
+                    id='form-field-company'
                     label={t('requestdemo.labels.company')}
                     placeholder={t('requestdemo.placeholders.company')}
                     value={values.company}
@@ -159,6 +162,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 <Grid item xs={12} sm={6}>
                   <Input
                     name='title'
+                    id='form-field-title'
                     label={t('requestdemo.labels.title')}
                     placeholder={t('requestdemo.placeholders.title')}
                     value={values.title}
@@ -171,6 +175,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 <Grid item xs={12} sm={6}>
                   <Input
                     name='region'
+                    id='form-field-region'
                     label={t('requestdemo.labels.region')}
                     placeholder={t('requestdemo.placeholders.region')}
                     value={values.region}
@@ -182,12 +187,15 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl variant='outlined' fullWidth>
-                    <InputLabel htmlFor='usecase'>{t('requestdemo.labels.usecase')}</InputLabel>
+                    <InputLabel id='form-usecase-label' htmlFor='form-field-usecase'>
+                      {t('requestdemo.labels.usecase')}
+                    </InputLabel>
                     <Select
                       label={t('requestdemo.labels.usecase')}
                       value={values.usecase}
                       onChange={handleUsecaseChange}
-                      labelId='usecase'
+                      labelId='form-usecase-label'
+                      id='form-field-usecase'
                     >
                       <MenuItem value='Autonomous Vehicle'>{t('requestdemo.usecases.vehicle')}</MenuItem>
                       <MenuItem value='Autonomous Driving Service/Software'>
@@ -203,6 +211,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                 <Grid item xs={12} sm={12}>
                   <Input
                     name='other'
+                    id='form-field-other'
                     label={t('requestdemo.labels.other')}
                     placeholder={t('requestdemo.placeholders.other')}
                     value={values.other}
