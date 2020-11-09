@@ -18,7 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import RequestDemoButton from 'src/components/RequestDemoButton';
+import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li from 'src/components/Li';

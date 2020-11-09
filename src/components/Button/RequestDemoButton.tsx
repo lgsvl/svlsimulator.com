@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useTranslation } from 'src/hooks/useTranslations';
 import Button from './Button';
-import RequestDemoForm from './RequestDemoForm';
+import RequestDemoForm from '../RequestDemoForm';
 
 const RequestDemoButton: typeof Button = React.forwardRef((props, ref) => {
   const [open, setOpen] = useState<boolean>(false);
