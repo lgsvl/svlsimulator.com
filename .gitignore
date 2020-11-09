@@ -116,4 +116,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# VSCode
+.vscode/
+
+# Dynamically generated files
 graphql-types.ts

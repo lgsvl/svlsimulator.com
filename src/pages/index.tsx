@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import { ButtonGetDemo } from 'src/components/Button';
+// import BackgroundVideo from 'src/components/BackgroundVideo';
+import RequestDemoButton from 'src/components/RequestDemoButton';
 import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
 import Image, { ImageProps } from 'src/components/Image';
@@ -70,7 +71,7 @@ export default function Home() {
             <Center disableGutters maxWidth={90}>
               {tMap('home.body', TypoWrapper)}
               <Box mt={6}>
-                <ButtonGetDemo />
+                <RequestDemoButton />
               </Box>
             </Center>
           </Grid>

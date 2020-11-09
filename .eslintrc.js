@@ -37,7 +37,8 @@ module.exports = {
     '/**/.cache/',
     '/**/.cache/*',
     '/**/public/',
-    '/**/public/*'
+    '/**/public/*',
+    '/graphql-types.ts'
   ],
   settings: {
     react: {

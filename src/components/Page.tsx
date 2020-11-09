@@ -34,7 +34,8 @@ a {
 }
 
 /* Scroll bar frame */
-::-webkit-scrollbar {
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
   height: 7px;
   width: 7px;
   background-color: transparent;
@@ -43,26 +44,31 @@ a {
     width: 15px;
   }
 }
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
   background-color: transparent;
 }
-::-webkit-scrollbar-track-piece {
+::-webkit-scrollbar-track-piece,
+*::-webkit-scrollbar-track-piece {
   background-color: transparent;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background-color: ${theme.palette.secondary.dark};
   border: 1px solid transparent;
   background-clip: padding-box;
 }
 
-::-webkit-scrollbar-corner {
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
-::-webkit-resizer {
+::-webkit-resizer,
+*::-webkit-resizer {
   border-radius: 3px;
   background-color: ${theme.palette.primary.main};
   border: 1px solid transparent;
