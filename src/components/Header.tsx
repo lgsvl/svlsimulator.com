@@ -20,9 +20,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
+import { LinkButton } from './Button';
 import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
 import Link from './Link';
-import LinkButton from './LinkButton';
 
 const buttonColors = css`
   &.MuiButton-textPrimary,

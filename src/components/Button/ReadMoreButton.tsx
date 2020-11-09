@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'src/hooks/useTranslations';
-import LinkButton from '../LinkButton';
+import LinkButton from './LinkButton';
 
 const ReadMoreButton: typeof LinkButton = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
