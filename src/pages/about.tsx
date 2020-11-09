@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import RequestDemoButton from 'src/components/RequestDemoButton';
+import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';

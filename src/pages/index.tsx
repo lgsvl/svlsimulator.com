@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import BackgroundVideo from 'src/components/BackgroundVideo';
-import RequestDemoButton from 'src/components/RequestDemoButton';
+import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
 import Image, { ImageProps } from 'src/components/Image';

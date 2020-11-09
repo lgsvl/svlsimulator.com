@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { ButtonReadMore } from 'src/components/Button';
+import { ReadMoreButton } from 'src/components/Button';
 import { ImageBase, ImageProps } from 'src/components/Image';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
@@ -19,7 +19,7 @@ const PagePreviewBox = ({ title, buttonText, link, ...rest }: PagePreviewBoxProp
       <Typography>{title}</Typography>
     </Box>
     <Box>
-      <ButtonReadMore to={link} />
+      <ReadMoreButton to={link} />
     </Box>
   </ImageBase>
 );

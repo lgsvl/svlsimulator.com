@@ -1,10 +1,9 @@
 import Button, { ButtonProps } from '@material-ui/core/Button';
-import { ButtonBaseProps } from '@material-ui/core/ButtonBase';
 import { withTheme } from '@material-ui/core/styles';
 import React from 'react';
 import { Merge } from 'src/@types/utils';
 import styled from 'styled-components';
-import Link, { LinkProps } from './Link';
+import Link, { LinkProps } from '../Link';
 
 export type LinkButtonBaseProps = Merge<ButtonProps, Partial<LinkProps>> & {
   component?: React.ElementType;
