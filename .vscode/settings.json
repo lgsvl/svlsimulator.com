@@ -1,5 +1,4 @@
 {
-  "editor.rulers": [120],
   "prettier.eslintIntegration": true,
   "[typescriptreact]": {
     "editor.defaultFormatter": "svipas.prettier-plus"
