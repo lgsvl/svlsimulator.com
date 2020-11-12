@@ -285,7 +285,7 @@ const MobileMenu = () => {
 };
 
 const Header = React.forwardRef((props, ref) => (
-  <AppBar position='fixed' color='default' {...props} ref={ref}>
+  <AppBar position='fixed' color='default' {...props} elevation={0} ref={ref}>
     <Toolbar component='nav'>
       <NavGrid container alignItems='center' justify='space-between'>
         <Grid item>

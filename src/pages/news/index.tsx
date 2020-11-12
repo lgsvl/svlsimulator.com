@@ -135,7 +135,7 @@ const NewsBox = ({
   const externalLink = link && link.match('://');
 
   return (
-    <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
+    <StyledNewsBox elevation={0} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
       <Box position='relative'>
         <Typography variant='overline'>{t(`news.categories.${category}`)}</Typography>
       </Box>
