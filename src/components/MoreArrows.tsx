@@ -2,20 +2,26 @@ import { withTheme } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 
+const ARROW_THICKNESS = 2;
+const ARROW_SIZE = 14;
+// prettier-ignore
+const ARROW_TRAVEL_DISTANCE = ((ARROW_SIZE + ARROW_THICKNESS) * 2) + 1;
+
+// prettier-ignore
 const ArrowsContainer = withTheme(styled.div`
-  width: 40px;
-  height: 80px;
+  width: ${(ARROW_SIZE * 2) + ARROW_THICKNESS}px;
+  height: ${ARROW_TRAVEL_DISTANCE + ((ARROW_SIZE + ARROW_THICKNESS) * 3)}px;
   display: inline-block;
 `);
 
 const Arrow = withTheme(styled.div`
   display: block;
-  width: 20px;
-  height: 20px;
-  border-bottom: 2px solid white;
-  border-right: 2px solid white;
-  transform: translate(20px, -10px) rotate(45deg);
-  margin: -10px;
+  width: ${ARROW_SIZE}px;
+  height: ${ARROW_SIZE}px;
+  border-bottom: ${ARROW_THICKNESS}px solid white;
+  border-right: ${ARROW_THICKNESS}px solid white;
+  transform: rotate(45deg);
+  transform-origin: bottom right;
   animation: animate 2s infinite;
   will-change: transform, opacity;
 
@@ -30,14 +36,14 @@ const Arrow = withTheme(styled.div`
   @keyframes animate {
     0% {
       opacity: 0;
-      transform: translate(20px, -10px) rotate(45deg) translate(0, 0);
+      transform: translateY(0) rotate(45deg);
     }
     50% {
       opacity: 1;
     }
     100% {
       opacity: 0;
-      transform: translate(20px, -10px) rotate(45deg) translate(30px, 30px);
+      transform: translateY(${ARROW_TRAVEL_DISTANCE}px) rotate(45deg);
     }
   }
 `);
