@@ -1,6 +1,6 @@
 import { withTheme } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import Box, { BoxProps } from '@material-ui/core/Box';
+import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
@@ -27,12 +27,21 @@ const SmallImage = (props: ImageProps) => (
   <Image height={{ xs: 200, sm: 300, md: 456 }} mb={{ xs: 2, md: 5 }} borderRadius='borderRadius' {...props} />
 );
 
-const HeroBox = withTheme(styled(Box)``);
+const HeroBox = withTheme(styled(Box)``) as React.FC<BoxProps>;
 
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
   position: relative;
-`);
+`) as React.FC<GridProps>;
+
+const SilhouettedContent = withTheme(styled(Box)`
+  ${({ theme }) => `
+    filter:
+      drop-shadow(0px 0px 2px ${theme.palette.background.default})
+      drop-shadow(0 0px 4px ${theme.palette.background.default})
+      drop-shadow(0 0px 20px ${theme.palette.background.default});
+  `}
+`) as React.FC<BoxProps>;
 
 const TypoWrapper: MapFunction<string> = (str, i) => <Typography key={`paragraph${i}`}>{str}</Typography>;
 
@@ -103,7 +112,7 @@ export default function Home() {
         </Section>
       </Box>
 
-      <Box my={15}>
+      <SilhouettedContent my={15}>
         <Center disableGutters maxWidth={90}>
           <LayoutGrid xs={2} sm={4} spacing={2}>
             <IconBaidu {...brandIconProps} />
@@ -112,7 +121,7 @@ export default function Home() {
             <IconVelodyne {...brandIconProps} />
           </LayoutGrid>
         </Center>
-      </Box>
+      </SilhouettedContent>
 
       <Box my={15}>
         <Grid container spacing={3}>
