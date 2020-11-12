@@ -2,6 +2,8 @@ import Box, { BoxProps } from '@material-ui/core/Box';
 import { ButtonProps } from '@material-ui/core/Button';
 import { withTheme } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
+import { clamp01 } from 'src/utils';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 
 const StyledOuijaAnchor = withTheme(styled(Box)``);
@@ -33,7 +35,7 @@ position: fixed;
   })},
     ${theme.transitions.create('left', {
       easing: theme.transitions.easing.sharp,
-      duration: 1000
+      duration: 100
     })};
 
   top: calc(var(--ouija-position-top, 0) * 1px);
@@ -41,6 +43,7 @@ position: fixed;
 
   top: 50%;
   left: calc(var(--ouija-nearestanchor-left, 0) * 1px);
+  left: var(--ouija-position-left, 0);
 
     width: 100%;
     height: 70vh;
@@ -56,26 +59,23 @@ type Optional<T, K extends keyof T> = Omit<T, K> & Partial<T>;
 type OptionalWithRequired<T, K extends keyof T> = Pick<T, K> & Partial<Omit<T, K>>;
 
 type XY = { x: number; y: number };
-const initialXY: XY = { x: 0, y: 0 };
-
+type Coords = XY & { height: number; width: number };
 type UsefulCoordKeys = 'height' | 'width' | 'top' | 'left';
-
 type UsefulCoords = OptionalWithRequired<ClientRect, UsefulCoordKeys>;
 
-const getCenterCoords: (coords: UsefulCoords) => XY = coords => {
+const initialXY: XY = { x: 0, y: 0 };
+
+const getCenterCoords: (coords: UsefulCoords) => Coords = coords => {
   const y = coords.top + half(coords.height);
   const x = coords.left + half(coords.width);
-  return { x, y };
+  return { x, y, height: coords.height, width: coords.width };
 };
 
 const getAnchorNodes = () => Array.from(document.querySelectorAll('.ouija-anchor'));
 
-const getAnchorCoordsList = () => {
-  const anchorNodes = getAnchorNodes();
-  // console.log('anchorNodes:', anchorNodes);
-  return anchorNodes.map(el => {
+const getAnchorCoordsList = () =>
+  getAnchorNodes().map(el => {
     const coords = el.getBoundingClientRect();
-    // window.pageYOffset + coords.top
     return getCenterCoords({
       top: window.pageYOffset + coords.top,
       left: window.pageXOffset + coords.left,
@@ -83,16 +83,54 @@ const getAnchorCoordsList = () => {
       height: coords.height
     });
   });
+
+const tfn = {
+  linear: (k: number) => k,
+  'ease-in': (k: number) => Math.pow(k, 1.675),
+  'ease-out': (k: number) => 1 - Math.pow(1 - k, 1.675),
+  'ease-in-out': (k: number) => 0.5 * (Math.sin((k - 0.5) * Math.PI) + 1)
 };
 
-// const setScreenCenter = (ev: React.UIEvent<Window>): void => {
-const setScreenCenter = (coords: XY): void => {
+/**
+ * Calculates the position, in {x,y}, where the position should be between
+ * coordinates `a` and `b`, with respect to their position and height, based on
+ * the provided "center" coordinates. In other words, if `a` and `b` are
+ * 2-dimensional boxes, where should the component be positioned so it's
+ * proportionally between the two boxes given the center of the screen.
+ * @param a Coordinates #1
+ * @param b Coordinates #2
+ * @param c Current screen-center coordinates
+ */
+const getPositionBetweenPoints = (a: Coords, b: Coords, c: XY): XY => {
+  // prettier-ignore
+  const aBottom = a.y + (a.height / 2);
+  // prettier-ignore
+  const bTop = b.y - (b.height / 2);
+  const py = clamp01((c.y - aBottom) / (bTop - aBottom));
+
+  const smoothedPy = tfn['ease-in-out'](py);
+  // prettier-ignore
+  const y = ((bTop - aBottom) * smoothedPy) + a.y + aBottom;
+  // Using the `py` value below as a scroll position progress to apply to the X coordinates too
+  // prettier-ignore
+  const x = ((b.x - a.x) * smoothedPy) + a.x;
+
+  return { x, y };
+};
+
+const setCenterPosition = (coords: XY): void => {
   const el: HTMLElement = document.documentElement;
-  el.style.setProperty('--ouija-position-top', coords.y.toString());
-  el.style.setProperty('--ouija-position-left', coords.x.toString());
+  el.style.setProperty('--ouija-screen-center-position-top', coords.y.toString());
+  el.style.setProperty('--ouija-screen-center-position-left', coords.x.toString());
 };
 
-const setNearestAnchorCenter = (coords: XY): void => {
+const setPosition = (coords: XY): void => {
+  const el: HTMLElement = document.documentElement;
+  el.style.setProperty('--ouija-position-top', px(coords.y));
+  el.style.setProperty('--ouija-position-left', px(coords.x));
+};
+
+const setNearestAnchorPosition = (coords: XY): void => {
   const el: HTMLElement = document.documentElement;
   el.style.setProperty('--ouija-nearestanchor-top', coords.y.toString());
   el.style.setProperty('--ouija-nearestanchor-left', coords.x.toString());
@@ -101,17 +139,16 @@ const setNearestAnchorCenter = (coords: XY): void => {
 const hypot = (a: XY, b: XY): number => {
   const diffx = Math.abs(a.x - b.x);
   const diffy = Math.abs(a.y - b.y);
-
-  // console.log({ diffx, diffy, a, b, 'hypot:': Math.hypot(diffx, diffy) });
-
   return Math.hypot(diffx, diffy);
 };
 
-const getNearestAnchor = (current: XY, anchors: XY[]): XY => {
-  let nearest: XY = initialXY;
-  // find the nearest anchor to our current coord.
-
-  // const bestDiff = {};
+/**
+ * Find the nearest anchor to our current coord.
+ * @param current - Current screen position coordinates
+ * @param anchors - List of anchors' coordinates
+ */
+const getNearestAnchor = <T extends XY>(current: XY, anchors: T[]): T => {
+  let nearest = initialXY as T;
   let bestDist = 100000;
 
   anchors.forEach(a => {
@@ -120,12 +157,33 @@ const getNearestAnchor = (current: XY, anchors: XY[]): XY => {
     if (dist === bestDist) nearest = a;
   });
 
-  // console.log('bestDist:', bestDist, 'nearest:', nearest, 'anchors:', anchors);
   return nearest;
 };
 
+/**
+ * Find the nearest anchor without going past the next anchor given a list of anchors.
+ * ("The Price Is Right" style)
+ * @param current - Current screen position coordinates
+ * @param anchors - List of anchors' coordinates
+ */
+const getMinimumAnchorIndex = (current: XY, anchors: XY[]): number => {
+  const cy = current.y;
+  let minAnchorIndex = 0;
+  let py = 0;
+
+  anchors.forEach((a, i) => {
+    const ay = a.y;
+
+    if (ay > py && ay < cy) {
+      // found new closest without going over;
+      py = ay;
+      minAnchorIndex = i;
+    }
+  });
+  return minAnchorIndex;
+};
+
 const getScreenCenter = (ev: Event): XY => {
-  // console.log('getScreenCenter');
   if (ev.target) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -140,40 +198,34 @@ const getScreenCenter = (ev: Event): XY => {
         width: el.clientWidth,
         height: el.clientHeight
       });
-      // console.log(center);
-
-      // setScreenCenter(center);
       return center;
     }
   }
-  // console.log('oops failed');
   return initialXY;
 };
 
 const Ouija: React.ExoticComponent<ButtonProps> = React.forwardRef(({ children, ...rest }, ref) => {
+  const [stateMinAnchorIndex, setMinimumAnchor] = useState<number>(0);
   // const [list, setNearestAnchor] = useState<XY[]>([]);
   // const [nearestAnchor, setNearestAnchor] = useState<XY>(initialXY);
 
   useEffect(() => {
-    // setNearestAnchor(getAnchorCoordsList());
-
     const localHandleScreenMove = (ev: Event) => {
       const list = getAnchorCoordsList();
       const center = getScreenCenter(ev);
-      setScreenCenter(center);
+      setCenterPosition(center);
+      const minAnchorIndex = getMinimumAnchorIndex(center, list);
 
-      // const currentCenter: XY = {
-      //   y: Number(document.documentElement.style.getPropertyValue('--ouija-position-top')),
-      //   x: Number(document.documentElement.style.getPropertyValue('--ouija-position-left'))
-      // };
+      if (stateMinAnchorIndex !== minAnchorIndex) {
+        setMinimumAnchor(minAnchorIndex);
+      }
 
       const nearest = getNearestAnchor(center, list);
-      // if (nearest.x !== nearestAnchor.x && nearest.y !== nearestAnchor.y) {
-      // setNearestAnchor(nearest);
-      setNearestAnchorCenter(nearest);
-      // }
-      // console.log('list:', list);
-      // console.log('nearest:', nearest, 'center:', center);
+      setNearestAnchorPosition(nearest);
+
+      setPosition(
+        getPositionBetweenPoints(list[minAnchorIndex], list[minAnchorIndex + 1] || list[list.length - 1], center)
+      );
     };
 
     window.addEventListener('scroll', localHandleScreenMove);
@@ -183,12 +235,8 @@ const Ouija: React.ExoticComponent<ButtonProps> = React.forwardRef(({ children, 
       window.removeEventListener('scroll', localHandleScreenMove);
       window.removeEventListener('resize', localHandleScreenMove);
     };
-  }, []);
-  // }, [list, nearestAnchor.x, nearestAnchor.y]);
+  }, [stateMinAnchorIndex]);
 
-  console.log('Rendering Ouija');
-
-  // <StyledOuija ref={ref} style={{ top: nearestAnchor.y, left: nearestAnchor.x }}>
   return (
     <StyledOuija {...rest} ref={ref}>
       {children}

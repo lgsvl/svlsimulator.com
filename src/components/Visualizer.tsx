@@ -6,6 +6,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { MapController } from 'deck.gl';
 import { setXVIZConfig } from '@xviz/parser';
 import { CarMesh, LogViewer, XVIZFileLoader, PlaybackControl, VIEW_MODE } from 'streetscape.gl';
+import Box from '@material-ui/core/Box';
 
 setXVIZConfig({
   PLAYBACK_FRAME_RATE: 10
@@ -18,6 +19,12 @@ const IconFontStyle = createGlobalStyle`
       url('/streetscape.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+  }
+`;
+
+const StyledBox = styled(Box)`
+  canvas {
+    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.4) 40%, transparent 70%);
   }
 `;
 
@@ -202,16 +209,19 @@ const Visualizer: React.FC<VisualizerProps> = ({ viewMode = 'PERSPECTIVE' }) => 
   return (
     <>
       <IconFontStyle />
-      <LogViewer
-        log={log}
-        car={CAR}
-        showMap={false}
-        viewMode={mode}
-        renderObjectLabel={renderObjectLabel}
-        style={LOG_VIEWER_STYLE}
-        xvizStyles={XVIZ_STYLE}
-      />
-      <HiddenPlaybackControls isPlaying log={log} />
+      <StyledBox>
+        <LogViewer
+          log={log}
+          car={CAR}
+          showMap={false}
+          viewMode={mode}
+          renderObjectLabel={renderObjectLabel}
+          style={LOG_VIEWER_STYLE}
+          xvizStyles={XVIZ_STYLE}
+        />
+      </StyledBox>
+      <HiddenPlaybackControls log={log} />
+      {/* <HiddenPlaybackControls isPlaying log={log} /> */}
     </>
   );
 };
