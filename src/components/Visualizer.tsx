@@ -24,7 +24,11 @@ const IconFontStyle = createGlobalStyle`
 
 const StyledBox = styled(Box)`
   canvas {
-    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.4) 40%, transparent 70%);
+    // filter: sepia(1) saturate(6) hue-rotate(-58deg);
+    // filter: saturate(2) hue-rotate(-182deg) saturate(3);
+    filter: saturate(1.2) hue-rotate(-182deg) saturate(3);
+    // -webkit-mask-image: radial-gradient(black 40%, transparent 70%);
+    -webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0.3) 40%, transparent 70%);
   }
 `;
 
@@ -132,7 +136,18 @@ const LOG_VIEWER_STYLE = {
 
 /* eslint-disable camelcase, @typescript-eslint/camelcase */
 const XVIZ_STYLE = {
-  '/lidar/points': [{ style: { point_color_mode: 'ELEVATION' } }],
+  // '/lidar/points': [{ style: { point_color_mode: 'ELEVATION' } }],
+  '/lidar/points': [
+    {
+      style: {
+        fill_color: '#D71345',
+        // point_color_mode: 'DISTANCE_TO_VEHICLE'
+        point_color_mode: 'ELEVATION'
+        // point_color_mode: 'DEFAULT',
+        // point_color_domain: [0, 10]
+      }
+    }
+  ],
   '/tracklets/objects': [{ name: 'selected', style: { fill_color: '#ff800088', stroke_color: '#ff8000' } }]
 };
 /* eslint-enable camelcase, @typescript-eslint/camelcase */
