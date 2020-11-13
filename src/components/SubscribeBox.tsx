@@ -12,6 +12,7 @@ import Input from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
+import FullWidthContainer from './FullWidthContainer';
 
 const FullHeightGrid = withTheme(styled(Grid)`
   height: 100%;
@@ -43,45 +44,47 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
   );
 
   return (
-    <Box my={4} position='relative' {...rest}>
-      <BackgroundVideo src={videoSrcSubscribe} position='absolute'>
-        <Typography>
-          A really cool looking video of a Lidar point-cloud following a simulated autonomous vehicle that makes you
-          really want to subscribe to our email list for more information.
-        </Typography>
-      </BackgroundVideo>
-      <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
-        <FullHeightGrid container alignItems='center' justify='center'>
-          <Grid item xs={12} sm={10} md={6}>
-            <Typography variant='h3' gutterBottom>
-              {t('main.subscribe.title')}
-            </Typography>
-            <Input
-              id='subscribeEmailAddress'
-              label={t('main.subscribe.emailPlaceholder')}
-              placeholder={t('main.subscribe.emailPlaceholder')}
-              fullWidth
-              variant='outlined'
-              onChange={handleInputChange}
-              InputProps={{
-                endAdornment: (
-                  <StyledInputAdornment position='end'>
-                    <TransitioningIconButton
-                      style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : undefined}
-                      aria-label='submit subscription'
-                      edge='end'
-                      size='medium'
-                    >
-                      <IconCheck />
-                    </TransitioningIconButton>
-                  </StyledInputAdornment>
-                )
-              }}
-            />
-          </Grid>
-        </FullHeightGrid>
+    <FullWidthContainer>
+      <Box my={4} position='relative' {...rest}>
+        <BackgroundVideo src={videoSrcSubscribe} position='absolute' fit='cover'>
+          <Typography>
+            A really cool looking video of a Lidar point-cloud following a simulated autonomous vehicle that makes you
+            really want to subscribe to our email list for more information.
+          </Typography>
+        </BackgroundVideo>
+        <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
+          <FullHeightGrid container alignItems='center' justify='center'>
+            <Grid item xs={12} sm={10} md={6}>
+              <Typography variant='h3' gutterBottom>
+                {t('main.subscribe.title')}
+              </Typography>
+              <Input
+                id='subscribeEmailAddress'
+                label={t('main.subscribe.emailPlaceholder')}
+                placeholder={t('main.subscribe.emailPlaceholder')}
+                fullWidth
+                variant='outlined'
+                onChange={handleInputChange}
+                InputProps={{
+                  endAdornment: (
+                    <StyledInputAdornment position='end'>
+                      <TransitioningIconButton
+                        style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : undefined}
+                        aria-label='submit subscription'
+                        edge='end'
+                        size='medium'
+                      >
+                        <IconCheck />
+                      </TransitioningIconButton>
+                    </StyledInputAdornment>
+                  )
+                }}
+              />
+            </Grid>
+          </FullHeightGrid>
+        </Box>
       </Box>
-    </Box>
+    </FullWidthContainer>
   );
 };
 

@@ -21,7 +21,7 @@ import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
-import Li from 'src/components/Li';
+import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
 import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
@@ -30,12 +30,13 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import styled from 'styled-components';
 
 const ListItemWrapper: MapFunction = (str, i) => (
-  <ListItem key={`${str}${i}`}>
-    <Li>{str}</Li>
-  </ListItem>
+  <Li key={`${str}${i}`}>
+    <LiText>{str}</LiText>
+  </Li>
 );
 
 const Caption = (props: TypographyProps) => <Typography variant='body2' display='block' {...props} />;
@@ -226,7 +227,14 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section buttonText='getDemo' src={srcSimulationPoster} title={t('simulation.title')} tuckImage variant='h3'>
+      <Section
+        buttonText='getDemo'
+        src={srcSimulationPoster}
+        video={srcSimulationVideo}
+        title={t('simulation.title')}
+        tuckImage
+        variant='h3'
+      >
         <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
       </Section>
 
