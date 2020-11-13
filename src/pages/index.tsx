@@ -135,7 +135,7 @@ export default function Home() {
       <Box my={15}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>
-            <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
+            <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
             <SectionContent
               title={t('home.features.0.title')}
               buttonText='readMore'
@@ -145,7 +145,7 @@ export default function Home() {
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
+            <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
             <SectionContent
               title={t('home.features.1.title')}
               buttonText='readMore'
@@ -155,7 +155,7 @@ export default function Home() {
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
+            <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
             <SectionContent
               title={t('home.features.2.title')}
               buttonText='readMore'
