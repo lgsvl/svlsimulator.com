@@ -14,12 +14,12 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
+import FullWidthContainer from 'src/components/FullWidthContainer';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
@@ -275,14 +275,16 @@ export default function Simulation() {
         <RequestDemoButton />
       </Center>
 
-      <Grid container>
-        <Grid item xs={12} sm={6}>
-          <CloudPreviewBox />
+      <FullWidthContainer>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <CloudPreviewBox />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <DigitalTwinPreviewBox />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <DigitalTwinPreviewBox />
-        </Grid>
-      </Grid>
+      </FullWidthContainer>
 
       <SubscribeBox />
     </Page>

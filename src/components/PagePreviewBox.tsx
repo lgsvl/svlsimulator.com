@@ -1,15 +1,14 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import React, { VideoHTMLAttributes } from 'react';
+import React from 'react';
 import { ReadMoreButton } from 'src/components/Button';
-import { ImageBase, ImageProps } from 'src/components/Image';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
-import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
-import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
+import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import BackgroundVideo from './BackgroundVideo';
 
 export interface PagePreviewBoxProps extends BoxProps {
