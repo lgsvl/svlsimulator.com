@@ -149,6 +149,7 @@ const Content = ({
 
 const Section = ({
   buttonText,
+  buttonProps,
   children,
   contained,
   flip,
@@ -192,6 +193,7 @@ const Section = ({
               <Content
                 title={title}
                 buttonText={buttonText}
+                buttonProps={buttonProps}
                 minHeight={minHeight}
                 variant={variant}
                 contained={contained}
