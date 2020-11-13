@@ -1,20 +1,22 @@
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import Li from 'src/components/Li';
+import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
 import { SimulationPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
+import { withTheme } from '@material-ui/core/styles';
+import styled from 'styled-components';
 
 const ListItemWrapper: MapFunction = (str, i) => (
-  <ListItem key={`${str}${i}`}>
-    <Li>{str}</Li>
-  </ListItem>
+  <Li key={`${str}${i}`}>
+    <LiText>{str}</LiText>
+  </Li>
 );
 
 export default function CloudSimAAS() {
