@@ -10,6 +10,7 @@ import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
+import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
 import { withTheme } from '@material-ui/core/styles';
 import styled from 'styled-components';
 
@@ -23,7 +24,15 @@ export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
-      <Section buttonText='getDemo' flip src={srcCloudPoster} title={t('cloud.title')} tuckImage variant='h3'>
+      <Section
+        buttonText='getDemo'
+        flip
+        src={srcCloudPoster}
+        video={srcCloudVideo}
+        title={t('cloud.title')}
+        tuckImage
+        variant='h3'
+      >
         <List disablePadding>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 

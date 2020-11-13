@@ -12,6 +12,7 @@ import { RequestDemoButton } from 'src/components/Button';
 import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
 import { LinkProps } from './Link';
+import BackgroundVideo from './BackgroundVideo';
 
 const SectionContainer = withTheme(styled(Container)`
   margin-bottom: ${({ theme }) => px(theme.spacing(9))};
@@ -102,6 +103,7 @@ interface SectionProps extends ContentProps {
   image?: React.ReactNode;
   minHeight?: GridBoxProps['minHeight'];
   tuckImage?: boolean;
+  video?: React.VideoHTMLAttributes<HTMLVideoElement>['src'];
 }
 
 const Content = ({
@@ -155,9 +157,16 @@ const Section = ({
   src,
   title,
   tuckImage,
-  variant
+  variant,
+  video
 }: SectionProps) => {
-  let imageTag = image || <StyledImage src={src} />;
+  let imageTag =
+    image ||
+    (video ? (
+      <BackgroundVideo src={video} poster={src} borderRadius='borderRadius' fit='cover' />
+    ) : (
+      <StyledImage src={src} />
+    ));
   if (tuckImage) {
     let ImageContainerComponent = TuckingBox;
     if (flip) {

@@ -30,6 +30,7 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import styled from 'styled-components';
 
 const ListItemWrapper: MapFunction = (str, i) => (
@@ -226,7 +227,14 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section buttonText='getDemo' src={srcSimulationPoster} title={t('simulation.title')} tuckImage variant='h3'>
+      <Section
+        buttonText='getDemo'
+        src={srcSimulationPoster}
+        video={srcSimulationVideo}
+        title={t('simulation.title')}
+        tuckImage
+        variant='h3'
+      >
         <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
       </Section>
 
