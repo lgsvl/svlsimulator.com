@@ -45,7 +45,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
 
   return (
     <FullWidthContainer>
-      <Box my={4} position='relative' {...rest}>
+      <Box mb={4} position='relative' {...rest}>
         <BackgroundVideo src={videoSrcSubscribe} position='absolute' fit='cover'>
           <Typography>
             A really cool looking video of a Lidar point-cloud following a simulated autonomous vehicle that makes you
