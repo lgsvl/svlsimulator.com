@@ -33,7 +33,7 @@ export default function About() {
     <Page title={t('about.title')}>
       <Box height='70vh'>
         <HeroGrid container alignItems='center' justify='center'>
-          <Center maxWidth={100}>
+          <Center maxWidth={800}>
             <Typography variant='h4'>{t('about.body')}</Typography>
           </Center>
         </HeroGrid>

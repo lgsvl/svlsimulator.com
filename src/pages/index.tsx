@@ -71,7 +71,7 @@ export default function Home() {
             <Typography variant='h1'>{t('home.title')}</Typography>
           </Grid>
           <Grid item>
-            <Center disableGutters maxWidth={90}>
+            <Center disableGutters maxWidth={720}>
               {tMap('home.body', TypoWrapper)}
               <Box mt={6}>
                 <RequestDemoButton />
@@ -122,7 +122,7 @@ export default function Home() {
       </Box>
 
       <SilhouettedContent my={15}>
-        <Center disableGutters maxWidth={90}>
+        <Center disableGutters maxWidth={720}>
           <LayoutGrid xs={2} sm={4} spacing={2}>
             <IconBaidu {...brandIconProps} />
             <IconApollo {...brandIconProps} />

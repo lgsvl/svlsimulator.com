@@ -271,7 +271,7 @@ export default function Simulation() {
         </TableBody>
       </StyledTable>
 
-      <Center style={{ marginTop: '56px' }}>
+      <Center mt={7}>
         <RequestDemoButton />
       </Center>
 
