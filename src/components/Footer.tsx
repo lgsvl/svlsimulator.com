@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
+import { useAppState } from 'src/context/AppState';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled from 'styled-components';
 import { IconLgColor } from './Icons';
@@ -44,8 +45,13 @@ const FooterLink = withTheme(styled(({ children, primary, to, ...rest }: LinkPro
   color: ${({ theme }) => theme.palette.secondary.dark};
 `);
 
-const Footer = ({ children }: { children?: React.ReactNode }) => {
+const Footer: React.FC = () => {
+  const { setAppState } = useAppState();
   const { t, tMap } = useTranslation();
+
+  const handleRequestDemoClick = React.useCallback(() => {
+    setAppState(true, 'requestDemoForm.open');
+  }, [setAppState]);
 
   const forDevs = (
     <>
@@ -55,7 +61,7 @@ const Footer = ({ children }: { children?: React.ReactNode }) => {
       <List>
         <FooterLink to='https://github.com/lgsvl/simulator' primary={t('main.links.github')} />
         <FooterLink to='https://www.lgsvlsimulator.com/docs/' primary={t('main.links.documentation')} />
-        <FooterLink to='/' primary={t('main.links.requestDemo')} />
+        <FooterLink onClick={handleRequestDemoClick} primary={t('main.links.requestDemo')} />
       </List>
     </>
   );

@@ -5,21 +5,20 @@ import Grid from '@material-ui/core/Grid';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
-import Button, { ReadMoreButton } from 'src/components/Button';
+import Button, { ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
-import { RequestDemoButton } from 'src/components/Button';
 import { fade, px } from 'src/utils/theme';
 import styled from 'styled-components';
-import { LinkProps } from './Link';
 import BackgroundVideo from './BackgroundVideo';
+import { LinkProps } from './Link';
 
 const SectionContainer = withTheme(styled(Container)`
   margin-bottom: ${({ theme }) => px(theme.spacing(9))};
   &:last-child {
     margin-bottom: 0;
   }
-`) as typeof Container;
+`) as React.FC<ContainerProps<'section', { component: string }>>;
 
 const StyledPaper = withTheme(styled(Paper)``) as React.FC<PaperProps>;
 

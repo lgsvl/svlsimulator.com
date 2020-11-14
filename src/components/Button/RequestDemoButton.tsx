@@ -1,22 +1,20 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
+import { useAppState } from 'src/context/AppState';
 import { useTranslation } from 'src/hooks/useTranslations';
 import Button from './Button';
-import RequestDemoForm from '../RequestDemoForm';
 
 const RequestDemoButton: typeof Button = React.forwardRef((props, ref) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const toggleForm = useCallback(() => {
-    setOpen(state => !state);
-  }, [setOpen]);
+  const { setAppState } = useAppState();
   const { t } = useTranslation();
 
+  const handleButtonClick = React.useCallback(() => {
+    setAppState(true, 'requestDemoForm.open');
+  }, [setAppState]);
+
   return (
-    <>
-      <RequestDemoForm open={open} onClose={toggleForm} />
-      <Button color='primary' variant='contained' {...props} ref={ref} onClick={toggleForm}>
-        {t('main.buttons.getDemo')}
-      </Button>
-    </>
+    <Button color='primary' variant='contained' {...props} ref={ref} onClick={handleButtonClick}>
+      {t('main.buttons.getDemo')}
+    </Button>
   );
 });
 
