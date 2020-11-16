@@ -1,8 +1,11 @@
+import { IconButtonProps } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
-import { withTheme } from '@material-ui/core/styles';
+import { fade, withTheme } from '@material-ui/core/styles';
 import React, { useMemo } from 'react';
 import { useAppState } from 'src/context/AppState';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
+import { IconPause, IconPlay } from './Icons';
 
 // Temporary filter to get the video background color to match the site background until the videos get updated.
 const cssVideoFilter = 'filter: saturate(0.7) contrast(1.01)';
@@ -19,6 +22,30 @@ const StyledVideo = withTheme(styled.video`
   z-index: -1;
   ${cssVideoFilter};
 `) as React.FC<Partial<VideoProps>>;
+
+const StyledBox = withTheme(styled(Box)`
+  ${({ theme }) => `
+  opacity: 0;
+  transition: ${theme.transitions.create('opacity', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen
+  })};
+
+  &:hover {
+    opacity: 1;
+  }
+  `}
+`) as React.FC<BoxProps>;
+
+const StyledIconButton = withTheme(styled(Box)`
+  border-radius: 16px;
+  padding: ${({ theme }) => px(theme.spacing(2))};
+  background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.6)};
+
+  &:hover {
+    background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.8)};
+  }
+`) as React.FC<IconButtonProps>;
 
 export interface BackgroundVideoProps extends BoxProps {
   fit?: 'cover' | 'contain';
@@ -72,6 +99,9 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         <source src={src} type={type} />
         {children}
       </StyledVideo>
+      <StyledBox height={1} display='flex' alignItems='center' justifyContent='center'>
+        <StyledIconButton>{allPaused ? <IconPlay /> : <IconPause />}</StyledIconButton>
+      </StyledBox>
     </Box>
   );
 };

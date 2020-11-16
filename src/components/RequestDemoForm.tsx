@@ -11,7 +11,7 @@ import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { withTheme } from '@material-ui/core/styles';
+import { fade, withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { useFormik } from 'formik';
 import React, { useCallback } from 'react';
@@ -19,7 +19,7 @@ import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
 import Input from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import addSpacing from 'src/utils/addSpacing';
-import { fade, px } from 'src/utils/theme';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 
 const FormDialog = withTheme(styled(Dialog)`

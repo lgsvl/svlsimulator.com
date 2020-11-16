@@ -1,14 +1,15 @@
-import { ButtonProps, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
+import { ButtonProps } from '@material-ui/core/Button';
 import Container, { ContainerProps } from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
+import { fade, withTheme } from '@material-ui/core/styles';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Button, { ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
-import { fade, px } from 'src/utils/theme';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import BackgroundVideo from './BackgroundVideo';
 import { LinkProps } from './Link';

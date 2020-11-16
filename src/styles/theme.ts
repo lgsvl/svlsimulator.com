@@ -1,5 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { fade } from 'src/utils/theme';
+import { createMuiTheme, fade } from '@material-ui/core/styles';
 import { palette } from './colors';
 
 const fontMain = ['"Open Sans"', '"OpenSans-Bold"'].join(', ');
