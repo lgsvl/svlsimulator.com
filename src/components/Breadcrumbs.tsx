@@ -32,8 +32,8 @@ export const Breadcrumbs = ({ location, pageContext, ...rest }: BreadcrumbsProps
   };
 
   return (
-    <MuiBreadcrumbs aria-label='breadcrumb' {...rest}>
-      <Typography variant='overline' color='textPrimary'>
+    <MuiBreadcrumbs aria-label='breadcrumb' color='textPrimary' {...rest}>
+      <Typography variant='overline'>
         <Link color='inherit' to='/'>
           {t('home.navTitle')}
         </Link>
@@ -48,7 +48,7 @@ export const Breadcrumbs = ({ location, pageContext, ...rest }: BreadcrumbsProps
             {title}
           </Typography>
         ) : (
-          <Typography variant='overline' color='textPrimary' key={to}>
+          <Typography variant='overline' key={to}>
             <Link color='inherit' to={to}>
               {title}
             </Link>

@@ -163,6 +163,7 @@ export const queryNews = graphql`
           excerpt
           frontmatter {
             title
+            author
             date
             category
             link
