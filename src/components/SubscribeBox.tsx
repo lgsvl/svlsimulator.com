@@ -46,7 +46,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
   return (
     <FullWidthContainer>
       <Box mb={4} position='relative' {...rest}>
-        <BackgroundVideo src={videoSrcSubscribe} position='absolute' fit='cover'>
+        <BackgroundVideo src={videoSrcSubscribe} position='absolute' fit='cover' overlayOffset={[0, '-200%']}>
           <Typography>
             A really cool looking video of a Lidar point-cloud following a simulated autonomous vehicle that makes you
             really want to subscribe to our email list for more information.

@@ -25,38 +25,51 @@ const StyledVideo = withTheme(styled.video`
 
 const StyledBox = withTheme(styled(Box)`
   ${({ theme }) => `
-  opacity: 0;
-  transition: ${theme.transitions.create('opacity', {
+opacity: 0;
+transition: ${theme.transitions.create('opacity', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen
   })};
 
-  &:hover {
-    opacity: 1;
-  }
-  `}
+&:hover {
+  opacity: 1;
+}
+`};
 `) as React.FC<BoxProps>;
 
-const StyledIconButton = withTheme(styled(Box)`
-  border-radius: 16px;
-  padding: ${({ theme }) => px(theme.spacing(2))};
-  background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.6)};
+type OffsetValue = number | string;
 
-  &:hover {
-    background-color: ${({ theme }) => fade(theme.palette.background.paper, 0.8)};
-  }
-`) as React.FC<IconButtonProps>;
+type StyledIconButtonProps = BoxProps & { offset?: OffsetValue | [OffsetValue, OffsetValue] };
+
+const StyledIconButton = withTheme(styled(({ offset, ...rest }: StyledIconButtonProps) => <Box {...rest} />)`
+  ${({ offset, theme }) => {
+    const offsetX = offset instanceof Array ? offset[0] : offset || 0;
+    const offsetY = offset instanceof Array ? offset[1] : 0;
+    return `
+      transform: translate(${offsetX}, ${offsetY});
+      border-radius: 16px;
+      padding: ${px(theme.spacing(2))};
+      background-color: ${fade(theme.palette.background.paper, 0.6)};
+
+      &:hover {
+        background-color: ${fade(theme.palette.background.paper, 0.8)};
+      }
+    `;
+  }}
+`) as React.FC<StyledIconButtonProps>;
 
 export interface BackgroundVideoProps extends BoxProps {
   fit?: 'cover' | 'contain';
   poster?: HTMLVideoElement['poster'];
   src?: HTMLSourceElement['src'];
   type?: HTMLSourceElement['type'];
+  overlayOffset?: StyledIconButtonProps['offset'];
 }
 
 const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
   children,
   fit = 'contain',
+  overlayOffset,
   title,
   src,
   poster,
@@ -100,7 +113,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         {children}
       </StyledVideo>
       <StyledBox height={1} display='flex' alignItems='center' justifyContent='center'>
-        <StyledIconButton>{allPaused ? <IconPlay /> : <IconPause />}</StyledIconButton>
+        <StyledIconButton offset={overlayOffset}>{allPaused ? <IconPlay /> : <IconPause />}</StyledIconButton>
       </StyledBox>
     </Box>
   );
