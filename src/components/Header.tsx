@@ -180,7 +180,8 @@ const DesktopMenu = () => {
       <Grid item>
         <StyledLinkButton
           color='primary'
-          to='https://wise.staging.lgsvlsimulator.com/sign-in'
+          to='https://account.lgsvlsimulator.com/'
+          // to='https://wise.staging.lgsvlsimulator.com/sign-in'
           endIcon={<IconLogin />}
           alia-label='Log in Button'
         >
@@ -238,7 +239,8 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/about/'>
             <ListItemText primary={t('about.navTitle')} />
           </ListItem>
-          <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'>
+          {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
+          <ListItem button component={Link} to='https://account.lgsvlsimulator.com/'>
             <ListItemText primary={t('main.header.login')} />
             <ListItemIcon>
               <IconLogin />

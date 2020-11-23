@@ -142,6 +142,17 @@ const theme = createMuiTheme({
         color: palette.text.secondary,
         border: `1px solid ${palette.background.default}`
       }
+    },
+    MuiTypography: {
+      gutterBottom: {
+        marginBottom: 40,
+        marginTop: 40, // It's not technically "correct" to set this here, but
+        // it's mostly appropriate as long as the rule below is present too.
+
+        '&:first-child': {
+          marginTop: 0
+        }
+      }
     }
   },
   typography: {

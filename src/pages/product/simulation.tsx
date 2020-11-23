@@ -157,10 +157,10 @@ const rows: FeatureRow[] = [
     buildRow('3.subFeatures.5', false, true)
   ]),
   buildRow('4.name', false, true, [
-    buildRow('4.subFeatures.0', false, true),
+    buildRow('4.subFeatures.0', true, true),
     buildRow('4.subFeatures.1', false, true),
     buildRow('4.subFeatures.2', false, true),
-    buildRow('4.subFeatures.3', false, true)
+    buildRow('4.subFeatures.3', false, false)
   ]),
   buildRow('5.name', false, true, [
     buildRow('5.subFeatures.0', false, true),

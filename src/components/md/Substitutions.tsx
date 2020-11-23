@@ -10,11 +10,12 @@ import { MdxComponentSubstitutions } from './Substitutions.d';
 export type MdLinkProps = { to?: LinkProps['to'] } & Omit<LinkProps, 'to'>;
 
 const H1 = (props: TypographyProps) => <Typography {...props} variant='h1' />;
-const H2 = (props: TypographyProps) => <Typography {...props} variant='h2' />;
-const H3 = (props: TypographyProps) => <Typography {...props} variant='h3' />;
-const H4 = (props: TypographyProps) => <Typography {...props} variant='h4' />;
-const H5 = (props: TypographyProps) => <Typography {...props} variant='h5' />;
-const H6 = (props: TypographyProps) => <Typography {...props} variant='h6' />;
+const H2 = (props: TypographyProps) => <Typography {...props} variant='h2' gutterBottom />;
+const H3 = (props: TypographyProps) => <Typography {...props} variant='h3' gutterBottom />;
+const H4 = (props: TypographyProps) => <Typography {...props} variant='h4' gutterBottom />;
+const H5 = (props: TypographyProps) => <Typography {...props} variant='h5' gutterBottom />;
+const H6 = (props: TypographyProps) => <Typography {...props} variant='h6' gutterBottom />;
+const P = (props: TypographyProps) => <Typography {...props} paragraph />;
 const TableHeadCell = (props: TableCellProps) => <TableCell {...props} component='th' variant='head' />;
 const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) => <Link {...rest} to={to || href} />;
 
@@ -26,7 +27,7 @@ const components: MdxComponentSubstitutions = {
   h4: H4,
   h5: H5,
   h6: H6,
-  p: Typography,
+  p: P,
   table: Table,
   tr: TableRow,
   td: TableCell,
