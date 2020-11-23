@@ -12,7 +12,7 @@ const cssVideoFilter = 'filter: saturate(0.7) contrast(1.01)';
 
 type VideoProps = Omit<React.VideoHTMLAttributes<'video'>, 'children' | 'style'> & {
   style: React.CSSProperties;
-  ref: React.ForwardedRef<unknown>;
+  ref: React.MutableRefObject<HTMLVideoElement | undefined>;
 };
 
 const StyledVideo = withTheme(styled.video`
