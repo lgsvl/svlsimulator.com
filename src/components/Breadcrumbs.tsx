@@ -20,7 +20,10 @@ export interface BreadcrumbsProps extends BreadcrumbsBaseProps, MuiBreadcrumbsPr
 export const Breadcrumbs = ({ location, pageContext, ...rest }: BreadcrumbsProps) => {
   const { t } = useTranslation();
   if (!location) return null;
-  const pathnames = location.pathname.split('/').filter((x: string) => x);
+  const pathnames = location.pathname
+    .replace(/^\/\w{2}\//, '/') // Drop the language prefix from the URL, since that's handled already.
+    .split('/')
+    .filter((x: string) => x);
 
   const breadcrumbNameMap: Record<string, string> = {
     '/products/cloud': t('cloud.navTitle'),
