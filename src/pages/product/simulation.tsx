@@ -86,14 +86,14 @@ const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   );
 };
 
-type Row = {
+type RowType = {
   name: string;
   free: boolean;
   premium: boolean;
 };
 
-interface FeatureRow extends Row {
-  subFeatures?: Row[];
+interface FeatureRow extends RowType {
+  subFeatures?: RowType[];
 }
 
 interface BuildRow {
