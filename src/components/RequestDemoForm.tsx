@@ -13,10 +13,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { fade, withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useCallback } from 'react';
 import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
-import Input from 'src/components/Input';
+import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import addSpacing from 'src/utils/addSpacing';
 import { px } from 'src/utils/theme';
@@ -48,11 +49,18 @@ const FormDialogActions = addSpacing(DialogActions);
 
 const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
   const { t } = useTranslation();
+  const [confirming, setConfirming] = React.useState(false);
   const { handleChange, handleSubmit, isSubmitting, setSubmitting, setFieldValue, values } = useFormik({
     initialValues: {
-      name: '',
+      _subject: '[Public Website] Demo Requested',
+      _replyto: '',
+      _confirmation: 'We will contact you to arrange the technology demo session',
+      _after: '',
+      nameGiven: '',
+      nameFamily: '',
       email: '',
-      company: '',
+      emailVerify: '',
+      organization: '',
       title: '',
       region: '',
       usecase: 'Autonomous Vehicle',
@@ -60,15 +68,31 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
     },
     onSubmit: data => {
       console.log(data);
+
+      // Add custom fields:
+      data._replyto = data.email;
+
+      axios
+        .post('https://mailthis.to/blake.stephens@lge.com', data)
+        .then(response => {
+          // window.location.href = 'https://mailthis.to/confirm';
+          console.log('Submited with response:', response, data);
+          setConfirming(true);
+        })
+        .catch(err => {
+          err = 'oh beans ';
+        });
+
       // TODO: submit data to LG server to send demo request
       setSubmitting(false);
-      if (onClose) onClose({}, 'escapeKeyDown');
+      // if (onClose) onClose({}, 'escapeKeyDown');
     }
   });
 
   const dispatchClose = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       if (onClose) onClose(event, 'escapeKeyDown');
+      setConfirming(false);
     },
     [onClose]
   );
@@ -80,6 +104,13 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
     [setFieldValue]
   );
 
+  const commonTextInputProps: InputProps = {
+    onChange: handleChange,
+    InputLabelProps: { shrink: true },
+    variant: 'outlined',
+    fullWidth: true
+  };
+
   return (
     <FormDialog
       aria-labelledby='form-title'
@@ -88,146 +119,169 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
       onClose={onClose}
       {...rest}
     >
-      <form onSubmit={handleSubmit}>
-        <FormDialogTitle disableTypography>
-          <Box display='flex' alignItems='center' justifyContent='space-between' height={56}>
-            <Typography id='form-title' variant='body1'>
-              {t('requestdemo.title')}
-            </Typography>
-            <CloseIconButton aria-label='close' onClick={dispatchClose}>
-              <IconX />
-            </CloseIconButton>
-          </Box>
-        </FormDialogTitle>
-        <FormDialogContent p={3}>
-          <Grid container spacing={3}>
-            <Hidden smDown>
-              <Grid item sm={4}>
-                <Box mb={5}>
-                  <IconLGSVLSimulator />
-                </Box>
-                <Typography id='form-description' variant='caption' paragraph>
-                  {t('requestdemo.message')}
-                </Typography>
-              </Grid>
-            </Hidden>
-            <Grid item sm={12} md={8}>
-              <Grid container spacing={4} justify='space-between'>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    name='name'
-                    id='form-field-name'
-                    label={t('requestdemo.labels.first')}
-                    placeholder={t('requestdemo.placeholders.first')}
-                    value={values.name}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                    variant='outlined'
-                    fullWidth
-                  />
+      <FormDialogTitle disableTypography>
+        <Box display='flex' alignItems='center' justifyContent='space-between' height={56}>
+          <Typography id='form-title' variant='body1'>
+            {t('requestdemo.title')}
+          </Typography>
+          <CloseIconButton aria-label='close' onClick={dispatchClose}>
+            <IconX />
+          </CloseIconButton>
+        </Box>
+      </FormDialogTitle>
+      {!confirming ? (
+        <form onSubmit={handleSubmit}>
+          <FormDialogContent p={3}>
+            <input type='hidden' name='_honeypot' value='' onChange={handleChange} />
+            <Grid container spacing={3}>
+              <Hidden smDown>
+                <Grid item sm={4}>
+                  <Box mb={5}>
+                    <IconLGSVLSimulator />
+                  </Box>
+                  <Typography id='form-description' variant='caption' paragraph>
+                    {t('requestdemo.message')}
+                  </Typography>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    name='email'
-                    id='form-field-email'
-                    label={t('requestdemo.labels.email')}
-                    placeholder={t('requestdemo.placeholders.email')}
-                    value={values.email}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                    variant='outlined'
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    name='company'
-                    id='form-field-company'
-                    label={t('requestdemo.labels.company')}
-                    placeholder={t('requestdemo.placeholders.company')}
-                    value={values.company}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                    variant='outlined'
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    name='title'
-                    id='form-field-title'
-                    label={t('requestdemo.labels.title')}
-                    placeholder={t('requestdemo.placeholders.title')}
-                    value={values.title}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                    variant='outlined'
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    name='region'
-                    id='form-field-region'
-                    label={t('requestdemo.labels.region')}
-                    placeholder={t('requestdemo.placeholders.region')}
-                    value={values.region}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                    variant='outlined'
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <FormControl variant='outlined' fullWidth>
-                    <InputLabel id='form-usecase-label' htmlFor='form-field-usecase'>
-                      {t('requestdemo.labels.usecase')}
-                    </InputLabel>
-                    <Select
-                      label={t('requestdemo.labels.usecase')}
-                      value={values.usecase}
-                      onChange={handleUsecaseChange}
-                      labelId='form-usecase-label'
-                      id='form-field-usecase'
-                    >
-                      <MenuItem value='Autonomous Vehicle'>{t('requestdemo.usecases.vehicle')}</MenuItem>
-                      <MenuItem value='Autonomous Driving Service/Software'>
-                        {t('requestdemo.usecases.software')}
-                      </MenuItem>
-                      <MenuItem value='Sensor'>{t('requestdemo.usecases.sensor')}</MenuItem>
-                      <MenuItem value='Robotics'>{t('requestdemo.usecases.robotics')}</MenuItem>
-                      <MenuItem value='Academic Research'>{t('requestdemo.usecases.research')}</MenuItem>
-                      <MenuItem value='Urban Transportation Planning'>{t('requestdemo.usecases.planning')}</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <Input
-                    name='other'
-                    id='form-field-other'
-                    label={t('requestdemo.labels.other')}
-                    placeholder={t('requestdemo.placeholders.other')}
-                    value={values.other}
-                    onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
-                    variant='outlined'
-                    multiline
-                    rows={7}
-                    fullWidth
-                  />
+              </Hidden>
+              <Grid item sm={12} md={8}>
+                <Grid container spacing={4} justify='space-between'>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      required
+                      name='nameGiven'
+                      id='form-field-name-given'
+                      label={t('requestdemo.labels.nameGiven')}
+                      placeholder={t('requestdemo.placeholders.nameGiven')}
+                      value={values.nameGiven}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      required
+                      name='nameFamily'
+                      id='form-field-name-family'
+                      label={t('requestdemo.labels.nameFamily')}
+                      placeholder={t('requestdemo.placeholders.nameFamily')}
+                      value={values.nameFamily}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      required
+                      name='email'
+                      id='form-field-email'
+                      label={t('requestdemo.labels.email')}
+                      placeholder={t('requestdemo.placeholders.email')}
+                      value={values.email}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      required
+                      name='emailVerify'
+                      id='form-field-email-verify'
+                      label={t('requestdemo.labels.emailVerify')}
+                      placeholder={t('requestdemo.placeholders.emailVerify')}
+                      value={values.emailVerify}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      name='organization'
+                      id='form-field-organization'
+                      label={t('requestdemo.labels.organization')}
+                      placeholder={t('requestdemo.placeholders.organization')}
+                      value={values.organization}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      name='title'
+                      id='form-field-title'
+                      label={t('requestdemo.labels.title')}
+                      placeholder={t('requestdemo.placeholders.title')}
+                      value={values.title}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      {...commonTextInputProps}
+                      required
+                      name='region'
+                      id='form-field-region'
+                      label={t('requestdemo.labels.region')}
+                      placeholder={t('requestdemo.placeholders.region')}
+                      value={values.region}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <FormControl variant='outlined' fullWidth>
+                      <InputLabel id='form-usecase-label' htmlFor='form-field-usecase'>
+                        {t('requestdemo.labels.usecase')}
+                      </InputLabel>
+                      <Select
+                        required
+                        label={t('requestdemo.labels.usecase')}
+                        value={values.usecase}
+                        onChange={handleUsecaseChange}
+                        labelId='form-usecase-label'
+                        id='form-field-usecase'
+                      >
+                        <MenuItem value='Autonomous Vehicle'>{t('requestdemo.usecases.vehicle')}</MenuItem>
+                        <MenuItem value='Autonomous Driving Service/Software'>
+                          {t('requestdemo.usecases.software')}
+                        </MenuItem>
+                        <MenuItem value='Sensor'>{t('requestdemo.usecases.sensor')}</MenuItem>
+                        <MenuItem value='Robotics'>{t('requestdemo.usecases.robotics')}</MenuItem>
+                        <MenuItem value='Academic Research'>{t('requestdemo.usecases.research')}</MenuItem>
+                        <MenuItem value='Urban Transportation Planning'>{t('requestdemo.usecases.planning')}</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12} sm={12}>
+                    <Input
+                      {...commonTextInputProps}
+                      name='other'
+                      id='form-field-other'
+                      label={t('requestdemo.labels.other')}
+                      placeholder={t('requestdemo.placeholders.other')}
+                      value={values.other}
+                      multiline
+                      rows={3}
+                    />
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
+          </FormDialogContent>
+          <FormDialogActions px={3}>
+            <Grid container spacing={3}>
+              <Grid item sm={4}></Grid>
+              <Grid item sm={4}>
+                <Typography variant='body2'>* indicates a required field.</Typography>
+              </Grid>
+              <Grid item sm={4} style={{ textAlign: 'end' }}>
+                <FormControl>
+                  <Button color='primary' variant='contained' disabled={isSubmitting} type='submit'>
+                    {t('requestdemo.confirm')}
+                  </Button>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </FormDialogActions>
+        </form>
+      ) : (
+        <FormDialogContent p={2} height={1}>
+          <iframe src='https://mailthis.to/confirm' height='99%' width='100%' frameBorder={0} />
         </FormDialogContent>
-        <FormDialogActions px={3}>
-          <FormControl>
-            <Button color='primary' variant='contained' disabled={isSubmitting} type='submit'>
-              {t('requestdemo.confirm')}
-            </Button>
-          </FormControl>
-        </FormDialogActions>
-      </form>
+      )}
     </FormDialog>
   );
 };
