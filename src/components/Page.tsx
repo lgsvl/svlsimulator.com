@@ -1,14 +1,16 @@
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Container, { ContainerProps } from '@material-ui/core/Container';
+import Grid, { GridProps } from '@material-ui/core/Grid';
+import Paper, { PaperProps } from '@material-ui/core/Paper';
 import { Theme, useTheme, withTheme } from '@material-ui/core/styles';
 import React from 'react';
+import { useAppState } from 'src/context/AppState';
 import PageContextProvider from 'src/context/Page';
 import { px } from 'src/utils/theme';
 import styled, { createGlobalStyle } from 'styled-components';
 import Footer from './Footer';
 import Header from './Header';
+import RequestDemoForm from './RequestDemoForm';
 import SEO from './SEO';
 
 const GlobalStyle = createGlobalStyle`
@@ -76,27 +78,32 @@ a {
 }
 `}`;
 
-const AppContainer = withTheme(styled(Container)``);
+const AppContainer = withTheme(styled(Container)``) as React.FC<ContainerProps<'main', { component: string }>>;
 
 const AppGrid = withTheme(styled(Grid)`
   min-height: 100vh;
-`);
+`) as React.FC<GridProps>;
 
 const HeaderGrid = withTheme(styled(Grid)`
   // Make the layout have the same height rules as the toolbar, so it can be fixed
   // (outside the layout) and the content shifts down to accomodate its variable height.
   ${({ theme }) => theme.mixins.toolbar};
   margin-bottom: ${({ theme }) => px(theme.spacing(2))};
-`);
+`) as React.FC<GridProps>;
 
-const StyledPaper = withTheme(styled(Paper)``);
+const StyledPaper = withTheme(styled(Paper)``) as React.FC<PaperProps>;
 
 const FooterGrid = withTheme(styled(Grid)`
   margin-top: auto;
-`);
+`) as React.FC<GridProps<'footer', { component: string }>>;
 
-const App = ({ children }: { children?: React.ReactNode }) => {
+const App: React.FC = ({ children }) => {
   const theme = useTheme();
+  const { appState, setAppState } = useAppState();
+
+  const handleFormClose = React.useCallback(() => {
+    setAppState(false, 'requestDemoForm.open');
+  }, [setAppState]);
 
   return (
     <React.Fragment>
@@ -115,12 +122,13 @@ const App = ({ children }: { children?: React.ReactNode }) => {
             <Footer />
           </FooterGrid>
         </AppGrid>
+        <RequestDemoForm open={appState.requestDemoForm.open} onClose={handleFormClose} />
       </AppContainer>
     </React.Fragment>
   );
 };
 
-const Page = ({ children, title }: { children?: React.ReactNode; title?: string }) => (
+const Page: React.FC<{ title?: string }> = ({ children, title }) => (
   <PageContextProvider>
     <SEO title={title} />
     <App>{children}</App>

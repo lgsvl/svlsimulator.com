@@ -4,16 +4,13 @@ import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { graphql } from 'gatsby';
 import React from 'react';
-// import Link from 'src/components/Link';
 import { LinkButton } from 'src/components/Button';
 import LayoutGrid from 'src/components/LayoutGrid';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-// import imgPlaceholder from 'src/images/placeholder1.jpg';
-import { fade, px } from 'src/utils/theme';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
-// import Img from "gatsby-image";
 import { NewsIndexQuery } from '../../../graphql-types';
 
 const newsBoxCategoryColors = {
@@ -59,7 +56,6 @@ const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
   grid-column-end: ${colSpan ? `span ${colSpan}` : 'auto'};
   grid-row-end: ${rowSpan ? `span ${rowSpan}` : 'auto'};
   padding: ${px(theme.spacing(2))};
-  // background-color: ${fade(theme.palette.background.paper, 0.6)};
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -81,8 +77,6 @@ const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
     right: 0;
     bottom: 0;
     left: 0;
-    // background-color: ${newsBoxCategoryColors[category]};
-    // background-color: ${fade(theme.palette.background.paper, 0.6)};
     background-color: ${theme.palette.background.paper};
     background-image: url(${src});
     background-position: center center;
@@ -135,7 +129,7 @@ const NewsBox = ({
   const externalLink = link && link.match('://');
 
   return (
-    <StyledNewsBox elevation={4} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
+    <StyledNewsBox elevation={0} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
       <Box position='relative'>
         <Typography variant='overline'>{t(`news.categories.${category}`)}</Typography>
       </Box>
@@ -169,6 +163,7 @@ export const queryNews = graphql`
           excerpt
           frontmatter {
             title
+            author
             date
             category
             link

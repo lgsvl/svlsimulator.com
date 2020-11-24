@@ -1,38 +1,49 @@
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import Li from 'src/components/Li';
+import FullWidthContainer from 'src/components/FullWidthContainer';
+import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
-import { SimulationPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
+import { DigitalTwinPreviewBox, SimulationPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
+import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
 
 const ListItemWrapper: MapFunction = (str, i) => (
-  <ListItem key={`${str}${i}`}>
-    <Li>{str}</Li>
-  </ListItem>
+  <Li key={`${str}${i}`}>
+    <LiText>{str}</LiText>
+  </Li>
 );
 
 export default function CloudSimAAS() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
-      <Section buttonText='getDemo' flip src={srcCloudPoster} title={t('cloud.title')} tuckImage variant='h3'>
+      <Section
+        buttonText='getDemo'
+        flip
+        src={srcCloudPoster}
+        video={srcCloudVideo}
+        title={t('cloud.title')}
+        tuckImage
+        variant='h3'
+      >
         <List disablePadding>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 
-      <Grid container>
-        <Grid item xs={12} sm={6}>
-          <SimulationPreviewBox />
+      <FullWidthContainer>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <SimulationPreviewBox />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <DigitalTwinPreviewBox />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <DigitalTwinPreviewBox />
-        </Grid>
-      </Grid>
+      </FullWidthContainer>
 
       <SubscribeBox />
     </Page>

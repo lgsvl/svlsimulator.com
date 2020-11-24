@@ -72,16 +72,6 @@ const DesktopMenu = () => {
   };
 
   const handleMenuDeactivate = (ev: React.MouseEvent<EventTarget>) => {
-    // DEV NOTE: We _may_ not need this, as it is normally present to keep from
-    // sending the close signal when the cursor leaves the activator, but our
-    // menu directly touches and instantly reopens the menu, so we may not need
-    // this. Its presence prevents the menu from closing if hoving the Products
-    // button and moving the cursor over to the adjcent button, which is undesirable.
-    //
-    // if (anchorRef.current && anchorRef.current.contains(ev.target as HTMLElement)) {
-    //   return;
-    // }
-
     setOpen(false);
   };
 
@@ -145,7 +135,7 @@ const DesktopMenu = () => {
                           onClick={handleMenuDeactivate}
                           alia-label='Go to Simulation product page'
                         >
-                          {t('main.header.simulation')}
+                          {t('simulation.navTitle')}
                         </MenuItem>
                         <MenuItem
                           component={Link}
@@ -153,7 +143,7 @@ const DesktopMenu = () => {
                           onClick={handleMenuDeactivate}
                           alia-label='Go to Cloud product page'
                         >
-                          {t('main.header.cloud')}
+                          {t('cloud.navTitle')}
                         </MenuItem>
                         <MenuItem
                           component={Link}
@@ -161,7 +151,7 @@ const DesktopMenu = () => {
                           onClick={handleMenuDeactivate}
                           alia-label='Go to Digital-twin product page'
                         >
-                          {t('main.header.digitaltwin')}
+                          {t('digitaltwin.navTitle')}
                         </MenuItem>
                       </MenuList>
                     </ClickAwayListener>
@@ -169,44 +159,20 @@ const DesktopMenu = () => {
                 </Grow>
               )}
             </Popper>
-            {/*
-            <LinkButton fullWidth onMouseEnter={handleClick} onMouseLeave={handleClose}>
-              Products
-            </LinkButton>
-            <Menu
-              id='simple-menu'
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              MenuListProps={{ onMouseLeave: handleClose }}
-              // onMouseEnter={handleClick}
-              // onMouseLeave={handleClose}
-            >
-              <MenuItem component={Link} to='/product/simulation/'>
-                Simulation
-              </MenuItem>
-              <MenuItem component={Link} to='/product/cloud/'>
-                Cloud simulation as-a-service
-              </MenuItem>
-              <MenuItem component={Link} to='/product/digitaltwin/'>
-                Digital Twin creation service
-              </MenuItem>
-            </Menu> */}
           </Grid>
           <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/applications/' alia-label='Go to Applications page'>
-              {t('main.header.applications')}
+              {t('applications.navTitle')}
             </StyledLinkButton>
           </Grid>
           <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/news/' alia-label='Go to News page'>
-              {t('main.header.news')}
+              {t('news.navTitle')}
             </StyledLinkButton>
           </Grid>
           <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/about/' alia-label='Go to About page'>
-              {t('main.header.about')}
+              {t('about.navTitle')}
             </StyledLinkButton>
           </Grid>
         </Grid>
@@ -214,7 +180,8 @@ const DesktopMenu = () => {
       <Grid item>
         <StyledLinkButton
           color='primary'
-          to='https://wise.staging.lgsvlsimulator.com/sign-in'
+          to='https://account.lgsvlsimulator.com/'
+          // to='https://wise.staging.lgsvlsimulator.com/sign-in'
           endIcon={<IconLogin />}
           alia-label='Log in Button'
         >
@@ -248,31 +215,32 @@ const MobileMenu = () => {
         open={drawerOpen}
       >
         <DrawerHeader display='flex' alignItems='center' justifyContent='space-between' pl={1} pr={3}>
-          <LinkButton to='/' color='primary' startIcon={<IconLGSVLSimulator />} title='Home' />
+          <LinkButton to='/' color='primary' startIcon={<IconLGSVLSimulator />} title={t('home.navTitle')} />
           <IconButton edge='end' color='secondary' onClick={handleDrawer}>
             <IconX />
           </IconButton>
         </DrawerHeader>
         <List>
           <ListItem button component={Link} to='/product/simulation/'>
-            <ListItemText primary={t('main.header.simulation')} />
+            <ListItemText primary={t('simulation.navTitle')} />
           </ListItem>
           <ListItem button component={Link} to='/product/cloud/'>
-            <ListItemText primary={t('main.header.cloud')} />
+            <ListItemText primary={t('cloud.navTitle')} />
           </ListItem>
           <ListItem button component={Link} to='/product/digitaltwin/'>
-            <ListItemText primary={t('main.header.digitaltwin')} />
+            <ListItemText primary={t('digitaltwin.navTitle')} />
           </ListItem>
           <ListItem button component={Link} to='/applications/'>
-            <ListItemText primary={t('main.header.applications')} />
+            <ListItemText primary={t('applications.navTitle')} />
           </ListItem>
           <ListItem button component={Link} to='/news/'>
-            <ListItemText primary={t('main.header.news')} />
+            <ListItemText primary={t('news.navTitle')} />
           </ListItem>
           <ListItem button component={Link} to='/about/'>
-            <ListItemText primary={t('main.header.about')} />
+            <ListItemText primary={t('about.navTitle')} />
           </ListItem>
-          <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'>
+          {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
+          <ListItem button component={Link} to='https://account.lgsvlsimulator.com/'>
             <ListItemText primary={t('main.header.login')} />
             <ListItemIcon>
               <IconLogin />
@@ -285,7 +253,7 @@ const MobileMenu = () => {
 };
 
 const Header = React.forwardRef((props, ref) => (
-  <AppBar position='fixed' color='default' {...props} ref={ref}>
+  <AppBar position='fixed' color='default' {...props} elevation={0} ref={ref}>
     <Toolbar component='nav'>
       <NavGrid container alignItems='center' justify='space-between'>
         <Grid item>

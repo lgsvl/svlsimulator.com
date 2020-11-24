@@ -18,7 +18,7 @@ export default function About() {
     <Page>
       <Box height='70vh'>
         <HeroGrid container alignItems='center' justify='center'>
-          <Center maxWidth={100}>
+          <Center maxWidth={800}>
             <Typography variant='h1' color='primary'>
               Oops!
             </Typography>

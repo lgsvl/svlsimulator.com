@@ -12,6 +12,9 @@ import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcFuture from 'src/images/future-mobility-solutions.jpg';
 import srcRobotics from 'src/images/robotics.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
+import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 
 const TypoWrapper: MapFunction<string> = (str, i) => (
   <Typography paragraph key={`paragraph${i}`}>
@@ -28,15 +31,35 @@ export default function Applications() {
         {tMap('applications.body', TypoWrapper)}
       </Section>
 
-      <Section flip title={t('applications.section1.title')} src={srcSimulationPoster} buttonText='readMore'>
+      <Section
+        flip
+        title={t('applications.section1.title')}
+        src={srcSimulationPoster}
+        video={srcSimulationVideo}
+        buttonText='readMore'
+        buttonProps={{ to: '/product/simulation/', title: t('home.features.0.title') }}
+      >
         {tMap('applications.section1.body', TypoWrapper)}
       </Section>
 
-      <Section title={t('applications.section2.title')} src={srcDigitalTwinPoster} buttonText='readMore'>
+      <Section
+        title={t('applications.section2.title')}
+        src={srcDigitalTwinPoster}
+        video={srcDigitalTwinVideo}
+        buttonText='readMore'
+        buttonProps={{ to: '/product/digitaltwin/', title: t('home.features.2.title') }}
+      >
         {tMap('applications.section2.body', TypoWrapper)}
       </Section>
 
-      <Section flip title={t('applications.section3.title')} src={srcCloudPoster} buttonText='readMore'>
+      <Section
+        flip
+        title={t('applications.section3.title')}
+        src={srcCloudPoster}
+        video={srcCloudVideo}
+        buttonText='readMore'
+        buttonProps={{ to: '/product/cloud/', title: t('home.features.1.title') }}
+      >
         {tMap('applications.section3.body', TypoWrapper)}
       </Section>
 

@@ -185,7 +185,7 @@ const getMinimumAnchorIndex = (current: XY, anchors: XY[]): number => {
 
 const getScreenCenter = (ev: Event): XY => {
   if (ev.target) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const doc: Document = ev.type === 'resize' ? ev.target.document : ev.target;
 

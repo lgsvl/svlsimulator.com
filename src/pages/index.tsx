@@ -4,7 +4,7 @@ import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-// import BackgroundVideo from 'src/components/BackgroundVideo';
+import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
@@ -19,14 +19,23 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
+import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import styled from 'styled-components';
 import videoSrcHero from '../videos/Hero.mp4';
 import Visualizer from 'src/components/Visualizer';
 // import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 // import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
-const SmallImage = (props: ImageProps) => (
-  <Image height={{ xs: 200, sm: 300, md: 456 }} mb={{ xs: 2, md: 5 }} borderRadius='borderRadius' {...props} />
+const SmallVideo: React.FC<BackgroundVideoProps> = props => (
+  <BackgroundVideo
+    height={{ xs: 200, sm: 300, md: 456 }}
+    mb={{ xs: 2, md: 5 }}
+    borderRadius='borderRadius'
+    fit='cover'
+    {...props}
+  />
 );
 
 const HeroBox = withTheme(styled(Box)``) as React.FC<BoxProps>;
@@ -77,7 +86,7 @@ export default function Home() {
             <Typography variant='h1'>{t('home.title')}</Typography>
           </Grid>
           <Grid item>
-            <Center disableGutters maxWidth={90}>
+            <Center disableGutters maxWidth={720}>
               {tMap('home.body', TypoWrapper)}
               <Box mt={6}>
                 <RequestDemoButton />
@@ -130,7 +139,7 @@ export default function Home() {
       </Box>
 
       <SilhouettedContent my={15}>
-        <Center disableGutters maxWidth={90}>
+        <Center disableGutters maxWidth={720}>
           <LayoutGrid xs={2} sm={4} spacing={2}>
             <IconBaidu {...brandIconProps} />
             <IconApollo {...brandIconProps} />
@@ -143,7 +152,7 @@ export default function Home() {
       <Box my={15}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>
-            <SmallImage src={srcCloudPoster} />
+            <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
             <SectionContent
               title={t('home.features.0.title')}
               buttonText='readMore'
@@ -153,7 +162,7 @@ export default function Home() {
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <SmallImage src={srcDigitalTwinPoster} />
+            <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
             <SectionContent
               title={t('home.features.1.title')}
               buttonText='readMore'
@@ -163,7 +172,7 @@ export default function Home() {
             </SectionContent>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <SmallImage src={srcSimulationPoster} />
+            <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
             <SectionContent
               title={t('home.features.2.title')}
               buttonText='readMore'

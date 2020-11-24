@@ -14,14 +14,14 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
+import FullWidthContainer from 'src/components/FullWidthContainer';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
-import Li from 'src/components/Li';
+import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
 import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
@@ -30,12 +30,13 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import styled from 'styled-components';
 
 const ListItemWrapper: MapFunction = (str, i) => (
-  <ListItem key={`${str}${i}`}>
-    <Li>{str}</Li>
-  </ListItem>
+  <Li key={`${str}${i}`}>
+    <LiText>{str}</LiText>
+  </Li>
 );
 
 const Caption = (props: TypographyProps) => <Typography variant='body2' display='block' {...props} />;
@@ -85,14 +86,14 @@ const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   );
 };
 
-type Row = {
+type RowType = {
   name: string;
   free: boolean;
   premium: boolean;
 };
 
-interface FeatureRow extends Row {
-  subFeatures?: Row[];
+interface FeatureRow extends RowType {
+  subFeatures?: RowType[];
 }
 
 interface BuildRow {
@@ -156,10 +157,10 @@ const rows: FeatureRow[] = [
     buildRow('3.subFeatures.5', false, true)
   ]),
   buildRow('4.name', false, true, [
-    buildRow('4.subFeatures.0', false, true),
+    buildRow('4.subFeatures.0', true, true),
     buildRow('4.subFeatures.1', false, true),
     buildRow('4.subFeatures.2', false, true),
-    buildRow('4.subFeatures.3', false, true)
+    buildRow('4.subFeatures.3', false, false)
   ]),
   buildRow('5.name', false, true, [
     buildRow('5.subFeatures.0', false, true),
@@ -226,7 +227,14 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section buttonText='getDemo' src={srcSimulationPoster} title={t('simulation.title')} tuckImage variant='h3'>
+      <Section
+        buttonText='getDemo'
+        src={srcSimulationPoster}
+        video={srcSimulationVideo}
+        title={t('simulation.title')}
+        tuckImage
+        variant='h3'
+      >
         <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
       </Section>
 
@@ -263,18 +271,20 @@ export default function Simulation() {
         </TableBody>
       </StyledTable>
 
-      <Center>
+      <Center mt={7}>
         <RequestDemoButton />
       </Center>
 
-      <Grid container>
-        <Grid item xs={12} sm={6}>
-          <CloudPreviewBox />
+      <FullWidthContainer>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <CloudPreviewBox />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <DigitalTwinPreviewBox />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <DigitalTwinPreviewBox />
-        </Grid>
-      </Grid>
+      </FullWidthContainer>
 
       <SubscribeBox />
     </Page>

@@ -1,6 +1,7 @@
 ---
 title: See you at CES 2021
 category: event
+author: Blake Stephens
 date: '2017-09-18T23:19:51.246Z'
 preview: You guessed it, back again this year with even more greatness.
 prominence: big

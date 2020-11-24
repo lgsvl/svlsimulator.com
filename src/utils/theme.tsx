@@ -85,8 +85,6 @@ export const hexOpacity = (opacity: number) => {
   // return hexOpacity.length === 2 ? hexOpacity : `0${hexOpacity}`;
 };
 
-export const fade = (color: string, opacity: number) => color + hexOpacity(opacity);
-
 // export function spacing(...args: SpacingArgument[]): Spacing {
 //   return ({ theme }: IThemedComponent<{}>) => px(theme.spacing.apply(null, args))
 // };

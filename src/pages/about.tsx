@@ -6,13 +6,17 @@ import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
+import Image from 'src/components/Image';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+// import srcLgsvlLogo from 'src/images/lgsvl-logo-hollow.svg';
+import srcLgsvlLogo from 'src/images/about.jpg';
 import styled from 'styled-components';
 
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
+  position: relative;
 `);
 
 const HeadingWrapper: MapFunction<string> = (str, i) => (
@@ -31,10 +35,24 @@ export default function About() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('about.title')}>
-      <Box height='70vh'>
+      <Box height='70vh' position='relative'>
+        <Image
+          src={srcLgsvlLogo}
+          fit='contain'
+          position='absolute'
+          style={{
+            opacity: 0.4
+            // filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.5)) drop-shadow(0px 3px 40px #ff336699) saturate(1.2)'
+          }}
+        />
         <HeroGrid container alignItems='center' justify='center'>
-          <Center maxWidth={100}>
-            <Typography variant='h4'>{t('about.body')}</Typography>
+          <Center maxWidth={800}>
+            <Typography
+              variant='h4'
+              style={{ textShadow: '0 1px 10px rgb(20, 26, 45, 0.7), 0 1px 5px rgb(72, 19, 39, 0.7)' }}
+            >
+              {t('about.body')}
+            </Typography>
           </Center>
         </HeroGrid>
       </Box>

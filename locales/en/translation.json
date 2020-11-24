@@ -17,15 +17,8 @@
       "social": "Social"
     },
     "header": {
-      "title": "LGSVL Simulator",
       "products": "Products",
-      "news": "News",
-      "applications": "Applications",
-      "about": "About",
-      "login": "Log in",
-      "simulation": "Simulation",
-      "cloud": "Cloud simulation as-a-service",
-      "digitaltwin": "Digital Twin creation service"
+      "login": "Log in"
     },
     "links": {
       "github": "Github",
@@ -44,6 +37,7 @@
     }
   },
   "about": {
+    "navTitle": "About",
     "title": "About",
     "body": "The LGSVL simulator is developed by the Advanced Platform Lab at the LG Electronics America R&D Lab, formerly the LG Silicon Valley Lab",
     "details": [
@@ -61,6 +55,7 @@
     }
   },
   "applications": {
+    "navTitle": "Applications",
     "title": "Future Mobility Solutions",
     "body": "The future connected mobility requires end-to-end and sophisticated infrastructures among the vehicles, environment and roadway information systems. LG helps the world’s leading OEMs and suppliers harness the power of autonomous driving technologies and solutions to simulate and accelerate the service innovation, optimize vehicle performance, gain insight from data and take advantage of the cloud platform to scale the mobility operations.",
     "section1": {
@@ -95,6 +90,7 @@
     ]
   },
   "cloud": {
+    "navTitle": "Cloud Simulation-as-a-Service",
     "title": "Cloud Simulation-as-a-Service",
     "body": [
       "Ability to resimulate with local simulation - not just on remote servers",
@@ -104,6 +100,7 @@
     ]
   },
   "digitaltwin": {
+    "navTitle": "Digital Twin creation service",
     "title": "Digital Twin creation service",
     "body": "We offer environment creation services for different levels of environment fidelity based on your needs. These Digital Twin environments can be used to create scenarios and resimulations of real-world test cases.",
     "section1": {
@@ -116,6 +113,7 @@
     }
   },
   "home": {
+    "navTitle": "Home",
     "title": "LGSVL SIMULATOR",
     "body": "End-to-end autonomous driving simulation software for testing and validating the entire autonomous driving software stack",
     "section1": {
@@ -131,7 +129,7 @@
     },
     "features": [
       {
-        "title": "Simulation",
+        "title": "Simulation platform",
         "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
       },
       {
@@ -145,6 +143,7 @@
     ]
   },
   "news": {
+    "navTitle": "News",
     "title": "Latest news and events",
     "categories": {
       "news": "News",
@@ -154,6 +153,7 @@
     }
   },
   "simulation": {
+    "navTitle": "Simulation platform",
     "title": "End-to-end simulation platform",
     "body": [
       "3D photorealistic simulation software for AD and robotics",

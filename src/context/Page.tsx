@@ -1,5 +1,5 @@
-// import { StylesProvider } from '@material-ui/styles';
-// import React from 'react';
+import { AppState } from './AppState';
+import React from 'react';
 import { ThemeProvider } from './Theme';
 
 // injectFirst tip
@@ -9,13 +9,11 @@ import { ThemeProvider } from './Theme';
 //   children: React.ReactNode;
 // }
 
-// const PageContextProvider: React.FC<PageContextProviderProps> = ({ children }) => (
-//   // <StylesProvider injectFirst>
-//   <ThemeProvider>{children}</ThemeProvider>
-//   // </StylesProvider>
-// );
+const PageContextProvider: React.FC = ({ children }) => (
+  <AppState>
+    <ThemeProvider>{children}</ThemeProvider>
+  </AppState>
+);
 
-// export default PageContextProvider;
-export default ThemeProvider;
-export { ThemeProvider as PageContextProvider };
-// export type { PageContextProviderProps };
+export default PageContextProvider;
+export { PageContextProvider };

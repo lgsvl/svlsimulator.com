@@ -13,7 +13,7 @@ declare module 'streetscape.gl' {
     bearing: any;
     isValid: boolean;
     position: XVIZPosition;
-    streamNames: Iterator<XVIZStreamName>
+    streamNames: Iterator<XVIZStreamName>;
   };
   type XVIZStreamName = string;
   type XVIZVehiclePose = {
@@ -44,7 +44,7 @@ declare module 'streetscape.gl' {
     objects: Record<string, XVIZObject>;
     origin: XVIZPosition;
     pointCloud: any;
-    streams: Record<XVIZStreamName, {time: number} & Record<string, any>>;
+    streams: Record<XVIZStreamName, { time: number } & Record<string, any>>;
     trackPosition: XVIZPosition;
     trackedObjectId: any;
     variables: Record<XVIZStreamName, any>;
@@ -55,11 +55,11 @@ declare module 'streetscape.gl' {
     category: 'primitive' | 'time_series' | 'pose' | 'future_instance';
     coordinate?: string;
     primitive_type?: 'polyline' | 'polygon' | 'circle' | 'text' | 'point' | 'image';
-  }
+  };
 
   interface XVIZLoaderConfig {
-      worker?: boolean;
-      maxConcurrency?: number;
+    worker?: boolean;
+    maxConcurrency?: number;
   }
 
   interface XVIZFileLoaderConfig extends XVIZLoaderConfig {
@@ -68,12 +68,12 @@ declare module 'streetscape.gl' {
   }
 
   interface XVIZStreamLeaderConfig extends XVIZLoaderConfig {
-    	logGuid: string;
-    	bufferLength?: number;
-    	serverConfig: {
-    		defaultLogLength: number;
-    		serverUrl: string;
-    	}
+    logGuid: string;
+    bufferLength?: number;
+    serverConfig: {
+      defaultLogLength: number;
+      serverUrl: string;
+    };
   }
 
   type LoaderEventType = 'ready' | 'update' | 'finish' | 'error';
@@ -82,7 +82,7 @@ declare module 'streetscape.gl' {
   type XVIZStreamSettings = Record<XVIZStreamName, boolean>;
 
   export declare class XVIZLoader {
-    constructor (config: XVIZLoaderConfig);
+    constructor(config: XVIZLoaderConfig);
 
     close(): void;
     connect(): void;
@@ -107,19 +107,18 @@ declare module 'streetscape.gl' {
     // untyped
     getStreams(): any;
     getBufferedTimeRanges(): any;
-
   }
 
   export declare class XVIZFileLoader extends XVIZLoader {
-    constructor (config: XVIZFileLoaderConfig)
+    constructor(config: XVIZFileLoaderConfig);
   }
 
   export declare class XVIZStreamLoader extends XVIZLoader {
-    constructor (config: XVIZStreamLoaderConfig)
+    constructor(config: XVIZStreamLoaderConfig);
   }
 
   export declare class XVIZLiveLoader extends XVIZLoader {
-    constructor (config: XVIZStreamLoaderConfig)
+    constructor(config: XVIZStreamLoaderConfig);
   }
 
   // Constants
@@ -131,16 +130,16 @@ declare module 'streetscape.gl' {
 
   // Utilities
   declare function connectToLog(config: {
-    Component: React.ComponentType<any>,
-    getLogState: (log: XVIZLoader) => Record<string, any>
+    Component: React.ComponentType<any>;
+    getLogState: (log: XVIZLoader) => Record<string, any>;
   }): React.FC<any>;
   declare const CarMesh = {
     sedan: (config: {
-      length?: number,
-      width?: number,
-      height?: number,
-      color?: [number, number, number, number?],
-      origin?: [number, number, number]
+      length?: number;
+      width?: number;
+      height?: number;
+      color?: [number, number, number, number?];
+      origin?: [number, number, number];
     }) => any
   };
 

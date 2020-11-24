@@ -134,7 +134,6 @@ const LOG_VIEWER_STYLE = {
   }
 };
 
-/* eslint-disable camelcase, @typescript-eslint/camelcase */
 const XVIZ_STYLE = {
   // '/lidar/points': [{ style: { point_color_mode: 'ELEVATION' } }],
   '/lidar/points': [
@@ -150,7 +149,6 @@ const XVIZ_STYLE = {
   ],
   '/tracklets/objects': [{ name: 'selected', style: { fill_color: '#ff800088', stroke_color: '#ff8000' } }]
 };
-/* eslint-enable camelcase, @typescript-eslint/camelcase */
 
 const OBJECT_ICONS: Record<string, string> = {
   Car: '\uE916',

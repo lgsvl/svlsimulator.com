@@ -1,16 +1,17 @@
-import { ButtonProps, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
+import { ButtonProps } from '@material-ui/core/Button';
 import Container, { ContainerProps } from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
+import { fade, withTheme } from '@material-ui/core/styles';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
-import Button, { ReadMoreButton } from 'src/components/Button';
+import Button, { ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
-import { RequestDemoButton } from 'src/components/Button';
-import { fade, px } from 'src/utils/theme';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
+import BackgroundVideo from './BackgroundVideo';
 import { LinkProps } from './Link';
 
 const SectionContainer = withTheme(styled(Container)`
@@ -18,7 +19,7 @@ const SectionContainer = withTheme(styled(Container)`
   &:last-child {
     margin-bottom: 0;
   }
-`) as typeof Container;
+`) as React.FC<ContainerProps<'section', { component: string }>>;
 
 const StyledPaper = withTheme(styled(Paper)``) as React.FC<PaperProps>;
 
@@ -102,6 +103,7 @@ interface SectionProps extends ContentProps {
   image?: React.ReactNode;
   minHeight?: GridBoxProps['minHeight'];
   tuckImage?: boolean;
+  video?: React.VideoHTMLAttributes<HTMLVideoElement>['src'];
 }
 
 const Content = ({
@@ -147,6 +149,7 @@ const Content = ({
 
 const Section = ({
   buttonText,
+  buttonProps,
   children,
   contained,
   flip,
@@ -155,9 +158,16 @@ const Section = ({
   src,
   title,
   tuckImage,
-  variant
+  variant,
+  video
 }: SectionProps) => {
-  let imageTag = image || <StyledImage src={src} />;
+  let imageTag =
+    image ||
+    (video ? (
+      <BackgroundVideo src={video} poster={src} borderRadius='borderRadius' fit='cover' />
+    ) : (
+      <StyledImage src={src} />
+    ));
   if (tuckImage) {
     let ImageContainerComponent = TuckingBox;
     if (flip) {
@@ -183,6 +193,7 @@ const Section = ({
               <Content
                 title={title}
                 buttonText={buttonText}
+                buttonProps={buttonProps}
                 minHeight={minHeight}
                 variant={variant}
                 contained={contained}
