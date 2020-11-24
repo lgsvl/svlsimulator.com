@@ -10,7 +10,8 @@ import Image from 'src/components/Image';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcLgsvlLogo from 'src/images/lgsvl-logo-hollow.svg';
+// import srcLgsvlLogo from 'src/images/lgsvl-logo-hollow.svg';
+import srcLgsvlLogo from 'src/images/about.jpg';
 import styled from 'styled-components';
 
 const HeroGrid = withTheme(styled(Grid)`
@@ -40,8 +41,8 @@ export default function About() {
           fit='contain'
           position='absolute'
           style={{
-            opacity: 0.4,
-            filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.5)) drop-shadow(0px 3px 40px #ff336699) saturate(1.2)'
+            opacity: 0.4
+            // filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.5)) drop-shadow(0px 3px 40px #ff336699) saturate(1.2)'
           }}
         />
         <HeroGrid container alignItems='center' justify='center'>
