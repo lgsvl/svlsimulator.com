@@ -101,13 +101,29 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-remark-images',
+      options: {
+        linkImagesToOriginal: false,
+        backgroundColor: 'none'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           // posts: require.resolve("./src/components/posts-layout.js"),
           default: require.resolve('./src/components/md/Layout.tsx')
         },
-        extensions: ['.mdx', '.md']
+        extensions: ['.mdx', '.md'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              linkImagesToOriginal: false,
+              backgroundColor: 'none'
+            }
+          }
+        ]
       }
     },
     {
