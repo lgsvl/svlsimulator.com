@@ -1,7 +1,7 @@
 import { styled as muiStyled } from '@material-ui/core/styles';
 import { compose, spacing, SpacingProps, sizing, SizingProps } from '@material-ui/system';
 
-type SpacedProps<T = {}> = T &
+type SpacedProps<T = Record<string, unknown>> = T &
   SpacingProps &
   SizingProps & {
     component?: React.ComponentType | React.ReactHTMLElement<HTMLElement>;
