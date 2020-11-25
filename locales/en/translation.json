@@ -36,8 +36,8 @@
       "emailPlaceholder": "Enter your email"
     },
     "video": {
-      "play": "Play",
-      "pause": "Pause"
+      "play": "Play all videos",
+      "pause": "Pause all videos"
     }
   },
   "about": {
