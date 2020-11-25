@@ -2,8 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import FullWidthContainer from 'src/components/FullWidthContainer';
-import Page from 'src/components/Page';
+import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
 import { CloudPreviewBox, SimulationPreviewBox } from 'src/components/PagePreviewBox';
 import Section, { FullWidthSection } from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
@@ -34,20 +33,22 @@ export default function DigitalTwin() {
         {tMap('digitaltwin.body', TypoWrapper)}
       </Section>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <FullWidthSection title={t('digitaltwin.section1.title')} src={srcDigitalTwinFull}>
-            {tMap('digitaltwin.section1.body', TypoWrapper)}
-          </FullWidthSection>
+      <PageSection>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <FullWidthSection title={t('digitaltwin.section1.title')} src={srcDigitalTwinFull}>
+              {tMap('digitaltwin.section1.body', TypoWrapper)}
+            </FullWidthSection>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FullWidthSection title={t('digitaltwin.section2.title')} src={srcDigitalTwinLite}>
+              {tMap('digitaltwin.section2.body', TypoWrapper)}
+            </FullWidthSection>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <FullWidthSection title={t('digitaltwin.section2.title')} src={srcDigitalTwinLite}>
-            {tMap('digitaltwin.section2.body', TypoWrapper)}
-          </FullWidthSection>
-        </Grid>
-      </Grid>
+      </PageSection>
 
-      <FullWidthContainer>
+      <PageSectionFullWidth>
         <Grid container>
           <Grid item xs={12} sm={6}>
             <CloudPreviewBox />
@@ -56,7 +57,7 @@ export default function DigitalTwin() {
             <SimulationPreviewBox />
           </Grid>
         </Grid>
-      </FullWidthContainer>
+      </PageSectionFullWidth>
 
       <SubscribeBox />
     </Page>

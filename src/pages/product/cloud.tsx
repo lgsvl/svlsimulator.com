@@ -2,7 +2,6 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
-import FullWidthContainer from 'src/components/FullWidthContainer';
 import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
 import { DigitalTwinPreviewBox, SimulationPreviewBox } from 'src/components/PagePreviewBox';
@@ -34,16 +33,14 @@ export default function CloudSimAAS() {
         <List disablePadding>{tMap('cloud.body', ListItemWrapper)}</List>
       </Section>
 
-      <FullWidthContainer>
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <SimulationPreviewBox />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <DigitalTwinPreviewBox />
-          </Grid>
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <SimulationPreviewBox />
         </Grid>
-      </FullWidthContainer>
+        <Grid item xs={12} sm={6}>
+          <DigitalTwinPreviewBox />
+        </Grid>
+      </Grid>
 
       <SubscribeBox />
     </Page>

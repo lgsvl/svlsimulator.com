@@ -1,27 +1,24 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 import { ButtonProps } from '@material-ui/core/Button';
-import Container, { ContainerProps } from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper, { PaperProps } from '@material-ui/core/Paper';
 import { fade, withTheme } from '@material-ui/core/styles';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Button, { ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
+import { PageSection, PageSectionProps } from 'src/components/Page';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import BackgroundVideo from './BackgroundVideo';
 import { LinkProps } from './Link';
 
-const SectionContainer = withTheme(styled(Container)`
+const SpacedSectionContainer = withTheme(styled(PageSection)`
   margin-bottom: ${({ theme }) => px(theme.spacing(9))};
   &:last-child {
     margin-bottom: 0;
   }
-`) as React.FC<ContainerProps<'section', { component: string }>>;
-
-const StyledPaper = withTheme(styled(Paper)``) as React.FC<PaperProps>;
+`) as React.FC<PageSectionProps<'section', { component: string }>>;
 
 const TitleGridBox = withTheme(styled(GridBox)`
   text-shadow: 0px 2px black, 0px 2px 10px rgba(0, 0, 0, 0.6);
@@ -182,48 +179,42 @@ const Section = ({
   }
 
   return (
-    <SectionContainer component='section' disableGutters>
-      <StyledPaper elevation={0}>
-        <Grid container spacing={tuckImage ? 0 : 3} direction={flip ? 'row-reverse' : 'row'}>
-          <Grid item xs={12} md={6}>
-            {imageTag}
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box position='relative'>
-              <Content
-                title={title}
-                buttonText={buttonText}
-                buttonProps={buttonProps}
-                minHeight={minHeight}
-                variant={variant}
-                contained={contained}
-                flip={flip}
-                tuckImage={tuckImage}
-              >
-                {children}
-              </Content>
-            </Box>
-          </Grid>
+    <SpacedSectionContainer component='section'>
+      <Grid container spacing={tuckImage ? 0 : 3} direction={flip ? 'row-reverse' : 'row'}>
+        <Grid item xs={12} md={6}>
+          {imageTag}
         </Grid>
-      </StyledPaper>
-    </SectionContainer>
+        <Grid item xs={12} md={6}>
+          <Box position='relative'>
+            <Content
+              title={title}
+              buttonText={buttonText}
+              buttonProps={buttonProps}
+              minHeight={minHeight}
+              variant={variant}
+              contained={contained}
+              flip={flip}
+              tuckImage={tuckImage}
+            >
+              {children}
+            </Content>
+          </Box>
+        </Grid>
+      </Grid>
+    </SpacedSectionContainer>
   );
 };
 
 const FullWidthSection = ({ children, src, title, variant = 'h5' }: BaseSectionProps) => (
-  <SectionContainer component='section' disableGutters>
-    <StyledPaper elevation={0}>
-      <Box>
-        {title ? (
-          <Box mb={{ xs: 2, md: 5 }}>
-            <Typography variant={variant}>{title}</Typography>
-          </Box>
-        ) : null}
-        <StyledImage src={src} />
-        {countChildren(children) ? <Box mt={{ xs: 2, md: 5 }}>{children}</Box> : null}
+  <SpacedSectionContainer component='section' maxWidth={false}>
+    {title ? (
+      <Box mb={{ xs: 2, md: 5 }}>
+        <Typography variant={variant}>{title}</Typography>
       </Box>
-    </StyledPaper>
-  </SectionContainer>
+    ) : null}
+    <StyledImage src={src} />
+    {countChildren(children) ? <Box mt={{ xs: 2, md: 5 }}>{children}</Box> : null}
+  </SpacedSectionContainer>
 );
 
 export default Section;

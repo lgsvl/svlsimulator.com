@@ -19,10 +19,9 @@ import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
-import FullWidthContainer from 'src/components/FullWidthContainer';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
-import Page from 'src/components/Page';
+import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
 import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
@@ -246,36 +245,38 @@ export default function Simulation() {
         <List disablePadding>{tMap('simulation.section2.body', ListItemWrapper)}</List>
       </Section>
 
-      <StyledTable>
-        <TableHead>
-          <TableRow>
-            <StyledTableCell noBorder></StyledTableCell>
-            <StyledTableCell noBorder>
-              <Typography variant='h4'>{t('simulation.featuresTable.products.0.title')}</Typography>
-              <Hidden smDown>
-                <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
-              </Hidden>
-            </StyledTableCell>
-            <StyledTableCell noBorder>
-              <Typography variant='h4'>{t('simulation.featuresTable.products.1.title')}</Typography>
-              <Hidden smDown>
-                <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
-              </Hidden>
-            </StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <Row key={row.name} row={row} index={index} />
-          ))}
-        </TableBody>
-      </StyledTable>
+      <PageSection>
+        <StyledTable>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell noBorder></StyledTableCell>
+              <StyledTableCell noBorder>
+                <Typography variant='h4'>{t('simulation.featuresTable.products.0.title')}</Typography>
+                <Hidden smDown>
+                  <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
+                </Hidden>
+              </StyledTableCell>
+              <StyledTableCell noBorder>
+                <Typography variant='h4'>{t('simulation.featuresTable.products.1.title')}</Typography>
+                <Hidden smDown>
+                  <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
+                </Hidden>
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row, index) => (
+              <Row key={row.name} row={row} index={index} />
+            ))}
+          </TableBody>
+        </StyledTable>
 
-      <Center mt={7}>
-        <RequestDemoButton />
-      </Center>
+        <Center mt={7}>
+          <RequestDemoButton />
+        </Center>
+      </PageSection>
 
-      <FullWidthContainer>
+      <PageSectionFullWidth>
         <Grid container>
           <Grid item xs={12} sm={6}>
             <CloudPreviewBox />
@@ -284,7 +285,7 @@ export default function Simulation() {
             <DigitalTwinPreviewBox />
           </Grid>
         </Grid>
-      </FullWidthContainer>
+      </PageSectionFullWidth>
 
       <SubscribeBox />
     </Page>

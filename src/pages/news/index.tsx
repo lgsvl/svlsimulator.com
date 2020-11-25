@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { LinkButton } from 'src/components/Button';
 import LayoutGrid from 'src/components/LayoutGrid';
-import Page from 'src/components/Page';
+import Page, { PageSection } from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { px } from 'src/utils/theme';
@@ -225,61 +225,37 @@ export default function News({ data }: { data: NewsIndexQuery }) {
 
   return (
     <Page title={t('news.title')}>
-      <Box mt={{ xs: 2, md: 6 }} mb={4}>
-        <Typography variant='h3'>{t('news.title')}</Typography>
-      </Box>
-      <LayoutGrid sm={2} md={4} spacing={2} dense>
-        {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
-          const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
+      <PageSection>
+        <Box mt={{ xs: 2, md: 6 }} mb={4}>
+          <Typography variant='h3'>{t('news.title')}</Typography>
+        </Box>
+        <Box mb={2}>
+          <LayoutGrid sm={2} md={4} spacing={2} dense>
+            {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
+              const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
 
-          // Check for known enum values
-          validateEnum('prominence', prominence, newsItemProminence);
-          const colSpan = newsItemProminence[prominence].colSpan;
-          const rowSpan = newsItemProminence[prominence].rowSpan;
+              // Check for known enum values
+              validateEnum('prominence', prominence, newsItemProminence);
+              const colSpan = newsItemProminence[prominence].colSpan;
+              const rowSpan = newsItemProminence[prominence].rowSpan;
 
-          return (
-            <NewsBox
-              key={id}
-              title={title}
-              src={featuredImageSrc}
-              category={category}
-              colSpan={colSpan}
-              rowSpan={rowSpan}
-              link={link}
-            >
-              <Typography>{bodyPreview}</Typography>
-            </NewsBox>
-          );
-        })}
-        {/* <NewsBox title='News 1' src={imgPlaceholder}>
-          <Typography>News 1 Body</Typography>
-          <Typography>
-            <Link to='/news/readme'>Go to example README</Link>
-          </Typography>
-        </NewsBox>
-        <NewsBox category='event'>
-          <Typography>
-            <Link to='/news/october-event'>Go to CES Event</Link>
-          </Typography>
-        </NewsBox>
-        <NewsBox colSpan={2} category='article'>
-          <Typography>News 3</Typography>
-          <Typography>
-            The component leverages the power of React and TypeScript, to provide the best UX, while manipulating an
-            unlimited set of data. It comes with an intuitive API for real-time updates, accessibility, as well as
-            theming and custom templates, all with blazing fast performance.
-          </Typography>
-        </NewsBox>
-        <NewsBox colSpan={2} category='announcement'>
-          <Typography>News 4</Typography>
-        </NewsBox>
-        <NewsBox category='news'>
-          <Typography>News 5</Typography>
-        </NewsBox>
-        <NewsBox category='article'>
-          <Typography>News 6</Typography>
-        </NewsBox> */}
-      </LayoutGrid>
+              return (
+                <NewsBox
+                  key={id}
+                  title={title}
+                  src={featuredImageSrc}
+                  category={category}
+                  colSpan={colSpan}
+                  rowSpan={rowSpan}
+                  link={link}
+                >
+                  <Typography>{bodyPreview}</Typography>
+                </NewsBox>
+              );
+            })}
+          </LayoutGrid>
+        </Box>
+      </PageSection>
 
       <SubscribeBox />
     </Page>

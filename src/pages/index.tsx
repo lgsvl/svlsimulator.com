@@ -8,10 +8,9 @@ import BackgroundVideo, { BackgroundVideoProps } from 'src/components/Background
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
-import Image, { ImageProps } from 'src/components/Image';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
-import Page from 'src/components/Page';
+import Page, { PageSection } from 'src/components/Page';
 import Section, { SectionContent } from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
@@ -36,8 +35,6 @@ const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   />
 );
 
-const HeroBox = withTheme(styled(Box)``) as React.FC<BoxProps>;
-
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
   position: relative;
@@ -60,29 +57,31 @@ export default function Home() {
   const { t, tMap } = useTranslation();
   return (
     <Page>
-      <HeroBox mb={15} height='70vh' position='relative'>
-        <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }}>
-          <Typography>
-            A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
-          </Typography>
-        </BackgroundVideo>
-        <HeroGrid container direction='column' alignItems='center' justify='center'>
-          <Grid item>
-            <Typography variant='h1'>{t('home.title')}</Typography>
-          </Grid>
-          <Grid item>
-            <Center disableGutters maxWidth={720}>
-              {tMap('home.body', TypoWrapper)}
-              <Box mt={6}>
-                <RequestDemoButton />
-              </Box>
-            </Center>
-          </Grid>
-        </HeroGrid>
-        <Box p={2} textAlign='center'>
-          <MoreArrows />
+      <PageSection>
+        <Box mb={15} height='70vh' maxHeight={720} position='relative'>
+          <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }}>
+            <Typography>
+              A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
+            </Typography>
+          </BackgroundVideo>
+          <HeroGrid container direction='column' alignItems='center' justify='center'>
+            <Grid item>
+              <Typography variant='h1'>{t('home.title')}</Typography>
+            </Grid>
+            <Grid item>
+              <Center disableGutters maxWidth={720}>
+                {tMap('home.body', TypoWrapper)}
+                <Box mt={6}>
+                  <RequestDemoButton />
+                </Box>
+              </Center>
+            </Grid>
+          </HeroGrid>
+          <Box p={2} textAlign='center'>
+            <MoreArrows />
+          </Box>
         </Box>
-      </HeroBox>
+      </PageSection>
 
       <Box my={15}>
         <Section
@@ -133,38 +132,40 @@ export default function Home() {
       </SilhouettedContent>
 
       <Box my={15}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
-            <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
-            <SectionContent
-              title={t('home.features.0.title')}
-              buttonText='readMore'
-              buttonProps={{ to: '/product/simulation/', title: t('home.features.0.title') }}
-            >
-              {tMap('home.features.0.body', TypoWrapper)}
-            </SectionContent>
+        <PageSection>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={4}>
+              <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
+              <SectionContent
+                title={t('home.features.0.title')}
+                buttonText='readMore'
+                buttonProps={{ to: '/product/simulation/', title: t('home.features.0.title') }}
+              >
+                {tMap('home.features.0.body', TypoWrapper)}
+              </SectionContent>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
+              <SectionContent
+                title={t('home.features.1.title')}
+                buttonText='readMore'
+                buttonProps={{ to: '/product/cloud/', title: t('home.features.1.title') }}
+              >
+                {tMap('home.features.1.body', TypoWrapper)}
+              </SectionContent>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
+              <SectionContent
+                title={t('home.features.2.title')}
+                buttonText='readMore'
+                buttonProps={{ to: '/product/digitaltwin/', title: t('home.features.2.title') }}
+              >
+                {tMap('home.features.2.body', TypoWrapper)}
+              </SectionContent>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
-            <SectionContent
-              title={t('home.features.1.title')}
-              buttonText='readMore'
-              buttonProps={{ to: '/product/cloud/', title: t('home.features.1.title') }}
-            >
-              {tMap('home.features.1.body', TypoWrapper)}
-            </SectionContent>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
-            <SectionContent
-              title={t('home.features.2.title')}
-              buttonText='readMore'
-              buttonProps={{ to: '/product/digitaltwin/', title: t('home.features.2.title') }}
-            >
-              {tMap('home.features.2.body', TypoWrapper)}
-            </SectionContent>
-          </Grid>
-        </Grid>
+        </PageSection>
       </Box>
 
       <SubscribeBox />

@@ -16,7 +16,7 @@ export default function About() {
   // const { t } = useTranslation();
   return (
     <Page>
-      <Box height='70vh'>
+      <Box height='70vh' maxHeight={720}>
         <HeroGrid container alignItems='center' justify='center'>
           <Center maxWidth={800}>
             <Typography variant='h1' color='primary'>

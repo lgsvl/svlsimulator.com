@@ -1,7 +1,5 @@
-import Box from '@material-ui/core/Box';
 import Container, { ContainerProps } from '@material-ui/core/Container';
 import Grid, { GridProps } from '@material-ui/core/Grid';
-import Paper, { PaperProps } from '@material-ui/core/Paper';
 import { Theme, useTheme, withTheme } from '@material-ui/core/styles';
 import React from 'react';
 import { useAppState } from 'src/context/AppState';
@@ -78,8 +76,6 @@ a {
 }
 `}`;
 
-const AppContainer = withTheme(styled(Container)``) as React.FC<ContainerProps<'main', { component: string }>>;
-
 const AppGrid = withTheme(styled(Grid)`
   min-height: 100vh;
 `) as React.FC<GridProps>;
@@ -90,8 +86,6 @@ const HeaderGrid = withTheme(styled(Grid)`
   ${({ theme }) => theme.mixins.toolbar};
   margin-bottom: ${({ theme }) => px(theme.spacing(2))};
 `) as React.FC<GridProps>;
-
-const StyledPaper = withTheme(styled(Paper)``) as React.FC<PaperProps>;
 
 const FooterGrid = withTheme(styled(Grid)`
   margin-top: auto;
@@ -108,22 +102,16 @@ const App: React.FC = ({ children }) => {
   return (
     <React.Fragment>
       <GlobalStyle theme={theme} />
-      <AppContainer component='main' maxWidth='lg'>
-        <AppGrid container direction='column'>
-          <HeaderGrid item>
-            <Header />
-          </HeaderGrid>
-          <Grid item>
-            <StyledPaper elevation={0}>
-              <Box>{children}</Box>
-            </StyledPaper>
-          </Grid>
-          <FooterGrid item component='footer'>
-            <Footer />
-          </FooterGrid>
-        </AppGrid>
+      <AppGrid container direction='column'>
+        <HeaderGrid item>
+          <Header />
+        </HeaderGrid>
+        <Grid item>{children}</Grid>
+        <FooterGrid item component='footer'>
+          <Footer />
+        </FooterGrid>
         <RequestDemoForm open={appState.requestDemoForm.open} onClose={handleFormClose} />
-      </AppContainer>
+      </AppGrid>
     </React.Fragment>
   );
 };
@@ -135,5 +123,20 @@ const Page: React.FC<{ title?: string }> = ({ children, title }) => (
   </PageContextProvider>
 );
 
+/**
+ * All (nearly) content lives inside this container.
+ *
+ * Use this for basically all content, *except for* content that spans the entire width of the page.
+ */
+const PageSection: React.FC<ContainerProps> = props => <Container maxWidth='lg' {...props} />;
+
+/**
+ * Use this for any content that must stretch to the full width of the window.
+ */
+const PageSectionFullWidth: React.FC<ContainerProps> = props => (
+  <PageSection disableGutters maxWidth={false} {...props} />
+);
+
+export type { ContainerProps as PageSectionProps };
 export default Page;
-export { Page };
+export { Page, PageSection, PageSectionFullWidth };

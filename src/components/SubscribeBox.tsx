@@ -1,7 +1,6 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
-import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -12,7 +11,7 @@ import Input from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
-import FullWidthContainer from './FullWidthContainer';
+import { PageSectionFullWidth } from './Page';
 
 const FullHeightGrid = withTheme(styled(Grid)`
   height: 100%;
@@ -44,7 +43,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
   );
 
   return (
-    <FullWidthContainer>
+    <PageSectionFullWidth>
       <Box mb={4} position='relative' {...rest}>
         <BackgroundVideo src={videoSrcSubscribe} position='absolute' fit='cover' overlayOffset={[0, '-200%']}>
           <Typography>
@@ -84,7 +83,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
           </FullHeightGrid>
         </Box>
       </Box>
-    </FullWidthContainer>
+    </PageSectionFullWidth>
   );
 };
 

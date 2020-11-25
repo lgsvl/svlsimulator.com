@@ -2,7 +2,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import DocumentBox from 'src/components/DocumentBox';
-import Page from 'src/components/Page';
+import Page, { PageSection } from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
@@ -63,37 +63,43 @@ export default function Applications() {
         {tMap('applications.section3.body', TypoWrapper)}
       </Section>
 
-      <DocumentBox
-        title={t('applications.files.0')}
-        label={t('main.documentTypes.technical')}
-        buttonText={t('main.buttons.download')}
-      />
+      <PageSection>
+        <DocumentBox
+          title={t('applications.files.0')}
+          label={t('main.documentTypes.technical')}
+          buttonText={t('main.buttons.download')}
+        />
+      </PageSection>
 
       <Section contained title={t('applications.section4.title')} src={srcAcademics} tuckImage buttonText='getDemo'>
         {tMap('applications.section4.body', TypoWrapper)}
       </Section>
 
-      <DocumentBox
-        title={t('applications.files.1')}
-        label={t('main.documentTypes.technical')}
-        buttonText={t('main.buttons.download')}
-      />
+      <PageSection>
+        <DocumentBox
+          title={t('applications.files.1')}
+          label={t('main.documentTypes.technical')}
+          buttonText={t('main.buttons.download')}
+        />
+      </PageSection>
 
       <Section contained flip title={t('applications.section5.title')} src={srcRobotics} tuckImage buttonText='getDemo'>
         {tMap('applications.section5.body', TypoWrapper)}
       </Section>
 
-      <DocumentBox
-        title={t('applications.files.0')}
-        label={t('main.documentTypes.technical')}
-        buttonText={t('main.buttons.download')}
-      />
+      <PageSection>
+        <DocumentBox
+          title={t('applications.files.0')}
+          label={t('main.documentTypes.technical')}
+          buttonText={t('main.buttons.download')}
+        />
 
-      <DocumentBox
-        title={t('applications.files.1')}
-        label={t('main.documentTypes.technical')}
-        buttonText={t('main.buttons.download')}
-      />
+        <DocumentBox
+          title={t('applications.files.1')}
+          label={t('main.documentTypes.technical')}
+          buttonText={t('main.buttons.download')}
+        />
+      </PageSection>
 
       <SubscribeBox />
     </Page>

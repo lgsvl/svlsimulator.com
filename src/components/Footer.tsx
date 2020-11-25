@@ -1,10 +1,10 @@
-import { Hidden, withTheme } from '@material-ui/core';
+import { withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText, { ListItemTextProps } from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
@@ -13,10 +13,7 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import styled from 'styled-components';
 import { IconLgColor } from './Icons';
 import Link, { LinkProps } from './Link';
-
-const StyledPaperWrapper = withTheme(styled(Paper)`
-  --styled-paper-wrapper: 1;
-`);
+import { PageSection } from './Page';
 
 const Copyright = withTheme(styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
@@ -79,42 +76,40 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <Box mt={2} p={{ xs: 3, sm: 5, md: 10 }}>
-      <StyledPaperWrapper elevation={0}>
-        <Box>
-          <Grid container>
-            <Hidden mdDown xlUp>
+    <PageSection>
+      <Box mt={2} p={{ xs: 3, sm: 5, md: 10 }}>
+        <Grid container>
+          <Hidden mdDown xlUp>
+            <Grid item xs={1} />
+          </Hidden>
+          <Grid item xs={6} md={5} lg={4}>
+            <Box mb={{ xs: 3, sm: 2 }}>
+              <IconLgColor />
+            </Box>
+            {tMap('main.footer.body', TypoWrapper)}
+            <Copyright variant='body2'>{t('main.footer.copyright')}</Copyright>
+          </Grid>
+          <Grid item xs={1} sm={2} md={1} />
+          <Hidden smDown>
+            <Grid item xs={6} sm={3}>
+              {forDevs}
+            </Grid>
+            <Hidden lgDown>
               <Grid item xs={1} />
             </Hidden>
-            <Grid item xs={6} md={5} lg={4}>
-              <Box mb={{ xs: 3, sm: 2 }}>
-                <IconLgColor />
-              </Box>
-              {tMap('main.footer.body', TypoWrapper)}
-              <Copyright variant='body2'>{t('main.footer.copyright')}</Copyright>
+            <Grid item xs={6} sm={3}>
+              {social}
             </Grid>
-            <Grid item xs={1} sm={2} md={1} />
-            <Hidden smDown>
-              <Grid item xs={6} sm={3}>
-                {forDevs}
-              </Grid>
-              <Hidden lgDown>
-                <Grid item xs={1} />
-              </Hidden>
-              <Grid item xs={6} sm={3}>
-                {social}
-              </Grid>
-            </Hidden>
-            <Hidden mdUp>
-              <Grid item xs={4}>
-                {forDevs}
-                {social}
-              </Grid>
-            </Hidden>
-          </Grid>
-        </Box>
-      </StyledPaperWrapper>
-    </Box>
+          </Hidden>
+          <Hidden mdUp>
+            <Grid item xs={4}>
+              {forDevs}
+              {social}
+            </Grid>
+          </Hidden>
+        </Grid>
+      </Box>
+    </PageSection>
   );
 };
 
