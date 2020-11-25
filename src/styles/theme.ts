@@ -141,6 +141,9 @@ const theme = createMuiTheme({
         backgroundColor: palette.background.default,
         color: palette.text.secondary,
         border: `1px solid ${palette.background.default}`
+      },
+      arrow: {
+        color: palette.background.default
       }
     },
     MuiTypography: {
