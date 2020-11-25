@@ -301,6 +301,16 @@
       "research": "Academic Research",
       "planning": "Urban Transportation Planning"
     },
+    "required": {
+      "firstname": "First name is required",
+      "lastname": "First name is required",
+      "email": "Email is required",
+      "region": "Region is required"
+    },
+    "validate": {
+      "email": "Enter a valid email",
+      "mismatch": "Emails do not match"
+    },
     "confirm": "Confirm"
   }
 }

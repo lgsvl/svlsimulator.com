@@ -15,6 +15,7 @@ import { fade, withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import * as yup from 'yup';
 import React, { useCallback } from 'react';
 import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
 import Input, { InputProps } from 'src/components/Input';
@@ -50,7 +51,19 @@ const FormDialogActions = addSpacing(DialogActions);
 const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
   const { t } = useTranslation();
   const [confirming, setConfirming] = React.useState(false);
-  const { handleChange, handleSubmit, isSubmitting, setSubmitting, setFieldValue, values } = useFormik({
+  const {
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    setSubmitting,
+    setFieldValue,
+    values,
+    touched,
+    errors,
+    dirty,
+    isValid
+  } = useFormik({
     initialValues: {
       _subject: '[Public Website] Demo Requested',
       _replyto: '',
@@ -66,6 +79,19 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
       usecase: 'Autonomous Vehicle',
       other: ''
     },
+    validationSchema: yup.object({
+      nameGiven: yup.string().required(t('requestdemo.required.firstname')),
+      nameFamily: yup.string().required(t('requestdemo.required.lastname')),
+      email: yup.string().email(t('requestdemo.validate.email')).required(t('requestdemo.required.email')),
+      emailVerify: yup
+        .mixed()
+        .test('email-match', t('requestdemo.validate.mismatch'), function (value) {
+          const { email } = this.parent;
+          return email === value;
+        })
+        .required(t('requestdemo.required.email')),
+      region: yup.string().required(t('requestdemo.required.region'))
+    }),
     onSubmit: data => {
       console.log(data);
 
@@ -106,6 +132,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
 
   const commonTextInputProps: InputProps = {
     onChange: handleChange,
+    onBlur: handleBlur,
     InputLabelProps: { shrink: true },
     variant: 'outlined',
     fullWidth: true
@@ -130,7 +157,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
         </Box>
       </FormDialogTitle>
       {!confirming ? (
-        <form onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}>
           <FormDialogContent p={3}>
             <input type='hidden' name='_honeypot' value='' onChange={handleChange} />
             <Grid container spacing={3}>
@@ -154,6 +181,8 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                       id='form-field-name-given'
                       label={t('requestdemo.labels.nameGiven')}
                       placeholder={t('requestdemo.placeholders.nameGiven')}
+                      error={touched.nameGiven && Boolean(errors.nameGiven)}
+                      helperText={touched.nameGiven && errors.nameGiven}
                       value={values.nameGiven}
                     />
                   </Grid>
@@ -165,6 +194,8 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                       id='form-field-name-family'
                       label={t('requestdemo.labels.nameFamily')}
                       placeholder={t('requestdemo.placeholders.nameFamily')}
+                      error={touched.nameFamily && Boolean(errors.nameFamily)}
+                      helperText={touched.nameFamily && errors.nameFamily}
                       value={values.nameFamily}
                     />
                   </Grid>
@@ -176,6 +207,8 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                       id='form-field-email'
                       label={t('requestdemo.labels.email')}
                       placeholder={t('requestdemo.placeholders.email')}
+                      error={touched.email && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
                       value={values.email}
                     />
                   </Grid>
@@ -187,6 +220,8 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                       id='form-field-email-verify'
                       label={t('requestdemo.labels.emailVerify')}
                       placeholder={t('requestdemo.placeholders.emailVerify')}
+                      error={touched.emailVerify && Boolean(errors.emailVerify)}
+                      helperText={touched.emailVerify && errors.emailVerify}
                       value={values.emailVerify}
                     />
                   </Grid>
@@ -218,6 +253,8 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                       id='form-field-region'
                       label={t('requestdemo.labels.region')}
                       placeholder={t('requestdemo.placeholders.region')}
+                      error={touched.region && Boolean(errors.region)}
+                      helperText={touched.region && errors.region}
                       value={values.region}
                     />
                   </Grid>
@@ -269,7 +306,12 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
               </Grid>
               <Grid item sm={4} style={{ textAlign: 'end' }}>
                 <FormControl>
-                  <Button color='primary' variant='contained' disabled={isSubmitting} type='submit'>
+                  <Button
+                    color='primary'
+                    variant='contained'
+                    disabled={isSubmitting || !(isValid && dirty)}
+                    type='submit'
+                  >
                     {t('requestdemo.confirm')}
                   </Button>
                 </FormControl>
