@@ -34,6 +34,10 @@
     "subscribe": {
       "title": "Subscribe to our newsletter",
       "emailPlaceholder": "Enter your email"
+    },
+    "video": {
+      "play": "Play all videos",
+      "pause": "Pause all videos"
     }
   },
   "about": {
