@@ -49,7 +49,7 @@ const FormDialogContent = addSpacing(DialogContent);
 const FormDialogActions = addSpacing(DialogActions);
 
 const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
-  const { t } = useTranslation();
+  const { t, tMap } = useTranslation();
   const [confirming, setConfirming] = React.useState(false);
   const {
     handleChange,
@@ -166,11 +166,11 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                   <Box mb={5}>
                     <IconLGSVLSimulator />
                   </Box>
-                  <Typography id='form-description' variant='caption' paragraph>
-                    {t('requestdemo.message1')}
-                    <br />
-                    {t('requestdemo.message2')}
-                  </Typography>
+                  {tMap('requestdemo.message', (msg, i) => (
+                    <Typography id='form-description' variant='caption' key={`message${i}`} paragraph>
+                      {msg}
+                    </Typography>
+                  ))}
                 </Grid>
               </Hidden>
               <Grid item sm={12} md={8}>
