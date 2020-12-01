@@ -271,7 +271,8 @@
   },
   "requestdemo": {
     "title": "Request demo",
-    "message": "Thank you for your interest in the LGSVL Simulator Premium solution. This is the next generation simulation technology that is comprised of the open source LGSVL Simulator and premium features such as cloud simulation, visual scenario editor, re-simulation, and high/low fidelity 3D map creation services.  We will share the latest LGSVL Simulator technology whitepaper, contact you to arrange the technology demo and discuss your development plans.",
+    "message1": "Thank you for your interest in the LGSVL Simulator Premium solution. This is the next generation simulation technology that is comprised of the open source LGSVL Simulator and premium features such as cloud simulation, visual scenario editor and high/low fidelity 3D map creation services.",
+    "message2": "We will share the latest LGSVL Simulator technology whitepaper, contact you to arrange the technology demo and discuss your development plans.",
     "labels": {
       "nameGiven": "First name",
       "nameFamily": "Last name",
