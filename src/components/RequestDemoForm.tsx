@@ -167,7 +167,9 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
                     <IconLGSVLSimulator />
                   </Box>
                   <Typography id='form-description' variant='caption' paragraph>
-                    {t('requestdemo.message')}
+                    {t('requestdemo.message1')}
+                    <br />
+                    {t('requestdemo.message2')}
                   </Typography>
                 </Grid>
               </Hidden>
