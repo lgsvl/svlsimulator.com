@@ -157,7 +157,6 @@ export const queryNews = graphql`
       edges {
         node {
           birthTime
-          modifiedTime
           childMdx {
             id
             slug
@@ -188,14 +187,9 @@ export const queryNews = graphql`
   }
 `;
 
-const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ birthTime, modifiedTime, childMdx }) => {
+const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ birthTime, childMdx }) => {
   const { id, frontmatter, headings, excerpt, slug } = childMdx as NewsItemMdx;
-  const date = [frontmatter?.date, birthTime, modifiedTime].reduce((acc, curr) => {
-    if (acc) return acc;
-    const time = curr && Date.parse(curr);
-    if (time && !isNaN(time)) return new Date(time);
-    else return undefined;
-  }, undefined) as Date;
+  const date = new Date(frontmatter?.date && !isNaN(Date.parse(frontmatter?.date)) ? frontmatter?.date : birthTime);
   const link = frontmatter?.link || slug?.replace(/^pages/, '') || undefined;
   let title = '';
   let bodyPreview = '';
