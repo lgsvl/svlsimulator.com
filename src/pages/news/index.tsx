@@ -30,7 +30,8 @@ const newsItemProminence = {
 
 type NewsItemProminence = keyof typeof newsItemProminence;
 
-type NewsItemNode = NewsIndexQuery['allMdx']['edges'][0]['node'];
+type NewsItemNode = NewsIndexQuery['allFile']['edges'][0]['node'];
+type NewsItemMdx = Exclude<NewsItemNode['childMdx'], null | undefined>;
 
 interface NewsBoxProps extends PaperProps {
   colSpan: number;
@@ -43,7 +44,7 @@ interface NewsBoxProps extends PaperProps {
 type NewsItemData = {
   bodyPreview: string;
   category: NewsBoxProps['category'];
-  date?: Date;
+  date: Date;
   featuredImageSrc?: string;
   id: string;
   link?: string;
@@ -152,27 +153,31 @@ const NewsBox = ({
 // appended to the query name: "NewsIndex" -> "NewsIndexQuery", imported by name above.
 export const queryNews = graphql`
   query NewsIndex {
-    allMdx(limit: 10, sort: { fields: frontmatter___date }) {
+    allFile(filter: { extension: { eq: "md" }, relativeDirectory: { eq: "pages/news" } }) {
       edges {
         node {
-          id
-          slug
-          headings {
-            value
-          }
-          excerpt
-          frontmatter {
-            title
-            author
-            date
-            category
-            link
-            preview
-            prominence
-            featuredImage {
-              childImageSharp {
-                fluid(maxHeight: 720) {
-                  src
+          birthTime
+          modifiedTime
+          childMdx {
+            id
+            slug
+            headings {
+              value
+            }
+            excerpt
+            frontmatter {
+              title
+              author
+              date
+              category
+              link
+              preview
+              prominence
+              featuredImage {
+                childImageSharp {
+                  fluid(maxHeight: 720) {
+                    src
+                  }
                 }
               }
             }
@@ -183,8 +188,14 @@ export const queryNews = graphql`
   }
 `;
 
-const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ id, frontmatter, headings, excerpt, slug }) => {
-  const date = undefined;
+const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ birthTime, modifiedTime, childMdx }) => {
+  const { id, frontmatter, headings, excerpt, slug } = childMdx as NewsItemMdx;
+  const date = [frontmatter?.date, birthTime, modifiedTime].reduce((acc, curr) => {
+    if (acc) return acc;
+    const time = curr && Date.parse(curr);
+    if (time && !isNaN(time)) return new Date(time);
+    else return undefined;
+  }, undefined) as Date;
   const link = frontmatter?.link || slug?.replace(/^pages/, '') || undefined;
   let title = '';
   let bodyPreview = '';
@@ -222,6 +233,10 @@ const getNewsItemData: (arg0: NewsItemNode) => NewsItemData = ({ id, frontmatter
 
 export default function News({ data }: { data: NewsIndexQuery }) {
   const { t } = useTranslation();
+  const newsData = data.allFile.edges
+    .filter(edge => Boolean(edge.node.childMdx))
+    .map(edge => getNewsItemData(edge.node))
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
 
   return (
     <Page title={t('news.title')}>
@@ -231,9 +246,7 @@ export default function News({ data }: { data: NewsIndexQuery }) {
         </Box>
         <Box mb={2}>
           <LayoutGrid sm={2} md={4} spacing={2} dense>
-            {data.allMdx.edges.map(({ node }: { node: NewsItemNode }) => {
-              const { id, title, bodyPreview, category, link, featuredImageSrc, prominence } = getNewsItemData(node);
-
+            {newsData.map(({ id, title, bodyPreview, category, link, featuredImageSrc, prominence }) => {
               // Check for known enum values
               validateEnum('prominence', prominence, newsItemProminence);
               const colSpan = newsItemProminence[prominence].colSpan;

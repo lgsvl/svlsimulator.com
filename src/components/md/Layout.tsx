@@ -17,11 +17,13 @@ import { NewsIndexQuery } from '../../../graphql-types';
 import GridBox from '../GridBox';
 import Subs from './Substitutions';
 
-type NewsItemNode = NewsIndexQuery['allMdx']['edges'][0]['node'];
+type NewsItemNode = NewsIndexQuery['allFile']['edges'][0]['node'];
+type NewsItemMdx = Exclude<NewsItemNode['childMdx'], null | undefined>;
+
 export interface LayoutProps extends PageProps {
   location: PageProps['location'];
   pageContext: PageProps['pageContext'] & {
-    frontmatter?: NewsItemNode['frontmatter'];
+    frontmatter?: NewsItemMdx['frontmatter'];
   };
 }
 
