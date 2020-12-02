@@ -31,7 +31,7 @@ export default function Layout({ children, location, pageContext }: React.PropsW
   const { t } = useTranslation();
   const author = pageContext.frontmatter?.author || null;
   let date = pageContext.frontmatter?.date || null;
-  if (date) date = new Date(date);
+  if (date && !isNaN(Date.parse(date))) date = new Date(date);
 
   return (
     <MDXProvider components={Subs}>
