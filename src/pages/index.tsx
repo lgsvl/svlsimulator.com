@@ -1,5 +1,5 @@
 import { withTheme } from '@material-ui/core';
-import Box, { BoxProps } from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
@@ -7,8 +7,6 @@ import { MapFunction } from 'src/@types/utils';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
-import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
-import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
 import Section, { SectionContent } from 'src/components/Section';
@@ -40,18 +38,7 @@ const HeroGrid = withTheme(styled(Grid)`
   position: relative;
 `) as React.FC<GridProps>;
 
-const SilhouettedContent = withTheme(styled(Box)`
-  ${({ theme }) => `
-    filter:
-      drop-shadow(0px 0px 2px ${theme.palette.background.default})
-      drop-shadow(0 0px 4px ${theme.palette.background.default})
-      drop-shadow(0 0px 20px ${theme.palette.background.default});
-  `}
-`) as React.FC<BoxProps>;
-
 const TypoWrapper: MapFunction<string> = (str, i) => <Typography key={`paragraph${i}`}>{str}</Typography>;
-
-const brandIconProps = { color: '#6D7B97', height: 40, width: '100%' };
 
 export default function Home() {
   const { t, tMap } = useTranslation();
@@ -119,17 +106,6 @@ export default function Home() {
           {tMap('home.section2.body', TypoWrapper)}
         </Section>
       </Box>
-
-      <SilhouettedContent my={15}>
-        <Center disableGutters maxWidth={720}>
-          <LayoutGrid xs={2} sm={4} spacing={2}>
-            <IconBaidu {...brandIconProps} />
-            <IconApollo {...brandIconProps} />
-            <IconUnity {...brandIconProps} />
-            <IconVelodyne {...brandIconProps} />
-          </LayoutGrid>
-        </Center>
-      </SilhouettedContent>
 
       <Box my={15}>
         <PageSection>
