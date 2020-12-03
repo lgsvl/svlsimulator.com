@@ -34,7 +34,7 @@ export default function Layout({ children, location, pageContext }: React.PropsW
   return (
     <MDXProvider components={Subs}>
       <Page>
-        <PageSection component='section' maxWidth={false}>
+        <PageSection component='section' maxWidth='lg'>
           <Box mb={7}>
             <Grid container alignItems='center'>
               <GridBox item xs={12} sm={9} mb={{ xs: 2, sm: 0 }}>
