@@ -128,7 +128,9 @@ const Page: React.FC<{ title?: string }> = ({ children, title }) => (
  *
  * Use this for basically all content, *except for* content that spans the entire width of the page.
  */
-const PageSection: React.FC<ContainerProps> = props => <Container maxWidth='lg' {...props} />;
+const PageSection: React.FC<ContainerProps & { children?: ContainerProps['children']; component?: string }> = props => (
+  <Container maxWidth='lg' {...props} />
+);
 
 /**
  * Use this for any content that must stretch to the full width of the window.
