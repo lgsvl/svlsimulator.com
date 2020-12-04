@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{fm9r:function(n,t,o){"use strict";o.r(t),o.d(t,"_frontmatter",(function(){return a})),o.d(t,"default",(function(){return u}));var e=o("8o2o"),r=(o("q1tI"),o("7ljp")),c=o("qmQJ"),a={},p={_frontmatter:a},s=c.a;function u(n){var t=n.components,o=Object(e.a)(n,["components"]);return Object(r.b)(s,Object.assign({},p,o,{components:t,mdxType:"MDXLayout"}))}u.isMDXComponent=!0}}]);
+//# sourceMappingURL=component---src-pages-news-lg-2020-06-release-md-ac342ee3e330207007b1.js.map
