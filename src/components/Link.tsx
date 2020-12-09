@@ -2,7 +2,10 @@ import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link';
 import { GatsbyLinkProps } from 'gatsby';
 import { Link as GatsbyLink } from 'gatsby-plugin-react-i18next';
 import React from 'react';
+import { OutboundLink, OutboundLinkProps } from 'react-ga';
 import { Merge } from 'src/@types/utils';
+
+const isOutbound = /https?:\/\/((?:[\w\d-]+\.)+[\w\d]{2,})/i;
 
 type I18nGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement> & { language?: string };
 
@@ -12,6 +15,11 @@ type I18nGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement> & { language?: str
 const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
   <GatsbyLink {...props} innerRef={ref as React.Ref<HTMLAnchorElement>} />
 )) as React.ForwardRefExoticComponent<I18nGatsbyLinkProps>;
+
+const FwdOutbound = React.forwardRef((props: GatsbyLinkProps<HTMLAnchorElement>) => {
+  const { ref, ...outboundProps } = props;
+  return <OutboundLink eventLabel={outboundProps.to} {...outboundProps} />;
+}) as React.ForwardRefExoticComponent<GatsbyLinkProps<HTMLAnchorElement>>;
 
 export type LinkProps = Merge<MuiLinkProps, I18nGatsbyLinkProps>;
 
@@ -40,6 +48,11 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
       />
     );
   }
+  // Outbound link, track with analytics
+  if (to) {
+    return <MuiLink component={FwdOutbound} to={to} {...rest} ref={ref as React.Ref<HTMLAnchorElement>} />;
+  }
+  // Undefined link (probably listening for click with javascript, use basic MuiLink)
   return <MuiLink href={to} {...rest} ref={ref} />;
 }) as React.ForwardRefExoticComponent<LinkProps>;
 

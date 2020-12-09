@@ -7,6 +7,13 @@
       "download": "Download",
       "view": "View"
     },
+    "consent": {
+      "label": "Cookie User Consent",
+      "message": "This website uses cookies, belonging to LGSVL or to third parties, to optimize website functionality, for analytics purposes, and to offer you a better browsing experience. If you wish to read more information on our use of cookies and how to change your relevant browser’s settings or prevent this website from setting cookies, please read our ",
+      "policy": "Privacy Policy",
+      "accept": "OK",
+      "decline": "Decline"
+    },
     "documentTypes": {
       "technical": "Technical document"
     },
