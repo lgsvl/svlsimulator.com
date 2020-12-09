@@ -1,13 +1,20 @@
 // This file includes all of the override/customization components that MDX will
 // substitute interpreted tags with.
-import { Table, TableCell, TableRow, TableCellProps } from '@material-ui/core';
+import { Table, TableCell, TableCellProps, TableRow, withTheme } from '@material-ui/core';
+import Box, { BoxProps } from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Link, { LinkProps } from 'src/components/Link';
+import styled from 'styled-components';
+import Li, { LiProps, LiText } from '../Li';
 import { MdxComponentSubstitutions } from './Substitutions.d';
 
 export type MdLinkProps = { to?: LinkProps['to'] } & Omit<LinkProps, 'to'>;
+
+const StyledOlBox = withTheme(styled(Box)`
+  counter-reset: list-item-counter;
+`);
 
 const H1 = (props: TypographyProps) => <Typography {...props} variant='h1' />;
 const H2 = (props: TypographyProps) => <Typography {...props} variant='h2' gutterBottom />;
@@ -18,6 +25,13 @@ const H6 = (props: TypographyProps) => <Typography {...props} variant='h6' gutte
 const P = (props: TypographyProps) => <Typography {...props} paragraph />;
 const TableHeadCell = (props: TableCellProps) => <TableCell {...props} component='th' variant='head' />;
 const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) => <Link {...rest} to={to || href} />;
+const Ol: React.FC<BoxProps> = props => <StyledOlBox pl={3} {...props} component='ol' />;
+const Ul: React.FC<BoxProps> = props => <Box pl={3} {...props} component='ul' />;
+const ListItem: React.FC<LiProps> = ({ children, ...rest }) => (
+  <Li {...rest}>
+    <LiText>{children}</LiText>
+  </Li>
+);
 
 const components: MdxComponentSubstitutions = {
   // Map HTML element tag to React component
@@ -33,7 +47,10 @@ const components: MdxComponentSubstitutions = {
   td: TableCell,
   th: TableHeadCell,
   hr: Divider,
-  a: MdLink
+  a: MdLink,
+  ol: Ol,
+  ul: Ul,
+  li: ListItem
 };
 
 export default components;

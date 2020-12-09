@@ -13,6 +13,7 @@ import Page, { PageSection } from 'src/components/Page';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { NewsIndexQuery } from '../../../graphql-types';
 import GridBox from '../GridBox';
+import Image from '../Image';
 import Subs from './Substitutions';
 
 type NewsItemNode = NewsIndexQuery['allFile']['edges'][0]['node'];
@@ -25,11 +26,12 @@ export interface LayoutProps extends PageProps {
   };
 }
 
-export default function Layout({ children, location, pageContext }: React.PropsWithChildren<LayoutProps>) {
+export default function Layout({ children, location, pageContext, ...rest }: React.PropsWithChildren<LayoutProps>) {
   const { t } = useTranslation();
-  const author = pageContext.frontmatter?.author || null;
-  let date = pageContext.frontmatter?.date || null;
-  if (date && !isNaN(Date.parse(date))) date = new Date(date);
+  const { author, featuredImage, title, date: dateStr } = pageContext.frontmatter || {};
+
+  let date: Date | undefined;
+  if (dateStr && !isNaN(Date.parse(dateStr))) date = new Date(dateStr);
 
   return (
     <MDXProvider components={Subs}>
@@ -46,7 +48,7 @@ export default function Layout({ children, location, pageContext }: React.PropsW
                     {author ? <Typography variant='body2'>{author}</Typography> : null}
                     {date ? (
                       <Typography variant='body2'>
-                        <time dateTime={date?.toString()}>{moment(date).format('LL')}</time>
+                        <time dateTime={date.toString()}>{moment(date).format('LL')}</time>
                       </Typography>
                     ) : null}
                   </Box>
@@ -56,7 +58,15 @@ export default function Layout({ children, location, pageContext }: React.PropsW
           </Box>
         </PageSection>
         <PageSection component='section' maxWidth='md'>
-          <Box>{children}</Box>
+          <Box>
+            {title ? (
+              <Box position='relative' mb={3} py={featuredImage ? 3 : 0}>
+                <Image position='absolute' top={0} left={0} src={(featuredImage as unknown) as string} />
+                <Typography variant='h1'>{title}</Typography>
+              </Box>
+            ) : null}
+            {children}
+          </Box>
         </PageSection>
       </Page>
     </MDXProvider>
