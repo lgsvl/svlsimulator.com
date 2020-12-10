@@ -157,8 +157,8 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
         </Box>
       </FormDialogTitle>
       {!confirming ? (
-        <form noValidate onSubmit={handleSubmit}>
-          <FormDialogContent p={3}>
+        <form noValidate onSubmit={handleSubmit} style={{ display: 'contents' }}>
+          <FormDialogContent p={3} pb={0}>
             <input type='hidden' name='_honeypot' value='' onChange={handleChange} />
             <Grid container spacing={3}>
               <Hidden smDown>
@@ -300,7 +300,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
               </Grid>
             </Grid>
           </FormDialogContent>
-          <FormDialogActions px={3}>
+          <FormDialogActions py={1.5} px={3}>
             <Grid container spacing={3}>
               <Grid item sm={4}></Grid>
               <Grid item sm={4}>
