@@ -17,6 +17,9 @@ import { PageSection } from './Page';
 
 const Copyright = withTheme(styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
+  a {
+    color: inherit;
+  }
 `);
 
 const StyledLink = withTheme(styled(Link)`
@@ -87,7 +90,13 @@ const Footer: React.FC = () => {
               <IconLgColor />
             </Box>
             {tMap('main.footer.body', TypoWrapper)}
-            <Copyright variant='body2'>{t('main.footer.copyright')}</Copyright>
+            <Copyright variant='body2'>
+              {t('main.footer.copyright')}
+              &nbsp;•&nbsp;
+              <Link to='/terms'>{t('main.footer.terms')}</Link>
+              &nbsp;&amp;&nbsp;
+              <Link to='/privacy'>{t('main.footer.policy')}</Link>
+            </Copyright>
           </Grid>
           <Grid item xs={1} sm={2} md={1} />
           <Hidden smDown>

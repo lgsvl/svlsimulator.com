@@ -19,7 +19,9 @@
     },
     "footer": {
       "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
-      "copyright": "Copyright © 2020 LG Electronics. All rights reserved.",
+      "copyright": "© 2020 LG Electronics",
+      "terms": "Terms",
+      "policy": "Policy",
       "forDevelopers": "For Developers",
       "social": "Social"
     },
