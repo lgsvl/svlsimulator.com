@@ -3,6 +3,7 @@
 import { Table, TableCell, TableCellProps, TableRow, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
+import MuiLink from '@material-ui/core/Link';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Link, { LinkProps } from 'src/components/Link';
@@ -28,9 +29,9 @@ const TableHeadCell = (props: TableCellProps) => <TableCell {...props} component
 const MdImgLink: React.FC<MdLinkProps> = ({ to, href = '#', children, ...rest }) => {
   const { publicURL } = useImageUrl(to || href);
   return (
-    <a {...rest} href={publicURL || to || href}>
+    <MuiLink {...rest} href={publicURL || to || href}>
       {children}
-    </a>
+    </MuiLink>
   );
 };
 const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
