@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[41],{ptQW:function(n,t,o){"use strict";o.r(t),o.d(t,"_frontmatter",(function(){return a})),o.d(t,"default",(function(){return s}));var e=o("zLVn"),r=(o("q1tI"),o("7ljp")),c=o("qmQJ"),a={},u={_frontmatter:a},p=c.a;function s(n){var t=n.components,o=Object(e.a)(n,["components"]);return Object(r.b)(p,Object.assign({},u,o,{components:t,mdxType:"MDXLayout"}),Object(r.b)("h2",null,"Safety for autonomous car"))}s.isMDXComponent=!0}}]);
-//# sourceMappingURL=component---src-pages-news-webinar-md-a33e53b96905c089d0c5.js.map
