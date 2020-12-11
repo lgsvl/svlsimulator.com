@@ -3,8 +3,14 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
+
+[
+  `.env.${process.env.NODE_ENV || 'development'}.local`,
+  `.env.${process.env.NODE_ENV || 'development'}`,
+  '.env'
+].forEach(env => fs.existsSync(env) && require('dotenv').config({ path: env }));
 
 module.exports = {
   siteMetadata: {
@@ -80,6 +86,15 @@ module.exports = {
           },
           returnObjects: true
         }
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-gdpr-cookies',
+      options: {
+        googleAnalytics: {
+          trackingId: process.env.GA_TRACKING_ID
+        },
+        environments: ['production', 'development']
       }
     },
     'gatsby-plugin-typescript-checker',

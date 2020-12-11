@@ -2,9 +2,13 @@ import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link';
 import { GatsbyLinkProps } from 'gatsby';
 import { Link as GatsbyLink } from 'gatsby-plugin-react-i18next';
 import React from 'react';
+import { OutboundLink } from 'react-ga';
 import { Merge } from 'src/@types/utils';
 
-type I18nGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement> & { language?: string };
+const isOutbound = /https?:\/\/((?:[\w\d-]+\.)+[\w\d]{2,})/i;
+
+type OutboundGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement>;
+type I18nGatsbyLinkProps = OutboundGatsbyLinkProps & { language?: string };
 
 // Gatsby's Link component (really gatsby-plugin-react-i18next's) is a bit old,
 // (pre React 16.4) so it still uses (allows) the innerRef prop, which is
@@ -12,6 +16,11 @@ type I18nGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement> & { language?: str
 const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
   <GatsbyLink {...props} innerRef={ref as React.Ref<HTMLAnchorElement>} />
 )) as React.ForwardRefExoticComponent<I18nGatsbyLinkProps>;
+
+const FwdOutbound = React.forwardRef((props: OutboundGatsbyLinkProps, ref) => {
+  const outboundProps = { ...props, ref: undefined };
+  return <OutboundLink eventLabel={outboundProps.to} {...outboundProps} />;
+}) as React.ForwardRefExoticComponent<OutboundGatsbyLinkProps>;
 
 export type LinkProps = Merge<MuiLinkProps, I18nGatsbyLinkProps>;
 
@@ -40,6 +49,12 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
       />
     );
   }
+  // Outbound link, track with analytics
+  if (to) {
+    console.log('outbound', to);
+    return <MuiLink component={FwdOutbound} to={to} {...rest} ref={ref as React.Ref<HTMLAnchorElement>} />;
+  }
+  // Undefined link (probably listening for click with javascript, use basic MuiLink)
   return <MuiLink href={to} {...rest} ref={ref} />;
 }) as React.ForwardRefExoticComponent<LinkProps>;
 

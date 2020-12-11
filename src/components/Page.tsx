@@ -10,6 +10,7 @@ import Footer from './Footer';
 import Header from './Header';
 import RequestDemoForm from './RequestDemoForm';
 import SEO from './SEO';
+import UserConsent from './UserConsent';
 
 const GlobalStyle = createGlobalStyle`
 ${({ theme }: { theme: Theme }) => `
@@ -119,6 +120,7 @@ const App: React.FC = ({ children }) => {
 const Page: React.FC<{ title?: string }> = ({ children, title }) => (
   <PageContextProvider>
     <SEO title={title} />
+    <UserConsent />
     <App>{children}</App>
   </PageContextProvider>
 );
