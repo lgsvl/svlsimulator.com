@@ -178,7 +178,9 @@ const DesktopMenu = () => {
         </Grid>
       </Grid>
       <Grid item>
-        <StyledLinkButton
+        {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
+        <Box width={180} />
+        {/* <StyledLinkButton
           color='primary'
           to='https://account.lgsvlsimulator.com/'
           // to='https://wise.staging.lgsvlsimulator.com/sign-in'
@@ -186,7 +188,7 @@ const DesktopMenu = () => {
           alia-label='Log in Button'
         >
           {t('main.header.login')}
-        </StyledLinkButton>
+        </StyledLinkButton> */}
       </Grid>
     </>
   );
@@ -240,12 +242,12 @@ const MobileMenu = () => {
             <ListItemText primary={t('about.navTitle')} />
           </ListItem>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
-          <ListItem button component={Link} to='https://account.lgsvlsimulator.com/'>
+          {/* <ListItem button component={Link} to='https://account.lgsvlsimulator.com/'>
             <ListItemText primary={t('main.header.login')} />
             <ListItemIcon>
               <IconLogin />
             </ListItemIcon>
-          </ListItem>
+          </ListItem> */}
         </List>
       </StyledDrawer>
     </>

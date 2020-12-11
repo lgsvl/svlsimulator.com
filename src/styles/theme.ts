@@ -130,8 +130,12 @@ const theme = createMuiTheme({
     },
     MuiTableCell: {
       root: {
+        // Remove the 3-part "borderBottom" shorthand rule, and replace it with
+        // several individual pieces, more strategically.
+        borderBottom: '',
         borderWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.1)',
+        borderBottomStyle: 'solid',
         fontFamily: fontMain
       }
     },
