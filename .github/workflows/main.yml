@@ -42,6 +42,7 @@ jobs:
       - name: Building website
         run: |
           rm -fr ./.cache
+          rm -fr ./node_modules/.cache
           npm run build
         env:
           GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
