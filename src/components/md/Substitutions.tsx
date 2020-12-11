@@ -9,6 +9,7 @@ import Link, { LinkProps } from 'src/components/Link';
 import styled from 'styled-components';
 import Li, { LiProps, LiText } from '../Li';
 import { MdxComponentSubstitutions } from './Substitutions.d';
+import useImageUrl from './useImageUrl';
 
 export type MdLinkProps = { to?: LinkProps['to'] } & Omit<LinkProps, 'to'>;
 
@@ -24,7 +25,20 @@ const H5 = (props: TypographyProps) => <Typography {...props} variant='h5' gutte
 const H6 = (props: TypographyProps) => <Typography {...props} variant='h6' gutterBottom />;
 const P = (props: TypographyProps) => <Typography {...props} paragraph />;
 const TableHeadCell = (props: TableCellProps) => <TableCell {...props} component='th' variant='head' />;
-const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) => <Link {...rest} to={to || href} />;
+const MdImgLink: React.FC<MdLinkProps> = ({ to, href = '#', children, ...rest }) => {
+  const { publicURL } = useImageUrl(to || href);
+  return (
+    <a {...rest} href={publicURL || to || href}>
+      {children}
+    </a>
+  );
+};
+const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
+  /\.(png|jpg|jpeg|webp)$/.test(to || href) ? (
+    <MdImgLink {...rest} to={to || href} />
+  ) : (
+    <Link {...rest} to={to || href} />
+  );
 const Ol: React.FC<BoxProps> = props => <StyledOlBox pl={3} {...props} component='ol' />;
 const Ul: React.FC<BoxProps> = props => <Box pl={3} {...props} component='ul' />;
 const ListItem: React.FC<LiProps> = ({ children, ...rest }) => (
