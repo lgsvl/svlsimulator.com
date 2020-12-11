@@ -154,7 +154,8 @@
       "event": "Event",
       "article": "Article",
       "announcement": "Announcement"
-    }
+    },
+    "archive": "News Archive"
   },
   "simulation": {
     "navTitle": "Simulation platform",

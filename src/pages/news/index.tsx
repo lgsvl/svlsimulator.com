@@ -1,49 +1,45 @@
-import { withTheme } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableRow, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import { graphql } from 'gatsby';
+import moment from 'moment';
 import React from 'react';
 import { LinkButton } from 'src/components/Button';
+import Center from 'src/components/Center';
 import LayoutGrid from 'src/components/LayoutGrid';
+import { Link } from 'src/components/Link';
 import Page, { PageSection } from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+import { omitProps } from 'src/utils/react';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import { NewsIndexQuery } from '../../../graphql-types';
 
-const newsBoxCategoryColors = {
-  news: '',
-  event: 'rgba(0, 0, 255, 0.05)',
-  article: 'rgba(255, 255, 0, 0.05)',
-  announcement: 'rgba(0, 255, 0, 0.05)'
-} as const;
+enum newsBoxCategoryColors {
+  news,
+  event = 'rgba(0, 0, 255, 0.05)',
+  article = 'rgba(255, 255, 0, 0.05)',
+  announcement = 'rgba(0, 255, 0, 0.05)'
+}
 
 type NewsBoxCategory = keyof typeof newsBoxCategoryColors;
 
-const newsItemProminence = {
+const newsItemProminence: Record<string, Record<string, number>> = {
   normal: { colSpan: 1, rowSpan: 1 },
   big: { colSpan: 2, rowSpan: 1 },
   biggest: { colSpan: 4, rowSpan: 1 }
-} as const;
+};
 
 type NewsItemProminence = keyof typeof newsItemProminence;
 
 type NewsItemNode = NewsIndexQuery['allFile']['edges'][0]['node'];
 type NewsItemMdx = Exclude<NewsItemNode['childMdx'], null | undefined>;
 
-interface NewsBoxProps extends PaperProps {
-  colSpan: number;
-  rowSpan: number;
-  category: NewsBoxCategory;
-  link?: string;
-  src?: string;
-}
-
 type NewsItemData = {
   bodyPreview: string;
-  category: NewsBoxProps['category'];
+  category: NewsBoxCategory;
   date: Date;
   featuredImageSrc?: string;
   id: string;
@@ -52,8 +48,23 @@ type NewsItemData = {
   title: string;
 };
 
-const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
-  ${({ theme, category, colSpan, rowSpan, src }) => `
+interface NewsBoxProps extends PaperProps {
+  prominence: NewsItemData['prominence'];
+  category: NewsItemData['category'];
+  date?: NewsItemData['date'];
+  link?: NewsItemData['link'];
+  src?: string;
+}
+
+interface StyledNewsBoxProps extends NewsBoxProps {
+  colSpan: number;
+  rowSpan: number;
+}
+
+const StyledNewsBox = withTheme(styled(
+  omitProps(Paper, ['theme', 'src', 'prominence', 'colspan', 'rowspan', 'category'])
+)<StyledNewsBoxProps>`
+  ${({ theme, colSpan, rowSpan, src }) => `
   grid-column-end: ${colSpan ? `span ${colSpan}` : 'auto'};
   grid-row-end: ${rowSpan ? `span ${rowSpan}` : 'auto'};
   padding: ${px(theme.spacing(2))};
@@ -63,6 +74,11 @@ const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
   height: 360px;
   position: relative;
   overflow: hidden;
+
+  &.MuiPaper-outlined {
+    border: 3px solid ${theme.palette.text.primary};
+    border-radius: 16px;
+  }
 
   ${theme.breakpoints.only('sm')} {
     grid-column-end: ${colSpan > 2 ? 'auto' : `span ${colSpan}`};
@@ -91,7 +107,16 @@ const StyledNewsBox = withTheme(styled(Paper)<NewsBoxProps>`
     opacity: 0.6;
   }
   `}
-`) as React.FC<NewsBoxProps>;
+`) as React.FC<StyledNewsBoxProps>;
+
+const NewsBoxTitle = withTheme(styled(Typography)<TypographyProps>`
+  &.MuiTypography-h2 {
+    font-weight: 400;
+  }
+  &.MuiTypography-h4 {
+    font-weight: 600;
+  }
+`) as React.FC<TypographyProps>;
 
 const FadeBox = withTheme(styled(Box)<BoxProps>`
   overflow: hidden;
@@ -99,6 +124,10 @@ const FadeBox = withTheme(styled(Box)<BoxProps>`
   mask-box-image: linear-gradient(to bottom, black calc(100% - 5em), transparent);
   mask-box-image-width: 0 0 1em 0;
 `) as React.FC<BoxProps>;
+
+const StyledTable = withTheme(styled(Table)`
+  border-collapse: separate;
+`);
 
 const validateEnum = (optionName: string, option: string, allowedList: string[] | Record<string, unknown>) => {
   if (!(allowedList instanceof Array)) {
@@ -116,26 +145,49 @@ const validateEnum = (optionName: string, option: string, allowedList: string[] 
 const NewsBox = ({
   children,
   category = 'news',
-  colSpan = 1,
+  prominence = 'normal',
   link,
-  rowSpan = 1,
   title,
   ...rest
 }: Partial<NewsBoxProps>) => {
   const { t } = useTranslation();
+
+  const colSpan = newsItemProminence[prominence].colSpan || 1;
+  const rowSpan = newsItemProminence[prominence].rowSpan || 1;
 
   // Check for known enum values
   validateEnum('category', category, newsBoxCategoryColors);
 
   const externalLink = link && link.match('://');
 
+  const titleVariant: TypographyProps['variant'] = 'h5';
+
+  // switch (prominence) {
+  //   case 'biggest': {
+  //     rest.variant = 'outlined';
+  //     titleVariant = 'h2';
+  //     break;
+  //   }
+  //   case 'big': {
+  //     titleVariant = 'h4';
+  //     break;
+  //   }
+  // }
+
   return (
-    <StyledNewsBox elevation={0} {...rest} category={category} colSpan={colSpan} rowSpan={rowSpan}>
+    <StyledNewsBox
+      elevation={0}
+      {...rest}
+      prominence={prominence}
+      category={category}
+      colSpan={colSpan}
+      rowSpan={rowSpan}
+    >
       <Box position='relative'>
         <Typography variant='overline'>{t(`news.categories.${category}`)}</Typography>
       </Box>
       <FadeBox>
-        {title && <Typography variant='h5'>{title}</Typography>}
+        {title && <NewsBoxTitle variant={titleVariant}>{title}</NewsBoxTitle>}
         {children}
       </FadeBox>
       {link ? (
@@ -146,6 +198,36 @@ const NewsBox = ({
         </Box>
       ) : null}
     </StyledNewsBox>
+  );
+};
+
+const NewsTableRow = ({ title, date, src, category, link }: Partial<NewsBoxProps>) => {
+  const { t } = useTranslation();
+  const externalLink = link && link.match('://');
+
+  const thisYear = date?.getFullYear() === new Date().getFullYear();
+  const dateStr = thisYear ? moment(date, 'LL').fromNow() : moment(date).format('LL');
+
+  return (
+    <TableRow>
+      <TableCell>
+        <Typography variant='overline'>{t(`news.categories.${category}`)}</Typography>
+      </TableCell>
+      <TableCell>
+        {date ? (
+          <Typography variant='overline'>
+            <time dateTime={date.toString()}>{dateStr}</time>
+          </Typography>
+        ) : null}
+      </TableCell>
+      <TableCell>
+        <Typography>
+          <Link to={link || ''} color='textSecondary' target={externalLink ? '_blank' : undefined}>
+            {title}
+          </Link>
+        </Typography>
+      </TableCell>
+    </TableRow>
   );
 };
 
@@ -232,6 +314,8 @@ export default function News({ data }: { data: NewsIndexQuery }) {
     .map(edge => getNewsItemData(edge.node))
     .sort((a, b) => b.date.getTime() - a.date.getTime());
 
+  const oldNews = newsData.splice(8);
+
   return (
     <Page title={t('news.title')}>
       <PageSection>
@@ -243,8 +327,6 @@ export default function News({ data }: { data: NewsIndexQuery }) {
             {newsData.map(({ id, title, bodyPreview, category, link, featuredImageSrc, prominence }) => {
               // Check for known enum values
               validateEnum('prominence', prominence, newsItemProminence);
-              const colSpan = newsItemProminence[prominence].colSpan;
-              const rowSpan = newsItemProminence[prominence].rowSpan;
 
               return (
                 <NewsBox
@@ -252,8 +334,7 @@ export default function News({ data }: { data: NewsIndexQuery }) {
                   title={title}
                   src={featuredImageSrc}
                   category={category}
-                  colSpan={colSpan}
-                  rowSpan={rowSpan}
+                  prominence={prominence}
                   link={link}
                 >
                   <Typography>{bodyPreview}</Typography>
@@ -261,6 +342,27 @@ export default function News({ data }: { data: NewsIndexQuery }) {
               );
             })}
           </LayoutGrid>
+        </Box>
+      </PageSection>
+      <PageSection>
+        <Box mt={10} mb={3}>
+          <Center>
+            <Typography variant='h4'>{t('news.archive')}</Typography>
+          </Center>
+          <StyledTable>
+            <TableBody>
+              {oldNews.map(({ title, category, date, link, featuredImageSrc }, index) => (
+                <NewsTableRow
+                  key={`newsTableRow${index}`}
+                  title={title}
+                  date={date}
+                  src={featuredImageSrc}
+                  category={category}
+                  link={link}
+                />
+              ))}
+            </TableBody>
+          </StyledTable>
         </Box>
       </PageSection>
 
