@@ -41,3 +41,5 @@ jobs:
 
       - name: Building and deploying website
         run: npm run deploy
+        env:
+          GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
