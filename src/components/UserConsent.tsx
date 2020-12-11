@@ -1,18 +1,20 @@
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
+import DialogContent, { DialogContentProps } from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
+import { useTheme, withTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
+import Button from 'src/components/Button';
+import { IconX } from 'src/components/Icons';
+import Link from 'src/components/Link';
+import { useTranslation } from 'src/hooks/useTranslations';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import Cookies from 'universal-cookie';
-
-import Button from 'src/components/Button';
-
-import Link from 'src/components/Link';
-import { IconX } from 'src/components/Icons';
-import { useTranslation } from 'src/hooks/useTranslations';
 
 const cookies = new Cookies();
 
@@ -28,23 +30,20 @@ const BannerDialog = styled(Dialog)`
   }
 `;
 
-const BannerContent = styled(DialogContent)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+const BannerContent = withTheme(styled(DialogContent)`
+  // Override the standard first-child behavior of DialogContent
   &:first-child {
-    padding-right: 0px;
-    padding-top: 8px;
+    padding-top: ${({ theme }) => px(theme.spacing(1))};
   }
-`;
+`) as React.FC<DialogContentProps>;
 
 const BannerContentText = styled(DialogContentText)`
-  flex: 1;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 `;
 
 const UserConsent = () => {
+  const theme = useTheme();
+  const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
   const [open, setOpen] = useState<boolean>(cookies.get('gatsby-gdpr-google-analytics') !== 'true');
   const handleClose = useCallback(() => setOpen(false), [setOpen]);
   const handleAccept = useCallback(() => {
@@ -64,21 +63,28 @@ const UserConsent = () => {
       hideBackdrop
       aria-label={t('main.consent.label')}
       aria-describedby='user-consent-description'
+      PaperProps={{ square: true }}
     >
-      <BannerContent>
-        <BannerContentText id='user-consent-description' variant='body2'>
-          {t('main.consent.message')}
-          <Link to='/privacy'>{t('main.consent.policy')}</Link>
-        </BannerContentText>
-        <DialogActions>
-          <Button aria-label={t('main.consent.accept')} onClick={handleAccept}>
-            {t('main.consent.accept')}
-          </Button>
-          <IconButton aria-label={t('main.consent.decline')} onClick={handleClose}>
-            <IconX width='16' height='16' />
-          </IconButton>
-        </DialogActions>
-      </BannerContent>
+      <Grid container alignItems='center' justify='center' wrap={isXs ? 'wrap' : 'nowrap'}>
+        <Grid item>
+          <BannerContent>
+            <BannerContentText id='user-consent-description' variant='body2'>
+              {t('main.consent.message')}
+              <Link to='/privacy'>{t('main.consent.policy')}</Link>
+            </BannerContentText>
+          </BannerContent>
+        </Grid>
+        <Grid item>
+          <DialogActions>
+            <Button aria-label={t('main.consent.accept')} onClick={handleAccept}>
+              {t('main.consent.accept')}
+            </Button>
+            <IconButton aria-label={t('main.consent.decline')} onClick={handleClose}>
+              <IconX width='16' height='16' />
+            </IconButton>
+          </DialogActions>
+        </Grid>
+      </Grid>
     </BannerDialog>
   );
 };
