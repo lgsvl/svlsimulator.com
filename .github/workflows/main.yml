@@ -39,7 +39,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Building and deploying website
-        run: npm run deploy
+      - name: Building website
+        run: |
+          rm -fr ./.cache
+          rm -fr ./node_modules/.cache
+          npm run build
         env:
           GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+
+      - name: Deploying website
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: public
