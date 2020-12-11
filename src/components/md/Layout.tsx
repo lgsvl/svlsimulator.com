@@ -1,8 +1,9 @@
 //
 // https://www.gatsbyjs.com/docs/mdx/customizing-components/
 //
-import Box from '@material-ui/core/Box';
+import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { MDXProvider } from '@mdx-js/react';
 import { PageProps } from 'gatsby';
@@ -11,24 +12,32 @@ import React from 'react';
 import Breadcrumbs from 'src/components/Breadcrumbs';
 import Page, { PageSection } from 'src/components/Page';
 import { useTranslation } from 'src/hooks/useTranslations';
+import styled from 'styled-components';
 import { NewsIndexQuery } from '../../../graphql-types';
 import GridBox from '../GridBox';
 import Image from '../Image';
 import Subs from './Substitutions';
+import useImageUrl from './useImageUrl';
 
 type NewsItemNode = NewsIndexQuery['allFile']['edges'][0]['node'];
 type NewsItemMdx = Exclude<NewsItemNode['childMdx'], null | undefined>;
+type NewsFrontmatter = NewsItemMdx['frontmatter'] & { featuredImage?: string };
+
+const OverlayBox = withTheme(styled(Box)`
+  text-shadow: 0px 1px 3px black, 0px 1px 20px rgba(0, 0, 0, 0.7);
+`) as React.FC<BoxProps>;
 
 export interface LayoutProps extends PageProps {
   location: PageProps['location'];
   pageContext: PageProps['pageContext'] & {
-    frontmatter?: NewsItemMdx['frontmatter'];
+    frontmatter?: NewsFrontmatter;
   };
 }
 
 export default function Layout({ children, location, pageContext, ...rest }: React.PropsWithChildren<LayoutProps>) {
   const { t } = useTranslation();
   const { author, featuredImage, title, date: dateStr } = pageContext.frontmatter || {};
+  const { publicURL: featuredImageURL } = useImageUrl(featuredImage);
 
   let date: Date | undefined;
   if (dateStr && !isNaN(Date.parse(dateStr))) date = new Date(dateStr);
@@ -60,10 +69,16 @@ export default function Layout({ children, location, pageContext, ...rest }: Rea
         <PageSection component='section' maxWidth='md'>
           <Box>
             {title ? (
-              <Box position='relative' mb={3} py={featuredImage ? 3 : 0}>
-                <Image position='absolute' top={0} left={0} src={(featuredImage as unknown) as string} />
-                <Typography variant='h1'>{title}</Typography>
-              </Box>
+              featuredImageURL ? (
+                <OverlayBox position='relative' mb={3} py={6}>
+                  <Image position='absolute' top={0} left={0} zIndex={-1} src={featuredImageURL} />
+                  <Typography variant='h1'>{title}</Typography>
+                </OverlayBox>
+              ) : (
+                <Box mb={3}>
+                  <Typography variant='h1'>{title}</Typography>
+                </Box>
+              )
             ) : null}
             {children}
           </Box>

@@ -3,12 +3,15 @@
 import { Table, TableCell, TableCellProps, TableRow, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
+import MuiLink from '@material-ui/core/Link';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Link, { LinkProps } from 'src/components/Link';
+import { isImageUri } from 'src/utils';
 import styled from 'styled-components';
 import Li, { LiProps, LiText } from '../Li';
 import { MdxComponentSubstitutions } from './Substitutions.d';
+import useImageUrl from './useImageUrl';
 
 export type MdLinkProps = { to?: LinkProps['to'] } & Omit<LinkProps, 'to'>;
 
@@ -24,7 +27,16 @@ const H5 = (props: TypographyProps) => <Typography {...props} variant='h5' gutte
 const H6 = (props: TypographyProps) => <Typography {...props} variant='h6' gutterBottom />;
 const P = (props: TypographyProps) => <Typography {...props} paragraph />;
 const TableHeadCell = (props: TableCellProps) => <TableCell {...props} component='th' variant='head' />;
-const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) => <Link {...rest} to={to || href} />;
+const MdImgLink: React.FC<MdLinkProps> = ({ to, href = '#', children, ...rest }) => {
+  const { publicURL } = useImageUrl(to || href);
+  return (
+    <MuiLink {...rest} href={publicURL || to || href}>
+      {children}
+    </MuiLink>
+  );
+};
+const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
+  isImageUri(to || href) ? <MdImgLink {...rest} to={to || href} /> : <Link {...rest} to={to || href} />;
 const Ol: React.FC<BoxProps> = props => <StyledOlBox pl={3} {...props} component='ol' />;
 const Ul: React.FC<BoxProps> = props => <Box pl={3} {...props} component='ul' />;
 const ListItem: React.FC<LiProps> = ({ children, ...rest }) => (

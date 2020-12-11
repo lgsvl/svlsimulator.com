@@ -5,8 +5,6 @@ import React from 'react';
 import { OutboundLink } from 'react-ga';
 import { Merge } from 'src/@types/utils';
 
-const isOutbound = /https?:\/\/((?:[\w\d-]+\.)+[\w\d]{2,})/i;
-
 type OutboundGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement>;
 type I18nGatsbyLinkProps = OutboundGatsbyLinkProps & { language?: string };
 
