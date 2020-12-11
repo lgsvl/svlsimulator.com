@@ -49,3 +49,14 @@ export const setObjFromPath = (obj: Record<string, any>, path: string, value: an
   subObj[pathParts[i]] = value;
   return freshObj;
 };
+
+/**
+ * Determins if a string is one that should be handled by the remark-image plugin.
+ *
+ * Currently only jpg, jpeg, and png image formats are supported and translated.
+ *
+ * "URI" - https://stackoverflow.com/a/28865728/388092
+ *
+ * @param uri a URI to a potential image
+ */
+export const isImageUri = (uri: string) => Boolean(uri.match(/\.(jpg|jpeg|png)$/));

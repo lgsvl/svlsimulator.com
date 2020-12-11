@@ -7,6 +7,7 @@ import MuiLink from '@material-ui/core/Link';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import Link, { LinkProps } from 'src/components/Link';
+import { isImageUri } from 'src/utils';
 import styled from 'styled-components';
 import Li, { LiProps, LiText } from '../Li';
 import { MdxComponentSubstitutions } from './Substitutions.d';
@@ -35,11 +36,7 @@ const MdImgLink: React.FC<MdLinkProps> = ({ to, href = '#', children, ...rest })
   );
 };
 const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
-  /\.(png|jpg|jpeg|webp)$/.test(to || href) ? (
-    <MdImgLink {...rest} to={to || href} />
-  ) : (
-    <Link {...rest} to={to || href} />
-  );
+  isImageUri(to || href) ? <MdImgLink {...rest} to={to || href} /> : <Link {...rest} to={to || href} />;
 const Ol: React.FC<BoxProps> = props => <StyledOlBox pl={3} {...props} component='ol' />;
 const Ul: React.FC<BoxProps> = props => <Box pl={3} {...props} component='ul' />;
 const ListItem: React.FC<LiProps> = ({ children, ...rest }) => (

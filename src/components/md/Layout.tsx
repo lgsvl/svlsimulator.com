@@ -1,17 +1,18 @@
 //
 // https://www.gatsbyjs.com/docs/mdx/customizing-components/
 //
-import Box from '@material-ui/core/Box';
+import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { MDXProvider } from '@mdx-js/react';
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { PageProps } from 'gatsby';
 import moment from 'moment';
 import React from 'react';
-import styled from 'styled-components';
 import Breadcrumbs from 'src/components/Breadcrumbs';
 import Page, { PageSection } from 'src/components/Page';
 import { useTranslation } from 'src/hooks/useTranslations';
+import styled from 'styled-components';
 import { NewsIndexQuery } from '../../../graphql-types';
 import GridBox from '../GridBox';
 import Image from '../Image';
@@ -22,9 +23,9 @@ type NewsItemNode = NewsIndexQuery['allFile']['edges'][0]['node'];
 type NewsItemMdx = Exclude<NewsItemNode['childMdx'], null | undefined>;
 type NewsFrontmatter = NewsItemMdx['frontmatter'] & { featuredImage?: string };
 
-const BgImage = styled(Image)`
-  z-index: -1;
-`;
+const OverlayBox = withTheme(styled(Box)`
+  text-shadow: 0px 1px 3px black, 0px 1px 20px rgba(0, 0, 0, 0.7);
+`) as React.FC<BoxProps>;
 
 export interface LayoutProps extends PageProps {
   location: PageProps['location'];
@@ -68,10 +69,16 @@ export default function Layout({ children, location, pageContext, ...rest }: Rea
         <PageSection component='section' maxWidth='md'>
           <Box>
             {title ? (
-              <Box position='relative' mb={3} py={featuredImageURL ? 3 : 0}>
-                <BgImage position='absolute' top={0} left={0} src={featuredImageURL} />
-                <Typography variant='h1'>{title}</Typography>
-              </Box>
+              featuredImageURL ? (
+                <OverlayBox position='relative' mb={3} py={6}>
+                  <Image position='absolute' top={0} left={0} zIndex={-1} src={featuredImageURL} />
+                  <Typography variant='h1'>{title}</Typography>
+                </OverlayBox>
+              ) : (
+                <Box mb={3}>
+                  <Typography variant='h1'>{title}</Typography>
+                </Box>
+              )
             ) : null}
             {children}
           </Box>
