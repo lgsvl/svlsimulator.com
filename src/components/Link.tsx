@@ -51,7 +51,6 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
   }
   // Outbound link, track with analytics
   if (to) {
-    console.log('outbound', to);
     return <MuiLink component={FwdOutbound} to={to} {...rest} ref={ref as React.Ref<HTMLAnchorElement>} />;
   }
   // Undefined link (probably listening for click with javascript, use basic MuiLink)
