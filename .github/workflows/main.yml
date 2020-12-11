@@ -40,7 +40,9 @@ jobs:
         run: npm install
 
       - name: Building website
-        run: npm run build
+        run: |
+          rm -fr ./.cache
+          npm run build
         env:
           GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
 
