@@ -16,7 +16,8 @@
       "decline": "Decline"
     },
     "documentTypes": {
-      "technical": "Technical document"
+      "technical": "Technical document",
+      "documentation": "Technical documentation"
     },
     "footer": {
       "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
@@ -33,6 +34,7 @@
     "links": {
       "github": "Github",
       "documentation": "Documentation",
+      "documentationLong": "LGSVL Simulator documentation",
       "requestDemo": "Request demo",
       "twitter": "Twitter",
       "youtube": "YouTube",

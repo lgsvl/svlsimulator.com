@@ -1,6 +1,7 @@
-import { Hidden, withTheme } from '@material-ui/core';
+import { withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
@@ -10,7 +11,6 @@ import Image from 'src/components/Image';
 import Page, { PageSection } from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-// import srcLgsvlLogo from 'src/images/lgsvl-logo-hollow.svg';
 import srcLgsvlLogo from 'src/images/about.jpg';
 import styled from 'styled-components';
 

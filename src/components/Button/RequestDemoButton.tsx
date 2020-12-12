@@ -12,7 +12,7 @@ const RequestDemoButton: typeof Button = React.forwardRef((props, ref) => {
   }, [setAppState]);
 
   return (
-    <Button color='primary' variant='contained' {...props} ref={ref} onClick={handleButtonClick}>
+    <Button color='primary' variant='outlined' {...props} ref={ref} onClick={handleButtonClick}>
       {t('main.buttons.getDemo')}
     </Button>
   );

@@ -1,10 +1,9 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 import { useTheme, withTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
-import Button from 'src/components/Button';
+import { LinkButton, LinkButtonProps } from 'src/components/Button';
 import { IconDocument } from 'src/components/Icons';
 import styled from 'styled-components';
 
@@ -16,7 +15,13 @@ const LabelTypo = withTheme(styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
 `);
 
-const DocumentBox = ({ title, label, buttonText, ...rest }: BoxProps & { label?: string; buttonText?: string }) => {
+export interface DocumentBoxProps extends BoxProps {
+  label?: string;
+  buttonText?: string;
+  to?: LinkButtonProps['to'];
+}
+
+const DocumentBox = ({ title, label, buttonText, to, ...rest }: DocumentBoxProps) => {
   const theme = useTheme();
   const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
   const iconSize = isXs ? 42 : 80;
@@ -41,7 +46,9 @@ const DocumentBox = ({ title, label, buttonText, ...rest }: BoxProps & { label?:
       </Box>
       {buttonText ? (
         <Box ml={isXs ? 0 : 2} mt={isXs ? 3 : 0}>
-          <Button>{buttonText}</Button>
+          <LinkButton buttonVariant='outlined' to={to}>
+            {buttonText}
+          </LinkButton>
         </Box>
       ) : null}
     </StyledDocumentBox>

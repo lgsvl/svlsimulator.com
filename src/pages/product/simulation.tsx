@@ -19,6 +19,7 @@ import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
+import DocumentBox from 'src/components/DocumentBox';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
 import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
@@ -274,6 +275,15 @@ export default function Simulation() {
         <Center mt={7}>
           <RequestDemoButton />
         </Center>
+      </PageSection>
+
+      <PageSection>
+        <DocumentBox
+          title={t('main.links.documentationLong')}
+          label={t('main.documentTypes.documentation')}
+          buttonText={t('main.buttons.view')}
+          to='https://www.lgsvlsimulator.com/docs/'
+        />
       </PageSection>
 
       <PageSectionFullWidth>

@@ -63,25 +63,9 @@ export default function Applications() {
         {tMap('applications.section3.body', TypoWrapper)}
       </Section>
 
-      <PageSection>
-        <DocumentBox
-          title={t('applications.files.0')}
-          label={t('main.documentTypes.technical')}
-          buttonText={t('main.buttons.download')}
-        />
-      </PageSection>
-
       <Section contained title={t('applications.section4.title')} src={srcAcademics} tuckImage buttonText='getDemo'>
         {tMap('applications.section4.body', TypoWrapper)}
       </Section>
-
-      <PageSection>
-        <DocumentBox
-          title={t('applications.files.1')}
-          label={t('main.documentTypes.technical')}
-          buttonText={t('main.buttons.download')}
-        />
-      </PageSection>
 
       <Section contained flip title={t('applications.section5.title')} src={srcRobotics} tuckImage buttonText='getDemo'>
         {tMap('applications.section5.body', TypoWrapper)}

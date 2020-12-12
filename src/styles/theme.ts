@@ -19,15 +19,27 @@ const theme = createMuiTheme({
       root: {
         fontFamily: fontMain,
         textTransform: 'none',
-        padding: '12px 24px'
+        padding: '12px 24px',
+        '&$disabled': {
+          opacity: 0.5
+        }
       },
       outlined: {
-        borderColor: palette.secondary.main,
-        color: palette.secondary.main,
-        padding: '11px 23px'
+        borderColor: palette.text.primary,
+        color: palette.text.primary,
+        padding: '11px 23px',
+        '&$disabled': {
+          borderColor: palette.text.primary
+        }
       },
       outlinedPrimary: {
-        borderColor: palette.text.primary
+        borderColor: palette.text.primary,
+        backgroundColor: fade(palette.text.primary, 0.12),
+        color: palette.text.primary,
+        '&:hover': {
+          borderColor: palette.secondary.main,
+          backgroundColor: fade(palette.text.primary, 0.22)
+        }
       },
       // MaterialUI doesn't correctly define the following two "contained" rules, getting them mixed up.
       // This manually reassigns them to the intended values.
