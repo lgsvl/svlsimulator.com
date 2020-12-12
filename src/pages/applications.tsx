@@ -76,12 +76,14 @@ export default function Applications() {
           title={t('applications.files.0')}
           label={t('main.documentTypes.technical')}
           buttonText={t('main.buttons.download')}
+          to='https://arxiv.org/pdf/2005.03778.pdf'
         />
 
         <DocumentBox
           title={t('applications.files.1')}
           label={t('main.documentTypes.technical')}
           buttonText={t('main.buttons.download')}
+          to='https://arxiv.org/pdf/2003.07739.pdf'
         />
       </PageSection>
 
