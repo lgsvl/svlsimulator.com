@@ -3,8 +3,14 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
+
+[
+  `.env.${process.env.NODE_ENV || 'development'}.local`,
+  `.env.${process.env.NODE_ENV || 'development'}`,
+  '.env'
+].forEach(env => fs.existsSync(env) && require('dotenv').config({ path: env }));
 
 module.exports = {
   siteMetadata: {
@@ -24,6 +30,17 @@ module.exports = {
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    // Adds automatic typescript type generation for graphql queries
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-graphql-codegen/
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        // documentPaths: ['./src/**/*.{ts,tsx}', './node_modules/gatsby-*/**/*.js']
+        // documentPaths: ['./src/pages/news/index.tsx']
+        documentPaths: ['./src/**/*.{ts,tsx}']
+      }
+    },
     {
       resolve: 'gatsby-plugin-webfonts',
       options: {
@@ -71,6 +88,15 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: 'gatsby-plugin-gdpr-cookies',
+      options: {
+        googleAnalytics: {
+          trackingId: process.env.GA_TRACKING_ID
+        },
+        environments: ['production', 'development']
+      }
+    },
     'gatsby-plugin-typescript-checker',
     {
       resolve: 'gatsby-plugin-eslint',
@@ -87,6 +113,45 @@ module.exports = {
           emitWarning: true,
           failOnError: true
         }
+      }
+    },
+    {
+      resolve: 'gatsby-remark-images',
+      options: {
+        linkImagesToOriginal: false,
+        backgroundColor: 'none'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        defaultLayouts: {
+          // posts: require.resolve("./src/components/posts-layout.js"),
+          default: require.resolve('./src/components/md/Layout.tsx')
+        },
+        extensions: ['.mdx', '.md'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              linkImagesToOriginal: false,
+              backgroundColor: 'none'
+            }
+          }
+        ]
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: `${__dirname}/src/`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/images`
       }
     }
   ]

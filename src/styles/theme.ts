@@ -1,5 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-// import { hexOpacity } from 'src/utils/utils';
+import { createMuiTheme, fade } from '@material-ui/core/styles';
 import { palette } from './colors';
 
 const fontMain = ['"Open Sans"', '"OpenSans-Bold"'].join(', ');
@@ -16,13 +15,59 @@ const theme = createMuiTheme({
         backgroundColor: palette.background.default
       }
     },
-    // Doesn't work reliably because of the breakpoints built-into the component styling.
-    // Will have to override them if this 80px is important.
-    // MuiToolbar: {
-    //   regular: {
-    //     minHeight: '80px'
-    //   }
-    // },
+    MuiButton: {
+      root: {
+        fontFamily: fontMain,
+        textTransform: 'none',
+        padding: '12px 24px',
+        '&$disabled': {
+          opacity: 0.5
+        }
+      },
+      outlined: {
+        borderColor: palette.text.primary,
+        color: palette.text.primary,
+        padding: '11px 23px',
+        '&$disabled': {
+          borderColor: palette.text.primary
+        }
+      },
+      outlinedPrimary: {
+        borderColor: palette.text.primary,
+        backgroundColor: fade(palette.text.primary, 0.12),
+        color: palette.text.primary,
+        '&:hover': {
+          borderColor: palette.secondary.main,
+          backgroundColor: fade(palette.text.primary, 0.22)
+        }
+      },
+      // MaterialUI doesn't correctly define the following two "contained" rules, getting them mixed up.
+      // This manually reassigns them to the intended values.
+      contained: {
+        '&$disabled': {
+          backgroundColor: '#777'
+        }
+      },
+      containedPrimary: {
+        '&$disabled': {
+          backgroundColor: '#863052'
+        }
+      },
+      textPrimary: {
+        color: palette.text.primary,
+        '&:hover': {
+          color: palette.primary.light,
+          backgroundColor: fade(palette.secondary.main, 0.2)
+        }
+      },
+      textSecondary: {
+        color: palette.text.primary,
+        '&:hover': {
+          color: palette.text.secondary,
+          backgroundColor: fade(palette.secondary.main, 0.2)
+        }
+      }
+    },
     MuiDrawer: {
       root: {
         width: 240
@@ -33,23 +78,67 @@ const theme = createMuiTheme({
     },
     MuiInputBase: {
       input: {
-        backgroundColor: palette.background.default,
         borderRadius: 4,
+
         '&:-webkit-autofill': {
-          WebkitBoxShadow: `0 0 0 100px ${palette.background.default} inset`,
-          WebkitTextFillColor: '#fff',
-          caretColor: '#fff'
+          '-webkit-text-fill-color': palette.text.secondary,
+          'text-fill-color': palette.text.secondary,
+          '-webkit-box-shadow': `0 0 0px 1000px ${fade(palette.background.paper, 0.95)} inset`,
+          'box-shadow': `0 0 0px 1000px ${fade(palette.background.paper, 0.95)} inset`,
+          transition: 'background-color 0.25s ease-in-out'
         }
       }
     },
-    MuiLink: {
+    MuiInputLabel: {
       root: {
-        color: palette.secondary.dark
+        color: palette.text.secondary,
+
+        '&$focused': {
+          color: palette.text.primary
+        }
       }
     },
     MuiListItem: {
+      button: {
+        '&:hover': {
+          backgroundColor: fade(palette.secondary.main, 0.2)
+        }
+      }
+    },
+    // MuiLink: {
+    //   root: {
+    //     color: palette.secondary.dark
+    //   }
+    // },
+    MuiOutlinedInput: {
       root: {
-        fontFamily: fontMain // Normally, we wouldn't set font rules here, but typeography doesn't influence ListItems.
+        backgroundColor: palette.background.paper,
+        borderRadius: 4,
+        '&:hover $notchedOutline': {
+          borderColor: palette.action.hover
+        },
+        '&$focused $notchedOutline': {
+          borderColor: palette.action.active,
+          borderWidth: 1
+        }
+      },
+      notchedOutline: {
+        borderColor: 'transparent'
+      }
+    },
+    MuiPaper: {
+      // root: {
+      //   border: '1px dashed darkgoldenrod'
+      // },
+      rounded: {
+        borderRadius: '8px' // spacing(1)
+      },
+      // Reserving elevation24 for the 'page content' area, the body of most pages.
+      elevation0: {
+        backgroundColor: 'transparent'
+      },
+      elevation24: {
+        boxShadow: '0 0 1px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.06)'
       }
     },
     MuiTab: {
@@ -63,78 +152,15 @@ const theme = createMuiTheme({
         }
       }
     },
-    MuiButton: {
+    MuiTableCell: {
       root: {
-        fontFamily: fontMain,
-        textTransform: 'none'
-      },
-      outlined: {
-        borderColor: palette.secondary.main,
-        color: palette.secondary.main
-      },
-      outlinedPrimary: {
-        borderColor: palette.text.primary
-      }
-    },
-    // MuiToggleButton: {
-    //   root: {
-    //     backgroundColor: 'transparent',
-    //     color: palette.text.primary,
-    //     textTransform: 'none',
-    //     '&$selected': {
-    //       backgroundColor: palette.primary.main,
-    //       color: palette.text.secondary,
-    //       '&:hover': {
-    //         backgroundColor: palette.primary.dark
-    //       }
-    //     }
-    //   }
-    // },
-    MuiSlider: {
-      root: {
-        color: palette.primary.main,
-        height: 2,
-        padding: '15px 0 30px'
-      },
-      thumb: {
-        height: 14,
-        width: 14,
-        backgroundColor: palette.background.default,
-        boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)',
-        marginTop: -5,
-        marginLeft: -5,
-        '&:focus, &:hover, &$active': {
-          boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)'
-          }
-        }
-      },
-      markLabel: {
-        top: -22,
-        color: palette.text.primary
-      },
-      active: {},
-      valueLabel: {
-        left: 'calc(-50% - 2px)',
-        top: -32
-      },
-      track: {
-        height: 8
-      },
-      marked: {
-        marginBottom: -24
-      },
-      mark: { background: 'transparent' },
-      rail: {
-        height: 8,
-        opacity: 0.5,
-        backgroundColor: palette.background.default
-      },
-      markActive: {
-        opacity: 1,
-        backgroundColor: 'currentColor'
+        // Remove the 3-part "borderBottom" shorthand rule, and replace it with
+        // several individual pieces, more strategically.
+        borderBottom: '',
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.1)',
+        borderBottomStyle: 'solid',
+        fontFamily: fontMain
       }
     },
     MuiTooltip: {
@@ -143,76 +169,20 @@ const theme = createMuiTheme({
         backgroundColor: palette.background.default,
         color: palette.text.secondary,
         border: `1px solid ${palette.background.default}`
-      }
-    },
-    // MuiTypography: {
-    //   root: {
-    //     // Added important to prevent ovverride by sub classes of Typography
-    //   },
-    // },
-    MuiPaper: {
-      rounded: {
-        borderRadius: '8px' // spacing(1)
       },
-      // Reserving elevation24 for the "page content" area, the body of most pages.
-      elevation0: {
-        backgroundColor: 'transparent'
-      },
-      elevation24: {
-        boxShadow: '0 0 1px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.06)'
+      arrow: {
+        color: palette.background.default
       }
     },
-    // MuiPickersDay: {
-    //   day: {
-    //     color: palette.text.azureishWhite
-    //   },
-    //   daySelected: {
-    //     backgroundColor: palette.primary.main
-    //   },
-    //   dayDisabled: {
-    //     color: `${palette.text.azureishWhite}${hexOpacity(0.2)}`
-    //   }
-    // },
-    MuiPopover: {
-      paper: {
-        marginTop: 8,
-        backgroundColor: '#293247'
-      }
-    },
-    // MuiTreeItem: {
-    //   iconContainer: {
-    //     width: 24
-    //   }
-    // },
-    MuiStepConnector: {
-      line: {
-        borderColor: palette.text.primary
-      }
-    },
-    // MuiPickersCalendarHeader: {
-    //   dayLabel: {
-    //     color: palette.text.azureishWhite
-    //   },
-    //   iconButton: {
-    //     color: palette.text.slateGrey,
-    //     backgroundColor: 'transparent'
-    //   }
-    // },
-    MuiListItemIcon: {
-      root: {
-        minWidth: '33px'
-      }
-    },
-    // MuiPickersModal: {
-    //   dialogRoot: {
-    //     backgroundColor: palette.background.main
-    //   }
-    // }
-    MuiTableCell: {
-      root: {
-        borderWidth: 1,
-        borderColor: 'rgba(255, 255, 255, 0.1)',
-        fontFamily: fontMain
+    MuiTypography: {
+      gutterBottom: {
+        marginBottom: 40,
+        marginTop: 40, // It's not technically "correct" to set this here, but
+        // it's mostly appropriate as long as the rule below is present too.
+
+        '&:first-child': {
+          marginTop: 0
+        }
       }
     }
   },
@@ -230,11 +200,21 @@ const theme = createMuiTheme({
       fontWeight: 700,
       lineHeight: 84 / 56
     },
-    h5: {
-      color: palette.text.primary,
+    h3: {
       fontSize: 32,
       fontWeight: 700,
       lineHeight: 44 / 32
+    },
+    h4: {
+      fontSize: 28,
+      fontWeight: 700,
+      lineHeight: 36 / 28
+    },
+    h5: {
+      color: palette.text.primary,
+      fontSize: 20,
+      fontWeight: 700,
+      lineHeight: 32 / 20
     },
     h6: {
       color: palette.text.secondary,
@@ -250,13 +230,20 @@ const theme = createMuiTheme({
     body2: {
       fontSize: 14,
       lineHeight: 24 / 14
-    }
+    },
     // button: {
     // },
-    // caption: {
-    // },
-    // overline: {
-    // },
+    caption: {
+      fontSize: 16,
+      lineHeight: 24 / 16
+    },
+    overline: {
+      // color: palette.text.hint,
+      fontSize: 14,
+      lineHeight: 24 / 14,
+      letterSpacing: '2px',
+      textTransform: 'uppercase'
+    }
     // subtitle1: {
     // },
     // subtitle2: {
@@ -267,11 +254,11 @@ const theme = createMuiTheme({
 const mobileBreakpoint = theme.breakpoints.down('sm');
 
 // This sets the root Toolbar element's minHeight, but its overridden by breakpoints.
-// Will need to figure out how to "properly" override those or recreate them.
+// Will need to figure out how to 'properly' override those or recreate them.
 theme.mixins.toolbar.minHeight = 80;
 
 //
-// "Mobile" Sizing
+// 'Mobile' Sizing
 //
 theme.typography.h1[mobileBreakpoint] = {
   fontSize: 40,

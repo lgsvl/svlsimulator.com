@@ -37,7 +37,8 @@ module.exports = {
     '/**/.cache/',
     '/**/.cache/*',
     '/**/public/',
-    '/**/public/*'
+    '/**/public/*',
+    '/graphql-types.ts'
   ],
   settings: {
     react: {
@@ -47,7 +48,7 @@ module.exports = {
   },
   rules: {
     // Use prettier formatting
-    "prettier/prettier": "warn",
+    'prettier/prettier': 'warn',
 
     'arrow-parens': ['error', 'as-needed'],
     'arrow-spacing': [
@@ -162,6 +163,7 @@ module.exports = {
 
     // Typescript rules
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     // "@typescript-eslint/indent": [
     //   "warn",
     //   2,

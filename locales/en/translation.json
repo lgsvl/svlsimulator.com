@@ -2,18 +2,59 @@
   "main": {
     "buttons": {
       "getDemo": "Request Demo",
+      "getStarted": "Get Started",
       "readMore": "Read More",
+      "readNews": "Read",
       "download": "Download",
       "view": "View"
     },
+    "consent": {
+      "label": "Cookie User Consent",
+      "message": "This website uses cookies, belonging to LGSVL or to third parties, to optimize website functionality, for analytics purposes, and to offer you a better browsing experience. If you wish to read more information on our use of cookies and how to change your relevant browser’s settings or prevent this website from setting cookies, please read our ",
+      "policy": "Privacy Policy",
+      "accept": "OK",
+      "decline": "Decline"
+    },
     "documentTypes": {
-      "technical": "Technical document"
+      "technical": "Technical document",
+      "documentation": "Technical documentation"
+    },
+    "footer": {
+      "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
+      "copyright": "© 2020 LG Electronics",
+      "terms": "Terms",
+      "policy": "Privacy Policy",
+      "forDevelopers": "For Developers",
+      "social": "Social"
+    },
+    "header": {
+      "products": "Products",
+      "login": "Log in"
+    },
+    "links": {
+      "github": "Github",
+      "documentation": "Documentation",
+      "documentationLong": "LGSVL Simulator documentation",
+      "requestDemo": "Request demo",
+      "twitter": "Twitter",
+      "youtube": "YouTube",
+      "subscribe": "Subscribe"
     },
     "simulator": {
       "button": "Get This SIMULATOR!"
+    },
+    "subscribe": {
+      "title": "Subscribe to our newsletter",
+      "emailPlaceholder": "Enter your email",
+      "submitButton": "Subscribe"
+    },
+    "video": {
+      "play": "Play all videos",
+      "pause": "Pause all videos"
     }
   },
   "about": {
+    "navTitle": "About",
     "title": "About",
     "body": "The LGSVL simulator is developed by the Advanced Platform Lab at the LG Electronics America R&D Lab, formerly the LG Silicon Valley Lab",
     "details": [
@@ -31,6 +72,7 @@
     }
   },
   "applications": {
+    "navTitle": "Applications",
     "title": "Future Mobility Solutions",
     "body": "The future connected mobility requires end-to-end and sophisticated infrastructures among the vehicles, environment and roadway information systems. LG helps the world’s leading OEMs and suppliers harness the power of autonomous driving technologies and solutions to simulate and accelerate the service innovation, optimize vehicle performance, gain insight from data and take advantage of the cloud platform to scale the mobility operations.",
     "section1": {
@@ -51,12 +93,21 @@
         "LGSVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. LGSVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
       ]
     },
+    "section4": {
+      "title": "Academics",
+      "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. LGSVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
+    },
+    "section5": {
+      "title": "Robotics",
+      "body": "LGSVL Simulator is a tool necessary for the design and validation of development processes in a dynamic and highly visual environment. This tool supports a variety of robotic and automation test scenarios allowing for early validation of automation concepts on local machines or in the cloud. This simulator allows developers to set KPIs, re-generate scenarios for testing, validate and optimize the development and robot operation sequences with realistic behaviors."
+    },
     "files": [
       "LGSVL Simulator – High fidelity simulator for autonomous driving",
       "Formal scenario-based testing of autonomous vehicles: From simulation to the real world"
     ]
   },
   "cloud": {
+    "navTitle": "Cloud Simulation-as-a-Service",
     "title": "Cloud Simulation-as-a-Service",
     "body": [
       "Ability to resimulate with local simulation - not just on remote servers",
@@ -66,6 +117,7 @@
     ]
   },
   "digitaltwin": {
+    "navTitle": "Digital Twin creation service",
     "title": "Digital Twin creation service",
     "body": "We offer environment creation services for different levels of environment fidelity based on your needs. These Digital Twin environments can be used to create scenarios and resimulations of real-world test cases.",
     "section1": {
@@ -78,6 +130,7 @@
     }
   },
   "home": {
+    "navTitle": "Home",
     "title": "LGSVL SIMULATOR",
     "body": "End-to-end autonomous driving simulation software for testing and validating the entire autonomous driving software stack",
     "section1": {
@@ -93,42 +146,57 @@
     },
     "features": [
       {
+        "title": "Simulation platform",
+        "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
+      },
+      {
         "title": "Cloud simulator",
         "body": "Simulation in Cloud environments allows users to easily manage and share the autonomous driving contents within the teams or communities, also enables large-scale automated testing of test data sets and scenarios."
       },
       {
         "title": "Digital twin",
         "body": "A digital twin that reconstructs 3D environment from Point Cloud and image data from real world enables vehicle manufacturers and future mobility players to accelerate development using simulation."
-      },
-      {
-        "title": "Simulation",
-        "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
       }
     ]
   },
-  "footer": {
-    "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
-    "copyright": "Copyright © 2020 LG Electronics. All rights reserved."
-  },
   "news": {
-    "title": "News",
+    "navTitle": "News",
+    "title": "Latest news and events",
     "categories": {
       "news": "News",
       "event": "Event",
       "article": "Article",
       "announcement": "Announcement"
-    }
+    },
+    "archive": "News Archive"
   },
   "simulation": {
+    "navTitle": "Simulation platform",
     "title": "End-to-end simulation platform",
-    "body": "3D photorealistic simulation software for AD and robotics. Support for all kinds of testing: unit, modular, integration, system, distributed simulation, Out-of-the-box integration with open source and popular AD stacks.",
+    "body": [
+      "3D photorealistic simulation software for AD and robotics",
+      "Support for all kinds of testing: unit, modular, integration, system",
+      "Distributed simulation",
+      "Out-of-the-box integration with open source and popular AD stacks"
+    ],
     "section1": {
       "title": "Open source and extensible simulation engine",
-      "body": "Open source and customizable Easy-to-use Python API Plugin system for vehicles, sensors, bridge interfaces Co-simulation support - FMI/FMU, CarMaker, SUMO."
+      "body": [
+        "Open source and customizable",
+        "Easy-to-use Python API",
+        "Plugin system for vehicles, sensors, bridge interfaces",
+        "Co-simulation support - FMI/FMU, CarMaker, SUMO"
+      ]
     },
     "section2": {
       "title": "Diverse set of scenario generation tools for scalable testing",
-      "body": "Visual scenario editor HD map import, export, and annotation tools Support for scenario description languages Resimulation from simulation and real world datasets Random mode for smoke testing and increased edge case test coverage."
+      "body": [
+        "Visual scenario editor",
+        "HD map import, export, and annotation tools",
+        "Support for scenario description languages",
+        "Resimulation from simulation and real world datasets",
+        "Random mode for smoke testing and increased edge case test coverage"
+      ]
     },
     "featuresTable": {
       "products": [
@@ -150,15 +218,120 @@
             "Default content",
             "ROS 1 support",
             "ROS 2 support",
-            "Baidu Apollo support"
+            "Baidu Apollo support",
+            "Autoware.AI support",
+            "Autoware.Auto support",
+            "Distributed simulation",
+            "Python API",
+            "Enhanced set of available content",
+            "Documentation and video tutorials",
+            "Ground truth synthetic data generation",
+            "Optimized ROS2 bridge interface",
+            "Synchronous simulation",
+            "Access to core simulator engine source code"
           ]
         },
-        { "name": "Simulation analysis" },
-        { "name": "Cloud simulation" },
-        { "name": "Content creation/environment generation" },
-        { "name": "Scenario generation" },
-        { "name": "Plugins/Third Party Support" }
+        {
+          "name": "Simulation analysis",
+          "subFeatures": [
+            "Test case reports",
+            "Event detection",
+            "Sensor visualization",
+            "Raw sensor data download",
+            "Simulation visual replay",
+            "Customizable KPI analysis"
+          ]
+        },
+        {
+          "name": "Cloud simulation",
+          "subFeatures": [
+            "On-premise cloud simulation solution",
+            "Public cloud simulation support",
+            "Test cycle support",
+            "Account and content management",
+            "Content sharing and team collaboration"
+          ]
+        },
+        {
+          "name": "Content creation/environment generation",
+          "subFeatures": [
+            "HD map annotation tool",
+            "HD map import/export tool",
+            "Point cloud map import",
+            "Environment creation",
+            "Vehicle model creation",
+            "Road network generation"
+          ]
+        },
+        {
+          "name": "Scenario generation",
+          "subFeatures": [
+            "Random traffic scenario generation",
+            "Visual scenario editor",
+            "SCENIC support",
+            "Resimulation from simulation"
+          ]
+        },
+        {
+          "name": "Plugins/Third Party support",
+          "subFeatures": [
+            "Sensor plugin system",
+            "Controllable plugin system",
+            "Bridge plugin system",
+            "Vehicle dynamics extensibility",
+            "Traffic behavior extensibility",
+            "FMI/FMU support",
+            "Cosimulation with IPG Carmaker"
+          ]
+        }
       ]
     }
+  },
+  "requestdemo": {
+    "title": "Request demo",
+    "message": [
+      "Thank you for your interest in the LGSVL Simulator Premium solution. This is the next generation simulation technology that is comprised of the open source LGSVL Simulator and premium features such as cloud simulation, visual scenario editor and high/low fidelity 3D map creation services.",
+      "We will share the latest LGSVL Simulator technology whitepaper, contact you to arrange the technology demo and discuss your development plans."
+    ],
+    "labels": {
+      "nameGiven": "First name",
+      "nameFamily": "Last name",
+      "email": "Email",
+      "emailVerify": "Verify Email",
+      "organization": "Your organization",
+      "title": "Your title",
+      "region": "Your region",
+      "usecase": "Use case",
+      "other": "Anything else?"
+    },
+    "placeholders": {
+      "nameGiven": "Enter your first name",
+      "nameFamily": "Enter your last name",
+      "email": "Enter your email",
+      "emailVerify": "Verify your email",
+      "organization": "Enter your organization's name",
+      "title": "Enter your title",
+      "region": "Enter your region",
+      "other": "Tell us more about your projects, goals, needs and timeline"
+    },
+    "usecases": {
+      "vehicle": "Autonomous Vehicle",
+      "software": "Autonomous Driving Service/Software",
+      "sensor": "Sensor",
+      "robotics": "Robotics",
+      "research": "Academic Research",
+      "planning": "Urban Transportation Planning"
+    },
+    "required": {
+      "firstname": "First name is required",
+      "lastname": "First name is required",
+      "email": "Email is required",
+      "region": "Region is required"
+    },
+    "validate": {
+      "email": "Enter a valid email",
+      "mismatch": "Emails do not match"
+    },
+    "confirm": "Confirm"
   }
 }

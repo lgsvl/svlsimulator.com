@@ -1,7 +1,4 @@
 import {
-  Box,
-  Collapse,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -11,32 +8,48 @@ import {
   useTheme,
   withTheme
 } from '@material-ui/core';
-import styled from 'styled-components';
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
-import { ButtonGetDemo } from 'src/components/Button';
+import { MapFunction } from 'src/@types/utils';
+import { RequestDemoButton } from 'src/components/Button';
+import Center from 'src/components/Center';
+import DocumentBox from 'src/components/DocumentBox';
 import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
-import Page from 'src/components/Page';
+import Li, { LiText } from 'src/components/Li';
+import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
+import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
+import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
+import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
+import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
+import srcSimulationPoster from 'src/images/simulation-platform.jpg';
+import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
+import styled from 'styled-components';
 
-const TypoWrapper = (str: string) => <Typography paragraph>{str}</Typography>;
+const ListItemWrapper: MapFunction = (str, i) => (
+  <Li key={`${str}${i}`}>
+    <LiText>{str}</LiText>
+  </Li>
+);
 
 const Caption = (props: TypographyProps) => <Typography variant='body2' display='block' {...props} />;
+
+const StyledTable = withTheme(styled(Table)`
+  border-collapse: separate;
+`);
 
 const StyledTableCell = withTheme(styled(({ noBorder, ...rest }: TableCellProps & { noBorder: boolean }) => (
   <TableCell {...rest} />
 ))`
   border-bottom-style: none;
-
-  ${({ noBorder }) =>
-    noBorder
-      ? ''
-      : 'border-top-style: solid;'}//   border-top-style: solid;
-
-  // .MuiTableRow-root:nth-child(n + 2) & {
-  //   border-top-style: solid;
-  // }
+  ${({ noBorder }) => (noBorder ? '' : 'border-top-style: solid;')}
 `);
 const StyledSubTableCell = withTheme(styled(TableCell)`
   border-bottom-style: none;
@@ -73,14 +86,14 @@ const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   );
 };
 
-type Row = {
+type RowType = {
   name: string;
   free: boolean;
   premium: boolean;
 };
 
-interface FeatureRow extends Row {
-  subFeatures?: Row[];
+interface FeatureRow extends RowType {
+  subFeatures?: RowType[];
 }
 
 interface BuildRow {
@@ -108,13 +121,56 @@ const rows: FeatureRow[] = [
     buildRow('0.subFeatures.2', true, true),
     buildRow('0.subFeatures.3', true, true),
     buildRow('0.subFeatures.4', true, true),
-    buildRow('0.subFeatures.5', true, true)
+    buildRow('0.subFeatures.5', true, true),
+    buildRow('0.subFeatures.6', true, true),
+    buildRow('0.subFeatures.7', true, true),
+    buildRow('0.subFeatures.8', true, true),
+    buildRow('0.subFeatures.9', true, true),
+    buildRow('0.subFeatures.10', true, true),
+    buildRow('0.subFeatures.11', true, true),
+    buildRow('0.subFeatures.12', true, true),
+    buildRow('0.subFeatures.13', true, true),
+    buildRow('0.subFeatures.14', true, true),
+    buildRow('0.subFeatures.15', true, true)
   ]),
-  buildRow('1.name', false, true),
-  buildRow('2.name', false, true),
-  buildRow('3.name', false, true),
-  buildRow('4.name', false, true),
-  buildRow('5.name', false, true)
+  buildRow('1.name', false, true, [
+    buildRow('1.subFeatures.0', false, true),
+    buildRow('1.subFeatures.1', false, true),
+    buildRow('1.subFeatures.2', false, true),
+    buildRow('1.subFeatures.3', false, true),
+    buildRow('1.subFeatures.4', false, true),
+    buildRow('1.subFeatures.5', false, true)
+  ]),
+  buildRow('2.name', false, true, [
+    buildRow('2.subFeatures.0', false, true),
+    buildRow('2.subFeatures.1', false, true),
+    buildRow('2.subFeatures.2', false, true),
+    buildRow('2.subFeatures.3', false, true),
+    buildRow('2.subFeatures.4', false, true)
+  ]),
+  buildRow('3.name', false, true, [
+    buildRow('3.subFeatures.0', false, true),
+    buildRow('3.subFeatures.1', false, true),
+    buildRow('3.subFeatures.2', false, true),
+    buildRow('3.subFeatures.3', false, true),
+    buildRow('3.subFeatures.4', false, true),
+    buildRow('3.subFeatures.5', false, true)
+  ]),
+  buildRow('4.name', false, true, [
+    buildRow('4.subFeatures.0', true, true),
+    buildRow('4.subFeatures.1', false, true),
+    buildRow('4.subFeatures.2', false, true),
+    buildRow('4.subFeatures.3', false, false)
+  ]),
+  buildRow('5.name', false, true, [
+    buildRow('5.subFeatures.0', false, true),
+    buildRow('5.subFeatures.1', false, true),
+    buildRow('5.subFeatures.2', false, true),
+    buildRow('5.subFeatures.3', false, true),
+    buildRow('5.subFeatures.4', false, true),
+    buildRow('5.subFeatures.5', false, true),
+    buildRow('5.subFeatures.6', false, true)
+  ])
 ];
 
 function Row({ row, index }: { row: FeatureRow; index: number }) {
@@ -129,7 +185,7 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
           <Typography>
             {t(row.name)}
             <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
-              {open ? <IconChevronUp /> : <IconChevronDown />}
+              {open ? <IconChevronUp title='collapse feature list' /> : <IconChevronDown title='expand feature list' />}
             </IconButton>
           </Typography>
         </FeatureCell>
@@ -171,38 +227,77 @@ export default function Simulation() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('simulation.title')}>
-      <Section title={t('simulation.title')} variant='h2' buttonText='getDemo'>
-        {tMap('simulation.body', TypoWrapper)}
+      <Section
+        buttonText='getDemo'
+        src={srcSimulationPoster}
+        video={srcSimulationVideo}
+        title={t('simulation.title')}
+        tuckImage
+        variant='h3'
+      >
+        <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
       </Section>
 
-      <Section title={t('simulation.section1.title')} flip>
-        {tMap('simulation.section1.body', TypoWrapper)}
+      <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
+        <List disablePadding>{tMap('simulation.section1.body', ListItemWrapper)}</List>
       </Section>
 
-      <Section title={t('simulation.section2.title')}>{tMap('simulation.section2.body', TypoWrapper)}</Section>
+      <Section title={t('simulation.section2.title')} src={srcTools}>
+        <List disablePadding>{tMap('simulation.section2.body', ListItemWrapper)}</List>
+      </Section>
 
-      <Table>
-        <TableHead>
-          <TableRow>
-            <StyledTableCell noBorder></StyledTableCell>
-            <StyledTableCell noBorder>
-              <Typography variant='h6'>{t('simulation.featuresTable.products.0.title')}</Typography>
-              <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
-            </StyledTableCell>
-            <StyledTableCell noBorder>
-              <Typography variant='h6'>{t('simulation.featuresTable.products.1.title')}</Typography>
-              <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
-            </StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <Row key={row.name} row={row} index={index} />
-          ))}
-        </TableBody>
-      </Table>
+      <PageSection>
+        <StyledTable>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell noBorder></StyledTableCell>
+              <StyledTableCell noBorder>
+                <Typography variant='h4'>{t('simulation.featuresTable.products.0.title')}</Typography>
+                <Hidden smDown>
+                  <Caption>{t('simulation.featuresTable.products.0.body')}</Caption>
+                </Hidden>
+              </StyledTableCell>
+              <StyledTableCell noBorder>
+                <Typography variant='h4'>{t('simulation.featuresTable.products.1.title')}</Typography>
+                <Hidden smDown>
+                  <Caption>{t('simulation.featuresTable.products.1.body')}</Caption>
+                </Hidden>
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row, index) => (
+              <Row key={row.name} row={row} index={index} />
+            ))}
+          </TableBody>
+        </StyledTable>
 
-      <ButtonGetDemo />
+        <Center mt={7}>
+          <RequestDemoButton />
+        </Center>
+      </PageSection>
+
+      <PageSection>
+        <DocumentBox
+          title={t('main.links.documentationLong')}
+          label={t('main.documentTypes.documentation')}
+          buttonText={t('main.buttons.view')}
+          to='https://www.lgsvlsimulator.com/docs/'
+        />
+      </PageSection>
+
+      <PageSectionFullWidth>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <CloudPreviewBox />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <DigitalTwinPreviewBox />
+          </Grid>
+        </Grid>
+      </PageSectionFullWidth>
+
+      <SubscribeBox />
     </Page>
   );
 }

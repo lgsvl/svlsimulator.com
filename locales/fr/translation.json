@@ -1,7 +1,7 @@
 {
   "main": {
-    "simulator": {
-      "button": "Obtenez ce SIMULATEUR!"
+    "buttons": {
+      "getDemo": "Demander une démo"
     }
   }
 }

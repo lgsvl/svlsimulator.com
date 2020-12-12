@@ -1,0 +1,23 @@
+{
+  "prettier.eslintIntegration": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "files.watcherExclude": {
+    "**/.cache/**": true,
+    "**/public/**": true
+  },
+  "search.exclude": {
+    "**/.cache/**": true,
+    "**/public/**": true
+  },
+  "files.exclude": {
+    "**/.cache/**": true
+  }
+}

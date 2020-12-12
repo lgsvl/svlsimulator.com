@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
+import BaseSvg from './BaseSvg';
 
-export const IconLGSVLSimulator: React.FC<BaseSvg> = ({ color = 'white', ...rest }) => (
-  <svg width='160' height='48' viewBox='0 0 160 48' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
+export const IconLGSVLSimulator = ({ color = 'currentColor', title = 'LGSVL Simulator Logo', ...rest }) => (
+  <BaseSvg width='160' height='48' viewBox='0 0 160 48' {...rest} title={title}>
     <g>
       <path d='M43.8056 7.99805H45.2298V20.8148H50.689V22.2001H43.8056V7.99805Z' fill={color} />
       <path
@@ -75,5 +76,5 @@ export const IconLGSVLSimulator: React.FC<BaseSvg> = ({ color = 'white', ...rest
       />
       <path d='M25.2488 13.6011L11.5532 32.3035L34.3871 9.44531L25.2488 13.6011Z' fill='#E03776' />
     </g>
-  </svg>
+  </BaseSvg>
 );

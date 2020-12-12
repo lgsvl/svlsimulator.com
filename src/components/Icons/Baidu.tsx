@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
+import BaseSvg from './BaseSvg';
 
-export const IconBaidu: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }) => (
-  <svg width='174' height='80' viewBox='0 0 174 80' fill='none' xmlns='http://www.w3.org/2000/svg' {...rest}>
+export const IconBaidu = ({ color = 'currentColor', title = 'Partner Baidu', ...rest }) => (
+  <BaseSvg width='174' height='80' viewBox='0 0 174 80' {...rest} title={title}>
     <g>
       <path
         fillRule='evenodd'
@@ -31,5 +32,5 @@ export const IconBaidu: React.FC<BaseSvg> = ({ color = 'currentColor', ...rest }
         fill={color}
       />
     </g>
-  </svg>
+  </BaseSvg>
 );
