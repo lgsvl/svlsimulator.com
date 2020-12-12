@@ -2,6 +2,7 @@
   "main": {
     "buttons": {
       "getDemo": "Request Demo",
+      "getStarted": "Get Started",
       "readMore": "Read More",
       "readNews": "Read",
       "download": "Download",

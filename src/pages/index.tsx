@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
-import { RequestDemoButton } from 'src/components/Button';
+import { LinkButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
@@ -59,7 +59,20 @@ export default function Home() {
               <Center disableGutters maxWidth={720}>
                 {tMap('home.body', TypoWrapper)}
                 <Box mt={6}>
-                  <RequestDemoButton />
+                  <Grid container spacing={4} justify='center'>
+                    <Grid item>
+                      <RequestDemoButton />
+                    </Grid>
+                    <Grid item>
+                      <LinkButton
+                        color='primary'
+                        buttonVariant='contained'
+                        to='https://www.lgsvlsimulator.com/docs/getting-started/'
+                      >
+                        {t('main.buttons.getStarted')}
+                      </LinkButton>
+                    </Grid>
+                  </Grid>
                 </Box>
               </Center>
             </Grid>
@@ -73,7 +86,7 @@ export default function Home() {
       <Box my={15}>
         <Section
           title={t('home.section1.title')}
-          buttonText='getDemo'
+          // buttonText='getDemo'
           contained
           image={
             <BackgroundVideo src={videoSrcPlaceholder1}>
@@ -92,7 +105,7 @@ export default function Home() {
       <Box my={15}>
         <Section
           title={t('home.section2.title')}
-          buttonText='getDemo'
+          // buttonText='getDemo'
           contained
           flip
           image={
