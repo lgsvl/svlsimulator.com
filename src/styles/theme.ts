@@ -29,6 +29,18 @@ const theme = createMuiTheme({
       outlinedPrimary: {
         borderColor: palette.text.primary
       },
+      // MaterialUI doesn't correctly define the following two "contained" rules, getting them mixed up.
+      // This manually reassigns them to the intended values.
+      contained: {
+        '&$disabled': {
+          backgroundColor: '#777'
+        }
+      },
+      containedPrimary: {
+        '&$disabled': {
+          backgroundColor: '#863052'
+        }
+      },
       textPrimary: {
         color: palette.text.primary,
         '&:hover': {

@@ -149,10 +149,11 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
                               aria-label='submit subscription'
                               variant='contained'
                               size='medium'
+                              color='primary'
                               disabled={isSubmitting || !(isValid && dirty)}
                               type='submit'
                             >
-                              Subscribe
+                              {t('main.subscribe.submitButton')}
                             </TransitioningButton>
                           </StyledInputAdornment>
                         )
