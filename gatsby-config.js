@@ -153,6 +153,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/images`
       }
+    },
+    {
+      resolve: 'gatsby-plugin-copy-files',
+      options: {
+        source: `${__dirname}/docs`,
+        destination: '/docs'
+      }
     }
   ]
 };
