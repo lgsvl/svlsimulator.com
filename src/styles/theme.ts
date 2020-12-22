@@ -191,29 +191,29 @@ const theme = createMuiTheme({
 
     h1: {
       fontSize: 64,
-      fontWeight: 700,
+      fontWeight: 100,
       lineHeight: 96 / 64,
       textAlign: 'center'
     },
     h2: {
       fontSize: 56,
-      fontWeight: 700,
+      fontWeight: 200,
       lineHeight: 84 / 56
     },
     h3: {
       fontSize: 32,
-      fontWeight: 700,
+      fontWeight: 300,
       lineHeight: 44 / 32
     },
     h4: {
       fontSize: 28,
-      fontWeight: 700,
+      fontWeight: 400,
       lineHeight: 36 / 28
     },
     h5: {
       color: palette.text.primary,
       fontSize: 20,
-      fontWeight: 700,
+      fontWeight: 500,
       lineHeight: 32 / 20
     },
     h6: {
