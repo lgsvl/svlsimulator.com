@@ -63,3 +63,261 @@ pre {
   overflow: visible;
   padding: 0;
 }
+
+/* Begin Modifications */
+
+@font-face{
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:400;
+  src:url(/static/webfonts/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0b.woff2) format("woff2");
+  font-display:swap
+}
+@font-face{
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:600;
+  src:url(/static/webfonts/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOUuhp.woff2) format("woff2");
+  font-display:swap
+}
+@font-face{
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:700;
+  src:url(/static/webfonts/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2) format("woff2");
+  font-display:swap
+}
+@font-face{
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:400;
+  src:url(/static/webfonts/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0d.woff) format("woff");
+  font-display:swap
+}
+@font-face{
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:600;
+  src:url(/static/webfonts/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOUuhv.woff) format("woff");
+  font-display:swap
+}
+@font-face{
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:700;
+  src:url(/static/webfonts/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhv.woff) format("woff");
+  font-display:swap
+}
+
+body {
+  margin: 0;
+  background-color: #141B2D;
+  color: #FFFFFF;
+  overflow-y: scroll;
+}
+
+
+.wy-side-nav-search, .wy-nav-content-wrap, .wy-nav-content, nav.stickynav, .wy-menu-vertical ul, .wy-menu-vertical li.on a, .wy-menu-vertical li.current>a, .rst-versions .rst-current-version {
+  color: #FFFFFF;
+  background-color: #141B2D;
+}
+
+a, a:visited, a:hover, a:focus, a:active {
+  color: #ED3866;
+}
+
+code {
+  background-color: #1F2940;
+  color: #B6C5E4;
+  border-width: 0px;
+  border-radius: 3px;
+}
+
+.wy-menu-vertical li.current {
+  background-color: #1F2940;
+}
+
+.btn-neutral, .btn-neutral:visited, .btn-neutral:hover, .btn-neutral:focus, .btn-neutral:active, input {
+  color: #FFFFFF !important;
+  border: 1px solid rgba(237, 56, 102, 0.5);
+  border-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  padding: 11px 23px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  font-family: "Open Sans", "OpenSans-Bold";
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 8px;
+  text-transform: none;
+}
+
+/* Copied from Gatsby build */
+
+
+body a,
+body a:link,
+body a:visited {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+body a:hover,
+body a:active {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+body::-webkit-scrollbar,
+body *::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  background-color: transparent;
+}
+
+@media (max-width:959.95px) {
+  body::-webkit-scrollbar,
+  body *::-webkit-scrollbar {
+      height: 15px;
+      width: 15px;
+  }
+}
+
+body::-webkit-scrollbar-track,
+body *::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-track-piece,
+body *::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb,
+body *::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #6D7B97;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+body::-webkit-scrollbar-corner,
+body *::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+body::-webkit-resizer,
+body *::-webkit-resizer {
+  border-radius: 3px;
+  background-color: #ED3866;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+html {
+  margin: 0
+}
+
+body {
+  font-size: 14px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 400;
+  line-height: 1.7142857142857142
+}
+
+caption {
+  font-size: 16px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 400;
+  line-height: 1.5
+}
+
+button {
+  font-size: .875rem;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 500;
+  line-height: 1.75;
+  text-transform: uppercase
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 700;
+  line-height: 1.5
+}
+
+@media (max-width:959.95px) {
+  h1 {
+      font-size: 40px;
+      line-height: 1.3
+  }
+}
+
+h2 {
+  font-size: 56px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 700;
+  line-height: 1.5
+}
+
+@media (max-width:959.95px) {
+  h2 {
+      font-size: 32px;
+      line-height: 1.5
+  }
+}
+
+h3 {
+  font-size: 32px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 700;
+  line-height: 1.375
+}
+
+@media (max-width:959.95px) {
+  h3 {
+      font-size: 24px;
+      line-height: 1.5
+  }
+}
+
+h4 {
+  font-size: 28px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 700;
+  line-height: 1.2857142857142858
+}
+
+@media (max-width:959.95px) {
+  h4 {
+      font-size: 20px;
+      line-height: 1.6
+  }
+}
+
+h5 {
+  color: #fff;
+  font-size: 20px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 700;
+  line-height: 1.6
+}
+
+@media (max-width:959.95px) {
+  h5 {
+      font-size: 16px;
+      line-height: 1.75
+  }
+}
+
+h6 {
+  color: #b6c5e4;
+  font-size: 28px;
+  font-family: "Open Sans", OpenSans-Bold;
+  font-weight: 600;
+  line-height: 1.2857142857142858
+}
+
