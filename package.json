@@ -18,6 +18,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"No tests yet\" && exit 0",
+    "import-docs": "cd static && npx rimraf docs && git clone --depth 1 git@auto-gitlab.lgsvl.net:HDRP/docs-website.git docs",
+    "degit-docs": "npx rimraf static/docs/.git",
     "deploy": "gatsby build && gh-pages -d public -b public"
   },
   "dependencies": {
