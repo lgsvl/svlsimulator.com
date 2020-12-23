@@ -15,11 +15,11 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
-import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
+import srcCloudVideo from 'src/videos/vis-2.mp4';
 import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
 import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import styled from 'styled-components';
-import videoSrcHero from '../videos/Hero.mp4';
+import videoSrcHero from '../videos/vis-1.mp4';
 import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
