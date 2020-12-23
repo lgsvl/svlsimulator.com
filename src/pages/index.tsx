@@ -64,11 +64,7 @@ export default function Home() {
                       <RequestDemoButton />
                     </Grid>
                     <Grid item>
-                      <LinkButton
-                        color='primary'
-                        buttonVariant='contained'
-                        to='/docs/getting-started/'
-                      >
+                      <LinkButton color='primary' buttonVariant='contained' to='/docs/getting-started/'>
                         {t('main.buttons.getStarted')}
                       </LinkButton>
                     </Grid>
