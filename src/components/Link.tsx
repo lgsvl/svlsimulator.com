@@ -33,7 +33,9 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
-  const internal = /^\/(?!\/)/.test(to);
+  // We do NOT use consider docs URLs as internal, as that's a separate embedded
+  // website and not part of the Gatsby routes.
+  const internal = /^\/(?!\/|docs)/.test(to);
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
     return (

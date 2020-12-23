@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Python API guide - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Python API guide";
+    var mkdocs_page_input_path = "python-api.md";
+    var mkdocs_page_url = "/python-api/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../modular-testing/">Modular testing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Python API guide</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
+    
+
+    <li class="toctree-l3"><a href="#requirements">Requirements</a></li>
+    
+
+    <li class="toctree-l3"><a href="#quickstart">Quickstart</a></li>
+    
+
+    <li class="toctree-l3"><a href="#core-concepts">Core Concepts</a></li>
+    
+
+    <li class="toctree-l3"><a href="#simulation">Simulation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#non-realtime-simulation">Non-realtime Simulation</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#agents">Agents</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#ego-vehicle">EGO Vehicle</a></li>
+        
+            <li><a class="toctree-l4" href="#npc-vehicles">NPC Vehicles</a></li>
+        
+            <li><a class="toctree-l4" href="#pedestrians">Pedestrians</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#callbacks">Callbacks</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#agent-callbacks">Agent Callbacks</a></li>
+        
+            <li><a class="toctree-l4" href="#egovehicle-callbacks">'EgoVehicle</a></li>
+        
+            <li><a class="toctree-l4" href="#npcvehicle-callbacks">NpcVehicle Callbacks</a></li>
+        
+            <li><a class="toctree-l4" href="#pedestrian-callbacks">Pedestrian Callbacks</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#sensors">Sensors</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#camera-sensor">Camera Sensor</a></li>
+        
+            <li><a class="toctree-l4" href="#lidar-sensor">Lidar Sensor</a></li>
+        
+            <li><a class="toctree-l4" href="#imu-sensor">IMU Sensor</a></li>
+        
+            <li><a class="toctree-l4" href="#gps-sensor">GPS Sensor</a></li>
+        
+            <li><a class="toctree-l4" href="#radar-sensor">Radar Sensor</a></li>
+        
+            <li><a class="toctree-l4" href="#can-bus">CAN bus</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#weather-and-time-of-day-control">Weather and Time of Day Control</a></li>
+    
+
+    <li class="toctree-l3"><a href="#controllable-objects">Controllable Objects</a></li>
+    
+
+    <li class="toctree-l3"><a href="#helper-functions">Helper Functions</a></li>
+    
+
+    <li class="toctree-l3"><a href="#changelog">Changelog</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../simulator-messages/">Supported message types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simulator-coordinate-system/">Simulator coordinate system</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-map/">Adding a new map</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Adding a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unity-help/">Unity help</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python API &raquo;</li>
+        
+      
+    
+    <li>Python API guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/python-api.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1><a name="top"></a> Python API Guide</h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>LGSVL Simulator exposes runtime functionality to a Python API which you can use
+to manipulate object placement and vehicle movement in a loaded scene, retrieve
+sensor configuration and data, control weather, time state, and more.</p>
+<p>The interface to listen for incoming API calls is defined in <code>config.yml</code>. See
+<a href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+for more information.</p>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#quickstart">Quickstart</a></li>
+<li><a href="#core-concepts">Core Concepts</a></li>
+<li><a href="#simulation">Simulation</a><ul>
+<li><a href="#non-realtime-simulation">Non-realtime Simulation</a></li>
+</ul>
+</li>
+<li><a href="#agents">Agents</a><ul>
+<li><a href="#ego-vehicle">EGO Vehicle</a></li>
+<li><a href="#npc-vehicles">NPC Vehicles</a></li>
+<li><a href="#pedestrians">Pedestrians</a></li>
+</ul>
+</li>
+<li><a href="#callbacks">Callbacks</a><ul>
+<li><a href="#agent-callbacks">Agent Callbacks</a></li>
+<li><a href="#egovehicle-callbacks">'EgoVehicle</a></li>
+<li><a href="#npcvehicle-callbacks">NpcVehicle Callbacks</a></li>
+<li><a href="#pedestrian-callbacks">Pedestrian Callbacks</a></li>
+</ul>
+</li>
+<li><a href="#sensors">Sensors</a><ul>
+<li><a href="#camera-sensor">Camera Sensor</a></li>
+<li><a href="#lidar-sensor">Lidar Sensor</a></li>
+<li><a href="#imu-sensor">IMU Sensor</a></li>
+<li><a href="#gps-sensor">GPS Sensor</a></li>
+<li><a href="#radar-sensor">Radar Sensor</a></li>
+<li><a href="#can-bus">CAN bus</a></li>
+</ul>
+</li>
+<li><a href="#weather-and-time-of-day-control">Weather and Time of Day Control</a></li>
+<li><a href="#controllable-objects">Controllable Objects</a></li>
+<li><a href="#helper-functions">Helper Functions</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+<h2 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<p>Using Python API requires Python version 3.5 or later.</p>
+<h2 id="quickstart">Quickstart <a class="wikilink" href="#top">top</a><a class="headerlink" href="#quickstart" title="Permanent link">#</a></h2>
+<p>Python API is available in separate repository: <a href="https://github.com/lgsvl/PythonAPI">https://github.com/lgsvl/PythonAPI</a></p>
+<p>After cloning or downloading it from the git repository follow these steps:</p>
+<ol>
+<li>
+<p>Run the following command to install Python files and necessary dependencies:</p>
+<pre><code>pip3 install --user -e .
+</code></pre>
+</li>
+<li>
+<p>Now launch the simulator (either binary .exe file or from Unity Editor). Simulator
+   by default listens for connections on port 8181 on localhost.</p>
+</li>
+<li>
+<p>Click the <code>Open Browser</code> button to open the Simulator UI.</p>
+</li>
+<li>
+<p>After the default maps and vehicles have been downloaded, navigate to the <code>Simulations</code> tab.</p>
+</li>
+<li>
+<p>Create a new Simulation. Give it a name and check the <code>API Only</code> option. Click <code>Submit</code>.</p>
+</li>
+<li>
+<p>Select the newly created Simulation and click the "Play" button in the bottom right.</p>
+</li>
+<li>
+<p>Run the following example to see the API in action:</p>
+<pre><code>./quickstart/05-ego-drive-in-circle.py
+</code></pre>
+<p>This will load the <code>BorregasAve.unity</code> scene, instantiate one EGO vehicle, then ask
+you to press <code>Enter</code> to start driving EGO vehicle in a circle.</p>
+</li>
+</ol>
+<p>When the script is running, it will apply throttle and steering commands to make the car move.</p>
+<h2 id="core-concepts">Core concepts <a class="wikilink" href="#top">top</a><a class="headerlink" href="#core-concepts" title="Permanent link">#</a></h2>
+<p>The Simulator and API communicate by sending json over a websocket server running on
+8181 port. The API client can be either on the same machine or any other machine on
+the same network.</p>
+<p>API exposes the following main types:</p>
+<ul>
+<li><strong>Simulator</strong> - main object for connecting to simulator and creating other objects</li>
+<li><strong>Agent</strong> - superclass of vehicles and pedestrian</li>
+<li><strong>EgoVehicle</strong> - <a href="#ego-vehicle">EGO vehicle</a> with accurate physics simulation and
+   <a href="#sensors">sensors</a></li>
+<li><strong>NpcVehicle</strong> - <a href="#npc-vehicles">NPC vehicle</a> with simplified physics, useful for
+   creating many background vehicles</li>
+<li><strong>Pedestrian</strong> - <a href="#pedestrians">pedestrian</a> walking on sidewalks</li>
+</ul>
+<p>Vehicles and Pedestrian are a subclasses of Agent which has common properties like
+transform, position, and velocity.</p>
+<p>All coordinates in the API return values in the Unity coordinate system. This coordinate
+system uses meters as a unit of distance and is a left-handed coordinate system - x points left,
+z points forward, and y points up.</p>
+<p>The Simulator class provides helper methods to convert coordinates to and from
+latitude/longitude and northing/easting values.</p>
+<h2 id="simulation">Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simulation" title="Permanent link">#</a></h2>
+<p>To connect to the simulator you need to an instance of the <code>Simulator</code> class:</p>
+<pre><code class="python">import lgsvl
+sim = lgsvl.Simulator(address = &quot;localhost&quot;, port = 8181)
+</code></pre>
+
+<p>You can specify a different address as hostname or IP address. By default only port 8181 is
+used for API connection. Only one client can be connected to simulator at a time.</p>
+<p>Next, load the scene ("map"). This is done by <code>load</code> method:</p>
+<pre><code class="python">sim.load(scene = &quot;BorregasAve&quot;, seed = 650387)
+</code></pre>
+
+<p>Scene is a string representing the name of the <code>Map</code> in the Web UI. Currently available scenes:</p>
+<ul>
+<li><strong>BorregasAve</strong> - small suburban map</li>
+<li><strong>AutonomouStuff</strong> - small office park</li>
+</ul>
+<p>Seed (optional) is an Integer (-2,147,483,648 - 2,147,483,647) that determines the "random" behavior of the NPC vehicles and rain effects.</p>
+<p>Check the Web UI Maps tab for a full list of available scenes.</p>
+<p>Once a scene is loaded you can instantiate agents and run simulations. See
+the <a href="#agents">Agents</a> section on how to create vehicles and pedestrians.</p>
+<p>Loading scenes takes a while, to reset a scene to the initial state without reloading it call the <code>reset</code>
+method:</p>
+<pre><code class="python">sim.reset()
+</code></pre>
+
+<p>This will remove any vehicles or callbacks currently registered.</p>
+<p>After setting up the scene in a desired state you can start advancing time.
+During python code execution time is stopped in the simulator. To run the simulator in realtime, call the <code>run</code> method:</p>
+<pre><code class="python">sim.run(time_limit = 5.0)
+</code></pre>
+
+<p><code>run</code> accepts an optional argument for a time limit specifying how long to run. The default
+value of 0 will run infinitely.</p>
+<p>Diagram illustrating API execution:</p>
+<p><img alt="" src="../images/python-api-execution.png" /></p>
+<h3 id="non-realtime-simulation">Non-realtime Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#non-realtime-simulation" title="Permanent link">#</a></h3>
+<p>The simulator can be run at faster-than-realtime speeds depending on the performance of the computer running the simulator. 
+This is done by calling the <code>run</code> method with the <code>time_scale</code> argument:</p>
+<pre><code class="python">sim.run(time_limit = 6, time_scale = 2)
+</code></pre>
+
+<p><code>run</code> takes a 2nd optional argument specifying how much faster to run.
+In the above example, if the computer is fast enough the run call will finish in 3 seconds (6 divided by 2),
+but 6 virtual seconds of data would be generated. If only <code>time_scale</code> is specified or <code>time_limit</code> = 0,
+then simulation will run continuously at non-realtime speed.</p>
+<p>The value of time_scale can be lower than 1 which gives ability to run simulation in slower than real time.</p>
+<h2 id="agents">Agents <a class="wikilink" href="#top">top</a><a class="headerlink" href="#agents" title="Permanent link">#</a></h2>
+<p>You can create vehicles and pedestrians by calling the <code>add_agent</code> method of the <code>Simulator</code>
+object. Example:</p>
+<pre><code class="python">ego = sim.add_agent(name = &quot;Lincoln2017MKZ (Apollo 5.0)&quot;, \
+agent_type = lgsvl.AgentType.EGO, state = None)
+</code></pre>
+
+<p>This will create the <code>Lincoln2017MKZ (Apollo 5.0)</code> vehicle from the Web UI Vehicles tab. Other AgentTypes
+available are:</p>
+<ul>
+<li><strong>AgentType.EGO</strong> - EGO vehicle</li>
+<li><strong>AgentType.NPC</strong> - NPC vehicle</li>
+<li><strong>AgentType.PEDESTRIAN</strong> - pedestrian</li>
+</ul>
+<p>Each agent type has predefined names you can use. Currently availble EGO vehicles:</p>
+<ul>
+<li><strong>Jaguar2015XE (Apollo 3.0)</strong> - Apollo 3.0 vehicle</li>
+<li><strong>Jaguar2015XE (Apollo 5.0)</strong> - Apollo 5.0 vehicle</li>
+<li><strong>Jaguar2015XE (Autoware)</strong> - Autoware vehicle</li>
+<li><strong>Lexus2016RXHybrid (Autoware)</strong> - Autoware vehicle</li>
+<li><strong>Lincoln2017MKZ (Apollo 5.0)</strong> - Apollo 5.0 vehicle</li>
+</ul>
+<p>Available NPC vehicles:</p>
+<ul>
+<li><strong>Sedan</strong></li>
+<li><strong>SUV</strong></li>
+<li><strong>Jeep</strong></li>
+<li><strong>Hatchback</strong></li>
+<li><strong>SchoolBus</strong></li>
+<li><strong>BoxTruck</strong></li>
+</ul>
+<p>Available pedestrian types:</p>
+<ul>
+<li><strong>Bob</strong></li>
+<li><strong>EntrepreneurFemale</strong></li>
+<li><strong>Howard</strong></li>
+<li><strong>Johny</strong></li>
+<li><strong>Pamela</strong></li>
+<li><strong>Presley</strong></li>
+<li><strong>Red</strong></li>
+<li><strong>Robin</strong></li>
+<li><strong>Stephen</strong></li>
+<li><strong>Zoe</strong></li>
+</ul>
+<p>If an incorrect name is entered, a Python exception will be thrown.</p>
+<p>Optionally you can create agents in specific positions and orientations in the scene.
+For this you need to use the <code>AgentState</code> class. For example:</p>
+<pre><code class="python">state = lgsvl.AgentState()
+state.transform.position = lgsvl.Vector(10, 0, 30)
+state.transform.rotation.y = 90
+ego = sim.add_agent(&quot;Lincoln2017MKZ (Apollo 5.0)&quot;, lgsvl.AgentType.EGO, state)
+</code></pre>
+
+<p>This will create a vehicle at position x=10, z=30 which is rotated 90 degrees around the
+vertical axis. The position and rotation are set in the world coordinates space.</p>
+<p>You can always adjust the position, rotation, velocity and angular velocity of the agent
+at any later time:</p>
+<pre><code class="python">s = ego.state
+s.velocity.x = -50
+ego.state = s
+</code></pre>
+
+<p>This will set x component of velocity (in world coordinate space) to -50 meters
+per second and leave y and z components of velocity unmodified.</p>
+<p>All agents have the following common functionality:</p>
+<ul>
+<li><code>state</code> - property to get or set agent state (position, velocity, ...)</li>
+<li><code>transform</code> - property to get <code>transform</code> member of the state (shortcut for
+     <code>state.transform</code>)</li>
+<li><code>bounding_box</code> - property to get bounding box in local coordinate space.
+   Note that bounding box is not centered around (0,0,0) - it depends on the actual
+   geometry of the agent.</li>
+<li><code>on_collision</code> - method to set a callback function to be called when the agent
+   collides with something (other agent or static obstacle), see <a href="#callbacks">callbacks</a>
+   section for more information.</li>
+</ul>
+<h3 id="ego-vehicle">EGO vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#ego-vehicle" title="Permanent link">#</a></h3>
+<p>EGO vehicle has following additional functionality:</p>
+<ul>
+<li><code>apply_control</code> - method to apply specified throttle, break, steering or other
+    actions to vehicle. Pass <code>sticky=True</code> to apply these values on every simulation
+    update iteration.</li>
+<li><code>get_sensors</code> - method to return list of <a href="#sensors">sensors</a></li>
+<li><code>connect_bridge</code> - method to connect to ROS or Cyber RT bridge</li>
+<li><code>bridge_connected</code> - bool property, <code>True</code> if bridge is connected</li>
+</ul>
+<p>You can control the movement of the EGO vehicle either by manually specifying state, applying
+manual control, or connecting through the bridge.</p>
+<p>Example to apply constant 20% throttle to EGO vehicle:</p>
+<pre><code class="python">ego = sim.add_agent(&quot;Lincoln2017MKZ (Apollo 5.0)&quot;, lgsvl.AgentType.EGO)
+c = lgsvl.VehicleControl()
+c.throttle = 0.2
+ego.apply_control(c, True)
+</code></pre>
+
+<h3 id="npc-vehicles">NPC vehicles <a class="wikilink" href="#top">top</a><a class="headerlink" href="#npc-vehicles" title="Permanent link">#</a></h3>
+<p>You can create multiple NPC vehicles on the map to drive along the lanes or follow specific
+waypoints on the map.</p>
+<p>NPC vehicle has the following additional functionality:</p>
+<ul>
+<li><code>change_lane</code> - method to make the vehicle change lanes</li>
+<li><code>follow</code> - method to make vehicle follow specific waypoints</li>
+<li><code>follow_closest_lane</code> - method to make vehicle follow lanes</li>
+<li><code>on_waypoint_reached</code> - method to set callback function which is called for every
+    waypoint the vehicle reaches</li>
+<li><code>on_stop_line</code> - method to set callback function which is called when vehicle
+    reaches a stop line at interesection</li>
+<li><code>on_lane_change</code> - method to set callback function which is called when vehicle
+    decides to change lanes</li>
+</ul>
+<p>You can control the movement of an NPC vehicle either by manually specifying state, or
+instructing it to follow waypoints or lanes.</p>
+<p>To make an NPC follow waypoints prepare a list of <code>DriveWaypoint</code> objects and call
+the <code>follow</code> method for the npc vehicle:</p>
+<pre><code class="python">npc = sim.add_agent(&quot;Sedan&quot;, lgsvl.AgentType.NPC)
+waypoints = [
+  lgsvl.DriveWaypoint(lgsvl.Vector(1,0,3), 5, lgsvl.Vector(0, 0, 0), 0, False, 0),
+  lgsvl.DriveWaypoint(lgsvl.Vector(5,0,3), 10, lgsvl.Vector(0, 0, 0), 0, False, 0),
+  lgsvl.DriveWaypoint(lgsvl.Vector(1,0,5), 5, lgsvl.Vector(0, 0, 0), 0, False, 0),
+]
+npc.follow(waypoints, loop=True)
+</code></pre>
+
+<p>Each waypoint has a position in world coordinates, a desired velocity in m/s, a desired angular orientation as a vector of Euler angles, an optional wait-time for the vehicle to stay idle, an bool on whether the NPC should be active while idling, and an optional trigger distance. The NPC
+will ignore all traffic rules and will not avoid collisions to try to get to the next
+waypoint. The angular orientation of the NPC will be interpolated in such a manner that it will pass through the waypoint at the angle specified in the <code>DriveWaypoint</code>. The trigger distance, if used, provides a method to pause the NPC until an ego vehicle approaches. The NPC will begin to drive as soon as its distance to an ego vehicle drops below the value specified as trigger distance in the <code>DriveWaypoint</code>.
+You can receive information on progress by setting the <code>on_waypoint_reached</code>
+callback. Example (see <a href="#callbacks">callbacks</a> for more details):</p>
+<pre><code class="python">npc = sim.add_agent(&quot;Sedan&quot;, lgsvl.AgentType.NPC)
+
+def on_waypoint(agent, index):
+  print(&quot;waypoint {} reached&quot;.format(index))
+
+npc.follow(waypoints, loop=True)
+npc.on_waypoint_reached(on_waypoint)
+
+sim.run()
+</code></pre>
+
+<p><code>follow_closest_lane</code> will make the NPC vehicle follow whatever lane is the closest.
+Upon reaching intersections it will randomly decide to either drive straight or turn.</p>
+<p>You can also spawn a pool of NPC vehicles with the same behavior as NPCs added to a non-API simulation. They will follow the map annotations, obey speed limits, obey traffic signals, and attempt to avoid accidents. These NPCs cannot be directly controlled.</p>
+<pre><code class="python">sim.add_random_agents(lgsvl.AgentType.NPC)
+</code></pre>
+
+<h3 id="pedestrians">Pedestrians <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pedestrians" title="Permanent link">#</a></h3>
+<p>You can create <code>Pedestrian</code> agents that will allow you to create pedestrians on sidewalks
+and make them walk.</p>
+<p>Pedestrians have the following additional functionality:</p>
+<ul>
+<li><code>walk_randomly</code> - method to make pedestrian walk randomly on the sidewalk</li>
+<li><code>follow</code> - method to make pedestrian follow specific waypoints</li>
+<li><code>on_waypoint_reached</code> - method to set callback function which is called for every
+    waypoint reached</li>
+</ul>
+<p>You can control the movement of pedestrians either by manually specifying state, or
+instructing them to follow waypoints or walk randomly.</p>
+<p>To make pedestrians follow waypoints prepare a list of <code>WalkWaypoint</code> objects and call
+the <code>follow</code> method for pedestrians:</p>
+<pre><code class="python">npc = sim.add_agent(&quot;Bob&quot;, lgsvl.AgentType.PEDESTRIAN)
+waypoints = [
+  lgsvl.WalkWaypoint(lgsvl.Vector(1,0,3), 5, 0),
+  lgsvl.WalkWaypoint(lgsvl.Vector(5,0,3), 10, 0),
+  lgsvl.WalkWaypoint(lgsvl.Vector(1,0,5), 5, 0),
+]
+npc.follow(waypoints, loop=True)
+</code></pre>
+
+<p>Each waypoint has a position in world coordinates, an optional idle time that the pedestrian will
+spend standing in-place when it reaches the waypoint, and an optional trigger distance. You can receive information on progress by
+setting the <code>on_waypoint_reached</code> callback.</p>
+<p>You can also spawn a pool of pedestrians with the same behavior as pedestrians added to a non-API simulation. They will follow the map annotations and path find. These pedestrians cannot be directly controlled.</p>
+<pre><code class="python">sim.add_random_agents(lgsvl.AgentType.PEDESTRIAN)
+</code></pre>
+
+<h2 id="callbacks">Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#callbacks" title="Permanent link">#</a></h2>
+<p>The Python API can invoke callbacks to inform you of specific events that occur during
+simulator runtime. Callbacks are invoked from inside the <code>Simulator.run</code> method and
+while a callback is running the simulation time is paused. Once the callback finishes time is resumed and the simulation resumes execution. You can call <code>Simulator.stop</code>
+to stop further execution and return immediately from the callback.</p>
+<p>The internals of this process are illustrated in the following sequence diagram:</p>
+<p><img alt="" src="../images/python-api-callbacks.png" /></p>
+<p>Here the code resumes simulation after the first callback, but stops execution when the second
+callback is handled.</p>
+<p>You set callback functions by calling <code>on_NAME</code> method of object, see information below.</p>
+<h3 id="agent-callbacks"><a href="#agents">Agent</a> Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#agent-callbacks" title="Permanent link">#</a></h3>
+<p><code>collision</code> - called when agent collides with something (other agent or stationary
+obstacle).</p>
+<p>Example usage:</p>
+<pre><code class="python">def on_collision(agent1, agent2, contact):
+  name1 = &quot;STATIC OBSTACLE&quot; if agent1 is None else agent1.name
+  name2 = &quot;STATIC OBSTACLE&quot; if agent2 is None else agent2.name
+  print(&quot;{} collided with {} at {}&quot;.format(name1, name2, contact))
+
+ego.on_collision(on_collision)
+</code></pre>
+
+<p>Callback receives three arguments: <code>(agent1, agent2, contact)</code> - the first two are the agents that collide,
+one of them can be None if it is a stationary obstacle like a building or a traffic light pole,
+and the third is the world position of the contact point.</p>
+<h3 Callbacks="Callbacks" id="egovehicle-callbacks"><a href="#ego-vehicles">EgoVehicle</a> Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#egovehicle-callbacks" title="Permanent link">#</a></h3>
+<p>In addition to Agent callbacks, EgoVehicle has one extra callback.</p>
+<p><code>on_custom</code> - called when a Sensor Plugin sends a callback; accepts three arguments:
+<code>(agent, kind, context)</code> - agent instance, kind of sensor plugin as string, JSON context</p>
+<p>See <a href="../sensor-plugins/">Sensor Plugins</a> for more information.</p>
+<h3 id="npcvehicle-callbacks"><a href="#npc-vehicles">NpcVehicle</a> Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#npcvehicle-callbacks" title="Permanent link">#</a></h3>
+<p>In addition to Agent callbacks, NpcVehicle has three extra callbacks:</p>
+<p><code>waypoint_reached</code> - called when vehicle reaches a waypoint; accepts two
+arguments: <code>(agent, index)</code> - agent instance and waypoint index as integer</p>
+<p><code>stop_line</code> - called when vehicle stops at a stop line for a traffic light or stop sign; accepts one argument: <code>(agent)</code> - agent instance</p>
+<p><code>lane_change</code> - called when vehicle starts changing lane; accepts one
+argument: <code>(agent)</code> - agent instance</p>
+<h3 id="pedestrian-callbacks"><a href="#pedestrians">Pedestrian</a> Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pedestrian-callbacks" title="Permanent link">#</a></h3>
+<p>In addition to Agent callbacks, Pedestrian has one extra callback.</p>
+<p><code>waypoint_reached</code> - called when pedestrian reaches waypoint; accepts two
+arguments: <code>(agent, index)</code> - agent instance and waypoint index as integer.</p>
+<h2 id="sensors">Sensors <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensors" title="Permanent link">#</a></h2>
+<p><a href="#ego-vehicle">EGO vehicles</a> have sensors attached. You can get a list of them by
+calling <code>EgoVehicle.get_sensors()</code> which returns a Python list with instances of the following
+classes:</p>
+<ul>
+<li><strong>CameraSensor</strong> - see <a href="#camera-sensor">Camera</a> sensor</li>
+<li><strong>LidarSensor</strong> - see <a href="#lidar-sensor">Lidar</a> sensor</li>
+<li><strong>ImuSensor</strong> - see <a href="#imu-sensor">IMU</a> sensor</li>
+<li><strong>GpsSensor</strong> - see <a href="#gps-sensor">GPS</a> sensor</li>
+<li><strong>RadarSensor</strong> - see <a href="#radar-sensor">Radar</a> sensor</li>
+<li><strong>CanBusSensor</strong> - see <a href="#can-bus">CAN bus</a> sensor</li>
+</ul>
+<p>Each sensor has the following common members:</p>
+<ul>
+<li><code>name</code> - name of sensor, to differentiate sensors of the same type, for example, to choose one out of multiple cameras attached to EgoVehicle</li>
+<li><code>transform</code> - property that contains position and rotation of a sensor relative to the agent transform </li>
+<li><code>enabled</code> - bool property, set to <code>True</code> if sensor is enabled for capturing and sending data to
+   ROS or Cyber bridge</li>
+</ul>
+<h3 id="camera-sensor">Camera Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#camera-sensor" title="Permanent link">#</a></h3>
+<p>The Camera sensor has the following read only properties:</p>
+<ul>
+<li><code>frequency</code> - rate at which images are captured &amp; sent to ROS or Cyber bridge</li>
+<li><code>width</code> - image width</li>
+<li><code>height</code> - image height</li>
+<li><code>fov</code> - vertical field of view in degrees</li>
+<li><code>near_plane</code> - distance of near plane</li>
+<li><code>far_plane</code> - distance of far plane</li>
+<li><code>format</code> - format of image ("RGB" for 24-bit color image, "DEPTH" - 8-bit grayscale depth buffer,
+   "SEGMENTATION" - 24-bit color image with semantic/instance segmentation)</li>
+</ul>
+<p>Camera image can be saved to disk by calling <code>save</code>:</p>
+<pre><code class="python">ego = sim.add_agent(&quot;Lincoln2017MKZ (Apollo 5.0)&quot;, lgsvl.AgentType.EGO)
+
+for sensor in ego.get_sensors():
+  if sensor.name = &quot;Main Camera&quot;:
+    sensor.save(&quot;main-camera.png&quot;, compression=0)
+</code></pre>
+
+<p><code>save</code> method accepts a path relative to the running simulator, and an optional <code>compression</code> for png files (0...9)
+or <code>quality</code> (0..100) for jpeg files.</p>
+<h3 id="lidar-sensor">Lidar Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar-sensor" title="Permanent link">#</a></h3>
+<p>Lidar sensor has following read only properties:</p>
+<ul>
+<li><code>min_distance</code> - minimal distance for capturing points</li>
+<li><code>max_distance</code> - maximum distance for capturing points</li>
+<li><code>rays</code> - how many laser rays (vertically) to use</li>
+<li><code>rotations</code> - frequency of rotation, typically 10Hz</li>
+<li><code>measurements</code> - how many measurmenets per rotation each ray is taking</li>
+<li><code>fov</code> - vertical field of view (bottom to top ray) in degrees</li>
+<li><code>angle</code> - angle lidar is tilted (middle of fov view)</li>
+<li><code>compensated</code> - bool, whether lidar point cloud is compensated</li>
+</ul>
+<p>Lidar point cloud can be saved to disk as a .pcd file by calling <code>save</code>:</p>
+<pre><code class="python">ego = sim.add_agent(&quot;Lincoln2017MKZ (Apollo 5.0)&quot;, lgsvl.AgentType.EGO)
+
+for sensor in ego.get_sensors():
+  if sensor.name = &quot;Lidar&quot;:
+    sensor.save(&quot;lidar.pcd&quot;)
+</code></pre>
+
+<p>A <code>.pcd</code> file is in the <a href="http://pointclouds.org/documentation/tutorials/pcd_file_format.html">binary Point Cloud Data format</a> where each point has x/y/z coordinates as 4-byte floats and a 1-byte unsigned int as intensity (0...255).</p>
+<h3 id="imu-sensor">IMU Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#imu-sensor" title="Permanent link">#</a></h3>
+<p>You can use the IMU sensor to get its position in the vehicle. All measurements an IMU would provide can be obtained by using the <code>transform</code> property of the agent.</p>
+<h3 id="gps-sensor">GPS Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-sensor" title="Permanent link">#</a></h3>
+<p>You can retrieve the current GPS location from the GPS sensor by calling <code>data</code>:</p>
+<pre><code class="python">data = gps_sensor.data()
+print(&quot;Latitude:&quot;, data.latitude)
+</code></pre>
+
+<p>Returned data will contain following fields:</p>
+<ul>
+<li><code>latitude</code></li>
+<li><code>longitude</code></li>
+<li><code>northing</code></li>
+<li><code>easting</code></li>
+<li><code>altitude</code></li>
+<li><code>orientation</code> - rotation around up-axis in degrees</li>
+</ul>
+<h3 id="radar-sensor">Radar Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#radar-sensor" title="Permanent link">#</a></h3>
+<p>Currently the Radar sensor can be used only to get its position and rotation in the vehicle. Radar measurements can be received in ROS or Cyber by setting the <code>enabled</code> property of the sensor.</p>
+<h3 id="can-bus">CAN bus <a class="wikilink" href="#top">top</a><a class="headerlink" href="#can-bus" title="Permanent link">#</a></h3>
+<p>Currently CAN bus can be used only to get its position and rotation in the vehicle. CAN bus messages can be received in ROS or Cyber by setting the <code>enabled</code> property of the sensor.</p>
+<h2 id="weather-and-time-of-day-control">Weather and Time of Day Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#weather-and-time-of-day-control" title="Permanent link">#</a></h2>
+<p>You can control the weather properties of the simulation by reading or writing to the <code>weather</code> property. You can
+set <code>rain</code>, <code>fog</code> or <code>wetness</code> (float 0...1). Example:</p>
+<pre><code class="python">w = sim.weather
+w.rain = 0.5     # set rain to 50%
+sim.weather = w
+</code></pre>
+
+<p>Changing time of day allows to control whether the loaded scene appears as day or night.
+To get the current time read the <code>time_of_day</code> property:</p>
+<pre><code class="python">print(&quot;Current time of day:&quot;, sim.time_of_day)
+</code></pre>
+
+<p>It will return a float between 0 and 24. To set time of day call <code>set_time_of_day</code>:</p>
+<pre><code class="python">sim.set_time_of_day(10, fixed=True)
+</code></pre>
+
+<p>This will set current time of day to 10am. The optional bool argument <code>fixed</code> indicates whether the simulation
+should advance this time automatically or freeze it and not change it (<code>fixed=True</code>).</p>
+<h2 id="controllable-objects">Controllable Objects <a class="wikilink" href="#top">top</a><a class="headerlink" href="#controllable-objects" title="Permanent link">#</a></h2>
+<p>A controllable object is an object that you can control by performing an action using Python APIs. Each controllable object has its own <code>valid actions</code> (e.g., green, yellow, red, trigger, wait, loop) that it can take and is controlled based on <code>control policy</code>, which defines rules for control actions.</p>
+<p>For example, a traffic light is a controllable object, and you can change its behavior by updating control policy: <code>"trigger=50;green=1;yellow=1.5;red=2;loop"</code></p>
+<ul>
+<li><code>trigger=50</code> - Wait until an ego vehicle approaches this controllable object within 50 meters</li>
+<li><code>green=1</code> - Change current state to <code>green</code> and wait for 1 second</li>
+<li><code>yellow=1.5</code> - Change current state to <code>yellow</code> and wait for 1.5 second</li>
+<li><code>red=2</code> - Change current state to <code>red</code> and wait for 2 second</li>
+<li><code>loop</code> - Loop over this control policy from the beginning</li>
+</ul>
+<p>Available controllable object types:</p>
+<ul>
+<li><strong>signal</strong></li>
+<li><strong><a href="https://github.com/lgsvl/TrafficCone">cone</a></strong></li>
+</ul>
+<p>All Controllable objects can be added or removed dynamically. When reset() is called, all Controllables are removed and the ones in the map (if any) are added back. Controllable objects can be loaded plugins at runtime.  Plugin must include IControllable and be built using the Simulator build process from Assets/External/Controllables folder.</p>
+<p>To get a list of controllable objects in a scene:</p>
+<pre><code class="python">controllables = sim.get_controllables()
+</code></pre>
+
+<p>For a controllable object of interest, you can get following information:</p>
+<pre><code class="python">signal = controllables[0]
+print(&quot;Type:&quot;, signal.type)
+print(&quot;Transform:&quot;, signal.transform)
+print(&quot;Current state:&quot;, signal.current_state)
+print(&quot;Valid actions:&quot;, signal.valid_actions)
+</code></pre>
+
+<p>For control policy, each controllable object always has default control policy (read-only). When you load a scene for the first time or reset a scene to the initial state, a controllable object resets current control policy to default one follows it.</p>
+<p>You can get default control policy and current control policy as follows:</p>
+<pre><code class="python">print(&quot;Default control policy:&quot;, signal.default_control_policy)
+print(&quot;Current control policy:&quot;, signal.control_policy)
+</code></pre>
+
+<p>To change a current control policy, you can create a new control policy and call <code>control</code> function as below:</p>
+<pre><code class="python">control_policy = &quot;trigger=50;green=1;yellow=1.5;red=2;loop&quot;
+signal.control(control_policy)
+</code></pre>
+
+<p>To add a plugin controllable and set object state</p>
+<pre><code class="python">state = lgsvl.ObjectState()
+state.transform.position = lgsvl.Vector(0,0,0)
+state.transform.rotation = lgsvl.Vector(0,0,0)
+state.velocity = lgsvl.Vector(0,10,0)
+state.angular_velocity = lgsvl.Vector(6.5,0,0)
+
+cone = sim.controllable_add(&quot;TrafficCone&quot;, state)
+</code></pre>
+
+<p>To get plugin controllable object state</p>
+<pre><code class="python">cone.object_state
+</code></pre>
+
+<p>To set plugin controllable object state</p>
+<pre><code class="python">state = lgsvl.ObjectState()
+state.transform.position = lgsvl.Vector(0, 0, -10)
+cone.object_state = state
+</code></pre>
+
+<h2 id="helper-functions">Helper Functions <a class="wikilink" href="#top">top</a><a class="headerlink" href="#helper-functions" title="Permanent link">#</a></h2>
+<p>Simulator class offers following helper functions:</p>
+<ul>
+<li><code>version</code> - property that returns current version of simulator as string</li>
+<li><code>current_scene</code> - property that returns currently loaded scene as string, None if none is loaded</li>
+<li><code>current_frame</code> - property that returns currently simulated frame number as integer</li>
+<li><code>current_time</code> - property that returns currentl simulation time in seconds as float</li>
+<li><code>get_spawn</code> - method that returns list of transforms representing good positions where to place
+   vehicles in the map. This list can be empty, it depends on how the map is prepared in Unity. Returned
+   transforms contain <code>position</code> and <code>rotation</code> members as a <code>Vector</code></li>
+<li><code>get_agents</code> - method that returns a list of currently available agent objects added with <code>add_agent</code></li>
+</ul>
+<p>To map points in Unity coordinates to GPS coordinates the Simulator class offers the following two functions:</p>
+<ul>
+<li><code>map_to_gps</code> - maps transform (position &amp; rotation) to GPS location, returns same type as
+    <a href="#gps-sensor">GPS Sensor</a> <code>data</code> method</li>
+<li><code>map_from_gps</code> - maps GPS location (latitude/longitude or northing/easting) to transform</li>
+<li><code>raycast</code> - shoots a ray from specific location and returns closest object it hits</li>
+</ul>
+<p><code>map_from_gps</code> accepts two different inputs - latitude/longitude or northing/easting. Examples:</p>
+<pre><code class="python">tr1 = sim.map_from_gps(latitude=10, longitude=-30)
+tr2 = sim.map_from_gps(northing=123455, easting=552341)
+</code></pre>
+
+<p>Optionally you can pass altitude and orientation.</p>
+<p><code>raycast</code> method can be used in following way:</p>
+<pre><code class="python">origin = lgsvl.Vector(10, 0, 20)
+direction = lgsvl.Vector(1, 0, 0)
+hit = sim.raycast(origin, direction, layer_mask=1)
+if hit:
+  print(&quot;Distance right:&quot;, hit.distance)
+</code></pre>
+
+<p>This will shoot a ray in the positive x-axis direction from the (10,0,20) coordinates.
+A <code>RaycastHit</code> object with <code>distance</code>, <code>point</code> and <code>normal</code> fields is returned if something is hit, otherwise <code>None</code> is returned.</p>
+<p>When raycasting you should specify a <code>layer_mask</code> argument that specifies which objects to check
+collision with. It corressponds to layers in the Unity project - check the project for actual values.</p>
+<h2 id="changelog">Changelog <a class="wikilink" href="#top">top</a><a class="headerlink" href="#changelog" title="Permanent link">#</a></h2>
+<ul>
+<li>2020-08-28<ul>
+<li>Added support for time-to-collision and distance-to-collision triggers for NPCs and pedestrians</li>
+</ul>
+</li>
+<li>2020-05-22<ul>
+<li>Added suport for setting pedestrian travel speed</li>
+</ul>
+</li>
+<li>
+<p>2020-01-30</p>
+<ul>
+<li>Extended controllable objects to support plugins - see <a href="../controllable-plugins/">controllable plugins</a></li>
+</ul>
+</li>
+<li>
+<p>2019-09-05</p>
+<ul>
+<li>Extended <code>DriveWaypoint</code> to support angle, idle time and trigger distance</li>
+<li>Added controllable objects - use <code>Simulator.get_controllables</code></li>
+</ul>
+</li>
+<li>
+<p>2019-08-12</p>
+<ul>
+<li>Added <code>time_scale</code> argument to run function for running simulation in non-realtime</li>
+<li>Added <code>seed</code> argument to <code>Simulator.load</code> for deterministic NPCs</li>
+</ul>
+</li>
+<li>
+<p>2019-04-19</p>
+<ul>
+<li>initial release</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api-quickstart-descriptions/" class="btn btn-neutral float-right" title="Python API quickstart examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ground-truth-json-example/" class="btn btn-neutral" title="Sample sensor configuration for data collection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ground-truth-json-example/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api-quickstart-descriptions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

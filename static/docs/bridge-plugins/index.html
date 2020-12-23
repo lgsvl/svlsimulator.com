@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Bridge plugins - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Bridge plugins";
+    var mkdocs_page_input_path = "bridge-plugins.md";
+    var mkdocs_page_url = "/bridge-plugins/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../modular-testing/">Modular testing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../simulator-messages/">Supported message types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simulator-coordinate-system/">Simulator coordinate system</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-map/">Adding a new map</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Adding a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Bridge plugins</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#implementation">Implementation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#bridge-factory">Bridge Factory</a></li>
+        
+            <li><a class="toctree-l5" href="#bridge-instance">Bridge Instance</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#bridge-plugin-registration">Bridge Plugin Registration</a></li>
+    
+
+    <li class="toctree-l4"><a href="#examples">Examples</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unity-help/">Unity help</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Plugins &raquo;</li>
+        
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Bridge plugins</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/bridge-plugins.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1><a name="top"></a>Bridge Plugins</h1>
+<p>Bridge plugins are custom bridge implementations that can be used by an ego vehicle to send and receive sensor data.
+Bridge plugins must be built by the simulator and the resultant bundle named <code>bridge_XXX</code> must be placed in the <code>AssetBundles/Bridges</code> folder. If running the binary, this folder is included in the downloaded .zip file. 
+If running in Unity Editor (Developer Mode), the sensor will be built into the folder directly. This must be done before running the simulator (running the executable or pressing <code>Play</code> in the Editor).</p>
+<p>Building bridge plugins to a bundle is done as below:
+1. Open <code>Simulator -&gt; Build...</code> menu item
+2. Select bridge plugins in "Bridges" section of build window
+3. Build plugins with "Build" button</p>
+<p>To make a bridge plugin, create folder in <code>Assets/External/Bridges</code>, for example <code>Assets/External/Bridge/CustomBridge</code>.</p>
+<p>Inside this folder you must place all the scripts that will be used by simulator to build C# managed assembly.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">#</a></h2>
+<p>A bridge plugin must provide two separate classes inheriting the following interfaces:</p>
+<p>1) <code>IBridgeFactory</code></p>
+<p>2) <code>IBridgeInstance</code></p>
+<p>Factory class is used to provide meta-information about bridge and a few factory methods. It will be created only once.</p>
+<p>Instance class represents the actual bridge implementation that is able to send and/or receive data. It will be created once for every vehicle where it is used.</p>
+<h3 id="bridge-factory">Bridge Factory<a class="headerlink" href="#bridge-factory" title="Permanent link">#</a></h3>
+<pre><code>    public interface IBridgeFactory
+    {
+        IBridgeInstance CreateInstance();
+        void Register(IBridgePlugin plugin);
+        void RegPublisher&lt;DataType, BridgeType&gt;(IBridgePlugin plugin, Func&lt;DataType, BridgeType&gt; converter);
+        void RegSubscriber&lt;DataType, BridgeType&gt;(IBridgePlugin plugin, Func&lt;BridgeType, DataType&gt; converter);
+    }
+</code></pre>
+
+<p>This interface requires the class to expose four public methods:</p>
+<p>1) <code>CreateInstance</code> - called to create new bridge instance. Typically this method simply returns new object of class
+that implements IBridgeInstance interface.</p>
+<p>2) <code>Register</code> - called by simulator allow factory register supported functionality with plugin interface. See the section below on plugin registration.</p>
+<p>3) <code>RegPublisher</code> and <code>RegSubscriber</code> - called by custom sensors to register custom data types for publisher or subscriber functionality. Factory can use this method itself to register its supported data types for simulator built-in sensors.</p>
+<p>Classes inheriting from this interface must have <code>BridgeName</code> attribute applied to inform name that will be
+used to identify this bridge. For example:</p>
+<pre><code>    [BridgeName(&quot;MyCustomBridge&quot;)]
+    public class MyCustomBridgeFactory : IBridgeFactory
+    {
+        ...
+    }
+</code></pre>
+
+<h3 id="bridge-instance">Bridge Instance<a class="headerlink" href="#bridge-instance" title="Permanent link">#</a></h3>
+<pre><code>    public interface IBridgeInstance
+    {
+        Status Status { get; }
+        void Connect(string connection);
+        void Disconnect();
+    }
+</code></pre>
+
+<p>This interface requires the class to expose three public methods:</p>
+<p>1) <code>Status</code> - getter that will be called by simulator to query status of bridge. For example, sensors will be sending data only if Status is set to <code>Connected</code> state.</p>
+<p>1) <code>Connect</code> - called when simulator wants to initate new connection. Connection string is passed unmodified from web interface where it can be set to anything. It is responsibility of bridge implementation to validate then accept or reject this string.</p>
+<p>2) <code>Disconnect</code> - called when simulator wants to close connection. Typically called upon unloading vehicle from scene.</p>
+<h2 id="bridge-plugin-registration">Bridge Plugin Registration<a class="headerlink" href="#bridge-plugin-registration" title="Permanent link">#</a></h2>
+<p>Upon creating a bridge factory, the simulator will call <code>Register</code> method to allow factory and pass plugin instance that factory should use to register available data types and publishers/subscribers. This information is not static as custom sensor plugins may want to register their custom types with one or multiple bridge factories.</p>
+<p>Simulator provides many different data types, for example <code>ImageData</code> or <code>PointCloudData</code> that represents specific instances of data published or subscribed by sensors. Factory must inform plugin about which types it supports.
+This is performed by calling <code>AddType&lt;DataType&gt;(string bridgeTypeName)</code> on plugin instance. <code>DataType</code> is one of the data types simulator supports. <code>bridgeTypeName</code> is an arbitrary string used to show name of this data type in UI.</p>
+<p>For each subscriber or publisher bridge factory should call <code>AddSubscriberCreator&lt;DataType&gt;</code> or <code>AddPublisherCreator&lt;DataType&gt;</code> on plugin instance. These methods should provide delegate that can be used to create subscriber or publisher instances for each sensor that wants to use specific data type.</p>
+<pre><code>void AddSubscriberCreator&lt;DataType&gt;(SubscriberCreator&lt;DataType&gt; subscriber);
+void AddPublisherCreator&lt;DataType&gt;(PublisherCreator&lt;DataType&gt; publisher);
+</code></pre>
+
+<p>See <code>IBridgePlugin.cs</code> source code for more information on delegate arguments and return values.</p>
+<p>Typically, the bridge will call <code>AddType</code> + <code>AddSubscriberCreator</code> from <code>RegSubscriber</code> method, and <code>AddType</code> + <code>AddPublisherCreator</code> from <code>RegPublisher</code> method. This should be done for all default simulator data types simulator supports.</p>
+<p>Additionally, custom sensor plugins may choose to call your bridge <code>RegPublisher</code> and <code>RegSubscriber</code> methods to add custom data types they which to publish or subscribe. Please refer to <code>ComfortSensor</code> and <code>LaneFollowingSensor</code> sensor plugins for examples of this functionality.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<p>Open-source examples are available:</p>
+<p><a href="https://github.com/lgsvl/LoggingBridge">Logging Bridge</a> - simple bridge that logs all published data to a .txt file.</p>
+<p>You can also refer to the existing ROS, ROS2 and CyberRT bridges in the main
+<a href="https://github.com/lgsvl/simulator/tree/master/Assets/Scripts/Bridge">simulator repository</a> 
+for examples on how to make a fully featured bridge. </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../controllable-plugins/" class="btn btn-neutral float-right" title="Controllable plugins">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lidar-plugin/" class="btn btn-neutral" title="Lidar sensor plugin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../lidar-plugin/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../controllable-plugins/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

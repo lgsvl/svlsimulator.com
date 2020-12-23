@@ -67,7 +67,7 @@ export default function Home() {
                       <LinkButton
                         color='primary'
                         buttonVariant='contained'
-                        to='https://www.lgsvlsimulator.com/docs/getting-started/'
+                        to='/docs/getting-started/'
                       >
                         {t('main.buttons.getStarted')}
                       </LinkButton>
