@@ -86,7 +86,7 @@ const ReverseTuckingBox = withTheme(styled(TuckingBox)`
 type BaseSectionProps = {
   children: React.ReactNode;
   src?: string;
-  title: string;
+  title?: string;
   variant?: TypographyProps['variant'];
 };
 
@@ -129,11 +129,13 @@ const Content = ({
   }
   return (
     <GridBox {...rest} direction={direction} justify={justify} container>
-      <TitleGridBox item>
-        <Typography variant={variant}>{title}</Typography>
-      </TitleGridBox>
+      {title && (
+        <TitleGridBox item>
+          <Typography variant={variant}>{title}</Typography>
+        </TitleGridBox>
+      )}
       <BodyGridBox item mt={{ xs: 2, md: 5 }} flip={flip} contained={contained} tuckImage={tuckImage}>
-        {children}
+        <Typography>{children}</Typography>
       </BodyGridBox>
       {buttonText && (
         <GridBox item mt={{ xs: 2, md: 5 }}>
@@ -179,7 +181,7 @@ const Section = ({
   }
 
   return (
-    <SpacedSectionContainer component='section'>
+    <SpacedSectionContainer component='section' id={title ? title.toLowerCase().replace(/\s+/g, '-') : undefined}>
       <Grid container spacing={tuckImage ? 0 : 3} direction={flip ? 'row-reverse' : 'row'}>
         <Grid item xs={12} md={6}>
           {imageTag}

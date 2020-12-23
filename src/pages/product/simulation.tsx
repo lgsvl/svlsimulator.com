@@ -235,15 +235,15 @@ export default function Simulation() {
         tuckImage
         variant='h3'
       >
-        <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
+        {t('simulation.body')}
       </Section>
 
       <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
-        <List disablePadding>{tMap('simulation.section1.body', ListItemWrapper)}</List>
+        {t('simulation.section1.body')}
       </Section>
 
       <Section title={t('simulation.section2.title')} src={srcTools}>
-        <List disablePadding>{tMap('simulation.section2.body', ListItemWrapper)}</List>
+        {t('simulation.section2.body')}
       </Section>
 
       <PageSection>
