@@ -31,7 +31,12 @@
     "header": {
       "products": "Products",
       "forDevelopers": "For developers",
-      "useCases": "Use cases",
+      "useCases": {
+        "label": "Use cases",
+        "future": "Future Mobility Solutions",
+        "robotics": "Robotics",
+        "academics": "Academics"
+      },
       "login": "Log in"
     },
     "links": {
