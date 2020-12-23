@@ -13,7 +13,12 @@ import styled from 'styled-components';
 import BackgroundVideo from './BackgroundVideo';
 import { LinkProps } from './Link';
 
+// Top of section is offset 9 spacing units so any section hash-linking
+// will link at that document scroll position, which accounts for extra
+// space for the floating fixed app bar header.
 const SpacedSectionContainer = withTheme(styled(PageSection)`
+  margin-top: ${({ theme }) => px(theme.spacing(-9))};
+  padding-top: ${({ theme }) => px(theme.spacing(9))};
   margin-bottom: ${({ theme }) => px(theme.spacing(9))};
   &:last-child {
     margin-bottom: 0;
