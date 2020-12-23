@@ -19,7 +19,7 @@ import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
-import { IconCheck, IconChevronDown, IconChevronUp, IconMenu, IconX } from 'src/components/Icons';
+import { IconCheck, IconChevronDown, IconChevronUp, IconPartial, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
 import LinkButton from 'src/components/Button/LinkButton';
 import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
@@ -81,7 +81,7 @@ const Partial = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   const theme = useTheme();
   return (
     <span role='img' aria-label='partial' {...rest}>
-      <IconMenu color={theme.palette.success.light} height={height} width={width} />
+      <IconPartial color={theme.palette.secondary.light} height={height} width={width} />
     </span>
   );
 };
@@ -306,7 +306,11 @@ export default function Simulation() {
             <TableRow>
               <StyledTableCell noBorder></StyledTableCell>
               <StyledTableCell noBorder>
-                <LinkButton buttonVariant='outlined' title={t('simulation.featuresTable.try')} to={''}>
+                <LinkButton
+                  buttonVariant='outlined'
+                  title={t('simulation.featuresTable.try')}
+                  to='https://github.com/lgsvl/simulator/releases/latest'
+                >
                   {t('simulation.featuresTable.try')}
                 </LinkButton>
               </StyledTableCell>
