@@ -174,15 +174,19 @@ const DesktopMenu = () => {
             </DropdownMenu>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <DropdownMenu title={t('main.header.useCases')} alia-label='Open Use cases List Menu'>
-              <MenuItem component={Link} to='/use-cases/' alia-label='Go to uc1 product page'>
-                {t('uc1')}
+            <DropdownMenu title={t('main.header.useCases.label')} alia-label='Open Use cases List Menu'>
+              <MenuItem
+                component={Link}
+                to='/use-cases/#future-mobility-solutions'
+                alia-label='Go to Future Mobility Solutions use-case page'
+              >
+                {t('main.header.useCases.future')}
               </MenuItem>
-              <MenuItem component={Link} to='/use-cases/' alia-label='Go to uc2 product page'>
-                {t('uc2')}
+              <MenuItem component={Link} to='/use-cases/#robotics' alia-label='Go to Robotics use-case page'>
+                {t('main.header.useCases.robotics')}
               </MenuItem>
-              <MenuItem component={Link} to='/use-cases/' alia-label='Go to uc3 product page'>
-                {t('uc3')}
+              <MenuItem component={Link} to='/use-cases/#academics' alia-label='Go to Academics use-case page'>
+                {t('main.header.useCases.academics')}
               </MenuItem>
             </DropdownMenu>
           </Grid>
