@@ -3,6 +3,7 @@
     "buttons": {
       "getDemo": "Request Demo",
       "getStarted": "Get Started",
+      "contactUs": "Contact Us",
       "readMore": "Read More",
       "readNews": "Read",
       "download": "Download",
@@ -29,6 +30,8 @@
     },
     "header": {
       "products": "Products",
+      "forDevelopers": "For developers",
+      "useCases": "Use cases",
       "login": "Log in"
     },
     "links": {

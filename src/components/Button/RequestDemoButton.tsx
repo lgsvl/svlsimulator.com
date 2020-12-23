@@ -3,7 +3,7 @@ import { useAppState } from 'src/context/AppState';
 import { useTranslation } from 'src/hooks/useTranslations';
 import Button from './Button';
 
-const RequestDemoButton: typeof Button = React.forwardRef((props, ref) => {
+const RequestDemoButton: typeof Button = React.forwardRef(({ children, ...rest }, ref) => {
   const { setAppState } = useAppState();
   const { t } = useTranslation();
 
@@ -12,8 +12,8 @@ const RequestDemoButton: typeof Button = React.forwardRef((props, ref) => {
   }, [setAppState]);
 
   return (
-    <Button color='primary' variant='outlined' {...props} ref={ref} onClick={handleButtonClick}>
-      {t('main.buttons.getDemo')}
+    <Button color='primary' variant='outlined' {...rest} ref={ref} onClick={handleButtonClick}>
+      {children || t('main.buttons.getDemo')}
     </Button>
   );
 });

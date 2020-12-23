@@ -20,11 +20,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
-import { LinkButton } from './Button';
+import { LinkButton, RequestDemoButton } from './Button';
 import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
 import Link from './Link';
 
 const buttonColors = css`
+  font-size: 16px;
+
   &.MuiButton-textPrimary,
   &.MuiButton-textSecondary {
     &:hover {
@@ -38,6 +40,10 @@ const MenuButton = withTheme(styled(Button)`
 `);
 
 const StyledLinkButton = withTheme(styled(LinkButton)`
+  ${buttonColors}
+`);
+
+const StyledRequestDemoButton = withTheme(styled(RequestDemoButton)`
   ${buttonColors}
 `);
 
@@ -58,12 +64,11 @@ const StyledDrawer = withTheme(styled(({ className, ...other }: DrawerProps) => 
   `}
 `);
 
-const DrawerHeader = withTheme(styled(Box)`
-  ${({ theme }) => theme.mixins.toolbar}
-`);
+interface DropdownMenuProps {
+  title: string;
+}
 
-const DesktopMenu = () => {
-  const { t } = useTranslation();
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
@@ -94,77 +99,103 @@ const DesktopMenu = () => {
 
   return (
     <>
+      <MenuButton
+        color='secondary'
+        fullWidth
+        onMouseEnter={handleMenuActivate}
+        onMouseLeave={handleMenuDeactivate}
+        ref={anchorRef}
+        {...rest}
+      >
+        {title}
+      </MenuButton>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+        // keepMounted
+        onMouseEnter={handleMenuActivate}
+        onMouseLeave={handleMenuDeactivate}
+        placement='bottom-start'
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              marginTop: '30px',
+              minWidth: '200px', // Allows really narrow menus to have better mouse-movement behavior
+              // (moving the mouse from the button to the menu over empty space doesn't dismiss the menu)
+              transformOrigin: placement.match('bottom') ? 'left top' : 'left bottom'
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleMenuDeactivate}>
+                <MenuList
+                  autoFocusItem={open}
+                  id='menu-list-grow'
+                  onKeyDown={handleListKeyDown}
+                  onClick={handleMenuDeactivate}
+                >
+                  {children}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </>
+  );
+};
+
+const DrawerHeader = withTheme(styled(Box)`
+  ${({ theme }) => theme.mixins.toolbar}
+`);
+
+const DesktopMenu = () => {
+  const { t } = useTranslation();
+
+  return (
+    <>
       <Grid item>
         <Grid container spacing={2}>
           <Grid item xs={3} sm='auto'>
-            <MenuButton
-              color='secondary'
-              fullWidth
-              onMouseEnter={handleMenuActivate}
-              onMouseLeave={handleMenuDeactivate}
-              ref={anchorRef}
-              alia-label='Open Product List Menu'
-            >
-              {t('main.header.products')}
-            </MenuButton>
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-              role={undefined}
-              transition
-              disablePortal
-              // keepMounted
-              onMouseEnter={handleMenuActivate}
-              onMouseLeave={handleMenuDeactivate}
-              placement='bottom-start'
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    marginTop: '30px',
-                    transformOrigin: placement.match('bottom') ? 'left top' : 'left bottom'
-                  }}
-                >
-                  <Paper>
-                    <ClickAwayListener onClickAway={handleMenuDeactivate}>
-                      <MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
-                        <MenuItem
-                          component={Link}
-                          to='/product/simulation/'
-                          onClick={handleMenuDeactivate}
-                          alia-label='Go to Simulation product page'
-                        >
-                          {t('simulation.navTitle')}
-                        </MenuItem>
-                        <MenuItem
-                          component={Link}
-                          to='/product/cloud/'
-                          onClick={handleMenuDeactivate}
-                          alia-label='Go to Cloud product page'
-                        >
-                          {t('cloud.navTitle')}
-                        </MenuItem>
-                        <MenuItem
-                          component={Link}
-                          to='/product/digitaltwin/'
-                          onClick={handleMenuDeactivate}
-                          alia-label='Go to Digital-twin product page'
-                        >
-                          {t('digitaltwin.navTitle')}
-                        </MenuItem>
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
+            <DropdownMenu title={t('main.header.products')} alia-label='Open Product List Menu'>
+              <MenuItem component={Link} to='/product/simulation/' alia-label='Go to Simulation product page'>
+                {t('simulation.navTitle')}
+              </MenuItem>
+              <MenuItem component={Link} to='/product/cloud/' alia-label='Go to Cloud product page'>
+                {t('cloud.navTitle')}
+              </MenuItem>
+              <MenuItem component={Link} to='/product/digitaltwin/' alia-label='Go to Digital-twin product page'>
+                {t('digitaltwin.navTitle')}
+              </MenuItem>
+            </DropdownMenu>
           </Grid>
           <Grid item xs={3} sm='auto'>
+            <DropdownMenu title={t('main.header.useCases')} alia-label='Open Use cases List Menu'>
+              <MenuItem component={Link} to='/use-cases/' alia-label='Go to uc1 product page'>
+                {t('uc1')}
+              </MenuItem>
+              <MenuItem component={Link} to='/use-cases/' alia-label='Go to uc2 product page'>
+                {t('uc2')}
+              </MenuItem>
+              <MenuItem component={Link} to='/use-cases/' alia-label='Go to uc3 product page'>
+                {t('uc3')}
+              </MenuItem>
+            </DropdownMenu>
+          </Grid>
+          <Grid item xs={3} sm='auto'>
+            <StyledLinkButton color='secondary' fullWidth to='/docs/' alia-label='Go to developer documentation page'>
+              {t('main.header.forDevelopers')}
+            </StyledLinkButton>
+          </Grid>
+          {/* <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/applications/' alia-label='Go to Applications page'>
               {t('applications.navTitle')}
             </StyledLinkButton>
-          </Grid>
+          </Grid> */}
           <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/news/' alia-label='Go to News page'>
               {t('news.navTitle')}
@@ -179,7 +210,10 @@ const DesktopMenu = () => {
       </Grid>
       <Grid item>
         {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
-        <Box width={180} />
+        <StyledRequestDemoButton variant='text' color='secondary' fullWidth>
+          {t('main.buttons.contactUs')}
+        </StyledRequestDemoButton>
+        {/* <Box width={180} /> */}
         {/* <StyledLinkButton
           color='primary'
           to='https://account.lgsvlsimulator.com/'
@@ -232,8 +266,17 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/product/digitaltwin/'>
             <ListItemText primary={t('digitaltwin.navTitle')} />
           </ListItem>
-          <ListItem button component={Link} to='/applications/'>
-            <ListItemText primary={t('applications.navTitle')} />
+          <ListItem button component={Link} to='/use-cases/'>
+            <ListItemText primary={t('uc1')} />
+          </ListItem>
+          <ListItem button component={Link} to='/use-cases/'>
+            <ListItemText primary={t('uc2')} />
+          </ListItem>
+          <ListItem button component={Link} to='/use-cases/'>
+            <ListItemText primary={t('uc3')} />
+          </ListItem>
+          <ListItem button component={Link} to='/docs/'>
+            <ListItemText primary={t('main.header.forDevelopers')} />
           </ListItem>
           <ListItem button component={Link} to='/news/'>
             <ListItemText primary={t('news.navTitle')} />
@@ -241,6 +284,9 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/about/'>
             <ListItemText primary={t('about.navTitle')} />
           </ListItem>
+          <StyledRequestDemoButton variant='text' color='secondary' fullWidth>
+            {t('main.buttons.contactUs')}
+          </StyledRequestDemoButton>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
           {/* <ListItem button component={Link} to='https://account.lgsvlsimulator.com/'>
             <ListItemText primary={t('main.header.login')} />
