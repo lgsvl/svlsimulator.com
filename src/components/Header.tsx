@@ -1,7 +1,7 @@
 import { withTheme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import Button, { ButtonProps } from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Drawer, { DrawerProps } from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
@@ -20,7 +20,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
-import { LinkButton, RequestDemoButton } from './Button';
+import { LinkButton, LinkButtonProps, RequestDemoButton } from './Button';
 import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
 import Link from './Link';
 
@@ -37,11 +37,11 @@ const buttonColors = css`
 
 const MenuButton = withTheme(styled(Button)`
   ${buttonColors}
-`);
+`) as React.FC<ButtonProps>;
 
 const StyledLinkButton = withTheme(styled(LinkButton)`
   ${buttonColors}
-`);
+`) as React.FC<LinkButtonProps>;
 
 const StyledRequestDemoButton = withTheme(styled(RequestDemoButton)`
   ${buttonColors}
@@ -70,13 +70,35 @@ interface DropdownMenuProps {
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest }) => {
   const [open, setOpen] = React.useState(false);
+  const preventEarlyClose = React.useRef(false); // Track the early-close availability
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleMenuActivate = () => {
+  const handleClick = (ev: React.MouseEvent<EventTarget>) => {
+    if (preventEarlyClose.current) {
+      ev.preventDefault();
+      return;
+    }
+    // Toggle open
+    setOpen(!open);
+  };
+
+  const handleButtonEnter = (ev: React.MouseEvent<EventTarget>) => {
+    // Mouse has entered the button, enable the cooldown period. The countdown is fired from the useEffect after render.
+    preventEarlyClose.current = true;
+    handleMenuActivate(ev);
+  };
+
+  const handleButtonLeave = (ev: React.MouseEvent<EventTarget>) => {
+    handleMenuDeactivate(ev);
+  };
+
+  const handleMenuActivate = (ev: React.MouseEvent<EventTarget>) => {
     setOpen(true);
   };
 
   const handleMenuDeactivate = (ev: React.MouseEvent<EventTarget>) => {
+    // Don't close if within the timeout period, bail early.
+    if (ev.type === 'click' && preventEarlyClose.current) return;
     setOpen(false);
   };
 
@@ -95,6 +117,13 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
     }
 
     prevOpen.current = open;
+
+    // Start a cooldown timer to prevent (presumably unintentionally)
+    // deactivating the menu just after opening it via hover.
+    const timer = setTimeout(() => {
+      preventEarlyClose.current = false;
+    }, 500);
+    return () => clearTimeout(timer);
   }, [open]);
 
   return (
@@ -102,8 +131,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
       <MenuButton
         color='secondary'
         fullWidth
-        onMouseEnter={handleMenuActivate}
-        onMouseLeave={handleMenuDeactivate}
+        onClick={handleClick}
+        onMouseEnter={handleButtonEnter}
+        onMouseLeave={handleButtonLeave}
         ref={anchorRef}
         {...rest}
       >
