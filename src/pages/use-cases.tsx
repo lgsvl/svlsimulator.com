@@ -38,7 +38,16 @@ export default function UseCases() {
   return (
     <Page title={t('usecases.navTitle')}>
       <Container component='section' maxWidth='lg'>
-        <OverlayBox position='relative' p={6} mb={9}>
+        <OverlayBox
+          position='relative'
+          p={6}
+          mb={9}
+          height={300}
+          display='flex'
+          alignItems='center'
+          borderRadius='borderRadius'
+          overflow='hidden'
+        >
           <Image position='absolute' top={0} left={0} zIndex={-1} src={srcUseCases} />
           <Typography variant='h3' align='center'>
             {t('usecases.title')}

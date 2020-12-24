@@ -55,9 +55,7 @@ export default function Home() {
             </Grid>
             <Grid item>
               <Center disableGutters maxWidth={720}>
-                <Typography>
-                  {t('home.body')}
-                </Typography>
+                <Typography>{t('home.body')}</Typography>
                 <Box mt={6}>
                   <Grid container spacing={4} justify='center'>
                     <Grid item>

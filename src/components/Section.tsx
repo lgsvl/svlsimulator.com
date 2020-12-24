@@ -140,7 +140,7 @@ const Content = ({
         </TitleGridBox>
       )}
       <BodyGridBox item mt={{ xs: 2, md: 5 }} flip={flip} contained={contained} tuckImage={tuckImage}>
-        <Typography>{children}</Typography>
+        {typeof children === 'string' || typeof children === 'number' ? <Typography>{children}</Typography> : children}
       </BodyGridBox>
       {buttonText && (
         <GridBox item mt={{ xs: 2, md: 5 }}>

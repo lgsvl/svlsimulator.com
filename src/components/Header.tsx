@@ -66,6 +66,7 @@ const StyledDrawer = withTheme(styled(({ className, ...other }: DrawerProps) => 
 
 interface DropdownMenuProps {
   title: string;
+  to?: string;
 }
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest }) => {
@@ -75,7 +76,6 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
 
   const handleClick = (ev: React.MouseEvent<EventTarget>) => {
     if (preventEarlyClose.current) {
-      ev.preventDefault();
       return;
     }
     // Toggle open
@@ -126,9 +126,11 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
     return () => clearTimeout(timer);
   }, [open]);
 
+  const ActivatorComponent = rest.to ? StyledLinkButton : MenuButton;
+
   return (
     <>
-      <MenuButton
+      <ActivatorComponent
         color='secondary'
         fullWidth
         onClick={handleClick}
@@ -138,7 +140,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
         {...rest}
       >
         {title}
-      </MenuButton>
+      </ActivatorComponent>
       <Popper
         open={open}
         anchorEl={anchorRef.current}
@@ -204,22 +206,31 @@ const DesktopMenu = () => {
             </DropdownMenu>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <DropdownMenu title={t('main.header.useCases.label')} alia-label='Open Use cases List Menu'>
+            <DropdownMenu title={t('usecases.navTitle')} alia-label='Open Use cases List Menu' to='/use-cases/'>
               <MenuItem component={Link} to='/use-cases/' alia-label='Go to Future Mobility Solutions use-case page'>
-                {t('main.header.useCases.future')}
+                {t('usecases.section1.title')}
               </MenuItem>
               <MenuItem component={Link} to='/use-cases/#robotics' alia-label='Go to Robotics use-case page'>
-                {t('main.header.useCases.robotics')}
+                {t('usecases.section2.title')}
               </MenuItem>
               <MenuItem component={Link} to='/use-cases/#academics' alia-label='Go to Academics use-case page'>
-                {t('main.header.useCases.academics')}
+                {t('usecases.section3.title')}
               </MenuItem>
             </DropdownMenu>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <StyledLinkButton color='secondary' fullWidth to='/docs/' alia-label='Go to developer documentation page'>
-              {t('main.header.forDevelopers')}
-            </StyledLinkButton>
+            <DropdownMenu
+              title={t('main.header.forDevelopers')}
+              alia-label='Open Developer Information Menu'
+              to='/use-cases/'
+            >
+              <MenuItem component={Link} to='/docs/' alia-label='Go to developer documentation page'>
+                {t('main.links.documentation')}
+              </MenuItem>
+              <MenuItem component={Link} to='https://github.com/lgsvl/simulator' alia-label='Go to our GitHub page'>
+                {t('main.links.github')}
+              </MenuItem>
+            </DropdownMenu>
           </Grid>
           {/* <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/applications/' alia-label='Go to Applications page'>

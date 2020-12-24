@@ -31,12 +31,6 @@
     "header": {
       "products": "Products",
       "forDevelopers": "For developers",
-      "useCases": {
-        "label": "Use cases",
-        "future": "Future Mobility Solutions",
-        "robotics": "Robotics",
-        "academics": "Academics"
-      },
       "login": "Log in"
     },
     "links": {
@@ -80,7 +74,7 @@
     }
   },
   "usecases": {
-    "navTitle": "Use Cases",
+    "navTitle": "Use cases",
     "title": "Build safer self-driving cars, autonomous machines, and robots for your industry with simulation in virtual environments with LGSVL Simulator",
     "section1": {
       "title": "Future Mobility Solutions",
