@@ -20,8 +20,9 @@ import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import DocumentBox from 'src/components/DocumentBox';
-import { IconCheck, IconChevronDown, IconChevronUp, IconX } from 'src/components/Icons';
+import { IconCheck, IconChevronDown, IconChevronUp, IconPartial, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
+import LinkButton from 'src/components/Button/LinkButton';
 import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
 import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
@@ -77,6 +78,15 @@ const Yes = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   );
 };
 
+const Partial = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
+  const theme = useTheme();
+  return (
+    <span role='img' aria-label='partial' {...rest}>
+      <IconPartial color={theme.palette.secondary.light} height={height} width={width} />
+    </span>
+  );
+};
+
 const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   const theme = useTheme();
   return (
@@ -86,10 +96,30 @@ const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
   );
 };
 
+enum SupportLevel {
+  Unsupported,
+  Partial,
+  Supported
+}
+
+interface SupportIconProps extends FeatureMark {
+  level: SupportLevel;
+}
+
+const SupportIcon = ({ level, ...rest }: SupportIconProps) => {
+  if (level === SupportLevel.Supported) {
+    return <Yes {...rest} />;
+  } else if (level === SupportLevel.Partial) {
+    return <Partial {...rest} />;
+  } else {
+    return <No {...rest} />;
+  }
+};
+
 type RowType = {
   name: string;
-  free: boolean;
-  premium: boolean;
+  free: SupportLevel;
+  premium: SupportLevel;
 };
 
 interface FeatureRow extends RowType {
@@ -115,66 +145,66 @@ const buildRow: BuildRow = function (name, free, premium, subFeatures): FeatureR
 };
 
 const rows: FeatureRow[] = [
-  buildRow('0.name', true, true, [
-    buildRow('0.subFeatures.0', true, true),
-    buildRow('0.subFeatures.1', true, true),
-    buildRow('0.subFeatures.2', true, true),
-    buildRow('0.subFeatures.3', true, true),
-    buildRow('0.subFeatures.4', true, true),
-    buildRow('0.subFeatures.5', true, true),
-    buildRow('0.subFeatures.6', true, true),
-    buildRow('0.subFeatures.7', true, true),
-    buildRow('0.subFeatures.8', true, true),
-    buildRow('0.subFeatures.9', true, true),
-    buildRow('0.subFeatures.10', true, true),
-    buildRow('0.subFeatures.11', true, true),
-    buildRow('0.subFeatures.12', true, true),
-    buildRow('0.subFeatures.13', true, true),
-    buildRow('0.subFeatures.14', true, true),
-    buildRow('0.subFeatures.15', true, true)
+  buildRow('0.name', SupportLevel.Supported, SupportLevel.Supported, [
+    buildRow('0.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.3', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.4', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.5', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.6', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.7', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.8', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.9', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.10', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.11', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.12', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.13', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.14', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('0.subFeatures.15', SupportLevel.Supported, SupportLevel.Supported)
   ]),
-  buildRow('1.name', false, true, [
-    buildRow('1.subFeatures.0', false, true),
-    buildRow('1.subFeatures.1', false, true),
-    buildRow('1.subFeatures.2', false, true),
-    buildRow('1.subFeatures.3', false, true),
-    buildRow('1.subFeatures.4', false, true),
-    buildRow('1.subFeatures.5', false, true)
+  buildRow('1.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+    buildRow('1.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
   ]),
-  buildRow('2.name', false, true, [
-    buildRow('2.subFeatures.0', false, true),
-    buildRow('2.subFeatures.1', false, true),
-    buildRow('2.subFeatures.2', false, true),
-    buildRow('2.subFeatures.3', false, true),
-    buildRow('2.subFeatures.4', false, true)
+  buildRow('2.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+    buildRow('2.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('2.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('2.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('2.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('2.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported)
   ]),
-  buildRow('3.name', false, true, [
-    buildRow('3.subFeatures.0', false, true),
-    buildRow('3.subFeatures.1', false, true),
-    buildRow('3.subFeatures.2', false, true),
-    buildRow('3.subFeatures.3', false, true),
-    buildRow('3.subFeatures.4', false, true),
-    buildRow('3.subFeatures.5', false, true)
+  buildRow('3.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+    buildRow('3.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('3.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('3.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('3.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('3.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('3.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
   ]),
-  buildRow('4.name', false, true, [
-    buildRow('4.subFeatures.0', true, true),
-    buildRow('4.subFeatures.1', false, true),
-    buildRow('4.subFeatures.2', false, true),
-    buildRow('4.subFeatures.3', false, false)
+  buildRow('4.name', SupportLevel.Partial, SupportLevel.Partial, [
+    buildRow('4.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('4.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('4.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('4.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Unsupported)
   ]),
-  buildRow('5.name', false, true, [
-    buildRow('5.subFeatures.0', false, true),
-    buildRow('5.subFeatures.1', false, true),
-    buildRow('5.subFeatures.2', false, true),
-    buildRow('5.subFeatures.3', false, true),
-    buildRow('5.subFeatures.4', false, true),
-    buildRow('5.subFeatures.5', false, true),
-    buildRow('5.subFeatures.6', false, true)
+  buildRow('5.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+    buildRow('5.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('5.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('5.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('5.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('5.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('5.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('5.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
   ])
 ];
 
 function Row({ row, index }: { row: FeatureRow; index: number }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(index === 0);
   const { t } = useTranslation();
   const firstRow = index === 0;
 
@@ -189,8 +219,12 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
             </IconButton>
           </Typography>
         </FeatureCell>
-        <StyledTableCell noBorder={firstRow}>{row.free ? <Yes /> : <No />}</StyledTableCell>
-        <StyledTableCell noBorder={firstRow}>{row.premium ? <Yes /> : <No />}</StyledTableCell>
+        <StyledTableCell noBorder={firstRow}>
+          <SupportIcon level={row.free} />
+        </StyledTableCell>
+        <StyledTableCell noBorder={firstRow}>
+          <SupportIcon level={row.premium} />
+        </StyledTableCell>
       </TableRow>
       {row.subFeatures && row.subFeatures.length ? (
         <TableRow>
@@ -206,10 +240,10 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
                         </Box>
                       </SubFeatureCell>
                       <StyledSubTableCell>
-                        {subFeature.free ? <Yes height={24} width={24} /> : <No height={24} width={24} />}
+                        <SupportIcon level={subFeature.free} height={24} width={24} />
                       </StyledSubTableCell>
                       <StyledSubTableCell>
-                        {subFeature.premium ? <Yes height={24} width={24} /> : <No height={24} width={24} />}
+                        <SupportIcon level={subFeature.premium} height={24} width={24} />
                       </StyledSubTableCell>
                     </TableRow>
                   ))}
@@ -235,15 +269,15 @@ export default function Simulation() {
         tuckImage
         variant='h3'
       >
-        <List disablePadding>{tMap('simulation.body', ListItemWrapper)}</List>
+        {t('simulation.body')}
       </Section>
 
       <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
-        <List disablePadding>{tMap('simulation.section1.body', ListItemWrapper)}</List>
+        {t('simulation.section1.body')}
       </Section>
 
       <Section title={t('simulation.section2.title')} src={srcTools}>
-        <List disablePadding>{tMap('simulation.section2.body', ListItemWrapper)}</List>
+        {t('simulation.section2.body')}
       </Section>
 
       <PageSection>
@@ -269,12 +303,24 @@ export default function Simulation() {
             {rows.map((row, index) => (
               <Row key={row.name} row={row} index={index} />
             ))}
+
+            <TableRow>
+              <StyledTableCell noBorder></StyledTableCell>
+              <StyledTableCell noBorder>
+                <LinkButton
+                  buttonVariant='outlined'
+                  title={t('simulation.featuresTable.try')}
+                  to='https://github.com/lgsvl/simulator/releases/latest'
+                >
+                  {t('simulation.featuresTable.try')}
+                </LinkButton>
+              </StyledTableCell>
+              <StyledTableCell noBorder>
+                <RequestDemoButton />
+              </StyledTableCell>
+            </TableRow>
           </TableBody>
         </StyledTable>
-
-        <Center mt={7}>
-          <RequestDemoButton />
-        </Center>
       </PageSection>
 
       <PageSection>

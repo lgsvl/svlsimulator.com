@@ -10,6 +10,7 @@ export * from './LGColor';
 export * from './LGSVLSimulator';
 export * from './Login';
 export * from './Menu';
+export * from './Partial';
 export * from './Pause';
 export * from './Play';
 export * from './Unity';

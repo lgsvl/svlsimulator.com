@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Modular testing - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Modular testing";
+    var mkdocs_page_input_path = "modular-testing.md";
+    var mkdocs_page_url = "/modular-testing/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Modular testing</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#sensor-specifications">Sensor Specifications</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#3d-ground-truth-sensor-more-details">3D Ground Truth sensor (more details)</a></li>
+        
+            <li><a class="toctree-l5" href="#signal-sensor-more-details">Signal sensor (more details)</a></li>
+        
+            <li><a class="toctree-l5" href="#sensor-json">Sensor JSON</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#how-to-run-apollo-modular-testing-on-borregasave-map">How to run Apollo modular testing on BorregasAve map</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../simulator-messages/">Supported message types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simulator-coordinate-system/">Simulator coordinate system</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-map/">Adding a new map</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Adding a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unity-help/">Unity help</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Running with latest Apollo &raquo;</li>
+        
+      
+        
+          <li>Integration with AD &raquo;</li>
+        
+      
+    
+    <li>Modular testing</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/modular-testing.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Modular Testing</h1>
+<p>Our <code>3D Ground Truth sensor</code> and <code>Signal sensor</code> now publish ground truth perception data to Apollo stack via CyberRT bridge or ROS Apollo bridge. The modular testing feature is useful for testing planning module of Apollo stack based on the assumption that the perception output is 100% accurate without any errors. In other words, we can completely bypass Apollo's perception modules (i.e., object detection and traffic light detection) and use ground truth labels for perception published by our simulator instead.</p>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/781zkzN2xMg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p><br></p>
+<h2 id="sensor-specifications">Sensor Specifications<a class="headerlink" href="#sensor-specifications" title="Permanent link">#</a></h2>
+<h3 id="3d-ground-truth-sensor-more-details">3D Ground Truth sensor <a href="https://www.lgsvlsimulator.com/docs/sensor-json-options/#3d-ground-truth">(more details)</a><a class="headerlink" href="#3d-ground-truth-sensor-more-details" title="Permanent link">#</a></h3>
+<p><a href="../images/modular-testing/full_size_images/ground-truth-sensor.png"><img alt="Ground Truth sensor visualization" src="../images/modular-testing/ground-truth-sensor.png" /></a></p>
+<p><code>3D Ground Truth sensor</code> replaces Apollo's object detection module. It detects every NPC including vehicles and pedestrians around the EGO vehicle within a distance, which can be specified using a sensor parameter <code>MaxDistance</code>, and publishes ground truth labels such as 3D bounding boxes for the detected objects.</p>
+<p>Major message fields:</p>
+<ul>
+<li>ID: integer ID for an object</li>
+<li>Timestamp: time in seconds since Unix epoch</li>
+<li>Velocity: object velocity vector in m/s</li>
+<li>Acceleration: object acceleration vector in m/s</li>
+<li>Width: object width in meters</li>
+<li>Length: object length in meters</li>
+<li>Height: object height in meters</li>
+<li>Type: vehicle or pedestrian</li>
+<li>Position: easting, northing, altitude in GPS position</li>
+<li>Theta: object heading in radians</li>
+<li>Tracking time: duration of detection in seconds</li>
+<li>Polygon point: corner points for an object</li>
+</ul>
+<p>Sensor parameters:</p>
+<ul>
+<li>Frequency: 10</li>
+<li>MaxDistance: 100</li>
+<li>Topic: <strong>/apollo/perception/obstacles</strong></li>
+</ul>
+<h3 id="signal-sensor-more-details">Signal sensor <a href="https://www.lgsvlsimulator.com/docs/sensor-json-options/#signal-sensor">(more details)</a><a class="headerlink" href="#signal-sensor-more-details" title="Permanent link">#</a></h3>
+<p><a href="../images/modular-testing/full_size_images/signal-sensor.png"><img alt="Signal sensor visualization" src="../images/modular-testing/signal-sensor.png" /></a></p>
+<p><code>Signal sensor</code> replaces Apollo's traffic light detection module. It detects every signal that is connected to the current lane of the EGO vehicle within a distance, which can also be specified using a sensor parameter <code>MaxDistance</code>, and then publishes the signal IDs as well as the current signal color information. It is important to note that the signal ID coming from the map annotation in the simulator must match with the ID in the Apollo HD map you're currently using in Apollo, because Apollo uses this ID to locate the detected traffic light in the map.</p>
+<p>Major message fields:</p>
+<ul>
+<li>ID: traffic light string ID must match with the signal ID in Apollo HD map</li>
+<li>Timestamp: time in seconds since Unix epoch</li>
+<li>Color: red, yellow, green, or black</li>
+<li>Blink: is traffic light blinking</li>
+</ul>
+<p>Sensor parameters:</p>
+<ul>
+<li>Frequency: 10</li>
+<li>MaxDistance: 100</li>
+<li>Topic: <strong>/apollo/perception/traffic_light</strong></li>
+</ul>
+<h3 id="sensor-json">Sensor JSON<a class="headerlink" href="#sensor-json" title="Permanent link">#</a></h3>
+<p>The following sensor parameters can be added to a vehicle sensor configuration (and can replace the lidar and camera sensors which will improve simulation performance). Refer to <a href="../vehicles-tab/#how-to-change-the-configuration-of-a-vehicle">How to Change the Configuration of a Vehicle</a> for more information on vehicle sensor configuration.</p>
+<pre><code class="JSON">  {
+    &quot;type&quot;: &quot;3D Ground Truth&quot;,
+    &quot;name&quot;: &quot;3D Ground Truth&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;MaxDistance&quot;: 100,
+      &quot;Topic&quot;: &quot;/apollo/perception/obstacles&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  },
+  {
+    &quot;type&quot;: &quot;Signal&quot;,
+    &quot;name&quot;: &quot;Signal Sensor&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;MaxDistance&quot;: 100,
+      &quot;Topic&quot;: &quot;/apollo/perception/traffic_light&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  }
+</code></pre>
+
+<h2 id="how-to-run-apollo-modular-testing-on-borregasave-map">How to run Apollo modular testing on <em>BorregasAve</em> map<a class="headerlink" href="#how-to-run-apollo-modular-testing-on-borregasave-map" title="Permanent link">#</a></h2>
+<ul>
+<li>Configure and run simulator<ul>
+<li>Map<ul>
+<li>Choose <em>BorregasAve</em> map</li>
+</ul>
+</li>
+<li>Vehicle<ul>
+<li>Choose <em>Lincoln2017MKZ</em> vehicle for Apollo</li>
+<li>Attach <code>3D Ground Truth sensor</code> and <code>Signal sensor</code> with the sensor parameters above</li>
+<li>Optionally, you can remove <code>Color Camera</code> and <code>Lidar</code> sensors from the sensor configuration as these sensors are not required for modular testing</li>
+</ul>
+</li>
+<li>Run simulation with <code>Random Traffic</code> enabled</li>
+</ul>
+</li>
+<li>Launch Apollo following <a href="apollo-master-instructions">these instructions</a><ul>
+<li>Make sure that you're receiving ground truth messages via the perception topics on Apollo side<ul>
+<li>Topic for object detection: <strong>/apollo/perception/obstacles</strong></li>
+<li>Topic for traffic light detection: <strong>/apollo/perception/traffic_light</strong></li>
+<li><code>cyber_monitor</code> for <em>CyberRT bridge</em> or <code>rostopic echo</code> for <em>ROS Apollo bridge</em></li>
+</ul>
+</li>
+<li>In Dreamview, enable <code>Localization</code> module and verify if you can visually see that<ul>
+<li>your EGO vehicle is placed on the right position on the Apollo HD map for BorregasAve</li>
+<li>bounding boxes for vehicles and pedestrians around the EGO vehicle (if any) including heading and velocity vectors</li>
+<li>traffic light signals that are connected to the current lane of EGO vehicle are detected</li>
+</ul>
+</li>
+<li>Enable <code>Transform</code>, <code>Prediction</code>, <code>Planning</code>, <code>Routing</code>, and <code>Control</code><ul>
+<li>Note that we are not running <code>Perception</code> and <code>Traffic Light</code> modules for modular testing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Apollo should now be able to drive to your destination without running <code>Perception</code> modules</li>
+</ul>
+<p><a href="../images/modular-testing/full_size_images/compare-dreamview-and-simulator.png"><img alt="Compare Dreamview and Simulator" src="../images/modular-testing/compare-dreamview-and-simulator.png" /></a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../apollo5-0-instructions/" class="btn btn-neutral float-right" title="Instructions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../apollo-master-instructions/" class="btn btn-neutral" title="Instructions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../apollo-master-instructions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../apollo5-0-instructions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

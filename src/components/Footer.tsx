@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
       </Typography>
       <List>
         <FooterLink to='https://github.com/lgsvl/simulator' primary={t('main.links.github')} />
-        <FooterLink to='https://www.lgsvlsimulator.com/docs/' primary={t('main.links.documentation')} />
+        <FooterLink to='/docs' primary={t('main.links.documentation')} />
         <FooterLink onClick={handleRequestDemoClick} primary={t('main.links.requestDemo')} />
       </List>
     </>

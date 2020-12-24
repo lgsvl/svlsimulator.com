@@ -15,11 +15,11 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
-import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
+import srcCloudVideo from 'src/videos/vis-2.mp4';
 import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
 import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import styled from 'styled-components';
-import videoSrcHero from '../videos/Hero.mp4';
+import videoSrcHero from '../videos/vis-1.mp4';
 import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 
@@ -38,8 +38,6 @@ const HeroGrid = withTheme(styled(Grid)`
   position: relative;
 `) as React.FC<GridProps>;
 
-const TypoWrapper: MapFunction<string> = (str, i) => <Typography key={`paragraph${i}`}>{str}</Typography>;
-
 export default function Home() {
   const { t, tMap } = useTranslation();
   return (
@@ -57,18 +55,14 @@ export default function Home() {
             </Grid>
             <Grid item>
               <Center disableGutters maxWidth={720}>
-                {tMap('home.body', TypoWrapper)}
+                <Typography>{t('home.body')}</Typography>
                 <Box mt={6}>
                   <Grid container spacing={4} justify='center'>
                     <Grid item>
                       <RequestDemoButton />
                     </Grid>
                     <Grid item>
-                      <LinkButton
-                        color='primary'
-                        buttonVariant='contained'
-                        to='https://www.lgsvlsimulator.com/docs/getting-started/'
-                      >
+                      <LinkButton color='primary' buttonVariant='contained' to='/docs/getting-started/'>
                         {t('main.buttons.getStarted')}
                       </LinkButton>
                     </Grid>
@@ -98,7 +92,7 @@ export default function Home() {
           tuckImage
           variant='h3'
         >
-          {tMap('home.section1.body', TypoWrapper)}
+          {t('home.section1.body')}
         </Section>
       </Box>
 
@@ -116,7 +110,7 @@ export default function Home() {
           tuckImage
           variant='h3'
         >
-          {tMap('home.section2.body', TypoWrapper)}
+          {t('home.section2.body')}
         </Section>
       </Box>
 
@@ -130,7 +124,7 @@ export default function Home() {
                 buttonText='readMore'
                 buttonProps={{ to: '/product/simulation/', title: t('home.features.0.title') }}
               >
-                {tMap('home.features.0.body', TypoWrapper)}
+                {t('home.features.0.body')}
               </SectionContent>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -140,7 +134,7 @@ export default function Home() {
                 buttonText='readMore'
                 buttonProps={{ to: '/product/cloud/', title: t('home.features.1.title') }}
               >
-                {tMap('home.features.1.body', TypoWrapper)}
+                {t('home.features.1.body')}
               </SectionContent>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -150,7 +144,7 @@ export default function Home() {
                 buttonText='readMore'
                 buttonProps={{ to: '/product/digitaltwin/', title: t('home.features.2.title') }}
               >
-                {tMap('home.features.2.body', TypoWrapper)}
+                {t('home.features.2.body')}
               </SectionContent>
             </Grid>
           </Grid>

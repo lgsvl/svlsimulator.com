@@ -17,5 +17,5 @@
     "isolatedModules": true
   },
   "exclude": ["**/node_modules", "**/.cache", "**/public", "**/.*/", "graphql-types.ts"],
-  "include": ["src", "src/404.tsx", "gatsby-config.js", "tsconfig.json"]
+  "include": ["src", "src/404.tsx", "gatsby-config.js", "gatsby-node.js", "tsconfig.json"]
 }
