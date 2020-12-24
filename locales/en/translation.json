@@ -3,6 +3,7 @@
     "buttons": {
       "getDemo": "Request Demo",
       "getStarted": "Get Started",
+      "contactUs": "Contact Us",
       "readMore": "Read More",
       "readNews": "Read",
       "download": "Download",
@@ -29,6 +30,7 @@
     },
     "header": {
       "products": "Products",
+      "forDevelopers": "For developers",
       "login": "Log in"
     },
     "links": {
@@ -71,33 +73,44 @@
       "body": "Simulation is the key accelerator for Future mobility driven by autonomy We will become the de-facto simulation platform for future mobility."
     }
   },
-  "applications": {
-    "navTitle": "Applications",
-    "title": "Future Mobility Solutions",
-    "body": "The future connected mobility requires end-to-end and sophisticated infrastructures among the vehicles, environment and roadway information systems. LG helps the world’s leading OEMs and suppliers harness the power of autonomous driving technologies and solutions to simulate and accelerate the service innovation, optimize vehicle performance, gain insight from data and take advantage of the cloud platform to scale the mobility operations.",
+  "usecases": {
+    "navTitle": "Use cases",
+    "title": "Build safer self-driving cars, autonomous machines, and robots for your industry with simulation in virtual environments with LGSVL Simulator",
     "section1": {
+      "title": "Future Mobility Solutions",
+      "body": "In addition to autonomous vehicles, use LGSVL Simulator to simulate and test future mobility services that interact with our world in new ways: delivery robots, robotaxis, ridesharing and personal mobility services. Simulate and test not just for software and system development but for fleet management, mobility service operations, fleet management, and infrastructure planning."
+    },
+    "section2": {
+      "title": "Robotics",
+      "body": "Develop and test your indoor, outdoor, or multi-modal robots. Simulate an on-site deployment and how multi-robot interactions and environments will work. Iterate on your development in a safe manner before costly pilot deployments. Show your customers exactly how a deployment will work in their warehouse or factory before shipping any hardware."
+    },
+    "section3": {
+      "title": "Academics",
+      "body": "Generate synthetic data for machine learning training and research. Conduct research for every module of an autonomous vehicle, or for their integration and larger impacts. Security, safety, multi-robot interactions, and vehicle to infrastructure are just some of the research applications we see from our community."
+    },
+    "section1_old": {
       "title": "Simulation for end-to-end development cycle",
       "body": "LGSVL Simulator supports end-to-end simulation of the entire autonomous driving software stack. By providing all necessary inputs needed from a virtual environment, reacting to controls, and simulating the situations a vehicle may encounter, developers can perform integration testing of their system from the very beginning of the development cycle. In addition to performing modular component-wise testing, developers can perform end-to-end testing to shorten the iteration cycle for finding and testing integration considerations of their autonomous system."
     },
-    "section2": {
+    "section2_old": {
       "title": "Data and content",
       "body": [
         "LG supports a wide array of sensors such as camera, LiDAR, RADAR, CGP, and IMU hardware sensors for simulation as well as virtual ground truth sensors. Real world sensor models used in the autonomous vehicle systems and other sensors through plugins are also supported in LGSVL Simulator.",
         "The 3D environment is the basis for environmental simulation and impacts all sensor data, affects an AD system’s perception, prediction, tracking and control modules. LGSVL Simulator Premium Platform’s Digital Twin enables the creation of synthetic 3D environments, for replication and simulation of logged real-world scenarios. Through Digital Twin environments, test drives recorded and logged in the real world can be imported into simulation to re-simulate particularly targeted edge case scenarios."
       ]
     },
-    "section3": {
+    "section3_old": {
       "title": "Cloud simulation as a service",
       "body": [
         "Simulation in the cloud at scale is one of the important features requested by developers working on autonomous vehicle software. Perception module development requires a vast amount of labeled data specific to vehicle sensor configuration, however data labeling is mostly manual process and time consuming. Simulators could be used to produce synthetic labeled data at large scale in the cloud.",
         "LGSVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. LGSVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
       ]
     },
-    "section4": {
+    "section4_old": {
       "title": "Academics",
       "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. LGSVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
     },
-    "section5": {
+    "section5_old": {
       "title": "Robotics",
       "body": "LGSVL Simulator is a tool necessary for the design and validation of development processes in a dynamic and highly visual environment. This tool supports a variety of robotic and automation test scenarios allowing for early validation of automation concepts on local machines or in the cloud. This simulator allows developers to set KPIs, re-generate scenarios for testing, validate and optimize the development and robot operation sequences with realistic behaviors."
     },
@@ -107,42 +120,47 @@
     ]
   },
   "cloud": {
-    "navTitle": "Cloud Simulation-as-a-Service",
-    "title": "Cloud Simulation-as-a-Service",
-    "body": [
-      "Ability to resimulate with local simulation - not just on remote servers",
-      "Sensor data visualization",
-      "Test case analysis reports and event detection",
-      "Content ecosystem - maps, vehicles, sensors, plugins from partners and community"
-    ]
-  },
-  "digitaltwin": {
-    "navTitle": "Digital Twin creation service",
-    "title": "Digital Twin creation service",
-    "body": "We offer environment creation services for different levels of environment fidelity based on your needs. These Digital Twin environments can be used to create scenarios and resimulations of real-world test cases.",
+    "navTitle": "Cloud Simulation",
+    "title": "Cloud Simulation",
+    "body": "Scale your testing pipeline easily by scheduling and running many simulations - use our cloud simulation service, or deploy on your own private cloud.",
     "section1": {
-      "title": "Digital Twin Full environment",
-      "body": "Creation service for high-fidelity, photorealistic 3D environment."
+      "title": "Easily switch between debugging locally and running scaled test cycles using a web user interface",
+      "body": "Schedule and run hundreds of parameterized scenarios using our web-based user interface."
     },
     "section2": {
-      "title": "Digital Twin Lite environment",
-      "body": "Creation services for colorized point cloud environments based on real-world data."
+      "title": "Search through results and quickly find edge cases",
+      "body": "View aggregated test results and find the outlier edge cases that you need to focus development and testing on. Gain insights into the performance of your autonomous vehicle stack without needing to build everything yourself."
+    },
+    "section3": {
+      "title": "Visualize cloud simulation results",
+      "body": "Inspect the simulation replay and sensor data to determine a scenario's cause of failure and iterate on your AV stack."
+    }
+  },
+  "digitaltwin": {
+    "navTitle": "Digital Twin generation",
+    "title": "Digital Twin generation",
+    "body": "Create accurate representations of real-world environments for virtual simulation in LGSVL Simulator.",
+    "section1": {
+      "body": "Run simulations that are accurate reflections of what your autonomous system will encounter in the real world"
+    },
+    "section2": {
+      "body": "Generate synthetic data for training without worrying about the geographical accuracy of the virtual environment"
+    },
+    "section3": {
+      "body": "Reproduce real-world environments known for pushing the boundaries of your autonomous vehicle's behaviors"
     }
   },
   "home": {
     "navTitle": "Home",
     "title": "LGSVL SIMULATOR",
-    "body": "End-to-end autonomous driving simulation software for testing and validating the entire autonomous driving software stack",
+    "body": "An end-to-end autonomous vehicle simulation platform",
     "section1": {
-      "title": "Tools and methodology for autonomous driving",
-      "body": [
-        "Simulation software platform offering tools and methodology for autonomous driving and future mobility development.",
-        "As an open platform, LGSVL Simulator allows the industry and the community to access the most advanced, sustainable, and affordable simulation platform with high-quality simulation contents, intelligence, and scalable cloud environments."
-      ]
+      "title": "Accelerate autonomous vehicle development with simulation",
+      "body": "Test your system end-to-end or by module in a virtual environment. Run integration testing from day one without building out a testing infrastructure from scratch."
     },
     "section2": {
-      "title": "High-fidelity simulation engine for automated testing and validation",
-      "body": "LGSVL Simulator consists of a high-fidelity simulation engine, content replicating the complexity of real-world environments, and seamless integration of local and Cloud simulation for automated testing and validation at scale that enables customers to focus on software and system development instead of testing infrastructure."
+      "title": "Tools and methodology for autonomous driving",
+      "body": "Built as an open platform, LGSVL Simulator gives you a high-fidelity simulation engine, content replicating the complexity of real-world environments, and cloud simulation for automated testing and validation at scale."
     },
     "features": [
       {
@@ -150,12 +168,12 @@
         "body": "Real-time and high-performance simulator enables environment simulation, sensor simulation, and vehicle dynamics and control simulation of a vehicle."
       },
       {
-        "title": "Cloud simulator",
+        "title": "Cloud simulation",
         "body": "Simulation in Cloud environments allows users to easily manage and share the autonomous driving contents within the teams or communities, also enables large-scale automated testing of test data sets and scenarios."
       },
       {
-        "title": "Digital twin",
-        "body": "A digital twin that reconstructs 3D environment from Point Cloud and image data from real world enables vehicle manufacturers and future mobility players to accelerate development using simulation."
+        "title": "Digital Twin generation",
+        "body": "A digital twin that reconstructs 3D environment from Point Cloud and image data from real world enables vehicle manufacturers and future mobility players to accurate development using simulation."
       }
     ]
   },
@@ -173,30 +191,14 @@
   "simulation": {
     "navTitle": "Simulation platform",
     "title": "End-to-end simulation platform",
-    "body": [
-      "3D photorealistic simulation software for AD and robotics",
-      "Support for all kinds of testing: unit, modular, integration, system",
-      "Distributed simulation",
-      "Out-of-the-box integration with open source and popular AD stacks"
-    ],
+    "body": "LGSVL Simulator is an autonomous vehicle simulator built to test and verify self-driving cars and robots, throughout the entire development lifecycle. Test your AV system end-to-end or by module, no matter where you are in your engineering cycle.",
     "section1": {
       "title": "Open source and extensible simulation engine",
-      "body": [
-        "Open source and customizable",
-        "Easy-to-use Python API",
-        "Plugin system for vehicles, sensors, bridge interfaces",
-        "Co-simulation support - FMI/FMU, CarMaker, SUMO"
-      ]
+      "body": "Our core simulation engine is open source and free to use. Build and use plugins to extend functionality and test with your AV system."
     },
     "section2": {
-      "title": "Diverse set of scenario generation tools for scalable testing",
-      "body": [
-        "Visual scenario editor",
-        "HD map import, export, and annotation tools",
-        "Support for scenario description languages",
-        "Resimulation from simulation and real world datasets",
-        "Random mode for smoke testing and increased edge case test coverage"
-      ]
+      "title": "LGSVL Simulator Premium",
+      "body": "Scale up your simulation and testing workflow with a variety of scenario generation tools and scalable cloud simulation."
     },
     "featuresTable": {
       "products": [
