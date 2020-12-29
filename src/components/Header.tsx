@@ -223,11 +223,7 @@ const DesktopMenu = () => {
             </DropdownMenu>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <DropdownMenu
-              title={t('main.header.forDevelopers')}
-              alia-label='Open Developer Information Menu'
-              to='/use-cases/'
-            >
+            <DropdownMenu title={t('main.header.forDevelopers')} alia-label='Open Developer Information Menu'>
               <MenuItem component={Link} to='/docs/' alia-label='Go to developer documentation page'>
                 {t('main.links.documentation')}
               </MenuItem>
