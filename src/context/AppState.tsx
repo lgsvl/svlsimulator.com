@@ -1,4 +1,5 @@
 import React from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { setObjFromPath } from 'src/utils';
 
 export type AppStateType = {
@@ -6,6 +7,7 @@ export type AppStateType = {
     allPaused: boolean;
   };
   requestDemoForm: {
+    mode: RequestDemoFormMode;
     open: boolean;
   };
 };
@@ -23,6 +25,7 @@ const defaultAppState: AppStateType = {
     allPaused: false
   },
   requestDemoForm: {
+    mode: RequestDemoFormMode.Demo,
     open: false
   }
 };

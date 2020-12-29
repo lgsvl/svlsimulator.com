@@ -7,6 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText, { ListItemTextProps } from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { MapFunction } from 'src/@types/utils';
 import { useAppState } from 'src/context/AppState';
 import { useTranslation } from 'src/hooks/useTranslations';
@@ -50,6 +51,7 @@ const Footer: React.FC = () => {
   const { t, tMap } = useTranslation();
 
   const handleRequestDemoClick = React.useCallback(() => {
+    setAppState(RequestDemoFormMode.Demo, 'requestDemoForm.mode');
     setAppState(true, 'requestDemoForm.open');
   }, [setAppState]);
 

@@ -111,7 +111,11 @@ const App: React.FC = ({ children }) => {
         <FooterGrid item component='footer'>
           <Footer />
         </FooterGrid>
-        <RequestDemoForm open={appState.requestDemoForm.open} onClose={handleFormClose} />
+        <RequestDemoForm
+          mode={appState.requestDemoForm.mode}
+          open={appState.requestDemoForm.open}
+          onClose={handleFormClose}
+        />
       </AppGrid>
     </React.Fragment>
   );
@@ -142,5 +146,5 @@ const PageSectionFullWidth: React.FC<ContainerProps> = props => (
 );
 
 export type { ContainerProps as PageSectionProps };
-export default Page;
 export { Page, PageSection, PageSectionFullWidth };
+export default Page;

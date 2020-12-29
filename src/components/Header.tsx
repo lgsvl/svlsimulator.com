@@ -10,7 +10,7 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
@@ -18,10 +18,11 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
 import { LinkButton, LinkButtonProps, RequestDemoButton } from './Button';
-import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
+import { IconLGSVLSimulator, IconMenu, IconX } from './Icons';
 import Link from './Link';
 
 const buttonColors = css`
@@ -251,7 +252,7 @@ const DesktopMenu = () => {
       </Grid>
       <Grid item>
         {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
-        <StyledRequestDemoButton variant='text' color='secondary' fullWidth>
+        <StyledRequestDemoButton variant='text' color='secondary' fullWidth mode={RequestDemoFormMode.ContactUs}>
           {t('main.buttons.contactUs')}
         </StyledRequestDemoButton>
         {/* <Box width={180} /> */}
@@ -328,7 +329,7 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/about/'>
             <ListItemText primary={t('about.navTitle')} />
           </ListItem>
-          <StyledRequestDemoButton variant='text' color='secondary' fullWidth>
+          <StyledRequestDemoButton variant='text' color='secondary' fullWidth mode={RequestDemoFormMode.ContactUs}>
             {t('main.buttons.contactUs')}
           </StyledRequestDemoButton>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}

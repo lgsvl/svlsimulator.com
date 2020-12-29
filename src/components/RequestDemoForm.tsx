@@ -15,14 +15,15 @@ import { fade, withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import React, { useCallback } from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import addSpacing from 'src/utils/addSpacing';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
+import * as yup from 'yup';
 
 const FormDialog = withTheme(styled(Dialog)`
   .MuiDialog-paper {
@@ -48,7 +49,11 @@ const FormDialogContent = addSpacing(DialogContent);
 
 const FormDialogActions = addSpacing(DialogActions);
 
-const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
+interface RequestDemoFormProps extends DialogProps {
+  mode?: RequestDemoFormMode;
+}
+
+const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...rest }) => {
   const { t, tMap } = useTranslation();
   const [confirming, setConfirming] = React.useState(false);
   const {
@@ -138,6 +143,17 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
     fullWidth: true
   };
 
+  let dialogTitle;
+  switch (mode) {
+    case RequestDemoFormMode.ContactUs: {
+      dialogTitle = t('main.buttons.contactUs');
+      break;
+    }
+    default: {
+      dialogTitle = t('requestdemo.title');
+    }
+  }
+
   return (
     <FormDialog
       aria-labelledby='form-title'
@@ -149,7 +165,7 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
       <FormDialogTitle disableTypography>
         <Box display='flex' alignItems='center' justifyContent='space-between' height={56}>
           <Typography id='form-title' variant='body1'>
-            {t('requestdemo.title')}
+            {dialogTitle}
           </Typography>
           <CloseIconButton aria-label='close' onClick={dispatchClose}>
             <IconX />
@@ -161,19 +177,21 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
           <FormDialogContent p={3} pb={0}>
             <input type='hidden' name='_honeypot' value='' onChange={handleChange} />
             <Grid container spacing={3}>
-              <Hidden smDown>
-                <Grid item sm={4}>
-                  <Box mb={5}>
-                    <IconLGSVLSimulator />
-                  </Box>
-                  {tMap('requestdemo.message', (msg, i) => (
-                    <Typography id={`form-description${i || ''}`} variant='caption' key={`message${i}`} paragraph>
-                      {msg}
-                    </Typography>
-                  ))}
-                </Grid>
-              </Hidden>
-              <Grid item sm={12} md={8}>
+              {mode === RequestDemoFormMode.Demo ? (
+                <Hidden smDown>
+                  <Grid item sm={4}>
+                    <Box mb={5}>
+                      <IconLGSVLSimulator />
+                    </Box>
+                    {tMap('requestdemo.message', (msg, i) => (
+                      <Typography id={`form-description${i || ''}`} variant='caption' key={`message${i}`} paragraph>
+                        {msg}
+                      </Typography>
+                    ))}
+                  </Grid>
+                </Hidden>
+              ) : null}
+              <Grid item sm={12} md={mode === RequestDemoFormMode.Demo ? 8 : 12}>
                 <Grid container spacing={4} justify='space-between'>
                   <Grid item xs={12} sm={6}>
                     <Input
@@ -302,11 +320,11 @@ const RequestDemoForm: React.FC<DialogProps> = ({ onClose, ...rest }) => {
           </FormDialogContent>
           <FormDialogActions py={1.5} px={3}>
             <Grid container spacing={3}>
-              <Grid item sm={4}></Grid>
-              <Grid item sm={4}>
+              {mode === RequestDemoFormMode.Demo ? <Grid item sm={4}></Grid> : null}
+              <Grid item sm={mode === RequestDemoFormMode.Demo ? 4 : 6}>
                 <Typography variant='body2'>* indicates a required field.</Typography>
               </Grid>
-              <Grid item sm={4} style={{ textAlign: 'end' }}>
+              <Grid item sm={mode === RequestDemoFormMode.Demo ? 4 : 6} style={{ textAlign: 'end' }}>
                 <FormControl>
                   <Button
                     color='primary'
