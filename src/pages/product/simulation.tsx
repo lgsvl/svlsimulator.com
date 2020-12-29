@@ -323,15 +323,6 @@ export default function Simulation() {
         </StyledTable>
       </PageSection>
 
-      <PageSection>
-        <DocumentBox
-          title={t('main.links.documentationLong')}
-          label={t('main.documentTypes.documentation')}
-          buttonText={t('main.buttons.view')}
-          to='https://www.lgsvlsimulator.com/docs/'
-        />
-      </PageSection>
-
       <PageSectionFullWidth>
         <Grid container>
           <Grid item xs={12} sm={6}>
