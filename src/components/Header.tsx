@@ -224,7 +224,7 @@ const DesktopMenu = () => {
           </Grid>
           <Grid item xs={3} sm='auto'>
             <DropdownMenu title={t('main.header.forDevelopers')} alia-label='Open Developer Information Menu'>
-              <MenuItem component={Link} to='/docs/' alia-label='Go to developer documentation page'>
+              <MenuItem component={Link} to='/docs/' target='_blank' alia-label='Go to developer documentation page'>
                 {t('main.links.documentation')}
               </MenuItem>
               <MenuItem component={Link} to='https://github.com/lgsvl/simulator' alia-label='Go to our GitHub page'>
@@ -307,17 +307,20 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/product/digitaltwin/'>
             <ListItemText primary={t('digitaltwin.navTitle')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/'>
-            <ListItemText primary={t('uc1')} />
+          <ListItem button component={Link} to='/use-cases/#future-mobility-solutions'>
+            <ListItemText primary={t('usecases.section1.title')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/'>
-            <ListItemText primary={t('uc2')} />
+          <ListItem button component={Link} to='/use-cases/#robotics'>
+            <ListItemText primary={t('usecases.section2.title')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/'>
-            <ListItemText primary={t('uc3')} />
+          <ListItem button component={Link} to='/use-cases/#academia'>
+            <ListItemText primary={t('usecases.section3.title')} />
           </ListItem>
-          <ListItem button component={Link} to='/docs/'>
-            <ListItemText primary={t('main.header.forDevelopers')} />
+          <ListItem button component={Link} to='/docs/' target='_blank'>
+            <ListItemText primary={t('main.links.documentation')} />
+          </ListItem>
+          <ListItem button component={Link} to='https://github.com/lgsvl/simulator'>
+            <ListItemText primary={t('main.links.github')} />
           </ListItem>
           <ListItem button component={Link} to='/news/'>
             <ListItemText primary={t('news.navTitle')} />
