@@ -85,7 +85,7 @@
       "body": "Develop and test your indoor, outdoor, or multi-modal robots. Simulate an on-site deployment and how multi-robot interactions and environments will work. Iterate on your development in a safe manner before costly pilot deployments. Show your customers exactly how a deployment will work in their warehouse or factory before shipping any hardware."
     },
     "section3": {
-      "title": "Academics",
+      "title": "Academia",
       "body": "Generate synthetic data for machine learning training and research. Conduct research for every module of an autonomous vehicle, or for their integration and larger impacts. Security, safety, multi-robot interactions, and vehicle to infrastructure are just some of the research applications we see from our community."
     },
     "section1_old": {
@@ -107,7 +107,7 @@
       ]
     },
     "section4_old": {
-      "title": "Academics",
+      "title": "Academia",
       "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. LGSVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
     },
     "section5_old": {

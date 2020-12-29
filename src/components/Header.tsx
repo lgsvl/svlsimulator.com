@@ -217,7 +217,7 @@ const DesktopMenu = () => {
               <MenuItem component={Link} to='/use-cases/#robotics' alia-label='Go to Robotics use-case page'>
                 {t('usecases.section2.title')}
               </MenuItem>
-              <MenuItem component={Link} to='/use-cases/#academics' alia-label='Go to Academics use-case page'>
+              <MenuItem component={Link} to='/use-cases/#academia' alia-label='Go to Academia use-case page'>
                 {t('usecases.section3.title')}
               </MenuItem>
             </DropdownMenu>
