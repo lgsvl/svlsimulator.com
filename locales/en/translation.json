@@ -26,11 +26,17 @@
       "terms": "Terms",
       "policy": "Privacy Policy",
       "forDevelopers": "For Developers",
-      "social": "Social"
+      "about": "About Us",
+      "social": "Social",
+      "meetUs": "Meet the team",
+      "contactUs": "Contact us",
+      "content": "LGSVL Simulator Content"
     },
     "header": {
       "products": "Products",
       "forDevelopers": "For developers",
+      "about": "About us",
+      "contactUs": "Contact",
       "login": "Log in"
     },
     "links": {

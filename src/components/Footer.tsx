@@ -51,19 +51,45 @@ const Footer: React.FC = () => {
   const { t, tMap } = useTranslation();
 
   const handleRequestDemoClick = React.useCallback(() => {
-    setAppState(RequestDemoFormMode.Demo, 'requestDemoForm.mode');
+    setAppState(RequestDemoFormMode.ContactUs, 'requestDemoForm.mode');
     setAppState(true, 'requestDemoForm.open');
   }, [setAppState]);
 
+  const branding = (
+    <>
+      <Box mt={{ xs: 3, sm: 2 }}>
+        <IconLgColor />
+      </Box>
+      <Copyright variant='body2'>
+        {t('main.footer.copyright')}
+        &nbsp;•&nbsp;
+        <Link to='/terms'>{t('main.footer.terms')}</Link>
+        &nbsp;&amp;&nbsp;
+        <Link to='/privacy'>{t('main.footer.policy')}</Link>
+      </Copyright>
+    </>
+  );
   const forDevs = (
     <>
       <Typography variant='overline' component='h6' color='textSecondary'>
         {t('main.footer.forDevelopers')}
       </Typography>
       <List>
-        <FooterLink to='https://github.com/lgsvl/simulator' primary={t('main.links.github')} />
-        <FooterLink to='/docs/' target='_blank' primary={t('main.links.documentation')} />
-        <FooterLink onClick={handleRequestDemoClick} primary={t('main.links.requestDemo')} />
+        <FooterLink primary={t('main.links.github')} to='https://github.com/lgsvl/simulator' />
+        <FooterLink primary={t('main.links.documentation')} to='/docs/' target='_blank' />
+        <FooterLink primary={t('main.footer.content')} to='https://content.lgsvlsimulator.com' />
+      </List>
+    </>
+  );
+  const about = (
+    <>
+      <Typography variant='overline' component='h6' color='textSecondary'>
+        {t('main.footer.about')}
+      </Typography>
+      <List>
+        <FooterLink primary={t('main.footer.meetUs')} to='/about/' />
+        <FooterLink primary={t('news.navTitle')} to='/news/' />
+        <FooterLink primary={t('main.footer.contactUs')} onClick={handleRequestDemoClick} />
       </List>
     </>
   );
@@ -73,9 +99,8 @@ const Footer: React.FC = () => {
         {t('main.footer.social')}
       </Typography>
       <List>
-        <FooterLink to='https://twitter.com/LGSVLSimulator' primary={t('main.links.twitter')} />
-        <FooterLink to='https://www.youtube.com/channel/UChrPZIYAnKEKiQjmPmBwPKA' primary={t('main.links.youtube')} />
-        <FooterLink to='http://eepurl.com/go_1w9' primary={t('main.links.subscribe')} />
+        <FooterLink primary={t('main.links.twitter')} to='https://twitter.com/LGSVLSimulator' />
+        <FooterLink primary={t('main.links.youtube')} to='https://www.youtube.com/channel/UChrPZIYAnKEKiQjmPmBwPKA' />
       </List>
     </>
   );
@@ -84,6 +109,31 @@ const Footer: React.FC = () => {
     <PageSection>
       <Box mt={2} p={{ xs: 3, sm: 5, md: 10 }}>
         <Grid container>
+          {/* Logo moves to the bottom for "xs" (extra small) screens */}
+          <Hidden smDown>
+            <Grid item md={6}>
+              {branding}
+            </Grid>
+          </Hidden>
+          <Hidden xsDown mdUp>
+            <Grid item xs={1} />
+          </Hidden>
+          <Grid item xs={12} sm={4} md={3}>
+            {forDevs}
+          </Grid>
+          <Grid item xs={12} sm={4} md={2}>
+            {about}
+          </Grid>
+          <Grid item xs={12} sm={3} md={1}>
+            {social}
+          </Grid>
+          <Hidden mdUp>
+            <Grid item xs={12}>
+              {branding}
+            </Grid>
+          </Hidden>
+        </Grid>
+        {/* <Grid container>
           <Hidden mdDown xlUp>
             <Grid item xs={1} />
           </Hidden>
@@ -118,7 +168,7 @@ const Footer: React.FC = () => {
               {social}
             </Grid>
           </Hidden>
-        </Grid>
+        </Grid> */}
       </Box>
     </PageSection>
   );

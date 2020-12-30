@@ -241,7 +241,7 @@ const DesktopMenu = () => {
           </Grid>
           <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/about/' alia-label='Go to About page'>
-              {t('about.navTitle')}
+              {t('main.header.about')}
             </StyledLinkButton>
           </Grid>
         </Grid>
@@ -249,7 +249,7 @@ const DesktopMenu = () => {
       <Grid item>
         {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
         <StyledRequestDemoButton color='secondary' variant='outlined' fullWidth mode={RequestDemoFormMode.ContactUs}>
-          {t('main.buttons.contactUs')}
+          {t('main.header.contactUs')}
         </StyledRequestDemoButton>
         {/* <Box width={180} /> */}
         {/* <StyledLinkButton
