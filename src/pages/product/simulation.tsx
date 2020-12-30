@@ -323,7 +323,7 @@ export default function Simulation() {
         </StyledTable>
       </PageSection>
 
-      <PageSectionFullWidth>
+      {/* <PageSectionFullWidth>
         <Grid container>
           <Grid item xs={12} sm={6}>
             <CloudPreviewBox />
@@ -332,7 +332,7 @@ export default function Simulation() {
             <DigitalTwinPreviewBox />
           </Grid>
         </Grid>
-      </PageSectionFullWidth>
+      </PageSectionFullWidth> */}
 
       <SubscribeBox />
     </Page>
