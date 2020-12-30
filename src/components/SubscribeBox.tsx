@@ -13,7 +13,7 @@ import BackgroundVideo from 'src/components/BackgroundVideo';
 // import GridBox from 'src/components/GridBox';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
-import videoSrcSubscribe from 'src/videos/vis-1.mp4';
+import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import Button, { ButtonProps } from './Button';
