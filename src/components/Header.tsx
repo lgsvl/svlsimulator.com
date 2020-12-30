@@ -208,11 +208,7 @@ const DesktopMenu = () => {
           </Grid>
           <Grid item xs={3} sm='auto'>
             <DropdownMenu title={t('usecases.navTitle')} alia-label='Open Use cases List Menu' to='/use-cases/'>
-              <MenuItem
-                component={Link}
-                to='/use-cases/#future-mobility-solutions'
-                alia-label='Go to Future Mobility Solutions use-case page'
-              >
+              <MenuItem component={Link} to='/use-cases/#automotive' alia-label='Go to Automotive use-case page'>
                 {t('usecases.section1.title')}
               </MenuItem>
               <MenuItem component={Link} to='/use-cases/#robotics' alia-label='Go to Robotics use-case page'>
@@ -308,7 +304,7 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/product/digitaltwin/'>
             <ListItemText primary={t('digitaltwin.navTitle')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/#future-mobility-solutions'>
+          <ListItem button component={Link} to='/use-cases/#automotive'>
             <ListItemText primary={t('usecases.section1.title')} />
           </ListItem>
           <ListItem button component={Link} to='/use-cases/#robotics'>
