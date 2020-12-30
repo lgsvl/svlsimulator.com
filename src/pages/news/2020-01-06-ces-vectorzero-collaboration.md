@@ -1,8 +1,8 @@
 ---
 date: 2020-01-06
-title: "CES 2020: Announcing LGSVL Simulator and VectorZero collaboration"
+title: "CES 2020: Collaboration with VectorZero"
 author: Brian Shin
-preview: We are happy to announce cooperation between LGSVL Simulator and VectorZero to bring maps and environments produced by the VectorZero RoadRunner tool into LGSVL Simulator for our users.
+preview: Create a 3D road network using the RoadRunner tool, export the 3D environment and the corresponding HD map for use with LGSVL Simulator.
 category: announcement
 prominence: big
 ---
