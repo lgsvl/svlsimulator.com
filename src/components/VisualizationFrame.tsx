@@ -54,7 +54,7 @@ const FakeWiseHeader: React.FC<BoxProps> = props => (
         </Grid>
       </Grid>
     </DimBox>
-    <DimBox ml={2} p={1} borderRadius='borderRadius' whiteSpace='nowrap'>
+    <DimBox ml={2} p={1} borderRadius='borderRadius' whiteSpace='nowrap' style={{ pointerEvents: 'none' }}>
       <Button style={{ width: '50%' }}>Analysis</Button>
       <Button style={{ width: '50%' }} variant='contained' color='primary'>
         Visualization

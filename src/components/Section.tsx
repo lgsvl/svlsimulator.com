@@ -141,7 +141,9 @@ const Content = ({
   let button;
   switch (buttonText) {
     case 'contactUs':
-      button = <RequestDemoButton mode={RequestDemoFormMode.ContactUs} {...buttonProps} />;
+      button = (
+        <RequestDemoButton mode={RequestDemoFormMode.ContactUs} color='secondary' variant='outlined' {...buttonProps} />
+      );
       break;
     case 'getDemo':
       button = <RequestDemoButton {...buttonProps} />;

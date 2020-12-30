@@ -20,9 +20,8 @@ import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
 import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import srcCloudVideo from 'src/videos/vis-2.mp4';
 import styled from 'styled-components';
-import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
-import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
 import videoSrcHero from '../videos/vis-1.mp4';
+import videoSrcWiseVis from '../videos/vis-2.mp4';
 
 const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   <BackgroundVideo
@@ -92,7 +91,7 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcPlaceholder1}>
+          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcWiseVis}>
             {t('home.section1.body')}
           </VisualizationSection>
         </Box>
@@ -100,7 +99,7 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcPlaceholder2}>
+          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcWiseVis}>
             {t('home.section2.body')}
           </VisualizationSection>
         </Box>
