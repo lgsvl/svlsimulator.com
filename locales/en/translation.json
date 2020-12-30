@@ -196,7 +196,7 @@
   },
   "simulation": {
     "navTitle": "Simulation platform",
-    "title": "End-to-end simulation platform",
+    "title": "An end-to-end simulation platform",
     "body": "LGSVL Simulator is an autonomous vehicle simulator built to test and verify self-driving cars and robots, throughout the entire development lifecycle. Test your AV system end-to-end or by module, no matter where you are in your engineering cycle.",
     "section1": {
       "title": "Open source and extensible simulation engine",
