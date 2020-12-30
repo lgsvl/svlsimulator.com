@@ -97,6 +97,7 @@ const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
 };
 
 enum SupportLevel {
+  None,
   Unsupported,
   Partial,
   Supported
@@ -111,9 +112,10 @@ const SupportIcon = ({ level, ...rest }: SupportIconProps) => {
     return <Yes {...rest} />;
   } else if (level === SupportLevel.Partial) {
     return <Partial {...rest} />;
-  } else {
+  } else if (level === SupportLevel.Unsupported) {
     return <No {...rest} />;
   }
+  return null;
 };
 
 type RowType = {
@@ -145,66 +147,86 @@ const buildRow: BuildRow = function (name, free, premium, subFeatures): FeatureR
 };
 
 const rows: FeatureRow[] = [
-  buildRow('0.name', SupportLevel.Supported, SupportLevel.Supported, [
+  buildRow('0.name', SupportLevel.None, SupportLevel.None, [
     buildRow('0.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.3', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.4', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.5', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.6', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.7', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.8', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.9', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.10', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.11', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.12', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.13', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.14', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.15', SupportLevel.Supported, SupportLevel.Supported)
+    buildRow('0.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
   ]),
-  buildRow('1.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('1.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('1.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('1.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+  buildRow('1.name', SupportLevel.None, SupportLevel.None, [
+    buildRow('1.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('1.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('1.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('1.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
     buildRow('1.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
-  ]),
-  buildRow('2.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('2.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported)
-  ]),
-  buildRow('3.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('3.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
-  ]),
-  buildRow('4.name', SupportLevel.Partial, SupportLevel.Partial, [
-    buildRow('4.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('4.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('4.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('4.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Unsupported)
-  ]),
-  buildRow('5.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('5.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
+    buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
   ])
 ];
+// const rows: FeatureRow[] = [
+//   buildRow('0.name', SupportLevel.Supported, SupportLevel.Supported, [
+//     buildRow('0.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.3', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.4', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.5', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.6', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.7', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.8', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.9', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.10', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.11', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.12', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.13', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.14', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.15', SupportLevel.Supported, SupportLevel.Supported)
+//   ]),
+//   buildRow('1.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('1.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ]),
+//   buildRow('2.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('2.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ]),
+//   buildRow('3.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('3.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ]),
+//   buildRow('4.name', SupportLevel.Partial, SupportLevel.Partial, [
+//     buildRow('4.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('4.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('4.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('4.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Unsupported)
+//   ]),
+//   buildRow('5.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('5.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ])
+// ];
 
 function Row({ row, index }: { row: FeatureRow; index: number }) {
-  const [open, setOpen] = React.useState(index === 0);
+  // const [open, setOpen] = React.useState(index === 0);
   const { t } = useTranslation();
   const firstRow = index === 0;
 
@@ -214,9 +236,9 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
         <FeatureCell noBorder={firstRow}>
           <Typography>
             {t(row.name)}
-            <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
+            {/* <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
               {open ? <IconChevronUp title='collapse feature list' /> : <IconChevronDown title='expand feature list' />}
-            </IconButton>
+            </IconButton> */}
           </Typography>
         </FeatureCell>
         <StyledTableCell noBorder={firstRow}>
@@ -229,27 +251,27 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
       {row.subFeatures && row.subFeatures.length ? (
         <TableRow>
           <StyledSubTableCell padding='none' colSpan={3}>
-            <Collapse in={open} timeout='auto' unmountOnExit>
-              <Table size='small' aria-label='sub-features'>
-                <TableBody>
-                  {row.subFeatures.map(subFeature => (
-                    <TableRow key={subFeature.name}>
-                      <SubFeatureCell>
-                        <Box ml={2}>
-                          <Typography variant='body2'>{t(subFeature.name)}</Typography>
-                        </Box>
-                      </SubFeatureCell>
-                      <StyledSubTableCell>
-                        <SupportIcon level={subFeature.free} height={24} width={24} />
-                      </StyledSubTableCell>
-                      <StyledSubTableCell>
-                        <SupportIcon level={subFeature.premium} height={24} width={24} />
-                      </StyledSubTableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Collapse>
+            {/* <Collapse in={open} timeout='auto' unmountOnExit> */}
+            <Table size='small' aria-label='sub-features'>
+              <TableBody>
+                {row.subFeatures.map(subFeature => (
+                  <TableRow key={subFeature.name}>
+                    <SubFeatureCell>
+                      <Box ml={2}>
+                        <Typography variant='body2'>{t(subFeature.name)}</Typography>
+                      </Box>
+                    </SubFeatureCell>
+                    <StyledSubTableCell>
+                      <SupportIcon level={subFeature.free} height={24} width={24} />
+                    </StyledSubTableCell>
+                    <StyledSubTableCell>
+                      <SupportIcon level={subFeature.premium} height={24} width={24} />
+                    </StyledSubTableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            {/* </Collapse> */}
           </StyledSubTableCell>
         </TableRow>
       ) : null}

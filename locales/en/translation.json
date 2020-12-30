@@ -223,74 +223,24 @@
           "name": "Basic simulation",
           "subFeatures": [
             "Local simulation",
-            "Deterministic simulation",
-            "Default content",
-            "ROS 1 support",
-            "ROS 2 support",
+            "Distributed simulation",
             "Baidu Apollo support",
             "Autoware.AI support",
             "Autoware.Auto support",
-            "Distributed simulation",
             "Python API",
-            "Enhanced set of available content",
-            "Documentation and video tutorials",
-            "Ground truth synthetic data generation",
-            "Optimized ROS2 bridge interface",
-            "Synchronous simulation",
-            "Access to core simulator engine source code"
+            "Commercial Use"
           ]
         },
         {
-          "name": "Simulation analysis",
+          "name": "Cloud Support",
           "subFeatures": [
-            "Test case reports",
-            "Event detection",
-            "Sensor visualization",
-            "Raw sensor data download",
-            "Simulation visual replay",
-            "Customizable KPI analysis"
-          ]
-        },
-        {
-          "name": "Cloud simulation",
-          "subFeatures": [
-            "On-premise cloud simulation solution",
-            "Public cloud simulation support",
-            "Test cycle support",
-            "Account and content management",
-            "Content sharing and team collaboration"
-          ]
-        },
-        {
-          "name": "Content creation/environment generation",
-          "subFeatures": [
-            "HD map annotation tool",
-            "HD map import/export tool",
-            "Point cloud map import",
-            "Environment creation",
-            "Vehicle model creation",
-            "Road network generation"
-          ]
-        },
-        {
-          "name": "Scenario generation",
-          "subFeatures": [
-            "Random traffic scenario generation",
-            "Visual scenario editor",
-            "SCENIC support",
-            "Resimulation from simulation"
-          ]
-        },
-        {
-          "name": "Plugins/Third Party support",
-          "subFeatures": [
-            "Sensor plugin system",
-            "Controllable plugin system",
-            "Bridge plugin system",
-            "Vehicle dynamics extensibility",
-            "Traffic behavior extensibility",
-            "FMI/FMU support",
-            "Cosimulation with IPG Carmaker"
+            "Default public content",
+            "Public content sharing",
+            "Test results",
+            "Cloud simulation",
+            "CI/CD integration",
+            "Team content sharing",
+            "Private cloud deployment"
           ]
         }
       ]
