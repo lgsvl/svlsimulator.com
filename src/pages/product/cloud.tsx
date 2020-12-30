@@ -27,11 +27,12 @@ export default function CloudSimAAS() {
     <Page title={t('cloud.title')}>
       <Section
         buttonText='getDemo'
+        contained
         src={srcCloudImg1}
-        video={srcCloudVideo}
         title={t('cloud.title')}
         tuckImage
         variant='h3'
+        video={srcCloudVideo}
       >
         {t('cloud.body')}
       </Section>

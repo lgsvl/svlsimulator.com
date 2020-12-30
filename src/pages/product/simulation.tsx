@@ -263,11 +263,12 @@ export default function Simulation() {
     <Page title={t('simulation.title')}>
       <Section
         buttonText='getDemo'
+        contained
         src={srcSimulationPoster}
-        video={srcSimulationVideo}
         title={t('simulation.title')}
         tuckImage
         variant='h3'
+        video={srcSimulationVideo}
       >
         {t('simulation.body')}
       </Section>

@@ -30,6 +30,7 @@ const TitleGridBox = withTheme(styled(GridBox)`
 `) as React.FC<GridBoxProps>;
 
 interface StyledBodyGridBoxProps {
+  /** Adds a little faded background behind the text, but only if `tuckImage` is also true. */
   contained?: boolean;
   flip?: boolean;
   tuckImage?: boolean;

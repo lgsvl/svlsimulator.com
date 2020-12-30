@@ -27,11 +27,12 @@ export default function DigitalTwin() {
     <Page title={t('digitaltwin.title')}>
       <Section
         buttonText='getDemo'
+        contained
         src={srcTwinImg1}
-        video={srcDigitalTwinVideo}
         title={t('digitaltwin.title')}
         tuckImage
         variant='h3'
+        video={srcDigitalTwinVideo}
       >
         {t('digitaltwin.body')}
       </Section>
