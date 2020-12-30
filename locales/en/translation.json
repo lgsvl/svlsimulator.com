@@ -64,15 +64,15 @@
   "about": {
     "navTitle": "About",
     "title": "About",
-    "body": "The LGSVL simulator is developed by the Advanced Platform Lab at the LG Electronics America R&D Lab, formerly the LG Silicon Valley Lab",
+    "body": "LGSVL Simulator is built by LG Electronics America R&D Lab, a research center at LG Electronics headquartered in Santa Clara, California.",
     "details": [
-      "Our team consists of highly-qualified engineers and specialists, with years of experience from industries including Automotive, Computer, Consumer Electronics, Mobile Technology, Telecommunication, etc.",
-      "The simulator facilitates testing and development of autonomous driving software systems. It enables developers to simulate billions of miles and arbitrary edge case scenarios to speed up algorithm development and system integration.",
-      "We started developing the simulator by leveraging an open source strategy, which gives tremendous benefits of transparent simulation experience and easy for customization. We hope to grow our developer community to best serve the autonomous vehicle and robotics industries in accelerating the testing and validation of autonomous systems."
+      "We launched the first release of LGSVL Simulator as an open project to Github in November 2018 with the goal of enabling developers to build autonomous vehicles and robots through end-to-end, high performance 3D simulation. We have since built LGSVL Simulator into a commercial product helping automotive OEMs, robotics companies, and universities around the world.",
+      "Our team consists of highly-qualified engineers and specialists, with years of experience from industries including automotive, robotics, software, consumer electronics, and mobile technology.",
+      "We believe in simulation as the key to accelerating autonomous machine development. Our vision is to bring about a standardized simulation platform used in autonomous vehicle and robotics development, and believe open source is key to this making this happen."
     ],
     "mission": {
       "title": "Our mission",
-      "body": "To bring Future Mobility powered by Autonomy into reality faster, safer and less costly."
+      "body": "To bring future mobility powered by autonomy into reality faster, safer and less costly."
     },
     "vision": {
       "title": "Our Vision",
