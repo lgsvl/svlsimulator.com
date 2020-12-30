@@ -120,8 +120,8 @@
     ]
   },
   "cloud": {
-    "navTitle": "Cloud Simulation",
-    "title": "Cloud Simulation",
+    "navTitle": "Cloud simulation",
+    "title": "Cloud simulation",
     "body": "Scale your testing pipeline easily by scheduling and running many simulations - use our cloud simulation service, or deploy on your own private cloud.",
     "section1": {
       "title": "Easily switch between debugging locally and running scaled test cycles using a web user interface",
