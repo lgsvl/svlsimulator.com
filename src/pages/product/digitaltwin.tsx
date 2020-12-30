@@ -37,13 +37,15 @@ export default function DigitalTwin() {
         {t('digitaltwin.body')}
       </Section>
 
-      <Section flip src={srcTwinImg2}>
+      <Section imageColumns={7} flip src={srcTwinImg2}>
         {t('digitaltwin.section1.body')}
       </Section>
 
-      <Section src={srcTwinImg3}>{t('digitaltwin.section2.body')}</Section>
+      <Section imageColumns={7} src={srcTwinImg3}>
+        {t('digitaltwin.section2.body')}
+      </Section>
 
-      <Section flip src={srcTwinImg4}>
+      <Section imageColumns={7} flip src={srcTwinImg4}>
         {t('digitaltwin.section3.body')}
       </Section>
 

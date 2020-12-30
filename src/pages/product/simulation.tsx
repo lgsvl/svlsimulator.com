@@ -273,11 +273,11 @@ export default function Simulation() {
         {t('simulation.body')}
       </Section>
 
-      <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
+      <Section title={t('simulation.section1.title')} imageColumns={7} flip src={srcExtensible}>
         {t('simulation.section1.body')}
       </Section>
 
-      <Section title={t('simulation.section2.title')} src={srcTools}>
+      <Section title={t('simulation.section2.title')} imageColumns={7} src={srcTools}>
         {t('simulation.section2.body')}
       </Section>
 

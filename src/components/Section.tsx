@@ -12,6 +12,8 @@ import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import BackgroundVideo from './BackgroundVideo';
 import { LinkProps } from './Link';
+import VisualizationFrame, { VisualizationFrameProps } from 'src/components/VisualizationFrame';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 
 // Top of section is offset 9 spacing units so any section hash-linking
 // will link at that document scroll position, which accounts for extra
@@ -68,26 +70,39 @@ const countChildren = (children: React.ReactNode | React.ReactChildren) =>
 
 const roundTo = (num: number, toPlaces = 0) => Math.round(num * Math.pow(10, toPlaces)) / Math.pow(10, toPlaces);
 
-const twoColumns = roundTo(2 / 12, 4);
 // Must double this, since it's being applied inside a box that's half the normal width.
-const doubleTwoColumns = twoColumns * 2;
+const doubleOneColumn = 2 / 12;
 
-const TuckingBox = withTheme(styled(Box)`
+export type ColumnsType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+export type TuckingBoxProps = BoxProps & {
+  imageColumns: ColumnsType;
+};
+
+const TuckingBox = withTheme(styled(({ ...rest }) => <Box {...rest} />)`
+  ${({ imageColumns, theme }) => `
   min-height: 300px;
   width: 100%;
   height: 100%;
   position: relative;
 
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    width: ${(1 + doubleTwoColumns) * 100}%;
+  ${theme.breakpoints.up('md')} {
+    width: ${roundTo(doubleOneColumn * imageColumns * 100, 4)}%;
   }
-`) as React.FC<BoxProps>;
+`}
+`) as React.FC<TuckingBoxProps>;
 
 const ReverseTuckingBox = withTheme(styled(TuckingBox)`
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    margin-inline-start: ${roundTo(doubleTwoColumns * -100, 4)}%;
-  }
-`) as React.FC<BoxProps>;
+  ${({ imageColumns, theme }) => {
+    // Avoid the godforsaken prettier rule that takes out mandatory parenthesis
+    const offset = doubleOneColumn * imageColumns * -100;
+    return `
+      ${theme.breakpoints.up('md')} {
+        margin-inline-start: ${roundTo(offset + 100, 4)}%;
+      }
+    `;
+  }}
+`) as React.FC<TuckingBoxProps>;
 
 type BaseSectionProps = {
   children: React.ReactNode;
@@ -105,6 +120,7 @@ interface SectionProps extends ContentProps {
   flip?: boolean;
   image?: React.ReactNode;
   minHeight?: GridBoxProps['minHeight'];
+  imageColumns?: ColumnsType;
   tuckImage?: boolean;
   video?: React.VideoHTMLAttributes<HTMLVideoElement>['src'];
 }
@@ -124,6 +140,9 @@ const Content = ({
 }: ContentProps & GridBoxProps) => {
   let button;
   switch (buttonText) {
+    case 'contactUs':
+      button = <RequestDemoButton mode={RequestDemoFormMode.ContactUs} {...buttonProps} />;
+      break;
     case 'getDemo':
       button = <RequestDemoButton {...buttonProps} />;
       break;
@@ -136,16 +155,18 @@ const Content = ({
   return (
     <GridBox {...rest} direction={direction} justify={justify} container>
       {title && (
-        <TitleGridBox item>
+        <TitleGridBox item mb={{ xs: 2, md: 5 }}>
           <Typography variant={variant}>{title}</Typography>
         </TitleGridBox>
       )}
-      <BodyGridBox item mt={{ xs: 2, md: 5 }} flip={flip} contained={contained} tuckImage={tuckImage}>
+      <BodyGridBox item flip={flip} contained={contained} tuckImage={tuckImage}>
         {typeof children === 'string' || typeof children === 'number' ? <Typography>{children}</Typography> : children}
       </BodyGridBox>
       {buttonText && (
         <GridBox item mt={{ xs: 2, md: 5 }}>
-          <Box textAlign={!flip && contained ? 'end' : undefined}>{button}</Box>
+          <Box ml={!flip && contained ? -2 : 0} mr={flip && contained ? -2 : 0}>
+            {button}
+          </Box>
         </GridBox>
       )}
     </GridBox>
@@ -156,6 +177,7 @@ const Section = ({
   buttonText,
   buttonProps,
   children,
+  imageColumns,
   contained,
   flip,
   image,
@@ -166,6 +188,11 @@ const Section = ({
   variant,
   video
 }: SectionProps) => {
+  // If an amount of imageColumns was not set, but it is a tuckImage, go ahead and set a default value.
+  if (!imageColumns) {
+    imageColumns = tuckImage ? 8 : 6;
+  }
+
   let imageTag =
     image ||
     (video ? (
@@ -173,12 +200,13 @@ const Section = ({
     ) : (
       <StyledImage src={src} />
     ));
+
   if (tuckImage) {
     let ImageContainerComponent = TuckingBox;
     if (flip) {
       ImageContainerComponent = ReverseTuckingBox;
     }
-    imageTag = <ImageContainerComponent>{imageTag}</ImageContainerComponent>;
+    imageTag = <ImageContainerComponent imageColumns={imageColumns}>{imageTag}</ImageContainerComponent>;
   }
 
   // Add a min-height for any h3 variant, if a custom one doesn't exist.
@@ -186,13 +214,22 @@ const Section = ({
     minHeight = { md: 458 };
   }
 
+  let columnsForImage: GridBoxProps['md'] = imageColumns;
+  let columnsForText: GridBoxProps['md'] =
+    typeof columnsForImage === 'number' ? ((12 - columnsForImage) as GridBoxProps['md']) : columnsForImage;
+
+  if (tuckImage) {
+    columnsForImage = 6;
+    columnsForText = 6;
+  }
+
   return (
     <SpacedSectionContainer component='section' id={title ? title.toLowerCase().replace(/\s+/g, '-') : undefined}>
-      <Grid container spacing={tuckImage ? 0 : 3} direction={flip ? 'row-reverse' : 'row'}>
-        <Grid item xs={12} md={6}>
+      <Grid container spacing={tuckImage ? 0 : 3} direction={flip ? 'row-reverse' : 'row'} alignItems='center'>
+        <Grid item xs={12} md={columnsForImage} style={{ alignSelf: 'stretch' }}>
           {imageTag}
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={columnsForText}>
           <Box position='relative'>
             <Content
               title={title}
@@ -225,5 +262,70 @@ const FullWidthSection = ({ children, src, title, variant = 'h5' }: BaseSectionP
   </SpacedSectionContainer>
 );
 
+export type VisualizationSectionProps = BoxProps & SectionProps;
+
+const VisualizationSection: React.FC<VisualizationSectionProps> = ({
+  buttonProps,
+  buttonText = 'contactUs',
+  children,
+  contained,
+  flip,
+  image,
+  imageColumns,
+  minHeight,
+  src,
+  title,
+  tuckImage,
+  variant,
+  video,
+  ...rest
+}) => {
+  // If an amount of imageColumns was not set, but it is a tuckImage, go ahead and set a default value.
+  if (!imageColumns) {
+    imageColumns = tuckImage ? 8 : 6;
+  }
+
+  let columnsForImage: GridBoxProps['md'] = imageColumns;
+  let columnsForText: GridBoxProps['md'] =
+    typeof columnsForImage === 'number' ? ((12 - columnsForImage) as GridBoxProps['md']) : columnsForImage;
+
+  if (tuckImage) {
+    columnsForImage = 6;
+    columnsForText = 6;
+  }
+
+  return (
+    <Box {...rest}>
+      <Grid container spacing={2} alignItems='center' direction={flip ? 'row-reverse' : 'row'}>
+        <Grid item xs={12} md={columnsForImage} style={{ overflow: 'hidden', height: 688 }}>
+          <Box position='relative' height={1} overflow='hidden'>
+            <VisualizationFrame
+              poster={src}
+              src={video}
+              style={{ position: 'absolute', right: flip ? 'auto' : 0, height: '100%' }}
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={columnsForText}>
+          {/* <Typography variant='h4'>{title}</Typography>
+        {children}
+        <RequestDemoButton mode={RequestDemoFormMode.ContactUs} /> */}
+          <Content
+            title={title}
+            buttonText={buttonText}
+            buttonProps={buttonProps}
+            minHeight={minHeight}
+            variant={variant}
+            contained={contained}
+            flip={flip}
+          >
+            {children}
+          </Content>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
+
 export default Section;
-export { Section, Content as SectionContent, FullWidthSection };
+export { Section, Content as SectionContent, FullWidthSection, VisualizationSection };

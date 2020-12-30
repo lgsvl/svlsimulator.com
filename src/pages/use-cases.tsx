@@ -37,7 +37,7 @@ export default function UseCases() {
 
   return (
     <Page title={t('usecases.navTitle')}>
-      <Container component='section' maxWidth='lg'>
+      {/* <Container component='section' maxWidth='lg'>
         <OverlayBox
           position='relative'
           p={6}
@@ -53,17 +53,20 @@ export default function UseCases() {
             {t('usecases.title')}
           </Typography>
         </OverlayBox>
-      </Container>
+      </Container> */}
+      <Section tuckImage title={t('usecases.title')} src={srcUseCases} variant='h3'>
+        {''}
+      </Section>
 
-      <Section contained title={t('usecases.section1.title')} src={srcFutureMobility} video={srcSimulationVideo}>
+      <Section title={t('usecases.section1.title')} src={srcFutureMobility} video={srcSimulationVideo}>
         {tMap('usecases.section1.body', TypoWrapper)}
       </Section>
 
-      <Section contained flip title={t('usecases.section2.title')} src={srcAcademics}>
+      <Section flip title={t('usecases.section2.title')} src={srcAcademics}>
         {tMap('usecases.section2.body', TypoWrapper)}
       </Section>
 
-      <Section contained title={t('usecases.section3.title')} src={srcRobotics}>
+      <Section title={t('usecases.section3.title')} src={srcRobotics}>
         {tMap('usecases.section3.body', TypoWrapper)}
       </Section>
 

@@ -3,25 +3,24 @@ import Box from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { MapFunction } from 'src/@types/utils';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { LinkButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
-import Section, { SectionContent } from 'src/components/Section';
+import { SectionContent, VisualizationSection } from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
-import srcCloudVideo from 'src/videos/vis-2.mp4';
 import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
 import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
+import srcCloudVideo from 'src/videos/vis-2.mp4';
 import styled from 'styled-components';
-import videoSrcHero from '../videos/vis-1.mp4';
 import videoSrcPlaceholder1 from '../videos/Placeholder1.mp4';
 import videoSrcPlaceholder2 from '../videos/Placeholder2.mp4';
+import videoSrcHero from '../videos/vis-1.mp4';
 
 const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   <BackgroundVideo
@@ -59,7 +58,7 @@ export default function Home() {
                 <Box mt={6}>
                   <Grid container spacing={4} justify='center'>
                     <Grid item>
-                      <RequestDemoButton />
+                      <RequestDemoButton variant='outlined' />
                     </Grid>
                     <Grid item>
                       <LinkButton color='primary' buttonVariant='contained' to='/docs/getting-started/' target='_blank'>
@@ -77,42 +76,21 @@ export default function Home() {
         </Box>
       </PageSection>
 
-      <Box my={15}>
-        <Section
-          title={t('home.section1.title')}
-          // buttonText='getDemo'
-          contained
-          image={
-            <BackgroundVideo src={videoSrcPlaceholder1}>
-              <Typography>
-                A different video of Lidar scanning an environment, identifying objects as it moves.
-              </Typography>
-            </BackgroundVideo>
-          }
-          tuckImage
-          variant='h3'
-        >
-          {t('home.section1.body')}
-        </Section>
-      </Box>
+      <PageSection>
+        <Box my={15}>
+          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcPlaceholder1}>
+            {t('home.section1.body')}
+          </VisualizationSection>
+        </Box>
+      </PageSection>
 
-      <Box my={15}>
-        <Section
-          title={t('home.section2.title')}
-          // buttonText='getDemo'
-          contained
-          flip
-          image={
-            <BackgroundVideo src={videoSrcPlaceholder2}>
-              <Typography>A video of a simulated vehicle autonomously driving down a street.</Typography>
-            </BackgroundVideo>
-          }
-          tuckImage
-          variant='h3'
-        >
-          {t('home.section2.body')}
-        </Section>
-      </Box>
+      <PageSection>
+        <Box my={15}>
+          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcPlaceholder2}>
+            {t('home.section2.body')}
+          </VisualizationSection>
+        </Box>
+      </PageSection>
 
       <Box my={15}>
         <PageSection>
