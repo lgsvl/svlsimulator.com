@@ -58,15 +58,15 @@ export default function UseCases() {
         {''}
       </Section>
 
-      <Section title={t('usecases.section1.title')} src={srcFutureMobility} video={srcSimulationVideo}>
+      <Section flip title={t('usecases.section1.title')} src={srcFutureMobility} video={srcSimulationVideo}>
         {tMap('usecases.section1.body', TypoWrapper)}
       </Section>
 
-      <Section flip title={t('usecases.section2.title')} src={srcAcademics}>
+      <Section title={t('usecases.section2.title')} src={srcAcademics}>
         {tMap('usecases.section2.body', TypoWrapper)}
       </Section>
 
-      <Section title={t('usecases.section3.title')} src={srcRobotics}>
+      <Section flip title={t('usecases.section3.title')} src={srcRobotics}>
         {tMap('usecases.section3.body', TypoWrapper)}
       </Section>
 
