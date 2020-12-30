@@ -19,8 +19,8 @@ const RequestDemoButton: React.ExoticComponent<RequestDemoButtonProps> = React.f
     }, [mode, setAppState]);
 
     return (
-      <Button color='primary' variant='outlined' {...rest} ref={ref} onClick={handleButtonClick}>
-        {children || t('main.buttons.getDemo')}
+      <Button color='primary' variant='contained' {...rest} ref={ref} onClick={handleButtonClick}>
+        {children || (mode === RequestDemoFormMode.ContactUs ? t('main.buttons.contactUs') : t('main.buttons.getDemo'))}
       </Button>
     );
   }
