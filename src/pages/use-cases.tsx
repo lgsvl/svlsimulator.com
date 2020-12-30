@@ -70,6 +70,22 @@ export default function UseCases() {
         {tMap('usecases.section3.body', TypoWrapper)}
       </Section>
 
+      <PageSection>
+        <DocumentBox
+          title={t('usecases.files.0')}
+          label={t('main.documentTypes.technical')}
+          buttonText={t('main.buttons.download')}
+          to='https://arxiv.org/pdf/2005.03778.pdf'
+        />
+
+        <DocumentBox
+          title={t('usecases.files.1')}
+          label={t('main.documentTypes.technical')}
+          buttonText={t('main.buttons.download')}
+          to='https://arxiv.org/pdf/2003.07739.pdf'
+        />
+      </PageSection>
+
       <SubscribeBox />
     </Page>
   );
