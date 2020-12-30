@@ -1,9 +1,12 @@
+import { withTheme } from '@material-ui/core';
 import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link';
 import { GatsbyLinkProps } from 'gatsby';
 import { Link as GatsbyLink } from 'gatsby-plugin-react-i18next';
 import React from 'react';
 import { OutboundLink } from 'react-ga';
 import { Merge } from 'src/@types/utils';
+import { IconOut } from 'src/components/Icons';
+import styled from 'styled-components';
 
 type OutboundGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement>;
 type I18nGatsbyLinkProps = OutboundGatsbyLinkProps & { language?: string };
@@ -19,6 +22,15 @@ const FwdOutbound = React.forwardRef((props: OutboundGatsbyLinkProps, ref) => {
   const outboundProps = { ...props, ref: undefined };
   return <OutboundLink eventLabel={outboundProps.to} {...outboundProps} />;
 }) as React.ForwardRefExoticComponent<OutboundGatsbyLinkProps>;
+
+const StyledIconOut = withTheme(styled(IconOut)`
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 1.5em;
+  margin-inline-start: 0.75ex;
+`) as typeof IconOut;
 
 export type LinkProps = Merge<MuiLinkProps, I18nGatsbyLinkProps>;
 
@@ -52,7 +64,10 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
   // Outbound link, track with analytics
   if (to) {
     return (
-      <MuiLink component={FwdOutbound} to={to} target='_blank' {...rest} ref={ref as React.Ref<HTMLAnchorElement>} />
+      <MuiLink component={FwdOutbound} to={to} target='_blank' {...rest} ref={ref as React.Ref<HTMLAnchorElement>}>
+        {rest.children}
+        <StyledIconOut />
+      </MuiLink>
     );
   }
   // Undefined link (probably listening for click with javascript, use basic MuiLink)
