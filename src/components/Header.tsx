@@ -252,7 +252,7 @@ const DesktopMenu = () => {
       </Grid>
       <Grid item>
         {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
-        <StyledRequestDemoButton variant='text' color='secondary' fullWidth mode={RequestDemoFormMode.ContactUs}>
+        <StyledRequestDemoButton color='secondary' variant='outlined' fullWidth mode={RequestDemoFormMode.ContactUs}>
           {t('main.buttons.contactUs')}
         </StyledRequestDemoButton>
         {/* <Box width={180} /> */}
