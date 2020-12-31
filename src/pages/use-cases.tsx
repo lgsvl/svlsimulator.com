@@ -55,8 +55,8 @@ export default function UseCases() {
           </Typography>
         </OverlayBox>
       </Container> */}
-      <Section tuckImage title={t('usecases.title')} src={srcUseCases} variant='h3'>
-        {''}
+      <Section tuckImage contained title={t('usecases.title')} src={srcUseCases} variant='h3'>
+        {t('usecases.body')}
       </Section>
 
       <Section flip title={t('usecases.section1.title')} src={srcFutureMobility} video={srcSimulationVideo}>
