@@ -21,7 +21,7 @@ import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
 import srcCloudVideo from 'src/videos/vis-2.mp4';
 import styled from 'styled-components';
 import videoSrcHero from '../videos/vis-1.mp4';
-import videoSrcWiseVis from '../videos/vis-2.mp4';
+import videoSrcWiseVis from '../videos/vis-borregas.mp4';
 
 const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   <BackgroundVideo

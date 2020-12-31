@@ -299,7 +299,7 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   return (
     <Box {...rest}>
       <Grid container spacing={2} alignItems='center' direction={flip ? 'row-reverse' : 'row'}>
-        <Grid item xs={12} md={columnsForImage} style={{ overflow: 'hidden', height: 688 }}>
+        <Grid item xs={12} md={columnsForImage} style={{ overflow: 'hidden', height: 570 }}>
           <Box position='relative' height={1} overflow='hidden'>
             <VisualizationFrame
               poster={src}
