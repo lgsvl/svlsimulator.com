@@ -109,6 +109,21 @@ pre {
   font-display:swap
 }
 
+/* BEGIN CUSTOMIZATION */
+
+/*
+COLORS:
+accent / crimson:          #D71345
+accent / paradisePink:     #ED3866
+accent / lightCrimson:     #F16689
+accent / amaranthPink:     #F69BB2
+neutrals / azureishWhite:  #E2E8F4
+neutrals / lightSteelBlue: #B6C5E4
+neutrals / slateGrey:      #6D7B97
+neutrals / yankeesBlue:    #1F2940
+neutrals / eerieBlack:     #141B2D
+*/
+
 body {
   margin: 0;
   background-color: #141B2D;
@@ -117,27 +132,73 @@ body {
 }
 
 
-.wy-side-nav-search, .wy-nav-content-wrap, .wy-nav-content, nav.stickynav, .wy-menu-vertical ul, .wy-menu-vertical li.on a, .wy-menu-vertical li.current>a, .rst-versions .rst-current-version {
+.wy-side-nav-search,
+.wy-nav-content-wrap,
+/* .wy-menu-vertical ul,
+.wy-menu-vertical li.on a,
+.wy-menu-vertical li.current>a, */
+.rst-versions .rst-current-version {
   color: #FFFFFF;
   background-color: #141B2D;
 }
+.wy-body-for-nav {
+  background-color: #1F2940;
+  background-image: none;
+}
+.wy-nav-side {
+  background-color: rgba(255,255,255,0.03);
+}
+.wy-menu-vertical li.current {
+  background-color: rgba(255,255,255,0.03);
+}
+.wy-nav-content {
+  background-color: #1F2940;
+}
+/* Menu section titles */
+.wy-menu-vertical span {
+  color: #B6C5E4;
+}
+/* Menu item links */
+.wy-menu-vertical li ul li a {
+  color: #E2E8F4;
+}
+/* Menu item links:hover */
+.wy-menu-vertical a:hover,
+.wy-menu-vertical li.current a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+/* Menu item links (current section) */
+.wy-menu-vertical li.current a {
+	color: white;
+	border-right-color: #D71345;
+}
+/* Menu section title (current section) */
+.wy-menu-vertical li.on a,
+.wy-menu-vertical li.current>a {
+  color: #D71345
+}
+.wy-menu-vertical li.on a:hover,
+.wy-menu-vertical li.current>a:hover {
+  background-color: #fcfcfc;
+}
 
 a, a:visited, a:hover, a:focus, a:active {
-  color: #ED3866;
+  color: #B6C5E4;
 }
 
 code {
-  background-color: #1F2940;
-  color: #B6C5E4;
+  background-color: rgb(255 255 255 / 5%) !important; /* Override the runtime styler */
+	color: #B6C5E4 !important; /* Override the runtime styler */
   border-width: 0px;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 
-.wy-menu-vertical li.current {
-  background-color: #1F2940;
-}
-
-.btn-neutral, .btn-neutral:visited, .btn-neutral:hover, .btn-neutral:focus, .btn-neutral:active, input {
+.btn-neutral,
+.btn-neutral:visited,
+.btn-neutral:hover,
+.btn-neutral:focus,
+.btn-neutral:active,
+input {
   color: #FFFFFF !important;
   border: 1px solid rgba(237, 56, 102, 0.5);
   border-color: #FFFFFF;
@@ -152,6 +213,46 @@ code {
   border-radius: 8px;
   text-transform: none;
 }
+
+/* Scroll bar frame */
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece,
+*::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #6D7B97;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-resizer,
+*::-webkit-resizer {
+  border-radius: 3px;
+  background-color: #ED3866;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+/* END CUSTOMIZATION */
 
 /* Copied from Gatsby build */
 
