@@ -26,6 +26,7 @@ const Copyright = withTheme(styled(Typography)`
 const StyledLink = withTheme(styled(Link)`
   display: block;
   color: inherit;
+  cursor: pointer;
 `);
 
 const TypoWrapper: MapFunction<string> = (str, i) => (
