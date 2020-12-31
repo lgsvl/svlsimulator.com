@@ -1,10 +1,10 @@
-import { withTheme } from '@material-ui/core';
+import { useTheme, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
-import { LinkButton, RequestDemoButton } from 'src/components/Button';
+import { LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
@@ -22,6 +22,7 @@ import srcCloudVideo from 'src/videos/vis-2.mp4';
 import styled from 'styled-components';
 import videoSrcHero from '../videos/vis-1.mp4';
 import videoSrcWiseVis from '../videos/vis-borregas.mp4';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   <BackgroundVideo
@@ -52,6 +53,9 @@ const brandIconProps = { color: '#6D7B97', height: 40, width: '100%' };
 
 export default function Home() {
   const { t, tMap } = useTranslation();
+  const theme = useTheme();
+  const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <Page>
       <PageSection>
@@ -118,38 +122,36 @@ export default function Home() {
 
       <Box my={15}>
         <PageSection>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
+          <LayoutGrid xs={1} sm={3} spacing={3}>
+            <Box>
               <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
-              <SectionContent
-                title={t('home.features.0.title')}
-                buttonText='readMore'
-                buttonProps={{ to: '/product/simulation/', title: t('home.features.0.title') }}
-              >
-                {t('home.features.0.body')}
-              </SectionContent>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+              <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
+            </Box>
+            <Box order={isXs ? null : 4}>
+              {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
+               * We've specifically broken the button out into its own grid element box, so it can be
+               * assigned a custom order based on the screen size. When the screen is sm or larger,
+               * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
+               * on the second row, so they all vertically line up. `4` used below just represents a
+               * number, greater than 3. When order number is the same, DOM order is used.
+               */}
+              <ReadMoreButton to='/product/simulation/' />
+            </Box>
+            <Box>
               <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
-              <SectionContent
-                title={t('home.features.1.title')}
-                buttonText='readMore'
-                buttonProps={{ to: '/product/cloud/', title: t('home.features.1.title') }}
-              >
-                {t('home.features.1.body')}
-              </SectionContent>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+              <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
+            </Box>
+            <Box order={isXs ? null : 4}>
+              <ReadMoreButton to='/product/cloud/' />
+            </Box>
+            <Box>
               <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
-              <SectionContent
-                title={t('home.features.2.title')}
-                buttonText='readMore'
-                buttonProps={{ to: '/product/digitaltwin/', title: t('home.features.2.title') }}
-              >
-                {t('home.features.2.body')}
-              </SectionContent>
-            </Grid>
-          </Grid>
+              <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
+            </Box>
+            <Box order={isXs ? null : 4}>
+              <ReadMoreButton to='/product/digitaltwin/' />
+            </Box>
+          </LayoutGrid>
         </PageSection>
       </Box>
 
