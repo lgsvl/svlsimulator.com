@@ -2,11 +2,12 @@ import { useTheme, withTheme } from '@material-ui/core';
 import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
-import { IconApollo, IconBaidu, IconUnity, IconVelodyne } from 'src/components/Icons';
+import { IconApollo, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
@@ -17,12 +18,10 @@ import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
 import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
-import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
-import srcCloudVideo from 'src/videos/vis-2.mp4';
+import videoSrcLidar from 'src/videos/lidar.mp4';
+import videoSrcHero from 'src/videos/vis-1.mp4';
+import videoSrcWiseVis from 'src/videos/vis-borregas.mp4';
 import styled from 'styled-components';
-import videoSrcHero from '../videos/vis-1.mp4';
-import videoSrcWiseVis from '../videos/vis-borregas.mp4';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   <BackgroundVideo
@@ -124,7 +123,7 @@ export default function Home() {
         <PageSection>
           <LayoutGrid xs={1} sm={3} spacing={3}>
             <Box>
-              <SmallVideo poster={srcSimulationPoster} src={srcSimulationVideo} />
+              <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
               <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
             </Box>
             <Box order={isXs ? null : 4}>
@@ -138,7 +137,7 @@ export default function Home() {
               <ReadMoreButton to='/product/simulation/' />
             </Box>
             <Box>
-              <SmallVideo poster={srcCloudPoster} src={srcCloudVideo} />
+              <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
               <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
             </Box>
             <Box order={isXs ? null : 4}>
