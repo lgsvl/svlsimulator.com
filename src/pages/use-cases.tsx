@@ -13,6 +13,7 @@ import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcAcademics from 'src/images/academics.jpg';
 import srcCloudPoster from 'src/images/cloud-simulation.jpg';
+import srcObjectDetection from 'src/images/object-detection.png';
 import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
 // import srcUseCases from 'src/images/borregas-after-rain-1.png';
 import srcUseCases from 'src/images/environment-grid.png';
@@ -63,11 +64,11 @@ export default function UseCases() {
         {tMap('usecases.section1.body', TypoWrapper)}
       </Section>
 
-      <Section title={t('usecases.section2.title')} src={srcAcademics}>
+      <Section title={t('usecases.section2.title')} src={srcObjectDetection}>
         {tMap('usecases.section2.body', TypoWrapper)}
       </Section>
 
-      <Section flip title={t('usecases.section3.title')} src={srcRobotics}>
+      <Section flip title={t('usecases.section3.title')} src={srcAcademics}>
         {tMap('usecases.section3.body', TypoWrapper)}
       </Section>
 
