@@ -38,6 +38,8 @@ module.exports = {
     '/**/.cache/*',
     '/**/public/',
     '/**/public/*',
+    '/**/static/',
+    '/**/static/*',
     '/graphql-types.ts'
   ],
   settings: {

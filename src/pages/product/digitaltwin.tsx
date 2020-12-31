@@ -9,7 +9,10 @@ import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcDigitalTwinFull from 'src/images/digital-twin-full-environment.jpg';
 import srcDigitalTwinLite from 'src/images/digital-twin-lite-environment.jpg';
-import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
+import srcTwinImg1 from 'src/images/digital-twin.jpg';
+import srcTwinImg2 from 'src/images/digitaltwin2.png';
+import srcTwinImg3 from 'src/images/digitaltwin3.png';
+import srcTwinImg4 from 'src/images/digitaltwin4.png';
 import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
 
 const TypoWrapper: MapFunction<string> = (str, i) => (
@@ -24,40 +27,27 @@ export default function DigitalTwin() {
     <Page title={t('digitaltwin.title')}>
       <Section
         buttonText='getDemo'
-        src={srcDigitalTwinPoster}
-        video={srcDigitalTwinVideo}
+        contained
+        src={srcTwinImg1}
         title={t('digitaltwin.title')}
         tuckImage
         variant='h3'
+        video={srcDigitalTwinVideo}
       >
-        {tMap('digitaltwin.body', TypoWrapper)}
+        {t('digitaltwin.body')}
       </Section>
 
-      <PageSection>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <FullWidthSection title={t('digitaltwin.section1.title')} src={srcDigitalTwinFull}>
-              {tMap('digitaltwin.section1.body', TypoWrapper)}
-            </FullWidthSection>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <FullWidthSection title={t('digitaltwin.section2.title')} src={srcDigitalTwinLite}>
-              {tMap('digitaltwin.section2.body', TypoWrapper)}
-            </FullWidthSection>
-          </Grid>
-        </Grid>
-      </PageSection>
+      <Section imageColumns={7} flip src={srcTwinImg2}>
+        {t('digitaltwin.section1.body')}
+      </Section>
 
-      <PageSectionFullWidth>
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <CloudPreviewBox />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <SimulationPreviewBox />
-          </Grid>
-        </Grid>
-      </PageSectionFullWidth>
+      <Section imageColumns={7} src={srcTwinImg3}>
+        {t('digitaltwin.section2.body')}
+      </Section>
+
+      <Section imageColumns={7} flip src={srcTwinImg4}>
+        {t('digitaltwin.section3.body')}
+      </Section>
 
       <SubscribeBox />
     </Page>

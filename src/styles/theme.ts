@@ -110,6 +110,12 @@ const theme = createMuiTheme({
     //     color: palette.secondary.dark
     //   }
     // },
+    MuiMenuItem: {
+      root: {
+        color: palette.text.primary,
+        fontSize: 16
+      }
+    },
     MuiOutlinedInput: {
       root: {
         backgroundColor: palette.background.paper,

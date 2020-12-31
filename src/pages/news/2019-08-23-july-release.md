@@ -2,12 +2,12 @@
 date: 2019-08-22
 title: Announcing LGSVL Simulator 2019.07 Release
 author: Brian Shin
-preview: The LGSVL Simulator 2019.07 release is now available for download on our Github.
+preview: The LGSVL Simulator 2019.07 release is now available for download on our GitHub.
 category: announcement
 featuredImage: images/2019-08-22-apollo-sim-02.png
 ---
 
-We are excited to announce that the [2019.07](https://github.com/lgsvl/simulator/releases/latest) release of LGSVL Simulator is now available for download on our Github. Below are some of the big features we want to highlight. You can see a full list in our [release notes](https://www.lgsvlsimulator.com/docs/changelog/).
+We are excited to announce that the [2019.07](https://github.com/lgsvl/simulator/releases/latest) release of LGSVL Simulator is now available for download on our GitHub. Below are some of the big features we want to highlight. You can see a full list in our [release notes](https://www.lgsvlsimulator.com/docs/changelog/).
 
 ### Incorporating Unity's High Definition Render Pipeline
 
@@ -63,4 +63,4 @@ We now guarantee deterministic physics simulation. This means that all physics, 
 
 You can now run simulations faster than realtime using our updated Python API. By specifying a frame rate, you can allow the simulation machine to run faster than realtime - this can be useful for applications such as machine learning training. [Read more about it](https://www.lgsvlsimulator.com/docs/python-api/#non-realtime-simulation).
 
-What do you think of the new LGSVL Simulator? Please give us your feedback by submitting a Github issue, or email us at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com).
+What do you think of the new LGSVL Simulator? Please give us your feedback by submitting a GitHub issue, or email us at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com).

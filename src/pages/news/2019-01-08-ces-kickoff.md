@@ -16,7 +16,7 @@ LG Electronics' Advanced Platform Lab from the America R&D Center will be showca
 
 Here are some relevant links to the projects in our demo:
 
-- [Simulator Github](https://github.com/lgsvl/simulator)
+- [Simulator GitHub](https://github.com/lgsvl/simulator)
 
 - [webOS OSE website](http://webosose.org/)
 

@@ -1,42 +1,42 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
+// import Collapse from '@material-ui/core/Collapse';
 import Grid, { GridProps } from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
-import Paper, { PaperProps } from '@material-ui/core/Paper';
-import Snackbar from '@material-ui/core/Snackbar';
+// import Paper, { PaperProps } from '@material-ui/core/Paper';
+// import Snackbar from '@material-ui/core/Snackbar';
 import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { useFormik } from 'formik';
 import React from 'react';
 import BackgroundVideo from 'src/components/BackgroundVideo';
-import GridBox from 'src/components/GridBox';
+// import GridBox from 'src/components/GridBox';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import Button, { ButtonProps } from './Button';
-import { IconX } from './Icons';
+// import { IconX } from './Icons';
 import { PageSectionFullWidth } from './Page';
 
 const FullHeightGrid = withTheme(styled(Grid)`
   height: 100%;
 `) as React.FC<GridProps>;
 
-type FadingPaperProps = PaperProps & {
-  showBackground?: boolean;
-};
-const FadingPaper: React.FC<FadingPaperProps> = ({ showBackground, ...rest }) => <Paper {...rest} />;
-const StyledPaper = withTheme(styled(FadingPaper)`
-  ${({ theme, showBackground }) => `
-  background-color: ${showBackground ? theme.palette.background.paper : 'transparent'};
-  transition: ${theme.transitions.create('background-color', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen
-  })};
-`}
-`) as React.FC<FadingPaperProps>;
+// type FadingPaperProps = PaperProps & {
+//   showBackground?: boolean;
+// };
+// const FadingPaper: React.FC<FadingPaperProps> = ({ showBackground, ...rest }) => <Paper {...rest} />;
+// const StyledPaper = withTheme(styled(FadingPaper)`
+//   ${({ theme, showBackground }) => `
+//   background-color: ${showBackground ? theme.palette.background.paper : 'transparent'};
+//   transition: ${theme.transitions.create('background-color', {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.enteringScreen
+//   })};
+// `}
+// `) as React.FC<FadingPaperProps>;
 
 const StyledInput = withTheme(styled(Input)`
   & .MuiOutlinedInput-adornedEnd {
@@ -61,24 +61,24 @@ const TransitioningButton = withTheme(styled(Button)`
 
 const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
   const { t } = useTranslation();
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  // const [snackbarOpen, setSnackbarOpen] = React.useState(false);
 
-  const handleSnackbarClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setSnackbarOpen(false);
-  };
+  // const handleSnackbarClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+  //   setSnackbarOpen(false);
+  // };
 
-  const handleSimpleSubmit = () => {
-    setSnackbarOpen(true);
-  };
+  // const handleSimpleSubmit = () => {
+  //   setSnackbarOpen(true);
+  // };
 
   const { handleChange, handleBlur, isSubmitting, setSubmitting, values, touched, errors, dirty, isValid } = useFormik({
     initialValues: {
       b_226621ee7c79910b83d6c77b8_c9a899ac03: '', // Simple bot protection honeypot field
-      GIVENNAME: '',
-      FAMILYNAME: '',
+      // GIVENNAME: '',
+      // FAMILYNAME: '',
       EMAIL: ''
       // organization: '',
       // title: '',
@@ -89,7 +89,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
       EMAIL: yup.string().email(t('requestdemo.validate.email')).required(t('requestdemo.required.email'))
     }),
     onSubmit: data => {
-      console.log('onSubmit data:', data);
+      // console.log('onSubmit data:', data);
       setSubmitting(false);
     }
   });
@@ -119,48 +119,48 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
               <Typography variant='h3' gutterBottom>
                 {t('main.subscribe.title')}
               </Typography>
-              <StyledPaper elevation={0} showBackground={submitVisible}>
-                <form
-                  noValidate
-                  onSubmit={handleSimpleSubmit}
-                  action='https://lgsvlsimulator.us20.list-manage.com/subscribe/post?u=226621ee7c79910b83d6c77b8&amp;id=c9a899ac03'
-                  method='post'
-                  target='submissionIframe'
-                >
-                  <Box position='absolute' left={-5000} aria-hidden='true'>
-                    <Input name='b_226621ee7c79910b83d6c77b8_c9a899ac03' tabIndex={-1} defaultValue='' />
-                  </Box>
-                  <Box p={1} pt={2}>
-                    <StyledInput
-                      {...commonTextInputProps}
-                      required
-                      name='EMAIL'
-                      id='subscribeEmailAddress'
-                      label={t('main.subscribe.emailPlaceholder')}
-                      placeholder={t('main.subscribe.emailPlaceholder')}
-                      error={touched.EMAIL && Boolean(errors.EMAIL)}
-                      helperText={touched.EMAIL && errors.EMAIL}
-                      value={values.EMAIL}
-                      InputProps={{
-                        endAdornment: (
-                          <StyledInputAdornment position='end'>
-                            <TransitioningButton
-                              style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : undefined}
-                              aria-label='submit subscription'
-                              variant='contained'
-                              size='medium'
-                              color='primary'
-                              disabled={isSubmitting || !(isValid && dirty)}
-                              type='submit'
-                            >
-                              {t('main.subscribe.submitButton')}
-                            </TransitioningButton>
-                          </StyledInputAdornment>
-                        )
-                      }}
-                    />
-                  </Box>
-                  <Box px={1} mt={1}>
+              {/* <StyledPaper elevation={0} showBackground={submitVisible}> */}
+              <form
+                noValidate
+                // onSubmit={handleSimpleSubmit}
+                action='https://lgsvlsimulator.us20.list-manage.com/subscribe/post?u=226621ee7c79910b83d6c77b8&amp;id=c9a899ac03'
+                method='post'
+                target='_blank'
+              >
+                <Box position='absolute' left={-5000} aria-hidden='true'>
+                  <Input name='b_226621ee7c79910b83d6c77b8_c9a899ac03' tabIndex={-1} defaultValue='' />
+                </Box>
+                {/* <Box p={1} pt={2}> */}
+                <StyledInput
+                  {...commonTextInputProps}
+                  required
+                  name='EMAIL'
+                  id='subscribeEmailAddress'
+                  label={t('main.subscribe.emailPlaceholder')}
+                  placeholder={t('main.subscribe.emailPlaceholder')}
+                  error={touched.EMAIL && Boolean(errors.EMAIL)}
+                  helperText={touched.EMAIL && errors.EMAIL}
+                  value={values.EMAIL}
+                  InputProps={{
+                    endAdornment: (
+                      <StyledInputAdornment position='end'>
+                        <TransitioningButton
+                          style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : undefined}
+                          aria-label='submit subscription'
+                          variant='contained'
+                          size='medium'
+                          color='primary'
+                          disabled={isSubmitting || !(isValid && dirty)}
+                          type='submit'
+                        >
+                          {t('main.subscribe.submitButton')}
+                        </TransitioningButton>
+                      </StyledInputAdornment>
+                    )
+                  }}
+                />
+                {/* </Box> */}
+                {/* <Box px={1} mt={1}>
                     <Collapse in={submitVisible} timeout='auto' unmountOnExit>
                       <Grid container spacing={2} justify='space-between'>
                         <GridBox item xs={12} sm={6} mb={1}>
@@ -191,14 +191,14 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
                         </GridBox>
                       </Grid>
                     </Collapse>
-                  </Box>
-                </form>
-              </StyledPaper>
+                  </Box> */}
+              </form>
+              {/* </StyledPaper> */}
             </Grid>
           </FullHeightGrid>
         </Box>
       </Box>
-      <Snackbar
+      {/* <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right'
@@ -214,7 +214,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
             </IconButton>
           </React.Fragment>
         }
-      />
+      /> */}
     </PageSectionFullWidth>
   );
 };
