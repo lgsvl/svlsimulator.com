@@ -9,29 +9,26 @@ import {
   withTheme
 } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
-import Grid from '@material-ui/core/Grid';
+// import Collapse from '@material-ui/core/Collapse';
+// import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
+// import IconButton from '@material-ui/core/IconButton';
+// import List from '@material-ui/core/List';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
-import Center from 'src/components/Center';
-import DocumentBox from 'src/components/DocumentBox';
-import { IconCheck, IconChevronDown, IconChevronUp, IconPartial, IconX } from 'src/components/Icons';
-import Li, { LiText } from 'src/components/Li';
 import LinkButton from 'src/components/Button/LinkButton';
-import Page, { PageSection, PageSectionFullWidth } from 'src/components/Page';
-import { CloudPreviewBox, DigitalTwinPreviewBox } from 'src/components/PagePreviewBox';
+import { IconCheck, IconPartial, IconX } from 'src/components/Icons';
+import Li, { LiText } from 'src/components/Li';
+import Page, { PageSection } from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
-import srcSimulationVideo from 'src/videos/simulation-platform.mp4';
+import videoSrcLidar from 'src/videos/lidar.mp4';
 import styled from 'styled-components';
 
 const ListItemWrapper: MapFunction = (str, i) => (
@@ -97,6 +94,7 @@ const No = ({ height = 32, width = 32, ...rest }: FeatureMark) => {
 };
 
 enum SupportLevel {
+  None,
   Unsupported,
   Partial,
   Supported
@@ -111,9 +109,10 @@ const SupportIcon = ({ level, ...rest }: SupportIconProps) => {
     return <Yes {...rest} />;
   } else if (level === SupportLevel.Partial) {
     return <Partial {...rest} />;
-  } else {
+  } else if (level === SupportLevel.Unsupported) {
     return <No {...rest} />;
   }
+  return null;
 };
 
 type RowType = {
@@ -145,66 +144,86 @@ const buildRow: BuildRow = function (name, free, premium, subFeatures): FeatureR
 };
 
 const rows: FeatureRow[] = [
-  buildRow('0.name', SupportLevel.Supported, SupportLevel.Supported, [
+  buildRow('0.name', SupportLevel.None, SupportLevel.None, [
     buildRow('0.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.3', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.4', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('0.subFeatures.5', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.6', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.7', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.8', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.9', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.10', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.11', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.12', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.13', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.14', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('0.subFeatures.15', SupportLevel.Supported, SupportLevel.Supported)
+    buildRow('0.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
   ]),
-  buildRow('1.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('1.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('1.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('1.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+  buildRow('1.name', SupportLevel.None, SupportLevel.None, [
+    buildRow('1.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('1.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
+    buildRow('1.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
     buildRow('1.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
     buildRow('1.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
-  ]),
-  buildRow('2.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('2.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('2.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported)
-  ]),
-  buildRow('3.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('3.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('3.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
-  ]),
-  buildRow('4.name', SupportLevel.Partial, SupportLevel.Partial, [
-    buildRow('4.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
-    buildRow('4.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('4.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('4.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Unsupported)
-  ]),
-  buildRow('5.name', SupportLevel.Unsupported, SupportLevel.Supported, [
-    buildRow('5.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
-    buildRow('5.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
+    buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
+    buildRow('1.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
   ])
 ];
+// const rows: FeatureRow[] = [
+//   buildRow('0.name', SupportLevel.Supported, SupportLevel.Supported, [
+//     buildRow('0.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.1', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.2', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.3', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.4', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.5', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.6', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.7', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.8', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.9', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.10', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.11', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.12', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.13', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.14', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('0.subFeatures.15', SupportLevel.Supported, SupportLevel.Supported)
+//   ]),
+//   buildRow('1.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('1.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('1.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ]),
+//   buildRow('2.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('2.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('2.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ]),
+//   buildRow('3.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('3.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('3.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ]),
+//   buildRow('4.name', SupportLevel.Partial, SupportLevel.Partial, [
+//     buildRow('4.subFeatures.0', SupportLevel.Supported, SupportLevel.Supported),
+//     buildRow('4.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('4.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('4.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Unsupported)
+//   ]),
+//   buildRow('5.name', SupportLevel.Unsupported, SupportLevel.Supported, [
+//     buildRow('5.subFeatures.0', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.1', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.2', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.3', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.4', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.5', SupportLevel.Unsupported, SupportLevel.Supported),
+//     buildRow('5.subFeatures.6', SupportLevel.Unsupported, SupportLevel.Supported)
+//   ])
+// ];
 
 function Row({ row, index }: { row: FeatureRow; index: number }) {
-  const [open, setOpen] = React.useState(index === 0);
+  // const [open, setOpen] = React.useState(index === 0);
   const { t } = useTranslation();
   const firstRow = index === 0;
 
@@ -214,9 +233,9 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
         <FeatureCell noBorder={firstRow}>
           <Typography>
             {t(row.name)}
-            <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
+            {/* <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
               {open ? <IconChevronUp title='collapse feature list' /> : <IconChevronDown title='expand feature list' />}
-            </IconButton>
+            </IconButton> */}
           </Typography>
         </FeatureCell>
         <StyledTableCell noBorder={firstRow}>
@@ -229,27 +248,27 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
       {row.subFeatures && row.subFeatures.length ? (
         <TableRow>
           <StyledSubTableCell padding='none' colSpan={3}>
-            <Collapse in={open} timeout='auto' unmountOnExit>
-              <Table size='small' aria-label='sub-features'>
-                <TableBody>
-                  {row.subFeatures.map(subFeature => (
-                    <TableRow key={subFeature.name}>
-                      <SubFeatureCell>
-                        <Box ml={2}>
-                          <Typography variant='body2'>{t(subFeature.name)}</Typography>
-                        </Box>
-                      </SubFeatureCell>
-                      <StyledSubTableCell>
-                        <SupportIcon level={subFeature.free} height={24} width={24} />
-                      </StyledSubTableCell>
-                      <StyledSubTableCell>
-                        <SupportIcon level={subFeature.premium} height={24} width={24} />
-                      </StyledSubTableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Collapse>
+            {/* <Collapse in={open} timeout='auto' unmountOnExit> */}
+            <Table size='small' aria-label='sub-features'>
+              <TableBody>
+                {row.subFeatures.map(subFeature => (
+                  <TableRow key={subFeature.name}>
+                    <SubFeatureCell>
+                      <Box ml={2}>
+                        <Typography variant='body2'>{t(subFeature.name)}</Typography>
+                      </Box>
+                    </SubFeatureCell>
+                    <StyledSubTableCell>
+                      <SupportIcon level={subFeature.free} height={24} width={24} />
+                    </StyledSubTableCell>
+                    <StyledSubTableCell>
+                      <SupportIcon level={subFeature.premium} height={24} width={24} />
+                    </StyledSubTableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            {/* </Collapse> */}
           </StyledSubTableCell>
         </TableRow>
       ) : null}
@@ -263,20 +282,21 @@ export default function Simulation() {
     <Page title={t('simulation.title')}>
       <Section
         buttonText='getDemo'
+        contained
         src={srcSimulationPoster}
-        video={srcSimulationVideo}
         title={t('simulation.title')}
         tuckImage
         variant='h3'
+        video={videoSrcLidar}
       >
         {t('simulation.body')}
       </Section>
 
-      <Section title={t('simulation.section1.title')} flip src={srcExtensible}>
+      <Section title={t('simulation.section1.title')} imageColumns={7} flip src={srcExtensible}>
         {t('simulation.section1.body')}
       </Section>
 
-      <Section title={t('simulation.section2.title')} src={srcTools}>
+      <Section title={t('simulation.section2.title')} imageColumns={7} src={srcTools}>
         {t('simulation.section2.body')}
       </Section>
 
@@ -323,16 +343,7 @@ export default function Simulation() {
         </StyledTable>
       </PageSection>
 
-      <PageSection>
-        <DocumentBox
-          title={t('main.links.documentationLong')}
-          label={t('main.documentTypes.documentation')}
-          buttonText={t('main.buttons.view')}
-          to='https://www.lgsvlsimulator.com/docs/'
-        />
-      </PageSection>
-
-      <PageSectionFullWidth>
+      {/* <PageSectionFullWidth>
         <Grid container>
           <Grid item xs={12} sm={6}>
             <CloudPreviewBox />
@@ -341,7 +352,7 @@ export default function Simulation() {
             <DigitalTwinPreviewBox />
           </Grid>
         </Grid>
-      </PageSectionFullWidth>
+      </PageSectionFullWidth> */}
 
       <SubscribeBox />
     </Page>

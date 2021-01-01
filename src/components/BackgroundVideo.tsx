@@ -28,7 +28,6 @@ const StyledVideo = withTheme(styled.video`
   height: 100%;
   width: 100%;
   position: absolute;
-  z-index: -1;
   ${cssVideoFilter};
 `) as React.FC<Partial<VideoProps>>;
 
@@ -85,6 +84,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
   src,
   poster,
   type = 'video/mp4',
+  zIndex = -1,
   ...rest
 }) => {
   const { t } = useTranslation();
@@ -113,7 +113,15 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
   const tooltipLabel = useMemo(() => (allPaused ? t('main.video.play') : t('main.video.pause')), [allPaused, t]);
 
   return (
-    <Box height={1} width={1} position='relative' overflow='hidden' {...rest} onClick={handlePlayPauseAll}>
+    <Box
+      height={1}
+      width={1}
+      position='relative'
+      overflow='hidden'
+      minHeight={300}
+      {...rest}
+      onClick={handlePlayPauseAll}
+    >
       <StyledVideo
         controls={false}
         loop
@@ -121,7 +129,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         muted
         poster={poster || ''}
         ref={videoRef}
-        style={{ objectFit: fit }}
+        style={{ objectFit: fit, zIndex }}
       >
         <source src={src} type={type} />
         {children}

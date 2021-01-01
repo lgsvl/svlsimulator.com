@@ -10,7 +10,7 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
@@ -18,10 +18,11 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
 import { LinkButton, LinkButtonProps, RequestDemoButton } from './Button';
-import { IconLGSVLSimulator, IconLogin, IconMenu, IconX } from './Icons';
+import { IconLGSVLSimulator, IconMenu, IconX } from './Icons';
 import Link from './Link';
 
 const buttonColors = css`
@@ -207,28 +208,20 @@ const DesktopMenu = () => {
           </Grid>
           <Grid item xs={3} sm='auto'>
             <DropdownMenu title={t('usecases.navTitle')} alia-label='Open Use cases List Menu' to='/use-cases/'>
-              <MenuItem
-                component={Link}
-                to='/use-cases/#future-mobility-solutions'
-                alia-label='Go to Future Mobility Solutions use-case page'
-              >
+              <MenuItem component={Link} to='/use-cases/#automotive' alia-label='Go to Automotive use-case page'>
                 {t('usecases.section1.title')}
               </MenuItem>
               <MenuItem component={Link} to='/use-cases/#robotics' alia-label='Go to Robotics use-case page'>
                 {t('usecases.section2.title')}
               </MenuItem>
-              <MenuItem component={Link} to='/use-cases/#academics' alia-label='Go to Academics use-case page'>
+              <MenuItem component={Link} to='/use-cases/#academia' alia-label='Go to Academia use-case page'>
                 {t('usecases.section3.title')}
               </MenuItem>
             </DropdownMenu>
           </Grid>
           <Grid item xs={3} sm='auto'>
-            <DropdownMenu
-              title={t('main.header.forDevelopers')}
-              alia-label='Open Developer Information Menu'
-              to='/use-cases/'
-            >
-              <MenuItem component={Link} to='/docs/' alia-label='Go to developer documentation page'>
+            <DropdownMenu title={t('main.header.forDevelopers')} alia-label='Open Developer Information Menu'>
+              <MenuItem component={Link} to='/docs/' target='_blank' alia-label='Go to developer documentation page'>
                 {t('main.links.documentation')}
               </MenuItem>
               <MenuItem component={Link} to='https://github.com/lgsvl/simulator' alia-label='Go to our GitHub page'>
@@ -248,15 +241,15 @@ const DesktopMenu = () => {
           </Grid>
           <Grid item xs={3} sm='auto'>
             <StyledLinkButton color='secondary' fullWidth to='/about/' alia-label='Go to About page'>
-              {t('about.navTitle')}
+              {t('main.header.about')}
             </StyledLinkButton>
           </Grid>
         </Grid>
       </Grid>
       <Grid item>
         {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
-        <StyledRequestDemoButton variant='text' color='secondary' fullWidth>
-          {t('main.buttons.contactUs')}
+        <StyledRequestDemoButton color='secondary' variant='outlined' fullWidth mode={RequestDemoFormMode.ContactUs}>
+          {t('main.header.contactUs')}
         </StyledRequestDemoButton>
         {/* <Box width={180} /> */}
         {/* <StyledLinkButton
@@ -311,17 +304,20 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/product/digitaltwin/'>
             <ListItemText primary={t('digitaltwin.navTitle')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/'>
-            <ListItemText primary={t('uc1')} />
+          <ListItem button component={Link} to='/use-cases/#automotive'>
+            <ListItemText primary={t('usecases.section1.title')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/'>
-            <ListItemText primary={t('uc2')} />
+          <ListItem button component={Link} to='/use-cases/#robotics'>
+            <ListItemText primary={t('usecases.section2.title')} />
           </ListItem>
-          <ListItem button component={Link} to='/use-cases/'>
-            <ListItemText primary={t('uc3')} />
+          <ListItem button component={Link} to='/use-cases/#academia'>
+            <ListItemText primary={t('usecases.section3.title')} />
           </ListItem>
-          <ListItem button component={Link} to='/docs/'>
-            <ListItemText primary={t('main.header.forDevelopers')} />
+          <ListItem button component={Link} to='/docs/' target='_blank'>
+            <ListItemText primary={t('main.links.documentation')} />
+          </ListItem>
+          <ListItem button component={Link} to='https://github.com/lgsvl/simulator'>
+            <ListItemText primary={t('main.links.github')} />
           </ListItem>
           <ListItem button component={Link} to='/news/'>
             <ListItemText primary={t('news.navTitle')} />
@@ -329,7 +325,7 @@ const MobileMenu = () => {
           <ListItem button component={Link} to='/about/'>
             <ListItemText primary={t('about.navTitle')} />
           </ListItem>
-          <StyledRequestDemoButton variant='text' color='secondary' fullWidth>
+          <StyledRequestDemoButton variant='text' color='secondary' fullWidth mode={RequestDemoFormMode.ContactUs}>
             {t('main.buttons.contactUs')}
           </StyledRequestDemoButton>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}

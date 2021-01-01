@@ -3,7 +3,7 @@
     "buttons": {
       "getDemo": "Request Demo",
       "getStarted": "Get Started",
-      "contactUs": "Contact Us",
+      "contactUs": "Contact us",
       "readMore": "Read More",
       "readNews": "Read",
       "download": "Download",
@@ -26,15 +26,21 @@
       "terms": "Terms",
       "policy": "Privacy Policy",
       "forDevelopers": "For Developers",
-      "social": "Social"
+      "about": "About Us",
+      "social": "Social",
+      "meetUs": "Meet the team",
+      "contactUs": "Contact us",
+      "content": "LGSVL Simulator Content"
     },
     "header": {
       "products": "Products",
       "forDevelopers": "For developers",
+      "about": "About us",
+      "contactUs": "Contact",
       "login": "Log in"
     },
     "links": {
-      "github": "Github",
+      "github": "GitHub",
       "documentation": "Documentation",
       "documentationLong": "LGSVL Simulator documentation",
       "requestDemo": "Request demo",
@@ -58,15 +64,15 @@
   "about": {
     "navTitle": "About",
     "title": "About",
-    "body": "The LGSVL simulator is developed by the Advanced Platform Lab at the LG Electronics America R&D Lab, formerly the LG Silicon Valley Lab",
+    "body": "LGSVL Simulator is built by LG Electronics America R&D Lab, a research center at LG Electronics headquartered in Santa Clara, California.",
     "details": [
-      "Our team consists of highly-qualified engineers and specialists, with years of experience from industries including Automotive, Computer, Consumer Electronics, Mobile Technology, Telecommunication, etc.",
-      "The simulator facilitates testing and development of autonomous driving software systems. It enables developers to simulate billions of miles and arbitrary edge case scenarios to speed up algorithm development and system integration.",
-      "We started developing the simulator by leveraging an open source strategy, which gives tremendous benefits of transparent simulation experience and easy for customization. We hope to grow our developer community to best serve the autonomous vehicle and robotics industries in accelerating the testing and validation of autonomous systems."
+      "We launched the first release of LGSVL Simulator as an open project to Github in November 2018 with the goal of enabling developers to build autonomous vehicles and robots through end-to-end, high performance 3D simulation. We have since built LGSVL Simulator into a commercial product helping automotive OEMs, robotics companies, and universities around the world.",
+      "Our team consists of highly-qualified engineers and specialists, with years of experience from industries including automotive, robotics, software, consumer electronics, and mobile technology.",
+      "We believe in simulation as the key to accelerating autonomous machine development. Our vision is to bring about a standardized simulation platform used in autonomous vehicle and robotics development, and believe open source is key to making this happen."
     ],
     "mission": {
       "title": "Our mission",
-      "body": "To bring Future Mobility powered by Autonomy into reality faster, safer and less costly."
+      "body": "To enable future mobility powered by autonomy"
     },
     "vision": {
       "title": "Our Vision",
@@ -75,17 +81,18 @@
   },
   "usecases": {
     "navTitle": "Use cases",
-    "title": "Build safer self-driving cars, autonomous machines, and robots for your industry with simulation in virtual environments with LGSVL Simulator",
+    "title": "A simulation platform for your application",
+    "body": "Build safer self-driving cars, autonomous machines, or robots for your industry with testing in virtual environments.",
     "section1": {
-      "title": "Future Mobility Solutions",
-      "body": "In addition to autonomous vehicles, use LGSVL Simulator to simulate and test future mobility services that interact with our world in new ways: delivery robots, robotaxis, ridesharing and personal mobility services. Simulate and test not just for software and system development but for fleet management, mobility service operations, fleet management, and infrastructure planning."
+      "title": "Automotive",
+      "body": "In addition to autonomous vehicles, use LGSVL Simulator to simulate and test future mobility services that interact with our world in new ways: delivery robots, robotaxis, ridesharing and personal mobility services. Simulate and test not just for software and system development but for fleet management, mobility service operations, and infrastructure planning."
     },
     "section2": {
       "title": "Robotics",
       "body": "Develop and test your indoor, outdoor, or multi-modal robots. Simulate an on-site deployment and how multi-robot interactions and environments will work. Iterate on your development in a safe manner before costly pilot deployments. Show your customers exactly how a deployment will work in their warehouse or factory before shipping any hardware."
     },
     "section3": {
-      "title": "Academics",
+      "title": "Academia",
       "body": "Generate synthetic data for machine learning training and research. Conduct research for every module of an autonomous vehicle, or for their integration and larger impacts. Security, safety, multi-robot interactions, and vehicle to infrastructure are just some of the research applications we see from our community."
     },
     "section1_old": {
@@ -107,7 +114,7 @@
       ]
     },
     "section4_old": {
-      "title": "Academics",
+      "title": "Academia",
       "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. LGSVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
     },
     "section5_old": {
@@ -120,8 +127,8 @@
     ]
   },
   "cloud": {
-    "navTitle": "Cloud Simulation",
-    "title": "Cloud Simulation",
+    "navTitle": "Cloud simulation",
+    "title": "Cloud simulation",
     "body": "Scale your testing pipeline easily by scheduling and running many simulations - use our cloud simulation service, or deploy on your own private cloud.",
     "section1": {
       "title": "Easily switch between debugging locally and running scaled test cycles using a web user interface",
@@ -190,7 +197,7 @@
   },
   "simulation": {
     "navTitle": "Simulation platform",
-    "title": "End-to-end simulation platform",
+    "title": "An end-to-end simulation platform",
     "body": "LGSVL Simulator is an autonomous vehicle simulator built to test and verify self-driving cars and robots, throughout the entire development lifecycle. Test your AV system end-to-end or by module, no matter where you are in your engineering cycle.",
     "section1": {
       "title": "Open source and extensible simulation engine",
@@ -204,7 +211,7 @@
       "products": [
         {
           "title": "Free",
-          "body": "Featuring open source version LGSVL Simulator for internal R&D use, not permitted for commercial deployment"
+          "body": "Open source version of LGSVL Simulator for internal R&D use, not permitted for commercial deployment"
         },
         {
           "title": "Premium",
@@ -217,74 +224,24 @@
           "name": "Basic simulation",
           "subFeatures": [
             "Local simulation",
-            "Deterministic simulation",
-            "Default content",
-            "ROS 1 support",
-            "ROS 2 support",
+            "Distributed simulation",
             "Baidu Apollo support",
             "Autoware.AI support",
             "Autoware.Auto support",
-            "Distributed simulation",
             "Python API",
-            "Enhanced set of available content",
-            "Documentation and video tutorials",
-            "Ground truth synthetic data generation",
-            "Optimized ROS2 bridge interface",
-            "Synchronous simulation",
-            "Access to core simulator engine source code"
+            "Commercial Use"
           ]
         },
         {
-          "name": "Simulation analysis",
+          "name": "Cloud Support",
           "subFeatures": [
-            "Test case reports",
-            "Event detection",
-            "Sensor visualization",
-            "Raw sensor data download",
-            "Simulation visual replay",
-            "Customizable KPI analysis"
-          ]
-        },
-        {
-          "name": "Cloud simulation",
-          "subFeatures": [
-            "On-premise cloud simulation solution",
-            "Public cloud simulation support",
-            "Test cycle support",
-            "Account and content management",
-            "Content sharing and team collaboration"
-          ]
-        },
-        {
-          "name": "Content creation/environment generation",
-          "subFeatures": [
-            "HD map annotation tool",
-            "HD map import/export tool",
-            "Point cloud map import",
-            "Environment creation",
-            "Vehicle model creation",
-            "Road network generation"
-          ]
-        },
-        {
-          "name": "Scenario generation",
-          "subFeatures": [
-            "Random traffic scenario generation",
-            "Visual scenario editor",
-            "SCENIC support",
-            "Resimulation from simulation"
-          ]
-        },
-        {
-          "name": "Plugins/Third Party support",
-          "subFeatures": [
-            "Sensor plugin system",
-            "Controllable plugin system",
-            "Bridge plugin system",
-            "Vehicle dynamics extensibility",
-            "Traffic behavior extensibility",
-            "FMI/FMU support",
-            "Cosimulation with IPG Carmaker"
+            "Default public content",
+            "Public content sharing",
+            "Test results",
+            "Cloud simulation",
+            "CI/CD integration",
+            "Team content sharing",
+            "Private cloud deployment"
           ]
         }
       ]

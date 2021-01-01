@@ -1,10 +1,10 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 // import Collapse from '@material-ui/core/Collapse';
 import Grid, { GridProps } from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 // import Paper, { PaperProps } from '@material-ui/core/Paper';
-import Snackbar from '@material-ui/core/Snackbar';
+// import Snackbar from '@material-ui/core/Snackbar';
 import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { useFormik } from 'formik';
@@ -13,11 +13,11 @@ import BackgroundVideo from 'src/components/BackgroundVideo';
 // import GridBox from 'src/components/GridBox';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
-import videoSrcSubscribe from 'src/videos/vis-1.mp4';
+import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import Button, { ButtonProps } from './Button';
-import { IconX } from './Icons';
+// import { IconX } from './Icons';
 import { PageSectionFullWidth } from './Page';
 
 const FullHeightGrid = withTheme(styled(Grid)`
@@ -61,18 +61,18 @@ const TransitioningButton = withTheme(styled(Button)`
 
 const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
   const { t } = useTranslation();
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  // const [snackbarOpen, setSnackbarOpen] = React.useState(false);
 
-  const handleSnackbarClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setSnackbarOpen(false);
-  };
+  // const handleSnackbarClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
+  //   if (reason === 'clickaway') {
+  //     return;
+  //   }
+  //   setSnackbarOpen(false);
+  // };
 
-  const handleSimpleSubmit = () => {
-    setSnackbarOpen(true);
-  };
+  // const handleSimpleSubmit = () => {
+  //   setSnackbarOpen(true);
+  // };
 
   const { handleChange, handleBlur, isSubmitting, setSubmitting, values, touched, errors, dirty, isValid } = useFormik({
     initialValues: {
@@ -122,10 +122,10 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
               {/* <StyledPaper elevation={0} showBackground={submitVisible}> */}
               <form
                 noValidate
-                onSubmit={handleSimpleSubmit}
+                // onSubmit={handleSimpleSubmit}
                 action='https://lgsvlsimulator.us20.list-manage.com/subscribe/post?u=226621ee7c79910b83d6c77b8&amp;id=c9a899ac03'
                 method='post'
-                target='submissionIframe'
+                target='_blank'
               >
                 <Box position='absolute' left={-5000} aria-hidden='true'>
                   <Input name='b_226621ee7c79910b83d6c77b8_c9a899ac03' tabIndex={-1} defaultValue='' />
@@ -198,7 +198,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
           </FullHeightGrid>
         </Box>
       </Box>
-      <Snackbar
+      {/* <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right'
@@ -214,7 +214,7 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
             </IconButton>
           </React.Fragment>
         }
-      />
+      /> */}
     </PageSectionFullWidth>
   );
 };

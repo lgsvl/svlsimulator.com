@@ -1,9 +1,10 @@
 import { withTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
+import Grid, { GridProps } from '@material-ui/core/Grid';
+// import Hidden from '@material-ui/core/Hidden';
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
@@ -12,15 +13,24 @@ import Page, { PageSection } from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcLgsvlLogo from 'src/images/about.jpg';
+import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
   position: relative;
-`);
+`) as React.FC<GridProps>;
+
+const StyledTypography = withTheme(styled(Typography)`
+  display: inline-block;
+
+  &.MuiTypography-gutterBottom {
+    margin-bottom: ${({ theme }) => px(theme.spacing(2))};
+  }
+`) as React.FC<TypographyProps>;
 
 const HeadingWrapper: MapFunction<string> = (str, i) => (
-  <Typography variant='h5' key={`heading${i}`}>
+  <Typography variant='h4' key={`heading${i}`}>
     {str}
   </Typography>
 );
@@ -36,10 +46,10 @@ export default function About() {
   return (
     <Page title={t('about.title')}>
       <PageSection>
-        <Box height='70vh' maxHeight={720} position='relative'>
+        <Box height={{ xs: '50vh', md: '70vh' }} maxHeight={720} position='relative'>
           <Image
             src={srcLgsvlLogo}
-            fit='contain'
+            // fit='contain'
             position='absolute'
             style={{
               opacity: 0.4
@@ -57,7 +67,31 @@ export default function About() {
             </Center>
           </HeroGrid>
         </Box>
-        <Grid container>
+
+        <Grid container alignItems='center' direction='column'>
+          <Grid item xs={12} sm={10} md={8}>
+            <Box mb={7}>
+              <Center>
+                <StyledTypography variant='overline' gutterBottom>
+                  {t('about.mission.title')}
+                </StyledTypography>
+                {tMap('about.mission.body', HeadingWrapper)}
+              </Center>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} sm={10} md={8}>
+            <Box mb={5}>{tMap('about.details', TypoWrapper)}</Box>
+          </Grid>
+
+          <Grid item xs={12} sm={10} md={8}>
+            <Box mb={2}>
+              <RequestDemoButton mode={RequestDemoFormMode.ContactUs} variant='outlined' color='secondary' />
+            </Box>
+          </Grid>
+        </Grid>
+
+        {/* <Grid container>
           <Grid item xs={12} sm={5}>
             <Box mb={7}>
               <Box mb={2}>
@@ -81,7 +115,7 @@ export default function About() {
           <Grid item xs={12} sm={6}>
             <Box mb={7}>{tMap('about.details', TypoWrapper)}</Box>
           </Grid>
-        </Grid>
+        </Grid> */}
       </PageSection>
 
       <SubscribeBox />
