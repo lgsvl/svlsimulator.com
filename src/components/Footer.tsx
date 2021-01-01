@@ -8,7 +8,7 @@ import ListItemText, { ListItemTextProps } from '@material-ui/core/ListItemText'
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { RequestDemoFormMode } from 'src/@types/shared.d';
-import { MapFunction } from 'src/@types/utils';
+// import { MapFunction } from 'src/@types/utils';
 import { useAppState } from 'src/context/AppState';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled from 'styled-components';
@@ -29,11 +29,11 @@ const StyledLink = withTheme(styled(Link)`
   cursor: pointer;
 `);
 
-const TypoWrapper: MapFunction<string> = (str, i) => (
-  <Typography paragraph color='secondary' key={`paragraph${i}`}>
-    {str}
-  </Typography>
-);
+// const TypoWrapper: MapFunction<string> = (str, i) => (
+//   <Typography paragraph color='secondary' key={`paragraph${i}`}>
+//     {str}
+//   </Typography>
+// );
 
 const FooterLink = withTheme(styled(({ children, primary, to, ...rest }: LinkProps & ListItemTextProps) => (
   <ListItem disableGutters dense>

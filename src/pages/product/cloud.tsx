@@ -1,19 +1,15 @@
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
 import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
-import { DigitalTwinPreviewBox, SimulationPreviewBox } from 'src/components/PagePreviewBox';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcCloudPoster from 'src/images/cloud-simulation.jpg';
 import srcCloudImg1 from 'src/images/cloud1.png';
 import srcCloudImg2 from 'src/images/cloud2.png';
 import srcCloudImg3 from 'src/images/cloud3.png';
 import srcCloudImg4 from 'src/images/cloud4.png';
-import srcCloudVideo from 'src/videos/cloud-simulation.mp4';
+import videoSrcWiseVis from 'src/videos/vis-borregas.mp4';
 
 const ListItemWrapper: MapFunction = (str, i) => (
   <Li key={`${str}${i}`}>
@@ -22,7 +18,7 @@ const ListItemWrapper: MapFunction = (str, i) => (
 );
 
 export default function CloudSimAAS() {
-  const { t, tMap } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Page title={t('cloud.title')}>
       <Section
@@ -32,7 +28,7 @@ export default function CloudSimAAS() {
         title={t('cloud.title')}
         tuckImage
         variant='h3'
-        video={srcCloudVideo}
+        video={videoSrcWiseVis}
       >
         {t('cloud.body')}
       </Section>
