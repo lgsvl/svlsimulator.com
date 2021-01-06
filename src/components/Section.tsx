@@ -79,7 +79,7 @@ export type TuckingBoxProps = BoxProps & {
   imageColumns: ColumnsType;
 };
 
-const TuckingBox = withTheme(styled(({ ...rest }) => <Box {...rest} />)`
+const TuckingBox = withTheme(styled(({ imageColumns, ...rest }) => <Box {...rest} />)`
   ${({ imageColumns, theme }) => `
   min-height: 300px;
   width: 100%;
