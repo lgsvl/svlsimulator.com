@@ -20,7 +20,8 @@ const FwdLink = React.forwardRef((props: I18nGatsbyLinkProps, ref) => (
 
 const FwdOutbound = React.forwardRef((props: OutboundGatsbyLinkProps, ref) => {
   const outboundProps = { ...props, ref: undefined };
-  return <OutboundLink eventLabel={outboundProps.to} {...outboundProps} />;
+  const Ele = <OutboundLink eventLabel={outboundProps.to} {...outboundProps} />;
+  return { ...Ele, ref };
 }) as React.ForwardRefExoticComponent<OutboundGatsbyLinkProps>;
 
 const StyledIconOut = withTheme(styled(IconOut)`

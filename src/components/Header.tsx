@@ -104,21 +104,17 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
   };
 
   const handleListKeyDown = (ev: React.KeyboardEvent) => {
-    if (ev.key === 'Tab') {
+    if (ev.key === 'Tab' || ev.key === 'Escape') {
       ev.preventDefault();
+      if (open === true && anchorRef.current) {
+        // return focus to the button when we transitioned from !open -> open
+        anchorRef.current.focus();
+      }
       setOpen(false);
     }
   };
 
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
   React.useEffect(() => {
-    if (prevOpen.current === true && open === false && anchorRef.current) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-
     // Start a cooldown timer to prevent (presumably unintentionally)
     // deactivating the menu just after opening it via hover.
     const timer = setTimeout(() => {
@@ -166,7 +162,8 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
             <Paper>
               <ClickAwayListener onClickAway={handleMenuDeactivate}>
                 <MenuList
-                  autoFocusItem={open}
+                  variant='menu'
+                  autoFocusItem
                   id='menu-list-grow'
                   onKeyDown={handleListKeyDown}
                   onClick={handleMenuDeactivate}
