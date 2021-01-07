@@ -59,6 +59,7 @@ const UserConsent = () => {
       maxWidth='xl'
       open={open}
       onClose={handleClose}
+      disableEnforceFocus
       disableScrollLock
       hideBackdrop
       aria-label={t('main.consent.label')}
