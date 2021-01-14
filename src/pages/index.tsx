@@ -48,7 +48,10 @@ const SilhouettedContent = withTheme(styled(Box)`
   // `}
 `) as React.FC<BoxProps>;
 
-const brandIconProps = { height: 40, width: '100%' };
+const brandIconProps = { width: '100%' };
+const StyledIconApollo = styled(IconApollo)`
+  margin: auto;
+`;
 
 export default function Home() {
   const { t, tMap } = useTranslation();
@@ -112,9 +115,9 @@ export default function Home() {
         <Center disableGutters maxWidth={720}>
           <LayoutGrid xs={2} sm={2 /* Set to the amount of logos for one row */} spacing={2}>
             {/* <IconBaidu {...brandIconProps} /> */}
-            <IconApollo {...brandIconProps} color={'#1E64DD'} />
+            <StyledIconApollo {...brandIconProps} height={40} color={'#1E64DD'} />
             {/* <IconUnity {...brandIconProps} /> */}
-            <IconVelodyne {...brandIconProps} color={'#0038A5'} />
+            <IconVelodyne {...brandIconProps} height={60} color={'#0038A5'} />
           </LayoutGrid>
         </Center>
       </SilhouettedContent>
