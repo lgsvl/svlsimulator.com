@@ -127,6 +127,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         loop
         autoPlay={!allPaused}
         muted
+        playsInline
         poster={poster || ''}
         ref={videoRef}
         style={{ objectFit: fit, zIndex }}
