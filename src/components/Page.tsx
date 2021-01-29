@@ -6,6 +6,7 @@ import { useAppState } from 'src/context/AppState';
 import PageContextProvider from 'src/context/Page';
 import { px } from 'src/utils/theme';
 import styled, { createGlobalStyle } from 'styled-components';
+import EntranceAnimation from './EntranceAnimation';
 import Footer from './Footer';
 import Header from './Header';
 import RequestDemoForm from './RequestDemoForm';
@@ -92,7 +93,7 @@ const FooterGrid = withTheme(styled(Grid)`
   margin-top: auto;
 `) as React.FC<GridProps<'footer', { component: string }>>;
 
-const App: React.FC = ({ children }) => {
+const App: React.FC<{ animate?: boolean; children: React.ReactNode }> = ({ animate, children }) => {
   const theme = useTheme();
   const { appState, setAppState } = useAppState();
 
@@ -105,7 +106,7 @@ const App: React.FC = ({ children }) => {
       <GlobalStyle theme={theme} />
       <AppGrid container direction='column'>
         <HeaderGrid item>
-          <Header />
+          <Header animate={animate} />
         </HeaderGrid>
         <Grid item>{children}</Grid>
         <FooterGrid item component='footer'>
@@ -121,11 +122,11 @@ const App: React.FC = ({ children }) => {
   );
 };
 
-const Page: React.FC<{ title?: string }> = ({ children, title }) => (
+const Page: React.FC<{ title?: string; animate?: boolean }> = ({ children, title, animate }) => (
   <PageContextProvider>
     <SEO title={title} />
     <UserConsent />
-    <App>{children}</App>
+    <App animate={animate}>{children}</App>
   </PageContextProvider>
 );
 
