@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-if (!('IntersectionObserver' in window)) {
+if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
   require('intersection-observer');
 }
 
@@ -35,7 +35,7 @@ const EntranceAnimation: React.FC<EntranceAnimationProps> = ({ disabled, ...rest
   const wrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!animated && wrapper.current) {
+    if (!animated && wrapper.current && typeof window !== 'undefined') {
       const observer = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           setAnimated(true);
