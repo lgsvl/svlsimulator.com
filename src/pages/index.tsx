@@ -119,11 +119,11 @@ export default function Home() {
       </PageSection>
 
       <SilhouettedContent my={15}>
-        <Center disableGutters maxWidth={720}>
-          <LayoutGrid xs={3} sm={3 /* Set to the amount of logos for one row */} spacing={2}>
+        <Center maxWidth={720}>
+          <LayoutGrid xs={3} sm={3 /* Set to the amount of logos for one row */} spacing={2} alignItems='center'>
             {/* <IconBaidu {...brandIconProps} /> */}
             <IconApollo {...brandIconProps} color={'#1E64DD'} />
-            <IconUnity {...brandIconProps}  color={'#FFFFFF'} />
+            <IconUnity {...brandIconProps} height={30} color={'#FFFFFF'} />
             <IconVelodyne {...brandIconProps} color={'#0038A5'} />
           </LayoutGrid>
         </Center>
@@ -139,12 +139,12 @@ export default function Home() {
               </Box>
               <Box order={isXs ? null : 4}>
                 {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
-                * We've specifically broken the button out into its own grid element box, so it can be
-                * assigned a custom order based on the screen size. When the screen is sm or larger,
-                * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
-                * on the second row, so they all vertically line up. `4` used below just represents a
-                * number, greater than 3. When order number is the same, DOM order is used.
-                */}
+                 * We've specifically broken the button out into its own grid element box, so it can be
+                 * assigned a custom order based on the screen size. When the screen is sm or larger,
+                 * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
+                 * on the second row, so they all vertically line up. `4` used below just represents a
+                 * number, greater than 3. When order number is the same, DOM order is used.
+                 */}
                 <ReadMoreButton to='/product/simulation/' />
               </Box>
             </EntranceAnimation>
