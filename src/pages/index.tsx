@@ -8,7 +8,7 @@ import BackgroundVideo, { BackgroundVideoProps } from 'src/components/Background
 import { LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import EntranceAnimation from 'src/components/EntranceAnimation';
-import { IconApollo, IconVelodyne } from 'src/components/Icons';
+import { IconApollo, IconUnity, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
@@ -120,10 +120,10 @@ export default function Home() {
 
       <SilhouettedContent my={15}>
         <Center disableGutters maxWidth={720}>
-          <LayoutGrid xs={2} sm={2 /* Set to the amount of logos for one row */} spacing={2}>
+          <LayoutGrid xs={3} sm={3 /* Set to the amount of logos for one row */} spacing={2}>
             {/* <IconBaidu {...brandIconProps} /> */}
             <IconApollo {...brandIconProps} color={'#1E64DD'} />
-            {/* <IconUnity {...brandIconProps} /> */}
+            <IconUnity {...brandIconProps}  color={'#FFFFFF'} />
             <IconVelodyne {...brandIconProps} color={'#0038A5'} />
           </LayoutGrid>
         </Center>
