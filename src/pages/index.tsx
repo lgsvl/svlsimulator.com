@@ -120,10 +120,10 @@ export default function Home() {
 
       <SilhouettedContent my={15}>
         <Center maxWidth={720}>
-          <LayoutGrid xs={3} sm={3 /* Set to the amount of logos for one row */} spacing={2} alignItems='center'>
+          <LayoutGrid xs={2} sm={2 /* Set to the amount of logos for one row */} spacing={2} alignItems='center'>
             {/* <IconBaidu {...brandIconProps} /> */}
             <IconApollo {...brandIconProps} color={'#1E64DD'} />
-            <IconUnity {...brandIconProps} height={30} color={'#FFFFFF'} />
+            {/* <IconUnity {...brandIconProps} height={30} color={'#FFFFFF'} /> */}
             <IconVelodyne {...brandIconProps} color={'#0038A5'} />
           </LayoutGrid>
         </Center>
