@@ -7,6 +7,7 @@ import React from 'react';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
+import EntranceAnimation from 'src/components/EntranceAnimation';
 import { IconApollo, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
@@ -56,7 +57,7 @@ export default function Home() {
   const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
-    <Page>
+    <Page animate>
       <PageSection>
         <Box mb={15} height='70vh' maxHeight={720} position='relative'>
           <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }}>
@@ -66,24 +67,33 @@ export default function Home() {
           </BackgroundVideo>
           <HeroGrid container direction='column' alignItems='center' justify='center'>
             <Grid item>
-              <Typography variant='h1'>{t('home.title')}</Typography>
+              <EntranceAnimation>
+                <Typography variant='h1'>{t('home.title')}</Typography>
+              </EntranceAnimation>
             </Grid>
             <Grid item>
-              <Center disableGutters maxWidth={720}>
-                <Typography>{t('home.body')}</Typography>
-                <Box mt={6}>
-                  <Grid container spacing={4} justify='center'>
-                    <Grid item>
-                      <RequestDemoButton variant='outlined' />
+              <EntranceAnimation>
+                <Center disableGutters maxWidth={720}>
+                  <Typography>{t('home.body')}</Typography>
+                  <Box mt={6}>
+                    <Grid container spacing={4} justify='center'>
+                      <Grid item>
+                        <RequestDemoButton variant='outlined' />
+                      </Grid>
+                      <Grid item>
+                        <LinkButton
+                          color='primary'
+                          buttonVariant='contained'
+                          to='/docs/getting-started/'
+                          target='_blank'
+                        >
+                          {t('main.buttons.getStarted')}
+                        </LinkButton>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <LinkButton color='primary' buttonVariant='contained' to='/docs/getting-started/' target='_blank'>
-                        {t('main.buttons.getStarted')}
-                      </LinkButton>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Center>
+                  </Box>
+                </Center>
+              </EntranceAnimation>
             </Grid>
           </HeroGrid>
           <Box p={2} textAlign='center'>
@@ -94,7 +104,7 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcWiseVis}>
+          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcWiseVis} animate>
             {t('home.section1.body')}
           </VisualizationSection>
         </Box>
@@ -102,7 +112,7 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcWiseVis}>
+          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcWiseVis} animate>
             {t('home.section2.body')}
           </VisualizationSection>
         </Box>
@@ -122,39 +132,44 @@ export default function Home() {
       <Box my={15}>
         <PageSection>
           <LayoutGrid xs={1} sm={3} spacing={3}>
-            <Box>
-              <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
-              <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
-            </Box>
-            <Box order={isXs ? null : 4}>
-              {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
-               * We've specifically broken the button out into its own grid element box, so it can be
-               * assigned a custom order based on the screen size. When the screen is sm or larger,
-               * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
-               * on the second row, so they all vertically line up. `4` used below just represents a
-               * number, greater than 3. When order number is the same, DOM order is used.
-               */}
-              <ReadMoreButton to='/product/simulation/' />
-            </Box>
-            <Box>
-              <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
-              <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
-            </Box>
-            <Box order={isXs ? null : 4}>
-              <ReadMoreButton to='/product/cloud/' />
-            </Box>
-            <Box>
-              <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
-              <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
-            </Box>
-            <Box order={isXs ? null : 4}>
-              <ReadMoreButton to='/product/digitaltwin/' />
-            </Box>
+            <EntranceAnimation>
+              <Box>
+                <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
+                <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
+              </Box>
+              <Box order={isXs ? null : 4}>
+                {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
+                * We've specifically broken the button out into its own grid element box, so it can be
+                * assigned a custom order based on the screen size. When the screen is sm or larger,
+                * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
+                * on the second row, so they all vertically line up. `4` used below just represents a
+                * number, greater than 3. When order number is the same, DOM order is used.
+                */}
+                <ReadMoreButton to='/product/simulation/' />
+              </Box>
+            </EntranceAnimation>
+            <EntranceAnimation delay={isXs ? 0 : 0.4}>
+              <Box>
+                <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
+                <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
+              </Box>
+              <Box order={isXs ? null : 4}>
+                <ReadMoreButton to='/product/cloud/' />
+              </Box>
+            </EntranceAnimation>
+            <EntranceAnimation delay={isXs ? 0 : 0.8}>
+              <Box>
+                <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
+                <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
+              </Box>
+              <Box order={isXs ? null : 4}>
+                <ReadMoreButton to='/product/digitaltwin/' />
+              </Box>
+            </EntranceAnimation>
           </LayoutGrid>
         </PageSection>
       </Box>
-
-      <SubscribeBox />
+      <SubscribeBox animate />
     </Page>
   );
 }

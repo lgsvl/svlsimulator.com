@@ -22,6 +22,7 @@ import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
 import { LinkButton, LinkButtonProps, RequestDemoButton } from './Button';
+import EntranceAnimation from './EntranceAnimation';
 import { IconLGSVLSimulator, IconMenu, IconX } from './Icons';
 import Link from './Link';
 
@@ -72,7 +73,7 @@ interface DropdownMenuProps {
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest }) => {
   const [open, setOpen] = React.useState(false);
-  const preventEarlyClose = React.useRef(false); // Track the early-close availability
+  const preventEarlyClose = React.useRef(true); // Track the early-close availability
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const handleClick = (ev: React.MouseEvent<EventTarget>) => {
@@ -338,20 +339,26 @@ const MobileMenu = () => {
   );
 };
 
-const Header = React.forwardRef((props, ref) => (
-  <AppBar position='fixed' color='default' {...props} elevation={0} ref={ref}>
+interface HeaderProps {
+  animate?: boolean;
+}
+
+const Header = React.forwardRef<unknown, HeaderProps>(({ animate, ...rest }, ref) => (
+  <AppBar position='fixed' color='default' {...rest} elevation={0} ref={ref}>
     <Toolbar component='nav'>
-      <NavGrid container alignItems='center' justify='space-between'>
-        <Grid item>
-          <StyledLinkButton to='/' color='secondary' startIcon={<IconLGSVLSimulator />} title='Home' />
-        </Grid>
-        <Hidden smDown>
-          <DesktopMenu />
-        </Hidden>
-        <Hidden mdUp>
-          <MobileMenu />
-        </Hidden>
-      </NavGrid>
+      <EntranceAnimation disabled={!animate} reverse delay={0.4}>
+        <NavGrid container alignItems='center' justify='space-between'>
+          <Grid item>
+            <StyledLinkButton to='/' color='secondary' startIcon={<IconLGSVLSimulator />} title='Home' />
+          </Grid>
+          <Hidden smDown>
+            <DesktopMenu />
+          </Hidden>
+          <Hidden mdUp>
+            <MobileMenu />
+          </Hidden>
+        </NavGrid>
+      </EntranceAnimation>
     </Toolbar>
   </AppBar>
 ));
