@@ -47,7 +47,9 @@ const UserConsent = () => {
   const [open, setOpen] = useState<boolean>(cookies.get('gatsby-gdpr-google-analytics') !== 'true');
   const handleClose = useCallback(() => setOpen(false), [setOpen]);
   const handleAccept = useCallback(() => {
-    cookies.set('gatsby-gdpr-google-analytics', 'true');
+    const cookieExpiry = new Date();
+    cookieExpiry.setFullYear(cookieExpiry.getFullYear() + 10);
+    cookies.set('gatsby-gdpr-google-analytics', 'true', { expires: cookieExpiry });
     initializeAndTrack(window.location);
     setOpen(false);
   }, [setOpen]);
