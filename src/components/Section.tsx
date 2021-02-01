@@ -64,6 +64,21 @@ const BodyGridBox = withTheme(styled(({ contained, flip, tuckImage, ...rest }: B
 `}
 `) as React.FC<BodyGridBoxProps>;
 
+interface ShadowBoxProps extends BoxProps {
+  flip?: boolean;
+}
+const ShadowBox = withTheme(styled(({ flip, ...rest }: ShadowBoxProps) => <Box {...rest} />)`
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    ${({ flip }) => (flip ? 'left top, right top' : 'right top, left top')},
+    color-stop(0, ${({ theme }) => fade(theme.palette.background.paper, 1)}),
+    color-stop(0.85, ${({ theme }) => fade(theme.palette.background.paper, 1)}),
+    color-stop(0.9, ${({ theme }) => fade(theme.palette.background.paper, 0.7)}),
+    color-stop(0.95, ${({ theme }) => fade(theme.palette.background.paper, 0.3)}),
+    color-stop(1, ${({ theme }) => fade(theme.palette.background.paper, 0)})
+  );
+`) as React.FC<ShadowBoxProps>;
+
 const StyledImage = (props: ImageProps) => <Image minHeight={300} borderRadius='borderRadius' {...props} />;
 
 const countChildren = (children: React.ReactNode | React.ReactChildren) =>
@@ -303,13 +318,13 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
       <EntranceAnimation disabled={!animate}>
         <Grid container spacing={2} alignItems='center' direction={flip ? 'row-reverse' : 'row'}>
           <Grid item xs={12} md={columnsForImage} style={{ overflow: 'hidden', height: 570 }}>
-            <Box position='relative' height={1} overflow='hidden'>
+            <ShadowBox position='relative' height={1} overflow='hidden' flip={flip}>
               <VisualizationFrame
                 poster={src}
                 src={video}
                 style={{ position: 'absolute', right: flip ? 'auto' : 0, height: '100%' }}
               />
-            </Box>
+            </ShadowBox>
           </Grid>
           <Grid item xs={12} md={columnsForText}>
             {/* <Typography variant='h4'>{title}</Typography>

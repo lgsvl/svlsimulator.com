@@ -39,6 +39,10 @@ const HeroGrid = withTheme(styled(Grid)`
   position: relative;
 `) as React.FC<GridProps>;
 
+const ShadowTypography = styled(Typography)`
+  text-shadow: black 0px 1px 3px, rgb(0 0 0 / 70%) 0px 1px 20px;
+`;
+
 const SilhouettedContent = withTheme(styled(Box)`
   // Commented out shadow, in case there's a picture or video behind the logos in the future. -BS
   // ${({ theme }) => `
@@ -58,49 +62,51 @@ export default function Home() {
 
   return (
     <Page animate>
-      <PageSection>
-        <Box mb={15} height='70vh' maxHeight={720} position='relative'>
-          <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }}>
-            <Typography>
-              A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
-            </Typography>
-          </BackgroundVideo>
-          <HeroGrid container direction='column' alignItems='center' justify='center'>
-            <Grid item>
-              <EntranceAnimation>
-                <Typography variant='h1'>{t('home.title')}</Typography>
-              </EntranceAnimation>
-            </Grid>
-            <Grid item>
-              <EntranceAnimation>
-                <Center disableGutters maxWidth={720}>
-                  <Typography>{t('home.body')}</Typography>
-                  <Box mt={6}>
-                    <Grid container spacing={4} justify='center'>
-                      <Grid item>
-                        <RequestDemoButton variant='outlined' />
+      <Box bgcolor='#141926'>
+        <PageSection maxWidth={false}>
+          <Box mb={15} height={`calc(100vh - ${theme.spacing(15) + 80}px)`} position='relative'>
+            <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }} zIndex='auto'>
+              <Typography>
+                A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
+              </Typography>
+            </BackgroundVideo>
+            <HeroGrid container direction='column' alignItems='center' justify='center'>
+              <Grid item>
+                <EntranceAnimation>
+                  <ShadowTypography variant='h1'>{t('home.title')}</ShadowTypography>
+                </EntranceAnimation>
+              </Grid>
+              <Grid item>
+                <EntranceAnimation>
+                  <Center disableGutters maxWidth={720}>
+                    <ShadowTypography>{t('home.body')}</ShadowTypography>
+                    <Box mt={6}>
+                      <Grid container spacing={4} justify='center'>
+                        <Grid item>
+                          <RequestDemoButton variant='outlined' />
+                        </Grid>
+                        <Grid item>
+                          <LinkButton
+                            color='primary'
+                            buttonVariant='contained'
+                            to='/docs/getting-started/'
+                            target='_blank'
+                          >
+                            {t('main.buttons.getStarted')}
+                          </LinkButton>
+                        </Grid>
                       </Grid>
-                      <Grid item>
-                        <LinkButton
-                          color='primary'
-                          buttonVariant='contained'
-                          to='/docs/getting-started/'
-                          target='_blank'
-                        >
-                          {t('main.buttons.getStarted')}
-                        </LinkButton>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                </Center>
-              </EntranceAnimation>
-            </Grid>
-          </HeroGrid>
-          <Box p={2} textAlign='center'>
-            <MoreArrows />
+                    </Box>
+                  </Center>
+                </EntranceAnimation>
+              </Grid>
+            </HeroGrid>
+            <Box p={2} textAlign='center'>
+              <MoreArrows />
+            </Box>
           </Box>
-        </Box>
-      </PageSection>
+        </PageSection>
+      </Box>
 
       <PageSection>
         <Box my={15}>
