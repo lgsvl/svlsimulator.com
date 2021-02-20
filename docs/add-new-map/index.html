@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Adding a new map - LGSVL Simulator</title>
+  <title>Adding a new map - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -423,7 +423,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -454,20 +454,20 @@
             <div class="section">
               
                 <h1>How to Add a New Map</h1>
-<p>This tutorial works with LGSVL Simulator release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a>.</p>
-<p>This document will describe how to create a new map in the LGSVL Simulator.</p>
+<p>This tutorial works with SVL Simulator release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a>.</p>
+<p>This document will describe how to create a new map in the SVL Simulator.</p>
 <h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">#</a></h2>
 <div class="video-container">
 <iframe  width="696" height="391" src="https://www.youtube.com/embed/S0w2ahhEPbE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-<p>(<a href="https://youtu.be/S0w2ahhEPbE">Link</a>) Adding a new map in LGSVL Simulator.
+<p>(<a href="https://youtu.be/S0w2ahhEPbE">Link</a>) Adding a new map in SVL Simulator.
 <br>
 <br></p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
 <p>The following text is a list of the steps described in the above  video.</p>
 <ol>
-<li>Launch LGSVL Simulator from the Unity Editor (as described <a href="../getting-started/">here</a>).</li>
+<li>Launch SVL Simulator from the Unity Editor (as described <a href="../getting-started/">here</a>).</li>
 <li>In the top menu, select File -&gt; New Scene or Ctrl+N</li>
 <li>Create your new map folders in Assets/External/Environments/NewMap with /Models/Materials and /Prefabs in this root folder</li>
 <li>It is helpful to clone the CubeTown repository as an example scene to see how all Simulator features are setup and assets organized.</li>
@@ -476,7 +476,7 @@
 <ol>
 <li>Import assets you created or obtained into the Unity Editor.</li>
 <li>Move models, textures, materials and any other assets you need into the /NewMap folders.  The new map should have no asset dependencies from folders outside of /NewMap.</li>
-<li>Do not include script files or non-HDRP shaders.  If you need scripts in your scene, you will need to place in the source files of the LGSVL Simulator and build your own binaries.</li>
+<li>Do not include script files or non-HDRP shaders.  If you need scripts in your scene, you will need to place in the source files of the SVL Simulator and build your own binaries.</li>
 <li>If your assets have non-standard shaders you will need to change them to the Unity Standard shader before converting to HDRP.</li>
 <li>Once all non Standard shaders are changed, you can convert the materials to HDRP materials.</li>
 <li>Select all materials.</li>

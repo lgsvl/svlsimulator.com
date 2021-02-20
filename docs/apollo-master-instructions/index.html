@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Instructions - LGSVL Simulator</title>
+  <title>Instructions - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -241,7 +241,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -432,7 +432,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -466,9 +466,9 @@
           <div role="main">
             <div class="section">
               
-                <h1>Running latest Apollo with LGSVL Simulator <a href="#top"></a></h1>
-<p>This instruction is tested after <a href="https://github.com/ApolloAuto/apollo/commit/eac672b11ae20272f6d91f8eb119bfb942364ef5">the last commit</a> enabling LGSVL Simulator with latest Apollo master. Commits after that are assumed to work as well, but not guaranteed. </p>
-<p>Big changes have recently been introduced in Apollo master; camera perception may not be working yet, and LiDAR perception is recently able to build but still unstable (and uses a lot of GPU memory making it challenging for Apollo to share an 8GB GPU with the LGSVL Simulator).</p>
+                <h1>Running latest Apollo with SVL Simulator <a href="#top"></a></h1>
+<p>This instruction is tested after <a href="https://github.com/ApolloAuto/apollo/commit/eac672b11ae20272f6d91f8eb119bfb942364ef5">the last commit</a> enabling SVL Simulator with latest Apollo master. Commits after that are assumed to work as well, but not guaranteed. </p>
+<p>Big changes have recently been introduced in Apollo master; camera perception may not be working yet, and LiDAR perception is recently able to build but still unstable (and uses a lot of GPU memory making it challenging for Apollo to share an 8GB GPU with the SVL Simulator).</p>
 <p><strong>For those who used our fork of Apollo 5.0 before: please note the new step to select the correct setup mode in Dreamview</strong>.</p>
 <p><a href="../images/full_size_images/apollo-sim.png"><img alt="" src="../images/apollo-sim.png" /></a></p>
 <h2> Table of Contents</h2>
@@ -495,7 +495,7 @@
 </ul>
 </div>
 <h2 id="getting-started">Getting Started <a class="wikilink" href="#top">top</a><a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
-<p>The guide outlines the steps required to setup Apollo for use with the LGSVL Simulator. If you have not already set up the simulator, please do so first by following the instructions <a href="https://github.com/lgsvl/simulator">here</a>.</p>
+<p>The guide outlines the steps required to setup Apollo for use with the SVL Simulator. If you have not already set up the simulator, please do so first by following the instructions <a href="https://github.com/lgsvl/simulator">here</a>.</p>
 <h2 id="prerequisites">Prerequisites <a class="wikilink" href="#top">top</a><a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
 <li>Ubuntu 16.04 or later (Ubuntu 18.04 is preferred)</li>
@@ -596,7 +596,7 @@ The Apollo build may fail on machines with less than 1GB of RAM per CPU core due
 <ul>
 <li>Open Apollo Dreamview in a browser by navigating to: <code>localhost:8888</code><ul>
 <li><strong>NEW for Apollo Master</strong>: Select the <code>Mkz Lgsvl</code> setup mode, from the menu to the left of the vehicle menu.</li>
-<li>Select the <code>Lincoln2017MKZ LGSVL</code> vehicle and <code>Borregas Ave</code> map in the top right corner.</li>
+<li>Select the <code>Lincoln2017MKZ SVL</code> vehicle and <code>Borregas Ave</code> map in the top right corner.</li>
 <li>Open the <strong>Module Controller</strong> tap (on the left bar).</li>
 <li>Enable <strong>Localization</strong>, <strong>Transform</strong>, <strong>Perception</strong>, <strong>Traffic Light</strong>, <strong>Planning</strong>, <strong>Prediction</strong>, <strong>Routing</strong>, and <strong>Control</strong>.</li>
 <li>Navigate to the <strong>Route Editing</strong> tab.</li>
