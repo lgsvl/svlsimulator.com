@@ -2,7 +2,7 @@
 import React from 'react';
 import BaseSvg from './BaseSvg';
 
-export const IconLGSVLSimulator = ({ color = 'currentColor', title = 'LGSVL Simulator Logo', ...rest }) => (
+export const IconSVLSimulator = ({ color = 'currentColor', title = 'SVL Simulator Logo', ...rest }) => (
   <BaseSvg width='160' height='48' viewBox='0 0 160 48' {...rest} title={title}>
     <g>
       <path d='M43.8056 7.99805H45.2298V20.8148H50.689V22.2001H43.8056V7.99805Z' fill={color} />

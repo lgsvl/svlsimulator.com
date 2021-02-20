@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Simulator coordinate system - LGSVL Simulator</title>
+  <title>Simulator coordinate system - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -423,7 +423,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -453,7 +453,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Understanding LGSVL Simulator Coordinate Systems <a href="#top"></a></h1>
+                <h1>Understanding SVL Simulator Coordinate Systems <a href="#top"></a></h1>
 <h2>Table of Contents</h2>
 
 <div class="toc">
@@ -470,7 +470,7 @@
 </div>
 <p>Inside the simulator positions and rotations are represented by <a href="https://docs.unity3d.com/560/Documentation/Manual/Transforms.html">Transforms</a> in Unity. Unity uses a left-handed ZXY coordinate system for transforms with the Y-axis being the vertical axis. Each simulation object such as vehicles, sensors, maps, traffic lights, etc. will have a transform associated with it. Understanding the transforms is especially important for defining custom sensor configurations for ego vehicles.</p>
 <h3 id="converting-between-coordinate-systems">Converting between coordinate systems <a class="wikilink" href="#top">top</a><a class="headerlink" href="#converting-between-coordinate-systems" title="Permanent link">#</a></h3>
-<p>The right-handed XYZ coordinate system is more commonly used in Robotics and Autonomous Vehicle applications and users may require to convert coordinate systems for some use-cases when using the LGSVL Simulator.</p>
+<p>The right-handed XYZ coordinate system is more commonly used in Robotics and Autonomous Vehicle applications and users may require to convert coordinate systems for some use-cases when using the SVL Simulator.</p>
 <p>The tables below summarize conversions for 3D position vectors:</p>
 <table>
 <thead>
@@ -632,7 +632,7 @@
 <h3 id="transform-sensor">Transform Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#transform-sensor" title="Permanent link">#</a></h3>
 <p>Sometimes it can be useful to create a coordinate frame at some point on the ego vehicle to use as a reference for sensor positions. The <a href="../sensor-json-options/#transform-sensor">Transform Sensor</a> provides this functionality. The Transform Sensor is an "empty" sensor, meaning that it has no sensor functionality and only has a coordinate frame and can be used as a parent for other sensors in the Simulator sensor configuration.</p>
 <h3 id="customizing-sensor-configurations">Customizing sensor configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#customizing-sensor-configurations" title="Permanent link">#</a></h3>
-<p>Customized sensor configurations are created in the LGSVL simulator Web UI by providing JSON formatted descriptions (covered <a href="../sensor-json-options/">here</a>).</p>
+<p>Customized sensor configurations are created in the SVL simulator Web UI by providing JSON formatted descriptions (covered <a href="../sensor-json-options/">here</a>).</p>
               
             </div>
           </div>

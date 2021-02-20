@@ -21,6 +21,9 @@ const StyledWrapper = styled(AnimationWrapper)`
   transition: transform 0.4s ease-in-out ${({ delay = 0 }) => delay}s,
     opacity 0.4s ease-in-out ${({ delay = 0 }) => delay}s;
   flex: 1;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
 `;
 
 interface EntranceAnimationProps {

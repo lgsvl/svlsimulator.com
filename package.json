@@ -1,7 +1,7 @@
 {
-  "name": "lgsvl-simulator-website",
+  "name": "svl-simulator-website",
   "private": true,
-  "description": "Website spotlighting the LGSVL Simulator and related services.",
+  "description": "Website spotlighting the SVL Simulator and related services.",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "scripts": {

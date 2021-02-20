@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Setting up ROS 2 bridge - LGSVL Simulator</title>
+  <title>Setting up ROS 2 bridge - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -333,10 +333,10 @@
         </ul>
     
 
-    <li class="toctree-l3"><a href="#installing-the-ros-2-lgsvl-bridge">Installing the ROS 2 LGSVL Bridge</a></li>
+    <li class="toctree-l3"><a href="#installing-the-ros-2-lgsvl-bridge">Installing the ROS 2 SVL Bridge</a></li>
     
 
-    <li class="toctree-l3"><a href="#running-the-ros2-lgsvl-bridge">Running the ROS2 LGSVL Bridge</a></li>
+    <li class="toctree-l3"><a href="#running-the-ros2-lgsvl-bridge">Running the ROS2 SVL Bridge</a></li>
     
 
     </ul>
@@ -421,7 +421,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -451,17 +451,17 @@
           <div role="main">
             <div class="section">
               
-                <h1>LGSVL Simulator ROS 2 Bridge</h1>
-<p>The LGSVL Simulator can publish and subscribe to ROS 2 messages by connecting to the <a href="https://github.com/lgsvl/ros2-lgsvl-bridge">ROS2 LGSVL Bridge</a>. This custom, native ROS2 bridge yields higher performance than the previously used <a href="https://github.com/RobotWebTools/ros2-web-bridge">ros2-web-bridge</a>.</p>
+                <h1>SVL Simulator ROS 2 Bridge</h1>
+<p>The SVL Simulator can publish and subscribe to ROS 2 messages by connecting to the <a href="https://github.com/lgsvl/ros2-lgsvl-bridge">ROS2 SVL Bridge</a>. This custom, native ROS2 bridge yields higher performance than the previously used <a href="https://github.com/RobotWebTools/ros2-web-bridge">ros2-web-bridge</a>.</p>
 <p>This document describes the installation process.</p>
 <h2 id="installing-dependencies">Installing Dependencies<a class="headerlink" href="#installing-dependencies" title="Permanent link">#</a></h2>
-<p>The ROS2 LGSVL Bridge requires the following packages to be built:
+<p>The ROS2 SVL Bridge requires the following packages to be built:
 - ROS2 (rcutils and rcl)
 - colcon
 - boost</p>
 <h3 id="installing-ros-2">Installing ROS 2<a class="headerlink" href="#installing-ros-2" title="Permanent link">#</a></h3>
 <p>See the <a href="https://index.ros.org/doc/ros2/Installation/#installationguide">official ROS 2 installation guide</a> to install ROS 2. The choice of the distribution will somewhat depend on the Ubuntu version installed. Ubuntu 18.04 supports Dashing Diademata (<code>dashing</code>) and Eloquent Elusor (<code>eloquent</code>), with <code>dashing</code> being the LTS distro. Ubuntu 20.04 only supports Foxy Fitzroy (<code>foxy</code>), which is also an LTS distro.</p>
-<p>The ROS 2 LGSVL Bridge supports Dashing Diademata and newer distributions. For Ubuntu versions older than 18.04, which would require older ROS 2 distributions, we suggest using <a href="https://hub.docker.com/_/ros">ROS 2 docker images</a>.</p>
+<p>The ROS 2 SVL Bridge supports Dashing Diademata and newer distributions. For Ubuntu versions older than 18.04, which would require older ROS 2 distributions, we suggest using <a href="https://hub.docker.com/_/ros">ROS 2 docker images</a>.</p>
 <h3 id="installing-colcon">Installing Colcon<a class="headerlink" href="#installing-colcon" title="Permanent link">#</a></h3>
 <p>Colcon is a command line tool that facilitates building ROS packages. To install:</p>
 <pre><code class="bash">sudo apt update
@@ -473,8 +473,8 @@ sudo apt install python3-colcon-common-extensions
 <pre><code class="bash">sudo apt install libboost-all-dev
 </code></pre>
 
-<h2 id="installing-the-ros-2-lgsvl-bridge">Installing the ROS 2 LGSVL Bridge<a class="headerlink" href="#installing-the-ros-2-lgsvl-bridge" title="Permanent link">#</a></h2>
-<p>Follow these steps to install the ROS2 LGSVL Bridge:
+<h2 id="installing-the-ros-2-lgsvl-bridge">Installing the ROS 2 SVL Bridge<a class="headerlink" href="#installing-the-ros-2-lgsvl-bridge" title="Permanent link">#</a></h2>
+<p>Follow these steps to install the ROS2 SVL Bridge:
 - Clone the ros2-lgsvl-bridge repository from github:</p>
 <pre><code class="bash">    git clone https://github.com/lgsvl/ros2-lgsvl-bridge.git
 </code></pre>
@@ -498,7 +498,7 @@ sudo apt install python3-colcon-common-extensions
 <pre><code class="bash">    colcon build --cmake-args '-DCMAKE_BUILD_TYPE=Release'
 </code></pre>
 
-<h2 id="running-the-ros2-lgsvl-bridge">Running the ROS2 LGSVL Bridge<a class="headerlink" href="#running-the-ros2-lgsvl-bridge" title="Permanent link">#</a></h2>
+<h2 id="running-the-ros2-lgsvl-bridge">Running the ROS2 SVL Bridge<a class="headerlink" href="#running-the-ros2-lgsvl-bridge" title="Permanent link">#</a></h2>
 <p>If the Bridge is already built, to run ROS2 bridge:</p>
 <pre><code class="bash">    source (path\to\bridge\repository)/install/setup.bash
     lgsvl_bridge

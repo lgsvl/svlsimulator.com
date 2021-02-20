@@ -23,7 +23,7 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import styled, { css } from 'styled-components';
 import { LinkButton, LinkButtonProps, RequestDemoButton } from './Button';
 import EntranceAnimation from './EntranceAnimation';
-import { IconLGSVLSimulator, IconMenu, IconX } from './Icons';
+import { IconSVLSimulator, IconMenu, IconX } from './Icons';
 import Link from './Link';
 
 const buttonColors = css`
@@ -287,7 +287,7 @@ const MobileMenu = () => {
         open={drawerOpen}
       >
         <DrawerHeader display='flex' alignItems='center' justifyContent='space-between' pl={1} pr={3}>
-          <LinkButton to='/' color='primary' startIcon={<IconLGSVLSimulator />} title={t('home.navTitle')} />
+          <LinkButton to='/' color='primary' startIcon={<IconSVLSimulator />} title={t('home.navTitle')} />
           <IconButton edge='end' color='secondary' onClick={handleDrawer}>
             <IconX />
           </IconButton>
@@ -349,7 +349,7 @@ const Header = React.forwardRef<unknown, HeaderProps>(({ animate, ...rest }, ref
       <EntranceAnimation disabled={!animate} reverse delay={0.4}>
         <NavGrid container alignItems='center' justify='space-between'>
           <Grid item>
-            <StyledLinkButton to='/' color='secondary' startIcon={<IconLGSVLSimulator />} title='Home' />
+            <StyledLinkButton to='/' color='secondary' startIcon={<IconSVLSimulator />} title='Home' />
           </Grid>
           <Hidden smDown>
             <DesktopMenu />

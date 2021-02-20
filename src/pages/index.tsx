@@ -139,11 +139,11 @@ export default function Home() {
         <PageSection>
           <LayoutGrid xs={1} sm={3} spacing={3}>
             <EntranceAnimation>
-              <Box>
+              <Box flex={1}>
                 <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
                 <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
               </Box>
-              <Box order={isXs ? null : 4}>
+              <Box order={isXs ? null : 4} mt={1}>
                 {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
                  * We've specifically broken the button out into its own grid element box, so it can be
                  * assigned a custom order based on the screen size. When the screen is sm or larger,
@@ -155,20 +155,20 @@ export default function Home() {
               </Box>
             </EntranceAnimation>
             <EntranceAnimation delay={isXs ? 0 : 0.4}>
-              <Box>
+              <Box flex={1}>
                 <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
                 <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
               </Box>
-              <Box order={isXs ? null : 4}>
+              <Box order={isXs ? null : 4} mt={1}>
                 <ReadMoreButton to='/product/cloud/' />
               </Box>
             </EntranceAnimation>
             <EntranceAnimation delay={isXs ? 0 : 0.8}>
-              <Box>
+              <Box flex={1}>
                 <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
                 <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
               </Box>
-              <Box order={isXs ? null : 4}>
+              <Box order={isXs ? null : 4} mt={1}>
                 <ReadMoreButton to='/product/digitaltwin/' />
               </Box>
             </EntranceAnimation>

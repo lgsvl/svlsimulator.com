@@ -17,7 +17,7 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useCallback } from 'react';
 import { RequestDemoFormMode } from 'src/@types/shared.d';
-import { IconLGSVLSimulator, IconX } from 'src/components/Icons';
+import { IconSVLSimulator, IconX } from 'src/components/Icons';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import addSpacing from 'src/utils/addSpacing';
@@ -181,7 +181,7 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
                 <Hidden smDown>
                   <Grid item sm={4}>
                     <Box mb={5}>
-                      <IconLGSVLSimulator />
+                      <IconSVLSimulator />
                     </Box>
                     {tMap('requestdemo.message', (msg, i) => (
                       <Typography id={`form-description${i || ''}`} variant='caption' key={`message${i}`} paragraph>

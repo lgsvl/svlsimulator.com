@@ -11,7 +11,7 @@
     },
     "consent": {
       "label": "Cookie User Consent",
-      "message": "This website uses cookies, belonging to LGSVL or to third parties, to optimize website functionality, for analytics purposes, and to offer you a better browsing experience. If you wish to read more information on our use of cookies and how to change your relevant browser’s settings or prevent this website from setting cookies, please read our ",
+      "message": "This website uses cookies, belonging to LGE or to third parties, to optimize website functionality, for analytics purposes, and to offer you a better browsing experience. If you wish to read more information on our use of cookies and how to change your relevant browser’s settings or prevent this website from setting cookies, please read our ",
       "policy": "Privacy Policy",
       "accept": "OK",
       "decline": "Decline"
@@ -21,7 +21,7 @@
       "documentation": "Technical documentation"
     },
     "footer": {
-      "body": "LGSVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
+      "body": "SVL Simulator provides scalable and customizable virtual testing environment that optimize your autonomous vehicle developmnet cycle.",
       "copyright": "© 2021 LG Electronics",
       "terms": "Terms",
       "policy": "Privacy Policy",
@@ -30,7 +30,7 @@
       "social": "Social",
       "meetUs": "Meet the team",
       "contactUs": "Contact us",
-      "content": "LGSVL Simulator Content"
+      "content": "SVL Simulator Content"
     },
     "header": {
       "products": "Products",
@@ -42,7 +42,7 @@
     "links": {
       "github": "GitHub",
       "documentation": "Documentation",
-      "documentationLong": "LGSVL Simulator documentation",
+      "documentationLong": "SVL Simulator documentation",
       "requestDemo": "Request demo",
       "twitter": "Twitter",
       "youtube": "YouTube",
@@ -64,9 +64,9 @@
   "about": {
     "navTitle": "About",
     "title": "About",
-    "body": "LGSVL Simulator is built by LG Electronics America R&D Lab, a research center at LG Electronics headquartered in Santa Clara, California.",
+    "body": "SVL Simulator is built by LG Electronics America R&D Lab, a research center at LG Electronics headquartered in Santa Clara, California.",
     "details": [
-      "We launched the first release of LGSVL Simulator as an open project to Github in November 2018 with the goal of enabling developers to build autonomous vehicles and robots through end-to-end, high performance 3D simulation. We have since built LGSVL Simulator into a commercial product helping automotive OEMs, robotics companies, and universities around the world.",
+      "We launched the first release of SVL Simulator as an open project to Github in November 2018 with the goal of enabling developers to build autonomous vehicles and robots through end-to-end, high performance 3D simulation. We have since built SVL Simulator into a commercial product helping automotive OEMs, robotics companies, and universities around the world.",
       "Our team consists of highly-qualified engineers and specialists, with years of experience from industries including automotive, robotics, software, consumer electronics, and mobile technology.",
       "We believe in simulation as the key to accelerating autonomous machine development. Our vision is to bring about a standardized simulation platform used in autonomous vehicle and robotics development, and believe open source is key to making this happen."
     ],
@@ -85,7 +85,7 @@
     "body": "Build safer self-driving cars, autonomous machines, or robots for your industry with testing in virtual environments.",
     "section1": {
       "title": "Automotive",
-      "body": "In addition to autonomous vehicles, use LGSVL Simulator to simulate and test future mobility services that interact with our world in new ways: delivery robots, robotaxis, ridesharing and personal mobility services. Simulate and test not just for software and system development but for fleet management, mobility service operations, and infrastructure planning."
+      "body": "In addition to autonomous vehicles, use SVL Simulator to simulate and test future mobility services that interact with our world in new ways: delivery robots, robotaxis, ridesharing and personal mobility services. Simulate and test not just for software and system development but for fleet management, mobility service operations, and infrastructure planning."
     },
     "section2": {
       "title": "Robotics",
@@ -97,32 +97,32 @@
     },
     "section1_old": {
       "title": "Simulation for end-to-end development cycle",
-      "body": "LGSVL Simulator supports end-to-end simulation of the entire autonomous driving software stack. By providing all necessary inputs needed from a virtual environment, reacting to controls, and simulating the situations a vehicle may encounter, developers can perform integration testing of their system from the very beginning of the development cycle. In addition to performing modular component-wise testing, developers can perform end-to-end testing to shorten the iteration cycle for finding and testing integration considerations of their autonomous system."
+      "body": "SVL Simulator supports end-to-end simulation of the entire autonomous driving software stack. By providing all necessary inputs needed from a virtual environment, reacting to controls, and simulating the situations a vehicle may encounter, developers can perform integration testing of their system from the very beginning of the development cycle. In addition to performing modular component-wise testing, developers can perform end-to-end testing to shorten the iteration cycle for finding and testing integration considerations of their autonomous system."
     },
     "section2_old": {
       "title": "Data and content",
       "body": [
-        "LG supports a wide array of sensors such as camera, LiDAR, RADAR, CGP, and IMU hardware sensors for simulation as well as virtual ground truth sensors. Real world sensor models used in the autonomous vehicle systems and other sensors through plugins are also supported in LGSVL Simulator.",
-        "The 3D environment is the basis for environmental simulation and impacts all sensor data, affects an AD system’s perception, prediction, tracking and control modules. LGSVL Simulator Premium Platform’s Digital Twin enables the creation of synthetic 3D environments, for replication and simulation of logged real-world scenarios. Through Digital Twin environments, test drives recorded and logged in the real world can be imported into simulation to re-simulate particularly targeted edge case scenarios."
+        "LG supports a wide array of sensors such as camera, LiDAR, RADAR, CGP, and IMU hardware sensors for simulation as well as virtual ground truth sensors. Real world sensor models used in the autonomous vehicle systems and other sensors through plugins are also supported in SVL Simulator.",
+        "The 3D environment is the basis for environmental simulation and impacts all sensor data, affects an AD system’s perception, prediction, tracking and control modules. SVL Simulator Premium Platform’s Digital Twin enables the creation of synthetic 3D environments, for replication and simulation of logged real-world scenarios. Through Digital Twin environments, test drives recorded and logged in the real world can be imported into simulation to re-simulate particularly targeted edge case scenarios."
       ]
     },
     "section3_old": {
       "title": "Cloud simulation as a service",
       "body": [
         "Simulation in the cloud at scale is one of the important features requested by developers working on autonomous vehicle software. Perception module development requires a vast amount of labeled data specific to vehicle sensor configuration, however data labeling is mostly manual process and time consuming. Simulators could be used to produce synthetic labeled data at large scale in the cloud.",
-        "LGSVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. LGSVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
+        "SVL Simulator also accelerates and facilitates reinforcement learning for Planning module development which requires millions of runs in order to find optimal behavior. SVL Simulator features out of box integration with OpenAI Gym environment that allows for running faster than real time locally and in the cloud either as an on-premise or private cloud configuration."
       ]
     },
     "section4_old": {
       "title": "Academia",
-      "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. LGSVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
+      "body": "Automated vehicles (AVs) already navigate highways and local streets of many nations around the world. The societal and transportation infrastructure impacts of these mobile robots will certainly be more extensive than a simple change in the journey between the immediate origin and the destination. Academia has begun to analyze, model and explore the future of smart mobility. SVL Simulator enables researchers to explore end-to-end learning approaches that make use of collected sensor data, photo-realistic 3D environments, to re-simulate scenarios for optimizing a model performance in the lab."
     },
     "section5_old": {
       "title": "Robotics",
-      "body": "LGSVL Simulator is a tool necessary for the design and validation of development processes in a dynamic and highly visual environment. This tool supports a variety of robotic and automation test scenarios allowing for early validation of automation concepts on local machines or in the cloud. This simulator allows developers to set KPIs, re-generate scenarios for testing, validate and optimize the development and robot operation sequences with realistic behaviors."
+      "body": "SVL Simulator is a tool necessary for the design and validation of development processes in a dynamic and highly visual environment. This tool supports a variety of robotic and automation test scenarios allowing for early validation of automation concepts on local machines or in the cloud. This simulator allows developers to set KPIs, re-generate scenarios for testing, validate and optimize the development and robot operation sequences with realistic behaviors."
     },
     "files": [
-      "LGSVL Simulator – High fidelity simulator for autonomous driving",
+      "SVL Simulator – High fidelity simulator for autonomous driving",
       "Formal scenario-based testing of autonomous vehicles: From simulation to the real world"
     ]
   },
@@ -146,7 +146,7 @@
   "digitaltwin": {
     "navTitle": "Digital Twin generation",
     "title": "Digital Twin generation",
-    "body": "Create accurate representations of real-world environments for virtual simulation in LGSVL Simulator.",
+    "body": "Create accurate representations of real-world environments for virtual simulation in SVL Simulator.",
     "section1": {
       "body": "Run simulations that are accurate reflections of what your autonomous system will encounter in the real world"
     },
@@ -159,7 +159,7 @@
   },
   "home": {
     "navTitle": "Home",
-    "title": "LGSVL SIMULATOR",
+    "title": "SVL SIMULATOR",
     "body": "An end-to-end autonomous vehicle simulation platform",
     "section1": {
       "title": "Accelerate autonomous vehicle development with simulation",
@@ -167,7 +167,7 @@
     },
     "section2": {
       "title": "Tools and methodology for autonomous driving",
-      "body": "Built as an open platform, LGSVL Simulator gives you a high-fidelity simulation engine, content replicating the complexity of real-world environments, and cloud simulation for automated testing and validation at scale."
+      "body": "Built as an open platform, SVL Simulator gives you a high-fidelity simulation engine, content replicating the complexity of real-world environments, and cloud simulation for automated testing and validation at scale."
     },
     "features": [
       {
@@ -198,24 +198,24 @@
   "simulation": {
     "navTitle": "Simulation platform",
     "title": "An end-to-end simulation platform",
-    "body": "LGSVL Simulator is an autonomous vehicle simulator built to test and verify self-driving cars and robots, throughout the entire development lifecycle. Test your AV system end-to-end or by module, no matter where you are in your engineering cycle.",
+    "body": "SVL Simulator is an autonomous vehicle simulator built to test and verify self-driving cars and robots, throughout the entire development lifecycle. Test your AV system end-to-end or by module, no matter where you are in your engineering cycle.",
     "section1": {
       "title": "Open source and extensible simulation engine",
       "body": "Our core simulation engine is open source and free to use. Build and use plugins to extend functionality and test with your AV system."
     },
     "section2": {
-      "title": "LGSVL Simulator Premium",
+      "title": "SVL Simulator Premium",
       "body": "Scale up your simulation and testing workflow with a variety of scenario generation tools and scalable cloud simulation."
     },
     "featuresTable": {
       "products": [
         {
           "title": "Free",
-          "body": "Open source version of LGSVL Simulator for internal R&D use, not permitted for commercial deployment"
+          "body": "Open source version of SVL Simulator for internal R&D use, not permitted for commercial deployment"
         },
         {
           "title": "Premium",
-          "body": "Next generation LGSVL Simulator including open source simulation tools, cloud and content"
+          "body": "Next generation SVL Simulator including open source simulation tools, cloud and content"
         }
       ],
       "try": "Try for free",
@@ -250,7 +250,7 @@
   "requestdemo": {
     "title": "Request demo",
     "message": [
-      "Thank you for your interest in LGSVL Simulator. To request a demo of our commercial offering LGSVL Simulator Premium, or to learn more about our products and services, please fill out the form here. You can also email us at contact@lgsvlsimulator.com."
+      "Thank you for your interest in SVL Simulator. To request a demo of our commercial offering SVL Simulator Premium, or to learn more about our products and services, please fill out the form here. You can also email us at contact@lgsvlsimulator.com."
     ],
     "labels": {
       "nameGiven": "First name",
