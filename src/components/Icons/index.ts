@@ -8,7 +8,7 @@ export * from './Document';
 export * from './Out';
 export * from './LG';
 export * from './LGColor';
-export * from './LGSVLSimulator';
+export * from './SVLSimulator';
 export * from './Login';
 export * from './Menu';
 export * from './Partial';

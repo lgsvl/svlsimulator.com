@@ -1,11 +1,11 @@
 ---
 date: 2018-12-05
-title: Welcome to the new LGSVL Simulator website!
+title: Welcome to the new SVL Simulator website!
 author: Brian Shin
 prominence: biggest
 ---
 
-## Welcome to the new LGSVL Simulator website!
+## Welcome to the new SVL Simulator website!
 
 This website contains information about LG Silicon Valley Lab's autonomous vehicle simulator.
 It will act as a central place to direct developers and interested users of our simulator to our GitHub page, documentation, and information about our latest developments.

@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Instructions - LGSVL Simulator</title>
+  <title>Instructions - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -172,9 +172,9 @@
         
             <li><a class="toctree-l5" href="#simulator-installation">Simulator Installation</a></li>
         
-            <li><a class="toctree-l5" href="#install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge</a></li>
+            <li><a class="toctree-l5" href="#install-ros2-lgsvl-bridge">Install ROS2 SVL Bridge</a></li>
         
-            <li><a class="toctree-l5" href="#install-ros2-lgsvl-messages">Install ROS2 LGSVL Messages</a></li>
+            <li><a class="toctree-l5" href="#install-ros2-lgsvl-messages">Install ROS2 SVL Messages</a></li>
         
         </ul>
     
@@ -234,7 +234,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -425,7 +425,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -459,7 +459,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Autoware.Auto with LGSVL Simulator <a href="#top"></a></h1>
+                <h1>Autoware.Auto with SVL Simulator <a href="#top"></a></h1>
 <h2> Table of Contents</h2>
 
 <div class="toc">
@@ -473,15 +473,15 @@
 </li>
 <li><a href="#installing-autoware-auto">Installing Autoware.auto</a></li>
 <li><a href="#simulator-installation">Simulator Installation</a></li>
-<li><a href="#install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge</a></li>
-<li><a href="#install-ros2-lgsvl-messages">Install ROS2 LGSVL Messages</a></li>
+<li><a href="#install-ros2-lgsvl-bridge">Install ROS2 SVL Bridge</a></li>
+<li><a href="#install-ros2-lgsvl-messages">Install ROS2 SVL Messages</a></li>
 </ul>
 </li>
 <li><a href="#run-simulator-alongside-autoware-auto">Run Simulator alongside Autoware.Auto</a></li>
 </ul>
 </div>
 <h2 id="general">Overview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#general" title="Permanent link">#</a></h2>
-<p>This guide describes setting up and using Autoware.Auto with the LGSVL simulator. As Autoware.Auto is still under-development, full self-driving is not yet possible. This guide will focus on running individual modules which have been implemented.</p>
+<p>This guide describes setting up and using Autoware.Auto with the SVL simulator. As Autoware.Auto is still under-development, full self-driving is not yet possible. This guide will focus on running individual modules which have been implemented.</p>
 <h2 id="setup">Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
 <h3 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
 <ul>
@@ -535,7 +535,7 @@
 pip3 install --user .
 </code></pre>
 
-<h3 id="install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-bridge" title="Permanent link">#</a></h3>
+<h3 id="install-ros2-lgsvl-bridge">Install ROS2 SVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-bridge" title="Permanent link">#</a></h3>
 <h6>Downloading</h6>
 <pre><code class="bash">cd adehome
 git clone https://github.com/lgsvl/ros2-lgsvl-bridge.git
@@ -553,7 +553,7 @@ colcon build --cmake-args '-DCMAKE_BUILD_TYPE=Release'
 lgsvl_bridge
 </code></pre>
 
-<h3 id="install-ros2-lgsvl-messages">Install ROS2 LGSVL Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-messages" title="Permanent link">#</a></h3>
+<h3 id="install-ros2-lgsvl-messages">Install ROS2 SVL Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-messages" title="Permanent link">#</a></h3>
 <h6>Downloading</h6>
 <pre><code class="bash">mkdir -p ~/adehome/AutowareAuto/src/external/lgsvl_msgs
 cd ~/adehome/AutowareAuto/src/external/lgsvl_msg
@@ -618,7 +618,7 @@ rviz2 -d /home/&quot;${USER}&quot;/AutowareAuto/install/autoware_auto_examples/s
 </code></pre>
 
 <ul>
-<li>Start the LGSVL Simulator in ADE container by launching the executable and click on the button to open the web UI.</li>
+<li>Start the SVL Simulator in ADE container by launching the executable and click on the button to open the web UI.</li>
 </ul>
 <pre><code class="bash">$ ~/AutowareAuto/lgsvl_simulator/simulator
 </code></pre>
@@ -646,10 +646,10 @@ Select the simulation and press the play button in the bottom right corner of th
 </ul>
 </li>
 <li>
-<p>Launch ROS2 LGSVL bridge in a new terminal:</p>
+<p>Launch ROS2 SVL bridge in a new terminal:</p>
 </li>
 </ul>
-<p><strong>NOTE</strong>* <a href="#lgsvl-bridge-running">ROS2 LGSVL Bridge</a> needs to be running.</p>
+<p><strong>NOTE</strong>* <a href="#lgsvl-bridge-running">ROS2 SVL Bridge</a> needs to be running.</p>
 <p>You should now be able to see the lidar point cloud in rviz (see image below).</p>
 <p>If the pointcloud is not visible make sure the Fixed Frame (under Global Options) is set to <code>lidar_front</code> and that a PointCloud2 message is added which listens on the <code>/lidar_front/points_raw</code> topic.</p>
 <p><img alt="" src="../images/autoware-auto-rviz.png" /></p>

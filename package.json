@@ -1,8 +1,8 @@
 {
-  "name": "lgsvl-simulator-website",
+  "name": "svl-simulator-website",
   "private": true,
-  "description": "Website spotlighting the LGSVL Simulator and related services.",
-  "version": "0.1.0",
+  "description": "Website spotlighting the SVL Simulator and related services.",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "scripts": {
     "build": "gatsby build",
@@ -51,6 +51,7 @@
     "gatsby-source-filesystem": "^2.6.1",
     "gatsby-transformer-sharp": "^2.7.0",
     "i18next": "^19.8.4",
+    "intersection-observer": "^0.12.0",
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

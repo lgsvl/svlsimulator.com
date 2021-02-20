@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Viewing and subscribing to ground truth data - LGSVL Simulator</title>
+  <title>Viewing and subscribing to ground truth data - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class=" current">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -428,7 +428,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -444,7 +444,7 @@
         
       
         
-          <li>LGSVL ROS/ROS2 Message Definitions &raquo;</li>
+          <li>SVL ROS/ROS2 Message Definitions &raquo;</li>
         
       
         
@@ -469,7 +469,7 @@
                 <h1>Ground Truth Obstacles</h1>
 <p>This guide is for Simulator Release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a>. To visualize ground truth sensor data in version 2019.07, please activate the ground truth sensors according to the <a href="../ground-truth-json-example/">example</a> sensor configuration file.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>You can use the LGSVL Simulator to view, subscribe to, and compare  ground truth obstacle information. The simulator allows visualization of 2D or 3D bounding boxes of vehicles, pedestrians, and unknown objects, and publishes detailed information (currently in a custom ROS message format) about the ground truth obstacles.</p>
+<p>You can use the SVL Simulator to view, subscribe to, and compare  ground truth obstacle information. The simulator allows visualization of 2D or 3D bounding boxes of vehicles, pedestrians, and unknown objects, and publishes detailed information (currently in a custom ROS message format) about the ground truth obstacles.</p>
 <h2 id="view-ground-truth-obstacles-in-simulator">View ground truth obstacles in Simulator<a class="headerlink" href="#view-ground-truth-obstacles-in-simulator" title="Permanent link">#</a></h2>
 <p>Ground truth obstacles for traffic can be viewed in the simulator with both 3D bounding boxes as well as 2D bounding boxes in the camera.</p>
 <p>To view 3D Bounding boxes in the simulator:</p>
@@ -495,17 +495,17 @@
 <li>Purple: Unknown</li>
 </ul>
 <h2 id="subscribe-to-ground-truth-ros-messages">Subscribe to ground truth ROS messages<a class="headerlink" href="#subscribe-to-ground-truth-ros-messages" title="Permanent link">#</a></h2>
-<p>LGSVL Simulator also publishes custom ROS messages describing the ground truth data of non-ego vehicles.</p>
+<p>SVL Simulator also publishes custom ROS messages describing the ground truth data of non-ego vehicles.</p>
 <p>In order to subscribe to the ground truth messages, you will need the ROS package <a href="https://github.com/lgsvl/lgsvl_msgs">lgsvl_msgs</a>. It contains custom ROS message types for 2D and 3D bounding boxes. You will also need to be running rosbridge.</p>
 <h3 id="install-the-lgsvl_msgs-ros-package">Install the lgsvl_msgs ROS package<a class="headerlink" href="#install-the-lgsvl_msgs-ros-package" title="Permanent link">#</a></h3>
-<h4 id="use-lgsvl-apollo-or-autoware-repository">Use LGSVL Apollo or Autoware repository<a class="headerlink" href="#use-lgsvl-apollo-or-autoware-repository" title="Permanent link">#</a></h4>
-<p>If you are using LGSVL's forks of <a href="https://github.com/lgsvl/Apollo">Apollo</a> or <a href="https://github.com/lgsvl/Autoware">Autoware</a>, the package is already included as a submodule in the respective workspace:</p>
+<h4 id="use-lgsvl-apollo-or-autoware-repository">Use SVL Apollo or Autoware repository<a class="headerlink" href="#use-lgsvl-apollo-or-autoware-repository" title="Permanent link">#</a></h4>
+<p>If you are using SVL's forks of <a href="https://github.com/lgsvl/Apollo">Apollo</a> or <a href="https://github.com/lgsvl/Autoware">Autoware</a>, the package is already included as a submodule in the respective workspace:</p>
 <ul>
-<li>LGSVL Autoware: <code>autoware -&gt; ros -&gt; src -&gt; msgs -&gt; lgsvl_msgs</code></li>
-<li>LGSVL Apollo: <code>apollo -&gt; ros_pkgs -&gt; src -&gt; lgsvl_msgs</code></li>
+<li>SVL Autoware: <code>autoware -&gt; ros -&gt; src -&gt; msgs -&gt; lgsvl_msgs</code></li>
+<li>SVL Apollo: <code>apollo -&gt; ros_pkgs -&gt; src -&gt; lgsvl_msgs</code></li>
 </ul>
 <p>Following the instructions to build the ROS workspace will build the <code>lgsvl_msgs</code> package as well.</p>
-<p>If you are not running LGSVL's Apollo or Autoware forks, you can directly clone our <code>lgsvl_msgs</code> package into your ROS workspace and build.</p>
+<p>If you are not running SVL's Apollo or Autoware forks, you can directly clone our <code>lgsvl_msgs</code> package into your ROS workspace and build.</p>
 <h4 id="manually-install-lgsvl_msgs">Manually install lgsvl_msgs<a class="headerlink" href="#manually-install-lgsvl_msgs" title="Permanent link">#</a></h4>
 <ol>
 <li>Clone <code>lgsvl_msgs</code> to your ROS workspace or <code>msgs</code> directory:</li>
@@ -528,7 +528,7 @@
 <li>Message type: lgsvl_msgs/Detection3DArray: <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/Detection3DArray.msg">Link</a></li>
 </ul>
 <h2 id="view-estimated-detections-in-simulator">View estimated detections in Simulator<a class="headerlink" href="#view-estimated-detections-in-simulator" title="Permanent link">#</a></h2>
-<p>If you are running Autoware with LGSVL Simulator, you can also visualize Autoware object detection outputs in the simulator for both Lidar-based and Camera-based detections. Make sure that Autoware perception module is running and detection output topics have output messages.</p>
+<p>If you are running Autoware with SVL Simulator, you can also visualize Autoware object detection outputs in the simulator for both Lidar-based and Camera-based detections. Make sure that Autoware perception module is running and detection output topics have output messages.</p>
 <p>(You can also publish to the below topics even if you are not using Autoware)</p>
 <p>Required ROS topics:
 - For Lidar detections: /detection/lidar_objects

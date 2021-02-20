@@ -7,7 +7,8 @@ import React from 'react';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
-import { IconApollo, IconVelodyne } from 'src/components/Icons';
+import EntranceAnimation from 'src/components/EntranceAnimation';
+import { IconApollo, IconUnity, IconVelodyne } from 'src/components/Icons';
 import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
@@ -38,6 +39,10 @@ const HeroGrid = withTheme(styled(Grid)`
   position: relative;
 `) as React.FC<GridProps>;
 
+const ShadowTypography = styled(Typography)`
+  text-shadow: black 0px 1px 3px, rgb(0 0 0 / 70%) 0px 1px 20px;
+`;
+
 const SilhouettedContent = withTheme(styled(Box)`
   // Commented out shadow, in case there's a picture or video behind the logos in the future. -BS
   // ${({ theme }) => `
@@ -48,7 +53,7 @@ const SilhouettedContent = withTheme(styled(Box)`
   // `}
 `) as React.FC<BoxProps>;
 
-const brandIconProps = { color: '#6D7B97', height: 40, width: '100%' };
+const brandIconProps = { height: 40, width: '100%' };
 
 export default function Home() {
   const { t, tMap } = useTranslation();
@@ -56,45 +61,56 @@ export default function Home() {
   const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
-    <Page>
-      <PageSection>
-        <Box mb={15} height='70vh' maxHeight={720} position='relative'>
-          <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }}>
-            <Typography>
-              A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
-            </Typography>
-          </BackgroundVideo>
-          <HeroGrid container direction='column' alignItems='center' justify='center'>
-            <Grid item>
-              <Typography variant='h1'>{t('home.title')}</Typography>
-            </Grid>
-            <Grid item>
-              <Center disableGutters maxWidth={720}>
-                <Typography>{t('home.body')}</Typography>
-                <Box mt={6}>
-                  <Grid container spacing={4} justify='center'>
-                    <Grid item>
-                      <RequestDemoButton variant='outlined' />
-                    </Grid>
-                    <Grid item>
-                      <LinkButton color='primary' buttonVariant='contained' to='/docs/getting-started/' target='_blank'>
-                        {t('main.buttons.getStarted')}
-                      </LinkButton>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Center>
-            </Grid>
-          </HeroGrid>
-          <Box p={2} textAlign='center'>
-            <MoreArrows />
+    <Page animate>
+      <Box bgcolor='#141926'>
+        <PageSection maxWidth={false}>
+          <Box mb={15} height={`calc(100vh - ${theme.spacing(15) + 80}px)`} position='relative'>
+            <BackgroundVideo src={videoSrcHero} position='absolute' style={{ position: 'absolute' }} zIndex='auto'>
+              <Typography>
+                A video of Lidar scanning an environment, with a simulated vehicle driving down a street.
+              </Typography>
+            </BackgroundVideo>
+            <HeroGrid container direction='column' alignItems='center' justify='center'>
+              <Grid item>
+                <EntranceAnimation>
+                  <ShadowTypography variant='h1'>{t('home.title')}</ShadowTypography>
+                </EntranceAnimation>
+              </Grid>
+              <Grid item>
+                <EntranceAnimation>
+                  <Center disableGutters maxWidth={720}>
+                    <ShadowTypography>{t('home.body')}</ShadowTypography>
+                    <Box mt={6}>
+                      <Grid container spacing={4} justify='center'>
+                        <Grid item>
+                          <RequestDemoButton variant='outlined' />
+                        </Grid>
+                        <Grid item>
+                          <LinkButton
+                            color='primary'
+                            buttonVariant='contained'
+                            to='/docs/getting-started/'
+                            target='_blank'
+                          >
+                            {t('main.buttons.getStarted')}
+                          </LinkButton>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </Center>
+                </EntranceAnimation>
+              </Grid>
+            </HeroGrid>
+            <Box p={2} textAlign='center'>
+              <MoreArrows />
+            </Box>
           </Box>
-        </Box>
-      </PageSection>
+        </PageSection>
+      </Box>
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcWiseVis}>
+          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcWiseVis} animate>
             {t('home.section1.body')}
           </VisualizationSection>
         </Box>
@@ -102,19 +118,19 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcWiseVis}>
+          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcWiseVis} animate>
             {t('home.section2.body')}
           </VisualizationSection>
         </Box>
       </PageSection>
 
       <SilhouettedContent my={15}>
-        <Center disableGutters maxWidth={720}>
-          <LayoutGrid xs={2} sm={2 /* Set to the amount of logos for one row */} spacing={2}>
+        <Center maxWidth={720}>
+          <LayoutGrid xs={2} sm={2 /* Set to the amount of logos for one row */} spacing={2} alignItems='center'>
             {/* <IconBaidu {...brandIconProps} /> */}
-            <IconApollo {...brandIconProps} />
-            {/* <IconUnity {...brandIconProps} /> */}
-            <IconVelodyne {...brandIconProps} />
+            <IconApollo {...brandIconProps} color={'#1E64DD'} />
+            {/* <IconUnity {...brandIconProps} height={30} color={'#FFFFFF'} /> */}
+            <IconVelodyne {...brandIconProps} color={'#0038A5'} />
           </LayoutGrid>
         </Center>
       </SilhouettedContent>
@@ -122,39 +138,44 @@ export default function Home() {
       <Box my={15}>
         <PageSection>
           <LayoutGrid xs={1} sm={3} spacing={3}>
-            <Box>
-              <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
-              <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
-            </Box>
-            <Box order={isXs ? null : 4}>
-              {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
-               * We've specifically broken the button out into its own grid element box, so it can be
-               * assigned a custom order based on the screen size. When the screen is sm or larger,
-               * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
-               * on the second row, so they all vertically line up. `4` used below just represents a
-               * number, greater than 3. When order number is the same, DOM order is used.
-               */}
-              <ReadMoreButton to='/product/simulation/' />
-            </Box>
-            <Box>
-              <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
-              <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
-            </Box>
-            <Box order={isXs ? null : 4}>
-              <ReadMoreButton to='/product/cloud/' />
-            </Box>
-            <Box>
-              <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
-              <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
-            </Box>
-            <Box order={isXs ? null : 4}>
-              <ReadMoreButton to='/product/digitaltwin/' />
-            </Box>
+            <EntranceAnimation>
+              <Box flex={1}>
+                <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
+                <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
+              </Box>
+              <Box order={isXs ? null : 4} mt={1}>
+                {/* DEV NOTE: Rather than using the normal readMore button that's built into SectionContent,
+                 * We've specifically broken the button out into its own grid element box, so it can be
+                 * assigned a custom order based on the screen size. When the screen is sm or larger,
+                 * the grid is actually a 3x2 matrix, with the content on the first row and the buttons
+                 * on the second row, so they all vertically line up. `4` used below just represents a
+                 * number, greater than 3. When order number is the same, DOM order is used.
+                 */}
+                <ReadMoreButton to='/product/simulation/' />
+              </Box>
+            </EntranceAnimation>
+            <EntranceAnimation delay={isXs ? 0 : 0.4}>
+              <Box flex={1}>
+                <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
+                <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
+              </Box>
+              <Box order={isXs ? null : 4} mt={1}>
+                <ReadMoreButton to='/product/cloud/' />
+              </Box>
+            </EntranceAnimation>
+            <EntranceAnimation delay={isXs ? 0 : 0.8}>
+              <Box flex={1}>
+                <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
+                <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
+              </Box>
+              <Box order={isXs ? null : 4} mt={1}>
+                <ReadMoreButton to='/product/digitaltwin/' />
+              </Box>
+            </EntranceAnimation>
           </LayoutGrid>
         </PageSection>
       </Box>
-
-      <SubscribeBox />
+      <SubscribeBox animate />
     </Page>
   );
 }

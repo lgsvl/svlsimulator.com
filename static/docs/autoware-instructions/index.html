@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Instructions - LGSVL Simulator</title>
+  <title>Instructions - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -158,14 +158,14 @@
         
             <li><a class="toctree-l5" href="#install-nvidia-container-toolkit">Install NVIDIA Container Toolkit</a></li>
         
-            <li><a class="toctree-l5" href="#install-lgsvl-simulator">Install LGSVL Simulator</a></li>
+            <li><a class="toctree-l5" href="#install-lgsvl-simulator">Install SVL Simulator</a></li>
         
             <li><a class="toctree-l5" href="#install-autoware">Install Autoware</a></li>
         
         </ul>
     
 
-    <li class="toctree-l4"><a href="#launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside LGSVL Simulator</a></li>
+    <li class="toctree-l4"><a href="#launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside SVL Simulator</a></li>
     
         <ul>
         
@@ -244,7 +244,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -435,7 +435,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -469,8 +469,8 @@
           <div role="main">
             <div class="section">
               
-                <h1>Autoware.AI 1.14.0 with LGSVL Simulator <a href="#top"></a></h1>
-<p><strong>The software and source code in this repository are intended only for use with the LGSVL simulator and <em>should not</em> be used in a real vehicle.</strong></p>
+                <h1>Autoware.AI 1.14.0 with SVL Simulator <a href="#top"></a></h1>
+<p><strong>The software and source code in this repository are intended only for use with the SVL simulator and <em>should not</em> be used in a real vehicle.</strong></p>
 <h2>Table of Contents</h2>
 
 <div class="toc">
@@ -480,11 +480,11 @@
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#install-docker-ce">Install Docker CE</a></li>
 <li><a href="#install-nvidia-container-toolkit">Install NVIDIA Container Toolkit</a></li>
-<li><a href="#install-lgsvl-simulator">Install LGSVL Simulator</a></li>
+<li><a href="#install-lgsvl-simulator">Install SVL Simulator</a></li>
 <li><a href="#install-autoware">Install Autoware</a></li>
 </ul>
 </li>
-<li><a href="#launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside LGSVL Simulator</a><ul>
+<li><a href="#launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside SVL Simulator</a><ul>
 <li><a href="#driving-by-following-vector-map">Driving by following vector map:</a></li>
 <li><a href="#adding-a-vehicle">Adding a Vehicle</a></li>
 <li><a href="#adding-an-hd-map">Adding an HD Map</a></li>
@@ -498,9 +498,9 @@
 </div>
 
 <p><br></p>
-<p>This guide goes through how to run Autoware.AI with the LGSVL simulator.</p>
-<p>In order to run Autoware with the LGSVL simulator, it is easiest to pull the official Autoware Docker image (see the <a href="https://github.com/Autoware-AI/autoware.ai/wiki/Generic-x86-Docker#run-an-autoware-docker-container">official guide, Case 1</a> for more details), but it is also possible to <a href="https://github.com/Autoware-AI/autoware.ai/wiki/Source-Build">build Autoware from source</a>.</p>
-<p>Autoware communicates with the LGSVL simulator using the rosbridge_suite, which provides JSON interfacing with ROS publishers/subscribers. The official Autoware Docker containers have rosbridge_suite included.</p>
+<p>This guide goes through how to run Autoware.AI with the SVL simulator.</p>
+<p>In order to run Autoware with the SVL simulator, it is easiest to pull the official Autoware Docker image (see the <a href="https://github.com/Autoware-AI/autoware.ai/wiki/Generic-x86-Docker#run-an-autoware-docker-container">official guide, Case 1</a> for more details), but it is also possible to <a href="https://github.com/Autoware-AI/autoware.ai/wiki/Source-Build">build Autoware from source</a>.</p>
+<p>Autoware communicates with the SVL simulator using the rosbridge_suite, which provides JSON interfacing with ROS publishers/subscribers. The official Autoware Docker containers have rosbridge_suite included.</p>
 <h2 id="setup">Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
 <h3 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
 <ul>
@@ -534,7 +534,7 @@
 </code></pre>
 
 <p>Install the NVIDIA Container Toolkit by following the instructions <a href="https://github.com/NVIDIA/nvidia-docker#quickstart">here</a>.</p>
-<h3 id="install-lgsvl-simulator">Install LGSVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-lgsvl-simulator" title="Permanent link">#</a></h3>
+<h3 id="install-lgsvl-simulator">Install SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-lgsvl-simulator" title="Permanent link">#</a></h3>
 <p>Follow the instructions <a href="https://github.com/lgsvl/simulator">here</a>.</p>
 <h3 id="install-autoware">Install Autoware <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-autoware" title="Permanent link">#</a></h3>
 <p>Make sure you have <a href="https://git-lfs.github.com/">Git Large File Storage</a> (LFS) installed <strong>before</strong> cloning the repository in the next step. If <code>git lfs</code> outputs <code>git: 'lfs' is not a git command.</code>, then you need to install it:</p>
@@ -561,7 +561,7 @@ git clone https://github.com/lgsvl/autoware-data.git
 git clone https://github.com/Autoware-AI/docker.git
 </code></pre>
 
-<h2 id="launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside LGSVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launch-autoware-alongside-lgsvl-simulator" title="Permanent link">#</a></h2>
+<h2 id="launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launch-autoware-alongside-lgsvl-simulator" title="Permanent link">#</a></h2>
 <p>Run the Autoware 1.14.0 container and enter into it:</p>
 <pre><code class="bash">cd $WORKING_DIRECTORY/docker/generic
 ./run.sh -t 1.14.0
@@ -604,7 +604,7 @@ $ ./run.sh -t local
 <p><a href="../images/autoware-runtime-manager.png"><img alt="" src="../images/autoware-runtime-manager.png" /></a></p>
 <p>Click "Map" to load the launch file pertaining to the HD maps. An "Ok" should appear to the right of the "Ref" button when successfully loaded. Then click "Sensing" which also launches rosbridge.</p>
 <ul>
-<li>Run the LGSVL simulator</li>
+<li>Run the SVL simulator</li>
 <li>Create a Simulation choosing <code>BorregasAve</code> map and <code>Jaguar2015XE (Autoware)</code> or another Autoware compatible vehicle.</li>
 <li>Enter <code>localhost:9090</code> for the Bridge Connection String.</li>
 <li>Run the created Simulation</li>
@@ -622,9 +622,9 @@ After choosing a valid destination the route will be highlighted in blue in rviz
 <p><a href="../images/autoware-valid-route.png"><img alt="" src="../images/autoware-valid-route.png" /></a></p>
 <p>In Mission Planning launch file, waypoint_planner runs as global planner, dp_planner does as local planner. In Motion Planning launch file, pure_pursuit runs as controller.</p>
 <h3 id="adding-a-vehicle">Adding a Vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-a-vehicle" title="Permanent link">#</a></h3>
-<p>The default vehicles have the calibration files included in the <a href="https://github.com/lgsvl/autoware-data">LGSVL Autoware Data</a> Github repository.</p>
+<p>The default vehicles have the calibration files included in the <a href="https://github.com/lgsvl/autoware-data">SVL Autoware Data</a> Github repository.</p>
 <h3 id="adding-an-hd-map">Adding an HD Map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-an-hd-map" title="Permanent link">#</a></h3>
-<p>The default maps have the Vector map files included in the <a href="https://github.com/lgsvl/autoware-data">LGSVL Autoware Data</a> Github repository.</p>
+<p>The default maps have the Vector map files included in the <a href="https://github.com/lgsvl/autoware-data">SVL Autoware Data</a> Github repository.</p>
               
             </div>
           </div>

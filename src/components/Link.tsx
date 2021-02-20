@@ -48,7 +48,7 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
   // will start with exactly one slash, and that anything else is external.
   // We do NOT use consider docs URLs as internal, as that's a separate embedded
   // website and not part of the Gatsby routes.
-  const internal = /^\/(?!\/|docs)/.test(to);
+  const internal = /^\/(?!\/|docs)/.test(to) && !/\.(pdf|zip)$/.test(to);
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
     return (
@@ -67,7 +67,7 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
     return (
       <MuiLink component={FwdOutbound} to={to} target='_blank' {...rest} ref={ref as React.Ref<HTMLAnchorElement>}>
         {rest.children}
-        <StyledIconOut />
+        {/^[^/]/.test(to) && <StyledIconOut />}
       </MuiLink>
     );
   }

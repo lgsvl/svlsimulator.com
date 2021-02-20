@@ -12,7 +12,7 @@ import Image from 'src/components/Image';
 import Page, { PageSection } from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcLgsvlLogo from 'src/images/about.jpg';
+import srcSVLLogo from 'src/images/about.jpg';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 
@@ -48,7 +48,7 @@ export default function About() {
       <PageSection>
         <Box height={{ xs: '50vh', md: '70vh' }} maxHeight={720} position='relative'>
           <Image
-            src={srcLgsvlLogo}
+            src={srcSVLLogo}
             // fit='contain'
             position='absolute'
             style={{

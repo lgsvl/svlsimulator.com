@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>FAQ - LGSVL Simulator</title>
+  <title>FAQ - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -416,13 +416,13 @@
     <li class="toctree-l3"><a href="#how-do-i-control-the-ego-vehicle-my-vehicle-spawn-position">How do I control the ego vehicle (my vehicle) spawn position?</a></li>
     
 
-    <li class="toctree-l3"><a href="#how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator">How can I add a custom ego vehicle to LGSVL Simulator?</a></li>
+    <li class="toctree-l3"><a href="#how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator">How can I add a custom ego vehicle to SVL Simulator?</a></li>
     
 
-    <li class="toctree-l3"><a href="#how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator">How can I add extra sensors to vehicles in LGSVL Simulator?</a></li>
+    <li class="toctree-l3"><a href="#how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator">How can I add extra sensors to vehicles in SVL Simulator?</a></li>
     
 
-    <li class="toctree-l3"><a href="#how-can-i-add-a-custom-map-to-lgsvl-simulator">How can I add a custom map to LGSVL Simulator?</a></li>
+    <li class="toctree-l3"><a href="#how-can-i-add-a-custom-map-to-lgsvl-simulator">How can I add a custom map to SVL Simulator?</a></li>
     
 
     <li class="toctree-l3"><a href="#how-can-i-create-or-edit-map-annotations">How can I create or edit map annotations?</a></li>
@@ -480,7 +480,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -510,7 +510,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>LGSVL Simulator FAQ <a href="#top"></a></h1>
+                <h1>SVL Simulator FAQ <a href="#top"></a></h1>
 <div class="toc">
 <ul>
 <li><a href="#what-are-the-recommended-system-specs-what-are-the-minimum-required-system-specs">What are the recommended system specs? What are the minimum REQUIRED system specs?</a></li>
@@ -524,9 +524,9 @@
 <li><a href="#why-do-i-get-an-error-saying-som-files-e-g-rosbridge-websocket-launch-are-missing-in-apollo">Why do I get an error saying some files (e.g. rosbridge_websocket.launch) are missing in Apollo?</a></li>
 <li><a href="#ros-bridge-won-t-connect">ROS Bridge won</a></li>
 <li><a href="#how-do-i-control-the-ego-vehicle-my-vehicle-spawn-position">How do I control the ego vehicle (my vehicle) spawn position?</a></li>
-<li><a href="#how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator">How can I add a custom ego vehicle to LGSVL Simulator?</a></li>
-<li><a href="#how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator">How can I add extra sensors to vehicles in LGSVL Simulator?</a></li>
-<li><a href="#how-can-i-add-a-custom-map-to-lgsvl-simulator">How can I add a custom map to LGSVL Simulator?</a></li>
+<li><a href="#how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator">How can I add a custom ego vehicle to SVL Simulator?</a></li>
+<li><a href="#how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator">How can I add extra sensors to vehicles in SVL Simulator?</a></li>
+<li><a href="#how-can-i-add-a-custom-map-to-lgsvl-simulator">How can I add a custom map to SVL Simulator?</a></li>
 <li><a href="#how-can-i-create-or-edit-map-annotations">How can I create or edit map annotations?</a></li>
 <li><a href="#why-are-pedestrians-not-spawning-when-annotated-correctly">Why are pedestrians not spawning when annotated correctly?</a></li>
 <li><a href="#why-can-t-i-find-catkin-make-command-when-building-apollo">Why can't I find catkin_make command when building Apollo?</a></li>
@@ -551,7 +551,7 @@ to run is a 3GHz dual core CPU, Nvidia graphics card, and 8 GB memory system.</p
 better performance on Windows than on Linux.</p>
 <p>If Apollo or Autoware will be running on the same system, upgrading to a GPU with at least 10GB memory is recommended.</p>
 <h4 id="does-the-simulator-run-on-windows-mac-linux">Does the simulator run on Windows/Mac/Linux? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#does-the-simulator-run-on-windows-mac-linux" title="Permanent link">#</a></h4>
-<p>Officially, you can run LGSVL Simulator on Windows 10 and Ubuntu 16.04 (or later). We do not
+<p>Officially, you can run SVL Simulator on Windows 10 and Ubuntu 16.04 (or later). We do not
 support macOS at this time.</p>
 <h4 id="why-does-the-simulator-not-open-on-linux">Why does the simulator not open on Linux? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#why-does-the-simulator-not-open-on-linux" title="Permanent link">#</a></h4>
 <p>The Simulator requires the vulkan libraries to be installed on Linux:</p>
@@ -559,11 +559,11 @@ support macOS at this time.</p>
 </code></pre>
 
 <h4 id="which-unity-version-is-required-and-how-do-i-get-it">Which Unity version is required and how do I get it? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#which-unity-version-is-required-and-how-do-i-get-it" title="Permanent link">#</a></h4>
-<p>LGSVL Simulator is currently on Unity version 2019.1.10f1, and can be downloaded from the
+<p>SVL Simulator is currently on Unity version 2019.1.10f1, and can be downloaded from the
 Unity Download Archive. </p>
 <p>You can download the Windows version here: <a href="https://unity3d.com/get-unity/download/archive">https://unity3d.com/get-unity/download/archive</a></p>
 <p>You can download the Linux version (20191.10f1) here: <a href="https://beta.unity3d.com/download/f007ed779b7a/UnitySetup-2019.1.10f1">https://beta.unity3d.com/download/f007ed779b7a/UnitySetup-2019.1.10f1</a></p>
-<p>We are constantly working to ensure that LGSVL Simulator runs on the latest version of Unity
+<p>We are constantly working to ensure that SVL Simulator runs on the latest version of Unity
 which supports all of our required functionality.</p>
 <h4 id="why-does-my-simulator-say-invalid-out-of-date-assetbundle">Why does my Simulator say "Invalid: Out of date Assetbundle"? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#why-does-my-simulator-say-invalid-out-of-date-assetbundle" title="Permanent link">#</a></h4>
 <p>Assetbundle versions change as we add new features. To get the latest assetbundles, update the URL of the Map/Vehicle to the one on the <a href="https://content.lgsvlsimulator.com/">content website</a>.</p>
@@ -645,7 +645,7 @@ which supports all of our required functionality.</p>
 <tbody>
 <tr>
 <td align="center">Windows Binary</td>
-<td align="center"><code>%APPDATA%\..\LocalLow\LG Silicon Valley Lab\LGSVL Simulator\Player.log</code></td>
+<td align="center"><code>%APPDATA%\..\LocalLow\LG Silicon Valley Lab\SVL Simulator\Player.log</code></td>
 </tr>
 <tr>
 <td align="center">Windows Editor</td>
@@ -653,7 +653,7 @@ which supports all of our required functionality.</p>
 </tr>
 <tr>
 <td align="center">Linux Binary</td>
-<td align="center"><code>~/.config/unity3d/LG Silicon Valley Lab/LGSVL Simulator/Player.log</code></td>
+<td align="center"><code>~/.config/unity3d/LG Silicon Valley Lab/SVL Simulator/Player.log</code></td>
 </tr>
 <tr>
 <td align="center">Linux Editor</td>
@@ -693,17 +693,17 @@ you do not have firewall blocking ports.</p>
 <p>Find the "spawn_transform" game objects in scene and adjust their transform position.</p>
 <p>If you are creating new maps make sure you add "SpawnInfo" component to empty game object. The
 Simulator will use location of first game object that has SpawnInfo component.</p>
-<h4 id="how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator">How can I add a custom ego vehicle to LGSVL Simulator? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator" title="Permanent link">#</a></h4>
-<p>Please see our tutorial on how to add a new ego vehicle to LGSVL Simulator <a href="../add-new-ego-vehicle/">here</a>.</p>
-<h4 id="how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator">How can I add extra sensors to vehicles in LGSVL Simulator? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator" title="Permanent link">#</a></h4>
+<h4 id="how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator">How can I add a custom ego vehicle to SVL Simulator? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-add-a-custom-ego-vehicle-to-lgsvl-simulator" title="Permanent link">#</a></h4>
+<p>Please see our tutorial on how to add a new ego vehicle to SVL Simulator <a href="../add-new-ego-vehicle/">here</a>.</p>
+<h4 id="how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator">How can I add extra sensors to vehicles in SVL Simulator? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-add-extra-sensors-to-vehicles-in-lgsvl-simulator" title="Permanent link">#</a></h4>
 <p>Adding sensors to a vehicle is done by editing the configuration JSON in the WebUI. 
 See <a href="../sensor-json-options/">Sensor JSON Options</a> for details on all the availble sensors.</p>
-<h4 id="how-can-i-add-a-custom-map-to-lgsvl-simulator">How can I add a custom map to LGSVL Simulator? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-add-a-custom-map-to-lgsvl-simulator" title="Permanent link">#</a></h4>
+<h4 id="how-can-i-add-a-custom-map-to-lgsvl-simulator">How can I add a custom map to SVL Simulator? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-add-a-custom-map-to-lgsvl-simulator" title="Permanent link">#</a></h4>
 <p>See <a href="../maps-tab/#how-to-add-a-map">Maps</a> for details.</p>
 <h4 id="how-can-i-create-or-edit-map-annotations">How can I create or edit map annotations? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-can-i-create-or-edit-map-annotations" title="Permanent link">#</a></h4>
-<p>Please see our tutorial on how to add map annotations in LGSVL Simulator <a href="../map-annotation/">here</a>.</p>
+<p>Please see our tutorial on how to add map annotations in SVL Simulator <a href="../map-annotation/">here</a>.</p>
 <h4 id="why-are-pedestrians-not-spawning-when-annotated-correctly">Why are pedestrians not spawning when annotated correctly? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#why-are-pedestrians-not-spawning-when-annotated-correctly" title="Permanent link">#</a></h4>
-<p>LGSVL Simulator uses Unity's NavMesh API to work correctly.  In Unity Editor, select Window -&gt; AI -&gt; Navigation and bake the NavMesh.</p>
+<p>SVL Simulator uses Unity's NavMesh API to work correctly.  In Unity Editor, select Window -&gt; AI -&gt; Navigation and bake the NavMesh.</p>
 <h4 id="why-can-t-i-find-catkin-make-command-when-building-apollo">Why can't I find catkin_make command when building Apollo? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#why-can-t-i-find-catkin-make-command-when-building-apollo" title="Permanent link">#</a></h4>
 <p>Make sure you are not running Apollo dev_start/into.sh scripts as root. The will not work as root.
 You need to run them as non-root user, without sudo.</p>
@@ -725,7 +725,7 @@ does not see traffic light, the vehicle won't move.</p>
 <p>Check previous question to verify that perception module is running and Apollo is seeing traffic
 light (top left of dreamview should say GREEN or RED).</p>
 <h4 id="dreamview-in-apollo-shows-hardware-gps-triggers-safety-mode-no-gnss-status-message">Dreamview in Apollo shows "Hardware GPS triggers safety mode. No GNSS status message." <a class="wikilink" href="#top">top</a><a class="headerlink" href="#dreamview-in-apollo-shows-hardware-gps-triggers-safety-mode-no-gnss-status-message" title="Permanent link">#</a></h4>
-<p>This is expected behavior. LGSVL Simulator does simulation on software level. It sends only ROS
+<p>This is expected behavior. SVL Simulator does simulation on software level. It sends only ROS
 messages to Apollo. Dreamview in Apollo has extra checks that tries to verify if hardware devices are working correctly and are not disconnected. This error message means that Apollo does not see
 GPS hardware working (as it is not present).</p>
 <p>It it safe to ignore it.</p>

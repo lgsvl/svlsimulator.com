@@ -17,6 +17,7 @@ import videoSrcSubscribe from 'src/videos/Subscription.mp4';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import Button, { ButtonProps } from './Button';
+import EntranceAnimation from './EntranceAnimation';
 // import { IconX } from './Icons';
 import { PageSectionFullWidth } from './Page';
 
@@ -59,7 +60,7 @@ const TransitioningButton = withTheme(styled(Button)`
 `}
 `) as React.FC<ButtonProps>;
 
-const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
+const SubscribeBox: React.FC<BoxProps & { animate?: boolean }> = ({ animate, ...rest }) => {
   const { t } = useTranslation();
   // const [snackbarOpen, setSnackbarOpen] = React.useState(false);
 
@@ -113,90 +114,92 @@ const SubscribeBox: React.FC<BoxProps> = ({ ...rest }) => {
             really want to subscribe to our email list for more information.
           </Typography>
         </BackgroundVideo>
-        <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
-          <FullHeightGrid container alignItems='center' justify='center'>
-            <Grid item xs={12} sm={10} md={6}>
-              <Typography variant='h3' gutterBottom>
-                {t('main.subscribe.title')}
-              </Typography>
-              {/* <StyledPaper elevation={0} showBackground={submitVisible}> */}
-              <form
-                noValidate
-                // onSubmit={handleSimpleSubmit}
-                action='https://lgsvlsimulator.us20.list-manage.com/subscribe/post?u=226621ee7c79910b83d6c77b8&amp;id=c9a899ac03'
-                method='post'
-                target='_blank'
-              >
-                <Box position='absolute' left={-5000} aria-hidden='true'>
-                  <Input name='b_226621ee7c79910b83d6c77b8_c9a899ac03' tabIndex={-1} defaultValue='' />
-                </Box>
-                {/* <Box p={1} pt={2}> */}
-                <StyledInput
-                  {...commonTextInputProps}
-                  required
-                  name='EMAIL'
-                  id='subscribeEmailAddress'
-                  label={t('main.subscribe.emailPlaceholder')}
-                  placeholder={t('main.subscribe.emailPlaceholder')}
-                  error={touched.EMAIL && Boolean(errors.EMAIL)}
-                  helperText={touched.EMAIL && errors.EMAIL}
-                  value={values.EMAIL}
-                  InputProps={{
-                    endAdornment: (
-                      <StyledInputAdornment position='end'>
-                        <TransitioningButton
-                          style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : undefined}
-                          aria-label='submit subscription'
-                          variant='contained'
-                          size='medium'
-                          color='primary'
-                          disabled={isSubmitting || !(isValid && dirty)}
-                          type='submit'
-                        >
-                          {t('main.subscribe.submitButton')}
-                        </TransitioningButton>
-                      </StyledInputAdornment>
-                    )
-                  }}
-                />
-                {/* </Box> */}
-                {/* <Box px={1} mt={1}>
-                    <Collapse in={submitVisible} timeout='auto' unmountOnExit>
-                      <Grid container spacing={2} justify='space-between'>
-                        <GridBox item xs={12} sm={6} mb={1}>
-                          <Input
-                            {...commonTextInputProps}
-                            // required
-                            name='GIVENNAME'
-                            id='form-field-name-given'
-                            label={t('requestdemo.labels.nameGiven')}
-                            placeholder={t('requestdemo.placeholders.nameGiven')}
-                            error={touched.GIVENNAME && Boolean(errors.GIVENNAME)}
-                            helperText={touched.GIVENNAME && errors.GIVENNAME}
-                            value={values.GIVENNAME}
-                          />
-                        </GridBox>
-                        <GridBox item xs={12} sm={6} mb={1}>
-                          <Input
-                            {...commonTextInputProps}
-                            // required
-                            name='FAMILYNAME'
-                            id='form-field-name-family'
-                            label={t('requestdemo.labels.nameFamily')}
-                            placeholder={t('requestdemo.placeholders.nameFamily')}
-                            error={touched.FAMILYNAME && Boolean(errors.FAMILYNAME)}
-                            helperText={touched.FAMILYNAME && errors.FAMILYNAME}
-                            value={values.FAMILYNAME}
-                          />
-                        </GridBox>
-                      </Grid>
-                    </Collapse>
-                  </Box> */}
-              </form>
-              {/* </StyledPaper> */}
-            </Grid>
-          </FullHeightGrid>
-        </Box>
+        <EntranceAnimation disabled={!animate}>
+          <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
+            <FullHeightGrid container alignItems='center' justify='center'>
+              <Grid item xs={12} sm={10} md={6}>
+                <Typography variant='h3' gutterBottom>
+                  {t('main.subscribe.title')}
+                </Typography>
+                {/* <StyledPaper elevation={0} showBackground={submitVisible}> */}
+                <form
+                  noValidate
+                  // onSubmit={handleSimpleSubmit}
+                  action='https://lgsvlsimulator.us20.list-manage.com/subscribe/post?u=226621ee7c79910b83d6c77b8&amp;id=c9a899ac03'
+                  method='post'
+                  target='_blank'
+                >
+                  <Box position='absolute' left={-5000} aria-hidden='true'>
+                    <Input name='b_226621ee7c79910b83d6c77b8_c9a899ac03' tabIndex={-1} defaultValue='' />
+                  </Box>
+                  {/* <Box p={1} pt={2}> */}
+                  <StyledInput
+                    {...commonTextInputProps}
+                    required
+                    name='EMAIL'
+                    id='subscribeEmailAddress'
+                    label={t('main.subscribe.emailPlaceholder')}
+                    placeholder={t('main.subscribe.emailPlaceholder')}
+                    error={touched.EMAIL && Boolean(errors.EMAIL)}
+                    helperText={touched.EMAIL && errors.EMAIL}
+                    value={values.EMAIL}
+                    InputProps={{
+                      endAdornment: (
+                        <StyledInputAdornment position='end'>
+                          <TransitioningButton
+                            style={!submitVisible ? { opacity: 0, pointerEvents: 'none' } : undefined}
+                            aria-label='submit subscription'
+                            variant='contained'
+                            size='medium'
+                            color='primary'
+                            disabled={isSubmitting || !(isValid && dirty)}
+                            type='submit'
+                          >
+                            {t('main.subscribe.submitButton')}
+                          </TransitioningButton>
+                        </StyledInputAdornment>
+                      )
+                    }}
+                  />
+                  {/* </Box> */}
+                  {/* <Box px={1} mt={1}>
+                      <Collapse in={submitVisible} timeout='auto' unmountOnExit>
+                        <Grid container spacing={2} justify='space-between'>
+                          <GridBox item xs={12} sm={6} mb={1}>
+                            <Input
+                              {...commonTextInputProps}
+                              // required
+                              name='GIVENNAME'
+                              id='form-field-name-given'
+                              label={t('requestdemo.labels.nameGiven')}
+                              placeholder={t('requestdemo.placeholders.nameGiven')}
+                              error={touched.GIVENNAME && Boolean(errors.GIVENNAME)}
+                              helperText={touched.GIVENNAME && errors.GIVENNAME}
+                              value={values.GIVENNAME}
+                            />
+                          </GridBox>
+                          <GridBox item xs={12} sm={6} mb={1}>
+                            <Input
+                              {...commonTextInputProps}
+                              // required
+                              name='FAMILYNAME'
+                              id='form-field-name-family'
+                              label={t('requestdemo.labels.nameFamily')}
+                              placeholder={t('requestdemo.placeholders.nameFamily')}
+                              error={touched.FAMILYNAME && Boolean(errors.FAMILYNAME)}
+                              helperText={touched.FAMILYNAME && errors.FAMILYNAME}
+                              value={values.FAMILYNAME}
+                            />
+                          </GridBox>
+                        </Grid>
+                      </Collapse>
+                    </Box> */}
+                </form>
+                {/* </StyledPaper> */}
+              </Grid>
+            </FullHeightGrid>
+          </Box>
+        </EntranceAnimation>
       </Box>
       {/* <Snackbar
         anchorOrigin={{

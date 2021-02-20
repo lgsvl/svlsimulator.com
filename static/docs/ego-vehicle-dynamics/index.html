@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Vehicle dynamics - LGSVL Simulator</title>
+  <title>Vehicle dynamics - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -417,7 +417,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -452,7 +452,7 @@
             <div class="section">
               
                 <h1>EGO Vehicle Dynamics<a href="#top"></a></h1>
-<p>LGSVL Simulator supports multiple dynamics models for EGO vehicles.  The default dynamics model is a C# based model that uses Unity's PhysX physics engine and components.  The model receives controller input and applies force to the Unity wheel colliders.  For users who would like to change or replace vehicle dynamics with their own models, the simulator offers the following ways to do so.</p>
+<p>SVL Simulator supports multiple dynamics models for EGO vehicles.  The default dynamics model is a C# based model that uses Unity's PhysX physics engine and components.  The model receives controller input and applies force to the Unity wheel colliders.  For users who would like to change or replace vehicle dynamics with their own models, the simulator offers the following ways to do so.</p>
 <ul>
 <li>
 <p>Simple Model Interface - pure C# dynamics</p>
@@ -462,22 +462,22 @@
 </li>
 </ul>
 <h2 id="initial-setup">Initial Setup<a class="headerlink" href="#initial-setup" title="Permanent link">#</a></h2>
-<p>In order to alter the dynamics model in LGSVL Simulator, there are a few steps needed to setup the development environment. <a href="../build-instructions/">Link</a></p>
+<p>In order to alter the dynamics model in SVL Simulator, there are a few steps needed to setup the development environment. <a href="../build-instructions/">Link</a></p>
 <ol>
 <li>Download and install Unity Hub</li>
 <li>Download and install Unity 2019.1.10f1 with Windows and Linux build support modules</li>
 <li>Download and install Node.js</li>
-<li>Install git-lfs before cloning LGSVL Simulator</li>
-<li>Clone LGSVL Simulator repository from GitHub</li>
-<li>Clone CubeTown repository from GitHub into Assets -&gt; External -&gt; Environments -&gt; CubeTown folder in the newly cloned LGSVL Simulator clone </li>
-<li>Clone Jaguar2015XE repository from GitHub into Assets -&gt; External -&gt; Vehicles -&gt; Jaguar2015XE folder in the newly cloned LGSVL Simulator clone</li>
-<li>Navigate to WebUI folder in the root folder of the LGSVL Simulator</li>
+<li>Install git-lfs before cloning SVL Simulator</li>
+<li>Clone SVL Simulator repository from GitHub</li>
+<li>Clone CubeTown repository from GitHub into Assets -&gt; External -&gt; Environments -&gt; CubeTown folder in the newly cloned SVL Simulator clone </li>
+<li>Clone Jaguar2015XE repository from GitHub into Assets -&gt; External -&gt; Vehicles -&gt; Jaguar2015XE folder in the newly cloned SVL Simulator clone</li>
+<li>Navigate to WebUI folder in the root folder of the SVL Simulator</li>
 <li>Open a terminal window and run: npm install</li>
 <li>Then in the same terminal window run: npm run pack or you can run Simulator -&gt; Build WebUI in Simulator project in Unity Editor</li>
-<li>Open LGSVL Simulator from Unity Hub</li>
+<li>Open SVL Simulator from Unity Hub</li>
 </ol>
 <h2 id="simple-model-interface">Simple Model Interface<a class="headerlink" href="#simple-model-interface" title="Permanent link">#</a></h2>
-<p>Simple Model Interface is our pure C# dynamic model.  LGSVL Simulator vehicles that are provided, use the VehicleSMI class.  It is located in Assets -&gt; Scripts -&gt; Dynamics -&gt; Examples.  This class inherits IVehicleDynamics and has required methods for simulation.  Users can make any pure C# dynamic model class as long as it inherits IVehicleDynamics and is compiled in LGSVL Simulator run-time executable.  If creating a new SMI class, place in Assets -&gt; Scripts -&gt; Dynamics folder.  Future updates will create a dll of the class so it won't need to be compiled in the simulator executable.</p>
+<p>Simple Model Interface is our pure C# dynamic model.  SVL Simulator vehicles that are provided, use the VehicleSMI class.  It is located in Assets -&gt; Scripts -&gt; Dynamics -&gt; Examples.  This class inherits IVehicleDynamics and has required methods for simulation.  Users can make any pure C# dynamic model class as long as it inherits IVehicleDynamics and is compiled in SVL Simulator run-time executable.  If creating a new SMI class, place in Assets -&gt; Scripts -&gt; Dynamics folder.  Future updates will create a dll of the class so it won't need to be compiled in the simulator executable.</p>
 <h2 id="simple-model-interface-setup">Simple Model Interface Setup<a class="headerlink" href="#simple-model-interface-setup" title="Permanent link">#</a></h2>
 <p><a href="../images/full_size_images/smi-setup.png"><img alt="" src="../images/smi-setup.png" /></a></p>
 <ol>
@@ -503,13 +503,13 @@
 <p>Set any public references needed for your new dynamics model and save the prefab, Ctrl-S</p>
 </li>
 <li>
-<p>Open Simulator -&gt; Build... to open the LGSVL Simulator bundle creation window</p>
+<p>Open Simulator -&gt; Build... to open the SVL Simulator bundle creation window</p>
 </li>
 <li>
 <p>Select CubeTown and Ego vehicle</p>
 </li>
 <li>
-<p>Select Build and after it is completed, in the root of the LGSVL Simulator you will have a folder called AssetBundles where the new bundles will be created.</p>
+<p>Select Build and after it is completed, in the root of the SVL Simulator you will have a folder called AssetBundles where the new bundles will be created.</p>
 </li>
 <li>
 <p>Open Loader.scene, run in editor and open the WebUI by pressing the Open Browser... button in the Game panel view</p>
@@ -552,16 +552,16 @@
 <li>FMUImporter.cs will parse the XML file into FMUData in the VehicleFMU class instance on prefab</li>
 <li>Model Variables will be listed so users can reference by index</li>
 <li>Each model variable has multiple values that are displayed in the scroll area</li>
-<li>Open Simulator -&gt; Build... to open the LGSVL Simulator bundle creation window</li>
+<li>Open Simulator -&gt; Build... to open the SVL Simulator bundle creation window</li>
 <li>Select CubeTown if you have not created a bundle yet and Ego vehicle</li>
-<li>Select Build and after it is completed, in the root of the LGSVL Simulator you will have a folder called AssetBundles where the new bundles will be created.</li>
+<li>Select Build and after it is completed, in the root of the SVL Simulator you will have a folder called AssetBundles where the new bundles will be created.</li>
 <li>Open Loader.scene, run in editor and open the WebUI by pressing the Open Browser... button in the Game panel view</li>
 <li>Under Vehicles, create or assign the new prefab path to the vehicle name you want.  Apply any sensors needed in the JSON configuation</li>
 <li>Under Maps, create or assign the new CubeTown map if not setup yet</li>
 <li>Under Simulations add map and vehicle and run</li>
 </ol>
 <h2 id="full-model-interface-run-time-behavior">Full Model Interface Run-time behavior<a class="headerlink" href="#full-model-interface-run-time-behavior" title="Permanent link">#</a></h2>
-<p>When LGSVL Simulator loads a vehicle bundle with an FMU included, it saves the fmu.dll to a folder in Unity's persistent data folder.  This folder is contained in the hidden folder AppData in Windows.  Here it is loaded by the FMU class, loaded and passed to ExampleVehicleFMU class.  Then ExampleVehicleFMU class can call FMU specific methods in the dll.  Config.cs will hold references all opened dll's so LGSVL Simulator will not try to open it multiple times.  Currently, LGSVL Simulator only supports one FMU in Windows only.</p>
+<p>When SVL Simulator loads a vehicle bundle with an FMU included, it saves the fmu.dll to a folder in Unity's persistent data folder.  This folder is contained in the hidden folder AppData in Windows.  Here it is loaded by the FMU class, loaded and passed to ExampleVehicleFMU class.  Then ExampleVehicleFMU class can call FMU specific methods in the dll.  Config.cs will hold references all opened dll's so SVL Simulator will not try to open it multiple times.  Currently, SVL Simulator only supports one FMU in Windows only.</p>
               
             </div>
           </div>

@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Lidar sensor plugin - LGSVL Simulator</title>
+  <title>Lidar sensor plugin - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -416,7 +416,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -471,7 +471,7 @@
 <h2 id="velodyne-lidar-sensor-plugins">Velodyne Lidar Sensor Plugin <a class="wikilink" href="#top">top</a><a class="headerlink" href="#velodyne-lidar-sensor-plugins" title="Permanent link">#</a></h2>
 <p>This sensor plugin is for <a href="https://velodynelidar.com/">Velodyne Lidar</a>. VLP-16, VLP-32C and VLS-128 are currently supported. 
 The built asset bundle of this plugin (named <code>sensor_VelodyneLidarSensor</code>) can be found in <code>AssetBundles/Sensors</code> folder
-when you unzip the downloaded LGSVL Simulator (i.e. in the same level of the Simulator executable). </p>
+when you unzip the downloaded SVL Simulator (i.e. in the same level of the Simulator executable). </p>
 <p>The Velodyne Lidar Sensor is implemented following exact intrinsics of real Velodyne Lidar,
 such as elevation angles and azimuth offsets. Particularly, each laser beam in Velodyne Lidar sensor
 has azimuth offset same as the real Lidar, while the normal <a href="../sensor-json-options/#lidar">Lidar Sensor</a>
@@ -694,7 +694,7 @@ source devel/setup.bash
 </code></pre>
 
 <p><span>5.</span> Configuration of device IP
-Before running the Velodyne driver, you need to modify the launch files to setup device IP (i.e. the IP of the machine where the LGSVL Simulator is running).</p>
+Before running the Velodyne driver, you need to modify the launch files to setup device IP (i.e. the IP of the machine where the SVL Simulator is running).</p>
 <ul>
 <li>For VLP-16, edit velodyne_ws/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch and put the device IP after <code>device_ip</code>.</li>
 <li>For VLP-32, edit velodyne_ws/src/velodyne/velodyne_pointcloud/launch/VLP-32C_points.launch and put the device IP after <code>device_ip</code>.</li>
@@ -709,7 +709,7 @@ Before running the Velodyne driver, you need to modify the launch files to setup
 <pre><code class="bash">roslaunch velodyne_pointcloud VLP-32C_points.launch
 </code></pre>
 
-<p>If you have LGSVL Simulator running on client machine, you should be able to see UDP packets received on both data port and position port, 
+<p>If you have SVL Simulator running on client machine, you should be able to see UDP packets received on both data port and position port, 
 and ROS topic <code>/velodyne_points</code> is published by the driver. You can also use RViz to visualize the point cloud in that topic.</p>
 <p>Fig. 1 shows point cloud of VLP-32C visualized in the simulator,</p>
 <table>
@@ -720,7 +720,7 @@ and ROS topic <code>/velodyne_points</code> is published by the driver. You can 
 </thead>
 <tbody>
 <tr>
-<td align="center">Fig. 1: Visualized point clouds of VLP-32C Lidar in LGSVL Simulator.</td>
+<td align="center">Fig. 1: Visualized point clouds of VLP-32C Lidar in SVL Simulator.</td>
 </tr>
 </tbody>
 </table>
@@ -766,7 +766,7 @@ Fig. 3 shows the Dreamview web interface:</p>
 </tbody>
 </table>
 <p>On the Simulator side, you can add Velodyne Lidar sensor into our <a href="../apollo5-0-json-example/">sample JSON</a>.</p>
-<p>If you have LGSVL Simulator running on client machine, you should be able to see UDP packets received on both data port and position port, 
+<p>If you have SVL Simulator running on client machine, you should be able to see UDP packets received on both data port and position port, 
 and <code>cyber_monitor</code> should shows point clouds published into corresponding Cyber channels. 
 You can also use <code>cyber_visualizer</code> to visualize the point cloud in those channels. 
 Fig. 4 shows the point cloud of VLP-32C Lidar visualized in Cyber Visualizer (click to see in full resolution):</p>
