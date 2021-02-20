@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>How to create a simple ROS2-based AD stack - LGSVL Simulator</title>
+  <title>How to create a simple ROS2-based AD stack - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -323,7 +323,7 @@
     
         <ul>
         
-            <li><a class="toctree-l4" href="#publish-command-back-to-lgsvl-simulator">Publish command back to LGSVL Simulator</a></li>
+            <li><a class="toctree-l4" href="#publish-command-back-to-lgsvl-simulator">Publish command back to SVL Simulator</a></li>
         
         </ul>
     
@@ -463,7 +463,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -493,10 +493,10 @@
           <div role="main">
             <div class="section">
               
-                <h1>How to create a ROS2-based AD stack with LGSVL Simulator</h1>
+                <h1>How to create a ROS2-based AD stack with SVL Simulator</h1>
 <p>This tutorial works with Simulator Release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a></p>
-<p>This documentation describes how to develop ROS2 nodes to receive sensor data from LGSVL Simulator and send control commands to drive a car.</p>
-<p><a href="https://github.com/lgsvl/lanefollowing">The Lane Following model</a> is a <a href="https://index.ros.org/doc/ros2/">ROS2</a>-based Autonomous Driving stack developed with <a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a>. In high-level overview, the model is composed of three modules: a sensor module, a perception module, and a control module. The sensor module receives raw sensor data such as camera images from the simulator and preprocess the data before feeding into the perception module. Then, the perception module takes in the preprocessed data, extracts lane information, and predicts steering wheel commands. Finally, the control module sends a predicted control command back to the simulator, which would drive a car autonomously. </p>
+<p>This documentation describes how to develop ROS2 nodes to receive sensor data from SVL Simulator and send control commands to drive a car.</p>
+<p><a href="https://github.com/lgsvl/lanefollowing">The Lane Following model</a> is a <a href="https://index.ros.org/doc/ros2/">ROS2</a>-based Autonomous Driving stack developed with <a href="https://www.lgsvlsimulator.com/">SVL Simulator</a>. In high-level overview, the model is composed of three modules: a sensor module, a perception module, and a control module. The sensor module receives raw sensor data such as camera images from the simulator and preprocess the data before feeding into the perception module. Then, the perception module takes in the preprocessed data, extracts lane information, and predicts steering wheel commands. Finally, the control module sends a predicted control command back to the simulator, which would drive a car autonomously. </p>
 <h2> Table of Contents</h2>
 
 <div class="toc">
@@ -522,7 +522,7 @@
 </ul>
 </li>
 <li><a href="#writing-ros2-publisher-node">Writing ROS2 Publisher Node</a><ul>
-<li><a href="#publish-command-back-to-lgsvl-simulator">Publish command back to LGSVL Simulator</a></li>
+<li><a href="#publish-command-back-to-lgsvl-simulator">Publish command back to SVL Simulator</a></li>
 </ul>
 </li>
 <li><a href="#running-ros2-node">Running ROS2 Node</a></li>
@@ -535,10 +535,10 @@
 <li>Python3</li>
 <li>ROS2</li>
 <li>TensorFlow, Keras</li>
-<li>LGSVL Simulator</li>
+<li>SVL Simulator</li>
 </ul>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
-<p>Our AD stack implementation is based on ROS2 and uses rosbridge to communicate with LGSVL Simulator. To do that, we need to prepare Ubuntu machine with ROS2 installed. We provide a Docker image containing Ubuntu 18.04 and ROS2 installed so you can just pull the Docker image and start writing code right away.</p>
+<p>Our AD stack implementation is based on ROS2 and uses rosbridge to communicate with SVL Simulator. To do that, we need to prepare Ubuntu machine with ROS2 installed. We provide a Docker image containing Ubuntu 18.04 and ROS2 installed so you can just pull the Docker image and start writing code right away.</p>
 <h3 id="installing-docker-ce">Installing Docker CE<a class="headerlink" href="#installing-docker-ce" title="Permanent link">#</a></h3>
 <p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>. We also suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/">post installation steps</a>.</p>
 <h3 id="installing-nvidia-docker">Installing NVIDIA Docker<a class="headerlink" href="#installing-nvidia-docker" title="Permanent link">#</a></h3>
@@ -619,7 +619,7 @@ setup(
         'deep learning', 
         'lane following', 
         'end to end', 
-        'LGSVL Simulator', 
+        'SVL Simulator', 
         'Autonomous Driving'
     ],
     classifiers=[
@@ -671,13 +671,13 @@ colcon build --symlink-install
 </code></pre>
 
 <h2 id="running-rosbridge">Running Rosbridge<a class="headerlink" href="#running-rosbridge" title="Permanent link">#</a></h2>
-<p>Rosbridge provides a JSON API to ROS functionality for non-ROS programs such as LGSVL Simulator. You can run rosbridge to connect your ROS node with LGSVL Simulator as below:</p>
+<p>Rosbridge provides a JSON API to ROS functionality for non-ROS programs such as SVL Simulator. You can run rosbridge to connect your ROS node with SVL Simulator as below:</p>
 <pre><code>source /opt/ros/crystal/setup.bash
 rosbridge
 </code></pre>
 
 <h2 id="writing-ros2-subscriber-node">Writing ROS2 Subscriber Node<a class="headerlink" href="#writing-ros2-subscriber-node" title="Permanent link">#</a></h2>
-<p>ROS nodes communicate with each other by passing messages. Messages are routed via a topic with publish/subscribe concepts. A node sends out a message by publishing it to a given topic. Then, a node that is interested in a certain kind of data will subscribe to the appropriate topic. In our cases, LGSVL Simulator publishes sensor data such as camera images or LiDAR point clouds via rosbridge, and then the Lane Following model subscribes to that topic to receive sensor data, preprocesses the data, feeds them into the pretrained model, and finally computes a control command based on perceived sensor data. Below is an example of how to subscribe to sensor data topics from a ROS node. You can subscribe to a single topic only or multiple topics simultaneously.</p>
+<p>ROS nodes communicate with each other by passing messages. Messages are routed via a topic with publish/subscribe concepts. A node sends out a message by publishing it to a given topic. Then, a node that is interested in a certain kind of data will subscribe to the appropriate topic. In our cases, SVL Simulator publishes sensor data such as camera images or LiDAR point clouds via rosbridge, and then the Lane Following model subscribes to that topic to receive sensor data, preprocesses the data, feeds them into the pretrained model, and finally computes a control command based on perceived sensor data. Below is an example of how to subscribe to sensor data topics from a ROS node. You can subscribe to a single topic only or multiple topics simultaneously.</p>
 <h3 id="subscribe-to-a-single-topic">Subscribe to a single topic<a class="headerlink" href="#subscribe-to-a-single-topic" title="Permanent link">#</a></h3>
 <pre><code>import rclpy
 from rclpy.node import Node
@@ -748,7 +748,7 @@ if __name__ == '__main__':
 
 <h2 id="writing-ros2-publisher-node">Writing ROS2 Publisher Node<a class="headerlink" href="#writing-ros2-publisher-node" title="Permanent link">#</a></h2>
 <p>The publisher sends data to a topic. When you create a publisher you have to tell ROS of which type the data will be. In order to drive a car autonomously, the Lane Following model publishes a predicted control command back to the simulator via rosbridge.</p>
-<h3 id="publish-command-back-to-lgsvl-simulator">Publish command back to LGSVL Simulator<a class="headerlink" href="#publish-command-back-to-lgsvl-simulator" title="Permanent link">#</a></h3>
+<h3 id="publish-command-back-to-lgsvl-simulator">Publish command back to SVL Simulator<a class="headerlink" href="#publish-command-back-to-lgsvl-simulator" title="Permanent link">#</a></h3>
 <pre><code>import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import TwistStamped
@@ -781,7 +781,7 @@ if __name__ == '__main__':
 </code></pre>
 
 <h2 id="running-ros2-node">Running ROS2 Node<a class="headerlink" href="#running-ros2-node" title="Permanent link">#</a></h2>
-<p>Once you have setup the rosbridge connection to LGSVL Simulator, you can launch your ROS node as follows:</p>
+<p>Once you have setup the rosbridge connection to SVL Simulator, you can launch your ROS node as follows:</p>
 <pre><code>source /opt/ros/crystal/setup.bash
 source ~/ros2_ws/install/local_setup.bash
 ros2 run {your_package} {your_node}
@@ -790,7 +790,7 @@ ros2 run {your_package} {your_node}
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://github.com/lgsvl/lanefollowing">Lane Following Github Repository</a></li>
-<li><a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a></li>
+<li><a href="https://www.lgsvlsimulator.com/">SVL Simulator</a></li>
 <li><a href="https://index.ros.org/doc/ros2/">ROS2 Documentation</a></li>
 <li><a href="https://github.com/intel/ros2_message_filters">ROS2 Message Filters</a></li>
 </ul>

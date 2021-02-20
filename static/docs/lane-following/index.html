@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Center">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Deep Learning lane following model - LGSVL Simulator</title>
+  <title>Deep Learning lane following model - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -208,7 +208,7 @@
                 </li>
                 <li class="">
                     
-    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <span class="caption-text">SVL ROS/ROS2 Message Definitions</span>
     <ul class="subnav">
                 <li class="toctree-l3">
                     
@@ -312,17 +312,17 @@
         </ul>
     
 
-    <li class="toctree-l3"><a href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with LGSVL Simulator</a></li>
+    <li class="toctree-l3"><a href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with SVL Simulator</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#collect-data-from-lgsvl-simulator">Collect data from LGSVL Simulator</a></li>
+            <li><a class="toctree-l4" href="#collect-data-from-lgsvl-simulator">Collect data from SVL Simulator</a></li>
         
             <li><a class="toctree-l4" href="#data-preprocessing">Data preprocessing</a></li>
         
             <li><a class="toctree-l4" href="#train-a-model">Train a model</a></li>
         
-            <li><a class="toctree-l4" href="#drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in LGSVL Simulator</a></li>
+            <li><a class="toctree-l4" href="#drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in SVL Simulator</a></li>
         
         </ul>
     
@@ -466,7 +466,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LGSVL Simulator</a>
+        <a href="..">SVL Simulator</a>
       </nav>
 
       
@@ -496,9 +496,9 @@
           <div role="main">
             <div class="section">
               
-                <h1>ROS2 End-to-End Lane Following Model with LGSVL Simulator</h1>
+                <h1>ROS2 End-to-End Lane Following Model with SVL Simulator</h1>
 <p>This tutorial works with Simulator Release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a></p>
-<p>This documentation describes applying a deep learning neural network for lane following in <a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a>. In this project, we use LGSVL Simulator for customizing sensors (one main camera and two side cameras) for a car, collect data for training, and deploying and testing a trained model.</p>
+<p>This documentation describes applying a deep learning neural network for lane following in <a href="https://www.lgsvlsimulator.com/">SVL Simulator</a>. In this project, we use SVL Simulator for customizing sensors (one main camera and two side cameras) for a car, collect data for training, and deploying and testing a trained model.</p>
 <blockquote>
 <p>This project was inspired by <a href="https://devblogs.nvidia.com/deep-learning-self-driving-cars/">NVIDIA's End-to-End Deep Learning Model for Self-Driving Cars</a></p>
 </blockquote>
@@ -526,11 +526,11 @@
 <li><a href="#dataset">Dataset</a></li>
 </ul>
 </li>
-<li><a href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with LGSVL Simulator</a><ul>
-<li><a href="#collect-data-from-lgsvl-simulator">Collect data from LGSVL Simulator</a></li>
+<li><a href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with SVL Simulator</a><ul>
+<li><a href="#collect-data-from-lgsvl-simulator">Collect data from SVL Simulator</a></li>
 <li><a href="#data-preprocessing">Data preprocessing</a></li>
 <li><a href="#train-a-model">Train a model</a></li>
-<li><a href="#drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in LGSVL Simulator</a></li>
+<li><a href="#drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in SVL Simulator</a></li>
 </ul>
 </li>
 <li><a href="#future-works-and-contributing">Future Works and Contributing</a></li>
@@ -557,7 +557,7 @@
 <pre><code>docker-compose up drive_visual
 </code></pre>
 
-<p>That's it! Now, the lane following ROS2 node and the rosbridge should be up and running, waiting for LGSVL Simulator to connect.</p>
+<p>That's it! Now, the lane following ROS2 node and the rosbridge should be up and running, waiting for SVL Simulator to connect.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
 <li>Docker CE</li>
@@ -728,8 +728,8 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 <p><img alt="" src="../images/lanefollowing-cropped.png" /></p>
 <h4 id="data-distribution">Data Distribution<a class="headerlink" href="#data-distribution" title="Permanent link">#</a></h4>
 <p><img alt="" src="../images/lanefollowing-data_distribution.png" /></p>
-<h2 id="how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with LGSVL Simulator<a class="headerlink" href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator" title="Permanent link">#</a></h2>
-<h3 id="collect-data-from-lgsvl-simulator">Collect data from LGSVL Simulator<a class="headerlink" href="#collect-data-from-lgsvl-simulator" title="Permanent link">#</a></h3>
+<h2 id="how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with SVL Simulator<a class="headerlink" href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator" title="Permanent link">#</a></h2>
+<h3 id="collect-data-from-lgsvl-simulator">Collect data from SVL Simulator<a class="headerlink" href="#collect-data-from-lgsvl-simulator" title="Permanent link">#</a></h3>
 <p>To collect camera images as well as corresponding steering commands for training, we provide a ROS2 <em>collect</em> node which subscribes to three camera image topics and a control command topic, approximately synchronizes time stamps of those messages, and then saves them as csv and jpg files. The topic names and types are as below:
 - Center camera: /simulator/sensor/camera/center/compressed (sensor_msgs/CompressedImage)
 - Left camera: /simulator/sensor/camera/left/compressed (sensor_msgs/CompressedImage)
@@ -740,7 +740,7 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 </code></pre>
 
 <p>To drive a car and publish messages over rosbridge in training mode:
-- Launch <strong>LGSVL Simulator</strong>
+- Launch <strong>SVL Simulator</strong>
 - Click <strong>Free Roaming</strong> mode
 - Select <strong>San Francisco</strong> map and <strong>XE_Rigged-lgsvl</strong> vehicle
 - Make sure the simulator establishes connection with rosbridge
@@ -766,8 +766,8 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 </code></pre>
 
 <p>After training is done, your final trained model will be in <code>lanefollowing/ros2_ws/src/lane_following/train/model/{current-date-and-time-in-utc}.h5</code> and your model is ready to drive autonomously.</p>
-<h3 id="drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in LGSVL Simulator<a class="headerlink" href="#drive-with-your-trained-model-in-lgsvl-simulator" title="Permanent link">#</a></h3>
-<p>Now, it's time to deploy your trained model and test drive with it using LGSVL Simulator. You can replace your trained model with an existing one in <code>lanefollowing/ros2_ws/src/lane_following/model/model.h5</code> as this is the path for deployment.</p>
+<h3 id="drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in SVL Simulator<a class="headerlink" href="#drive-with-your-trained-model-in-lgsvl-simulator" title="Permanent link">#</a></h3>
+<p>Now, it's time to deploy your trained model and test drive with it using SVL Simulator. You can replace your trained model with an existing one in <code>lanefollowing/ros2_ws/src/lane_following/model/model.h5</code> as this is the path for deployment.</p>
 <p>To launch <em>rosbridge</em> and <em>drive</em> ROS2 node in a terminal:</p>
 <pre><code>docker-compose up drive
 </code></pre>
@@ -777,7 +777,7 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 </code></pre>
 
 <p>To drive a car in autonomous mode:
-- Launch <strong>LGSVL Simulator</strong>
+- Launch <strong>SVL Simulator</strong>
 - Click <strong>Free Roaming</strong> mode
 - Select <strong>San Francisco</strong> map and <strong>XE_Rigged-lgsvl</strong> vehicle
 - Make sure the simulator establishes connection with rosbridge
@@ -796,7 +796,7 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://github.com/lgsvl/lanefollowing">Lane Following Github Repository</a></li>
-<li><a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a></li>
+<li><a href="https://www.lgsvlsimulator.com/">SVL Simulator</a></li>
 <li><a href="https://devblogs.nvidia.com/deep-learning-self-driving-cars/">NVIDIA's End-to-End Deep Learning Model for Self-Driving Cars</a></li>
 </ul>
               

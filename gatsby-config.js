@@ -14,9 +14,9 @@ const fs = require('fs');
 
 module.exports = {
   siteMetadata: {
-    title: 'LGSVL Simulator',
+    title: 'SVL Simulator',
     description: 'Simulation software to accelerate safe autonomous vehicle development',
-    author: 'LGSVL'
+    author: 'LGEUS ARL'
   },
   plugins: [
     'gatsby-plugin-root-import',
@@ -57,8 +57,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'LGSVL Simulator',
-        short_name: 'LGSVL Simulator',
+        name: 'SVL Simulator',
+        short_name: 'SVL Simulator',
         start_url: '/',
         background_color: '#f7f0eb',
         theme_color: '#a2466c',

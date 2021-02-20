@@ -14,4 +14,4 @@ We are pleased to announce that LG Electronics has joined the newly formed [Auto
 
 —Seonman Kim, Vice President of Advanced Platform Lab, LG Electronics
 
-As we continue in our collaboration with the Autoware stakeholders and users, we hope that the LGSVL Simulator will be able to help accelerate autonomous driving development with Autoware and build an open and collaborative community around one of the most important aspects of autonomous driving development that is simulation.
+As we continue in our collaboration with the Autoware stakeholders and users, we hope that the SVL Simulator will be able to help accelerate autonomous driving development with Autoware and build an open and collaborative community around one of the most important aspects of autonomous driving development that is simulation.
