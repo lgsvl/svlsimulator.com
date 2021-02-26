@@ -22,4 +22,4 @@ Autonomous vehicle cockpit showcasing LG’s open source Unity-based 3D driving 
 
 [Press release](https://www.automotivelinux.org/announcements/2018/12/07/automotive-grade-linux-booth-at-ces-2019-showcases-amazon-alexa-integration-2019-toyota-rav4-and-20-open-source-automotive-demos)
 
-We would love to show you a demo at our booth. You can also schedule a meeting with our team during CES by emailing us at <contact@lgsvlsimulator.com>.
+We would love to show you a demo at our booth. You can also schedule a meeting with our team during CES by emailing us at <contact@svlsimulator.com>.

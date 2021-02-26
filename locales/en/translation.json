@@ -250,7 +250,7 @@
   "requestdemo": {
     "title": "Request demo",
     "message": [
-      "Thank you for your interest in SVL Simulator. To request a demo of our commercial offering SVL Simulator Premium, or to learn more about our products and services, please fill out the form here. You can also email us at contact@lgsvlsimulator.com."
+      "Thank you for your interest in SVL Simulator. To request a demo of our commercial offering SVL Simulator Premium, or to learn more about our products and services, please fill out the form here. You can also email us at contact@svlsimulator.com."
     ],
     "labels": {
       "nameGiven": "First name",

@@ -253,7 +253,7 @@ const DesktopMenu = () => {
         {/* <StyledLinkButton
           color='primary'
           to='https://account.lgsvlsimulator.com/'
-          // to='https://wise.staging.lgsvlsimulator.com/sign-in'
+          // to='https://wise.staging.svlsimulator.com/sign-in'
           endIcon={<IconLogin />}
           alia-label='Log in Button'
         >
@@ -327,7 +327,7 @@ const MobileMenu = () => {
             {t('main.buttons.contactUs')}
           </StyledRequestDemoButton>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
-          {/* <ListItem button component={Link} to='https://account.lgsvlsimulator.com/'>
+          {/* <ListItem button component={Link} to='https://account.svlsimulator.com/'>
             <ListItemText primary={t('main.header.login')} />
             <ListItemIcon>
               <IconLogin />

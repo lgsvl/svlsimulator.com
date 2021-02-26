@@ -5,7 +5,7 @@ date: N/A
 
 ### 1. Governing Terms and Acceptance
 
-These Terms of Use (“Terms”) govern your use of the SVL Simulator website located at [www.lgsvlsimulator.com](https://www.lgsvlsimulator.com) (“Website”) and all services, software, and related products provided to you on, from, or through the Website (collectively “Simulator Services”) by LG Electronics America R&D Center (“LGE”). For purposes of these Terms, “We” or “Us” refers to LGE and “You” and “Your” refer to you, the individual accessing, browsing, or registering to use the Simulator Services, or your employer or other entity for whose benefit you act, as applicable.
+These Terms of Use (“Terms”) govern your use of the SVL Simulator website located at [www.svlsimulator.com](https://www.svlsimulator.com) (“Website”) and all services, software, and related products provided to you on, from, or through the Website (collectively “Simulator Services”) by LG Electronics America R&D Center (“LGE”). For purposes of these Terms, “We” or “Us” refers to LGE and “You” and “Your” refer to you, the individual accessing, browsing, or registering to use the Simulator Services, or your employer or other entity for whose benefit you act, as applicable.
 
 PLEASE NOTE: THESE TERMS CONTAIN AN ARBITRATION REQUIREMENT. EXCEPT WHERE PROHIBITED BY LAW, SUCH PROVISIONS REQUIRE YOU TO ARBITRATE ANY CLAIMS YOU MAY HAVE AGAINST LGE AND MEANS THAT YOU WILL NOT HAVE, AND YOU WAIVE, THE RIGHT FOR A JUDGE OR JURY TO DECIDE YOUR CLAIMS. PLEASE SEE SECTION 12.2 BELOW FOR MORE INFORMATION. IF YOU DO NOT AGREE TO THIS ARBITRATION REQUIREMENT, PLEASE DO NOT ACCESS OR USE THE SIMULATOR SERVICES.
 
@@ -21,7 +21,7 @@ BY USING ANY PORTION OF THE SIMULATOR SERVICES, YOU ARE AGREEING AND WARRANTING 
 
 ### 3. Privacy
 
-LGE’s privacy policy details and explains how We treat and protect Your Personal Information. Please make sure that you carefully read our privacy policy, which can be found at: [https://www.lgsvlsimulator.com/privacy](https://www.lgsvlsimulator.com/privacy)
+LGE’s privacy policy details and explains how We treat and protect Your Personal Information. Please make sure that you carefully read our privacy policy, which can be found at: [https://www.svlsimulator.com/privacy](https://www.svlsimulator.com/privacy)
 
 ### 4. Misuse of the Simulator Services
 
