@@ -34,7 +34,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('create', 'UA-130546445-1', 'svlsimulator.com/docs');
       ga('send', 'pageview');
   </script>
   
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://www.svlsimulator.com" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -460,7 +460,7 @@
 
 <p><br></p>
 <h2 id="sensor-specifications">Sensor Specifications<a class="headerlink" href="#sensor-specifications" title="Permanent link">#</a></h2>
-<h3 id="3d-ground-truth-sensor-more-details">3D Ground Truth sensor <a href="https://www.lgsvlsimulator.com/docs/sensor-json-options/#3d-ground-truth">(more details)</a><a class="headerlink" href="#3d-ground-truth-sensor-more-details" title="Permanent link">#</a></h3>
+<h3 id="3d-ground-truth-sensor-more-details">3D Ground Truth sensor <a href="https://www.svlsimulator.com/docs/sensor-json-options/#3d-ground-truth">(more details)</a><a class="headerlink" href="#3d-ground-truth-sensor-more-details" title="Permanent link">#</a></h3>
 <p><a href="../images/modular-testing/full_size_images/ground-truth-sensor.png"><img alt="Ground Truth sensor visualization" src="../images/modular-testing/ground-truth-sensor.png" /></a></p>
 <p><code>3D Ground Truth sensor</code> replaces Apollo's object detection module. It detects every NPC including vehicles and pedestrians around the EGO vehicle within a distance, which can be specified using a sensor parameter <code>MaxDistance</code>, and publishes ground truth labels such as 3D bounding boxes for the detected objects.</p>
 <p>Major message fields:</p>
@@ -484,7 +484,7 @@
 <li>MaxDistance: 100</li>
 <li>Topic: <strong>/apollo/perception/obstacles</strong></li>
 </ul>
-<h3 id="signal-sensor-more-details">Signal sensor <a href="https://www.lgsvlsimulator.com/docs/sensor-json-options/#signal-sensor">(more details)</a><a class="headerlink" href="#signal-sensor-more-details" title="Permanent link">#</a></h3>
+<h3 id="signal-sensor-more-details">Signal sensor <a href="https://www.svlsimulator.com/docs/sensor-json-options/#signal-sensor">(more details)</a><a class="headerlink" href="#signal-sensor-more-details" title="Permanent link">#</a></h3>
 <p><a href="../images/modular-testing/full_size_images/signal-sensor.png"><img alt="Signal sensor visualization" src="../images/modular-testing/signal-sensor.png" /></a></p>
 <p><code>Signal sensor</code> replaces Apollo's traffic light detection module. It detects every signal that is connected to the current lane of the EGO vehicle within a distance, which can also be specified using a sensor parameter <code>MaxDistance</code>, and then publishes the signal IDs as well as the current signal color information. It is important to note that the signal ID coming from the map annotation in the simulator must match with the ID in the Apollo HD map you're currently using in Apollo, because Apollo uses this ID to locate the detected traffic light in the map.</p>
 <p>Major message fields:</p>
