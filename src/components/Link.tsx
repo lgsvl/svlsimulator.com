@@ -67,7 +67,7 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
     return (
       <MuiLink component={FwdOutbound} to={to} target='_blank' {...rest} ref={ref as React.Ref<HTMLAnchorElement>}>
         {rest.children}
-        {/^[^/]/.test(to) && <StyledIconOut />}
+        {(/^[^/]/.test(to) || /^\/docs/.test(to)) && <StyledIconOut />}
       </MuiLink>
     );
   }
