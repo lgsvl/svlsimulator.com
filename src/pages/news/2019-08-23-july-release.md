@@ -7,7 +7,7 @@ category: announcement
 featuredImage: images/2019-08-22-apollo-sim-02.png
 ---
 
-We are excited to announce that the [2019.07](https://github.com/lgsvl/simulator/releases/latest) release of SVL Simulator is now available for download on our GitHub. Below are some of the big features we want to highlight. You can see a full list in our [release notes](https://www.lgsvlsimulator.com/docs/changelog/).
+We are excited to announce that the [2019.07](https://github.com/lgsvl/simulator/releases/latest) release of SVL Simulator is now available for download on our GitHub. Below are some of the big features we want to highlight. You can see a full list in our [release notes](https://www.svlsimulator.com/docs/changelog/).
 
 ### Incorporating Unity's High Definition Render Pipeline
 
@@ -27,7 +27,7 @@ We have now separated out 3D environments and vehicles from the main simulator e
 
 Now, when you want to bring in a new map or vehicle model, you can specify a URL or local file where the AssetBundle is located, and the simulator will automatically download it and make it available to use in simulations.
 
-We have also rolled out the SVL Simulator Content site, a place users can go to obtain publicly available AssetBundles for use with SVL Simulator. You can find the site [here](https://content.lgsvlsimulator.com).
+We have also rolled out the SVL Simulator Content site, a place users can go to obtain publicly available AssetBundles for use with SVL Simulator. You can find the site [here](https://content.svlsimulator.com).
 
 ### Lanelet2 HD map import and export
 
@@ -49,11 +49,11 @@ Apollo running in SVL Simulator.
 [![](images/2019-08-22-autoware-rviz-03.png)](images/full_size_images/2019-08-22-autoware-rviz-03.png)
 Autoware 1.12 running in SVL Simulator.
 
-The SVL Simulator 2019.07 version supports the updated Apollo 5.0 and Autoware 1.12 platforms. See our [documentation](https://www.lgsvlsimulator.com/docs) to see the latest instructions.
+The SVL Simulator 2019.07 version supports the updated Apollo 5.0 and Autoware 1.12 platforms. See our [documentation](https://www.svlsimulator.com/docs) to see the latest instructions.
 
 ### Dynamic sensor configuration
 
-You can now specify the sensor configuration for a vehicle without rebuilding from source code. This means that if you need different sensor configurations for your applications, such as collecting training data or trying different AD stacks, you can do so easily by changing a JSON string that is input dynamically from the Web UI. [Read about how to do that](https://www.lgsvlsimulator.com/docs/).
+You can now specify the sensor configuration for a vehicle without rebuilding from source code. This means that if you need different sensor configurations for your applications, such as collecting training data or trying different AD stacks, you can do so easily by changing a JSON string that is input dynamically from the Web UI. [Read about how to do that](https://www.svlsimulator.com/docs/).
 
 ### Deterministic physics
 
@@ -61,6 +61,6 @@ We now guarantee deterministic physics simulation. This means that all physics, 
 
 ### Faster-than-realtime functionality
 
-You can now run simulations faster than realtime using our updated Python API. By specifying a frame rate, you can allow the simulation machine to run faster than realtime - this can be useful for applications such as machine learning training. [Read more about it](https://www.lgsvlsimulator.com/docs/python-api/#non-realtime-simulation).
+You can now run simulations faster than realtime using our updated Python API. By specifying a frame rate, you can allow the simulation machine to run faster than realtime - this can be useful for applications such as machine learning training. [Read more about it](https://www.svlsimulator.com/docs/python-api/#non-realtime-simulation).
 
-What do you think of the new SVL Simulator? Please give us your feedback by submitting a GitHub issue, or email us at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com).
+What do you think of the new SVL Simulator? Please give us your feedback by submitting a GitHub issue, or email us at [contact@svlsimulator.com](mailto:contact@svlsimulator.com).

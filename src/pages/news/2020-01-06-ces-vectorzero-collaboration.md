@@ -25,10 +25,10 @@ As the official simulation platform supporting the Autoware Foundation, and the 
 <iframe style="display:block;margin:auto;" width="560" height="315" src="https://www.youtube.com/embed/Tu0BKYX31dg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-If you are attending CES 2020, please come by our booth to see the demonstration and speak with us. Our public booth is located at the Westgate Hotel, AGL Booth 1815. You can find more information about the booth [here](https://www.automotivelinux.org/ces-demos). Check back on the SVL Simulator [website](https://lgsvlsimulator.com) for updates on the demonstration from CES after the show!
+If you are attending CES 2020, please come by our booth to see the demonstration and speak with us. Our public booth is located at the Westgate Hotel, AGL Booth 1815. You can find more information about the booth [here](https://www.automotivelinux.org/ces-demos). Check back on the SVL Simulator [website](https://svlsimulator.com) for updates on the demonstration from CES after the show!
 
 VectorZero RoadRunner® for Windows and Linux designed to allow anyone to create realistic roads and environments easily. To learn more, visit [https://www.vectorzero.io](https://www.vectorzero.io).
 
-Please reach out to us with feedback on the types of environments you would like to see made available for your AD system testing needs through [GitHub](https://github.com/lgsvl/simulator/issues) or at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com).
+Please reach out to us with feedback on the types of environments you would like to see made available for your AD system testing needs through [GitHub](https://github.com/lgsvl/simulator/issues) or at [contact@svlsimulator.com](mailto:contact@svlsimulator.com).
 
 You can [download the latest release of SVL Simulator](https://github.com/lgsvl/simulator/releases/latest).

@@ -3,9 +3,9 @@ title: Privacy Policy
 date: N/A
 ---
 
-Welcome to the Privacy Policy of SVL Simulator (“LGE”). For purposes of this Privacy Policy, “We” or “Us” refers to SVL Simulator and “You” and “Your” refer to You, the individual accessing, browsing, or registering to use the Simulator Services or website ([https://www.lgsvlsimulator.com](https://www.lgsvlsimulator.com)), or Your employer or other entity for whose benefit You act, as applicable (collectively “User”). This Privacy Policy sets forth LGE’s policy with respect to information collected, used, and disclosed about You. This page also informs You about the choices You have with respect to Your information. Simulator Services is not defined in our Privacy Policy and shall have the same meaning as ascribed in the Terms of Use.
+Welcome to the Privacy Policy of SVL Simulator (“LGE”). For purposes of this Privacy Policy, “We” or “Us” refers to SVL Simulator and “You” and “Your” refer to You, the individual accessing, browsing, or registering to use the Simulator Services or website ([https://www.svlsimulator.com](https://www.svlsimulator.com)), or Your employer or other entity for whose benefit You act, as applicable (collectively “User”). This Privacy Policy sets forth LGE’s policy with respect to information collected, used, and disclosed about You. This page also informs You about the choices You have with respect to Your information. Simulator Services is not defined in our Privacy Policy and shall have the same meaning as ascribed in the Terms of Use.
 
-Your use of the Simulator Services is also subject to the Terms of Use [https://www.lgsvlsimulator.com/terms](https://www.lgsvlsimulator.com/terms).
+Your use of the Simulator Services is also subject to the Terms of Use [https://www.svlsimulator.com/terms](https://www.svlsimulator.com/terms).
 
 ### 1. What Personal Data We Collect About You
 
@@ -49,7 +49,7 @@ When we delete electronic data files, we employ technical methods to destroy suc
 
 ### 4. How We Share Your Data
 
-LGE may share Your Personal Data with third parties outside LGE such as its affiliates (subsidiaries, indirect or direct parents, and corporate affiliates), and third-party analytics platforms in the course of providing You with services that have been requested by You, or so that We can ensure our services and products are meeting Your needs. LGE is responsible for the management of your Personal Data shared with affiliates and other third-parties described in this section. Where required by applicable law, you can obtain a list of third-parties processing your Personal Data by contacting us at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com). See Section 8(A) below. For example:
+LGE may share Your Personal Data with third parties outside LGE such as its affiliates (subsidiaries, indirect or direct parents, and corporate affiliates), and third-party analytics platforms in the course of providing You with services that have been requested by You, or so that We can ensure our services and products are meeting Your needs. LGE is responsible for the management of your Personal Data shared with affiliates and other third-parties described in this section. Where required by applicable law, you can obtain a list of third-parties processing your Personal Data by contacting us at [contact@svlsimulator.com](mailto:contact@svlsimulator.com). See Section 8(A) below. For example:
 
 - In some instances LGE may be required to transfer Your Personal Data to our parent company in the Republic of Korea to provide You with a service requested by You.
 - We may also share data such as cookies and log files with third-party analytics platforms for purposes described in “How We Use Personal Data Collected About You.” We may also send aggregate and anonymized data to these entities for the purposes described above.
@@ -71,7 +71,7 @@ This section supplements the terms of this Privacy Policy. We adopt this section
 
 The right of access and data portability – You have the right to request that We disclose certain information to You about our collection and use of Your Personal Data over the past twelve (12) months. You also have the right to request information about our sale or disclosure for business purposes of Your Personal Data to third parties.
 
-The right to request deletion of data – You have the right to request that We delete any Personal Data We have collected from You and retained, subject to certain exceptions. If You wish to exercise this right, please email your consumer request to [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com). We may request additional information from you to verify your request. Please note that this does not ensure complete removal of Your Personal Data if the information is necessary to provide You with the Simulator Services or required by law or subpoena.
+The right to request deletion of data – You have the right to request that We delete any Personal Data We have collected from You and retained, subject to certain exceptions. If You wish to exercise this right, please email your consumer request to [contact@svlsimulator.com](mailto:contact@svlsimulator.com). We may request additional information from you to verify your request. Please note that this does not ensure complete removal of Your Personal Data if the information is necessary to provide You with the Simulator Services or required by law or subpoena.
 
 Only You or a person registered with the California Secretary of State authorized to act on Your behalf may send a consumer request. You may also make a consumer request on behalf of Your minor child. You may only make two consumer request for access or data portability within a twelve (12) month period. Please note that You are not required to create an account with Us to make a consumer request. The consumer request must:
 
@@ -84,7 +84,7 @@ The right to opt-out of the sale of data. You have the right to request to opt-o
 
 The right to not be discriminated against. You have the right to not be discriminated against for exercising any of these rights granted to You under the CCPA.
 
-California “Shine the Light Law” – California Civil Code Section § 1798.83 permits Users of our website that are California residents to request, once a year, certain information regarding our disclosure of Personal Data to third parties for their direct marketing purposes. To make a request, please send an email to [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com) with “Shine the Light” in the subject line.
+California “Shine the Light Law” – California Civil Code Section § 1798.83 permits Users of our website that are California residents to request, once a year, certain information regarding our disclosure of Personal Data to third parties for their direct marketing purposes. To make a request, please send an email to [contact@svlsimulator.com](mailto:contact@svlsimulator.com) with “Shine the Light” in the subject line.
 
 ### 7. Data Protection Rights Under GDPR
 
@@ -102,7 +102,7 @@ The right to data portability – You have the right to request that LGE transfe
 
 The right to lodge a complaint – You have the right to lodge a complaint with Your relevant data protection authority.
 
-If You make a request, We have one month to response to You. If You wish to exercise one or more of these rights, please contact Us at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com).
+If You make a request, We have one month to response to You. If You wish to exercise one or more of these rights, please contact Us at [contact@svlsimulator.com](mailto:contact@svlsimulator.com).
 
 ### 8. Data Processing
 
@@ -117,9 +117,9 @@ We are based and store our data in the US. If You choose to provide us with Pers
 
 ### 10. Your Choices
 
-We would like to send You information about products and services that may interest You. If You have agreed to receive marketing, You may always opt out at a later time. If You no longer wish to be contacted for marketing purposes please contact Us at contact@lgsvlsimulator.com or follow the “unsubscribe” link in the marketing communication. We will process your request as soon as possible in accordance with applicable law, but please be aware that in some circumstances you may receive a few more messages until your unsubscribe is processed.
+We would like to send You information about products and services that may interest You. If You have agreed to receive marketing, You may always opt out at a later time. If You no longer wish to be contacted for marketing purposes please contact Us at contact@svlsimulator.com or follow the “unsubscribe” link in the marketing communication. We will process your request as soon as possible in accordance with applicable law, but please be aware that in some circumstances you may receive a few more messages until your unsubscribe is processed.
 
-You may update Your account information and email-communication preferences at any time by contacting us at contact@lgsvlsimulator.com. Please note that You may not opt out of LGE service related communications like account verification, changes and updates to the Simulator Services, technical and security notices. These communications will be primarily informational in nature, rather than promotional.
+You may update Your account information and email-communication preferences at any time by contacting us at contact@svlsimulator.com. Please note that You may not opt out of LGE service related communications like account verification, changes and updates to the Simulator Services, technical and security notices. These communications will be primarily informational in nature, rather than promotional.
 
 ### 11. Links to other sites
 
@@ -143,7 +143,7 @@ In the event of any direct or indirect reorganization process including, but not
 
 ### 16. Contact Us
 
-[contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com)
+[contact@svlsimulator.com](mailto:contact@svlsimulator.com)
 
 5150 Great America Parkway
 

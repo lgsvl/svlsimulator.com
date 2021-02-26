@@ -104,7 +104,7 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
       data._replyto = data.email;
 
       axios
-        .post('https://mailthis.to/contact@lgsvlsimulator.com', data)
+        .post('https://mailthis.to/contact@svlsimulator.com', data)
         .then(response => {
           // window.location.href = 'https://mailthis.to/confirm';
           console.log('Submited with response:', response, data);

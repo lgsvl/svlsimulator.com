@@ -12,7 +12,7 @@ preview: The SVL Simulator 2019.04 release is now available for download on our 
 The SVL Simulator 2019.04 release is now available for
 [download](https://github.com/lgsvl/simulator/releases/2019.04) on our GitHub. The April release features full Cyber RT support for Apollo 3.5 and a new Apollo 3.5 vehicle.
 
-Additionally, we are proud to introduce our Python API for the simulator. You can now control all aspects of simulation with a script, including creating and running scenarios, starting/stopping simulation, collecting sensor data, controlling the environment, and controlling all ego and non-ego agents. You can [see the API here](https://www.lgsvlsimulator.com/docs/python-api/).
+Additionally, we are proud to introduce our Python API for the simulator. You can now control all aspects of simulation with a script, including creating and running scenarios, starting/stopping simulation, collecting sensor data, controlling the environment, and controlling all ego and non-ego agents. You can [see the API here](https://www.svlsimulator.com/docs/python-api/).
 
 We also have a new map, the Taiwan CAR Lab, a test facility for autonomous vehicles in Tainan, Taiwan that is available in the simulator. This map accurately reflects the real world test facility - you can check out a [video](https://youtu.be/zUOCYvHTa2E) of the project put together by our users at National Cheng Kung University!
 
