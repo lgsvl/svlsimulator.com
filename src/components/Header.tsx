@@ -66,6 +66,16 @@ const StyledDrawer = withTheme(styled(({ className, ...other }: DrawerProps) => 
   `}
 `);
 
+const ScrollableList = withTheme(styled(List)`
+  overflow-y: scroll;
+  max-height: 100%;
+`);
+
+const LogoContainer = withTheme(styled('div')`
+  width: 240px;
+  max-width: 15vw;
+`);
+
 interface DropdownMenuProps {
   title: string;
   to?: string;
@@ -245,10 +255,30 @@ const DesktopMenu = () => {
         </Grid>
       </Grid>
       <Grid item>
+        <Grid container direction='row' justify='space-between' alignItems='stretch' spacing={1}>
+          <Grid item>
+            <StyledRequestDemoButton
+              color='secondary'
+              variant='outlined'
+              fullWidth
+              mode={RequestDemoFormMode.ContactUs}
+            >
+              {t('main.header.contactUs')}
+            </StyledRequestDemoButton>
+          </Grid>
+          <Grid item>
+            <StyledLinkButton
+              color='secondary'
+              buttonVariant='outlined'
+              fullWidth
+              to='https://account.lgsvlsimulator.com/'
+              alia-label='Sign-in button'
+            >
+              {t('main.header.signin')}
+            </StyledLinkButton>
+          </Grid>
+        </Grid>
         {/* "Box" is a temporary spacer to keep the menu balanced in the absense of the login button. */}
-        <StyledRequestDemoButton color='secondary' variant='outlined' fullWidth mode={RequestDemoFormMode.ContactUs}>
-          {t('main.header.contactUs')}
-        </StyledRequestDemoButton>
         {/* <Box width={180} /> */}
         {/* <StyledLinkButton
           color='primary'
@@ -292,7 +322,7 @@ const MobileMenu = () => {
             <IconX />
           </IconButton>
         </DrawerHeader>
-        <List>
+        <ScrollableList>
           <ListItem button component={Link} to='/product/simulation/'>
             <ListItemText primary={t('simulation.navTitle')} />
           </ListItem>
@@ -326,14 +356,22 @@ const MobileMenu = () => {
           <StyledRequestDemoButton variant='text' color='secondary' fullWidth mode={RequestDemoFormMode.ContactUs}>
             {t('main.buttons.contactUs')}
           </StyledRequestDemoButton>
+          <StyledLinkButton
+            color='secondary'
+            fullWidth
+            to='https://account.lgsvlsimulator.com/'
+            alia-label='Sign-in button'
+          >
+            {t('main.header.signin')}
+          </StyledLinkButton>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
           {/* <ListItem button component={Link} to='https://account.svlsimulator.com/'>
-            <ListItemText primary={t('main.header.login')} />
+            <ListItemText primary={t('main.header.signin')} />
             <ListItemIcon>
               <IconLogin />
             </ListItemIcon>
           </ListItem> */}
-        </List>
+        </ScrollableList>
       </StyledDrawer>
     </>
   );
@@ -349,7 +387,9 @@ const Header = React.forwardRef<unknown, HeaderProps>(({ animate, ...rest }, ref
       <EntranceAnimation disabled={!animate} reverse delay={0.4}>
         <NavGrid container alignItems='center' justify='space-between'>
           <Grid item>
-            <StyledLinkButton to='/' color='secondary' startIcon={<IconSVLSimulator />} title='Home' />
+            <LogoContainer>
+              <StyledLinkButton to='/' color='secondary' startIcon={<IconSVLSimulator />} title='Home' />
+            </LogoContainer>
           </Grid>
           <Hidden smDown>
             <DesktopMenu />
