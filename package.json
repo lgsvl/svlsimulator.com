@@ -2,7 +2,7 @@
   "name": "svl-simulator-website",
   "private": true,
   "description": "Website spotlighting the SVL Simulator and related services.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "Apache-2.0",
   "scripts": {
     "build": "gatsby build",
@@ -47,6 +47,7 @@
     "gatsby-plugin-styled-components": "^3.5.0",
     "gatsby-plugin-typescript-checker": "^1.1.1",
     "gatsby-plugin-webfonts": "^1.1.3",
+    "gatsby-remark-autolink-headers": "^2.11.0",
     "gatsby-remark-images": "^3.6.0",
     "gatsby-source-filesystem": "^2.6.1",
     "gatsby-transformer-sharp": "^2.7.0",
