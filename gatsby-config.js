@@ -122,6 +122,7 @@ module.exports = {
         backgroundColor: 'none'
       }
     },
+    'gatsby-remark-autolink-headers',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -137,7 +138,8 @@ module.exports = {
               linkImagesToOriginal: false,
               backgroundColor: 'none'
             }
-          }
+          },
+          'gatsby-remark-autolink-headers'
         ]
       }
     },
