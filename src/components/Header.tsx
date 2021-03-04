@@ -271,7 +271,7 @@ const DesktopMenu = () => {
               color='secondary'
               buttonVariant='outlined'
               fullWidth
-              to='https://account.lgsvlsimulator.com/'
+              to='https://wise.svlsimulator.com/'
               alia-label='Sign-in button'
             >
               {t('main.header.signin')}
@@ -356,12 +356,7 @@ const MobileMenu = () => {
           <StyledRequestDemoButton variant='text' color='secondary' fullWidth mode={RequestDemoFormMode.ContactUs}>
             {t('main.buttons.contactUs')}
           </StyledRequestDemoButton>
-          <StyledLinkButton
-            color='secondary'
-            fullWidth
-            to='https://account.lgsvlsimulator.com/'
-            alia-label='Sign-in button'
-          >
+          <StyledLinkButton color='secondary' fullWidth to='https://wise.svlsimulator.com/' alia-label='Sign-in button'>
             {t('main.header.signin')}
           </StyledLinkButton>
           {/* <ListItem button component={Link} to='https://wise.staging.lgsvlsimulator.com/sign-in'> */}
