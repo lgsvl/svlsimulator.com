@@ -77,15 +77,15 @@ Englewood Cliffs, NJ 07632
 
 ### 7. License from LGE and Restrictions
 
-7.1 The Simulator Software
+##### 7.1 The Simulator Software
 
 When You use the Simulator Services, LGE permits You to download the simulator software and accompanying documentation, code, and content owned or provided by LG (the “Simulator Software”). Your use of the Software is governed by the Simulator Software License Agreement, which is hereby incorporated and made part of these Terms by reference. You can find the Simulator Software License Agreement by clicking [https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE](https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE).
 
-7.2 License From You
+##### 7.2 User Content License
 
 Unless otherwise agreed in a separate license, You hereby acknowledge and agree that We and our designees have a non-exclusive, sub-licensable, transferable, royalty-free, worldwide, perpetual, and irrevocable license to use, reproduce, modify, adapt, publicly display, publish, create derivative works from, transmit, distribute, and otherwise exploit any content uploaded, published, transmitted, or disseminated by You to the Simulator Services, in any media now known or hereafter developed, without compensation or notice to You, or any right of prior review or approval, for the limited purposes of improving, modifying, and/or updating the Simulator Services.
 
-7.3 Proprietary Rights
+##### 7.3 Proprietary Rights
 
 The content and materials contained on the Website and Simulator Services are protected by the applicable trademark and copyright laws.
 
@@ -107,7 +107,7 @@ You agree that if You provide LGE with comments concerning the Simulator Service
 
 10.1 You represent and warrant that: (a) the performance of Your obligations will not constitute a breach or otherwise violate any other agreement or the rights of any third party arising therefrom; and (b) You will maintain throughout the Term all rights and licenses that are required with respect to use of the Simulator Services, and Your use does and will continue to comply with all applicable foreign, federal, state, and local laws, rules and regulations.
 
-10.2 Disclaimer
+##### 10.2 Disclaimer
 
 EXCEPT WHERE PROHIBITED BY LAW, THE SIMULATOR SERVICES AND ANY OTHER LGE PRODUCTS AND SERVICES PROVIDED HEREUNDER ARE PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND. LGE DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A PARTICULAR PURPOSE, AND ANY WARRANTIES OR CONDITIONS ARISING OUT OF COURSE OF DEALING OR USAGE OF TRADE. LGE DOES NOT WARRANT THAT THE SIMULATOR SERVICES AND ANY OTHER LG PRODUCTS AND SERVICES PROVIDED HEREUNDER WILL MEET ALL OF YOUR REQUIREMENTS OR EXPECTATIONS, OR THAT USE OF SUCH SIMULATOR SERVICES BE ERROR-FREE, UNINTERRUPTED, VIRUS-FREE, OR SECURE. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES WHICH MEANS THAT SOME OR ALL OF THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.
 
