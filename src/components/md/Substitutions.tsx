@@ -28,6 +28,7 @@ const StyledOlBox = withTheme(styled(Box)`
 const AnchorableHeader = withTheme(styled(Typography)`
   margin-top: ${({ theme }) => px(theme.spacing(-9))};
   padding-top: ${({ theme }) => px(theme.spacing(9))};
+  z-index: -1;
 `);
 
 const ParagraphHeader = withTheme(styled(AnchorableHeader)`
