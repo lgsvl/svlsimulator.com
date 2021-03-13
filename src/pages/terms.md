@@ -21,7 +21,7 @@ BY USING ANY PORTION OF THE SIMULATOR SERVICES, YOU ARE AGREEING AND WARRANTING 
 
 ### 3. Privacy
 
-LGE’s privacy policy details and explains how We treat and protect Your Personal Information. Please make sure that you carefully read our privacy policy, which can be found at: [https://www.svlsimulator.com/privacy](https://www.svlsimulator.com/privacy)
+LGE’s privacy policy details and explains how We treat and protect Your Personal Information. Please make sure that you carefully read our privacy policy, which can be found at: [https://www.lg.com/us/privacy](https://www.lg.com/us/privacy)
 
 ### 4. Misuse of the Simulator Services
 

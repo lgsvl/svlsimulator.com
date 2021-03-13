@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
         &nbsp;•&nbsp;
         <Link to='/terms'>{t('main.footer.terms')}</Link>
         &nbsp;&amp;&nbsp;
-        <Link to='/privacy'>{t('main.footer.policy')}</Link>
+        <Link to='https://www.lg.com/us/privacy'>{t('main.footer.policy')}</Link>
       </Copyright>
     </>
   );
@@ -148,7 +148,7 @@ const Footer: React.FC = () => {
               &nbsp;•&nbsp;
               <Link to='/terms'>{t('main.footer.terms')}</Link>
               &nbsp;&amp;&nbsp;
-              <Link to='/privacy'>{t('main.footer.policy')}</Link>
+              <Link to='https://www.lg.com/us/privacy'>{t('main.footer.policy')}</Link>
             </Copyright>
           </Grid>
           <Grid item xs={1} sm={2} md={1} />

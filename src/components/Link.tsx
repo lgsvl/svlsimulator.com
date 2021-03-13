@@ -8,6 +8,8 @@ import { Merge } from 'src/@types/utils';
 import { IconOut } from 'src/components/Icons';
 import styled from 'styled-components';
 
+const privacy = 'https://www.lg.com/us/privacy';
+
 type OutboundGatsbyLinkProps = GatsbyLinkProps<HTMLAnchorElement>;
 type I18nGatsbyLinkProps = OutboundGatsbyLinkProps & { language?: string };
 
@@ -63,7 +65,7 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
     );
   }
   // Outbound link, track with analytics
-  if (to) {
+  if (to && to !== privacy) {
     return (
       <MuiLink component={FwdOutbound} to={to} target='_blank' {...rest} ref={ref as React.Ref<HTMLAnchorElement>}>
         {rest.children}
@@ -71,7 +73,6 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
       </MuiLink>
     );
   }
-  // Undefined link (probably listening for click with javascript, use basic MuiLink)
   return <MuiLink href={to} {...rest} ref={ref} />;
 }) as React.ForwardRefExoticComponent<LinkProps>;
 

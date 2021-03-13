@@ -73,7 +73,7 @@ const UserConsent = () => {
           <BannerContent>
             <BannerContentText id='user-consent-description' variant='body2'>
               {t('main.consent.message')}
-              <Link to='/privacy'>{t('main.consent.policy')}</Link>
+              <Link to='https://www.lg.com/us/privacy'>{t('main.consent.policy')}</Link>
             </BannerContentText>
           </BannerContent>
         </Grid>
