@@ -16,7 +16,17 @@ import useImageUrl from './useImageUrl';
 
 export type MdLinkProps = { to?: LinkProps['to'] } & Omit<LinkProps, 'to'>;
 
-const AnchorLink = withTheme(styled(MuiLink)`
+const StyledMuiLink = styled(MuiLink)`
+  position: relative;
+  z-index: 1;
+`;
+
+const StyledLink = styled(Link)`
+  position: relative;
+  z-index: 1;
+`;
+
+const AnchorLink = withTheme(styled(StyledMuiLink)`
   padding-top: ${({ theme }) => px(theme.spacing(9))};
   stroke: ${({ theme }) => theme.palette.primary.main};
 `);
@@ -28,7 +38,6 @@ const StyledOlBox = withTheme(styled(Box)`
 const AnchorableHeader = withTheme(styled(Typography)`
   margin-top: ${({ theme }) => px(theme.spacing(-9))};
   padding-top: ${({ theme }) => px(theme.spacing(9))};
-  z-index: -1;
 `);
 
 const ParagraphHeader = withTheme(styled(AnchorableHeader)`
@@ -46,9 +55,9 @@ const TableHeadCell = (props: TableCellProps) => <TableCell {...props} component
 const MdImgLink: React.FC<MdLinkProps> = ({ to, href = '#', children, ...rest }) => {
   const { publicURL } = useImageUrl(to || href);
   return (
-    <MuiLink {...rest} href={publicURL || to || href}>
+    <StyledMuiLink {...rest} href={publicURL || to || href}>
       {children}
-    </MuiLink>
+    </StyledMuiLink>
   );
 };
 const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
@@ -57,7 +66,7 @@ const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
   ) : isAnchorLink(to || href) ? (
     <AnchorLink {...rest} href={to || href} />
   ) : (
-    <Link {...rest} to={to || href} />
+    <StyledLink {...rest} to={to || href} />
   );
 const Ol: React.FC<BoxProps> = props => <StyledOlBox pl={3} {...props} component='ol' />;
 const Ul: React.FC<BoxProps> = props => <Box pl={3} {...props} component='ul' />;

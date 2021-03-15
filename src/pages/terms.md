@@ -21,7 +21,7 @@ BY USING ANY PORTION OF THE SIMULATOR SERVICES, YOU ARE AGREEING AND WARRANTING 
 
 ### 3. Privacy
 
-LGE’s privacy policy details and explains how We treat and protect Your Personal Information. Please make sure that you carefully read our privacy policy, which can be found at: [https://www.svlsimulator.com/privacy](https://www.svlsimulator.com/privacy)
+LGE’s privacy policy details and explains how We treat and protect Your Personal Information. Please make sure that you carefully read our privacy policy, which can be found at: [https://www.lg.com/us/privacy](https://www.lg.com/us/privacy)
 
 ### 4. Misuse of the Simulator Services
 
@@ -81,7 +81,7 @@ Englewood Cliffs, NJ 07632
 
 When You use the Simulator Services, LGE permits You to download the simulator software and accompanying documentation, code, and content owned or provided by LG (the “Simulator Software”). Your use of the Software is governed by the Simulator Software License Agreement, which is hereby incorporated and made part of these Terms by reference. You can find the Simulator Software License Agreement by clicking [https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE](https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE).
 
-##### 7.2 User Content License
+##### 7.2	License From You ("User Content License")
 
 Unless otherwise agreed in a separate license, You hereby acknowledge and agree that We and our designees have a non-exclusive, sub-licensable, transferable, royalty-free, worldwide, perpetual, and irrevocable license to use, reproduce, modify, adapt, publicly display, publish, create derivative works from, transmit, distribute, and otherwise exploit any content uploaded, published, transmitted, or disseminated by You to the Simulator Services, in any media now known or hereafter developed, without compensation or notice to You, or any right of prior review or approval, for the limited purposes of improving, modifying, and/or updating the Simulator Services.
 
