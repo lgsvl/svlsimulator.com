@@ -25,7 +25,7 @@ import Page, { PageSection } from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.jpg';
+import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.png';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
 import srcSimulationPoster from 'src/images/simulation-platform.jpg';
 import videoSrcLidar from 'src/videos/lidar.mp4';

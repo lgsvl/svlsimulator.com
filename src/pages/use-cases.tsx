@@ -6,11 +6,10 @@ import Page, { PageSection } from 'src/components/Page';
 import Section from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcEnvironmentGrid from 'src/images/environment-grid.png';
+import srcUseCases from 'src/images/use-cases.png';
 import srcFiretruck from 'src/images/firetruck.jpg';
 import srcLidar from 'src/images/lidar.png';
 import srcObjectDetection from 'src/images/object-detection.png';
-import videoSrcSimulation from 'src/videos/simulation-platform.mp4';
 
 const TypoWrapper: MapFunction<string> = (str, i) => (
   <Typography paragraph key={`paragraph${i}`}>
@@ -23,11 +22,11 @@ export default function UseCases() {
 
   return (
     <Page title={t('usecases.navTitle')}>
-      <Section tuckImage contained title={t('usecases.title')} src={srcEnvironmentGrid} variant='h3'>
+      <Section tuckImage contained title={t('usecases.title')} src={srcUseCases} variant='h3'>
         {t('usecases.body')}
       </Section>
 
-      <Section flip title={t('usecases.section1.title')} src={srcLidar} video={videoSrcSimulation}>
+      <Section flip title={t('usecases.section1.title')} src={srcLidar}>
         {tMap('usecases.section1.body', TypoWrapper)}
       </Section>
 
