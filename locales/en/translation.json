@@ -291,6 +291,8 @@
       "email": "Enter a valid email",
       "mismatch": "Emails do not match"
     },
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "submitted": "Contact request sent successfully!",
+    "error": "Failed to submit contact request."
   }
 }

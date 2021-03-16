@@ -12,10 +12,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { fade, withTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { IconSVLSimulator, IconX } from 'src/components/Icons';
 import Input, { InputProps } from 'src/components/Input';
@@ -24,6 +24,12 @@ import addSpacing from 'src/utils/addSpacing';
 import { px } from 'src/utils/theme';
 import styled from 'styled-components';
 import * as yup from 'yup';
+
+enum FormStatus {
+  READY,
+  SUBMITTED,
+  ERROR
+}
 
 const FormDialog = withTheme(styled(Dialog)`
   .MuiDialog-paper {
@@ -49,13 +55,17 @@ const FormDialogContent = addSpacing(DialogContent);
 
 const FormDialogActions = addSpacing(DialogActions);
 
+const FormMessage = withTheme(styled(Typography)`
+  padding: ${({ theme }) => px(theme.spacing(1.5)) + ' ' + px(theme.spacing(2))};
+`) as React.FC<TypographyProps>;
+
 interface RequestDemoFormProps extends DialogProps {
   mode?: RequestDemoFormMode;
 }
 
 const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...rest }) => {
   const { t, tMap } = useTranslation();
-  const [confirming, setConfirming] = React.useState(false);
+  const [status, setStatus] = React.useState<FormStatus>(FormStatus.READY);
   const {
     handleChange,
     handleBlur,
@@ -67,7 +77,8 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
     touched,
     errors,
     dirty,
-    isValid
+    isValid,
+    resetForm
   } = useFormik({
     initialValues: {
       _subject: '[Public Website] Demo Requested',
@@ -103,27 +114,37 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
       // Add custom fields:
       data._replyto = data.email;
 
+      const config = { headers: { 'Content-Type': 'application/json' } };
       axios
-        .post('https://mailthis.to/contact@svlsimulator.com', data)
+        .post('https://formsubmit.co/ajax/contact@svlsimulator.com', data, config)
         .then(response => {
-          // window.location.href = 'https://mailthis.to/confirm';
-          console.log('Submited with response:', response, data);
-          setConfirming(true);
+          setSubmitting(false);
+          setStatus(FormStatus.SUBMITTED);
+          // Remove comment if we want the form to auto-close on submit
+          // if (onClose) onClose({}, 'escapeKeyDown');
         })
         .catch(err => {
-          err = 'oh beans ';
+          console.error(err);
+          setSubmitting(false);
+          setStatus(FormStatus.ERROR);
         });
-
-      // TODO: submit data to LG server to send demo request
-      setSubmitting(false);
-      // if (onClose) onClose({}, 'escapeKeyDown');
     }
   });
+
+  useEffect(() => {
+    if (rest.open) {
+      setStatus(state => {
+        if (state === FormStatus.SUBMITTED) {
+          resetForm();
+        }
+        return FormStatus.READY;
+      });
+    }
+  }, [rest.open, resetForm]);
 
   const dispatchClose = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       if (onClose) onClose(event, 'escapeKeyDown');
-      setConfirming(false);
     },
     [onClose]
   );
@@ -172,178 +193,185 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
           </CloseIconButton>
         </Box>
       </FormDialogTitle>
-      {!confirming ? (
-        <form noValidate onSubmit={handleSubmit} style={{ display: 'contents' }}>
-          <FormDialogContent p={3} pb={0}>
-            <input type='hidden' name='_honeypot' value='' onChange={handleChange} />
-            <Grid container spacing={3}>
-              {mode === RequestDemoFormMode.Demo ? (
-                <Hidden smDown>
-                  <Grid item sm={4}>
-                    <Box mb={5}>
-                      <IconSVLSimulator />
-                    </Box>
-                    {tMap('requestdemo.message', (msg, i) => (
-                      <Typography id={`form-description${i || ''}`} variant='caption' key={`message${i}`} paragraph>
-                        {msg}
-                      </Typography>
-                    ))}
-                  </Grid>
-                </Hidden>
-              ) : null}
-              <Grid item sm={12} md={mode === RequestDemoFormMode.Demo ? 8 : 12}>
-                <Grid container spacing={4} justify='space-between'>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
+      <form noValidate onSubmit={handleSubmit} style={{ display: 'contents' }}>
+        <FormDialogContent p={3} pb={0}>
+          <input type='hidden' name='_honeypot' value='' onChange={handleChange} />
+          <Grid container spacing={3}>
+            {mode === RequestDemoFormMode.Demo ? (
+              <Hidden smDown>
+                <Grid item sm={4}>
+                  <Box mb={5}>
+                    <IconSVLSimulator />
+                  </Box>
+                  {tMap('requestdemo.message', (msg, i) => (
+                    <Typography id={`form-description${i || ''}`} variant='caption' key={`message${i}`} paragraph>
+                      {msg}
+                    </Typography>
+                  ))}
+                </Grid>
+              </Hidden>
+            ) : null}
+            <Grid item sm={12} md={mode === RequestDemoFormMode.Demo ? 8 : 12}>
+              <Grid container spacing={4} justify='space-between'>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    required
+                    name='nameGiven'
+                    id='form-field-name-given'
+                    label={t('requestdemo.labels.nameGiven')}
+                    placeholder={t('requestdemo.placeholders.nameGiven')}
+                    error={touched.nameGiven && Boolean(errors.nameGiven)}
+                    helperText={touched.nameGiven && errors.nameGiven}
+                    value={values.nameGiven}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    required
+                    name='nameFamily'
+                    id='form-field-name-family'
+                    label={t('requestdemo.labels.nameFamily')}
+                    placeholder={t('requestdemo.placeholders.nameFamily')}
+                    error={touched.nameFamily && Boolean(errors.nameFamily)}
+                    helperText={touched.nameFamily && errors.nameFamily}
+                    value={values.nameFamily}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    required
+                    name='email'
+                    id='form-field-email'
+                    label={t('requestdemo.labels.email')}
+                    placeholder={t('requestdemo.placeholders.email')}
+                    error={touched.email && Boolean(errors.email)}
+                    helperText={touched.email && errors.email}
+                    value={values.email}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    required
+                    name='emailVerify'
+                    id='form-field-email-verify'
+                    label={t('requestdemo.labels.emailVerify')}
+                    placeholder={t('requestdemo.placeholders.emailVerify')}
+                    error={touched.emailVerify && Boolean(errors.emailVerify)}
+                    helperText={touched.emailVerify && errors.emailVerify}
+                    value={values.emailVerify}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    name='organization'
+                    id='form-field-organization'
+                    label={t('requestdemo.labels.organization')}
+                    placeholder={t('requestdemo.placeholders.organization')}
+                    value={values.organization}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    name='title'
+                    id='form-field-title'
+                    label={t('requestdemo.labels.title')}
+                    placeholder={t('requestdemo.placeholders.title')}
+                    value={values.title}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Input
+                    {...commonTextInputProps}
+                    required
+                    name='region'
+                    id='form-field-region'
+                    label={t('requestdemo.labels.region')}
+                    placeholder={t('requestdemo.placeholders.region')}
+                    error={touched.region && Boolean(errors.region)}
+                    helperText={touched.region && errors.region}
+                    value={values.region}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl variant='outlined' fullWidth>
+                    <InputLabel id='form-usecase-label' htmlFor='form-field-usecase'>
+                      {t('requestdemo.labels.usecase')}
+                    </InputLabel>
+                    <Select
                       required
-                      name='nameGiven'
-                      id='form-field-name-given'
-                      label={t('requestdemo.labels.nameGiven')}
-                      placeholder={t('requestdemo.placeholders.nameGiven')}
-                      error={touched.nameGiven && Boolean(errors.nameGiven)}
-                      helperText={touched.nameGiven && errors.nameGiven}
-                      value={values.nameGiven}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
-                      required
-                      name='nameFamily'
-                      id='form-field-name-family'
-                      label={t('requestdemo.labels.nameFamily')}
-                      placeholder={t('requestdemo.placeholders.nameFamily')}
-                      error={touched.nameFamily && Boolean(errors.nameFamily)}
-                      helperText={touched.nameFamily && errors.nameFamily}
-                      value={values.nameFamily}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
-                      required
-                      name='email'
-                      id='form-field-email'
-                      label={t('requestdemo.labels.email')}
-                      placeholder={t('requestdemo.placeholders.email')}
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
-                      value={values.email}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
-                      required
-                      name='emailVerify'
-                      id='form-field-email-verify'
-                      label={t('requestdemo.labels.emailVerify')}
-                      placeholder={t('requestdemo.placeholders.emailVerify')}
-                      error={touched.emailVerify && Boolean(errors.emailVerify)}
-                      helperText={touched.emailVerify && errors.emailVerify}
-                      value={values.emailVerify}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
-                      name='organization'
-                      id='form-field-organization'
-                      label={t('requestdemo.labels.organization')}
-                      placeholder={t('requestdemo.placeholders.organization')}
-                      value={values.organization}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
-                      name='title'
-                      id='form-field-title'
-                      label={t('requestdemo.labels.title')}
-                      placeholder={t('requestdemo.placeholders.title')}
-                      value={values.title}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      {...commonTextInputProps}
-                      required
-                      name='region'
-                      id='form-field-region'
-                      label={t('requestdemo.labels.region')}
-                      placeholder={t('requestdemo.placeholders.region')}
-                      error={touched.region && Boolean(errors.region)}
-                      helperText={touched.region && errors.region}
-                      value={values.region}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <FormControl variant='outlined' fullWidth>
-                      <InputLabel id='form-usecase-label' htmlFor='form-field-usecase'>
-                        {t('requestdemo.labels.usecase')}
-                      </InputLabel>
-                      <Select
-                        required
-                        label={t('requestdemo.labels.usecase')}
-                        value={values.usecase}
-                        onChange={handleUsecaseChange}
-                        labelId='form-usecase-label'
-                        id='form-field-usecase'
-                      >
-                        <MenuItem value='Autonomous Vehicle'>{t('requestdemo.usecases.vehicle')}</MenuItem>
-                        <MenuItem value='Autonomous Driving Service/Software'>
-                          {t('requestdemo.usecases.software')}
-                        </MenuItem>
-                        <MenuItem value='Sensor'>{t('requestdemo.usecases.sensor')}</MenuItem>
-                        <MenuItem value='Robotics'>{t('requestdemo.usecases.robotics')}</MenuItem>
-                        <MenuItem value='Academic Research'>{t('requestdemo.usecases.research')}</MenuItem>
-                        <MenuItem value='Urban Transportation Planning'>{t('requestdemo.usecases.planning')}</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <Input
-                      {...commonTextInputProps}
-                      name='other'
-                      id='form-field-other'
-                      label={t('requestdemo.labels.other')}
-                      placeholder={t('requestdemo.placeholders.other')}
-                      value={values.other}
-                      multiline
-                      rows={3}
-                    />
-                  </Grid>
+                      label={t('requestdemo.labels.usecase')}
+                      value={values.usecase}
+                      onChange={handleUsecaseChange}
+                      labelId='form-usecase-label'
+                      id='form-field-usecase'
+                    >
+                      <MenuItem value='Autonomous Vehicle'>{t('requestdemo.usecases.vehicle')}</MenuItem>
+                      <MenuItem value='Autonomous Driving Service/Software'>
+                        {t('requestdemo.usecases.software')}
+                      </MenuItem>
+                      <MenuItem value='Sensor'>{t('requestdemo.usecases.sensor')}</MenuItem>
+                      <MenuItem value='Robotics'>{t('requestdemo.usecases.robotics')}</MenuItem>
+                      <MenuItem value='Academic Research'>{t('requestdemo.usecases.research')}</MenuItem>
+                      <MenuItem value='Urban Transportation Planning'>{t('requestdemo.usecases.planning')}</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Input
+                    {...commonTextInputProps}
+                    name='other'
+                    id='form-field-other'
+                    label={t('requestdemo.labels.other')}
+                    placeholder={t('requestdemo.placeholders.other')}
+                    value={values.other}
+                    multiline
+                    rows={3}
+                  />
                 </Grid>
               </Grid>
             </Grid>
-          </FormDialogContent>
-          <FormDialogActions py={1.5} px={3}>
-            <Grid container spacing={3}>
-              {mode === RequestDemoFormMode.Demo ? <Grid item sm={4}></Grid> : null}
-              <Grid item sm={mode === RequestDemoFormMode.Demo ? 4 : 6}>
-                <Typography variant='body2'>* indicates a required field.</Typography>
-              </Grid>
-              <Grid item sm={mode === RequestDemoFormMode.Demo ? 4 : 6} style={{ textAlign: 'end' }}>
-                <FormControl>
-                  <Button
-                    color='primary'
-                    variant='contained'
-                    disabled={isSubmitting || !(isValid && dirty)}
-                    type='submit'
-                  >
-                    {t('requestdemo.confirm')}
-                  </Button>
-                </FormControl>
-              </Grid>
-            </Grid>
-          </FormDialogActions>
-        </form>
-      ) : (
-        <FormDialogContent p={2} height={1}>
-          <iframe src='https://mailthis.to/confirm' height='99%' width='100%' frameBorder={0} />
+          </Grid>
         </FormDialogContent>
-      )}
+        <FormDialogActions py={1.5} px={3}>
+          <Grid container spacing={3}>
+            {mode === RequestDemoFormMode.Demo ? <Grid item sm={4}></Grid> : null}
+            <Grid item sm={mode === RequestDemoFormMode.Demo ? 4 : 6}>
+              <Typography variant='body2'>* indicates a required field.</Typography>
+            </Grid>
+            <Grid item sm={mode === RequestDemoFormMode.Demo ? 4 : 6} style={{ textAlign: 'end' }}>
+              {status === FormStatus.SUBMITTED ? (
+                <FormMessage variant='body1'>{t('requestdemo.submitted')}</FormMessage>
+              ) : (
+                <>
+                  <FormControl>
+                    <Button
+                      color='primary'
+                      variant='contained'
+                      disabled={isSubmitting || !(isValid && dirty)}
+                      type='submit'
+                    >
+                      {t('requestdemo.confirm')}
+                    </Button>
+                  </FormControl>
+                </>
+              )}
+            </Grid>
+          </Grid>
+        </FormDialogActions>
+        {status === FormStatus.ERROR && (
+          <Box mt={-2} width='100%' textAlign='end'>
+            <FormMessage color='error' variant='body2'>
+              {t('requestdemo.error')}
+            </FormMessage>
+          </Box>
+        )}
+      </form>
     </FormDialog>
   );
 };
