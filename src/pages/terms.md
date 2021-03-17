@@ -60,12 +60,12 @@ We reserve the right to charge fees for any and all use of Simulator Services in
 
 6.4 If You believe that your intellectual property rights have been violated in a way that constitutes copyright infringement by LGE or by a third party who has uploaded or contributed materials on or to the Simulator Services, please provide the following information to the designated Copyright Agent listed below:
 
-- 1. A description of the copyrighted work or other intellectual property that You claim has been infringed;
-- 2. A description of where the material that You claim is infringing is located on or in the Simulator Services;
-- 3. An address, telephone number, and email address LGE can sufficiently can contact You;
-- 4. A statement that You have a good-faith belief that the use is not authorized by the copyright owner or other intellectual property rights owner, by its agent, or by law;
-- 5. A statement by You under penalty of perjury that the information in Your notice is accurate and that You are the copyright or intellectual property owner or are authorized to act on the owner's behalf;
-- 6. Your electronic or physical signature.
+  1. A description of the copyrighted work or other intellectual property that You claim has been infringed;
+  2. A description of where the material that You claim is infringing is located on or in the Simulator Services;
+  3. An address, telephone number, and email address LGE can sufficiently can contact You;
+  4. A statement that You have a good-faith belief that the use is not authorized by the copyright owner or other intellectual property rights owner, by its agent, or by law;
+  5. A statement by You under penalty of perjury that the information in Your notice is accurate and that You are the copyright or intellectual property owner or are authorized to act on the owner's behalf;
+  6. Your electronic or physical signature.
 
 The above information must be submitted to the LGE designated Copyright Agent:
 
