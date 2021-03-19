@@ -73,8 +73,8 @@ materials on or to the Simulator Services, please provide the following informat
 
 The above information must be submitted to the LG designated Copyright Agent:
 
-Attention: General Counsel, LG Electronics U.S.A., Inc.
-111 Sylvan Avenue, Englewood Cliffs, NJ 07632
+Attention: General Counsel, LG Electronics U.S.A., Inc.\
+111 Sylvan Avenue, Englewood Cliffs, NJ 07632\
 [dmca.copyright@lge.com](mailto:dmca.copyright@lge.com)
 
 ### 7. License from LG and Restrictions
