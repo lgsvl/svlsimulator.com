@@ -62,8 +62,7 @@ We reserve the right to charge fees for any and all use of Simulator Services.
 
 6.3 LG respects the intellectual property rights of artists and content owners, therefore, it is LG’s policy to respond expeditiously to notices of copyright infringement that comply with the Digital Millennium Copyright Act (“DMCA”). Upon receipt of a notice alleging copyright infringement, LG will take whatever action it deems appropriate within its sole discretion, including removal of the allegedly infringing materials.
 
-6.4 If You believe that your intellectual property rights have been violated in a way that constitutes copyright infringement by LG or by a third party who has uploaded or contributed
-materials on or to the Simulator Services, please provide the following information to the designated Copyright Agent listed below:
+6.4 If You believe that your intellectual property rights have been violated in a way that constitutes copyright infringement by LG or by a third party who has uploaded or contributed materials on or to the Simulator Services, please provide the following information to the designated Copyright Agent listed below:
   1. A description of the copyrighted work or other intellectual property that You claim has been infringed;
   2. A description of where the material that You claim is infringing is located on or in the Simulator Services;
   3. An address, telephone number, and email address LG can sufficiently can contact You;
@@ -81,8 +80,7 @@ Attention: General Counsel, LG Electronics U.S.A., Inc.\
 
 ##### 7.1 The Simulator Software
 
-When You use the Simulator Services, LG permits You to download the simulator software and accompanying documentation, code, and content owned or provided by LG (the
-“Simulator Software”). Your use of the Software is governed by the Simulator Software License Agreement, which is hereby incorporated and made part of these Terms by reference. You can find the Simulator Software License Agreement by clicking
+When You use the Simulator Services, LG permits You to download the simulator software and accompanying documentation, code, and content owned or provided by LG (the “Simulator Software”). Your use of the Software is governed by the Simulator Software License Agreement, which is hereby incorporated and made part of these Terms by reference. You can find the Simulator Software License Agreement by clicking
 [https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE](https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE).
 
 ##### 7.2	License From You ("User Content License")
