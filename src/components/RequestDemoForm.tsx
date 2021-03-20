@@ -81,10 +81,10 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
     resetForm
   } = useFormik({
     initialValues: {
-      _subject: '[Public Website] Demo Requested',
-      _replyto: '',
-      _confirmation: 'We will contact you to arrange the technology demo session',
-      _after: '',
+      subject: '[Public Website] Demo Requested',
+      // _replyto: '',
+      // _confirmation: 'We will contact you to arrange the technology demo session',
+      // _after: '',
       nameGiven: '',
       nameFamily: '',
       email: '',
@@ -111,12 +111,9 @@ const RequestDemoForm: React.FC<RequestDemoFormProps> = ({ onClose, mode, ...res
     onSubmit: data => {
       console.log(data);
 
-      // Add custom fields:
-      data._replyto = data.email;
-
       const config = { headers: { 'Content-Type': 'application/json' } };
       axios
-        .post('https://formsubmit.co/ajax/contact@svlsimulator.com', data, config)
+        .post('https://api.svlsimulator.com/request-demo', data, config)
         .then(response => {
           setSubmitting(false);
           setStatus(FormStatus.SUBMITTED);
