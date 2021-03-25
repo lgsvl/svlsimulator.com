@@ -15,7 +15,7 @@ const HeroGrid = withTheme(styled(Grid)`
 
 export default function About() {
   // const { t } = useTranslation();
-  if (window.location.pathname.startsWith('/docs/')) {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/docs/')) {
     window.location.pathname = '/docs/404.html';
     return;
   }
