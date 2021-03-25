@@ -11,13 +11,13 @@ We are excited to announce that the [2019.07](https://github.com/lgsvl/simulator
 
 ### Incorporating Unity's High Definition Render Pipeline
 
-[![Apollo Simulation](images/2019-08-22-apollo-sim-02.png)](images/full_size_images/2019-08-22-apollo-sim-02.png)
+[![Apollo Simulation](images/2019-08-22-apollo-sim-02.png)](images/2019-08-22-apollo-sim-02.png)
 
 We have upgraded to Unity 2019.1.10, and have migrated to Unity's High Definition Render Pipeline (HDRP). You can [read more about HDRP](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@6.9/manual/index.html). The result is increased photorealism of environments and agents. This means that sensor simulation, and in particular camera, is much more realistic.
 
 ### Migration to Web UI
 
-[![Web UI](images/2019-08-22-web-ui-01.png)](images/full_size_images/2019-08-22-web-ui-01.png)
+[![Web UI](images/2019-08-22-web-ui-01.png)](images/2019-08-22-web-ui-01.png)
 
 We have changed the main user interface for interacting with the simulator to use a web browser. With a simpler and more organized interface, adding and choosing maps, vehicles, sensor configurations, and environment parameters are all done through a web user interface. This also means that the user interface can be accessed from a separate location from the actual computer that the simulator executable is running on, allowing for remote launch of simulation from a different machine.
 
@@ -31,22 +31,22 @@ We have also rolled out the SVL Simulator Content site, a place users can go to 
 
 ### Lanelet2 HD map import and export
 
-[![Gomentum HD Map](images/2019-08-22-gomentum.png)](images/full_size_images/2019-08-22-gomentum.png)
+[![Gomentum HD Map](images/2019-08-22-gomentum.png)](images/2019-08-22-gomentum.png)
 
 You can now import and export HD maps in Lanelet2 format. If you have a real-world HD map in Lanelet2 format, you can import this into a 3D environment in SVL Simulator, and it will be converted to our map annotations. This means that traffic agents in simulation will be able to follow traffic rules, such as traffic lights, stop signs, lanes, and turns. You can also export HD maps into Lanelet2 format, which can be used by autonomous driving stacks that support this format.
 
 ### Improved LiDAR performance
 
-[![Lidar Visualization](images/2019-08-22-lidar128-01.png)](images/full_size_images/2019-08-22-lidar128-01.png)
+[![Lidar Visualization](images/2019-08-22-lidar128-01.png)](images/2019-08-22-lidar128-01.png)
 
 Our LiDAR sensor performance has been greatly improved. High-throughput sensors such as a 128-beam LiDAR successfully renders in realtime, and correct intensity values are published based on the reflectivity of the material of objects.
 
 ### Support for Apollo 5.0 and Autoware 1.12
 
-[![](images/2019-08-22-apollo-sim-03.png)](images/full_size_images/2019-08-22-apollo-sim-03.png)
+[![](images/2019-08-22-apollo-sim-03.png)](images/2019-08-22-apollo-sim-03.png)
 Apollo running in SVL Simulator.
 
-[![](images/2019-08-22-autoware-rviz-03.png)](images/full_size_images/2019-08-22-autoware-rviz-03.png)
+[![](images/2019-08-22-autoware-rviz-03.png)](images/2019-08-22-autoware-rviz-03.png)
 Autoware 1.12 running in SVL Simulator.
 
 The SVL Simulator 2019.07 version supports the updated Apollo 5.0 and Autoware 1.12 platforms. See our [documentation](https://www.svlsimulator.com/docs) to see the latest instructions.
