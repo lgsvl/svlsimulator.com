@@ -89,7 +89,7 @@ export default function Home() {
                           <LinkButton
                             color='primary'
                             buttonVariant='contained'
-                            to='/docs/getting-started/'
+                            to='/docs/getting-started/getting-started/'
                             target='_blank'
                           >
                             {t('main.buttons.getStarted')}
