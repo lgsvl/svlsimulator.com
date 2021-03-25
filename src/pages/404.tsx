@@ -7,6 +7,7 @@ import Center from 'src/components/Center';
 import Page from 'src/components/Page';
 import SubscribeBox from 'src/components/SubscribeBox';
 import styled from 'styled-components';
+import { navigate } from 'gatsby';
 
 const HeroGrid = withTheme(styled(Grid)`
   height: 100%;
@@ -14,6 +15,10 @@ const HeroGrid = withTheme(styled(Grid)`
 
 export default function About() {
   // const { t } = useTranslation();
+  if (window.location.pathname.startsWith('/docs/')) {
+    window.location.pathname = '/docs/404.html';
+    return;
+  }
   return (
     <Page>
       <Box height='70vh' maxHeight={720}>
