@@ -190,6 +190,11 @@ form .search-query {
     border: none;
 }
 
+.rst-content img {
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.4);
+  margin: 8px;
+}
+
 td, th {
    border: 1px solid #e1e4e5 !important; /* csslint allow: important */
    border-collapse: collapse;

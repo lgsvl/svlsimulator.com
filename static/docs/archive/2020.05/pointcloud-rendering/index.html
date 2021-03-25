@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Point cloud rendering - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Point cloud rendering";
+    var mkdocs_page_input_path = "pointcloud-rendering.md";
+    var mkdocs_page_url = "/pointcloud-rendering/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Point cloud rendering</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#rendering-features">Rendering Features</a></li>
+    
+
+    <li class="toctree-l4"><a href="#setup">Setup</a></li>
+    
+
+    <li class="toctree-l4"><a href="#components-overview">Components Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#pointcloudmanager">PointCloudManager</a></li>
+        
+            <li><a class="toctree-l5" href="#nodetreeloader">NodeTreeLoader</a></li>
+        
+            <li><a class="toctree-l5" href="#nodetreerenderer">NodeTreeRenderer</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#rendering-modes-overview">Rendering Modes Overview</a></li>
+    
+
+    <li class="toctree-l4"><a href="#settings">Settings</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#loader-settings">Loader Settings</a></li>
+        
+            <li><a class="toctree-l5" href="#renderer-settings">Renderer Settings</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Point cloud &raquo;</li>
+        
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Point cloud rendering</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/pointcloud-rendering.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Point Cloud Rendering</h1>
+<p>LGSVL Simulator supports scenes containing point cloud data. Point clouds can be rendered alongside other geometry like meshes or particles, are combatible with most of the features available in <a href="https://unity.com/srp/High-Definition-Render-Pipeline">high definition render pipeline</a> and can be detected by multiple sensors, including lidar.</p>
+<p>Point cloud rendering in Simulator can handle large point clouds (hundreds of millions of points) thanks to octree-based structure and selective, frustum-based culling.</p>
+<p>If you want to create your own point cloud based environment, you should start with <a href="../pointcloud-import/">importing</a> your point cloud data into simulator. This step is not necessary for pre-built point cloud environments - they do not require any additional setup.</p>
+<h2 id="rendering-features">Rendering Features<a class="headerlink" href="#rendering-features" title="Permanent link">#</a></h2>
+<p>Most of the features available for point cloud renderers are optional and can be toggled based on individual use cases. Lighting, for example, can be turned off if point cloud has light data already baked in, or calculated fully based on scene settings like time of day or weather.</p>
+<p>Most notable features include:</p>
+<ul>
+<li>Full deferred lighting compatible with HDRP's lighting system</li>
+<li>Filling holes between points</li>
+<li>Rendering multiple point clouds at once</li>
+<li>Normals estimation</li>
+<li>Shadow casting/receiving</li>
+<li>Point streaming</li>
+<li>Point budget (for memory and render buffer)</li>
+<li>Camera frustum or distance-based culling</li>
+<li>Mesh collider generation</li>
+<li>Support for color/depth camera sensors and lidar</li>
+</ul>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<p>The easiest way to set up point cloud rendering is to perform an <a href="../pointcloud-import/">import</a> with the target scene open in the background. When importing is done, you will be prompted with a choice to automatically add all of the required components to the open scene. If accepted, point cloud with default rendering settings will immediately show up in scene view.</p>
+<p>Alternatively, a prefab located in <code>Assets/Prefabs/PointCloudRenderer.prefab</code> can be added to any scene for a quick setup. This requires to specify point cloud data path in <code>NodeTreeLoader</code> component.</p>
+<p>More complex setups with multiple point clouds or masked rendering require setting up components manually. Details can be found in <a href="#components-overview">Components Overview</a> section.</p>
+<h2 id="components-overview">Components Overview<a class="headerlink" href="#components-overview" title="Permanent link">#</a></h2>
+<p>In the most common scenario with a single point cloud, one of each of the components described below will be present on a scene.</p>
+<p>For more complex cases (e.g. multiple point clouds or separate color and intensity data) it's possible to add multiple instances of <code>NodeTreeLoader</code> and/or <code>NodeTreeRenderer</code> to one scene. Only one instance of <code>PointCloudManager</code> should ever be present.</p>
+<h3 id="pointcloudmanager"><code>PointCloudManager</code><a class="headerlink" href="#pointcloudmanager" title="Permanent link">#</a></h3>
+<p>This component is responsible for keeping track of shared point cloud resources and orchestrating rendering for one or more point cloud renderers. It will also automatically set up HDRP passes and enable or disable them depending on all renderers' settings.</p>
+<p>There are no settings available for this component. Only one instance should be active at a time. Disabling this component will disable rendering of all point cloud data.</p>
+<h3 id="nodetreeloader"><code>NodeTreeLoader</code><a class="headerlink" href="#nodetreeloader" title="Permanent link">#</a></h3>
+<p>This component is responsible for managing single point cloud's data in memory. It will load chunks of point cloud data from mass storage based on each renderer's requests (performed on a separate thread) and will keep track of total amount of points loaded into memory. When defined point budget is exceeded, older points will be unloaded.</p>
+<p>Single instance of this component can only operate on one point cloud, but multiple renderers can use data stored in a single <code>NodeTreeLoader</code>.</p>
+<p>This component can also optionally load mesh colliders for a point cloud if they were generated during import process.</p>
+<h3 id="nodetreerenderer"><code>NodeTreeRenderer</code><a class="headerlink" href="#nodetreerenderer" title="Permanent link">#</a></h3>
+<p>This component represents a single point cloud to render and stores all related settings. <code>Transform</code> to which this component is tied affects translation, rotation and scale of the point cloud.</p>
+<p>By default, point cloud rendered by a single renderer will be visible in all cameras and compatible sensors, but not in shadow caster pass. This can be controlled on a per-renderer basis.</p>
+<p>Note that this component will not actively trigger any rendering. It's used mostly as a container for data that will be used by <code>PointCloudManager</code>.</p>
+<p><code>NodeTreeRenderer</code> is default implementation that includes camera-based culling, which will make load requests to <code>NodeTreeLoader</code>. Adding other culling methods can be done by extending the base class, <code>PointCloudRenderer</code>.</p>
+<h2 id="rendering-modes-overview">Rendering Modes Overview<a class="headerlink" href="#rendering-modes-overview" title="Permanent link">#</a></h2>
+<p>Depending on the requirements, there are multiple combinations of rendering modes available. Sensors supported in point cloud rendering are compatible with all of them.</p>
+<p>The most simple one (<code>Points</code>) will render points with size dependent on distance from the camera. This image is stable, but does not support lighting and will show holes if point cloud is not dense enough. Improved version of this mode (<code>Cones</code>) will use 3D cones instead of 2D circles, which creates better transitions between very close points, but has a slight performance cost.</p>
+<p>More advanced rendering mode, <code>Solid</code>, will remove points that should be invisible from observer's position and interpolate color and depth data between leftover points. It can also reconstruct normals data from depth, and subsequently calculate lighting for point cloud. Filters used here are executed in screen space, which means that camera position and rotation affect rendering output. This might introduce some artifacts around edges, especially around large depth differences.</p>
+<p>It's suggested to test available modes and choose the one best suited for given point cloud and use case. If lighting is required, solid rendering mode is the only one currently supporting it.</p>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">#</a></h2>
+<h3 id="loader-settings">Loader Settings<a class="headerlink" href="#loader-settings" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Data Path</td>
+<td align="center">string</td>
+<td align="center">Directory in which imported point cloud data is stored. Paths starting with <code>.../</code> will be treated as relative to <code>Assets</code> folder in the project, others are treated as absolute.</td>
+</tr>
+<tr>
+<td align="center">Point Limit</td>
+<td align="center">int</td>
+<td align="center">Maximum amount of points that can be loaded into memory at once. These points are treated as cache between render buffer and hard drive. When point limit is exceeded, older points will be unloaded.</td>
+</tr>
+<tr>
+<td align="center">Load Meshes</td>
+<td align="center">bool</td>
+<td align="center">If this option is enabled, collider meshes will loaded alongside the point cloud data. This requires <code>Generate Mesh</code> option in <a href="../pointcloud-import/">point cloud import</a> settings to be enabled.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="renderer-settings">Renderer Settings<a class="headerlink" href="#renderer-settings" title="Permanent link">#</a></h3>
+<p>Settings visible for renderer depend on currently selected rendering mode. Irrelevant settings will be hidden in inspector. Enabling additional features will sometimes show new settings related to them.</p>
+<h4 id="shared-rendering-settings">Shared Rendering Settings<a class="headerlink" href="#shared-rendering-settings" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Colorize</td>
+<td align="center">enum</td>
+<td align="center">Colorization mode to use for point cloud. If selected data is not present in source point cloud, result will be black. Available modes: <code>Colors</code>, <code>Intensity</code>, <code>Rainbow Intensity</code> and <code>Rainbow Height</code>.</td>
+</tr>
+<tr>
+<td align="center">Render Mode</td>
+<td align="center">enum</td>
+<td align="center">Describes how points should be represented. Available modes: <code>Points</code> (most simple one), <code>Cones</code> (similar to points, with interpolation) and <code>Solid</code> (fills holes, required for lighting).</td>
+</tr>
+<tr>
+<td align="center">Mask</td>
+<td align="center">enum</td>
+<td align="center">Enum flags used to enable or disable renderer's visibility. Point cloud will be visible only in selected passes. Available options: <code>Camera</code> (all color and depth cameras), <code>Shadowcaster</code> (enables shadow casting by point cloud), <code>Lidar</code> (makes point cloud detectable by lidar sensor).</td>
+</tr>
+<tr>
+<td align="center">Shadow Point Size</td>
+<td align="center">float</td>
+<td align="center">Only visible if <code>Shadowcaster</code> is enabled under <code>Mask</code>. Determines size of a point for shadow casting purposes.</td>
+</tr>
+<tr>
+<td align="center">Shadow Bias</td>
+<td align="center">float</td>
+<td align="center">Only visible if <code>Shadowcaster</code> is enabled under <code>Mask</code>. Determines shadow bias for each point. Value is relative to <code>Shadow Point Size</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pointcones-rendering-settings">Point/Cones Rendering Settings<a class="headerlink" href="#pointcones-rendering-settings" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Constant Size</td>
+<td align="center">bool</td>
+<td align="center">If this option is enabled, point size will not depend on distance from camera.</td>
+</tr>
+<tr>
+<td align="center">Pixel Size</td>
+<td align="center">float</td>
+<td align="center">Only visible with <code>Constant Size</code> enabled. Determines size of a point.</td>
+</tr>
+<tr>
+<td align="center">Absolute Size</td>
+<td align="center">float</td>
+<td align="center">Only visible with <code>Constant Size</code> disabled. Determines size of a point at a near plane. Points further away will be smaller.</td>
+</tr>
+<tr>
+<td align="center">Min Pixel Size</td>
+<td align="center">float</td>
+<td align="center">Only visible with <code>Constant Size</code> disabled. Determines minimum size of a point, irrelevant from distance.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="solid-rendering-mode">Solid Rendering Mode<a class="headerlink" href="#solid-rendering-mode" title="Permanent link">#</a></h4>
+<p>Cascades options for Remove Hidden and Smooth Normals stages affect filter window size for both these effects and its scaling with distance for camera. They can be visualized by toggling <code>Show Preview</code> option on.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Lighting Mode</td>
+<td align="center">enum</td>
+<td align="center">Determines how light will affect the point cloud. Available modes: <code>Unlit</code> (no lighting, no shadows), <code>Shadow Receiver</code> (no lighting, receives shadows), <code>Full Deferred</code> (receives lighting and shadows)</td>
+</tr>
+<tr>
+<td align="center">Calculate Normals</td>
+<td align="center">bool</td>
+<td align="center">If enabled, normals approximation stage will be performed and world-space normals will be available. Required for lighting.</td>
+</tr>
+<tr>
+<td align="center">Smooth Normals</td>
+<td align="center">bool</td>
+<td align="center">If enabled, additional normals smoothing stage will be performed to reduce noise. Results will replace normals data from <code>Calculate Normals</code> option.</td>
+</tr>
+<tr>
+<td align="center">FoV Reprojection</td>
+<td align="center">bool</td>
+<td align="center">If enabled, wider image of point cloud will be rendered internally and it will be reprojected to desired camera FOV. This option reduces artifacts near the edges of the image. Does not affect final FOV.</td>
+</tr>
+<tr>
+<td align="center">Reprojection Ratio</td>
+<td align="center">float</td>
+<td align="center">Multiplier determining ratio between FOV used internally for <code>FoV Reprojection</code> option and original FOV of the camera.</td>
+</tr>
+</tbody>
+</table>
+<p>Solid rendering also has some debug options under separate tab. These are mostly directly affecting separate rendering stages, but some of them can me modified to affect final image.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Linear depth</td>
+<td align="center">bool</td>
+<td align="center">If enabled, linear depth will be used throughout all compute shaders instead of depth buffer values.</td>
+</tr>
+<tr>
+<td align="center">Force fill</td>
+<td align="center">bool</td>
+<td align="center">If enabled, holes below horizon line will be filled regardless of their size. Can create blurred artifacts for large holes, but removes all holes in road for low density point clouds.</td>
+</tr>
+<tr>
+<td align="center">Fill threshold</td>
+<td align="center">float</td>
+<td align="center">Sets height threshold under which <code>Force fill</code> option will be used if it's enabled.</td>
+</tr>
+<tr>
+<td align="center">Blend sky</td>
+<td align="center">bool</td>
+<td align="center">If enabled, point cloud color and intensity will be blended to sky color instead of black. Removes black color around edges, but requires additional sky pre-render for lit mode.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="culling-settings">Culling Settings<a class="headerlink" href="#culling-settings" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Node Tree Loader</td>
+<td align="center">NodeTreeLoader</td>
+<td align="center">Reference to loader that will be queried for point cache updates.</td>
+</tr>
+<tr>
+<td align="center">Cull Camera</td>
+<td align="center">Camera</td>
+<td align="center">Reference to camera used for culling. If this field is left empty, main simulator camera will be used after simulation is started.</td>
+</tr>
+<tr>
+<td align="center">Cull Mode</td>
+<td align="center">enum</td>
+<td align="center">Determines how points are evaluated for visibility. Available modes: <code>Camera Frustum</code> (both view frustum and distance from camera are considered), <code>Distance</code> (only distance from camera is considered - recommended if lidar is used).</td>
+</tr>
+<tr>
+<td align="center">Point Limit</td>
+<td align="center">int</td>
+<td align="center">Number of points that should be pushed to render buffer. This value determines maximum amount of points that are visible at once and directly affects buffer size.</td>
+</tr>
+<tr>
+<td align="center">Min Projection</td>
+<td align="center">float</td>
+<td align="center">Minimum screen projection size along single axis (in pixels) that octree node has to occupy to be traversed further. Nodes below this threshold will not be visible.</td>
+</tr>
+<tr>
+<td align="center">Rebuild Steps</td>
+<td align="center">int</td>
+<td align="center">Number of frames to spend for render buffer rebuild. Previous fully completed buffer will be used until new one is ready. Values higher than 1 reduce per-frame cost of buffer rebuild, but can introduce popping.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../pointcloud-import/" class="btn btn-neutral" title="Point cloud import"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../pointcloud-import/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

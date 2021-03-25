@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Build instructions - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Build instructions";
+    var mkdocs_page_input_path = "build-instructions.md";
+    var mkdocs_page_url = "/build-instructions/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Build instructions</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#test-simulator">Test Simulator</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Build instructions</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/build-instructions.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Instructions to build standalone executable</h1>
+<p>When a terminal is mentioned, it refers to:</p>
+<p><code>cmd.exe</code> on Windows</p>
+<p><code>Terminal</code> on Ubuntu</p>
+<ol>
+<li>
+<p>Download and Install <a href="https://unity3d.com/get-unity/download">Unity Hub</a></p>
+<ul>
+<li>Ubuntu: You may need to allow the downloaded AppImage to be run as an executable<ul>
+<li>Right-click the AppImage</li>
+<li>Select <code>Properties</code></li>
+<li>Go to the <code>Permissions</code> tab</li>
+<li>Check <code>Allow executing file as program</code></li>
+<li>Alternatively, in the terminal run <code>sudo chmod +x UnityHub.AppImage</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Download and Install Unity 2019.3.3f1:</p>
+<ul>
+<li><strong>IMPORTANT</strong> include Mono support for both Windows and Linux when installing Unity</li>
+<li>(Optional) include support for Visual Studio for easier debugging</li>
+<li><a href="https://unity3d.com/get-unity/download/archive">Unity Download Archive</a></li>
+<li>Windows<ul>
+<li>Click the <code>Unity Hub</code> button to have Unity Hub handle the installation process</li>
+</ul>
+</li>
+<li>Ubuntu<ul>
+<li>Right click the <code>Unity Hub</code> button and select <code>Copy Link Address</code></li>
+<li>In a terminal, type <code>&lt;PATH_TO_UNITY_HUB&gt; &lt;COPIED_LINK&gt;</code><ul>
+<li>The copied link will be in the form <code>unityhub://Unity-VERSION/XXXXXX</code> (e.g. <code>unityhub://2019.3.3f1/7ceaae5f7503</code>)</li>
+<li>Thus, if the Unity Hub application is in the current directory, type <code>./UnityHub.AppImage unityhub://2019.3.3f1/7ceaae5f7503</code></li>
+</ul>
+</li>
+<li>Unity Hub will open and guide you through the installation of Unity Editor</li>
+</ul>
+</li>
+<li>Verify installation<ul>
+<li>Under the <code>Installs</code> tab of <code>Unity Hub</code> there should be the expected version shown. In the bottom-left corner of the version, there should be an icon of the other OS (e.g. on a Linux computer, the Windows logo will be shown)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Download and Install <a href="https://nodejs.org/en/">Node.js</a></p>
+<ul>
+<li>Version 12.16.1 LTS is fine</li>
+<li>Windows<ul>
+<li>Download and run the <code>.msi</code></li>
+</ul>
+</li>
+<li>Ubuntu<ul>
+<li>The instructions are from the <a href="https://github.com/nodesource/distributions/blob/master/README.md">NodeJS Github</a><ul>
+<li><code>curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -</code></li>
+<li><code>sudo apt-get install -y nodejs</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Verify installation<ul>
+<li>Open a terminal and type <code>node --version</code></li>
+<li><code>v12.16.1</code> should print out</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Make sure you have <a href="https://git-lfs.github.com/">git-lfs</a> installed <strong>before cloning the Simulator repository</strong>. </p>
+<ul>
+<li>Instructions for installation are <a href="https://help.github.com/en/articles/installing-git-large-file-storage">here</a></li>
+<li>Verify installation<ul>
+<li>In a terminal enter <code>git lfs install</code></li>
+<li><code>&gt; Git LFS initialized.</code> should print out</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Clone simulator from GitHub</p>
+<ul>
+<li>Open a terminal and navigate to where you want the Simulator to be downloaded to<ul>
+<li>e.g. If you want the Simulator in your <code>Documents</code> folder, use <code>cd</code> in the terminal so that the input for the terminal is similar to <code>/Documents$</code></li>
+</ul>
+</li>
+<li><code>git clone --single-branch https://github.com/lgsvl/simulator.git</code></li>
+<li>Verify download<ul>
+<li>The <code>git clone</code> will create a <code>Simulator</code> folder</li>
+<li>Open a File Explorer and navigate to where the <code>Simulator</code> folder is</li>
+<li>Navigate to <code>Simulator/Assets/Materials/EnvironmentMaterials/</code></li>
+<li>There should be a <code>EnvironmentDamageAlbedo.png</code> in this folder</li>
+<li>Open the image, it should be a mostly grey square that looks like concrete</li>
+<li>If the image cannot be opend, <code>Git LFS</code> was not installed before cloning the repository<ul>
+<li>Install <code>Git LFS</code> following step 4</li>
+<li>In a terminal, navigate to the <code>Simulator</code> folder so that the terminal is similar to <code>/Simulator$</code></li>
+<li><code>git lfs pull</code></li>
+<li>Check the image again</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Run Unity Hub</p>
+</li>
+<li>
+<p>In the <code>Projects</code> tab, click <code>Add</code> and select the <code>Simulator</code> folder that was created by <code>git clone</code> in Step 5</p>
+</li>
+<li>
+<p>In the <code>Projects</code> tab, verify that the Simulator is using Unity Version 2019.3.3f1 from the dropdown</p>
+</li>
+<li>
+<p>Double-click the name of the project to launch Unity Editor</p>
+</li>
+<li>
+<p>Open a terminal and navigate to the <code>WebUI</code> folder of the Simulator project</p>
+<ul>
+<li>Window ex. <code>C:\Users\XXX\Documents\Simulator\WebUI</code></li>
+<li>Linux ex. <code>/home/XXX/Projects/Simulator/WebUI</code></li>
+</ul>
+</li>
+<li>
+<p>In the terminal run <code>npm install</code> to install dependencies, do this only once or if dependencies change inside packages.json file</p>
+<ul>
+<li>The output will be similar to below</li>
+</ul>
+<p><a href="../images/npm-install.png"><img alt="" src="../images/npm-install.png" /></a></p>
+</li>
+<li>
+<p>In Unity Editor run <code>Build WebUi...</code> in <code>Unity</code>: <code>Simulator</code> -&gt; <code>Build WebUI...</code></p>
+<p><a href="../images/full_size_images/build-webui.png"><img alt="" src="../images/build-webui.png" /></a></p>
+</li>
+<li>
+<p>Open <code>Build...</code> in <code>Unity</code>: <code>Simulator</code> -&gt; <code>Build...</code></p>
+<p><a href="../images/full_size_images/build-window.png"><img alt="" src="../images/build-window.png" /></a></p>
+</li>
+<li>
+<p>Check the Environments, Vehicles, and Sensors that should be generated as AssetBundles</p>
+<ul>
+<li>The <code>Simulator</code> repository does not contain any Environments, Vehicles, or Sensors. They are separate repositories on GitHub</li>
+<li>See <a href="../assets/">assets documentation</a> for information on how to add Environments and Vehicles</li>
+<li>They will be located in a folder called <code>AssetBundles</code> in the folder selected as the build location </li>
+<li>These may also be built separately from the Simulator. In this case they will be put into <code>Simulator/AssetBundles</code> folder of the project</li>
+</ul>
+</li>
+<li>
+<p>(Optional) Click <code>Build</code> to only build the AssetBundles. Load the <code>LoaderScene.unity</code> and click the Play button at the top of the editor to start the simulator.</p>
+</li>
+<li>
+<p>Select the <code>Target OS</code> for the build</p>
+<ul>
+<li>This is only used when building the Simulator. AssetBundles are built for Linux and Windows automatically</li>
+</ul>
+</li>
+<li>
+<p>Verify <code>Build Simulator</code> is checked for the Simulator to be built</p>
+</li>
+<li>
+<p>Select a folder that the simulator will be built in</p>
+</li>
+<li>
+<p>(Optional) Check <code>Development Build</code> to create a <a href="https://docs.unity3d.com/ScriptReference/BuildOptions.Development.html">Development Build</a></p>
+</li>
+<li>
+<p>Click <code>Build</code></p>
+<ul>
+<li><strong>NOTE</strong> You will get an error when building AssetBundles if either Windows or Linux support is not installed in Unity<ul>
+<li>Open <code>Unity Hub</code> and go to the <code>Installs</code> tab</li>
+<li>Click the vertical 3-dots next to the Unity version of the Simulator</li>
+<li>Click <code>Add Modules</code></li>
+<li>Check <code>Windows Build Support (Mono)</code> or <code>Linux Build Support (Mono)</code></li>
+<li>Click <code>Done</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="test-simulator">Test Simulator <sup><sub><a href="#instructions-to-build-standalone-executable">top</a></sub></sup><a class="headerlink" href="#test-simulator" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Ubuntu - Install Vulkan userspace library</p>
+<p><code>sudo apt-get install libvulkan1</code></p>
+</li>
+<li>
+<p>Double-click the <code>Simulator.exe</code> that was built</p>
+</li>
+<li>
+<p>Select graphics options then press <code>Ok</code></p>
+</li>
+<li>
+<p>Click <code>Open Browser</code></p>
+</li>
+<li>
+<p>In the Maps tab, <code>Add new</code> map with the URL to an environment assetbundle</p>
+</li>
+<li>
+<p>ex. <code>C:\Users\XXX\Desktop\Simulator\AssetBundles\environment_borregasave</code></p>
+</li>
+<li>
+<p>In the Vehicles tab, <code>Add new</code> vehicle with the URL to a vehicle assetbundle</p>
+</li>
+<li>
+<p>ex. <code>C:\Users\XXX\Desktop\Simulator\AssetBundles\vehicle_jaguar2015xe</code></p>
+</li>
+<li>
+<p>(Optional) Add a manual control "sensor" to the vehicle to enable driving</p>
+</li>
+<li>Click the wrench icon next to the vehicle name</li>
+<li>
+<p>In the text box insert <code>[{"type": "Manual Control", "name": "Manual Car Control"}]</code></p>
+</li>
+<li>
+<p>In the Simulations tab, <code>Add new</code> simulation with the added map and vehicle</p>
+</li>
+<li>
+<p>Press the Play button</p>
+</li>
+<li>
+<p>The Unity window should now show a vehicle in the built environment</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../assets/" class="btn btn-neutral float-right" title="Adding assets">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../map-annotation/" class="btn btn-neutral" title="Map annotation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../map-annotation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../assets/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Instructions - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Instructions";
+    var mkdocs_page_input_path = "autoware-instructions.md";
+    var mkdocs_page_url = "/autoware-instructions/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Instructions</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#general">General</a></li>
+    
+
+    <li class="toctree-l4"><a href="#setup">Setup</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#requirements">Requirements</a></li>
+        
+            <li><a class="toctree-l5" href="#install-docker-ce">Install Docker CE</a></li>
+        
+            <li><a class="toctree-l5" href="#install-nvidia-container-toolkit">Install NVIDIA Container Toolkit</a></li>
+        
+            <li><a class="toctree-l5" href="#install-lgsvl-simulator">Install LGSVL Simulator</a></li>
+        
+            <li><a class="toctree-l5" href="#install-autoware">Install Autoware</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside LGSVL Simulator</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#driving-by-following-vector-map">Driving by following vector map:</a></li>
+        
+            <li><a class="toctree-l5" href="#adding-a-vehicle">Adding a Vehicle</a></li>
+        
+            <li><a class="toctree-l5" href="#adding-an-hd-map">Adding an HD Map</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../modular-testing/">Modular testing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../simulator-messages/">Supported message types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simulator-coordinate-system/">Simulator coordinate system</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-map/">Adding a new map</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Adding a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unity-help/">Unity help</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Running with Autoware.AI &raquo;</li>
+        
+      
+        
+          <li>Integration with AD &raquo;</li>
+        
+      
+    
+    <li>Instructions</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/autoware-instructions.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Autoware.AI 1.14.0 with LGSVL Simulator <a href="#top"></a></h1>
+<p><strong>The software and source code in this repository are intended only for use with the LGSVL simulator and <em>should not</em> be used in a real vehicle.</strong></p>
+<h2>Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#general">General</a></li>
+<li><a href="#setup">Setup</a><ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#install-docker-ce">Install Docker CE</a></li>
+<li><a href="#install-nvidia-container-toolkit">Install NVIDIA Container Toolkit</a></li>
+<li><a href="#install-lgsvl-simulator">Install LGSVL Simulator</a></li>
+<li><a href="#install-autoware">Install Autoware</a></li>
+</ul>
+</li>
+<li><a href="#launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside LGSVL Simulator</a><ul>
+<li><a href="#driving-by-following-vector-map">Driving by following vector map:</a></li>
+<li><a href="#adding-a-vehicle">Adding a Vehicle</a></li>
+<li><a href="#adding-an-hd-map">Adding an HD Map</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="general">General <a class="wikilink" href="#top">top</a><a class="headerlink" href="#general" title="Permanent link">#</a></h2>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/C4ngQWUseJI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p><br></p>
+<p>This guide goes through how to run Autoware.AI with the LGSVL simulator.</p>
+<p>In order to run Autoware with the LGSVL simulator, it is easiest to pull the official Autoware Docker image (see the <a href="https://github.com/Autoware-AI/autoware.ai/wiki/Generic-x86-Docker#run-an-autoware-docker-container">official guide, Case 1</a> for more details), but it is also possible to <a href="https://github.com/Autoware-AI/autoware.ai/wiki/Source-Build">build Autoware from source</a>.</p>
+<p>Autoware communicates with the LGSVL simulator using the rosbridge_suite, which provides JSON interfacing with ROS publishers/subscribers. The official Autoware Docker containers have rosbridge_suite included.</p>
+<h2 id="setup">Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<h3 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
+<ul>
+<li>Linux operating system</li>
+<li>NVIDIA graphics card</li>
+</ul>
+<h3 id="install-docker-ce">Install Docker CE <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-docker-ce" title="Permanent link">#</a></h3>
+<p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>. We also suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">post installation steps</a> to run docker as a non-root user.</p>
+<h3 id="install-nvidia-container-toolkit">Install NVIDIA Container Toolkit <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-nvidia-container-toolkit" title="Permanent link">#</a></h3>
+<p>Before installing the NVIDIA Container Toolkit (nvidia-docker), make sure that you have an appropriate NVIDIA driver installed. To test if the NVIDIA drivers are properly installed enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear:</p>
+<pre><code>+-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.59       Driver Version: 440.59       CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 108...  Off  | 00000000:65:00.0  On |                  N/A |
+|  0%   59C    P5    22W / 250W |   1490MiB / 11175MiB |      4%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0      1187      G   /usr/lib/xorg/Xorg                           863MiB |
+|    0      3816      G   /usr/bin/gnome-shell                         305MiB |
+|    0      4161      G   ...-token=7171B24E50C2F2C595566F55F1E4D257    68MiB |
+|    0      4480      G   ...quest-channel-token=3330599186510203656   147MiB |
+|    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
++-----------------------------------------------------------------------------+
+</code></pre>
+
+<p>Install the NVIDIA Container Toolkit by following the instructions <a href="https://github.com/NVIDIA/nvidia-docker#quickstart">here</a>.</p>
+<h3 id="install-lgsvl-simulator">Install LGSVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-lgsvl-simulator" title="Permanent link">#</a></h3>
+<p>Follow the instructions <a href="https://github.com/lgsvl/simulator">here</a>.</p>
+<h3 id="install-autoware">Install Autoware <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-autoware" title="Permanent link">#</a></h3>
+<p>Make sure you have <a href="https://git-lfs.github.com/">Git Large File Storage</a> (LFS) installed <strong>before</strong> cloning the repository in the next step. If <code>git lfs</code> outputs <code>git: 'lfs' is not a git command.</code>, then you need to install it:</p>
+<ul>
+<li>
+<p>Instructions for installation are <a href="https://help.github.com/en/articles/installing-git-large-file-storage">here</a>.</p>
+</li>
+<li>
+<p>Verify the installation:</p>
+<pre><code>$ git lfs install
+Git LFS initialized.
+</code></pre>
+</li>
+</ul>
+<p>Create a directory called <code>shared_dir</code> in your home directory to hold HD maps and launch files for the simulator. The Autoware Docker container will mount this folder.</p>
+<pre><code class="bash">mkdir ~/shared_dir
+cd ~/shared_dir
+git clone https://github.com/lgsvl/autoware-data.git
+</code></pre>
+
+<p>If there wasn't a line beginning with <code>Filtering content:</code> output, then Git LFS hasn't been installed. Remove the <code>autoware-data</code> directory, install Git LFS with <code>git lfs install</code>, and then re-issue the <code>git clone</code>.</p>
+<p>Clone the <code>docker</code> repository from <code>autoware.ai</code> into a working directory:</p>
+<pre><code class="bash">cd $WORKING_DIRECTORY
+git clone https://github.com/Autoware-AI/docker.git
+</code></pre>
+
+<h2 id="launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside LGSVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launch-autoware-alongside-lgsvl-simulator" title="Permanent link">#</a></h2>
+<p>Run the Autoware 1.14.0 container and enter into it:</p>
+<pre><code class="bash">cd $WORKING_DIRECTORY/docker/generic
+./run.sh -t 1.14.0
+</code></pre>
+
+<p>If you get the usermod error as follows:</p>
+<pre><code>usermod: user autoware is currently used by process 1
+</code></pre>
+
+<p>Check if the $UID is 1000</p>
+<pre><code>$ echo $UID
+</code></pre>
+
+<p>If your $UID is 1000, you would not have usermod error. Otherwise, it's better to build container locally to avoid usermod error as follows:</p>
+<pre><code>$ ./build.sh --version 1.14.0
+$ ./run.sh -t local
+</code></pre>
+
+<p>Once inside the container, install a missing ROS package:</p>
+<pre><code class="bash">sudo apt update &amp;&amp; sudo apt install ros-$ROS_DISTRO-image-transport-plugins -y
+</code></pre>
+
+<p>If you need to check which $ROS_DISTRO you have installed run the following:</p>
+<pre><code class="bash">ls /opt/ros/
+</code></pre>
+
+<p>Launch the runtime manager:</p>
+<pre><code class="bash">roslaunch runtime_manager runtime_manager.launch
+</code></pre>
+
+<p>A few terminals will open, as well as a GUI for the runtime manager. In the runtime manager, click on the 'Quick Start' tab and load the following launch files from <code>~/shared_dir/autoware-data/BorregasAve/</code> by clicking "Ref" to the right of each text box:</p>
+<ul>
+<li><code>my_map.launch</code></li>
+<li><code>my_sensing_simulator.launch</code></li>
+<li><code>my_localization.launch</code></li>
+<li><code>my_detection.launch</code></li>
+<li><code>my_mission_planning.launch</code></li>
+<li><code>my_motion_planning.launch</code></li>
+</ul>
+<p><a href="../images/autoware-runtime-manager.png"><img alt="" src="../images/autoware-runtime-manager.png" /></a></p>
+<p>Click "Map" to load the launch file pertaining to the HD maps. An "Ok" should appear to the right of the "Ref" button when successfully loaded. Then click "Sensing" which also launches rosbridge.</p>
+<ul>
+<li>Run the LGSVL simulator</li>
+<li>Create a Simulation choosing <code>BorregasAve</code> map and <code>Jaguar2015XE (Autoware)</code> or another Autoware compatible vehicle.</li>
+<li>Enter <code>localhost:9090</code> for the Bridge Connection String.</li>
+<li>Run the created Simulation</li>
+</ul>
+<p>A vehicle should appear in Borregas Ave in Sunnyvale, CA.</p>
+<p>In the Autoware Runtime Manager, continue loading the other launch files - click "Localization" and wait for the time to display to the right of "Ref".</p>
+<p>Then click "Rviz" to launch Rviz - the vector map and location of the vehicle in the map should show.</p>
+<p>The vehicle may be mis-localized as the initial pose is important for NDT matching. To fix this, click "2D Pose Estimate" in Rviz, then click an approximate position for the vehicle on the map and drag in the direction it is facing before releasing the mouse button. This should allow NDT matching to find the vehicle pose (it may take a few tries). Note that the point cloud will not show up in rviz until ndt matching starts publishing a pose.</p>
+<p><a href="../images/autoware-ndt-matching.png"><img alt="" src="../images/autoware-ndt-matching.png" /></a></p>
+<p>An alternative would be to use GNSS for an initial pose or for localization. Open my_localization.launch file in map folder of autoware-data repository and uncomment nmea2tfpose part and comment ndt_matching instead.</p>
+<h3 id="driving-by-following-vector-map">Driving by following vector map:<a class="headerlink" href="#driving-by-following-vector-map" title="Permanent link">#</a></h3>
+<p>To drive following the HD map follow these steps:
+- in rviz, mark a destination by clicking '2D Nav Goal' and clicking at the destination and dragging along the road direction. Make sure to only choose a route that looks valid along the lane centerlines that are marked with orange lines in rviz. If an invalid destination is selected nothing will change in rviz, and you will need to relaunch the <code>Mission Planning</code> and <code>Motion Planning</code> launch files in the <code>Quick Launch</code> tab to try another destination.
+After choosing a valid destination the route will be highlighted in blue in rviz.</p>
+<p><a href="../images/autoware-valid-route.png"><img alt="" src="../images/autoware-valid-route.png" /></a></p>
+<p>In Mission Planning launch file, waypoint_planner runs as global planner, dp_planner does as local planner. In Motion Planning launch file, pure_pursuit runs as controller.</p>
+<h3 id="adding-a-vehicle">Adding a Vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-a-vehicle" title="Permanent link">#</a></h3>
+<p>The default vehicles have the calibration files included in the <a href="https://github.com/lgsvl/autoware-data">LGSVL Autoware Data</a> Github repository.</p>
+<h3 id="adding-an-hd-map">Adding an HD Map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-an-hd-map" title="Permanent link">#</a></h3>
+<p>The default maps have the Vector map files included in the <a href="https://github.com/lgsvl/autoware-data">LGSVL Autoware Data</a> Github repository.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../autoware-json-example/" class="btn btn-neutral float-right" title="Sample sensor configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../config-and-cmd-line-params/" class="btn btn-neutral" title="Configuration File and Command Line Parameters"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../config-and-cmd-line-params/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../autoware-json-example/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

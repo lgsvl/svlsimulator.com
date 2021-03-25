@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Deep Learning Lane Following Model - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Deep Learning Lane Following Model";
+    var mkdocs_page_input_path = "lane-following.md";
+    var mkdocs_page_url = "/lane-following/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor Parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu Items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor Visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge Topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API Quickstart Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API Use Case Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to Run a Scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Cluster Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-introduction/">Cluster Simulation Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-quickstart/">Cluster Simulation QuickStart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-objects/">Distributed Objects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-components/">Distributed Components</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sensors-distribution/">Sensors Distribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-python-api/">Distributed Python API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-messages/">Distributed Messages</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-distributed-class/">Custom Distributed Class</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement Learning with OpenAI Gym</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Deep Learning Lane Following Model</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#video">Video</a></li>
+    
+
+    <li class="toctree-l3"><a href="#table-of-contents">Table of Contents</a></li>
+    
+
+    <li class="toctree-l3"><a href="#getting-started">Getting Started</a></li>
+    
+
+    <li class="toctree-l3"><a href="#prerequisites">Prerequisites</a></li>
+    
+
+    <li class="toctree-l3"><a href="#setup">Setup</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#installing-docker-ce">Installing Docker CE</a></li>
+        
+            <li><a class="toctree-l4" href="#installing-nvidia-docker">Installing NVIDIA Docker</a></li>
+        
+            <li><a class="toctree-l4" href="#pulling-docker-image">Pulling Docker Image</a></li>
+        
+            <li><a class="toctree-l4" href="#whats-inside-docker-image">What's inside Docker Image</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#features">Features</a></li>
+    
+
+    <li class="toctree-l3"><a href="#training-details">Training Details</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#network-architecture">Network Architecture</a></li>
+        
+            <li><a class="toctree-l4" href="#hyperparameters">Hyperparameters</a></li>
+        
+            <li><a class="toctree-l4" href="#dataset">Dataset</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with LGSVL Simulator</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#collect-data-from-lgsvl-simulator">Collect data from LGSVL Simulator</a></li>
+        
+            <li><a class="toctree-l4" href="#data-preprocessing">Data preprocessing</a></li>
+        
+            <li><a class="toctree-l4" href="#train-a-model">Train a model</a></li>
+        
+            <li><a class="toctree-l4" href="#drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in LGSVL Simulator</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#future-works-and-contributing">Future Works and Contributing</a></li>
+    
+
+    <li class="toctree-l3"><a href="#references">References</a></li>
+    
+
+    <li class="toctree-l3"><a href="#copyright-and-license">Copyright and License</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to Collect Data with Control Calibration Sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map Annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding Assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC Map Navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensor Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../velodyne-lidar-plugin/">Velodyne Lidar Sensor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable Plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Dynamics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>Deep Learning Lane Following Model</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/lane-following.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>ROS2 End-to-End Lane Following Model with LGSVL Simulator</h1>
+<p>This tutorial works with Simulator Release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a></p>
+<p>This documentation describes applying a deep learning neural network for lane following in <a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a>. In this project, we use LGSVL Simulator for customizing sensors (one main camera and two side cameras) for a car, collect data for training, and deploying and testing a trained model.</p>
+<blockquote>
+<p>This project was inspired by <a href="https://devblogs.nvidia.com/deep-learning-self-driving-cars/">NVIDIA's End-to-End Deep Learning Model for Self-Driving Cars</a></p>
+</blockquote>
+<h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">#</a></h2>
+<div class="video-container">
+<iframe style="display:block;margin:auto;" width="560" height="340" src="https://www.youtube.com/embed/uMfA1-wTB7I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p></br></p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#setup">Setup</a><ul>
+<li><a href="#installing-docker-ce">Installing Docker CE</a></li>
+<li><a href="#installing-nvidia-docker">Installing NVIDIA Docker</a></li>
+<li><a href="#pulling-docker-image">Pulling Docker Image</a></li>
+<li><a href="#whats-inside-docker-image">What's inside Docker Image</a></li>
+</ul>
+</li>
+<li><a href="#features">Features</a></li>
+<li><a href="#training-details">Training Details</a><ul>
+<li><a href="#network-architecture">Network Architecture</a></li>
+<li><a href="#hyperparameters">Hyperparameters</a></li>
+<li><a href="#dataset">Dataset</a></li>
+</ul>
+</li>
+<li><a href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with LGSVL Simulator</a><ul>
+<li><a href="#collect-data-from-lgsvl-simulator">Collect data from LGSVL Simulator</a></li>
+<li><a href="#data-preprocessing">Data preprocessing</a></li>
+<li><a href="#train-a-model">Train a model</a></li>
+<li><a href="#drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in LGSVL Simulator</a></li>
+</ul>
+</li>
+<li><a href="#future-works-and-contributing">Future Works and Contributing</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<p>First, clone this repository:</p>
+<pre><code>git clone --recurse-submodules https://github.com/lgsvl/lanefollowing.git
+</code></pre>
+
+<p>Next, pull the latest Docker image:</p>
+<pre><code>docker pull lgsvl/lanefollowing:latest
+</code></pre>
+
+<p>To build ROS2 packages:</p>
+<pre><code>docker-compose up build
+</code></pre>
+
+<p>Now, launch the lane following model:</p>
+<pre><code>docker-compose up drive
+</code></pre>
+
+<p>(Optional) If you want visualizations, run drive_visual instead of drive:</p>
+<pre><code>docker-compose up drive_visual
+</code></pre>
+
+<p>That's it! Now, the lane following ROS2 node and the rosbridge should be up and running, waiting for LGSVL Simulator to connect.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<ul>
+<li>Docker CE</li>
+<li>NVIDIA Docker</li>
+<li>NVIDIA graphics card (required for training/inference with GPU)</li>
+</ul>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<h3 id="installing-docker-ce">Installing Docker CE<a class="headerlink" href="#installing-docker-ce" title="Permanent link">#</a></h3>
+<p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>. We also suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/">post installation steps</a>.</p>
+<h3 id="installing-nvidia-docker">Installing NVIDIA Docker<a class="headerlink" href="#installing-nvidia-docker" title="Permanent link">#</a></h3>
+<p>Before installing nvidia-docker make sure that you have an appropriate NVIDIA driver installed.
+To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear.</p>
+<pre><code class="output">    +-----------------------------------------------------------------------------+
+    | NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
+    |-------------------------------+----------------------+----------------------+
+    | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+    |===============================+======================+======================|
+    |   0  GeForce GTX 108...  Off  | 00000000:65:00.0  On |                  N/A |
+    |  0%   59C    P5    22W / 250W |   1490MiB / 11175MiB |      4%      Default |
+    +-------------------------------+----------------------+----------------------+
+
+    +-----------------------------------------------------------------------------+
+    | Processes:                                                       GPU Memory |
+    |  GPU       PID   Type   Process name                             Usage      |
+    |=============================================================================|
+    |    0      1187      G   /usr/lib/xorg/Xorg                           863MiB |
+    |    0      3816      G   /usr/bin/gnome-shell                         305MiB |
+    |    0      4161      G   ...-token=7171B24E50C2F2C595566F55F1E4D257    68MiB |
+    |    0      4480      G   ...quest-channel-token=3330599186510203656   147MiB |
+    |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
+    +-----------------------------------------------------------------------------+
+</code></pre>
+
+<p>The installation steps for nvidia-docker are available at the <a href="https://github.com/NVIDIA/nvidia-docker">official repo</a>.</p>
+<h3 id="pulling-docker-image">Pulling Docker Image<a class="headerlink" href="#pulling-docker-image" title="Permanent link">#</a></h3>
+<pre><code>docker pull lgsvl/lanefollowing:latest
+</code></pre>
+
+<h3 id="whats-inside-docker-image">What's inside Docker Image<a class="headerlink" href="#whats-inside-docker-image" title="Permanent link">#</a></h3>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>CUDA 9.2</li>
+<li>cuDNN 7.1.4.18</li>
+<li>Python 3.6</li>
+<li>TensorFlow 1.8</li>
+<li>Keras 2.2.4</li>
+<li>ROS2 Crystal + rosbridge</li>
+<li>Jupyter Notebook</li>
+</ul>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h2>
+<ul>
+<li>Training mode: Manually drive the vehicle and collect data</li>
+<li>Autonomous Mode: The vehicle drives itself based on Lane Following model trained from the collected data</li>
+<li>ROS2-based<ul>
+<li>Time synchronous data collection node</li>
+<li>deploying a trained model in a node</li>
+</ul>
+</li>
+<li>Data preprocessing for training<ul>
+<li>Data normalization</li>
+<li>Data augmentation</li>
+<li>Splitting data into training set and test set</li>
+<li>Writing/Reading data in HDF5 format</li>
+</ul>
+</li>
+<li>Deep Learning model training: Train a model using Keras with TensorFlow backend</li>
+</ul>
+<h2 id="training-details">Training Details<a class="headerlink" href="#training-details" title="Permanent link">#</a></h2>
+<h3 id="network-architecture">Network Architecture<a class="headerlink" href="#network-architecture" title="Permanent link">#</a></h3>
+<p>The network has 559,419 parameters and consists of 9 layers, including 5 convolutional layers, 3 fully connected layers, and an output layer.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Layer (type)</th>
+<th align="center">Output Shape</th>
+<th align="center">Param #</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">lambda_1 (Lambda)</td>
+<td align="center">(None, 70, 320, 3)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">conv2d_1 (Conv2D)</td>
+<td align="center">(None, 33, 158, 24)</td>
+<td align="center">1824</td>
+</tr>
+<tr>
+<td align="center">conv2d_2 (Conv2D)</td>
+<td align="center">(None, 15, 77, 36)</td>
+<td align="center">21636</td>
+</tr>
+<tr>
+<td align="center">conv2d_3 (Conv2D)</td>
+<td align="center">(None, 6, 37, 48)</td>
+<td align="center">43248</td>
+</tr>
+<tr>
+<td align="center">conv2d_4 (Conv2D)</td>
+<td align="center">(None, 4, 35, 64)</td>
+<td align="center">27712</td>
+</tr>
+<tr>
+<td align="center">conv2d_5 (Conv2D)</td>
+<td align="center">(None, 2, 33, 64)</td>
+<td align="center">36928</td>
+</tr>
+<tr>
+<td align="center">dropout_1 (Dropout)</td>
+<td align="center">(None, 2, 33, 64)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">flatten_1 (Flatten)</td>
+<td align="center">(None, 4224)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">dense_1 (Dense)</td>
+<td align="center">(None, 100)</td>
+<td align="center">422500</td>
+</tr>
+<tr>
+<td align="center">dense_2 (Dense)</td>
+<td align="center">(None, 50)</td>
+<td align="center">5050</td>
+</tr>
+<tr>
+<td align="center">dense_3 (Dense)</td>
+<td align="center">(None, 10)</td>
+<td align="center">510</td>
+</tr>
+<tr>
+<td align="center">dense_4 (Dense)</td>
+<td align="center">(None, 1)</td>
+<td align="center">11</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hyperparameters">Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permanent link">#</a></h3>
+<ul>
+<li>Learning rate: 1e-04</li>
+<li>Learning rate decay: None</li>
+<li>Dropout rate: 0.5</li>
+<li>Mini-batch size: 128</li>
+<li>Epochs: 30</li>
+<li>Optimization algorithm: Adam</li>
+<li>Loss function: Mean squared error</li>
+<li>Training/Test set ratio: 8:2</li>
+</ul>
+<h3 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">#</a></h3>
+<ul>
+<li>Number of training data: 48,624 labeled images</li>
+<li>Number of validation data: 12,156 labeled images</li>
+</ul>
+<h4 id="center-image">Center Image<a class="headerlink" href="#center-image" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/lanefollowing-center_image.jpg" /></p>
+<h4 id="left-image">Left Image<a class="headerlink" href="#left-image" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/lanefollowing-left_image.jpg" /></p>
+<h4 id="right-image">Right Image<a class="headerlink" href="#right-image" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/lanefollowing-right_image.jpg" /></p>
+<h4 id="original-image">Original Image<a class="headerlink" href="#original-image" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/lanefollowing-original.png" /></p>
+<h4 id="cropped-image">Cropped Image<a class="headerlink" href="#cropped-image" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/lanefollowing-cropped.png" /></p>
+<h4 id="data-distribution">Data Distribution<a class="headerlink" href="#data-distribution" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/lanefollowing-data_distribution.png" /></p>
+<h2 id="how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator">How to Collect Data and Train Your Own Model with LGSVL Simulator<a class="headerlink" href="#how-to-collect-data-and-train-your-own-model-with-lgsvl-simulator" title="Permanent link">#</a></h2>
+<h3 id="collect-data-from-lgsvl-simulator">Collect data from LGSVL Simulator<a class="headerlink" href="#collect-data-from-lgsvl-simulator" title="Permanent link">#</a></h3>
+<p>To collect camera images as well as corresponding steering commands for training, we provide a ROS2 <em>collect</em> node which subscribes to three camera image topics and a control command topic, approximately synchronizes time stamps of those messages, and then saves them as csv and jpg files. The topic names and types are as below:
+- Center camera: /simulator/sensor/camera/center/compressed (sensor_msgs/CompressedImage)
+- Left camera: /simulator/sensor/camera/left/compressed (sensor_msgs/CompressedImage)
+- Right camera: /simulator/sensor/camera/right/compressed (sensor_msgs/CompressedImage)
+- Control command: /simulator/control/command (geometry_msgs/TwistStamped)</p>
+<p>To launch <em>rosbridge</em> and <em>collect</em> ROS2 node in a terminal:</p>
+<pre><code>docker-compose up collect
+</code></pre>
+
+<p>To drive a car and publish messages over rosbridge in training mode:
+- Launch <strong>LGSVL Simulator</strong>
+- Click <strong>Free Roaming</strong> mode
+- Select <strong>San Francisco</strong> map and <strong>XE_Rigged-lgsvl</strong> vehicle
+- Make sure the simulator establishes connection with rosbridge
+- Click <strong>Run</strong> to begin
+- Enable <strong>Main Camera</strong>, <strong>Left Camera</strong>, <strong>Right Camera</strong>, and check <strong>Publish Control Command</strong></p>
+<p>The node will start collecting data as you drive the car around. You should be able to check log messages in the terminal where the <em>collect</em> node is running. The final data is saved in <code>lanefollowing/ros2_ws/src/lane_following/train/data/</code> as csv and jpg files.</p>
+<h3 id="data-preprocessing">Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permanent link">#</a></h3>
+<p>Before start training your model with the data you collected, data preprocessing is required. This task includes:
+- Resize image resolutions from 1920 x 1080 to 200 x 112
+- Crop top portion of images as we are mostly interested in road part of an image
+- Data augmentation by adding artificial bias to side camera images or flipping images
+- Data normalization to help the model converge faster
+- Split data into training and testing dataset</p>
+<p>To run data preprocessing and obtain datasets for training:</p>
+<pre><code>docker-compose up preprocess
+</code></pre>
+
+<p>This will preprocess your data and write outputs in <code>lanefollowing/ros2_ws/src/lane_following/train/data/hdf5/</code> into HDF5 format for better I/O performance for training.</p>
+<h3 id="train-a-model">Train a model<a class="headerlink" href="#train-a-model" title="Permanent link">#</a></h3>
+<p>We use Keras with TensorFlow backend for training our model as an example. The hyperparameters such as learning rate, batch size, or number of epochs were chosen empirically. You can train a model as is but you are also welcome to modify the model architecture or any hyperparameters as you like in the code.</p>
+<p>To start training:</p>
+<pre><code>docker-compose up train
+</code></pre>
+
+<p>After training is done, your final trained model will be in <code>lanefollowing/ros2_ws/src/lane_following/train/model/{current-date-and-time-in-utc}.h5</code> and your model is ready to drive autonomously.</p>
+<h3 id="drive-with-your-trained-model-in-lgsvl-simulator">Drive with your trained model in LGSVL Simulator<a class="headerlink" href="#drive-with-your-trained-model-in-lgsvl-simulator" title="Permanent link">#</a></h3>
+<p>Now, it's time to deploy your trained model and test drive with it using LGSVL Simulator. You can replace your trained model with an existing one in <code>lanefollowing/ros2_ws/src/lane_following/model/model.h5</code> as this is the path for deployment.</p>
+<p>To launch <em>rosbridge</em> and <em>drive</em> ROS2 node in a terminal:</p>
+<pre><code>docker-compose up drive
+</code></pre>
+
+<p>Or, if you want visualizations as well, run drive_visual instead:</p>
+<pre><code>docker-compose up drive_visual
+</code></pre>
+
+<p>To drive a car in autonomous mode:
+- Launch <strong>LGSVL Simulator</strong>
+- Click <strong>Free Roaming</strong> mode
+- Select <strong>San Francisco</strong> map and <strong>XE_Rigged-lgsvl</strong> vehicle
+- Make sure the simulator establishes connection with rosbridge
+- Click <strong>Run</strong> to begin
+- Enable <strong>Main Camera</strong> (we don't need side cameras for inference)</p>
+<p>Your car will start driving autonomously and try to mimic your driving behavior when training the model.</p>
+<h2 id="future-works-and-contributing">Future Works and Contributing<a class="headerlink" href="#future-works-and-contributing" title="Permanent link">#</a></h2>
+<p>Though the network can successfully drive and follow lanes on the bridge, there's still a lot of room for future improvements (i.e., biased to drive straight, afraid of shadows, few training data, and etc).
+- To improve model robustness collect more training data by driving in a wide variety of environments
+    - Changing weather and lighting effects (rain, fog, road wetness, time of day)
+    - Adding more road layouts and road textures
+    - Adding more shadows on roads
+    - Adding NPC cars around the ego vehicle
+- Predict the car throttle along with the steering angle
+- Take into accounts time series analysis using RNN (Recurrent Neural Network)</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://github.com/lgsvl/lanefollowing">Lane Following Github Repository</a></li>
+<li><a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a></li>
+<li><a href="https://devblogs.nvidia.com/deep-learning-self-driving-cars/">NVIDIA's End-to-End Deep Learning Model for Self-Driving Cars</a></li>
+</ul>
+<h2 id="copyright-and-license">Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permanent link">#</a></h2>
+<p>Copyright (c) 2019 LG Electronics, Inc.</p>
+<p>This software contains code licensed as described in LICENSE.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../create-ros2-ad-stack/" class="btn btn-neutral float-right" title="How to create a simple ROS2-based AD stack">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../openai-gym/" class="btn btn-neutral" title="Reinforcement Learning with OpenAI Gym"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../openai-gym/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../create-ros2-ad-stack/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

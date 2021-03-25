@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Instructions - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Instructions";
+    var mkdocs_page_input_path = "autoware-auto-instructions.md";
+    var mkdocs_page_url = "/autoware-auto-instructions/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor Parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu Items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor Visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge Topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Instructions</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#general">Overview</a></li>
+    
+
+    <li class="toctree-l4"><a href="#setup">Setup</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#requirements">Requirements</a></li>
+        
+            <li><a class="toctree-l5" href="#installing-autoware-auto">Installing Autoware.auto</a></li>
+        
+            <li><a class="toctree-l5" href="#simulator-installation">Simulator Installation</a></li>
+        
+            <li><a class="toctree-l5" href="#install-ros2-dashing">Install Ros2 dashing</a></li>
+        
+            <li><a class="toctree-l5" href="#install-ros2-web-bridge">Install Ros2 Web Bridge</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#run-simulator-alongside-autoware-auto">Run Simulator alongside Autoware.Auto</a></li>
+    
+
+    <li class="toctree-l4"><a href="#copyright-and-license">Copyright and License</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API Quickstart Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API Use Case Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to Run a Scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement Learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning Lane Following Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to Collect Data with Control Calibration Sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map Annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding Assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC Map Navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sensor-plugins/">Sensor Plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable Plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Running with Autoware.Auto &raquo;</li>
+        
+      
+        
+          <li>Integration with AD &raquo;</li>
+        
+      
+    
+    <li>Instructions</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/autoware-auto-instructions.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Autoware.Auto with LGSVL Simulator <a href="#top"></a></h1>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#general">Overview</a></li>
+<li><a href="#setup">Setup</a><ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installing-autoware-auto">Installing Autoware.auto</a></li>
+<li><a href="#simulator-installation">Simulator Installation</a></li>
+<li><a href="#install-ros2-dashing">Install Ros2 dashing</a></li>
+<li><a href="#install-ros2-web-bridge">Install Ros2 Web Bridge</a></li>
+</ul>
+</li>
+<li><a href="#run-simulator-alongside-autoware-auto">Run Simulator alongside Autoware.Auto</a></li>
+<li><a href="#copyright-and-license">Copyright and License</a></li>
+</ul>
+</div>
+<h2 id="general">Overview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#general" title="Permanent link">#</a></h2>
+<p>This guide describes setting up and using Autoware.Auto with the LGSVL simulator. As Autoware.Auto is still under-development, full self-driving is not yet possible. This guide will focus on running individual modules which have been implemented.</p>
+<h2 id="setup">Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<h3 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h3>
+<ul>
+<li>Linux operating system</li>
+<li>Nvidia graphics card</li>
+</ul>
+<h4 data-toc-label="Installing Docker CE" id="installing-docker-ce">Installing Docker CE <a class="wikilink" href="#top">top</a></h4>
+<p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>. We also suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/">post installation steps</a>.</p>
+<h4 data-toc-label="Installing Nvidia Docker" id="installing-nvidia-docker">Installing Nvidia Docker <a class="wikilink" href="#top">top</a></h4>
+<ul>
+<li>Before installing nvidia-docker make sure that you have an appropriate Nvidia driver installed. To test if nvidia drivers are properly installed enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear.</li>
+</ul>
+<pre><code>    +-----------------------------------------------------------------------------+
+    | NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
+    |-------------------------------+----------------------+----------------------+
+    | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+    |===============================+======================+======================|
+    |   0  GeForce GTX 108...  Off  | 00000000:65:00.0  On |                  N/A |
+    |  0%   59C    P5    22W / 250W |   1490MiB / 11175MiB |      4%      Default |
+    +-------------------------------+----------------------+----------------------+
+
+    +-----------------------------------------------------------------------------+
+    | Processes:                                                       GPU Memory |
+    |  GPU       PID   Type   Process name                             Usage      |
+    |=============================================================================|
+    |    0      1187      G   /usr/lib/xorg/Xorg                           863MiB |
+    |    0      3816      G   /usr/bin/gnome-shell                         305MiB |
+    |    0      4161      G   ...-token=7171B24E50C2F2C595566F55F1E4D257    68MiB |
+    |    0      4480      G   ...quest-channel-token=3330599186510203656   147MiB |
+    |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
+    +-----------------------------------------------------------------------------+
+</code></pre>
+
+<ul>
+<li>
+<p>Install <a href="https://github.com/NVIDIA/nvidia-docker">nvidia docker</a>.</p>
+<p><em>Note:</em> For docker 19.03 and newer nvidia GPUs are natively supported as devices in docker runtime, and nvidia-docker2 is deprecated, however, because Autoware.auto uses the <code>--runtime nvidia</code> argument nvidia-docker2 will need to be installed even for newer docker versions.</p>
+</li>
+</ul>
+<h3 id="installing-autoware-auto">Installing Autoware.auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-autoware-auto" title="Permanent link">#</a></h3>
+<ul>
+<li>Follow the <a href="https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation-and-development.html">installation and development setup</a> guide for Autoware.auto.</li>
+</ul>
+<h3 id="simulator-installation">Simulator installation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simulator-installation" title="Permanent link">#</a></h3>
+<ul>
+<li>Download and extract the latest <a href="https://github.com/lgsvl/simulator/releases/latest">simulator release</a></li>
+<li>(Optional) Download the latest <a href="https://github.com/lgsvl/PythonAPI/releases/latest">PythonAPI release</a> (make sure the release version matches the simulator) and install it using pip:</li>
+</ul>
+<pre><code class="bash">cd PythonAPI
+pip3 install --user .
+</code></pre>
+
+<h3 id="install-ros2-dashing">Install ROS2 dashing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-dashing" title="Permanent link">#</a></h3>
+<ul>
+<li>Follow <a href="https://index.ros.org/doc/ros2/Installation/Dashing/Linux-Install-Debians">these steps</a>.</li>
+</ul>
+<h3 id="install-ros2-web-bridge">Install the ROS2 Web Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-web-bridge" title="Permanent link">#</a></h3>
+<h6>Clone the <a href="https://github.com/RobotWebTools/ros2-web-bridge">ROS2 web bridge</a></h6>
+<pre><code class="bash">cd ~/adehome/AutowareAuto
+ade start -- --net=host --privileged # to allow connect to rosbridge
+ade enter
+git clone -b 0.2.7 https://github.com/RobotWebTools/ros2-web-bridge.git
+</code></pre>
+
+<h6 id="node-js">Install nodejs v10</h6>
+<pre><code class="bash">curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+cd ros2-web-bridge
+npm install    # If node.js packages are not installed, run this.
+</code></pre>
+
+<h2 id="run-simulator-alongside-autoware-auto">Run Simulator alongside Autoware.Auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#run-simulator-alongside-autoware-auto" title="Permanent link">#</a></h2>
+<p>The ROS2 web bridge allows the simulator and Autoware.auto to communicate. To test this connection we can visualize sensor data from the simulator in rviz2 (running in the Autoware.auto container).</p>
+<ul>
+<li>Start the Autoware.Auto containers:</li>
+</ul>
+<pre><code class="bash">cd ~/adehome/AutowareAuto
+ade start -- --net=host --privileged # to allow connect to rosbridge
+</code></pre>
+
+<ul>
+<li>Enter the container and start rviz2:</li>
+</ul>
+<pre><code class="bash">ade enter
+cd ~/AutowareAuto
+colcon build    # If you want to use autoware_auto_msgs, ros2-web-bridge needs compiled them.
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64/
+source ~/AutowareAuto/install/local_setup.bash
+rviz2 -d /home/&quot;${USER}&quot;/AutowareAuto/install/autoware_auto_examples/share/autoware_auto_examples/rviz2/autoware.rviz
+</code></pre>
+
+<ul>
+<li>
+<p>Start the LGSVL Simulator by launching the executable and click on the button to open the web UI.</p>
+</li>
+<li>
+<p>In the Vehicles tab look for <code>Lexus2016RXHybrid</code>. If not available download it from <a href="https://content.lgsvlsimulator.com/vehicles/lexusrx2016/">here</a> and follow <a href="https://www.lgsvlsimulator.com/docs/vehicles-tab/#how-to-add-a-vehicle">these instructions</a> to add it.</p>
+<ul>
+<li>Click on the wrench icon for the Lexus vehicle:</li>
+<li>Change the bridge type to <code>ROS2</code></li>
+<li>Use the following JSON configuration <a href="../autoware-auto-json-example/">Autoware Auto JSON Example</a></li>
+</ul>
+</li>
+<li>
+<p>Switch to the Simulations tab and click the <code>Add new</code> button:</p>
+<ul>
+<li>Enter a name and switch to the <code>Map &amp; Vehicles</code> tab</li>
+<li>Select a map from the drop down menu. If none are available follow <a href="https://www.lgsvlsimulator.com/docs/maps-tab/#where-to-find-maps">this guide</a> to get a map.</li>
+<li>Select the <code>Lexus2016RXHybrid</code> from the drop down menu. In the bridge connection box to the right enter the bridge address (default: <code>localhost:9090</code>)</li>
+<li>Click submit
+Select the simulation and press the play button in the bottom right corner of the screen</li>
+</ul>
+</li>
+<li>
+<p>Launch ROS2 web bridge in a new terminal:</p>
+</li>
+</ul>
+<p><strong>NOTE</strong> <a href="#node-js">Node.js</a> will need to be reinstalled in the container every time it is started</p>
+<pre><code class="bash">ade enter      # ros2 web bridge should be run in ade environment.
+cd ros2-web-bridge
+source ~/AutowareAuto/install/local_setup.bash
+node bin/rosbridge.js
+</code></pre>
+
+<p>You should now be able to see the lidar point cloud in rviz (see image below).</p>
+<p>If the pointcloud is not visible make sure the fixed frame is set to <code>velodyne_front</code> and that a PointCloud2 message is added which listens on the <code>/points_raw</code> topic.</p>
+<p><img alt="" src="../images/autoware-auto-rviz.png" /></p>
+<h2 id="copyright-and-license">Copyright and License <a class="wikilink" href="#top">top</a><a class="headerlink" href="#copyright-and-license" title="Permanent link">#</a></h2>
+<p>Copyright (c) 2019 LG Electronics, Inc.</p>
+<p>This software contains code licensed as described in LICENSE.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../autoware-auto-json-example/" class="btn btn-neutral float-right" title="Sample sensor configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../autoware-json-example/" class="btn btn-neutral" title="Sample sensor configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../autoware-json-example/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../autoware-auto-json-example/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

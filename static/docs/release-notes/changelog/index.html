@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Release notes - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Release notes";
+    var mkdocs_page_input_path = "release-notes/changelog.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../release-features/">Release features</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Release notes</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Release Notes &raquo;</li>
+        
+      
+    
+    <li>Release notes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/release-notes/changelog.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Changelog</h1>
+<p>All notable changes and release notes for SVL Simulator will be documented in this file.</p>
+<h2 id="20211-2021-03-23">[2021.1] - 2021-03-23<a class="headerlink" href="#20211-2021-03-23" title="Permanent link">#</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">#</a></h3>
+<ul>
+<li>New cloud-based <a href="https://wise.svlsimulator.com/">web user interface</a> including:<ul>
+<li><a href="../../user-interface/web/store/">Asset Store</a> for downloading assets, uploading and sharing assets publicly</li>
+<li>user account password management</li>
+<li>user assets management <a href="../../user-interface/web/library/">library</a></li>
+<li>support for private assets</li>
+<li>private assets/simulations sharing with registered users</li>
+<li>cluster/Simulation status handling</li>
+<li>SVL Simulator content from this release will be available in the <a href="https://wise.svlsimulator.com/maps/public">Asset Store</a></li>
+</ul>
+</li>
+<li>New and updated <a href="../../running-simulations/runtime-templates/">runtime templates</a> for simulations with automatic bringup and execution:<ul>
+<li>Random Traffic</li>
+<li>Visual Scenario Editor</li>
+<li>Python API</li>
+<li>API Only</li>
+</ul>
+</li>
+<li><a href="../../creating-scenarios/visual-scenario-editor/">Visual Scenario Editor</a> for creating scenarios including support for:<ul>
+<li>traffic vehicle and pedestrian waypoints</li>
+<li>previews</li>
+<li>copy/paste/undo feature</li>
+<li>ability to specify ego vehicle target destination</li>
+<li>support for controllables with ability to edit default policy</li>
+<li>color selection for actors</li>
+<li>waypoint positions snapped to HD map lanes</li>
+<li>support for distance, time, and time-to-collision triggers</li>
+<li>traffic lights control</li>
+</ul>
+</li>
+<li>Automatically generated <a href="../../user-interface/web/test-results/">test case reports</a> of simulations including:<ul>
+<li>success/failure scenario evaluation</li>
+<li>simulation statistics</li>
+<li>analytics data per sensor</li>
+<li>video recording of simulation</li>
+<li>multiple violation event detection: collision, stopline, stopsign, ego-stuck, sudden jerk/brake/turn, speed-limit, etc.</li>
+</ul>
+</li>
+<li>PythonAPI: many improvements including:<ul>
+<li>added cloudiness and road damage to weather parameters</li>
+<li>ability to specify date in environment configuration</li>
+<li>added <a href="../../python-api/dreamview-api/">Dreamview API</a> as sub-module</li>
+<li>added callback agents_traversed_waypoints</li>
+<li>added ability to set speed at WalkWaypoints</li>
+<li>added waypoint trigger system</li>
+<li>ability to set simulator camera free-state position and rotation</li>
+<li>sample Python API <a href="../../running-simulations/api-how-to-run-scenario/">scripts</a> based on NHTSA-defined scenarios for end-to-end testing</li>
+<li>additional Python API test samples: random-traffic mode, cut-in, sudden-braking, etc.</li>
+</ul>
+</li>
+<li>Environment configuration improvements:<ul>
+<li>moon position in nighttime environment configurations</li>
+<li>Improved environment road wetness layer</li>
+<li>UI for FPS and SIM time</li>
+<li>Improved rain particles</li>
+<li>Increased types of traffic lights, model improvements</li>
+</ul>
+</li>
+<li>Improvements in <a href="../../running-simulations/developer-mode/">Developer Mode</a>:<ul>
+<li>developer settings to use ego vehicle within Developer Mode</li>
+<li>ability to select and add actors to simulation in Developer Settings</li>
+<li>added sensor debug mode</li>
+<li>added tool to rotate Editor scene view to -X north</li>
+</ul>
+</li>
+<li>Features for traffic agents in simulation:<ul>
+<li>support for bicyclist traffic agents</li>
+<li>support for custom <a href="../../plugins/npc-plugins/">traffic vehicle behavior plugins</a></li>
+<li>pedestrian crosswalk support with yield for traffic vehicles (SanFrancisco map)</li>
+<li>added direction for pedestrian crosswalk annotation tool</li>
+<li>spawning NPCs now raycasts target bounds from egos' positions</li>
+</ul>
+</li>
+<li>New map/environment creation improvements:<ul>
+<li>default ego <a href="../../simulation-content/add-destinations/">destination points</a> for LG-provided maps</li>
+<li>HD map road network <a href="../../simulation-content/hd-map-mesh-generation/">environment generation tool</a></li>
+<li><a href="https://wise.svlsimulator.com/maps/public?search=API">test maps</a> for NHTSA-like test cases: Straight1LanePedestrianCrosswalk, Straight1LaneSame, etc.</li>
+</ul>
+</li>
+<li>General simulation improvements:<ul>
+<li>ability to create and run a <a href="../../distributed-simulation/distributed-simulation-introduction/">Distributed Simulation</a> from web user interface</li>
+<li><a href="../../running-simulations/offline-mode/">offline mode</a> for running saved simulation configurations</li>
+<li>improved cache control for downloaded assets</li>
+</ul>
+</li>
+<li>Sensors improvements:<ul>
+<li><a href="../../simulation-content/sensors-list/">new sensors</a>: StopLine, HUDKeyboardControl, AutowareAIControl, LGSVLControl, etc.</li>
+<li>improved  LiDAR simulation performance</li>
+<li>sun-flare, raindrops, greyscale, and video artifacts <a href="../../simulation-content/sensors-list/#color-camera">effects</a> for sensors</li>
+<li>support for sensor post-distortion effects</li>
+<li>Default values for simple and complex sensor parameter types</li>
+<li>Enabled sensors to load texture assets</li>
+</ul>
+</li>
+<li>Improvements around support for AD stacks:<ul>
+<li>Optimized <a href="../../system-under-test/autoware-auto-instructions/">ROS2 interface and bridge</a></li>
+<li>Support for <a href="../../system-under-test/apollo-master-instructions/">Apollo 6.0 and master</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<ul>
+<li>Product branding changed from "LGSVL Simulator" to "SVL Simulator"</li>
+<li>Old local web user interface is now deprecated. Users need to migrate to new  <a href="https://wise.svlsimulator.com">web user interface</a></li>
+<li>Old <a href="https://content.lgsvlsimulator.com/">content website</a> will be deprecated</li>
+<li>All content now managed on <a href="https://wise.svlsimulator.com">cloud</a> - downloaded as needed by simulation configuration</li>
+<li>Unity update to 2019.4.18f1</li>
+<li>All sensors are now sensor plugins - default sensors are part of user plugin library</li>
+<li>Sensor plugins no longer bundled with simulator executable</li>
+<li>Distributed simulation: fixed pedestrian movement animation bug</li>
+<li>Distributed simulation: video artifact fix</li>
+<li>Fixed wrong timestamp error in clock and IMU sensors</li>
+<li>Fix acceleration/angular velocity in Apollo imu/corrected_imu</li>
+<li>Fixed way of handling failed downloads</li>
+<li>Fixed bugs and issues in OpenDrive HD map importer and exporter</li>
+<li>Point cloud rendering: added alternative method for removing obscured points (reduces flickering, requires depth prepass)</li>
+<li>Point cloud rendering: Fill scarce depth map holes through neighborhood sampling</li>
+<li>Point Cloud Rendering: Fix skybox blending in unlit point cloud</li>
+<li>Improved traffic lights in environments</li>
+<li>Rain/clouds/lights improvements</li>
+<li>NPC spawn logic improvements</li>
+<li>Fix old NPC models and prefab</li>
+<li>Adjust camera distance from ego bounds</li>
+<li>HD map import: Fix keyError in lanelet2 and improve grouping lanes at intersections</li>
+<li>HD map import: Fix map origin update during OpenDrive map import</li>
+</ul>
+<h2 id="202006-2020-08-31">[2020.06] - 2020-08-31<a class="headerlink" href="#202006-2020-08-31" title="Permanent link">#</a></h2>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Support <a href="../../tutorials/modular-testing/">modular testing</a> of planning with Apollo 5.0</li>
+<li>Bridge plugin system with example (<a href="https://github.com/lgsvl/LoggingBridge">LoggingBridge</a>)</li>
+<li>Added default <a href="../../simulation-content/sensors-list/#ultrasonic">ultrasonic distance sensor</a></li>
+<li>Sensor TF visualizer in <a href="../../user-interface/sensor-visualizers/">sensor visualizations</a></li>
+<li>Added button in <a href="../../simulation-content/map-annotation/">map annotation tool</a> to add synthetic lane boundary lines automatically</li>
+<li>Python API: added callback agents_traversed_waypoints</li>
+<li>Python API: added ability to set speed at WalkWaypoints</li>
+<li>Python API: Added waypoint trigger system</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed 90 degree orientation offset in GPS odometry sensor</li>
+<li>Replaced default ROS2 bridge to improved <a href="../../system-under-test/ros2-bridge/">custom ROS2 bridge</a> instead of ros2-web-bridge</li>
+<li>Unity update to 2019.3.15f1</li>
+<li>Fixed timestamps in GPS, IMU</li>
+<li>Added timestamp to default LiDAR sensor PointCloud message</li>
+<li>Fixed bugs in OpenDrive map importer to correctly compute reference lines and lane widths for edge cases</li>
+<li>Improved OpenDrive map exporter to export parametric cubic curves instead of simple lines for each reference line segment</li>
+</ul>
+<h2 id="202005-2020-06-02">[2020.05] - 2020-06-02<a class="headerlink" href="#202005-2020-06-02" title="Permanent link">#</a></h2>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">#</a></h3>
+<ul>
+<li>Support for custom <a href="../../plugins/npc-plugins/">traffic vehicle behavior plugins</a></li>
+<li>Support for <a href="../../system-under-test/apollo-master-instructions/">Apollo 5.5</a> (<a href="https://github.com/ApolloAuto/apollo/tree/master">latest master</a>)</li>
+<li>Support for distributed simulation</li>
+<li>Velodyne VLS-128 support</li>
+<li>Python API function to spawn random non-ego vehicles and pedestrians</li>
+<li>Unlit shadows support for point cloud environment rendering</li>
+<li>AD system-agnostic message definitions to "lgsvl_msgs" for vehicle control, CAN bus and status data, etc.</li>
+</ul>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
+<ul>
+<li>Refactored traffic agent Waypoint Mode with fixes for idle and trigger waypoints</li>
+<li>Changed gnss_odom message coordinate system to right-handed coordinate system</li>
+<li>Fixed "ignore map origin" option for gnss_odom message</li>
+<li>Fixed acceleration values in IMU sensor</li>
+<li>Fix sky flickering issue during point cloud rendering</li>
+<li>Fixed LiDAR readback error</li>
+<li>Removed and replaced documentation source files from main repository to separate Documentation <a href="https://github.com/lgsvl/Documentation">repository</a></li>
+</ul>
+<h2 id="202003-2020-04-03">[2020.03] - 2020-04-03<a class="headerlink" href="#202003-2020-04-03" title="Permanent link">#</a></h2>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">#</a></h3>
+<ul>
+<li>Velodyne VLP-16 and VLP-32C support through custom LiDAR sensor plugin</li>
+<li>Support for LiDAR sensor plugin with direct UDP socket interface</li>
+<li>Support for point cloud environment rendering</li>
+<li>Extensible vehicle dynamics</li>
+<li>Functional Mockup Interface 2.0 (FMI 2.0) interface for vehicle dynamics</li>
+<li>Support for fisheye camera lens distortion</li>
+<li>Support for sensor_msgs/NavSatFix message type for GPS messages in ROS2</li>
+<li>Vehicle Odometry sensor for reporting steering angles and velocity in ROS2</li>
+</ul>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
+<ul>
+<li>Upgraded to Unity 2019.3.3f1</li>
+<li>Fixed black artifacts in Linux bug</li>
+<li>Fixed display issues in Unity Editor bug</li>
+<li>Fixed camera sensor invalid data bug</li>
+<li>3D Ground Truth sensor now generates different ID for vehicle after each respawn</li>
+</ul>
+<h2 id="202001-2020-01-31">[2020.01] - 2020-01-31<a class="headerlink" href="#202001-2020-01-31" title="Permanent link">#</a></h2>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">#</a></h3>
+<ul>
+<li>Controllable Object plugin support, dynamically add and control Controllables with the Python API</li>
+<li>Ability to create LIDAR sensor with non-uniform beam distribution</li>
+<li>Ability to add distortion effects to Camera sensors</li>
+<li>Support for Autoware.Auto messages (ROS2)</li>
+<li>Ability to create custom message types for sensor plugins</li>
+<li>TransformSensor which can act as a parent for other sensors</li>
+<li>VehicleStateSensor which is needed by Autoware.Auto</li>
+</ul>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">#</a></h3>
+<ul>
+<li>Added SanFrancisco map as a default map option</li>
+<li>Allow null texture bundles without an error</li>
+<li>Pedestrian mass reduced to 70kg</li>
+<li>Fixed lagging of 2D Ground Truth boxes (in visualization and data)</li>
+<li>ComfortSensor included with Simulator binary</li>
+<li>TrafficCone included with Simulator binary</li>
+<li>Fixed exported HD map lane relations</li>
+<li>Fixed ROS2 GPS</li>
+</ul>
+<h2 id="201912-2020-01-21">[2019.12] - 2020-01-21<a class="headerlink" href="#201912-2020-01-21" title="Permanent link">#</a></h2>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">#</a></h3>
+<ul>
+<li>Custom callback for Python API, useful in sensor plugins.</li>
+<li>Ability to specify count and types of NPCs to spawn on the map.</li>
+</ul>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">#</a></h3>
+<ul>
+<li>Optimized texture usage in maps - significantly reduces size on disk and GPU memory used.</li>
+<li>Allow boundary type to be optional for Apollo HD map import.</li>
+<li>Fix Python API to be able load maps &amp; vehicles that are shared between multiple users.</li>
+<li>Separated bundle file format version for map and vehicle bundles.</li>
+<li>Improved headlights for EGO vehicles.</li>
+<li>Improved HD map annotation icons.</li>
+<li>Fixed Sedan NPC mesh.</li>
+</ul>
+<h2 id="201911-2019-11-19">[2019.11] - 2019-11-19<a class="headerlink" href="#201911-2019-11-19" title="Permanent link">#</a></h2>
+<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">#</a></h3>
+<ul>
+<li>OpenDrive 1.4 HD map import.</li>
+<li>Rain drops on ground when it is raining.</li>
+<li>Separated Apollo HD map export between version 3.0 and 5.0 to support 5.0 specific features.</li>
+<li>Cache vehicle prefabs when loading same vehicle multiple times into simulation.</li>
+<li>Ability to login to account via command-line.</li>
+<li>Ability for vehicle to have multiple interior lights. Fixes #474.</li>
+<li>Allow Color, Depth and Semantic cameras to have higher capture &amp; publish rate.</li>
+<li>Building &amp; loading custom sensors as plugins.</li>
+</ul>
+<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed traffic lights signal colors on Shalun map.</li>
+<li>Fixed exceptions when NPCs are despawned while still in intersection.</li>
+<li>Fixed errors when adding pedestrian to map without NavMesh.</li>
+<li>Fixed Lanelet2 boundary import and export.</li>
+<li>Multiple fixes for OpenDrive import and export.</li>
+<li>Fixed wrong raycast layers in 2D Ground Truth sensor to detect if NPC is visible.</li>
+<li>Fixed missing timestamp when publishing ROS/Cyber messages from 2D Ground Truth sensor.</li>
+<li>Limit number of spawned NPCs and vehicles for large maps.</li>
+</ul>
+<h2 id="201910-2019-10-28">[2019.10] - 2019-10-28<a class="headerlink" href="#201910-2019-10-28" title="Permanent link">#</a></h2>
+<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">#</a></h3>
+<ul>
+<li>Apollo HD map import</li>
+<li>Accurate sun position in sky based of map location. Including time of sunrise and sunset.</li>
+<li>Control calibration sensor to help calibrating AD stack control.</li>
+<li>Ported Shalun map from previous non-HDRP simulator version.</li>
+<li>Ground Truth sensor for traffic light.</li>
+<li>Python API method to get controllable object by position.</li>
+<li>Python API method to convert multiple map coordinates in single call.</li>
+<li>Python API method to perform multiple ray-casts in single call.</li>
+<li>Sensor for controlling vehicle with steering wheel (Logitech G920).</li>
+<li>Platform independent asset bundles (Windows and Linux).</li>
+<li>Allow to set custom data path for database and downloaded bundles.</li>
+<li>Visualize data values for non-image senors (GPS, IMU, etc).</li>
+<li>Populate scene with required objects when new scene is created in Unity Editor.</li>
+</ul>
+<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed exceptions in ROS Bridge where if it receives message on topic that it has not subscribed.</li>
+<li>Fixed 3D Ground Truth sensor to report correct NPC orientation angles.</li>
+<li>Fixed Radar sensor to visualize pedestrians.</li>
+<li>Fixed Color camera to render mountains in BorregaAve.</li>
+<li>Fixed EGO vehicle collision callback to Python API.</li>
+<li>Fixed WebUI redirect loop that happens if you are logged out.</li>
+<li>Fixed reported NPC vehicle speed. Fixes #347 and #317.</li>
+<li>Fixed gear shifting for EGO vehicle control. Fixes #389.</li>
+<li>Fixed NPC waypoint following where NPCs stopped if assigned speed is too low.</li>
+<li>Fixed semantic segmentation for vehicles and pedestrians added with Python API.</li>
+<li>Fixed ROS2 message publishing (seq field was missing in Header). Fixes #413.</li>
+<li>Fixed issue with database on some non-English locales. Fixes #381.</li>
+<li>Fixed point cloud generation in Unity Editor.</li>
+<li>Fixed browser loosing cookie when session ends in WebUI.</li>
+<li>Fixed slowness in Python API when running without access to Internet.</li>
+<li>Fixed issue when multiple users could not use same map url.</li>
+<li>Improved error messages when simulation fails to start.</li>
+</ul>
+<h2 id="201909-2019-09-06">[2019.09] - 2019-09-06<a class="headerlink" href="#201909-2019-09-06" title="Permanent link">#</a></h2>
+<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">#</a></h3>
+<ul>
+<li>Sensor visualization UI</li>
+<li>HD map export to OpenDrive 1.4 format</li>
+<li>ROS service support for ROS bridge</li>
+<li>Python API to support more robust waypoints for NPC vehicles</li>
+<li>Python API with ability to control traffic lights on map</li>
+<li>Hyundai Nexo vehicle</li>
+</ul>
+<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">#</a></h3>
+<ul>
+<li>Improved NPC movement and right turns on red traffic light</li>
+<li>Fixed NPC vehicle despawning logic so they don't get stuck in intersections</li>
+<li>Change NPC vehicles colliders from box to mesh to improves collision precision</li>
+<li>Updated generated protobuf message classes for latest Apollo 5.0</li>
+<li>Fixed 3D Ground Truth message type for ROS</li>
+<li>Fixed 3D and 2D Ground Truth bounding box locations</li>
+</ul>
+<h2 id="201907-2019-08-09">[2019.07] - 2019-08-09<a class="headerlink" href="#201907-2019-08-09" title="Permanent link">#</a></h2>
+<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">#</a></h3>
+<ul>
+<li>Separate Asset Bundles for environments and vehicles</li>
+<li>Fully deterministic physics simulation</li>
+<li>Faster-than-real-time capability with Python API</li>
+<li>Lanelet2 HD map format import/export</li>
+<li>Ability to edit sensor configuration dynamically</li>
+<li>Multi-user support - account login allows different users to login to one machine running simulator</li>
+<li>BorregasAve 3D environment as a default provided map</li>
+<li>AutonomouStuff 3D environment as a default provided map of parking lot</li>
+<li>SingleLaneRoad 3D environment as a default provided map</li>
+<li>CubeTown 3D environment as a default provided map</li>
+<li>Lexus RX and Lincoln MKZ vehicle support</li>
+<li>LiDAR outputs intensity value based on reflectivity of material (instead of color)</li>
+<li>Support for Apollo 5.0</li>
+<li>Support for Autoware 1.12</li>
+<li>Light reflections on road from wetness</li>
+<li>Better sky rendering, including clouds</li>
+<li>Ability to import point cloud files for visualization</li>
+</ul>
+<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">#</a></h3>
+<ul>
+<li>User interface - use web UI for main user interaction</li>
+<li>Render pipeline - Unity High Definition Render Pipeline</li>
+<li>Significantly improved LiDAR simulation performance using multithreading</li>
+<li>Improved map annotation for easier use in Editor</li>
+<li>Improved point cloud generation from 3D environment in Editor</li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">#</a></h3>
+<ul>
+<li>Support for Duckiebot, EP_rigged, SF_rigged, Tugbot vehicles</li>
+<li>Support for SimpleLoop, SimpleMap, SimpleRoom, Duckietown, DuckieDownTown, SanFrancisco, Shalun maps</li>
+</ul>
+<h2 id="201905-and-older">[2019.05 and older]<a class="headerlink" href="#201905-and-older" title="Permanent link">#</a></h2>
+<p>Please see release notes for previous versions on our Github <a href="https://github.com/lgsvl/simulator/releases">releases</a> page.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../release-contents/" class="btn btn-neutral float-right" title="Contents of this release">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../release-features/" class="btn btn-neutral" title="Release features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../release-features/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../release-contents/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

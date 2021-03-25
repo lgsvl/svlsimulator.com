@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>How to create a simple ROS2-based AD stack - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to create a simple ROS2-based AD stack";
+    var mkdocs_page_input_path = "create-ros2-ad-stack.md";
+    var mkdocs_page_url = "/create-ros2-ad-stack/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor Parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu Items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor Visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge Topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API Quickstart Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API Use Case Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to Run a Scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Cluster Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-introduction/">Cluster Simulation Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-quickstart/">Cluster Simulation QuickStart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-objects/">Distributed Objects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-components/">Distributed Components</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sensors-distribution/">Sensors Distribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-python-api/">Distributed Python API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-messages/">Distributed Messages</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-distributed-class/">Custom Distributed Class</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement Learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning Lane Following Model</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">How to create a simple ROS2-based AD stack</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#requirements">Requirements</a></li>
+    
+
+    <li class="toctree-l3"><a href="#setup">Setup</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#installing-docker-ce">Installing Docker CE</a></li>
+        
+            <li><a class="toctree-l4" href="#installing-nvidia-docker">Installing NVIDIA Docker</a></li>
+        
+            <li><a class="toctree-l4" href="#pulling-docker-image">Pulling Docker Image</a></li>
+        
+            <li><a class="toctree-l4" href="#whats-inside-docker-image">What's inside Docker Image</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#creating-a-ros2-package">Creating a ROS2 Package</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#setuppy">setup.py</a></li>
+        
+            <li><a class="toctree-l4" href="#packagexml">package.xml</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#building-a-ros2-package">Building a ROS2 Package</a></li>
+    
+
+    <li class="toctree-l3"><a href="#running-rosbridge">Running Rosbridge</a></li>
+    
+
+    <li class="toctree-l3"><a href="#writing-ros2-subscriber-node">Writing ROS2 Subscriber Node</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#subscribe-to-a-single-topic">Subscribe to a single topic</a></li>
+        
+            <li><a class="toctree-l4" href="#subscribe-to-multiple-topics-simultaneously">Subscribe to multiple topics simultaneously</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#writing-ros2-publisher-node">Writing ROS2 Publisher Node</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#publish-command-back-to-lgsvl-simulator">Publish command back to LGSVL Simulator</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#running-ros2-node">Running ROS2 Node</a></li>
+    
+
+    <li class="toctree-l3"><a href="#references">References</a></li>
+    
+
+    <li class="toctree-l3"><a href="#copyright-and-license">Copyright and License</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to Collect Data with Control Calibration Sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map Annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding Assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC Map Navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensor Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../velodyne-lidar-plugin/">Velodyne Lidar Sensor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable Plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Dynamics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>How to create a simple ROS2-based AD stack</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/create-ros2-ad-stack.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>How to create a ROS2-based AD stack with LGSVL Simulator</h1>
+<p>This tutorial works with Simulator Release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a></p>
+<p>This documentation describes how to develop ROS2 nodes to receive sensor data from LGSVL Simulator and send control commands to drive a car.</p>
+<p><a href="https://github.com/lgsvl/lanefollowing">The Lane Following model</a> is a <a href="https://index.ros.org/doc/ros2/">ROS2</a>-based Autonomous Driving stack developed with <a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a>. In high-level overview, the model is composed of three modules: a sensor module, a perception module, and a control module. The sensor module receives raw sensor data such as camera images from the simulator and preprocess the data before feeding into the perception module. Then, the perception module takes in the preprocessed data, extracts lane information, and predicts steering wheel commands. Finally, the control module sends a predicted control command back to the simulator, which would drive a car autonomously. </p>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#setup">Setup</a><ul>
+<li><a href="#installing-docker-ce">Installing Docker CE</a></li>
+<li><a href="#installing-nvidia-docker">Installing NVIDIA Docker</a></li>
+<li><a href="#pulling-docker-image">Pulling Docker Image</a></li>
+<li><a href="#whats-inside-docker-image">What's inside Docker Image</a></li>
+</ul>
+</li>
+<li><a href="#creating-a-ros2-package">Creating a ROS2 Package</a><ul>
+<li><a href="#setuppy">setup.py</a></li>
+<li><a href="#packagexml">package.xml</a></li>
+</ul>
+</li>
+<li><a href="#building-a-ros2-package">Building a ROS2 Package</a></li>
+<li><a href="#running-rosbridge">Running Rosbridge</a></li>
+<li><a href="#writing-ros2-subscriber-node">Writing ROS2 Subscriber Node</a><ul>
+<li><a href="#subscribe-to-a-single-topic">Subscribe to a single topic</a></li>
+<li><a href="#subscribe-to-multiple-topics-simultaneously">Subscribe to multiple topics simultaneously</a></li>
+</ul>
+</li>
+<li><a href="#writing-ros2-publisher-node">Writing ROS2 Publisher Node</a><ul>
+<li><a href="#publish-command-back-to-lgsvl-simulator">Publish command back to LGSVL Simulator</a></li>
+</ul>
+</li>
+<li><a href="#running-ros2-node">Running ROS2 Node</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#copyright-and-license">Copyright and License</a></li>
+</ul>
+</div>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<ul>
+<li>Docker</li>
+<li>Python3</li>
+<li>ROS2</li>
+<li>TensorFlow, Keras</li>
+<li>LGSVL Simulator</li>
+</ul>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<p>Our AD stack implementation is based on ROS2 and uses rosbridge to communicate with LGSVL Simulator. To do that, we need to prepare Ubuntu machine with ROS2 installed. We provide a Docker image containing Ubuntu 18.04 and ROS2 installed so you can just pull the Docker image and start writing code right away.</p>
+<h3 id="installing-docker-ce">Installing Docker CE<a class="headerlink" href="#installing-docker-ce" title="Permanent link">#</a></h3>
+<p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>. We also suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/">post installation steps</a>.</p>
+<h3 id="installing-nvidia-docker">Installing NVIDIA Docker<a class="headerlink" href="#installing-nvidia-docker" title="Permanent link">#</a></h3>
+<p>Before installing nvidia-docker make sure that you have an appropriate NVIDIA driver installed.
+To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear.</p>
+<pre><code class="output">    +-----------------------------------------------------------------------------+
+    | NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
+    |-------------------------------+----------------------+----------------------+
+    | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+    |===============================+======================+======================|
+    |   0  GeForce GTX 108...  Off  | 00000000:65:00.0  On |                  N/A |
+    |  0%   59C    P5    22W / 250W |   1490MiB / 11175MiB |      4%      Default |
+    +-------------------------------+----------------------+----------------------+
+
+    +-----------------------------------------------------------------------------+
+    | Processes:                                                       GPU Memory |
+    |  GPU       PID   Type   Process name                             Usage      |
+    |=============================================================================|
+    |    0      1187      G   /usr/lib/xorg/Xorg                           863MiB |
+    |    0      3816      G   /usr/bin/gnome-shell                         305MiB |
+    |    0      4161      G   ...-token=7171B24E50C2F2C595566F55F1E4D257    68MiB |
+    |    0      4480      G   ...quest-channel-token=3330599186510203656   147MiB |
+    |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
+    +-----------------------------------------------------------------------------+
+</code></pre>
+
+<p>The installation steps for nvidia-docker are available at the <a href="https://github.com/NVIDIA/nvidia-docker">official repo</a>.</p>
+<h3 id="pulling-docker-image">Pulling Docker Image<a class="headerlink" href="#pulling-docker-image" title="Permanent link">#</a></h3>
+<pre><code>docker pull lgsvl/lanefollowing:latest
+</code></pre>
+
+<h3 id="whats-inside-docker-image">What's inside Docker Image<a class="headerlink" href="#whats-inside-docker-image" title="Permanent link">#</a></h3>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>CUDA 9.2</li>
+<li>cuDNN 7.1.4.18</li>
+<li>Python 3.6</li>
+<li>TensorFlow 1.8</li>
+<li>Keras 2.2.4</li>
+<li>ROS1 melodic + rosbridge</li>
+<li>ROS2 Crystal + rosbridge</li>
+<li>Jupyter Notebook</li>
+</ul>
+<h2 id="creating-a-ros2-package">Creating a ROS2 Package<a class="headerlink" href="#creating-a-ros2-package" title="Permanent link">#</a></h2>
+<p>A ROS2 package is simply a directory and should contain files named <code>package.xml</code> and <code>setup.py</code>. Create folders as below and create <code>setup.py</code> and <code>package.xml</code>. Please note that the package name must match with the folder name of your ROS package.</p>
+<pre><code>ros2_ws/
+    src/
+        lane_following/
+            setup.py
+            package.xml
+</code></pre>
+
+<h3 id="setuppy"><code>setup.py</code><a class="headerlink" href="#setuppy" title="Permanent link">#</a></h3>
+<pre><code>from setuptools import setup
+
+package_name = 'lane_following'
+
+setup(
+    name=package_name,
+    version='0.0.1',
+    packages=[
+        'train',
+    ],
+    py_modules=[
+        'collect',
+        'drive',
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    author='David Uhm',
+    author_email='david.uhm@lge.com',
+    maintainer='David Uhm',
+    maintainer_email='david.uhm@lge.com',
+    keywords=[
+        'ROS', 
+        'ROS2', 
+        'deep learning', 
+        'lane following', 
+        'end to end', 
+        'LGSVL Simulator', 
+        'Autonomous Driving'
+    ],
+    classifiers=[
+        'Intended Audience :: Developers',
+        'Programming Language :: Python',
+        'Topic :: Software Development',
+    ],
+    description='ROS2-based End-to-End Lane Following model',
+    license='BSD',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'collect = collect:main',
+            'drive = drive:main',
+        ],
+    },
+)
+</code></pre>
+
+<h3 id="packagexml"><code>package.xml</code><a class="headerlink" href="#packagexml" title="Permanent link">#</a></h3>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;package format=&quot;2&quot;&gt;
+  &lt;name&gt;lane_following&lt;/name&gt;
+  &lt;version&gt;0.0.1&lt;/version&gt;
+  &lt;description&gt;ROS2-based End-to-End Lane Following model&lt;/description&gt;
+  &lt;maintainer email=&quot;david.uhm@lge.com&quot;&gt;David Uhm&lt;/maintainer&gt;
+  &lt;license&gt;BSD&lt;/license&gt;
+
+  &lt;exec_depend&gt;rclpy&lt;/exec_depend&gt;
+  &lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;
+  &lt;exec_depend&gt;sensor_msgs&lt;/exec_depend&gt;
+
+  &lt;test_depend&gt;ament_copyright&lt;/test_depend&gt;
+  &lt;test_depend&gt;ament_flake8&lt;/test_depend&gt;
+  &lt;test_depend&gt;ament_pep257&lt;/test_depend&gt;
+  &lt;test_depend&gt;python3-pytest&lt;/test_depend&gt;
+
+  &lt;export&gt;
+    &lt;build_type&gt;ament_python&lt;/build_type&gt;
+  &lt;/export&gt;
+&lt;/package&gt;
+</code></pre>
+
+<h2 id="building-a-ros2-package">Building a ROS2 Package<a class="headerlink" href="#building-a-ros2-package" title="Permanent link">#</a></h2>
+<p>Now, you can build your package as below:</p>
+<pre><code>source /opt/ros/crystal/setup.bash
+cd ~/ros2_ws
+colcon build --symlink-install
+</code></pre>
+
+<h2 id="running-rosbridge">Running Rosbridge<a class="headerlink" href="#running-rosbridge" title="Permanent link">#</a></h2>
+<p>Rosbridge provides a JSON API to ROS functionality for non-ROS programs such as LGSVL Simulator. You can run rosbridge to connect your ROS node with LGSVL Simulator as below:</p>
+<pre><code>source /opt/ros/crystal/setup.bash
+rosbridge
+</code></pre>
+
+<h2 id="writing-ros2-subscriber-node">Writing ROS2 Subscriber Node<a class="headerlink" href="#writing-ros2-subscriber-node" title="Permanent link">#</a></h2>
+<p>ROS nodes communicate with each other by passing messages. Messages are routed via a topic with publish/subscribe concepts. A node sends out a message by publishing it to a given topic. Then, a node that is interested in a certain kind of data will subscribe to the appropriate topic. In our cases, LGSVL Simulator publishes sensor data such as camera images or LiDAR point clouds via rosbridge, and then the Lane Following model subscribes to that topic to receive sensor data, preprocesses the data, feeds them into the pretrained model, and finally computes a control command based on perceived sensor data. Below is an example of how to subscribe to sensor data topics from a ROS node. You can subscribe to a single topic only or multiple topics simultaneously.</p>
+<h3 id="subscribe-to-a-single-topic">Subscribe to a single topic<a class="headerlink" href="#subscribe-to-a-single-topic" title="Permanent link">#</a></h3>
+<pre><code>import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import CompressedImage
+
+
+class Drive(Node):
+    def __init__(self):
+        super().__init__('drive')
+
+        self.sub_image = self.create_subscription(CompressedImage, '/simulator/sensor/camera/center/compressed', self.callback)
+
+    def callback(self, msg):
+        self.get_logger().info('Subscribed: {}'.format(msg.data))
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    drive = Drive()
+    rclpy.spin(drive)
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<h3 id="subscribe-to-multiple-topics-simultaneously">Subscribe to multiple topics simultaneously<a class="headerlink" href="#subscribe-to-multiple-topics-simultaneously" title="Permanent link">#</a></h3>
+<p>In order to subscribe to ROS messages of different types from multiple sources, we need to take the timestamps of those messages into account. <a href="https://github.com/intel/ros2_message_filters">ROS2 Message Filters</a> is the ROS package that synchronizes incoming messages by the timestamps contained in their headers and outputs them in the form of a single callback. Install this package in your ROS2 workspace and build it.</p>
+<pre><code>cd ~/ros2_ws/src
+git clone https://github.com/intel/ros2_message_filters.git
+cd ..
+colcon build --symlink-install
+</code></pre>
+
+<p>Then, you can import it in your python script by <code>import message_filters</code> and use it as below:</p>
+<pre><code>import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import CompressedImage
+from geometry_msgs.msg import TwistStamped
+import message_filters
+
+
+class Collect(Node):
+    def __init__(self):
+        super().__init__('collect')
+
+        sub_center_camera = message_filters.Subscriber(self, CompressedImage, '/simulator/sensor/camera/center/compressed')
+        sub_left_camera = message_filters.Subscriber(self, CompressedImage, '/simulator/sensor/camera/left/compressed')
+        sub_right_camera = message_filters.Subscriber(self, CompressedImage, '/simulator/sensor/camera/right/compressed')
+        sub_control = message_filters.Subscriber(self, TwistStamped, '/simulator/control/command')
+
+        ts = message_filters.ApproximateTimeSynchronizer([sub_center_camera, sub_left_camera, sub_right_camera, sub_control], 1, 0.1)
+        ts.registerCallback(self.callback)
+
+    def callback(self, center_camera, left_camera, right_camera, control):
+        self.get_logger().info('Subscribed: {}'.format(control.twist.angular.x))
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    collect = Collect()
+    rclpy.spin(collect)
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<h2 id="writing-ros2-publisher-node">Writing ROS2 Publisher Node<a class="headerlink" href="#writing-ros2-publisher-node" title="Permanent link">#</a></h2>
+<p>The publisher sends data to a topic. When you create a publisher you have to tell ROS of which type the data will be. In order to drive a car autonomously, the Lane Following model publishes a predicted control command back to the simulator via rosbridge.</p>
+<h3 id="publish-command-back-to-lgsvl-simulator">Publish command back to LGSVL Simulator<a class="headerlink" href="#publish-command-back-to-lgsvl-simulator" title="Permanent link">#</a></h3>
+<pre><code>import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import TwistStamped
+
+
+class Drive(Node):
+    def __init__(self):
+        super().__init__('drive')
+
+        self.control_pub = self.create_publisher(TwistStamped, '/lanefollowing/steering_cmd')
+        self.timer_period = 0.02  # seconds
+        self.timer = self.create_timer(self.timer_period, self.callback)
+        self.steering = 0.
+
+    def callback(self):
+        message = TwistStamped()
+        message.twist.angular.x = float(self.steering)
+        self.control_pub.publish(message)
+        self.get_logger().info('Publishing: {}'.format(message.twist.angular.x))
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    drive = Drive()
+    rclpy.spin(drive)
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<h2 id="running-ros2-node">Running ROS2 Node<a class="headerlink" href="#running-ros2-node" title="Permanent link">#</a></h2>
+<p>Once you have setup the rosbridge connection to LGSVL Simulator, you can launch your ROS node as follows:</p>
+<pre><code>source /opt/ros/crystal/setup.bash
+source ~/ros2_ws/install/local_setup.bash
+ros2 run {your_package} {your_node}
+</code></pre>
+
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://github.com/lgsvl/lanefollowing">Lane Following Github Repository</a></li>
+<li><a href="https://www.lgsvlsimulator.com/">LGSVL Simulator</a></li>
+<li><a href="https://index.ros.org/doc/ros2/">ROS2 Documentation</a></li>
+<li><a href="https://github.com/intel/ros2_message_filters">ROS2 Message Filters</a></li>
+</ul>
+<h2 id="copyright-and-license">Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permanent link">#</a></h2>
+<p>Copyright (c) 2019 LG Electronics, Inc.</p>
+<p>This software contains code licensed as described in LICENSE.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../control-calibration/" class="btn btn-neutral float-right" title="How to Collect Data with Control Calibration Sensor">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lane-following/" class="btn btn-neutral" title="Deep Learning Lane Following Model"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../lane-following/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../control-calibration/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

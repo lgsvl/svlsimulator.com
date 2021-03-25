@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Visual scenario editor - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Visual scenario editor";
+    var mkdocs_page_input_path = "creating-scenarios/visual-scenario-editor.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Visual scenario editor</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Creating Scenarios &raquo;</li>
+        
+      
+    
+    <li>Visual scenario editor</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/creating-scenarios/visual-scenario-editor.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Visual Scenario Editor <a href="#top"></a></h1>
+<p><code>Visual Scenario Editor</code> (VSE) is a tool for visual creating and editing scenarios for the SVL Simulator. Each scenario represents a test case. VSE focuses on quick scenario creation using visual controls while supporting custom scriptable plugins to extend the tools panels. </p>
+<h3 id="vse-video">Video: How to create and run VSE scenario <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vse-video" title="Permanent link">#</a></h3>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/9Fneu0PTEC4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p><br></p>
+<h3 id="how-to-run">How To Run <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-to-run" title="Permanent link">#</a></h3>
+<p><a href="../../images/vse/full-size-images/vse-loader.png"><img alt="" src="../../images/vse/vse-loader.png" /></a></p>
+<p><code>Visual Scenario Editor</code> is integrated into the SVL Simulator executable. To enter the VSE, the Simulator has to be logged in, linked to the cloud, and cannot be running any simulation. The <code>Visual Editor</code> button is available when the Simulator is properly connected to the cloud.</p>
+<h2 id="creating-a-scenario">Creating A Scenario <a class="wikilink" href="#top">top</a><a class="headerlink" href="#creating-a-scenario" title="Permanent link">#</a></h2>
+<p>VSE allows placing agents on the map, changing parameters of those agents, and setting waypoints for their movement. Each waypoint can affect the agent with different trigger effects like waiting for a fixed time at the waypoint.</p>
+<h3 id="camera-management">Camera Management <a class="wikilink" href="#top">top</a><a class="headerlink" href="#camera-management" title="Permanent link">#</a></h3>
+<p><a href="../../images/vse/full-size-images/vse-camera-movement.gif"><img alt="" src="../../images/vse/vse-camera-movement.gif" /></a>
+<a href="../../images/vse/full-size-images/vse-camera-zoom.gif"><img alt="" src="../../images/vse/vse-camera-zoom.gif" /></a>
+<a href="../../images/vse/full-size-images/vse-camera-rotate.gif"><img alt="" src="../../images/vse/vse-camera-rotate.gif" /></a></p>
+<p>The animations above present in order: camera movement, zooming in and out, and camera rotation. VSE uses a drag and drop system to move around the map. Press the middle mouse button (scroll wheel) down somewhere on the map and move the mouse while holding the middle button down, release the button to stop moving the map. To zoom in and zoom out, use the mouse wheel scroll. If <code>Free Camera</code> mode is selected in options, the camera can be rotated with the drag and drop while holding the mouse right-click. Additionally, the camera can be moved with the keyboard "WSAD" keys.</p>
+<h3 id="confirmation-popup">Confirmation Popup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#confirmation-popup" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../images/vse/vse-confirmation-popup.png" /></p>
+<p>Operations like resetting scenarios with unsaved changes require additional confirmation. VSE shows a popup with the operation description that requires user confirmation before it is performed.</p>
+<h3 id="log-popup">Log Popup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#log-popup" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../images/vse/vse-log-popup.png" /></p>
+<p>VSE displays important information on an additional log panel. This panel shows and hides automatically, it lasts longer the longer message is. If multiple messages occur, they are displayed one by one in the log panel before hiding it.</p>
+<h2 id="inspector">Inspector <a class="wikilink" href="#top">top</a><a class="headerlink" href="#inspector" title="Permanent link">#</a></h2>
+<p>Inspector allows selecting different panels for editing the Scenario. Inspector can be hidden and shown using the button attached to the inspector from the left side. Currently, there are the following panels available to select:</p>
+<p><img alt="" src="../../images/vse/vse-inspector-menu.png" /></p>
+<ul>
+<li><code>File</code> contains basic controls for the VSE like saving, loading, resetting scenario, exiting VSE, and changing the VSE options.</li>
+<li><code>Add</code> allows adding new elements to the map.</li>
+<li><code>Edit</code> allows editing selected map elements, for example selecting variant of an agent or editing waypoint parameters.</li>
+<li><code>Map</code> views available maps in the library and allows changing map in VSE, changing map resets the scenario. </li>
+<li><code>Playback</code> imitates the scenario simulation, for example, the agents' movement along with the set waypoints.</li>
+</ul>
+<p>Future updates will include a plugins system for adding custom inspector panels.</p>
+<h3 id="file-panel">File Panel <a class="wikilink" href="#top">top</a><a class="headerlink" href="#file-panel" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../images/vse/vse-file-panel.png" /></p>
+<p>The file panel in the VSE inspector allows:</p>
+<ul>
+<li><code>Load</code> a scenario from a previously saved JSON file; loading a scenario will first clear (reset) the current scenario and can load a different map</li>
+<li><code>Save</code> the current scenario to a JSON file</li>
+<li><code>Reset Scenario</code> clears every added element</li>
+<li><code>Exit Editor</code> closes the VSE and returns to the main Simulator window</li>
+</ul>
+<p>The options section in the file panel allows to adjust VSE usage:</p>
+<ul>
+<li><code>Camera Mode</code> - toggles current camera mode, switches between <code>Top-down camera</code>, <code>Leaned 45° camera</code>, and <code>Free camera</code>. Only <code>Free camera</code> allows rotating the camera with the mouse.</li>
+<li><code>Snap</code> - toggling this option enables or disables snapping agents to the map lanes. </li>
+<li><code>Invert X</code> - toggling this option inverts the rotation direction while rotating the camera with a horizontal mouse movement in the <code>Free camera</code> mode.</li>
+<li><code>Invert Y</code> - toggling this option inverts the rotation direction while rotating the camera with a vertical mouse movement in the <code>Free camera</code> mode.</li>
+</ul>
+<h3 id="add-panel">Add Panel <a class="wikilink" href="#top">top</a><a class="headerlink" href="#add-panel" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../images/vse/vse-add-elements.gif" /></p>
+<p>Placing a new agent into the scenario requires dragging it from the agents' panel. Press the left mouse button on the agent type you want to add and drag it on the map; release the button to place the agent on the map. Different agent types can be added in the same way. If you want to cancel adding an agent, press the right mouse button while dragging an agent. If dragging finishes over the UI, it will cancel drag as well. By default, agents will be snapped to the map lanes; this option can be toggled in the <code>File</code> panel.</p>
+<p><img alt="" src="../../images/vse/vse-ego-download.png" /></p>
+<p>VSE lists all the ego vehicles added to the cloud library. Ego vehicles' names that require downloading contain two cloud icons, pressing their button for the first time invokes the downloading process. The start and stop of the download process are confirmed in the log panel.</p>
+<p>VSE loads all the NPCs, pedestrians, and controllables that are configured for the Simulator.</p>
+<p><img alt="" src="../../images/vse/vse-npc-pagination.png" /></p>
+<p>Each scenario element source (Ego vehicles, NPCs, pedestrians, controllables) are available in the separate panels with all available variants. If there are many variants, the list is divided into multiple pages.</p>
+<p><img alt="" src="../../images/vse/vse-agent-description.png" /></p>
+<p>The description panel can be viewed for each scenario element when the pointer hovers over the button for a short time. Each element type displays different pieces of information.</p>
+<h3 id="edit-panel">Edit Panel <a class="wikilink" href="#top">top</a><a class="headerlink" href="#edit-panel" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../images/vse/vse-npc-edit-panel.png" /></p>
+<p>Parameters edit panel allows changing more data of the selected map element. After selecting an element, the parameters edit panel will fill with components possible to edit. For example, after selecting an NPC agent it is possible to select its variant, behaviour, color, and add waypoints for this agent. Selecting a waypoint allows you to set the speed and wait time for this waypoint.</p>
+<p>Note that the available variants for EGO type will match the vehicles available in your SVL Simulator account's "My Library". Refer to the <a href="../../user-interface/web/library/#vehicles">Vehicles section of My Library</a> for more information on how to add vehicles to your library in the Web UI.</p>
+<h4 id="editing-destination-point">Editing Destination Point <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-destination-point" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../images/vse/vse-destination-point-ui.png" /></p>
+<p><img alt="" src="../../images/vse/vse-destination-point.png" /></p>
+<p>While editing an ego agent a destination point can be activated for this agent. Toggle the destination point value in the edit panel while editing an ego agent to activate or deactivate the destination point. The camera will focus on the destination point after pressing the camera button. </p>
+<h4 id="editing-behaviour">Editing Behaviour <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-behaviour" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../images/vse/vse-npc-behaviour.png" /></p>
+<p>NPCs supports various behaviour scripts that will control the vehicle. VSE provides a dropdown with all available NPC behaviours, selected behaviour is saved in the scenario. Some behaviours can be parameterized, for example, <code>NPCLaneFollowBehaviour</code> got the <code>isLaneChange</code> toggle parameter and the <code>maxSpeed</code> value. Only NPCs with the <code>NPCWaypointBehaviour</code> supports editing the waypoints.</p>
+<h4 id="editing-color">Editing Color <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-color" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../images/vse/vse-edit-color.png" /></p>
+<p><img alt="" src="../../images/vse/vse-color-picker.png" /></p>
+<p>VSE includes the color picker panel that allows selecting any color from the RGB and HSV pallet. NPCs support selecting a custom color of the vehicle. To change the vehicle color click the current color button and select the new color in the opened color picker. The changed color will be applied immediately, but the undo record is registered after closing the color picker panel.</p>
+<h4 id="editing-triggers">Editing Triggers <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-triggers" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../images/vse/vse-triggers-edit.png" /></p>
+<p>Editing a waypoint allows adding different trigger effectors to this point. All the effectors added to one waypoint are executed in parallel. Some effectors require additional settings and parameters. Each effector can use a custom edit panel.</p>
+<p>Triggers can be copy and pasted. Use the copy icon (button on the left of the <code>Trigger</code> title) to copy the effectors, then use the paste icon (button on the right of the <code>Trigger</code> title) to clone the effectors to another waypoint.</p>
+<p><img alt="" src="../../images/vse/vse-adding-effector.png" /></p>
+<p>To add a new trigger effector, select it from the dropdown list and click the add button on the right side. A new effector will be added and available for addition under the dropdown.</p>
+<p>The simulator provides the following trigger effectors with the VSE:</p>
+<ul>
+<li><strong>Time To Collision</strong></li>
+</ul>
+<p>This effector calculates if an NPC can cause a collision with any ego, calculating current direction, velocity, and acceleration. The NPC will wait to proceed to the next waypoint such that a collision with the ego vehicle would occur. If no possible collision is found NPC does not wait.</p>
+<ul>
+<li><strong>Wait For Distance</strong></li>
+</ul>
+<p>Adding this effector makes NPC wait at the waypoint until any ego vehicle is closer than the max distance (in meters) set in this trigger effector. If no ego vehicle will get close enough, the NPC can wait infinitely.</p>
+<ul>
+<li><strong>Wait Time</strong></li>
+</ul>
+<p>The agent will wait for the fixed time (in seconds) at the waypoint before continuing movement towards the next waypoint.</p>
+<ul>
+<li><strong>Waiting Point</strong></li>
+</ul>
+<p><img alt="" src="../../images/vse/vse-waiting-point.png" /></p>
+<p>A waiting point makes the agent wait until any ego vehicle enters the activation zone. Activation zone can be moved like other scenario elements, by dragging the <code>Move</code> button. If it is required, the radius (in meters) of the activation zone can be changed in the <code>Edit</code> panel of the waypoint or by dragging the <code>Resize</code> button to the left (shrinking) or right (enlarging).</p>
+<ul>
+<li><strong>Control Trigger</strong></li>
+</ul>
+<p><img alt="" src="../../images/vse/vse-control-trigger-panel.png" /></p>
+<p>This trigger effector will apply the edited policy to all marked controllables when the trigger is invoked. Click the <code>Mark Controllables</code> button and then click on the controllables on the map to mark them with this effector, right-click to cancel the marking process. Only one type of controllable can be marked by a Control Trigger, but multiple Control Triggers are allowed. See the <a href="./#editing-controllables">Editing Controllables section</a> to learn more about editing policies.</p>
+<p><a href="../../images/vse/full-size-images/vse-control-trigger.png"><img alt="" src="../../images/vse/vse-control-trigger.png" /></a></p>
+<h4 id="editing-controllables">Editing Controllables<a class="headerlink" href="#editing-controllables" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../images/vse/vse-controllable.png" /></p>
+<p>After selecting controllables in the VSE, the editing panel allows changing their default policy. A policy is a list of control actions that will be applied when the controllable is initialized, each policy entry represents a single control action. VSE fills the action dropdown with all the allowed actions for the edited controllable. The value can be edited either by an input field, the decimal input field for <code>wait</code> and <code>trigger</code> actions, dropdown for <code>state</code> actions, and no value edition for the <code>loop</code> action. Each policy entry can be removed with the button on the right of the policy row.</p>
+<p>A whole policy can be copied and pasted between controllables of the same type. The copy button (on the left from the <code>Add Policy Entry</code> button) copies the policy to the clipboard so it can be pasted to another controllable of the same type (button on the right from the <code>Add Policy Entry</code> button).</p>
+<h3 id="map-panel">Map Panel <a class="wikilink" href="#top">top</a><a class="headerlink" href="#map-panel" title="Permanent link">#</a></h3>
+<p>Map panel views every map available in your SVL Simulator account's "My Library" and allows switching the current map in the VSE. Changing the map always resets the scenario.</p>
+<p>Refer to the <a href="../../user-interface/web/library/#maps">Maps section of My Library</a> for more information on how to add maps to your library in the Web UI.</p>
+<h2 id="quick-edit-panel">Quick Edit Panel <a class="wikilink" href="#top">top</a><a class="headerlink" href="#quick-edit-panel" title="Permanent link">#</a></h2>
+<p><img alt="" src="../../images/vse/vse-quick-edit-panel.png" /></p>
+<p>Selecting a map element (for example agent) with the left mouse button shows the quick edit panel above the selected element. </p>
+<ol>
+<li><code>Remove</code> deletes the selected element from the scenario.</li>
+<li><code>Move</code> allows to reposition a selected element with a drag and drop system. Use the right mouse button to cancel the reposition.</li>
+<li><code>Rotate</code> allows rotating selected elements with drag and drop system, drag button to the left or right to rotate the selected object. Use the right mouse button to revert the rotation.</li>
+<li><code>Resize</code> allows scaling selected elements with drag and drop system, drag button to the left (shrinking), or to the right (enlarging). Use the right mouse button to revert the resizing.</li>
+</ol>
+<p>Future updates will include a plugins system for custom quick edit buttons.</p>
+<h2 id="playback-panel">Playback Panel <a class="wikilink" href="#top">top</a><a class="headerlink" href="#playback-panel" title="Permanent link">#</a></h2>
+<p><img alt="" src="../../images/vse/vse-playback-panel.png" /></p>
+<p>The playback panel imitates some of the simulation behaviours to visualize the final scenario effect. Currently, only agents with waypoints imitate their movement. Playback can be controlled with the following controls:</p>
+<ul>
+<li><code>Play</code> starts the playback.</li>
+<li><code>Pause</code> freezes the playback at the current time.</li>
+<li><code>Stop</code> stops the playback and resets time to the beginning.</li>
+<li><code>Timeline</code> allows flexible time adjustment of the playback.</li>
+<li><code>Playback speed</code> changes the time scale of the playback (available playback speeds: 1/4x, 1/2x, 1x, 2x, 4x).</li>
+</ul>
+<h2 id="file-selector">File Selector <a class="wikilink" href="#top">top</a><a class="headerlink" href="#file-selector" title="Permanent link">#</a></h2>
+<p><a href="../../images/vse/full-size-images/vse-file-selector.png"><img alt="" src="../../images/vse/vse-file-selector.png" /></a></p>
+<p>The file selector is a simple built-in UI dialog for selecting the destination file on the hard-drive. It allows to change manually the directory path, go one directory up, enter internal directories and select a file with a required extension. When saving a scenario, it can override an existing file, or it can be saved to a new file with a selected name.</p>
+<h2 id="undo">Undo <a class="wikilink" href="#top">top</a><a class="headerlink" href="#undo" title="Permanent link">#</a></h2>
+<p>VSE includes an undo feature that allows reverting the last changes. Use the "ctrl"+"z" on your keyboard to revert the most recent operation. Undo manager registers multiple records on the stack, using undo applies the last operation record, and removes it from the stack. This way, the undo can be used multiple times to revert many most recent actions.</p>
+<h2 id="scenario-example">Scenario Example <a class="wikilink" href="#top">top</a><a class="headerlink" href="#scenario-example" title="Permanent link">#</a></h2>
+<p><a href="../../images/vse/full-size-images/vse-example-scenario.png"><img alt="" src="../../images/vse/vse-example-scenario.png" /></a></p>
+<p>The <a href="../../running-simulations/running-simulator/#vsesimulation">Visual scenario editor runtime template Simulation</a> can run a created Scenario in the VSE.</p>
+<p><br>
+<br></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../python-api/python-api/" class="btn btn-neutral float-right" title="Python API guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../running-simulations/developer-mode/" class="btn btn-neutral" title="Developer mode"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../running-simulations/developer-mode/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../python-api/python-api/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
