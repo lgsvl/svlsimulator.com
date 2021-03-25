@@ -1,0 +1,3055 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>List of sensors - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "List of sensors";
+    var mkdocs_page_input_path = "simulation-content/sensors-list.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">List of sensors</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Sensors &raquo;</li>
+        
+      
+        
+          <li>Simulation Content &raquo;</li>
+        
+      
+    
+    <li>List of sensors</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/simulation-content/sensors-list.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1><a name="top"></a> Sensors List</h1>
+<p>This page details the different available sensors and the configuration options possible. For more on how to build sensor plugins, please see <a href="../../plugins/sensor-plugins/">Sensor Plugins</a>.</p>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#how-to-specify-a-sensor">How to Specify a Sensor</a></li>
+<li><a href="#clock">Clock</a></li>
+<li><a href="#color-camera">Color Camera</a><ul>
+<li><a href="#sensor-effects">Sensor Effects</a></li>
+</ul>
+</li>
+<li><a href="#depth-camera">Depth Camera</a></li>
+<li><a href="#segmentation-camera">Segmentation Camera</a></li>
+<li><a href="#lidar">Lidar</a></li>
+<li><a href="#3d-ground-truth">3D Ground Truth</a></li>
+<li><a href="#apollo-perception-visualizer-3d">Apollo Perception Visualizer 3D</a></li>
+<li><a href="#can-bus">CAN-Bus</a></li>
+<li><a href="#gps-device">GPS Device</a></li>
+<li><a href="#gps-odometry">GPS Odometry</a></li>
+<li><a href="#gps-ins-status">GPS-INS Status</a></li>
+<li><a href="#vehicle-control">LGSVL Control</a></li>
+<li><a href="#apollo-control">Apollo Control</a></li>
+<li><a href="#keyboard-control">Keyboard Control</a></li>
+<li><a href="#wheel-control">Wheel Control</a></li>
+<li><a href="#cruise-control">Cruise Control</a></li>
+<li><a href="#imu">IMU</a></li>
+<li><a href="#2d-ground-truth">2D Ground Truth</a></li>
+<li><a href="#radar">Radar</a></li>
+<li><a href="#ultrasonic">Ultrasonic</a></li>
+<li><a href="#control-calibration">Control Calibration</a></li>
+<li><a href="#transform-sensor">Transform Sensor</a></li>
+<li><a href="#signal-sensor">Signal Sensor</a></li>
+<li><a href="#video-recording-sensor">Video Recording Sensor</a></li>
+<li><a href="#comfort-sensor">Comfort Sensor</a></li>
+<li><a href="#stopline-sensor">Stop Line Sensor</a></li>
+<li><a href="#vehicle-odometry">Vehicle Odometry</a></li>
+<li><a href="#vehicle-state">Vehicle State</a></li>
+<li><a href="#hud-keyboard-control">HUD Keyboard Control</a></li>
+<li><a href="#autowareai-control">AutowareAI Control</a></li>
+<li><a href="#lane-line-sensor">Lane-line Sensor</a></li>
+<li><a href="#lane-following">Lane Following</a></li>
+</ul>
+</div>
+<h3 id="examples">Examples <a class="wikilink" href="#top">top</a><a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
+<p>Example JSON configurations are available here:</p>
+<ul>
+<li><a href="../../system-under-test/apollo5-0-json-example/">Apollo 5.0 JSON</a></li>
+<li><a href="../../system-under-test/apollo-json-example/">Apollo 3.0 JSON</a></li>
+<li><a href="../../system-under-test/autoware-instructions/">Autoware.AI</a></li>
+<li><a href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a></li>
+<li>Some Lidar sensor JSONs:<ul>
+<li><a href="../velodyne-json-examples/#vlp-16">Velodyne VLP-16</a></li>
+<li><a href="../velodyne-json-examples/#vlp-32c">Velodyne VLP-32C</a></li>
+<li><a href="../velodyne-json-examples/#vls-128">Velodyne VLS-128</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-specify-a-sensor">How to Specify a Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-to-specify-a-sensor" title="Permanent link">#</a></h3>
+<p>A vehicle configuration is in the following format:</p>
+<pre><code class="output">[
+    SENSOR,
+    SENSOR,
+    SENSOR
+]
+</code></pre>
+
+<p>A <code>SENSOR</code> is defined in the JSON configuration in the following format:</p>
+<pre><code class="output">{
+    &quot;type&quot;: STRING,
+    &quot;name&quot;: STRING,
+    &quot;params&quot;: {PARAMS},
+    &quot;parent&quot;: STRING,
+    &quot;transform&quot;: {
+      &quot;x&quot;: FLOAT,
+      &quot;y&quot;: FLOAT,
+      &quot;z&quot;: FLOAT,
+      &quot;pitch&quot;: FLOAT,
+      &quot;yaw&quot;: FLOAT,
+      &quot;roll&quot;: FLOAT,
+    }
+}
+</code></pre>
+
+<ul>
+<li><code>type</code> is the type of sensor.</li>
+<li><code>name</code> is the name of the sensor. This is how the sensor will be identified.</li>
+<li><code>params</code> are the explicitly specified parameters. If a parameter is not set, the Default Value in the sensor definition will be used.</li>
+<li>ex. <code>{"Width": 1920, "Height": 1080}</code></li>
+<li>
+<p>There are 2 parameters that all sensors have</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Topic</code></td>
+<td align="center">defines the topic that the sensor will subscribe/publish to</td>
+<td align="center"><code>null</code></td>
+</tr>
+<tr>
+<td align="center"><code>Frame</code></td>
+<td align="center">defines the frame_id if the sensor publishes a ROS message. See <a href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Header.html">ROS Header Message</a> for more information</td>
+<td align="center"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>parent</code> (OPTIONAL) a sensor's <code>transform</code> can be relative to another sensor. 
+<code>STRING</code> is the <code>name</code> of the base sensor transform to which this sensor is relative.</p>
+</li>
+<li>
+<p>If omitted, the <code>transform</code> is relative to the origin of the vehicle.</p>
+</li>
+<li><code>transform</code> is the location and rotation of the sensor relative to the local position of the vehicle. 
+The Unity left-hand coordinate system is used (+x right, +y up, +z forward, +pitch tilts the front down,
+ +yaw rotates clockwise when viewed from above, +roll tilts the left side down).</li>
+<li><code>x</code> is the position of the sensor along the x-axis</li>
+<li><code>y</code> is the position of the sensor along the y-axis</li>
+<li><code>z</code> is the position of the sensor along the z-axis</li>
+<li><code>pitch</code> is the rotation around the x-axis</li>
+<li><code>yaw</code> is the rotation around the y-axis</li>
+<li><code>roll</code> is the rotation around the z-axis</li>
+</ul>
+<h3 id="clock">Clock <a class="wikilink" href="#top">top</a><a class="headerlink" href="#clock" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/968f386f-dc0b-485d-ba33-5bb71bff93ef">AssetBundle</a></p>
+<p>This sensor outputs simulated time to ROS as <a href="http://docs.ros.org/api/rosgraph_msgs/html/msg/Clock.html">rosgraph_msgs/Clock</a> message, or to CyberRT as <a href="https://github.com/ApolloAuto/apollo/blob/master/cyber/proto/clock.proto">clock</a> message.
+The only parameter to use is topic/channel name.</p>
+<p>For ROS, you can add <code>&lt;param name="/use_sim_time" value="true"&gt;</code> to their ROS launch file, or use <code>rosparam set /use_sim_time true</code>
+in command line, to have a ROS node use simulation time according to the <code>/clock</code> topic. For more details please refer to <a href="http://wiki.ros.org/Clock#Using_Simulation_Time_from_the_.2BAC8-clock_Topic">this page</a>.</p>
+<p>For CyberRT, you can set <code>clock_mode</code> in <a href="https://github.com/ApolloAuto/apollo/blob/master/cyber/conf/cyber.pb.conf#L30">cyber.pb.conf</a> as <code>MODE_MOCK</code> to have CyberRT use simulation time according to the <code>/clock</code> topic.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;ClockSensor&quot;,
+    &quot;name&quot;: &quot;Clock Sensor&quot;,
+    &quot;params&quot;: {
+      &quot;Topic&quot;: &quot;/clock&quot;
+    }
+}
+</code></pre>
+
+<h3 id="color-camera">Color Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#color-camera" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/3d4f1e08-4c62-4e9f-b859-b26d4910b85e">AssetBundle</a></p>
+<p>This is the type of sensor that would be used for the <code>Main Camera</code> in Apollo or other AD stacks.</p>
+<p>(For questions about camera matrix, please refer to <a href="../../support/faq/#how-do-i-get-parameters-in-camera-matrix">this FAQ</a>.)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Width</code></td>
+<td align="center">defines the width of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1920</td>
+<td align="center">1</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td align="center">defines the height of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1080</td>
+<td align="center">1</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Int</td>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>JpegQuality</code></td>
+<td align="center">defines the quality if the image output</td>
+<td align="center">%</td>
+<td align="center">Int</td>
+<td align="center">75</td>
+<td align="center">0</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle that the camera sees</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">60</td>
+<td align="center">1</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.1</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">2000</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>Distorted</code></td>
+<td align="center">defines if the image is distorted</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>DistortionParameters</code></td>
+<td align="center">parameters used by distortion *</td>
+<td align="center"></td>
+<td align="center">List of Float</td>
+<td align="center">empty list</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>Fisheye</code></td>
+<td align="center">defines if the camera has fisheye lens</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>Xi</code></td>
+<td align="center">parameter used by fisheye distortion **</td>
+<td align="center"></td>
+<td align="center">Float</td>
+<td align="center">0.0</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>CubemapSize</code></td>
+<td align="center">size of the cubemap used by fisheye distortion ***</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1024</td>
+<td align="center">512</td>
+<td align="center">2048</td>
+</tr>
+</tbody>
+</table>
+<p>* If <code>Distorted</code> is <code>true</code>, <code>DistortionParameters</code> must be an empty list or a list of FOUR floats. 
+The values in this list should come from calibration result of real camera. Setting arbitrary values may cause undefined result. 
+If <code>Distorted</code> is <code>false</code>, <code>DistortionParameters</code>, <code>Fisheye</code> and <code>Xi</code> are ignored.</p>
+<p>** If <code>Fisheye</code> is <code>true</code>, <code>Xi</code> should be a value from calibration result of real camera. Setting arbitrary value may cause undefined result.
+If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
+<p>*** <code>CubemapSize</code> should only be 512, 1024, or 2048.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;ColorCameraSensor&quot;,
+    &quot;name&quot;: &quot;Main Camera&quot;,
+    &quot;params&quot;: {
+      &quot;Width&quot;: 1920,
+      &quot;Height&quot;: 1080,
+      &quot;Frequency&quot;: 15,
+      &quot;JpegQuality&quot;: 75,
+      &quot;FieldOfView&quot;: 50,
+      &quot;MinDistance&quot;: 0.1,
+      &quot;MaxDistance&quot;: 2000,
+      &quot;Topic&quot;: &quot;/simulator/main_camera&quot;,
+      &quot;Frame&quot;: &quot;camera&quot;,
+      &quot;Distorted&quot;: true,
+      &quot;DistortionParameters&quot;: [
+        -0.25349, 0.11868, 0, 0
+      ],
+      &quot;Postprocessing&quot;: [
+      ]
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1.7,
+      &quot;z&quot;: -0.2,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h4 id="sensor-effects">Sensor Effects <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-effects" title="Permanent link">#</a></h4>
+<p>Color Camera has multiple post processing sensor effects that can be added to the <code>Postprocessing</code> field in <code>params</code>.  Effects can be combined with an array of <code>Postprocessing</code> fields but order is hard coded.</p>
+<p><strong>SunFlare</strong> - creates a sun flare effect</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>type</code></td>
+<td align="center">postprocessing sensor effect name</td>
+<td align="center">String</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>sunIntensity</code></td>
+<td align="center">defines the intensity of the sun flare</td>
+<td align="center">Float</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center"><code>haloIntensity</code></td>
+<td align="center">defines the intensity of the sun flare halo</td>
+<td align="center">Float</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center"><code>ghostingIntensity</code></td>
+<td align="center">defines the intensity of the mirror effect</td>
+<td align="center">Float</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">&quot;Postprocessing&quot;: [
+    {
+        &quot;type&quot;: &quot;SunFlare&quot;,
+        &quot;sunIntensity&quot;: 1,
+        &quot;haloIntensity&quot;: 1,
+        &quot;ghostingIntensity&quot;: 1
+    }
+]
+</code></pre>
+
+<p><strong>Rain</strong> - creates rain drops on the lens</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>type</code></td>
+<td align="center">postprocessing sensor effect name</td>
+<td align="center">String</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>size</code></td>
+<td align="center">defines the size of the drops</td>
+<td align="center">Float</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">&quot;Postprocessing&quot;: [
+    {
+        &quot;type&quot;: &quot;Rain&quot;,
+        &quot;size&quot;: 1
+    }
+]
+</code></pre>
+
+<p><strong>GreyScale</strong> - converts color to grey scale</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>type</code></td>
+<td align="center">postprocessing sensor effect name</td>
+<td align="center">String</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>intensity</code></td>
+<td align="center">defines the intensity of the grey scale</td>
+<td align="center">Float</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">&quot;Postprocessing&quot;: [
+    {
+        &quot;type&quot;: &quot;GreyScale&quot;,
+        &quot;intensity&quot;: 1
+    }
+]
+</code></pre>
+
+<p><strong>VideoArtifacts</strong> - creates jpeg compression artifacts</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>type</code></td>
+<td align="center">postprocessing sensor effect name</td>
+<td align="center">String</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>intensity</code></td>
+<td align="center">defines the intensity of the effect</td>
+<td align="center">Float</td>
+<td align="center">0.25</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center"><code>blockSize</code></td>
+<td align="center">defines the size of the affected block</td>
+<td align="center">Int</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">128</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">&quot;Postprocessing&quot;: [
+    {
+          &quot;type&quot;: &quot;VideoArtifacts&quot;,
+          &quot;intensity&quot;: 0.25,
+          &quot;blockSize&quot;: 32
+    }
+]
+</code></pre>
+
+<h3 id="depth-camera">Depth Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#depth-camera" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/290af702-b42a-4dce-800e-0999a07d49d2">AssetBundle</a></p>
+<p>This sensor returns an image where the shades on the grey-scale correspond to the depth of objects.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Width</code></td>
+<td align="center">defines the width of the image output</td>
+<td align="center">pixels</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">1920</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td align="center">defines the height of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1080</td>
+<td align="center">1</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Int</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>JpegQuality</code></td>
+<td align="center">defines the quality if the image output</td>
+<td align="center">%</td>
+<td align="center">Int</td>
+<td align="center">100</td>
+<td align="center">0</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle that the camera sees</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">60</td>
+<td align="center">1</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.1</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">2000</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>Distorted</code></td>
+<td align="center">defines if the image is distorted</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>DistortionParameters</code></td>
+<td align="center">parameters used by distortion*</td>
+<td align="center"></td>
+<td align="center">List of Float</td>
+<td align="center">empty list</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>Fisheye</code></td>
+<td align="center">defines if the camera has fisheye lens</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>Xi</code></td>
+<td align="center">parameter used by fisheye distortion **</td>
+<td align="center"></td>
+<td align="center">Float</td>
+<td align="center">0.0</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>CubemapSize</code></td>
+<td align="center">size of the cubemap used by fisheye distortion ***</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1024</td>
+<td align="center">512</td>
+<td align="center">2048</td>
+</tr>
+</tbody>
+</table>
+<p>* See notes on <code>DistortionParameters</code> for Color Camera.</p>
+<p>** See notes on <code>Xi</code> for Color Camera.</p>
+<p>*** See notes on <code>CubemapSize</code> for Color Camera.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;DepthCameraSensor&quot;,
+    &quot;name&quot;: &quot;Depth Camera&quot;,
+    &quot;params&quot;: {
+      &quot;Width&quot;: 1920,
+      &quot;Height&quot;: 1080,
+      &quot;Frequency&quot;: 15,
+      &quot;JpegQuality&quot;: 75,
+      &quot;FieldOfView&quot;: 50,
+      &quot;MinDistance&quot;: 0.1,
+      &quot;MaxDistance&quot;: 2000,
+      &quot;Topic&quot;: &quot;/simulator/depth_camera&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1.7,
+      &quot;z&quot;: -0.2,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="segmentation-camera">Segmentation Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#segmentation-camera" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/dbd171ab-66bc-4c7a-a523-d4e72afe1d0f">AssetBundle</a></p>
+<p>This sensor returns an image where objects are colored corresponding to their tag:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Tag</th>
+<th align="center">Color</th>
+<th align="center">Hex Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Car</td>
+<td align="center">Blue</td>
+<td align="center">#120E97</td>
+</tr>
+<tr>
+<td align="center">Road</td>
+<td align="center">Purple</td>
+<td align="center">#7A3F83</td>
+</tr>
+<tr>
+<td align="center">Sidewalk</td>
+<td align="center">Orange</td>
+<td align="center">#BA8350</td>
+</tr>
+<tr>
+<td align="center">Vegetation</td>
+<td align="center">Green</td>
+<td align="center">#71C02F</td>
+</tr>
+<tr>
+<td align="center">Obstacle</td>
+<td align="center">White</td>
+<td align="center">#FFFFFF</td>
+</tr>
+<tr>
+<td align="center">TrafficLight</td>
+<td align="center">Yellow</td>
+<td align="center">#FFFF00</td>
+</tr>
+<tr>
+<td align="center">Building</td>
+<td align="center">Turquoise</td>
+<td align="center">#238688</td>
+</tr>
+<tr>
+<td align="center">Sign</td>
+<td align="center">Dark Yellow</td>
+<td align="center">#C0C000</td>
+</tr>
+<tr>
+<td align="center">Shoulder</td>
+<td align="center">Pink</td>
+<td align="center">#FF00FF</td>
+</tr>
+<tr>
+<td align="center">Pedestrian</td>
+<td align="center">Red</td>
+<td align="center">#FF0000</td>
+</tr>
+<tr>
+<td align="center">Curb</td>
+<td align="center">Dark Purple</td>
+<td align="center">#4A254F</td>
+</tr>
+</tbody>
+</table>
+<p>If a tag is included in "InstanceSegmentationTags", each instance of objects with that tag
+is colored differently, but all will have same hue (e.g. all cars will be bluish and all pedestrians will be reddish).</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Width</code></td>
+<td align="center">defines the width of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1920</td>
+<td align="center">1</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td align="center">defines the height of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1080</td>
+<td align="center">1</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Int</td>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle that the camera sees</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">60</td>
+<td align="center">1</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.1</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">2000</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>Distorted</code></td>
+<td align="center">defines if the image is distorted</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>DistortionParameters</code></td>
+<td align="center">parameters used by distortion*</td>
+<td align="center"></td>
+<td align="center">List of Float</td>
+<td align="center">empty list</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>Fisheye</code></td>
+<td align="center">defines if the camera has fisheye lens</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>Xi</code></td>
+<td align="center">parameter used by fisheye distortion **</td>
+<td align="center"></td>
+<td align="center">Float</td>
+<td align="center">0.0</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>CubemapSize</code></td>
+<td align="center">size of the cubemap used by fisheye distortion ***</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1024</td>
+<td align="center">512</td>
+<td align="center">2048</td>
+</tr>
+<tr>
+<td align="center"><code>InstanceSegmentationTags</code></td>
+<td align="center">define tags with instance segmentation</td>
+<td align="center"></td>
+<td align="center">List of String</td>
+<td align="center">empty list</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>* See notes on <code>DistortionParameters</code> for Color Camera.</p>
+<p>** See notes on <code>Xi</code> for Color Camera.</p>
+<p>*** See notes on <code>CubemapSize</code> for Color Camera.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;SegmentationCameraSensor&quot;,
+    &quot;name&quot;: &quot;Segmentation Camera&quot;,
+    &quot;params&quot;: {
+      &quot;Width&quot;: 1920,
+      &quot;Height&quot;: 1080,
+      &quot;Frequency&quot;: 15,
+      &quot;FieldOfView&quot;: 50,
+      &quot;MinDistance&quot;: 0.1,
+      &quot;MaxDistance&quot;: 2000,
+      &quot;InstanceSegmentationTags&quot;: [
+      ],
+      &quot;Topic&quot;: &quot;/simulator/segmentation_camera&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1.7,
+      &quot;z&quot;: -0.2,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<p>Example of Instance Segmentation Tags. Be aware that this effects performance greatly.</p>
+<pre><code class="json">&quot;InstanceSegmentationTags&quot;: [
+          &quot;Car&quot;,
+          &quot;Pedestrian&quot;,
+          &quot;Obstacle&quot;,
+          &quot;Building&quot;
+      ],
+</code></pre>
+
+<h3 id="lidar">Lidar <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/b30d0478-8c7b-4687-bfc2-b3cdb3f5faff">AssetBundle</a></p>
+<p>This sensor returns a point cloud after 1 revolution.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>VerticalRayAngles</code></td>
+<td align="center">defines vertical angle for each laser beam*</td>
+<td align="center"></td>
+<td align="center">List of Float</td>
+<td align="center">empty list</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>LaserCount</code></td>
+<td align="center">defines how many vertically stacked laser beams there are</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle between bottom and top ray</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">41.33</td>
+<td align="center">1</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td align="center"><code>CenterAngle</code></td>
+<td align="center">defines the center of the FieldOfView cone to the horizon (+ means below horizon)</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">-45</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.5</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">100</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>RotationFrequency</code></td>
+<td align="center">defines how fast the sensor rotates</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center"><code>MeasurementsPerRotation</code></td>
+<td align="center">defines how many measurements each beam takes per rotation</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">1500</td>
+<td align="center">18</td>
+<td align="center">6000</td>
+</tr>
+<tr>
+<td align="center"><code>Compensated</code></td>
+<td align="center">defines whether or not the point cloud is compensated for the movement of the vehicle</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>true</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>PointSize</code></td>
+<td align="center">defines how large of points are visualized</td>
+<td align="center">pixels</td>
+<td align="center">Float</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center"><code>PointColor</code></td>
+<td align="center">defines the color of visualized points</td>
+<td align="center">rgba in hex</td>
+<td align="center">Color</td>
+<td align="center">#FF0000FF</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>* If <code>VerticalRayAngles</code> is not empty, <code>LaserCount</code> will be automatically set to the length of <code>VerticalRayAngles</code>, and <code>FieldOfView</code> and <code>CenterAngle</code> will be ignored.</p>
+<p>A sample of uniformly distributed angles:</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;LidarSensor&quot;,
+    &quot;name&quot;: &quot;Lidar-Uniform&quot;,
+    &quot;params&quot;: {
+      &quot;LaserCount&quot;: 32,
+      &quot;FieldOfView&quot;: 41.33,
+      &quot;CenterAngle&quot;: 10,
+      &quot;MinDistance&quot;: 0.5,
+      &quot;MaxDistance&quot;: 100,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;MeasurementsPerRotation&quot;: 360,
+      &quot;Compensated&quot;: true,
+      &quot;PointColor&quot;: &quot;#ff000000&quot;,
+      &quot;Topic&quot;: &quot;/point_cloud&quot;,
+      &quot;Frame&quot;: &quot;velodyne&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 2.312,
+      &quot;z&quot;: -0.3679201,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<p>A sample of non-uniformly distributed angles:</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;LidarSensor&quot;,
+    &quot;name&quot;: &quot;Lidar-NonUniform&quot;,
+    &quot;params&quot;: {
+      &quot;VerticalRayAngles&quot;: [
+        -25.0,   -1.0,    -1.667,  -15.639,
+        -11.31,   0.0,    -0.667,   -8.843,
+        -7.254,  0.333,  -0.333,   -6.148,
+        -5.333,  1.333,   0.667,   -4.0,
+        -4.667,  1.667,   1.0,     -3.667,
+        -3.333,  3.333,   2.333,   -2.667,
+        -3.0,    7.0,     4.667,   -2.333,
+        -2.0,   15.0,    10.333,   -1.333
+      ],
+      &quot;MinDistance&quot;: 0.5,
+      &quot;MaxDistance&quot;: 100,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;MeasurementsPerRotation&quot;: 360,
+      &quot;Compensated&quot;: true,
+      &quot;PointColor&quot;: &quot;#ff000000&quot;,
+      &quot;Topic&quot;: &quot;/point_cloud&quot;,
+      &quot;Frame&quot;: &quot;velodyne&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 2.312,
+      &quot;z&quot;: -0.3679201,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="3d-ground-truth">3D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#3d-ground-truth" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/e3fef197-9724-48ec-b98e-c5a0892d09c4">AssetBundle</a></p>
+<p>This sensor returns 3D ground truth data for training and creates bounding boxes around the detected objects. The color of the object corresponds to the object's type:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Object</th>
+<th align="center">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Car</td>
+<td align="center">Green</td>
+</tr>
+<tr>
+<td align="center">Pedestrian</td>
+<td align="center">Yellow</td>
+</tr>
+<tr>
+<td align="center">Bicycle</td>
+<td align="center">Cyan</td>
+</tr>
+<tr>
+<td align="center">Unknown</td>
+<td align="center">Magenta</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines the how close an object must be to the sensor to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">100</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
+    &quot;name&quot;: &quot;3D Ground Truth&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;Topic&quot;: &quot;/simulator/ground_truth/3d_detections&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1.975314,
+      &quot;z&quot;: -0.3679201,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="apollo-perception-visualizer-3d">Apollo Perception Visualizer 3D <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apollo-perception-visualizer-3d" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/ab5d574b-4b32-490f-bc71-f2631d43d5df">AssetBundle</a></p>
+<p>This sensor will visualize 3D bounding boxes on objects as detected by Apollo. It does not publish any data and instead subscribes to the perception topic from Apollo. The color of the boxes are:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Object</th>
+<th align="center">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Car</td>
+<td align="center">Green</td>
+</tr>
+<tr>
+<td align="center">Pedestrian</td>
+<td align="center">Yellow</td>
+</tr>
+<tr>
+<td align="center">Bicycle</td>
+<td align="center">Cyan</td>
+</tr>
+<tr>
+<td align="center">Unknown</td>
+<td align="center">Magenta</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;ApolloPerceptionVisualizer3D&quot;,
+    &quot;name&quot;: &quot;Apollo Perception Visualizer 3D Sensor&quot;,
+    &quot;params&quot;: {
+      &quot;Topic&quot;: &quot;/apollo/perception/obstacles&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="can-bus">CAN-Bus <a class="wikilink" href="#top">top</a><a class="headerlink" href="#can-bus" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/b0bdc474-ac09-4355-901d-d7012a8c57a8">AssetBundle</a></p>
+<p>This sensor sends data about the vehicle chassis. The data includes:</p>
+<ul>
+<li>Speed [m/s]</li>
+<li>Throttle [%]</li>
+<li>Braking [%]</li>
+<li>Steering [+/- %]</li>
+<li>Parking Brake Status [bool]</li>
+<li>High Beam Status [bool]</li>
+<li>Low Beam Status [bool]</li>
+<li>Hazard Light Status [bool]</li>
+<li>Fog Light Status [bool]</li>
+<li>Left Turn Signal Status [bool]</li>
+<li>Right Turn Signal Status [bool]</li>
+<li>Wiper Status [bool]</li>
+<li>Reverse Gear Status [bool]</li>
+<li>Selected Gear [Int]</li>
+<li>Engine Status [bool]</li>
+<li>Engine RPM [RPM]</li>
+<li>GPS Latitude [Latitude]</li>
+<li>GPS Longitude [Longitude]</li>
+<li>Altitude [m]</li>
+<li>Orientation [3D Vector of Euler angles]</li>
+<li>Velocity [3D Vector of m/s]</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;CanBusSensor&quot;,
+    &quot;name&quot;: &quot;CAN Bus&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;Topic&quot;: &quot;/canbus&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="gps-device">GPS Device <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-device" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/75bbcbfa-fdca-4703-8e82-abf8078f7991">AssetBundle</a></p>
+<p>This sensor outputs the GPS location of the vehicle in Longitude/Latitude and Northing/Easting coordintates. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">12.5</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>IgnoreMapOrigin</code></td>
+<td align="center">defines whether or not the actual GPS position is returned. If <code>true</code>, then the Unity world position is returned (as if the MapOrigin were (0,0))</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;GpsSensor&quot;,
+    &quot;name&quot;: &quot;GPS&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 12.5,
+      &quot;Topic&quot;: &quot;/gps&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;,
+      &quot;IgnoreMapOrigin&quot;: true
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="gps-odometry">GPS Odometry <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-odometry" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/483f7b90-2f76-42ee-82c1-22f02f25f924">AssetBundle</a></p>
+<p>This sensor outputs the GPS location of the vehicle in Longitude/Latitude and Northing/Easting coordintates and the vehicle velocity.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">12.5</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>ChildFrame</code></td>
+<td align="center">used by Autoware</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>IgnoreMapOrigin</code></td>
+<td align="center">defines whether or not the actual GPS position is returned. If <code>true</code>, then the Unity world position is returned (as if the MapOrigin were (0,0))</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>false</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;GpsOdometrySensor&quot;,
+    &quot;name&quot;: &quot;GPS Odometry&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 12.5,
+      &quot;Topic&quot;: &quot;/gps_odometry&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;,
+      &quot;IgnoreMapOrigin&quot;: true
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  }
+</code></pre>
+
+<h3 id="gps-ins-status">GPS-INS Status <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-ins-status" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/77250db2-82c9-47dd-9785-c38cc4cb566d">AssetBundle</a></p>
+<p>This sensor outputs the status of the GPS correction due to INS. The Simulator is an ideal environment in which GPS is always corrected.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published [Hertz]</td>
+<td align="center">Float</td>
+<td align="center">12.5</td>
+<td align="center">1</td>
+<td align="center">100</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;GpsInsSensor&quot;,
+    &quot;name&quot;: &quot;GPS INS Status&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 12.5,
+      &quot;Topic&quot;: &quot;/gps_ins_stat&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: -1.348649,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  }
+</code></pre>
+
+<h3 id="vehicle-control">LGSVL Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/a5696615-d3e2-45e9-afa3-9b5ae7359e02">AssetBundle</a></p>
+<p>This sensor is required for a vehicle to subscribe to a control topic published in ROS or ROS2 with message type <code>lgsvl_msgs/VehicleControlData</code>.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;LGSVLControlSensor&quot;,
+    &quot;name&quot;: &quot;AD Car Control&quot;,
+    &quot;params&quot;: {
+      &quot;Topic&quot;: &quot;/vehicle_cmd&quot;
+    }
+}
+</code></pre>
+
+<h3 id="apollo-control">Apollo Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apollo-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/03ea1a65-03ae-4f2e-b670-d7244e48deb4">AssetBundle</a></p>
+<p>This sensor is required for a vehicle to subscribe to the control topic from Apollo using the CyberRT bridge.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;ApolloControlSensor&quot;,
+    &quot;name&quot;: &quot;Apollo Car Control&quot;,
+    &quot;params&quot;: {
+      &quot;Topic&quot;: &quot;/apollo/control&quot;
+    }
+}
+</code></pre>
+
+<p>The sensor also demonstrates how a user can check when SVL Simulator receives the first control message from the AD stack like Apollo. Based on this time, you can start the rest of the simulation or do some other interesting things.</p>
+<p>To wait for control message from apollo in a Python script, you can call <code>on_custom()</code> of the ego agent. For example, the following code set <code>isControlReceived</code> of agent <code>self.ego</code> to be <code>True</code> when the simulator first receives a message of the /apollo/control topic.</p>
+<pre><code class="python">def on_control_received(agent, kind, context):
+    if kind == &quot;checkControl&quot;:
+        agent.isControlReceived = True
+        log.info(&quot;Control message recieved&quot;)
+
+self.ego.on_custom(on_control_received)
+
+</code></pre>
+
+<h3 id="keyboard-control">Keyboard Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#keyboard-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/a2ff904a-ff06-4f06-9e45-cb58217a7142">AssetBundle</a></p>
+<p>This sensor is required for a vehicle to accept keyboard control commands. Parameters are not required.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;KeyboardControlSensor&quot;,
+    &quot;name&quot;: &quot;Keyboard Car Control&quot;
+}
+</code></pre>
+
+<h3 id="wheel-control">Wheel Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#wheel-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/3d5dea8d-232a-46ea-9a16-57ef4c99df03">AssetBundle</a></p>
+<p>This sensor is required for a vehicle to accept Logitech G920 wheel control commands. Parameters are not required.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;WheelControlSensor&quot;,
+    &quot;name&quot;: &quot;Wheel Car Control&quot;
+}
+</code></pre>
+
+<h3 id="cruise-control">Cruise Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cruise-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/1726cbc8-85f2-4e29-8c61-0ca93948b8e3">AssetBundle</a></p>
+<p>This sensor causes the vehicle to accelerate to the desired speed and then maintain the desired speed. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>CruiseSpeed</code></td>
+<td align="center">defines the desired speed</td>
+<td align="center">meters/second</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">200</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;CruiseControlSensor&quot;,
+    &quot;name&quot;: &quot;AD Car Control&quot;,
+    &quot;params&quot;: {
+      &quot;CruiseSpeed&quot;: 10
+    }
+}
+</code></pre>
+
+<h3 id="imu">IMU <a class="wikilink" href="#top">top</a><a class="headerlink" href="#imu" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/9c34ec28-627d-4e73-9bb0-9c2aa7e978f5">AssetBundle</a></p>
+<p>This sensor output at a fixed rate of 100 Hz. IMU publishes data on topics where the 2nd topic has corrected IMU data.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>CorectedTopic</code></td>
+<td align="center">defines the 2nd topic that the data is published to</td>
+</tr>
+<tr>
+<td align="center"><code>CorrectedFrame</code></td>
+<td align="center">defines the 2nd frame for the ROS header</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;ImuSensor&quot;,
+    &quot;name&quot;: &quot;IMU&quot;,
+    &quot;params&quot;: {
+      &quot;Topic&quot;: &quot;/imu&quot;,
+      &quot;Frame&quot;: &quot;imu&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="2d-ground-truth">2D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#2d-ground-truth" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/e0bfb6cc-a8f0-425e-9b6c-a643ca1e255a">AssetBundle</a></p>
+<p>This sensor outputs an image where objects are encased in a box. The color of the box depends on the type of object.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Object</th>
+<th align="center">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Car</td>
+<td align="center">Green</td>
+</tr>
+<tr>
+<td align="center">Pedestrian</td>
+<td align="center">Yellow</td>
+</tr>
+<tr>
+<td align="center">Bicycle</td>
+<td align="center">Cyan</td>
+</tr>
+<tr>
+<td align="center">Unknown</td>
+<td align="center">Magenta</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>Width</code></td>
+<td align="center">defines the width of the image</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1920</td>
+<td align="center">1</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td align="center">defines the height of the iamge</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1080</td>
+<td align="center">1</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle that the camera sees</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">60</td>
+<td align="center">1</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor to be in the image</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.1</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor to be in the image</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">2000</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>DetectionRange</code></td>
+<td align="center">defines how close an object must be to be given a bounding box</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">100</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;PerceptionSensor2D&quot;,
+    &quot;name&quot;: &quot;2D Ground Truth&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;Topic&quot;: &quot;/simulator/ground_truth/2d_detections&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1.7,
+      &quot;z&quot;: -0.2,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="radar">Radar <a class="wikilink" href="#top">top</a><a class="headerlink" href="#radar" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/215b7d1e-7ad3-4fe6-b3d9-db0e229eb0a4">AssetBundle</a></p>
+<p>This sensor outputs the objects detected by the radar. Detected objects are visualized with a box colored by their type:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Car</td>
+<td align="center">Green</td>
+</tr>
+<tr>
+<td align="center">Agent</td>
+<td align="center">Magenta</td>
+</tr>
+<tr>
+<td align="center">Bicycle</td>
+<td align="center">Cyan</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">13.4</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;RadarSensor&quot;,
+    &quot;name&quot;: &quot;Radar&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 13.4,
+      &quot;Topic&quot;: &quot;/radar&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0.689,
+      &quot;z&quot;: 2.272,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="ultrasonic">Ultrasonic <a class="wikilink" href="#top">top</a><a class="headerlink" href="#ultrasonic" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/fb1d98b9-fb45-431a-893d-1634f760bde1">AssetBundle</a></p>
+<p>This sensor outputs the distance (to the center of the sensor) of the closest point within the sensor's FOV.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Width</code></td>
+<td align="center">defines the width of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">400</td>
+<td align="center">1</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td align="center">defines the height of the image output</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">160</td>
+<td align="center">1</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Int</td>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>JpegQuality</code></td>
+<td align="center">defines the quality if the image output</td>
+<td align="center">%</td>
+<td align="center">Int</td>
+<td align="center">75</td>
+<td align="center">0</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle that the camera sees</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">40</td>
+<td align="center">1</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.3</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">2.0</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;UltrasonicSensor&quot;,
+    &quot;name&quot;: &quot;Ultrasonic Sensor&quot;,
+    &quot;params&quot;: {
+        &quot;Width&quot;: 400,
+        &quot;Height&quot;: 160,
+        &quot;Frequency&quot;: 15,
+        &quot;JpegQuality&quot;: 75,
+        &quot;FieldOfView&quot;: 50,
+        &quot;MinDistance&quot;: 0.3,
+        &quot;MaxDistance&quot;: 2,
+        &quot;Topic&quot;: &quot;/simulator/ultrasonic&quot;,
+        &quot;Frame&quot;: &quot;ultrasonic&quot;
+    },
+    &quot;transform&quot;: {
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 0.5,
+        &quot;z&quot;: 2.5,
+        &quot;pitch&quot;: -13,
+        &quot;yaw&quot;: 0,
+        &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="control-calibration">Control Calibration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#control-calibration" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/ef77d2d3-32ff-4627-9f0c-8eca68c18f71">AssetBundle</a></p>
+<p>This sensor outputs control calibration criteria collected by AD Stacks (Apollo, Autoware). It generates steering, throttle or brakes with gear commands between minimum and maximum of velocity during duration.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>min_velocity</code></td>
+<td align="center">defines the minimum velocity when criterion is executed</td>
+<td align="center">meters/second</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center">50.0</td>
+</tr>
+<tr>
+<td align="center"><code>max_velocity</code></td>
+<td align="center">defines the maximum velocity when criterion is executed</td>
+<td align="center">meters/second</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center">50.0</td>
+</tr>
+<tr>
+<td align="center"><code>throttle</code></td>
+<td align="center">defines the throttle which makes acceleration</td>
+<td align="center">Percent</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center">100.0</td>
+</tr>
+<tr>
+<td align="center"><code>brakes</code></td>
+<td align="center">defines the brakes which make deceleration</td>
+<td align="center">Percent</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center">100.0</td>
+</tr>
+<tr>
+<td align="center"><code>steering</code></td>
+<td align="center">defines ego vehicle's steering</td>
+<td align="center">Percent</td>
+<td align="center">Float</td>
+<td align="center">-100.0</td>
+<td align="center">100.0</td>
+</tr>
+<tr>
+<td align="center"><code>gear</code></td>
+<td align="center">defines ego vehicle's direction (forward or reverse)</td>
+<td align="center"></td>
+<td align="center">String</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>duration</code></td>
+<td align="center">defines criterion's execution time</td>
+<td align="center">second</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;ControlCalibrationSensor&quot;,
+    &quot;name&quot;: &quot;Control Calibration&quot;,
+    &quot;params&quot;: {
+        &quot;states&quot;: [{
+                &quot;min_velocity&quot;: 0.2,
+                &quot;max_velocity&quot;: 10.0,
+                &quot;throttle&quot;: 23,
+                &quot;brakes&quot;: 0,
+                &quot;steering&quot;: 0,
+                &quot;gear&quot;: &quot;forward&quot;,
+                &quot;duration&quot;: 4
+            },
+            {
+                &quot;min_velocity&quot;: 0.2,
+                &quot;max_velocity&quot;: 2.0,
+                &quot;throttle&quot;: 22,
+                &quot;brakes&quot;: 0,
+                &quot;steering&quot;: 0,
+                &quot;gear&quot;: &quot;reverse&quot;,
+                &quot;duration&quot;: 4
+            }
+        ]
+    }
+}
+</code></pre>
+
+<p><a href="../total-control-calibration-criteria/">Total Control Calibration Criteria:</a></p>
+<h3 id="transform-sensor">Transform Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#transform-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/71b0976e-cb87-4c11-ace2-14434aeec8a0">AssetBundle</a></p>
+<p>This sensor is specifically used to parent other sensors.
+For example, if there is a cluster of sensors a <code>Transform</code> sensor can be added at the location of the cluster
+and then the individual sensors can have a transform that is relative to the location of the <code>Transform</code> sensor`.</p>
+<p>Example usage</p>
+<pre><code class="json">{
+    &quot;type&quot;: &quot;TransformSensor&quot;,
+    &quot;name&quot;: &quot;Cluster Reference&quot;,
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0.75,
+      &quot;y&quot;: 1.7,
+      &quot;z&quot;: 1,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+},
+{
+    &quot;type&quot;: &quot;ColorCameraSensor&quot;,
+    &quot;name&quot;: &quot;Main Camera&quot;,
+    &quot;params&quot;: {
+      &quot;Width&quot;: 1920,
+      &quot;Height&quot;: 1080,
+      &quot;Frequency&quot;: 15,
+      &quot;JpegQuality&quot;: 75,
+      &quot;FieldOfView&quot;: 50,
+      &quot;MinDistance&quot;: 0.1,
+      &quot;MaxDistance&quot;: 2000,
+      &quot;Topic&quot;: &quot;/simulator/main_camera&quot;,
+      &quot;Frame&quot;: &quot;camera&quot;,
+      &quot;Distorted&quot;: true,
+      &quot;DistortionParameters&quot;: [
+        -0.25349, 0.11868, 0, 0
+      ]
+    },
+    &quot;parent&quot;: &quot;Cluster Reference&quot;,
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0.1,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: -0.1,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+},
+{
+    &quot;type&quot;: &quot;LidarSensor&quot;,
+    &quot;name&quot;: &quot;Lidar-Uniform&quot;,
+    &quot;params&quot;: {
+      &quot;LaserCount&quot;: 32,
+      &quot;FieldOfView&quot;: 41.33,
+      &quot;CenterAngle&quot;: 10,
+      &quot;MinDistance&quot;: 0.5,
+      &quot;MaxDistance&quot;: 100,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;MeasurementsPerRotation&quot;: 360,
+      &quot;Compensated&quot;: true,
+      &quot;PointColor&quot;: &quot;#ff000000&quot;,
+      &quot;Topic&quot;: &quot;/point_cloud&quot;,
+      &quot;Frame&quot;: &quot;velodyne&quot;
+    },
+    &quot;parent&quot;: &quot;Cluster Reference&quot;,
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0.2,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="signal-sensor">Signal Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#signal-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/c4ba9b81-b274-4c05-b78e-636e61b4590e">AssetBundle</a></p>
+<p>This sensor returns ground truth data for traffic light signals connected to the current lane of ego vehicle and creates bounding boxes around the detected signals. The color of the bounding box corresponds to the signal's type:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Bounding Box</th>
+<th align="center">Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Green</td>
+<td align="center">Green</td>
+</tr>
+<tr>
+<td align="center">Yellow</td>
+<td align="center">Yellow</td>
+</tr>
+<tr>
+<td align="center">Red</td>
+<td align="center">Red</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td align="center">defines the maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close a traffic light must be to the sensor to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">100</td>
+<td align="center">1</td>
+<td align="center">1000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;SignalSensor&quot;,
+    &quot;name&quot;: &quot;Signal Sensor&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;MaxDistance&quot;: 100,
+      &quot;Topic&quot;: &quot;/simulator/ground_truth/signals&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="video-recording-sensor">Video Recording Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#video-recording-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/06aef741-23e6-444b-b6d9-18f84f9ace06">AssetBundle</a></p>
+<p>This sensor records a video for test cases.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Width</code></td>
+<td align="center">defines the width of the video</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1920</td>
+<td align="center">1</td>
+<td align="center">1920</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td align="center">defines the width of the video</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="center">1080</td>
+<td align="center">1</td>
+<td align="center">1080</td>
+</tr>
+<tr>
+<td align="center"><code>Framerate</code></td>
+<td align="center">defines the number of frames per second of the video</td>
+<td align="center">fps</td>
+<td align="center">Int</td>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center"><code>Bitrate</code></td>
+<td align="center">defines the average number of bits per second</td>
+<td align="center">Kbps</td>
+<td align="center">Int</td>
+<td align="center">3000</td>
+<td align="center">1000</td>
+<td align="center">6000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxBitrate</code></td>
+<td align="center">defines the maximum number of bits per second</td>
+<td align="center">Kbps</td>
+<td align="center">Int</td>
+<td align="center">6000</td>
+<td align="center">1000</td>
+<td align="center">6000</td>
+</tr>
+<tr>
+<td align="center"><code>Quality</code></td>
+<td align="center">defines the target constant quality level for VBR rate control (0 to 51, 0 means automatic)</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">51</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;VideoRecordingSensor&quot;,
+    &quot;name&quot;: &quot;Video Recording Sensor&quot;,
+    &quot;params&quot;: {
+      &quot;Width&quot;: 1920,
+      &quot;Height&quot;: 1080,
+      &quot;Framerate&quot;: 15,
+      &quot;Bitrate&quot;: 3000,
+      &quot;MaxBitrate&quot;: 6000,
+      &quot;Quality&quot;: 22
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 10.0,
+      &quot;z&quot;: -10.0,
+      &quot;pitch&quot;: 30,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="comfort-sensor">Comfort Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#comfort-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/f96ddc31-02b9-48d9-add5-a920a738236a">AssetBundle</a></p>
+<p>Comfort Sensor will detect whether a vehicle's acceleration, rotation or other values are out of acceptable ranges.
+For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github</a>.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>maxAccelAllowed</code></td>
+<td align="center">Maximum acceleration allowed</td>
+<td align="center">m/s^2</td>
+<td align="center">Int</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>maxJerkAllowed</code></td>
+<td align="center">Maximum jerk allowed</td>
+<td align="center">m/s^3</td>
+<td align="center">Int</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>maxAngularVelocityAllowed</code></td>
+<td align="center">Maximum angular velocity allowed</td>
+<td align="center">deg/s</td>
+<td align="center">Int</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>maxAngularAccelerationAllowed</code></td>
+<td align="center">Maximum angular acceleration allowed</td>
+<td align="center">deg/s^2</td>
+<td align="center">Int</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>rollTolerance</code></td>
+<td align="center">Maximum deg rotation on the x axis</td>
+<td align="center">deg</td>
+<td align="center">Int</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>slipTolerance</code></td>
+<td align="center">Maximum deg difference between vehicle's velocity and vehicle's forward</td>
+<td align="center">deg</td>
+<td align="center">Int</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="JSON">{
+&quot;type&quot; : &quot;Comfort&quot;,
+&quot;name&quot; : &quot;Comfort Sensor&quot;,    
+&quot;params&quot;: {
+      &quot;maxAccelAllowed&quot;: 8,
+      &quot;maxJerkAllowed&quot;: 4,
+      &quot;maxAngularVelocityAllowed&quot;: 200,
+      &quot;maxAngularAccelerationAllowed&quot;: 100,
+      &quot;rollTolerance&quot;: 10,
+      &quot;slipTolerance&quot;: 15
+    }
+}
+</code></pre>
+
+<h3 id="stopline-sensor">Stop Line Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#stopline-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/1b94ebcd-0057-4ef5-a9de-23e7f0628e19">AssetBundle</a></p>
+<p>The Stop Line sensor is a sensor used purely for analyzing the results of a simulation when the <strong>Create test report</strong> option is enabled for the simulation (See <a href="../../user-interface/web/test-results/">here</a> for more information on test reports). The sensor will allow the simulator to detect and report stop line violations.</p>
+<pre><code class="JSON">{
+&quot;name&quot;: &quot;Stop Line Sensor&quot;,
+&quot;type&quot;: &quot;StopLineSensor&quot;
+}
+</code></pre>
+
+<h3 id="vehicle-odometry">Vehicle Odometry <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-odometry" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/662072f8-8123-4e18-9b45-ee801e0bc020">AssetBundle</a></p>
+<p>The Vehicle Odometry sensor publishes information on the vehicle velocity and front and rear angles in ROS and ROS2 using the <code>lgsvl_msgs/VehicleOdometry</code> message type.</p>
+<pre><code class="JSON">{
+&quot;type&quot;: &quot;VehicleOdometrySensor&quot;,
+&quot;name&quot;: &quot;Vehicle Odometry Sensor&quot;,
+&quot;params&quot;: {
+    &quot;Topic&quot;: &quot;lgsvl/vehicle_odom&quot;,
+  },
+}
+</code></pre>
+
+<h3 id="vehicle-state">Vehicle State <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-state" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/8aff00f2-a5e4-4bd3-a778-517f9307fa99">AssetBundle</a></p>
+<p>The Vehicle State sensor publishes information on the state of the vehicle that is not captured in the Can Bus sensor, such as the state of the headlights, blinkers, and wipers. The sensor publishes in ROS and ROS2 using the <code>lgsvl_msgs/VehicleStateData</code> message type. See <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/VehicleStateData.msg">here</a> for all the fields published by the sensor.</p>
+<pre><code class="JSON">{
+&quot;type&quot;: &quot;VehicleStateSensor&quot;,
+&quot;name&quot;: &quot;Vehicle State Sensor&quot;,
+&quot;params&quot;: {
+    &quot;Topic&quot;: &quot;lgsvl/vehicle_state&quot;,
+  },
+}
+</code></pre>
+
+<h3 id="hud-keyboard-control">HUD Keyboard Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#hud-keyboard-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/41fdc7b2-5e2b-4f78-ba1f-e195a5604ad4">AssetBundle</a></p>
+<p>The HUD Keyboard Control sensor is a <a href="./#keyboard-control">Keyboard Control</a> sensor with an additional Heads Up Display (HUD) that displays the following information:</p>
+<ul>
+<li>Speed (mph)</li>
+<li>Current gear</li>
+<li>Engine speed (rpm)</li>
+<li>Ignition status indicator</li>
+<li>Parking brake indicator</li>
+</ul>
+<p>The HUD is shown by enabling the <a href="../../user-interface/sensor-visualizers/">sensor visualization</a> for the HUD Keyboard Sensor.</p>
+<pre><code class="JSON">{
+&quot;type&quot;: &quot;HUDKeyboardControlSensor&quot;,
+&quot;name&quot;: &quot;HUD Keyboard Control Sensor&quot;
+}
+</code></pre>
+
+<h3 id="autowareai-control">AutowareAI Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#autowareai-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/76ff7bd1-81bf-4284-b9bf-e8173dc6053e">AssetBundle</a></p>
+<p>The AutowareAI Control sensor subscribes to the vehicle control topic from Autoware AI in ROS and allows the ego vehicle to react to control commands. The sensor subscribes to <code>autoware_msgs/VehicleCmd</code> message type.</p>
+<pre><code class="JSON">{
+&quot;type&quot;: &quot;VehicleStateSensor&quot;,
+&quot;name&quot;: &quot;Vehicle State Sensor&quot;,
+&quot;params&quot;: {
+    &quot;Topic&quot;: &quot;lgsvl/vehicle_state&quot;,
+  },
+}
+</code></pre>
+
+<h3 id="lane-line-sensor">Lane-line Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-line-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/5ae0c053-92e5-46e0-b22b-142a3d433dde">AssetBundle</a></p>
+<p>This sensor outputs lines data for the current lane in third-degree polynomial format, along with line type and color. More details are available on the <a href="../lane-line-sensor/">lane-line sensor</a> page.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th>Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="right">Default Value</th>
+<th align="right">Minimum</th>
+<th align="right">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>Width</code></td>
+<td>The width of the image output *</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="right">1920</td>
+<td align="right">1</td>
+<td align="right">1920</td>
+</tr>
+<tr>
+<td align="center"><code>Height</code></td>
+<td>The height of the image output *</td>
+<td align="center">pixels</td>
+<td align="center">Int</td>
+<td align="right">1080</td>
+<td align="right">1</td>
+<td align="right">1080</td>
+</tr>
+<tr>
+<td align="center"><code>Frequency</code></td>
+<td>The maximum rate that messages will be published</td>
+<td align="center">Hertz</td>
+<td align="center">Int</td>
+<td align="right">15</td>
+<td align="right">1</td>
+<td align="right">100</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td>The vertical angle that the camera sees</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="right">60</td>
+<td align="right">1</td>
+<td align="right">90</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td>The near plane of the preview camera *</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="right">0.1</td>
+<td align="right">0.01</td>
+<td align="right">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td>The far plane of the preview camera *</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="right">2000</td>
+<td align="right">0.01</td>
+<td align="right">2000</td>
+</tr>
+<tr>
+<td align="center"><code>DetectionRange</code></td>
+<td>Defines how far from the sensor line will be sampled</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="right">50</td>
+<td align="right">10</td>
+<td align="right">200</td>
+</tr>
+<tr>
+<td align="center"><code>SampleDelta</code></td>
+<td>The distance between discrete line samples</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="right">0.5</td>
+<td align="right">0.05</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>* These parameters only affect the preview, not the output data itself.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;LaneLineSensor&quot;,
+    &quot;name&quot;: &quot;LaneLineSensor&quot;,
+    &quot;params&quot;: {
+      &quot;Width&quot;: 1920,
+      &quot;Height&quot;: 1080,
+      &quot;Frequency&quot;: 10,
+      &quot;FieldOfView&quot;: 60,
+      &quot;MinDistance&quot;: 0.1,
+      &quot;MaxDistance&quot;: 2000,
+      &quot;DetectionRange&quot;: 50,
+      &quot;SampleDelta&quot;: 0.5,
+      &quot;Topic&quot;: &quot;/simulator/lane_line&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1.7,
+      &quot;z&quot;: 3.0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h3 id="lane-following">Lane Following <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-following" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/111c4f5f-12a3-48b6-b3df-7d87e158e7d9">AssetBundle</a></p>
+<p>The Lane Following sensor is used to steer an ego vehicle using a deep learning model. The sensor subscribes to steering commands from the model which are sent as <code>lgsvl_msgs/VehicleControlData</code> messages in ROS2 and applies them to the ego vehicle. Read <a href="../../tutorials/lane-following/">this tutorial</a> to learn more.</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;LaneFollowingSensor&quot;,
+    &quot;name&quot;: &quot;Lane Following Sensor&quot;,
+    &quot;params&quot;: {
+        &quot;Topic&quot;: &quot;/lanefollowing/steering_cmd&quot;,
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lane-line-sensor/" class="btn btn-neutral float-right" title="Lane-line sensor">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ego-vehicle-dynamics/" class="btn btn-neutral" title="Vehicle dynamics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ego-vehicle-dynamics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lane-line-sensor/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

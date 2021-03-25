@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Dynamics - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Dynamics";
+    var mkdocs_page_input_path = "ego-vehicle-dynamics.md";
+    var mkdocs_page_url = "/ego-vehicle-dynamics/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor Parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu Items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor Visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge Topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API Quickstart Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API Use Case Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to Run a Scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Cluster Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-introduction/">Cluster Simulation Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-quickstart/">Cluster Simulation QuickStart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-objects/">Distributed Objects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-components/">Distributed Components</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sensors-distribution/">Sensors Distribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-python-api/">Distributed Python API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-messages/">Distributed Messages</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-distributed-class/">Custom Distributed Class</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement Learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning Lane Following Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to Collect Data with Control Calibration Sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map Annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding Assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC Map Navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensor Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../velodyne-lidar-plugin/">Velodyne Lidar Sensor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable Plugins</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Dynamics</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#initial-setup">Initial Setup</a></li>
+    
+
+    <li class="toctree-l3"><a href="#simple-model-interface">Simple Model Interface</a></li>
+    
+
+    <li class="toctree-l3"><a href="#simple-model-interface-setup">Simple Model Interface Setup</a></li>
+    
+
+    <li class="toctree-l3"><a href="#full-model-interface">Full Model Interface</a></li>
+    
+
+    <li class="toctree-l3"><a href="#full-model-interface-run-time-behavior">Full Model Interface Run-time behavior</a></li>
+    
+
+    <li class="toctree-l3"><a href="#copyright-and-license">Copyright and License</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Dynamics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/ego-vehicle-dynamics.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>EGO Vehicle Dynamics<a href="#top"></a></h1>
+<p>LGSVL Simulator supports multiple dynamics models for EGO vehicles.  The default dynamics model is a C# based model that uses Unity's PhysX physics engine and components.  The model receives controller input and applies force to the Unity wheel colliders.  For users who would like to change or replace vehicle dynamics with their own models, the simulator offers the following ways to do so.</p>
+<ul>
+<li>
+<p>Simple Model Interface - pure C# dynamics</p>
+</li>
+<li>
+<p>Full Model Interface - <a href="https://fmi-standard.org/">FMI 2.0</a> supported dynamics</p>
+</li>
+</ul>
+<h2 id="initial-setup">Initial Setup<a class="headerlink" href="#initial-setup" title="Permanent link">#</a></h2>
+<p>In order to alter the dynamics model in LGSVL Simulator, there are a few steps needed to setup the development environment. <a href="../build-instructions/">Link</a></p>
+<ol>
+<li>Download and install Unity Hub</li>
+<li>Download and install Unity 2019.1.10f1 with Windows and Linux build support modules</li>
+<li>Download and install Node.js</li>
+<li>Install git-lfs before cloning LGSVL Simulator</li>
+<li>Clone LGSVL Simulator repository from GitHub</li>
+<li>Clone CubeTown repository from GitHub into Assets -&gt; External -&gt; Environments -&gt; CubeTown folder in the newly cloned LGSVL Simulator clone </li>
+<li>Clone Jaguar2015XE repository from GitHub into Assets -&gt; External -&gt; Vehicles -&gt; Jaguar2015XE folder in the newly cloned LGSVL Simulator clone</li>
+<li>Navigate to WebUI folder in the root folder of the LGSVL Simulator</li>
+<li>Open a terminal window and run: npm install</li>
+<li>Then in the same terminal window run: npm run pack or you can run Simulator -&gt; Build WebUI in Simulator project in Unity Editor</li>
+<li>Open LGSVL Simulator from Unity Hub</li>
+</ol>
+<h2 id="simple-model-interface">Simple Model Interface<a class="headerlink" href="#simple-model-interface" title="Permanent link">#</a></h2>
+<p>Simple Model Interface is our pure C# dynamic model.  LGSVL Simulator vehicles that are provided, use the VehicleSMI class.  It is located in Assets -&gt; Scripts -&gt; Dynamics -&gt; Examples.  This class inherits IVehicleDynamics and has required methods for simulation.  Users can make any pure C# dynamic model class as long as it inherits IVehicleDynamics and is compiled in LGSVL Simulator run-time executable.  If creating a new SMI class, place in Assets -&gt; Scripts -&gt; Dynamics folder.  Future updates will create a dll of the class so it won't need to be compiled in the simulator executable.</p>
+<h2 id="simple-model-interface-setup">Simple Model Interface Setup<a class="headerlink" href="#simple-model-interface-setup" title="Permanent link">#</a></h2>
+<p><a href="../images/full_size_images/smi-setup.png"><img alt="" src="../images/smi-setup.png" /></a></p>
+<ol>
+<li>
+<p>Create or select an EGO vehicle prefab in the Project panel only, not in scene</p>
+</li>
+<li>
+<p>Double click this EGO vehicle prefab.  This opens the prefab editor scene</p>
+</li>
+<li>
+<p>Remove VehicleSMI.cs from the vehicle component list in the Inspector panel.  This is the component that you are replacing with your own</p>
+</li>
+<li>
+<p>Add your new c# dynamics class component that inherits IVehicleDynamics</p>
+</li>
+<li>
+<p>If you plan to use Unity's physics engine, be sure to look at how VehicleSMI caches references to the wheel colliders and wheel meshes.  This AxleInfo, in the C# example, enables you to apply force to the wheels and match the movement to the wheel models, e.g.,</p>
+</li>
+</ol>
+<p><a href="../images/full_size_images/smi-unity-physics-setup.png"><img alt="" src="../images/smi-unity-physics-setup.png" /></a></p>
+<ol>
+<li>
+<p>Set any public references needed for your new dynamics model and save the prefab, Ctrl-S</p>
+</li>
+<li>
+<p>Open Simulator -&gt; Build... to open the LGSVL Simulator bundle creation window</p>
+</li>
+<li>
+<p>Select CubeTown and Ego vehicle</p>
+</li>
+<li>
+<p>Select Build and after it is completed, in the root of the LGSVL Simulator you will have a folder called AssetBundles where the new bundles will be created.</p>
+</li>
+<li>
+<p>Open Loader.scene, run in editor and open the WebUI by pressing the Open Browser... button in the Game panel view</p>
+</li>
+<li>
+<p>Under Vehicles, create or assign the new prefab path to the vehicle name you want.  Apply any sensors needed in the JSON configuation</p>
+</li>
+<li>
+<p>Under Maps, create or assign the new CubeTown map.</p>
+</li>
+<li>
+<p>Under Simulations add map and vehicle and run </p>
+</li>
+</ol>
+<h2 id="full-model-interface">Full Model Interface<a class="headerlink" href="#full-model-interface" title="Permanent link">#</a></h2>
+<p>Full Model Interface supports <a href="https://github.com/modelica/fmi-standard">FMI2.0 Functional Mock-up Interface</a>.  Since user FMU's can vary greatly, we have provided an exampleFMU.fmu for testing in Windows only.  It can be found in the source code in Assets -&gt; Resources.  ExampleVehicleFMU.cs is provided to see how the Full Model Interface system works.  It is located in Assets -&gt; Scripts -&gt; Dynamics -&gt; Examples. Users can create their own FMU class that inherits from IVehicleDynamics but will need to be compiled with the simulator.</p>
+<p><a href="../images/full_size_images/fmi-setup-0.png"><img alt="" src="../images/fmi-setup-0.png" /></a></p>
+<ol>
+<li>Create or select an EGO vehicle prefab in the Project panel only, not in scene</li>
+<li>Double click this EGO vehicle prefab.  This opens the prefab editor scene</li>
+<li>Remove VehicleSMI.cs from the vehicle component list in the Inspector panel.  This is the component that you are replacing</li>
+<li>Add Component ExampleVehicleFMU.cs</li>
+</ol>
+<p><strong>ExampleFMU.fmu requires Unity physics solver</strong></p>
+<p><a href="../images/full_size_images/fmi-setup-1.png"><img alt="" src="../images/fmi-setup-1.png" /></a></p>
+<ol>
+<li>Toggle button Non Unity Physics to Unity Physics</li>
+<li>Set Axles size to 2</li>
+<li>Setup Axles data.  You will be dragging gameobjects from the Hierarchy panel to the Inspector panel</li>
+<li>Drag the correct wheel colliders and wheel meshes to public references from the prefab, see SMI setup</li>
+<li>Enable Motor and Steering for the front axle</li>
+<li>Set Brake Bias to 0.5f for front and back axles</li>
+</ol>
+<p><strong>Import the ExampleFMU.fmu</strong></p>
+<p><a href="../images/full_size_images/fmi-setup-2.png"><img alt="" src="../images/fmi-setup-2.png" /></a></p>
+<ol>
+<li>Toggle button Import FMU</li>
+<li>Choose ExampleFMU.fmu in Assets -&gt; Resources -&gt; ExampleFMU.fmu</li>
+<li>FMU will unpack in the repository vehicle folder in External -&gt; Vehicles -&gt; VehicleName -&gt; FMUName folder</li>
+<li>FMUImporter.cs will parse the XML file into FMUData in the VehicleFMU class instance on prefab</li>
+<li>Model Variables will be listed so users can reference by index</li>
+<li>Each model variable has multiple values that are displayed in the scroll area</li>
+<li>Open Simulator -&gt; Build... to open the LGSVL Simulator bundle creation window</li>
+<li>Select CubeTown if you have not created a bundle yet and Ego vehicle</li>
+<li>Select Build and after it is completed, in the root of the LGSVL Simulator you will have a folder called AssetBundles where the new bundles will be created.</li>
+<li>Open Loader.scene, run in editor and open the WebUI by pressing the Open Browser... button in the Game panel view</li>
+<li>Under Vehicles, create or assign the new prefab path to the vehicle name you want.  Apply any sensors needed in the JSON configuation</li>
+<li>Under Maps, create or assign the new CubeTown map if not setup yet</li>
+<li>Under Simulations add map and vehicle and run</li>
+</ol>
+<h2 id="full-model-interface-run-time-behavior">Full Model Interface Run-time behavior<a class="headerlink" href="#full-model-interface-run-time-behavior" title="Permanent link">#</a></h2>
+<p>When LGSVL Simulator loads a vehicle bundle with an FMU included, it saves the fmu.dll to a folder in Unity's persistent data folder.  This folder is contained in the hidden folder AppData in Windows.  Here it is loaded by the FMU class, loaded and passed to ExampleVehicleFMU class.  Then ExampleVehicleFMU class can call FMU specific methods in the dll.  Config.cs will hold references all opened dll's so LGSVL Simulator will not try to open it multiple times.  Currently, LGSVL Simulator only supports one FMU in Windows only.</p>
+<h2 id="copyright-and-license">Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permanent link">#</a></h2>
+<p>Copyright (c) 2020 LG Electronics, Inc.</p>
+<p>This software contains code licensed as described in LICENSE.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../controllable-plugins/" class="btn btn-neutral" title="Controllable Plugins"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../controllable-plugins/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

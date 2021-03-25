@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Sensor visualizers - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Sensor visualizers";
+    var mkdocs_page_input_path = "user-interface/sensor-visualizers.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Sensor visualizers</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Simulation User Interface &raquo;</li>
+        
+      
+        
+          <li>User Interface &raquo;</li>
+        
+      
+    
+    <li>Sensor visualizers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/user-interface/sensor-visualizers.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1><a name="top"></a>Sensor Visualizers</h1>
+<p>When in a non-Headless Simulation, sensor visualizers can be toggled from the menu. To visualize a sensor, click the "eye" next to the sensor name.</p>
+<p>For each sensor, you can click the "coordinate" icon next to the sensor name to turn on the visualization of the sensor's transform. This includes the sensor and parent name and transform position/rotation.  A white line shows the parent/child relationship.</p>
+<p><a href="../../images/full_size_images/visualizer-menu.png"><img alt="" src="../../images/visualizer-menu.png" /></a></p>
+<p>Sensors are identified by the <code>name</code> parameter from the JSON configuration. 
+For full details on the possible JSON parameters see <a href="../../simulation-content/sensors-list/">Sensor Parameters</a>
+Not all sensors have visualizations available, only sensors who have will show their visualizations.</p>
+<h2>Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#cameras">Cameras</a><ul>
+<li><a href="#color-camera">Color Camera</a></li>
+<li><a href="#depth-camera">Depth Camera</a></li>
+<li><a href="#segmentation-camera">Segmentation Camera</a></li>
+<li><a href="#2d-ground-truth">2D Ground Truth</a></li>
+</ul>
+</li>
+<li><a href="#lidar">Lidar</a></li>
+<li><a href="#radar">Radar</a></li>
+<li><a href="#3d-ground-truth">3D Ground Truth</a></li>
+<li><a href="#lane-line-sensor">Lane-line Sensor</a></li>
+</ul>
+</div>
+<p><br></p>
+<h2 id="cameras">Cameras <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cameras" title="Permanent link">#</a></h2>
+<p>When a camera is visualized, the image the sensor see is visualized in a window. 
+This window can be resized by clicking-and-dragging the icon in the bottom right corner and can be made full-screen with the box icon in the top right corner. 
+The window can be moved by clicking-and-dragging the top bar. To close the window, either click the <code>X</code> or click the "eye" button again.</p>
+<h3 id="color-camera">Color Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#color-camera" title="Permanent link">#</a></h3>
+<p>Visualized Color camera shows the same things that are visible from the normal follow and free cameras, defined in the sensor configuration.</p>
+<p><a href="../../images/full_size_images/color-camera-visualized.png"><img alt="" src="../../images/color-camera-visualized.png" /></a></p>
+<h3 id="depth-camera">Depth Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#depth-camera" title="Permanent link">#</a></h3>
+<p>Visualized Depth camera shows objects colored on a grayscale based on the distance between the camera and the object.</p>
+<p><a href="../../images/full_size_images/depth-camera-visualized.png"><img alt="" src="../../images/depth-camera-visualized.png" /></a></p>
+<h3 id="segmentation-camera">Segmentation Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#segmentation-camera" title="Permanent link">#</a></h3>
+<p>Visualized Segmentation camera shows objects colored according to the object tag.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Tag</th>
+<th align="center">Color</th>
+<th align="center">Hex Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Car</td>
+<td align="center">Blue</td>
+<td align="center">#120E97</td>
+</tr>
+<tr>
+<td align="center">Road</td>
+<td align="center">Purple</td>
+<td align="center">#7A3F83</td>
+</tr>
+<tr>
+<td align="center">Sidewalk</td>
+<td align="center">Orange</td>
+<td align="center">#BA8350</td>
+</tr>
+<tr>
+<td align="center">Vegetation</td>
+<td align="center">Green</td>
+<td align="center">#71C02F</td>
+</tr>
+<tr>
+<td align="center">Obstacle</td>
+<td align="center">White</td>
+<td align="center">#FFFFFF</td>
+</tr>
+<tr>
+<td align="center">TrafficLight</td>
+<td align="center">Yellow</td>
+<td align="center">#FFFF00</td>
+</tr>
+<tr>
+<td align="center">Building</td>
+<td align="center">Turquoise</td>
+<td align="center">#238688</td>
+</tr>
+<tr>
+<td align="center">Sign</td>
+<td align="center">Dark Yellow</td>
+<td align="center">#C0C000</td>
+</tr>
+<tr>
+<td align="center">Shoulder</td>
+<td align="center">Pink</td>
+<td align="center">#FF00FF</td>
+</tr>
+<tr>
+<td align="center">Pedestrian</td>
+<td align="center">Red</td>
+<td align="center">#FF0000</td>
+</tr>
+<tr>
+<td align="center">Curb</td>
+<td align="center">Dark Purple</td>
+<td align="center">#4A254F</td>
+</tr>
+</tbody>
+</table>
+<p>If a tag is included in "InstanceSegmentationTags", each instance of objects with that tag is colored differently, but all will have same hue.</p>
+<p><a href="../../images/full_size_images/segmentation-visualized.png"><img alt="" src="../../images/segmentation-visualized.png" /></a></p>
+<h3 id="2d-ground-truth">2D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#2d-ground-truth" title="Permanent link">#</a></h3>
+<p>Visualized 2D Ground Truth shows the same things as a color camera except pedestrians are enclosed in a yellow wire box and NPCs are enclosed in a green wire box.</p>
+<p><a href="../../images/full_size_images/2d-ground-truth-visualized.png"><img alt="" src="../../images/2d-ground-truth-visualized.png" /></a></p>
+<h2 id="lidar">Lidar <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar" title="Permanent link">#</a></h2>
+<p>Visualized Lidar shows the point cloud that is detected.</p>
+<p><a href="../../images/full_size_images/lidar-visualized.png"><img alt="" src="../../images/lidar-visualized.png" /></a></p>
+<h2 id="radar">Radar <a class="wikilink" href="#top">top</a><a class="headerlink" href="#radar" title="Permanent link">#</a></h2>
+<p>Visualized Radar shows the radar cones and creates wireframe boxes enclosing NPCs in a green box, bicycles in a cyan box, and other EGOs in a magenta box.</p>
+<p><a href="../../images/full_size_images/radar-visualized.png"><img alt="" src="../../images/radar-visualized.png" /></a></p>
+<h2 id="3d-ground-truth">3D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#3d-ground-truth" title="Permanent link">#</a></h2>
+<p>Visualized 3D Ground Truth creates wireframe boxes enclosing pedestrians in a yellow box and NPCs in a green box.</p>
+<p><a href="../../images/full_size_images/3d-ground-truth-visualized.png"><img alt="" src="../../images/3d-ground-truth-visualized.png" /></a></p>
+<h2 id="lane-line-sensor">Lane-line Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-line-sensor" title="Permanent link">#</a></h2>
+<p>Visualized Lane-line Sensor shows lines for current lane as an overlay for color image, with a perspective defined in JSON parameters.</p>
+<p><a href="../../images/full_size_images/lane-line-visualized.png"><img alt="" src="../../images/lane-line-visualized.png" /></a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../bridge-connection-ui/" class="btn btn-neutral float-right" title="Bridge connection UI">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../simulation-menu/" class="btn btn-neutral" title="Simulation menu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../simulation-menu/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../bridge-connection-ui/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

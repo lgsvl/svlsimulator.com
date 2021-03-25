@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 5.0 - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 5.0";
+    var mkdocs_page_input_path = "system-under-test/apollo5-0-instructions.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Apollo 5.0</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Apollo &raquo;</li>
+        
+      
+        
+          <li>System Under Test &raquo;</li>
+        
+      
+    
+    <li>Apollo 5.0</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/system-under-test/apollo5-0-instructions.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Running Apollo 5.0 with SVL Simulator <a href="#top"></a></h1>
+<p><a href="../../images/full_size_images/apollo-sim.png"><img alt="" src="../../images/apollo-sim.png" /></a></p>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#setup">Setup</a><ul>
+<li><a href="#docker">Docker</a><ul>
+<li><a href="#installing-docker-ce">Installing Docker CE</a></li>
+<li><a href="#installing-nvidia-container-toolkit">Installing NVIDIA Container Toolkit</a></li>
+<li><a href="#pulling-lgsvl-docker-image">Pulling LGSVL Docker image</a></li>
+</ul>
+</li>
+<li><a href="#cloning-the-repository">Cloning the Repository</a></li>
+<li><a href="#building-apollo-and-bridge">Building Apollo and bridge</a></li>
+</ul>
+</li>
+<li><a href="#launching-apollo-alongide-the-simulator">Launching Apollo alongisde the Simulator</a><ul>
+<li><a href="#supported-vehicles">Supported Vehicles</a></li>
+<li><a href="#adding-an-hd-map">Adding an HD Map</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="getting-started">Getting Started <a class="wikilink" href="#top">top</a><a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<p>This guide outlines the steps required to setup Apollo 5.0 for use with the SVL Simulator. If you have not already set up the simulator, please do so first by following the instructions in <a href="../../installation-guide/installing-simulator/">Installing the SVL Simulator</a>.</p>
+<h2 id="prerequisites">Prerequisites <a class="wikilink" href="#top">top</a><a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<ul>
+<li>Linux operating system (preferably Ubuntu 18.04 or later)</li>
+<li>NVIDIA graphics card (required for Perception)<ul>
+<li>NVIDIA proprietary drivers must be installed.</li>
+<li>Apollo 5.0 does not support Volta and Turing architectures (this includes Titan V and RTX 2080 GPUs).</li>
+</ul>
+</li>
+</ul>
+<h2 id="setup">Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<h3 id="docker">Docker <a class="wikilink" href="#top">top</a><a class="headerlink" href="#docker" title="Permanent link">#</a></h3>
+<p>Apollo 5.0 is designed to be run inside of a Docker container. The working directory of this repository will be mounted as a volume when starting the container so the image will not need to be rebuilt each time a modification is made.</p>
+<h4 id="installing-docker-ce">Installing Docker CE <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-docker-ce" title="Permanent link">#</a></h4>
+<p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>.</p>
+<p><strong>NOTE:</strong><br/>
+Apollo 5.0 does not work if the Docker is started with <code>sudo</code>.
+We suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">post installation steps</a>.</p>
+<h4 id="installing-nvidia-container-toolkit">Installing NVIDIA Container Toolkit <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-nvidia-container-toolkit" title="Permanent link">#</a></h4>
+<p>Before installing the NVIDIA Container Toolkit, make sure that you have the appropriate NVIDIA drivers installed. To test if the NVIDIA drivers are properly installed, enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear:</p>
+<pre><code class="console">+-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.102.04   Driver Version: 450.102.04   CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1080    Off  | 00000000:02:00.0  On |                  N/A |
+| 41%   31C    P8    21W / 260W |    270MiB / 11016MiB |      3%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1404      G   /usr/lib/xorg/Xorg                 20MiB |
+|    0   N/A  N/A      1467      G   /usr/bin/gnome-shell               57MiB |
+|    0   N/A  N/A      2491      G   /usr/lib/xorg/Xorg                131MiB |
+|    0   N/A  N/A      2630      G   /usr/bin/gnome-shell               44MiB |
+|    0   N/A  N/A      3423      G   ...AAAAAAAA== --shared-files       12MiB |
++-----------------------------------------------------------------------------+
+</code></pre>
+
+<p>The installation steps for the NVIDIA Container Toolkit are available from the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">official documentation</a>.</p>
+<h4 id="pulling-lgsvl-docker-image">Pulling LGSVL Docker image <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pulling-lgsvl-docker-image" title="Permanent link">#</a></h4>
+<p>LGSVL maintains a Docker image to be used alongside this repository. The Docker image is available <a href="https://hub.docker.com/r/lgsvl/apollo-5.0/">from Docker Hub</a>.</p>
+<p>To pull the image use the following command:</p>
+<pre><code class="console">docker pull lgsvl/apollo-5.0
+</code></pre>
+
+<h3 id="cloning-the-repository">Cloning the Repository <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cloning-the-repository" title="Permanent link">#</a></h3>
+<p>This repository includes the <a href="https://github.com/lgsvl/lgsvl_msgs/tree/protobuf">protobuf branch of <strong>lgsvl_msgs</strong></a> as a submodule. To make sure that the submodule is also cloned use the following command:</p>
+<pre><code class="console">git clone --recurse-submodules https://github.com/lgsvl/apollo-5.0.git
+</code></pre>
+
+<h3 id="building-apollo-and-bridge">Building Apollo and bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-apollo-and-bridge" title="Permanent link">#</a></h3>
+<p>Now everything should be in place to build Apollo. Apollo must be built from inside the container. To launch the container, navigate to the directory where the repository was cloned and enter:</p>
+<pre><code class="console">docker/scripts/dev_start.sh
+</code></pre>
+
+<p>This should launch the container and mount a few volumes. It could take a few minutes to pull the latest volumes on the first run.</p>
+<p>Enter the container:</p>
+<pre><code class="console">docker/scripts/dev_into.sh
+</code></pre>
+
+<p>Build Apollo 5.0 (optimized, not debug, with GPU support):</p>
+<pre><code class="console">./apollo.sh build_opt_gpu
+</code></pre>
+
+<p><strong>NOTE:</strong><br/>
+The Apollo 5.0 build may run out of memory and crash on some machines due to aggressive parallelization in the build, as discussed in <a href="https://github.com/ApolloAuto/apollo/issues/7719">Apollo issue 7719</a>.</p>
+<p>If the build fails, either re-start it until it succeeds, or try changing line ~150 of <code>function build()</code> in <code>apollo.sh</code> as follows:</p>
+<p>Replace this:</p>
+<pre><code class="console">JOB_ARG=&quot;--jobs=$(nproc) --ram_utilization_factor 80&quot;
+</code></pre>
+
+<p>With this, which will use all but two cores for the build:</p>
+<pre><code class="console">JOB_ARG=&quot;--jobs=$(expr $(nproc) - 2) --ram_utilization_factor 70&quot;
+</code></pre>
+
+<p>Alternatively, you can analyze with <code>top</code> while building, and decide how many jobs to enable to avoid running out of memory; then set a specific value in <code>JOB_ARG</code>, e.g. <code>--jobs=6</code>.</p>
+<p>If it continues to fail (especially when running the linker) then you'll need to address the low memory situation by either adding more memory to your build machine or enabling or <a href="https://bogdancornianu.com/change-swap-size-in-ubuntu/">increasing available swap space</a>. If your Apollo 5.0 build is crashing on a 16GB machine with little or no swap, try setting it to 16GB.</p>
+<h2 id="launching-apollo-alongide-the-simulator">Launching Apollo alongside the Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launching-apollo-alongide-the-simulator" title="Permanent link">#</a></h2>
+<p><a href="../../images/full_size_images/xe-simulator.png"><img alt="" src="../../images/xe-simulator.png" /></a></p>
+<p>Here we only describe only a simple case of driving from point A to point B using Apollo 5.0 and the SVL Simulator.</p>
+<ul>
+<li>
+<p>Launch Apollo 5.0</p>
+<ul>
+<li>
+<p>Enter the container:</p>
+<pre><code>docker/scripts/dev_into.sh
+</code></pre>
+</li>
+<li>
+<p>Start Apollo 5.0:</p>
+<pre><code>bootstrap.sh
+</code></pre>
+<p>Note: You may receive errors about Dreamview not being built if you do not run the script from the <code>/apollo</code> directory.</p>
+</li>
+<li>
+<p>Start the bridge:</p>
+<pre><code>bridge.sh
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Run the SVL Simulator (outside of Docker). See these <a href="../../running-simulations/running-simulator/">instructions</a>.</p>
+<ul>
+<li>Create a Simulation from the <strong>Random Traffic</strong> runtime template selecting the <strong>BorregasAve</strong> Map, the <strong>Lincoln2017MKZ</strong> Vehicle, and the <strong>Apollo 5.0</strong> Sensor Configuration.</li>
+<li>Enter <code>localhost:9090</code> as the <strong>Bridge IP</strong>.</li>
+<li>(Optional) Enable Traffic and Pedestrians.</li>
+<li>(Optional) Set the Time of Day and weather settings.</li>
+<li>Publish the simulation.</li>
+<li>Select the created simulation and click <strong>Run Simulation</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><a href="../../images/full_size_images/apollo5-0.png"><img alt="" src="../../images/apollo5-0.png" /></a></p>
+<ul>
+<li>
+<p>Open Apollo 5.0 Dreamview in a browser by navigating to: <code>localhost:8888</code></p>
+<ul>
+<li>Select the <strong>Lincoln2017MKZ</strong> vehicle and <strong>BorregasAve</strong> map in the top right corner.</li>
+<li>Open the <strong>Module Controller</strong> tap (on the left bar).</li>
+<li>Enable <strong>Localization</strong>, <strong>Transform</strong>, <strong>Perception</strong>, <strong>Traffic Light</strong>, <strong>Planning</strong>, <strong>Prediction</strong>, <strong>Routing</strong>, and <strong>Control</strong>.</li>
+<li>Navigate to the <strong>Route Editing</strong> tab.</li>
+<li>Select a destination by clicking on a lane-line and clicking <strong>Submit Route</strong>.</li>
+<li>Watch the vehicle navigate to the destination.</li>
+</ul>
+</li>
+<li>
+<p>To stop the Docker container, run this in a new terminal (not inside the Docker container):</p>
+<pre><code>docker/scripts/dev_start.sh stop
+</code></pre>
+</li>
+<li>
+<p>If you are using <code>ufw</code>, it is easiest to completely disable the firewall to allow connections:</p>
+<pre><code>sudo ufw disable
+</code></pre>
+<p>If that is not possible, add the following rules:</p>
+<pre><code>sudo ufw allow 8888
+sudo ufw allow 9090
+</code></pre>
+</li>
+</ul>
+<p>These are required even if running the simulator and Apollo on the same machine.</p>
+<h3 id="supported-vehicles">Supported Vehicles <a class="wikilink" href="#top">top</a><a class="headerlink" href="#supported-vehicles" title="Permanent link">#</a></h3>
+<p>Only the calibration files for Lincoln 2017 MKZ, Jaguar 2015 XE, and Hyundai 2018 Nexo are included in the the <a href="https://github.com/lgsvl/apollo-5.0/tree/simulator/modules/calibration/data">simulator branch</a> of the LGSVL fork of Apollo 5.0 at this time. More calibration files may be added later.</p>
+<h3 id="adding-an-hd-map">Adding an HD Map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-an-hd-map" title="Permanent link">#</a></h3>
+<ul>
+<li>Some default maps in your <a href="https://wise.svlsimulator.com/maps">Maps library</a> have their HD map files included in the <a href="https://github.com/lgsvl/apollo-5.0/tree/simulator/modules/map/data">simulator branch</a> of the LGSVL fork of Apollo 5.0.</li>
+<li>You can find other maps are in the <a href="https://wise.svlsimulator.com/maps/public">Maps store</a>.</li>
+<li>If you want to add a new HD map to Apollo 5.0, follow these steps:<ul>
+<li>Either select a map in your <a href="https://wise.svlsimulator.com/maps">Maps library</a> and download the <strong>apollo50</strong> HD map or export your own map from our <a href="../../simulation-content/map-annotation/#export-map-annotations">map annotation tool</a> as <code>base_map.bin</code>.</li>
+<li>Create a new map folder under <code>APOLLO_ROOT/modules/map/data/</code> and put <code>base_map.bin</code> in the folder.</li>
+<li>
+<p>Inside Apollo 5.0 Docker container:</p>
+<ul>
+<li>
+<p>Generate map files required by Apollo 5.0:</p>
+<pre><code>cd /apollo
+generate_map.sh YOUR_MAP_FOLDER_NAME
+</code></pre>
+</li>
+<li>
+<p>You need to restart Dreamview to refresh the map list:</p>
+<pre><code>bootstrap.sh stop &amp;&amp; bootstrap.sh
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../running-simulations/runtime-templates/" class="btn btn-neutral float-right" title="Runtime templates">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../apollo-master-instructions/" class="btn btn-neutral" title="Latest Apollo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../apollo-master-instructions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../running-simulations/runtime-templates/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Cloud Simulation - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cloud Simulation";
+    var mkdocs_page_input_path = "running-simulations/cloud-simulation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Cloud Simulation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/running-simulations/cloud-simulation.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Cloud Simulation</h1>
+<p>Cloud simulation enables you to start scaling up simulation of scenarios for broader testing and verification capabilities.</p>
+<p>You can run simulations on cloud-based GPU instances, and analyze the results under <a href="../../user-interface/web/test-results/">Test Results</a>. While simulations based on <a href="../../user-interface/web/clusters/#local-cluster">local-clusters</a> run on your workstation or laptop enabling you to debug and interactively run simulations, simulations based on <a href="../../user-interface/web/cloud-clusters/#cloud-cluster">cloud-clusters</a> allow you run simulations fully automatically in headless mode and non-interactively just with help of a browser and internet connection, enabling scaling up of scenario testing. Additionally, test reports for cloud simulations support <a href="../../user-interface/web/test-results-visualization/#how-to-visualize-test-results">visualization and playback</a> of recorded sensors during the scenario.</p>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#video-cloud-simulation">Video</a></li>
+<li><a href="#running-a-cloud-simulation">Running a Cloud Simulation</a></li>
+<li><a href="#visualizing-a-cloud-simulation">Visualizing a Cloud Simulation</a></li>
+<li><a href="#gpu-instance-specifications">GPU Instance Specifications</a></li>
+<li><a href="#limitations">Limitations</a></li>
+</ul>
+</div>
+<h2 id="video-cloud-simulation">Video of how to setup and run Cloud Simulations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#video-cloud-simulation" title="Permanent link">#</a></h2>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/E7p_Jv0nQA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p><br></p>
+<h2 id="running-a-cloud-simulation">Running a Cloud Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#running-a-cloud-simulation" title="Permanent link">#</a></h2>
+<p>In this section we will create a <a href="../../user-interface/web/cloud-clusters/#cloud-cluster">cloud cluster</a> and run an example "Python API" runtime template simulation in cloud.</p>
+<ol>
+<li>
+<p>Add the <strong>Straight2LaneOpposing</strong> map, <strong>Lincoln2017MKZ</strong> vehicle and all sensors needed for <strong>Apollo 5.0 (full analysis)</strong> sensor configuration on this vehicle from the <strong>Store</strong> to <strong>My library</strong> (more details on how to do this are <a href="../running-simulator/#store">here</a>).</p>
+</li>
+<li>
+<p>Create a cloud cluster by following the instructions <a href="../../user-interface/web/cloud-clusters/#cloud-cluster">here</a>. Name the cluster "cloud1".</p>
+</li>
+<li>
+<p>Add the  <strong>Cloud-Test: NHTSA - EOV_S_25_20.py</strong> simulation available under "Available from Others" view in <strong>Simulations</strong> tab:</p>
+<p><img alt="add-to-my-simulations" src="../../images/cloud-simulation/add-to-my-simulations.png" title="Adding to Simulations" /></p>
+</li>
+<li>
+<p>Select the <strong>cloud1</strong> cluster on the <strong>General</strong> pane:</p>
+<p><img alt="select-cluster" src="../../images/cloud-simulation/select-cluster.png" title="Selecting a cloud cluster on the General pane" /></p>
+</li>
+<li>
+<p>Click <strong>Next</strong>. On the <strong>Test case</strong> pane, confirm that the <strong>Map</strong> and <strong>Vehicle</strong> settings selected on web user interface form match those shown in <strong>Python Script</strong>:</p>
+<p><img alt="test-case-pane" src="../../images/cloud-simulation/test-case-pane.png" title="Confirming map and vehicle on the Test case pane" /></p>
+<p><strong>Note</strong>: If your Python script uses environment variable <strong>LGSVL__VEHICLE_0</strong> to set the vehicle, then you can choose any Apollo-5.0 compatible vehicle sensor configuration from "My Library". We recommend to use <strong>Lincoln2017MKZ</strong> with <strong>Apollo 5.0 (full analysis)</strong> sensor configuration for better analytics report and visualization of sensor data in test results.</p>
+<p><strong>IMPORTANT:</strong> The Python script must define the location of the starting point (spawn point) of the ego vehicle as well as the location of the destination the ego vehicle is intended to drive to.</p>
+<p>The start position is passed as a <code>AgentState</code> object that is passed as an argument to <code>sim.add_agent</code>. For the <strong>NHTSA - EOV_S_25_20.py</strong> test case the spawn point is defined as follows:</p>
+<pre><code>   # spawn EGO in the 2nd to right lane
+   egoState = lgsvl.AgentState()
+   # A point close to the desired lane was found in Editor. This method returns the position and orientation of the closest lane to the point.
+   egoState.transform = sim.map_point_on_lane(lgsvl.Vector(-1.6, 0, -65))
+   ego = sim.add_agent(env.str("LGSVL__VEHICLE_0", "Lincoln2017MKZ (Apollo 5.0)"), lgsvl.AgentType.EGO, egoState)
+</code></pre>
+<p>To change the starting point, a different transform would need to be provided for the <code>AgentState</code>. The coordinates of the point are expected to be in the world coordinates of the Unity scene.</p>
+<p>The destination point is defined as follows:</p>
+<pre><code>   destination = egoState.position + 135 * forward
+   dv.setup_apollo(destination.x, destination.z, modules)
+</code></pre>
+<p>Where the destination is defined as a point 135 meters ahead of the starting position. The destination is passed on to Apollo through the Dreamview API using the <code>dv.setup_apollo()</code> function that takes the top-down view coordinates of the destination point in Apollo's coordinate system. Note that the x-axis in Unity and Apollo are aligned, but the y-axis in Apollo maps to the z-axis in Unity. To change the destination, simply pass another set of coordinates; however, there must be a valid route on the road between the start and destination points otherwise the apollo will disregard the destination and the vehicle will not move.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>. On the <strong>Autopilot</strong> pane:</p>
+<p><img alt="autopilot-pane" src="../../images/cloud-simulation/autopilot-pane.png" title="Select the autopilot on the Autopilot pane" /></p>
+<p>Select <strong>Apollo 5.0</strong> for the <strong>Autopilot</strong>.</p>
+<p>Leave the <strong>Docker Image</strong> unchanged so as to use the default image. Or if you want to add your modifications on Apollo 5.0 and use your custom image, then follow instructions for creating registry and your image <a href="../../system-under-test/apollo-for-cloud-simulation/#building-and-publishing-a-runtime-docker-image-for-cloud-simulations">here</a></p>
+</li>
+<li>
+<p>Click <strong>Next</strong>. On the <strong>Publish</strong> pane, click <strong>Make private</strong> to save (and <strong>publish</strong>) the simulation to your library. The simulation will be private and only accessible from your account.</p>
+<p><img alt="publish-pane" src="../../images/cloud-simulation/publish-pane.png" title="Publishing the simulation" /></p>
+</li>
+<li>
+<p>You should now see the <strong>Simulations</strong> view, with the newly added <strong>Cloud-Test: NHTSA - EOV_S_25_20.py</strong> simulation:</p>
+<p><img alt="simulation-added" src="../../images/cloud-simulation/simulation-added.png" title="Newly added simulation" /></p>
+<p>The simulation status should indicate <strong>Offline</strong> as shown.</p>
+<p>To run the simulation you just created, click <strong>Run Simulation</strong>.</p>
+<p>You should see the status change to <strong>Scheduled</strong>:</p>
+<p><img alt="scheduled" src="../../images/cloud-simulation/scheduled.png" title="Simulation scheduled" /></p>
+<p>Once cloud resources are available to run the simulation, the status will change to <strong>Connecting</strong> and then  <strong>Starting</strong>. The first time you run a simulation on a cloud cluster, it can take several minutes for the cloud resources to become available. Please be patient.</p>
+<p><img alt="starting" src="../../images/cloud-simulation/starting.png" title="Simulation started" /></p>
+<p>Once the images have finished loading and the simulation has started to run, the status will change to <strong>Running</strong>. The first time you run a simulation on a cloud cluster, it can take several minutes for the containers to load. Again, please be patient.</p>
+<p><img alt="running" src="../../images/cloud-simulation/running.png" title="Simulation running" /></p>
+<p>When the simulation has completed, the status will change to <strong>Stopping</strong>, then to <strong>Idle</strong> and finally to <strong>Offline</strong> when the post-processing of the simulation test results starts.</p>
+</li>
+</ol>
+<h2 id="visualizing-a-cloud-simulation">Visualizing Test Results of Cloud Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#visualizing-a-cloud-simulation" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Once the simulation has finished, you can view its results by clicking <strong>Test Results</strong>, and then <strong>View</strong> on the entry for the simulation:</p>
+<p><img alt="test-results-list" src="../../images/cloud-simulation/test-results-list.png" title="List of test results" /></p>
+</li>
+<li>
+<p>Since this was a cloud simulation, there is more detailed data under <strong>Visualization</strong> button:</p>
+<p><img alt="test-results" src="../../images/cloud-simulation/test-results.png" title="Visualization is available" /></p>
+</li>
+<li>
+<p>Click the <strong>Visualization</strong> button to bring up an interactive visualization of the sensor data recording during the simulation:</p>
+<p><img alt="visualization" src="../../images/cloud-simulation/visualization.png" title="Interactive visualization" /></p>
+<p>See <a href="../../user-interface/web/test-results-visualization/##how-to-visualize-test-results">here</a> for more details on using this visualization tool.</p>
+</li>
+<li>
+<p>You need not wait for the post-processing to complete before viewing the results of the simulation, but the video from the <strong>Video Recording Sensor</strong> and the <strong>Visualization</strong> displays will not be available until it is fully processed. This may take several minutes depending on your simulation. Please be patient.</p>
+</li>
+</ol>
+<h2 id="gpu-instance-specifications">GPU Instance Specifications <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gpu-instance-specifications" title="Permanent link">#</a></h2>
+<p>The GPU instances used on AWS for cloud simulations have the following specifications:</p>
+<p>Simulator: <a href="https://console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#InstanceTypeDetails:instanceType=g4dn.xlarge">g4dn.xlarge</a></p>
+<ul>
+<li>2 Hyperthreaded cores (4 virtual CPUs); 2.5 GHz sustained clock</li>
+<li>16 GiB memory</li>
+<li>10 GiB SSD root volume</li>
+<li>125 GiB NVMe volume: used for caching downloaded assets</li>
+<li>NVIDIA T4 GPU (roughly equivalent to a GeForce RTX 2070 Super, except it has 16GiB of GPU memory instead of 8GiB)</li>
+</ul>
+<p>Apollo 5.0: <a href="https://console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#InstanceTypeDetails:instanceType=g3.4xlarge">g3.4xlarge</a>:</p>
+<ul>
+<li>8 Hyperthreaded cores (16 virtual CPUs); 2.7 GHz sustained clock</li>
+<li>122 GiB memory: 61 GiB for Apollo + 61 GiB RAM disk for CyberRT bag storage</li>
+<li>22 GiB SSD root volume</li>
+<li>NVIDIA M60 GPU (roughly equivalent to a GeForce GTX 980, except it has 8GiB of GPU memory instead of 4GiB and twice as many CUDA cores)</li>
+</ul>
+<h2 id="limitations">Limitations on Cloud Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#limitations" title="Permanent link">#</a></h2>
+<ul>
+<li>Only Apollo 5.0 can be used as the autopilot.</li>
+<li>Only one simulator instance is allowed per cloud cluster.</li>
+<li>Only one autopilot can be used in a simulations.</li>
+<li>Limit your simulations to not run for more than 10 minutes.</li>
+<li>Limited cloud resources have been made available globally, only 2 simulation can be running at the same time.</li>
+<li>Your test case script must explicitly enable the <strong>Recorder</strong> module to record the sensor data for the <strong>Visualization</strong> display.</li>
+<li>Parallel cloud simulations are not directly supported. However, you can work around this by creating multiple cloud clusters and attaching a different cluster to each cloud simulation.</li>
+<li>Distributed cloud simulation is not supported currently.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
