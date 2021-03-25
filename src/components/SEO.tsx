@@ -71,7 +71,19 @@ const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
         {
           name: 'twitter:description',
           content: metaDescription
-        }
+        } /* ,
+        {
+          'http-equiv': 'cache-control',
+          content: 'no-cache'
+        },
+        {
+          'http-equiv': 'expires',
+          content: '0'
+        },
+        {
+          'http-equiv': 'pragma',
+          content: 'no-cache'
+        }*/
       ] as MetaProps[]).concat(meta)}
     />
   );
