@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Simulations - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Simulations";
+    var mkdocs_page_input_path = "simulations-tab.md";
+    var mkdocs_page_url = "/simulations-tab/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor Parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Simulations</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#how-to-addedit-a-simulation">How to Add/Edit a Simulation</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu Items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor Visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge Topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API Quickstart Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API Use Case Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to Run a Scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement Learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning Lane Following Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to Collect Data with Control Calibration Sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map Annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding Assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC Map Navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sensor-plugins/">Sensor Plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable Plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Web User Interface &raquo;</li>
+        
+      
+        
+          <li>Quick start &raquo;</li>
+        
+      
+    
+    <li>Simulations</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/simulations-tab.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Web UI Simulations Tab Explanation</h1>
+<p>A <code>Simulation</code> can be in the following states. </p>
+<ul>
+<li>A <code>Simulation</code> will have a <code>Valid</code> status if it can be run</li>
+<li>A <code>Simulation</code> can become <code>Invalid</code> for several reasons:<ul>
+<li>A <code>Map</code> or <code>Vehicle</code> has become <code>Invalid</code> since the <code>Simulation</code> was created</li>
+<li>A <code>Vehicle</code> with a bridge is missing a <code>Bridge Connection String</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-addedit-a-simulation">How to Add/Edit a Simulation<a class="headerlink" href="#how-to-addedit-a-simulation" title="Permanent link">#</a></h3>
+<ol>
+<li>Click the <code>Add new</code> button or the pencil icon</li>
+<li>
+<p>The dialogue that opens has 4 tabs which change the parameters of the Simulation:</p>
+<ol>
+<li>
+<p><code>General</code></p>
+<ul>
+<li><code>Simulation Name</code>: The name of the Simulation</li>
+<li><code>Select Cluster</code>: From the dropdown, select the cluster of computers that will run the Simulation</li>
+<li><code>API Only</code>: Check this if the Simulation will be controlled through the Python API. Checking this will disable most other options as they will be set through the API</li>
+<li><code>Headless Mode</code>: Check this if it is not necessary to render the Simulator in the main window. Checking this will improve performance.</li>
+</ul>
+<p><a href="../images/full_size_images/web-simulation-general.png"><img alt="" src="../images/web-simulation-general.png" /></a></p>
+</li>
+<li>
+<p><code>Map &amp; Vehicles</code></p>
+<ul>
+<li><code>Interactive Mode</code>: Check this to enable Simulation controls</li>
+<li><code>Select Map</code>: From the dropdown, choose the map that will be used</li>
+<li><code>Select Vehicle</code>: From the dropdown, choose the vehicle that will be spawned<ul>
+<li><code>Bridge Connection String</code>: If the chosen vehicle has a Bridge Type, an IP:port must be provided to the bridge host</li>
+</ul>
+</li>
+<li><code>+</code>: Adds an additional vehicle. Vehicles will spawn in <code>Spawn Info</code> positions of the map in order</li>
+</ul>
+<p><a href="../images/full_size_images/web-simulation-mapVehicle.png"><img alt="" src="../images/web-simulation-mapVehicle.png" /></a></p>
+</li>
+<li>
+<p><code>Traffic</code></p>
+<ul>
+<li><code>Use Predefined Seed</code>: Check this and enter a seed [int] which will be used deterministically control NPCs</li>
+<li><code>Enable NPC</code>: Check this to have NPC vehicles spawn at the beginning of the Simulation</li>
+<li><code>Enable Pedestrians</code>: Check this to have Pedestrians spawn at the beginning of the Simulation</li>
+</ul>
+<p><a href="../images/full_size_images/web-simulation-traffic.png"><img alt="" src="../images/web-simulation-traffic.png" /></a></p>
+</li>
+<li>
+<p><code>Weather</code></p>
+<ul>
+<li><code>Time of Day</code>: Set the time of day for the Simulation</li>
+<li><code>Rain</code>: [0-1] set how much rain should fall</li>
+<li><code>Wetness</code>: [0-1] set how wet the roads should be</li>
+<li><code>Fog</code>: [0-1] set thick fog there should be</li>
+<li><code>Cloudiness</code>: [0-1] set how much cloud cover thee should be</li>
+</ul>
+<p><a href="../images/full_size_images/web-simulation-weather.png"><img alt="" src="../images/web-simulation-weather.png" /></a></p>
+</li>
+</ol>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../simulation-menu/" class="btn btn-neutral float-right" title="Menu Items">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../clusters-tab/" class="btn btn-neutral" title="Clusters"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../clusters-tab/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../simulation-menu/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
