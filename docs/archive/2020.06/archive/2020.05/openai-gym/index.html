@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Reinforcement learning with OpenAI Gym - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Reinforcement learning with OpenAI Gym";
+    var mkdocs_page_input_path = "openai-gym.md";
+    var mkdocs_page_url = "/openai-gym/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Reinforcement learning with OpenAI Gym</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#requirements">Requirements</a></li>
+    
+
+    <li class="toctree-l3"><a href="#setup">Setup</a></li>
+    
+
+    <li class="toctree-l3"><a href="#getting-started">Getting Started</a></li>
+    
+
+    <li class="toctree-l3"><a href="#customizing-the-environment">Customizing the environment</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#config">CONFIG</a></li>
+        
+            <li><a class="toctree-l4" href="#reward-calculation">Reward calculation</a></li>
+        
+            <li><a class="toctree-l4" href="#sensors">Sensors</a></li>
+        
+            <li><a class="toctree-l4" href="#npc-behavior">NPC Behavior</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#copyright-and-license">Copyright and License</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>Reinforcement learning with OpenAI Gym</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/openai-gym.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Reinforcement Learning with OpenAI Gym</h1>
+<p><a href="https://gym.openai.com">OpenAI Gym</a> is a toolkit for developing reinforcement learning algorithms. Gym provides a collection of test problems called environments which can be used to train an agent using a reinforcement learning. Each environment defines the reinforcement learnign problem the agent will try to solve.</p>
+<p>To facilitate developing reinforcement learning algorithms with the <a href="https://www.lgsvlsimulator.com">LGSVL Simulator</a>, we have developed <code>gym-lgsvl</code>, a custom environment that using the openai gym interface. <code>gym-lgsvl</code> can be used with general reinforcement learning algorithms implementations that are compatible with openai gym. Developers can modify the environment to define the specific reinforcement learning problem they are trying to solve.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<ul>
+<li>Python &gt;= 3.5</li>
+<li>Pip</li>
+<li>lgsvl simulator API</li>
+<li>openai gym</li>
+<li>numpy</li>
+<li>opencv</li>
+</ul>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
+<ol>
+<li>Install LGSVL Simulator using <a href="../getting-started/#getting-started">this guide</a>:</li>
+<li>Install Python API using <a href="../python-api/">this guide</a>.</li>
+<li>
+<p>Install openai gym, numpy, and opencv:</p>
+<p><code>pip install --user gym, numpy, opencv-python</code></p>
+</li>
+<li>
+<p>Clone the gym-lgsvl repository:</p>
+<p><code>git clone https://github.com/lgsvl/gym-lgsvl.git</code></p>
+</li>
+<li>
+<p>Install gym-lgsvl using pip:</p>
+<p><code>cd gym-lgsvl/
+pip install --user -e .</code></p>
+</li>
+</ol>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<p>The simulator must be running on the <code>menu</code> scene to be used with the <code>gym-lgsvl</code>. The scene can be loaded either in the Unity Editor or the simulator binary build (download <a href="https://github.com/lgsvl/simulator/releases">latest release</a>). The binary build will have superior performance.</p>
+<p>The script named <code>random_agent.py</code> will launch a random agent which will sample acceleration and steering values for the ego vehicle for every step of the episode. Run the agent to test your setup:</p>
+<pre><code>./random_agent.py
+</code></pre>
+
+<p>After a few seconds the <code>BorregasAve</code> scene should load and spawn the ego vehicle along with some NPC vehicles. The ego vehicle will drive randomly.</p>
+<p><code>gym_lgsvl</code> can be used with RL libraries that support openai gym environments. Below is an example of training using the A2C implementation from <a href="https://github.com/openai/baselines">baselines</a>:</p>
+<pre><code>python -m baselines.run --alg=a2c --env=gym_lgsvl:lgsvl-v0 --num_timesteps=1e5
+</code></pre>
+
+<h2 id="customizing-the-environment">Customizing the environment<a class="headerlink" href="#customizing-the-environment" title="Permanent link">#</a></h2>
+<p>The specifics of the environment you will need will depend on the reinforcement learning problem you are trying to solve. By default, the <code>gym-lgsvl</code> environment has a simple setup intended to be a starting point for building more advanced problems. Training an agent with the default environment would be difficult without modiification. In the default configuration, the vehicle uses a single front facing camera as observation and uses continuous control parameters for driving the vehicle. For more advanced state representations, modifications will be needed. The entire environment is defined in <a href="https://github.com/lgsvl/gym-lgsvl/blob/master/gym_lgsvl/envs/lgsvl_env.py">lgsvl_env.py</a>.</p>
+<h3 id="config">CONFIG<a class="headerlink" href="#config" title="Permanent link">#</a></h3>
+<p>Some of the basic configuration are passed to the environment through <code>CONFIG</code>. <code>action_space</code> and <code>observation_space</code> definitions are required and are defined using <code>gym.spaces</code>.</p>
+<p>The default <code>action_space</code> is:</p>
+<pre><code>&quot;action_space&quot; :
+  spaces.Box(
+    np.array([-1,-1]), 
+    np.array([+1,+1,]),
+    dtype=np.float32,
+  ),
+</code></pre>
+
+<p>which defines a continuous action space defined as a 2-D array. The first element is the steering value and the second is braking/throttle (negative values are braking and positive are throttle).</p>
+<p>The observation space is defined as a single camera image from the front camera using the Box space from gym:</p>
+<pre><code>&quot;observation_space&quot; : 
+  spaces.Box(
+      low=0,
+      high=255,
+      shape=(297, 528, 3),
+      dtype=np.uint8
+    ) # RGB image from front camera
+</code></pre>
+
+<p>The shape tuple specifies the image size. The simulator API will always send 1920x1080 images. If any other size is used to define the observation space, the camera images will be resized to the specified size before being passed on as an observation.</p>
+<h3 id="reward-calculation">Reward calculation<a class="headerlink" href="#reward-calculation" title="Permanent link">#</a></h3>
+<p>The environment also calculates a reward function based on the distance travelled by the ego vehicle and collisions. The reward is calculated in the <code>_calculate_reward()</code> function based on distance travelled. The collision penalty is added on at the end (if applicable) when the collision callback is invoked (<code>_on_collision</code>). The collision callback will also terminate the episode and start a new episode.</p>
+<h3 id="sensors">Sensors<a class="headerlink" href="#sensors" title="Permanent link">#</a></h3>
+<p>By default the ego vehicle will only use the front facing camera. The ego vehicle is setup using <code>_setup_ego()</code>. Sensors are also defined here. To define more sensors, grab the sensor from the <code>sensors</code> list and invoke its specific methods to save data. To collect observations, <code>_get_observations()</code> is called.</p>
+<h3 id="npc-behavior">NPC Behavior<a class="headerlink" href="#npc-behavior" title="Permanent link">#</a></h3>
+<p>The NPCs are defined in <code>_setup_npc</code>. The NPCs are spawned randomly around the ego vehicle spawn point and will follow the lanes and traffic rules to move around.</p>
+<h2 id="copyright-and-license">Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permanent link">#</a></h2>
+<p>Copyright (c) 2019-2020 LG Electronics, Inc.</p>
+<p>This software contains code licensed as described in LICENSE.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../lane-following/" class="btn btn-neutral float-right" title="Deep Learning lane following model">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../api-how-to-run-scenario/" class="btn btn-neutral" title="How to run a scenario"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../api-how-to-run-scenario/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lane-following/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

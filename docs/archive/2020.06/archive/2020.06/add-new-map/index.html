@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Adding a new map - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Adding a new map";
+    var mkdocs_page_input_path = "add-new-map.md";
+    var mkdocs_page_url = "/add-new-map/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../modular-testing/">Modular testing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../simulator-messages/">Supported message types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simulator-coordinate-system/">Simulator coordinate system</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Adding a new map</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#video">Video</a></li>
+    
+
+    <li class="toctree-l3"><a href="#getting-started">Getting Started</a></li>
+    
+
+    <li class="toctree-l3"><a href="#import-assets">Import Assets</a></li>
+    
+
+    <li class="toctree-l3"><a href="#creating-the-scene">Creating the scene</a></li>
+    
+
+    <li class="toctree-l3"><a href="#extra-steps-not-in-video">Extra Steps not in video</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#finalize-other-map-features">Finalize other map features</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Adding a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unity-help/">Unity help</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Adding a new map</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/add-new-map.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>How to Add a New Map</h1>
+<p>This tutorial works with LGSVL Simulator release <a href="https://github.com/lgsvl/simulator/releases/tag/2019.05">2019.05</a>.</p>
+<p>This document will describe how to create a new map in the LGSVL Simulator.</p>
+<h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">#</a></h2>
+<div class="video-container">
+<iframe  width="696" height="391" src="https://www.youtube.com/embed/S0w2ahhEPbE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>(<a href="https://youtu.be/S0w2ahhEPbE">Link</a>) Adding a new map in LGSVL Simulator.
+<br>
+<br></p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<p>The following text is a list of the steps described in the above  video.</p>
+<ol>
+<li>Launch LGSVL Simulator from the Unity Editor (as described <a href="../getting-started/">here</a>).</li>
+<li>In the top menu, select File -&gt; New Scene or Ctrl+N</li>
+<li>Create your new map folders in Assets/External/Environments/NewMap with /Models/Materials and /Prefabs in this root folder</li>
+<li>It is helpful to clone the CubeTown repository as an example scene to see how all Simulator features are setup and assets organized.</li>
+</ol>
+<h2 id="import-assets">Import Assets<a class="headerlink" href="#import-assets" title="Permanent link">#</a></h2>
+<ol>
+<li>Import assets you created or obtained into the Unity Editor.</li>
+<li>Move models, textures, materials and any other assets you need into the /NewMap folders.  The new map should have no asset dependencies from folders outside of /NewMap.</li>
+<li>Do not include script files or non-HDRP shaders.  If you need scripts in your scene, you will need to place in the source files of the LGSVL Simulator and build your own binaries.</li>
+<li>If your assets have non-standard shaders you will need to change them to the Unity Standard shader before converting to HDRP.</li>
+<li>Once all non Standard shaders are changed, you can convert the materials to HDRP materials.</li>
+<li>Select all materials.</li>
+<li>Select Edit -&gt; Render Pipeline -&gt; Upgrade Selected Materials to High Definition Materials.  If the materials are all using Standard shaders, all shader settings will be converted with little need for adjustment.</li>
+<li>Be sure all materials have GPU instancing checked.</li>
+<li>Now we can start building the new map.</li>
+</ol>
+<h2 id="creating-the-scene">Creating the scene<a class="headerlink" href="#creating-the-scene" title="Permanent link">#</a></h2>
+<ol>
+<li>Delete the MapHolder object in the Hierarchy Panel. This will be added back with the annotation tool later.</li>
+<li>Create an Object to hold the mesh data for your map.  Name it the same as your folder, e.g. NewMap. Zero out the transform position/rotation: 0,0,0 and scale: 1,1,1.</li>
+<li>Save the scene in the root of the /NewMap, naming  <em>exactly</em> the same, NewMap.scene.  Delete or move any other scene files out of this root folder. </li>
+<li>Open the Annotation Tool, select Simulator -&gt; Annotation Tool, and click Create Map Holder.  This will add the correct holder for annotation named already the same as your map scene name.</li>
+<li>Save the scene again. Do this often. You should always be hitting Ctrl+S during development.</li>
+<li>Create the scene by adding meshes and colliders to the NewMap mesh holder object as children. You can further organize by making secondary holder objects, e.g., Roads, Buildings, Props.  Just be sure to zero transforms for holder objects.</li>
+<li>Once organized and positioned, select the root holder object and check static in the top right of the Inspector Panel. Then, open the static menu and uncheck Off Mesh Link Generation and Batching Static. HDRP supports GPU instancing materials OR Batching, not both. GPU instancing is more performant.</li>
+<li>Then select all mesh holder root objects that you do not want pedestrians to walk on, e.g., Props, Buildings, Signs, and uncheck Navigation Static. This will make Nav Meshes ignore these mesh types.</li>
+<li>Add the TimeOfDayLight.cs component to all meshes that will emit light, not building windows.  Then add a light component object as a child of this light.</li>
+<li>Add TimeOfDayBuilding.cs to the building holder.</li>
+<li>Be sure you apply black textures to the emission component of the meshes you don't want to emit and create an emission map for the ones you do want to light during the night.</li>
+<li>Set semantic tags for the holder objects OR the objects themselves, not both.  Code will search and apply tags to materials from parent, down to all child objects.</li>
+<li>Set physics layers for all meshes to default.  Be sure to do this from the root object so all child objects get set.  Purchased assets may have very odd tags and physics layers that you will need to fix.</li>
+<li>Change all road material shaders to ShaderGraphs -&gt; EnvironmentSimulation for environmental effects to work on road surfaces.</li>
+<li>Add mesh colliders to all meshes that need physics collisions, especially roads.</li>
+</ol>
+<h2 id="extra-steps-not-in-video">Extra Steps not in video<a class="headerlink" href="#extra-steps-not-in-video" title="Permanent link">#</a></h2>
+<ol>
+<li>Add the RainVolume.cs to the mesh of the road or empty objects in the scene to have rain particles spawn in the map.</li>
+<li>Select Window -&gt; AI -&gt; Navigation.</li>
+<li>Select Object tab in this panel.</li>
+<li>Select groups of meshes, not their holders, e.g., road, sidewalk, grass, curb meshes.</li>
+<li>In the Object tab in Navigation, set the meshes to the types.</li>
+<li>Select the Bake tab.</li>
+<li>Click the Bake button.  This creates a nav mesh that gets saved in the /NewMap folder.</li>
+<li>Select Window -&gt; Rendering -&gt; Occlusion Culling.</li>
+<li>Select Bake tab.</li>
+<li>Click the Bake button.  This creates an occlusion object that helps with frame rate.</li>
+</ol>
+<h3 id="finalize-other-map-features">Finalize other map features<a class="headerlink" href="#finalize-other-map-features" title="Permanent link">#</a></h3>
+<ol>
+<li>Select MapOrigin object in the Hierarchy Panel.</li>
+<li>Set Northing, Easting, UTM and TimeZone.</li>
+<li>Set NPC settings for the map.</li>
+<li>Edit SpawnInfo position and rotation.  This object(s) will determine where the EGO vehicle(s) will spawn.</li>
+<li>Save the scene.</li>
+<li>Select Simulator -&gt; Build...</li>
+<li>Select NewMap and build your amazing map.</li>
+</ol>
+<p>Thanks for following this tutorial!</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../add-new-ego-vehicle/" class="btn btn-neutral float-right" title="Adding a new ego vehicle">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../assets/" class="btn btn-neutral" title="Adding assets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../assets/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../add-new-ego-vehicle/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Point cloud import - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Point cloud import";
+    var mkdocs_page_input_path = "pointcloud-import.md";
+    var mkdocs_page_url = "/pointcloud-import/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API use case examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Point cloud import</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#accessing-the-importer">Accessing the importer</a></li>
+    
+
+    <li class="toctree-l4"><a href="#import-process-overview">Import process overview</a></li>
+    
+
+    <li class="toctree-l4"><a href="#importer-settings">Importer settings</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#input-files">Input Files</a></li>
+        
+            <li><a class="toctree-l5" href="#output-files">Output Files</a></li>
+        
+            <li><a class="toctree-l5" href="#tree-settings">Tree Settings</a></li>
+        
+            <li><a class="toctree-l5" href="#mesh-settings">Mesh Settings</a></li>
+        
+            <li><a class="toctree-l5" href="#build-settings">Build Settings</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Point cloud &raquo;</li>
+        
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Point cloud import</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/pointcloud-import.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Point Cloud Import</h1>
+<p>LGSVL Simulator uses its own format to store all of the point cloud data for rendering. To make any point cloud usable within the simulator, it has to be processed first.</p>
+<p>Built-in point cloud importer tool provides all the functionality required to convert most popular point cloud file formats (PCD, PLY, LAS, LAZ) into data usable for simulation. It is also able to create approximated mesh collider based on imported data.</p>
+<p>If you're using pre-built point cloud environments, you don't have to use this tool. Its main purpose is to create new environments compatible with Simulator from raw point cloud data.</p>
+<h2 id="accessing-the-importer">Accessing the importer<a class="headerlink" href="#accessing-the-importer" title="Permanent link">#</a></h2>
+<p>To access point cloud importer window, open Simulator project in Unity editor, then navigate into <code>Simulator/Import Point Cloud</code> on the menu bar. Point cloud importer window will be opened.</p>
+<p><img alt="" src="../images/pointcloud-importWindow.png" /></p>
+<h2 id="import-process-overview">Import process overview<a class="headerlink" href="#import-process-overview" title="Permanent link">#</a></h2>
+<p>Importer window requires you to at least specity input and output files, but also gives you access to additional settings. All of these are described in more detail in their respective sections.</p>
+<p>To start the import process, just click "Import" button at the bottom of the window. Depending on the point cloud size and chosen settings, this process might take a while. You'll see multiple progress bars during this time for preprocessing steps and the main import process itself. If you cancel the import process, partially processed data is not usable.</p>
+<p>Processing points can be performed on multiple threads, but first pass is always single-threaded. Progress bar reporting that only one thread is used during this time is normal. After the first pass, import process speeds up severely depending on amount of threads available.</p>
+<p>Importer will validate some of your import settings before the import process. There is a chance that "Import" button will be disabled. Error or warning message is always displayed in this case, with an information about the reason.</p>
+<p>Most convenient way of using the importer is with target environment scene open in the background - in this case the tool will offer to setup open scene with all the components required for rendering after the import process succeeds. You can also decide to skip this step and set the components yourself. Details about this are available on the <a href="../pointcloud-rendering/">point cloud rendering</a> page.</p>
+<h2 id="importer-settings">Importer settings<a class="headerlink" href="#importer-settings" title="Permanent link">#</a></h2>
+<p>Importer window is split into multiple sections, each with settings related to different subject.</p>
+<h3 id="input-files">Input Files<a class="headerlink" href="#input-files" title="Permanent link">#</a></h3>
+<p>This tab is used to select point cloud files that should be converted into combatible format. </p>
+<p><img alt="" src="../images/pointcloud-importInputFiles.png" /></p>
+<p>Multiple files to import can be added at once. All of the files listed in this tab will be merged into single point cloud after importing. If you prefer to keep them separated, import each one of them individually (rendering multiple point clouds is supported, but decreases performance).</p>
+<p>All of the input files must be of one of following formats: <code>PCD</code>, <code>PLY</code>, <code>LAS</code>, <code>LAZ</code>. Mixing multiple formats is supported.</p>
+<p><code>Add Folder</code> button will add all of the compatible files from selected folder into the list. This does not include subdirectories.</p>
+<h3 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">#</a></h3>
+<p>This tab expects you to specify a directory that will be used to store all of the generated files. This directory does not have to be inside of the project's folder and can be located in any accessible place on the drive. If you decide to use directory inside the project, path relative to <code>Assets</code> folder fill be used instead of absolute path to help with cross-machine migration.</p>
+<p>Using directory with processed point cloud data already present will overwrite all of previous data. Warning about this is displayed in such case.</p>
+<p>Please note that output directory will contain a lot of files after import process. If this directory is located under <code>Assets</code> folder, Unity will generate metadata for each of the files. This process takes a long time and the metadata is completely unused, so it's recommended to skip meta file generation altogether. This can be done by using Unity's <a href="https://docs.unity3d.com/Manual/SpecialFolders.html">special folder names</a> - just make sure that folder name ends with <code>~</code>.</p>
+<h3 id="tree-settings">Tree Settings<a class="headerlink" href="#tree-settings" title="Permanent link">#</a></h3>
+<p>This tab describes data structure and layout of the imported point cloud. Default settings are working well with most of the standard data sets, so changing them is usually not required.</p>
+<p><img alt="" src="../images/pointcloud-importTreeSettings.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Tree Type</td>
+<td align="center">Tree data structure used to subdivide point cloud. <code>Octree</code> and <code>Quadtree</code> variants are available.</td>
+</tr>
+<tr>
+<td align="center">Sampling</td>
+<td align="center">Sampling used on each level of the tree structure, determining distribution of points in the final cloud. <code>Cell Center</code> uses voxel-based, uniform sampling. <code>Poisson Disk</code> offers more natural-looking distribution, but is slower and does not support mesh generation.</td>
+</tr>
+<tr>
+<td align="center">Root Node Subdivision</td>
+<td align="center">Determines amount of per-axis samples for each node. Higher values will create larger nodes, while lower values will create deeper tree structures.</td>
+</tr>
+<tr>
+<td align="center">Node Branch Threshold</td>
+<td align="center">Minimum amount of points in the node required for splitting it further. Prevents creating mostly empty nodes and overly deep tree structure.</td>
+</tr>
+<tr>
+<td align="center">Max Tree Depth</td>
+<td align="center">Maximum amount of levels in the tree structure. Levels deeper than the specified value will be discarded.</td>
+</tr>
+<tr>
+<td align="center">Min Point Distance</td>
+<td align="center">Minimum distance between points in a node. Points below this threshold will be discarded.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mesh-settings">Mesh Settings<a class="headerlink" href="#mesh-settings" title="Permanent link">#</a></h3>
+<p>This tab contains options related to collider mesh generation.</p>
+<p>Note that mesh generation will only work for <code>Cell Center</code> sampling.</p>
+<p><img alt="" src="../images/pointcloud-importMesh.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Generate Mesh</td>
+<td align="center">If this option is enabled, mesh collider will be generated and additional settings will be available.</td>
+</tr>
+<tr>
+<td align="center">Road Only Mesh</td>
+<td align="center">If this option is enabled, mesh generation will attempt to only create mesh for the road, ignoring other structures. This option is not suitable for all data sets - if you experience problems, try again with this feature disabled.</td>
+</tr>
+<tr>
+<td align="center">Mesh Detail Level</td>
+<td align="center">Level of the tree that should be used for mesh generation. This should corelate with represented area size - for single intersection level 2 is usually enough, while larger areas with multiple roads might require level 5 or higher.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="build-settings">Build Settings<a class="headerlink" href="#build-settings" title="Permanent link">#</a></h3>
+<p>This tab contains options related to import process and initial point cloud transformations.</p>
+<p><img alt="" src="../images/pointcloud-importBuild.png" /></p>
+<p>Some options under this tab will affect amount of system memory required during the import process. You will see the warning if you're exceeding your system's limits - lower one of related settings values in this case.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter Name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Thread Count</td>
+<td align="center">Amount of threads that the import process should be split across. It's not guaranteed that all of the threads will be utilized fully, but higher thread count reduces import time. Affects memory requirements.</td>
+</tr>
+<tr>
+<td align="center">Chunk Size</td>
+<td align="center">Maximum amount of points loaded into memory at once, per thread. This only affects import process and has no effect on output data. Affects memory requirements.</td>
+</tr>
+<tr>
+<td align="center">Center</td>
+<td align="center">If this option is enabled, local space origin of the output point cloud will be moved to its bounds center.</td>
+</tr>
+<tr>
+<td align="center">Normalize</td>
+<td align="center">If this option is enabled, all points positions will be rescaled to fit normalized coordinates.</td>
+</tr>
+<tr>
+<td align="center">LAS RGB 8bit Workaround</td>
+<td align="center">If this option is enabled, additional 8 bit offset is used when reading color and intensity from LAS files. Use this if your data imported from LAS files seems to have corrupted color and/or intensity values.</td>
+</tr>
+<tr>
+<td align="center">Axes</td>
+<td align="center">Coordinate system axes convention used in original files. Setting this to correct value ensures that output point cloud will be compatible with Unity's coordinate system.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pointcloud-rendering/" class="btn btn-neutral float-right" title="Point cloud rendering">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ego-vehicle-dynamics/" class="btn btn-neutral" title="Vehicle dynamics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ego-vehicle-dynamics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../pointcloud-rendering/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

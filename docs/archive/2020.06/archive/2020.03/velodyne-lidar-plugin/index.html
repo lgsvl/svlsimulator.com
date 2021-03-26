@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Velodyne Lidar Sensor - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Velodyne Lidar Sensor";
+    var mkdocs_page_input_path = "velodyne-lidar-plugin.md";
+    var mkdocs_page_url = "/velodyne-lidar-plugin/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor Parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu Items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor Visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge Topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API Quickstart Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-example-descriptions/">Python API Use Case Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to Run a Scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Cluster Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-introduction/">Cluster Simulation Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cluster-simulation-quickstart/">Cluster Simulation QuickStart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-objects/">Distributed Objects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-components/">Distributed Components</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../sensors-distribution/">Sensors Distribution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-python-api/">Distributed Python API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distributed-messages/">Distributed Messages</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../custom-distributed-class/">Custom Distributed Class</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement Learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning Lane Following Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to Collect Data with Control Calibration Sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map Annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding Assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC Map Navigation</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Sensor Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Velodyne Lidar Sensor</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#velodyne-lidar-sensor-json-options">Velodyne Lidar Sensor JSON options top</a></li>
+    
+
+    <li class="toctree-l4"><a href="#velodyne-lidar-sensor-usage">Velodyne Lidar Sensor Usage top</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#running-with-autoware">Running with Autoware</a></li>
+        
+            <li><a class="toctree-l5" href="#running-with-apollo-50">Running with Apollo 5.0</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable Plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Dynamics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Sensor Plugins &raquo;</li>
+        
+      
+        
+          <li>Advanced &raquo;</li>
+        
+      
+    
+    <li>Velodyne Lidar Sensor</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/velodyne-lidar-plugin.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1><a name="top"></a> Velodyne Lidar Sensor</h1>
+<p>This sensor plugin is for Velodyne Lidar. VLP-16 and VLP-32C are currently supported. </p>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#velodyne-lidar-sensor-json-options">Velodyne Lidar Sensor JSON options top</a></li>
+<li><a href="#velodyne-lidar-sensor-usage">Velodyne Lidar Sensor Usage top</a><ul>
+<li><a href="#running-with-autoware">Running with Autoware</a></li>
+<li><a href="#running-with-apollo-50">Running with Apollo 5.0</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="velodyne-lidar-sensor-json-options">Velodyne Lidar Sensor JSON options <a class="wikilink" href="#top">top</a><a class="headerlink" href="#velodyne-lidar-sensor-json-options" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>VerticalRayAngles</code></td>
+<td align="center">defines vertical angle for each laser beam*</td>
+<td align="center"></td>
+<td align="center">List of Float</td>
+<td align="center">empty list</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>LaserCount</code></td>
+<td align="center">defines how many vertically stacked laser beams there are</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td align="center"><code>FieldOfView</code></td>
+<td align="center">defines the vertical angle between bottom and top ray</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">41.33</td>
+<td align="center">1</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td align="center"><code>CenterAngle</code></td>
+<td align="center">defines the center of the FieldOfView cone to the horizon (+ means below horizon)</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">-45</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.5</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">100</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>RotationFrequency</code></td>
+<td align="center">defines how fast the sensor rotates</td>
+<td align="center">Hertz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center"><code>MeasurementsPerRotation</code></td>
+<td align="center">defines how many measurements each beam takes per rotation</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">1500</td>
+<td align="center">18</td>
+<td align="center">6000</td>
+</tr>
+<tr>
+<td align="center"><code>Compensated</code></td>
+<td align="center">defines whether or not the point cloud is compensated for the movement of the vehicle</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>true</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>PointSize</code></td>
+<td align="center">defines how large of points are visualized</td>
+<td align="center">pixels</td>
+<td align="center">Float</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center"><code>PointColor</code></td>
+<td align="center">defines the color of visualized points</td>
+<td align="center">rgba in hex</td>
+<td align="center">Color</td>
+<td align="center">#FF0000FF</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>VelodyneLidarType</code></td>
+<td align="center">defines type of Velodyne Lidar</td>
+<td align="center"></td>
+<td align="center">String</td>
+<td align="center">VLP_16</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>HostName</code></td>
+<td align="center">IP address of host</td>
+<td align="center"></td>
+<td align="center">String</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>UDPPortData</code></td>
+<td align="center">UDP port for data packets</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">2368</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>UDPPortPosition</code></td>
+<td align="center">UDP port for position packets</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">8308</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>* Most of parameters except the last four are same as <a href="../sensor-json-options/#lidar">Lidar Sensor</a>. </p>
+<p>Details of last four parameters are as follows:</p>
+<ul>
+<li>Value of <code>VelodyneLidarType</code> can only be "VLP_16" or "VLP_32C". Note that it uses underscore ('_') not dash ('-').</li>
+<li><code>HostName</code> is the IP address of the machine which receives the UDP packets (a.k.a. host machine).</li>
+<li><code>UDPPortData</code> and <code>UDPPortPosition</code> are UPD ports for data packets and position packets. If more than one
+Velodyne Lidar plugin is used, each one should have a unique port.</li>
+</ul>
+<p>VLP-16 configuration sample:</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;VelodyneLidar&quot;,
+    &quot;name&quot;: &quot;Velodyne VLP-16&quot;,
+    &quot;params&quot;: {
+      &quot;FieldOfView&quot;: 30,
+      &quot;CenterAngle&quot;: 0,
+      &quot;MinDistance&quot;: 0.5,
+      &quot;MaxDistance&quot;: 100,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;MeasurementsPerRotation&quot;: 1800,
+      &quot;Compensated&quot;: true,
+      &quot;PointColor&quot;: &quot;#ff000000&quot;,
+      &quot;Topic&quot;: &quot;/point_cloud&quot;,
+      &quot;Frame&quot;: &quot;velodyne&quot;,
+      &quot;VelodyneLidarType&quot;: &quot;VLP_16&quot;,
+      &quot;HostName&quot;: &quot;127.0.0.1&quot;,
+      &quot;UdpPortData&quot;: 2368,
+      &quot;UdpPortPosition&quot;: 8308
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 2.312,
+      &quot;z&quot;: -0.3679201,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<p>VLP-32C configuration sample:</p>
+<pre><code class="JSON">{
+    &quot;type&quot;: &quot;VelodyneLidar&quot;,
+    &quot;name&quot;: &quot;Velodyne VLP-32C&quot;,
+    &quot;params&quot;: {
+      &quot;MinDistance&quot;: 0.5,
+      &quot;MaxDistance&quot;: 100,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;MeasurementsPerRotation&quot;: 1800,
+      &quot;Compensated&quot;: true,
+      &quot;PointColor&quot;: &quot;#ff000000&quot;,
+      &quot;Topic&quot;: &quot;/point_cloud&quot;,
+      &quot;Frame&quot;: &quot;velodyne&quot;,
+      &quot;VerticalRayAngles&quot;: [
+        -25.0,   -1.0,    -1.667,  -15.639,
+        -11.31,   0.0,    -0.667,   -8.843,
+        -7.254,  0.333,  -0.333,   -6.148,
+        -5.333,  1.333,   0.667,   -4.0,
+        -4.667,  1.667,   1.0,     -3.667,
+        -3.333,  3.333,   2.333,   -2.667,
+        -3.0,    7.0,     4.667,   -2.333,
+        -2.0,   15.0,    10.333,   -1.333
+        ],
+      &quot;VelodyneLidarType&quot;: &quot;VLP_32C&quot;,
+      &quot;HostName&quot;: &quot;10.195.248.155&quot;,
+      &quot;UdpPortData&quot;: 2368,
+      &quot;UdpPortPosition&quot;: 8308
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 2.312,
+      &quot;z&quot;: -0.3679201,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+}
+</code></pre>
+
+<h2 id="velodyne-lidar-sensor-usage">Velodyne Lidar Sensor Usage <a class="wikilink" href="#top">top</a><a class="headerlink" href="#velodyne-lidar-sensor-usage" title="Permanent link">#</a></h2>
+<p>Different to standard <a href="../sensor-json-options/#lidar">Lidar Sensor</a>, which generates point cloud and publishes it via bridge,
+Velodyne Lidar sensor generates data packets and position packets and send them out via UDP. Velodyne driver running on the host
+machine is reponsible for converting these packets into point cloud. </p>
+<h3 id="running-with-autoware">Running with Autoware<a class="headerlink" href="#running-with-autoware" title="Permanent link">#</a></h3>
+<p>Autoware is based on ROS. For ROS-based systems, <a href="https://github.com/ros-drivers/velodyne">ROS Velodyne driver</a>
+can be used. </p>
+<p>Detailed steps of running ROS Velodyne driver are as follows:</p>
+<p><span>1.</span> Create a workspace folder and enter it</p>
+<pre><code class="bash">mkdir velodyne_ws &amp;&amp; cd velodyne_ws
+</code></pre>
+
+<p><span>2.</span> Clone ROS Velodyne driver into <code>src</code> folder</p>
+<pre><code class="bash">git clone https://github.com/ros-drivers/velodyne.git src
+</code></pre>
+
+<p><span>3.</span> Build the Velodyne drive as a ROS node</p>
+<pre><code class="bash">catkin_make
+</code></pre>
+
+<p><span>4.</span> Setup running environment</p>
+<pre><code class="bash">source /opt/$ROS_DISTRO/setup.bash
+source devel/setup.bash
+</code></pre>
+
+<p><span>5.</span> Configuration of device IP
+Before running the Velodyne driver, you need to modify the launch files to setup device IP (i.e. the IP of the machine where the LGSVL Simulator is running).</p>
+<ul>
+<li>For VLP-16, edit velodyne_ws/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch and put the device IP after <code>device_ip</code>.</li>
+<li>For VLP-32, edit velodyne_ws/src/velodyne/velodyne_pointcloud/launch/VLP-32C_points.launch and put the device IP after <code>device_ip</code>.</li>
+</ul>
+<p><span>6.</span> Launch Velodyne driver</p>
+<p>For VLP-16:</p>
+<pre><code class="bash">roslaunch velodyne_pointcloud VLP16_points.launch
+</code></pre>
+
+<p>For VLP-32C:</p>
+<pre><code class="bash">roslaunch velodyne_pointcloud VLP-32C_points.launch
+</code></pre>
+
+<p>If you have LGSVL Simulator running on client machine, you should be able to see UDP packets received on both data port and position port, 
+and ROS topic <code>/velodyne_points</code> is published by the driver. You can also use RViz to visualize the point cloud in that topic.</p>
+<p>Here is VLP-32C visualized in the simulator:</p>
+<p><a href="../images/full_size_images/visualize-VLP-32C.png"><img alt="" src="../images/visualize-VLP-32C.png" /></a></p>
+<p>and here is the point cloud visualized in RViz:</p>
+<p><a href="../images/full_size_images/rviz-VLP-32c.png"><img alt="" src="../images/rviz-VLP-32c.png" /></a></p>
+<p>Note that the output topic name (<code>/velodyne_points</code>) of ROS Velodyne driver is hard-coded and not configurable, while Autoware assumes point cloud published into ROS topic <code>/points_raw</code>.
+To have ROS Velodyne driver running with Autoware, you have to either use
+<code>&lt;remap&gt;</code> tag in Autoware launch files to may <code>/velodyne_points</code> to <code>/points_raw</code>, or modify the topic name in the source code of ROS Velodyne driver and rebuild it.</p>
+<h3 id="running-with-apollo-50">Running with Apollo 5.0<a class="headerlink" href="#running-with-apollo-50" title="Permanent link">#</a></h3>
+<p>Apollo 5.0 is based on CyberRT and comes with its own <a href="https://github.com/lgsvl/apollo-5.0/tree/simulator/modules/drivers/velodyne">Velodyne driver</a>.
+You can simply launch Apollo's Velodyne driver in Dreamview (by click <code>Velodyne</code> module in <code>Module Controller</code> page).
+Since Apollo Velodyne driver uses position packet to compensate the point cloud, you also need to launch <code>GPS</code>, <code>localization</code> and <code>transform</code> modules in the same page.</p>
+<p>On the Simulator side, you can add Velodyne Lidar sensor into our <a href="../apollo5-0-json-example/">sample JSON</a>.
+Since other sensors send messages via bridge, you also need to run <code>bridge.sh</code> inside Apollo docker.</p>
+<p>To configure the Lidar model, you can edit <a href="https://github.com/lgsvl/apollo-5.0/blob/simulator/modules/drivers/velodyne/dag/velodyne.dag">velodyne.dag</a> file.
+Note that if more than one Lidar is used, each has different data port and position port (configured in their corresponding <a href="https://github.com/lgsvl/apollo-5.0/tree/simulator/modules/drivers/velodyne/conf">.conf files</a>.
+You need to set <code>UDPPortData</code> and <code>UDPPortPosition</code> for each Velodyne Lidar sensor accordingly.</p>
+<p>The default launch file and dag file of Apollo 5.0 use VLS-128 and VLP-16 Lidars. If you need to use VLP-32C, in addition to add VLP-32C to dag file,
+you may need to modify <a href="https://github.com/lgsvl/apollo-5.0/blob/simulator/modules/transform/conf/static_transform_conf.pb.txt">static_transform_conf.pb.txt</a> to
+include your own VLP-32C extrinsics if you want to get compensated point cloud.</p>
+<p>The following screenshot shows the Dreamview interface:</p>
+<p><a href="../images/full_size_images/dreamview-VLP-32C.png"><img alt="" src="../images/dreamview-VLP-32C.png" /></a></p>
+<p>and next screenshot shows the point cloud visualized in cyber_visualizer:</p>
+<p><a href="../images/full_size_images/cyber_visualizer-VLP-32C.png"><img alt="" src="../images/cyber_visualizer-VLP-32C.png" /></a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../controllable-plugins/" class="btn btn-neutral float-right" title="Controllable Plugins">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../sensor-plugins/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../sensor-plugins/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../controllable-plugins/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

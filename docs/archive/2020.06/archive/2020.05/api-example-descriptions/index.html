@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Center">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Python API use case examples - LGSVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Python API use case examples";
+    var mkdocs_page_input_path = "api-example-descriptions.md";
+    var mkdocs_page_url = "/api-example-descriptions/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'lgsvlsimulator.com/docs');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://www.lgsvlsimulator.com" class="icon icon-home" target="_blank_"> LGSVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Quick start</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../maps-tab/">Maps</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vehicles-tab/">Vehicles</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-json-options/">Sensor parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters-tab/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations-tab/">Simulations</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulation-menu/">Menu items</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-visualizers/">Sensor visualization</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../bridge-connection-ui/">Bridge topics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../config-and-cmd-line-params/">Configuration File and Command Line Parameters</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Integration with AD</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.AI</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Autoware.Auto</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with latest Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Instructions</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 5.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Running with Apollo 3.0</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-instructions/">Instructions</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-json-example/">Sample sensor configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">LGSVL ROS/ROS2 Message Definitions</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Ground truth obstacles</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../perception-ground-truth/">Viewing and subscribing to ground truth data</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../ground-truth-json-example/">Sample sensor configuration for data collection</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-quickstart-descriptions/">Python API quickstart examples</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Python API use case examples</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#scenarios">Scenarios</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#vehicle-following">Vehicle Following</a></li>
+        
+            <li><a class="toctree-l4" href="#encroaching-oncoming-vehicle">Encroaching Oncoming Vehicle</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#other-uses">Other Uses</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#collecting-data-in-kitti-format">Collecting data in KITTI format</a></li>
+        
+            <li><a class="toctree-l4" href="#automated-driving-system-test-cases">Automated Driving System Test Cases</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../api-how-to-run-scenario/">How to run a scenario</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../openai-gym/">Reinforcement learning with OpenAI Gym</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep Learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">How to create a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-calibration/">How to collect data with control calibration sensor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Advanced</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../build-instructions/">Build instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Adding assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../add-new-ego-vehicle/">How to add a new ego vehicle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-map-navigation/">NPC map navigation</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-plugins/">Introduction</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lidar-plugin/">Lidar sensor plugin</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Point cloud</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LGSVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python API &raquo;</li>
+        
+      
+    
+    <li>Python API use case examples</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/api-example-descriptions.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Python API Use Case Examples <a href="#top"></a></h1>
+<p>The LGSVL Simulator teams has created sample Python scripts that use the LGSVL Simulator Python API to test specific scenarios or perform certain tasks. These example scripts can be found on our Github <a href="https://github.com/lgsvl/PythonAPI/tree/master/examples">here</a>.</p>
+<p>Please <a href="mailto:contact@lgsvlsimulator.com">contact</a> us if you would like to <a href="../contributing/">contribute</a> examples that you are using, or submit a <a href="https://github.com/lgsvl/PythonAPI/pulls">pull request</a>.</p>
+<h2 id="scenarios">Scenarios <a class="wikilink" href="#top">top</a><a class="headerlink" href="#scenarios" title="Permanent link">#</a></h2>
+<p>We have created basic sample scenarios using the Python API. See <a href="../api-how-to-run-scenario/">here</a> for a step-by-step guide on how to run one of these scenarios. Several are based on the sample Test Cases from <a href="https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/13882-automateddrivingsystems_092618_v1a_tag.pdf">NHTSA</a>.</p>
+<p>The below scenarios assume that the simulator can be connected to an instance of Apollo 5.0. See the guide for getting connected with Apollo 5.0 <a href="../apollo5-0-instructions/">here</a>. The Apollo modules that need to be started are shown below (localization, perception, planning, prediction, routing, traffic light, transform, control):</p>
+<p><a href="../images/apollo3-5.png"><img alt="" src="../images/apollo3-5.png" /></a></p>
+<p>It is recommended to start Apollo and the modules before running a scenario. Apollo's destination can be set after Localization and Routing have been started.</p>
+<h3 id="vehicle-following">Vehicle Following <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-following" title="Permanent link">#</a></h3>
+<ul>
+<li>Scripts: <a href="https://github.com/lgsvl/PythonAPI/tree/master/examples/NHTSA-sample-tests/Vehicle-Following">Perform Vehicle Following</a></li>
+<li>This scenario simulates the EGO vehicle approaching a slower NPC from behind. The EGO is expected to accelerate up to the speed limit and catch up to the NPC. </li>
+</ul>
+<p><a href="../images/full_size_images/scenario-VFStart.png"><img alt="" src="../images/scenario-VFStart.png" /></a></p>
+<p>For this scenario, the destination is the end of the lane.</p>
+<p><a href="../images/scenario-SLRDestination.png"><img alt="" src="../images/scenario-SLRDestination.png" /></a></p>
+<h3 id="encroaching-oncoming-vehicle">Encroaching Oncoming Vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#encroaching-oncoming-vehicle" title="Permanent link">#</a></h3>
+<ul>
+<li>Scripts: <a href="https://github.com/lgsvl/PythonAPI/tree/master/examples/NHTSA-sample-tests/Encroaching-Oncoming-Vehicles">Detect and Respond to Encroaching Oncoming Vehicle</a></li>
+<li>This scenario simulates the EGO vehicle approaching an oncoming NPC that is half in the EGO's lane making a collision imminent. The EGO is expected to avoid a collision.</li>
+<li>Here the NPC uses the waypoint system to define its path. With waypoints, the NPC ignores other traffic and does not attempt to avoid collisions.</li>
+</ul>
+<p><a href="../images/full_size_images/scenario-EOVStart.png"><img alt="" src="../images/scenario-EOVStart.png" /></a></p>
+<p>For this scenario, the destinaion is the end of the lane. The same destination can be used as the Vehicle Following scripts.</p>
+<h2 id="other-uses">Other Uses <a class="wikilink" href="#top">top</a><a class="headerlink" href="#other-uses" title="Permanent link">#</a></h2>
+<h3 id="collecting-data-in-kitti-format">Collecting data in KITTI format <a class="wikilink" href="#top">top</a><a class="headerlink" href="#collecting-data-in-kitti-format" title="Permanent link">#</a></h3>
+<ul>
+<li>Script: <a href="https://github.com/lgsvl/PythonAPI/blob/master/examples/kitti_parser.py">kitti_parser.py</a></li>
+<li>This script shows an example of collecting data in the KITTI format. This data can be used to train for detecting vehicles in images. </li>
+<li>This script spawns the ego vehicle in a random position in the San Francisco map. Then a number of NPC vehicles are randomly spawned in front of the ego vehicle. Camera and ground truth data is saved in the KITTI format. This data can be used to train for detecting vehicles in images. </li>
+<li>For more information on KITTI please see: <a href="http://www.cvlibs.net/datasets/kitti/index.php">http://www.cvlibs.net/datasets/kitti/index.php</a> The data format is defined in a README file downloadable from: <a href="https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_object.zip">https://s3.eu-central-1.amazonaws.com/avg-kitti/devkit_object.zip</a></li>
+</ul>
+<h3 id="automated-driving-system-test-cases">Automated Driving System Test Cases <a class="wikilink" href="#top">top</a><a class="headerlink" href="#automated-driving-system-test-cases" title="Permanent link">#</a></h3>
+<ul>
+<li>The United States National Highway Traffic Safety Administration released a report describing a framework for establishing sample preliminary tests. The report is available online: <a href="https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/13882-automateddrivingsystems_092618_v1a_tag.pdf">A Framework for Automated Driving System Testable Cases and Scenarios</a></li>
+<li>We created several of the described tests available here: <a href="https://github.com/lgsvl/PythonAPI/tree/master/examples/NHTSA-sample-tests">NHTSA-sample-tests</a></li>
+<li>These tests run the ADS at different speeds. To accomplish this with Apollo, the speed limit in the HD map of the appropriate lanes needs to be adjusted and the planning configuration should also be changed to limit Apollo's top speed.</li>
+<li>The ADS destination is described in the report. For our implementation of the Perform Lane Change tests, the same destination as the above Overtaker and Traffic Jam scenarios is used.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api-how-to-run-scenario/" class="btn btn-neutral float-right" title="How to run a scenario">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../api-quickstart-descriptions/" class="btn btn-neutral" title="Python API quickstart examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2020 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../api-quickstart-descriptions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api-how-to-run-scenario/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/clipboard.js" defer></script>
+      <script src="../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
