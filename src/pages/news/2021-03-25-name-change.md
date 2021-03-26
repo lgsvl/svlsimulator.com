@@ -27,4 +27,4 @@ The new web user interface for SVL Simulator 2021.1 is [wise.svlsimulator.com](h
 
 [![wise](images/2021-03-25-rebranding-wise.png)](images/2021-03-25-rebranding-wise.png)
 
-If someone is asking what simulation tool you are using, let them know it is now SVL Simulator. We believe the new branding will be more intuitive and to the point. We will continue to innovate, support our open source community, and iterate based on feedback from our users. Please [get in touch](contact@svlsimulator.com) with us if you have questions or any feedback.
+If someone is asking what simulation tool you are using, let them know it is now SVL Simulator. We believe the new branding will be more intuitive and to the point. We will continue to innovate, support our open source community, and iterate based on feedback from our users. Please [get in touch](mailto:contact@svlsimulator.com) with us if you have questions or any feedback.
