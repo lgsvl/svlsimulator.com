@@ -3,9 +3,11 @@ import Box, { BoxProps } from '@material-ui/core/Box';
 import Grid, { GridProps } from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import React from 'react';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import React, { useCallback, useState } from 'react';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
-import { LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
+import { Button, LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import EntranceAnimation from 'src/components/EntranceAnimation';
 import { IconApollo, IconUnity, IconVelodyne } from 'src/components/Icons';
@@ -23,6 +25,8 @@ import videoSrcLidar from 'src/videos/lidar.mp4';
 import videoSrcHero from 'src/videos/vis-1.mp4';
 import videoSrcWiseVis from 'src/videos/vis-borregas.mp4';
 import styled from 'styled-components';
+import Link from 'src/components/Link';
+import { DownloadButton } from 'src/components/Button';
 
 const SmallVideo: React.FC<BackgroundVideoProps> = props => (
   <BackgroundVideo
@@ -59,6 +63,9 @@ export default function Home() {
   const { t, tMap } = useTranslation();
   const theme = useTheme();
   const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
+  const [downloadOpen, setDownloadOpen] = useState(false);
+  const downloadClick = useCallback(() => setDownloadOpen(true), [setDownloadOpen]);
+  const downloadClose = useCallback(() => setDownloadOpen(false), [setDownloadOpen]);
 
   return (
     <Page animate>
@@ -86,6 +93,9 @@ export default function Home() {
                           <RequestDemoButton variant='outlined' />
                         </Grid>
                         <Grid item>
+                          <DownloadButton />
+                        </Grid>
+                        <Grid item>
                           <LinkButton
                             color='primary'
                             buttonVariant='contained'
@@ -101,7 +111,7 @@ export default function Home() {
                 </EntranceAnimation>
               </Grid>
             </HeroGrid>
-            <Box p={2} textAlign='center'>
+            <Box p={2} textAlign='center' zIndex={-1} position='relative'>
               <MoreArrows />
             </Box>
           </Box>
