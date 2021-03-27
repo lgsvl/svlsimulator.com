@@ -22,7 +22,7 @@ exports.onPreRenderHTML = ({ pathname, getHeadComponents, replaceHeadComponents 
     headComponents.unshift(
       <script dangerouslySetInnerHTML={{
         __html: `
-          if (typeof window !== 'undefined' && window.location.pathname.startsWith('/docs/')) {
+          if (typeof window !== 'undefined' && /^\\/*(!?docs\\/|docs$)/.test(window.location.pathname)) {
             window.location.pathname = '/docs/404.html';
           }
         `
