@@ -16,7 +16,8 @@ module.exports = {
   siteMetadata: {
     title: 'SVL Simulator',
     description: 'Simulation software to accelerate safe autonomous vehicle development',
-    author: 'LGEUS ARL'
+    author: 'LGEUS ARL',
+    siteUrl: 'https://www.svlsimulator.com'
   },
   plugins: [
     'gatsby-plugin-root-import',
@@ -29,6 +30,8 @@ module.exports = {
       }
     },
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     // Adds automatic typescript type generation for graphql queries

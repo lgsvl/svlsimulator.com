@@ -82,7 +82,7 @@ const UserConsent = () => {
             <Button aria-label={t('main.consent.accept')} onClick={handleAccept}>
               {t('main.consent.accept')}
             </Button>
-            <IconButton aria-label={t('main.consent.decline')} onClick={handleClose}>
+            <IconButton aria-label={t('main.consent.accept')} onClick={handleAccept}>
               <IconX width='16' height='16' />
             </IconButton>
           </DialogActions>
