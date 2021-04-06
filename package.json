@@ -33,6 +33,7 @@
     "formik": "^2.2.5",
     "gatsby": "^2.27.1",
     "gatsby-image": "^2.6.0",
+    "gatsby-plugin-client-side-redirect": "^1.1.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-gdpr-cookies": "^1.0.11",
     "gatsby-plugin-graphql-codegen": "^2.7.1",

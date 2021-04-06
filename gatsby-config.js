@@ -32,6 +32,7 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
+    'gatsby-plugin-client-side-redirect',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     // Adds automatic typescript type generation for graphql queries
