@@ -15,9 +15,10 @@ interface SEOProps {
   title?: string;
   meta?: MetaProps[];
   description?: string;
+  featuredImage?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
+const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description, featuredImage }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,11 +27,13 @@ const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
             title
             description
             author
+            siteUrl
           }
         }
       }
     `
   );
+  const metaTitle = title || site.siteMetadata.title;
   const metaDescription = description || site.siteMetadata.description;
 
   return (
@@ -46,7 +49,7 @@ const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
         },
         {
           property: 'og:title',
-          content: title
+          content: metaTitle
         },
         {
           property: 'og:description',
@@ -55,6 +58,10 @@ const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
         {
           property: 'og:type',
           content: 'website'
+        },
+        featuredImage && {
+          property: 'og:image',
+          content: site.siteMetadata.siteUrl + featuredImage
         },
         {
           name: 'twitter:card',
@@ -65,26 +72,24 @@ const SEO: React.FC<SEOProps> = ({ title = '', meta = [], description }) => {
           content: site.siteMetadata.author
         },
         {
+          name: 'twitter:site',
+          content: '@svlsimulator'
+        },
+        {
           name: 'twitter:title',
-          content: title
+          content: metaTitle
         },
         {
           name: 'twitter:description',
           content: metaDescription
-        } /* ,
-        {
-          'http-equiv': 'cache-control',
-          content: 'no-cache'
         },
-        {
-          'http-equiv': 'expires',
-          content: '0'
-        },
-        {
-          'http-equiv': 'pragma',
-          content: 'no-cache'
-        }*/
-      ] as MetaProps[]).concat(meta)}
+        featuredImage && {
+          name: 'twitter:image',
+          content: site.siteMetadata.siteUrl + featuredImage
+        }
+      ] as MetaProps[])
+        .filter(Boolean)
+        .concat(meta)}
     />
   );
 };

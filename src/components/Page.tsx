@@ -122,9 +122,16 @@ const App: React.FC<{ animate?: boolean; children: React.ReactNode }> = ({ anima
   );
 };
 
-const Page: React.FC<{ title?: string; animate?: boolean }> = ({ children, title, animate }) => (
+interface PageProps {
+  title?: string;
+  description?: string;
+  featuredImage?: string;
+  animate?: boolean;
+}
+
+const Page: React.FC<PageProps> = ({ children, title, description, featuredImage, animate }) => (
   <PageContextProvider>
-    <SEO title={title} />
+    <SEO title={title} description={description} featuredImage={featuredImage} />
     <UserConsent />
     <App animate={animate}>{children}</App>
   </PageContextProvider>

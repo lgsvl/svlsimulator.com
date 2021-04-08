@@ -36,7 +36,7 @@ export interface LayoutProps extends PageProps {
 
 export default function Layout({ children, location, pageContext, ...rest }: React.PropsWithChildren<LayoutProps>) {
   const { t } = useTranslation();
-  const { author, featuredImage, title, date: dateStr } = pageContext.frontmatter || {};
+  const { author, featuredImage, title, date: dateStr, preview } = pageContext.frontmatter || {};
   const { publicURL: featuredImageURL } = useImageUrl(featuredImage);
 
   let date: Date | undefined;
@@ -44,7 +44,7 @@ export default function Layout({ children, location, pageContext, ...rest }: Rea
 
   return (
     <MDXProvider components={Subs}>
-      <Page>
+      <Page title={title} description={preview as string | undefined} featuredImage={featuredImageURL}>
         <PageSection component='section' maxWidth='lg'>
           <Box mb={7}>
             <Grid container alignItems='center'>
