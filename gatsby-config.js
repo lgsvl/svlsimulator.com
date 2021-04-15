@@ -5,6 +5,8 @@
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
 
 [
   `.env.${process.env.NODE_ENV || 'development'}.local`,
@@ -30,7 +32,32 @@ module.exports = {
       }
     },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        serialize: ({ site, allSitePage }) => {
+          const allPages = allSitePage.nodes || allSitePage?.edges?.map(edge => edge.node);
+          const allPagesWithStatic = (allPages || [])
+            .map(p => p.path)
+            .concat(
+              glob
+                .sync('**/*.html', {
+                  nodir: true,
+                  cwd: path.join(__dirname, 'static')
+                })
+                .map(p => '/' + p.replace(/\/index.html$/, '/'))
+                .filter(p => !p.endsWith('/404.html'))
+                .sort()
+            );
+
+          return allPagesWithStatic.map(pagePath => ({
+            url: (site.siteMetadata?.siteUrl ?? '') + pagePath,
+            changefreq: 'daily',
+            priority: 0.7
+          }));
+        }
+      }
+    },
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-client-side-redirect',
     'gatsby-plugin-sharp',
