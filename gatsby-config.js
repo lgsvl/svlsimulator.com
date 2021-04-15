@@ -36,7 +36,7 @@ module.exports = {
       resolve: 'gatsby-plugin-sitemap',
       options: {
         serialize: ({ site, allSitePage }) => {
-          const allPages = allSitePage.nodes || allSitePage?.edges?.map(edge => edge.node);
+          const allPages = allSitePage?.nodes || allSitePage?.edges?.map(edge => edge.node);
           const allPagesWithStatic = (allPages || [])
             .map(p => p.path)
             .concat(
