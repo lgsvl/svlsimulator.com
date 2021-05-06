@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 // import { LinkButton, LinkButtonProps } from 'src/components/Button';
-import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
+import BackgroundImage, { BackgroundImageProps } from 'src/components/BackgroundImage';
 import styled from 'styled-components';
 
 const StyledPaper = withTheme(styled(Paper)`
@@ -63,9 +63,9 @@ const FakeWiseHeader: React.FC<BoxProps> = props => (
   </Box>
 );
 
-export type VisualizationFrameProps = PaperProps & Pick<BackgroundVideoProps, 'src' | 'poster'>;
+export type VisualizationFrameProps = PaperProps & Pick<BackgroundImageProps, 'src' | 'bgPosition'>;
 
-const VisualizationFrame = ({ children, poster, src, ...rest }: VisualizationFrameProps) => {
+const VisualizationFrame = ({ children, src, bgPosition, ...rest }: VisualizationFrameProps) => {
   const theme = useTheme();
   // const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
   // const iconSize = isXs ? 42 : 80;
@@ -74,9 +74,9 @@ const VisualizationFrame = ({ children, poster, src, ...rest }: VisualizationFra
       <Box p={2} width={992} height={1} display='flex' flexDirection='column' boxSizing='border-box'>
         <FakeWiseHeader />
         <Box flexBasis='100%'>
-          <BackgroundVideo poster={poster} src={src} zIndex='auto'>
+          <BackgroundImage src={src} zIndex='auto' bgPosition={bgPosition}>
             {children}
-          </BackgroundVideo>
+          </BackgroundImage>
         </Box>
       </Box>
     </StyledPaper>

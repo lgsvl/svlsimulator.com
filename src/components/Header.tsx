@@ -134,7 +134,8 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, title, ...rest })
     return () => clearTimeout(timer);
   }, [open]);
 
-  const ActivatorComponent = rest.to ? StyledLinkButton : MenuButton;
+  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  const ActivatorComponent = rest.to && !hasTouch ? StyledLinkButton : MenuButton;
 
   return (
     <>
@@ -202,7 +203,7 @@ const DesktopMenu = () => {
       <Grid item>
         <Grid container spacing={2}>
           <Grid item xs={3} sm='auto'>
-            <DropdownMenu title={t('main.header.products')} alia-label='Open Product List Menu'>
+            <DropdownMenu title={t('main.header.products')} alia-label='Open Product List Menu' to='/'>
               <MenuItem component={Link} to='/product/simulation/' alia-label='Go to Simulation product page'>
                 {t('simulation.navTitle')}
               </MenuItem>

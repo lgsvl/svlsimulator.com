@@ -9,11 +9,11 @@ import { withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { useFormik } from 'formik';
 import React from 'react';
-import BackgroundVideo from 'src/components/BackgroundVideo';
+import BackgroundImage from 'src/components/BackgroundImage';
 // import GridBox from 'src/components/GridBox';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
-import videoSrcSubscribe from 'src/videos/Subscription.mp4';
+import imgSrcSubscribe from 'src/images/subscription.jpg';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import Button, { ButtonProps } from './Button';
@@ -108,12 +108,12 @@ const SubscribeBox: React.FC<BoxProps & { animate?: boolean }> = ({ animate, ...
   return (
     <PageSectionFullWidth>
       <Box mb={4} position='relative' {...rest}>
-        <BackgroundVideo src={videoSrcSubscribe} position='absolute' fit='cover' overlayOffset={[0, '-200%']}>
-          <Typography>
-            A really cool looking video of a Lidar point-cloud following a simulated autonomous vehicle that makes you
-            really want to subscribe to our email list for more information.
-          </Typography>
-        </BackgroundVideo>
+        <BackgroundImage
+          src={imgSrcSubscribe}
+          position='absolute'
+          fit='cover'
+          title='Lidar point-cloud following a simulated autonomous vehicle'
+        />
         <EntranceAnimation disabled={!animate}>
           <Box p={2} height={{ xs: 600, sm: 400, md: 600 }}>
             <FullHeightGrid container alignItems='center' justify='center'>

@@ -6,6 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import React, { useCallback, useState } from 'react';
+import BackgroundImage, { BackgroundImageProps } from 'src/components/BackgroundImage';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
 import { Button, LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
@@ -17,19 +18,19 @@ import Page, { PageSection } from 'src/components/Page';
 import { SectionContent, VisualizationSection } from 'src/components/Section';
 import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
-import srcCloudPoster from 'src/images/cloud-simulation.jpg';
-import srcDigitalTwinPoster from 'src/images/digital-twin.jpg';
-import srcSimulationPoster from 'src/images/simulation-platform.jpg';
-import srcDigitalTwinVideo from 'src/videos/digital-twin.mp4';
-import videoSrcLidar from 'src/videos/lidar.mp4';
+import srcCloud from 'src/images/feature/cloud-simulation.jpg';
+import srcDigitalTwin from 'src/images/feature/digital-twin.jpg';
+import srcSimulation from 'src/images/feature/simulation-platform.jpg';
 import videoSrcHero from 'src/videos/vis-1.mp4';
+import srcWiseVisLeft from 'src/images/cloud-simulation-preview-left.jpg';
+import srcWiseVisRight from 'src/images/cloud-simulation-preview-right.jpg';
 import videoSrcWiseVis from 'src/videos/vis-borregas.mp4';
 import styled from 'styled-components';
 import Link from 'src/components/Link';
 import { DownloadButton } from 'src/components/Button';
 
-const SmallVideo: React.FC<BackgroundVideoProps> = props => (
-  <BackgroundVideo
+const FeatureImage: React.FC<BackgroundImageProps> = props => (
+  <BackgroundImage
     height={{ xs: 200, sm: 300, md: 456 }}
     mb={{ xs: 2, md: 5 }}
     borderRadius='borderRadius'
@@ -120,7 +121,13 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section1.title')} variant='h3' video={videoSrcWiseVis} animate>
+          <VisualizationSection
+            title={t('home.section1.title')}
+            variant='h3'
+            src={srcWiseVisRight}
+            bgPosition='right'
+            animate
+          >
             {t('home.section1.body')}
           </VisualizationSection>
         </Box>
@@ -128,7 +135,14 @@ export default function Home() {
 
       <PageSection>
         <Box my={15}>
-          <VisualizationSection title={t('home.section2.title')} flip variant='h3' video={videoSrcWiseVis} animate>
+          <VisualizationSection
+            title={t('home.section2.title')}
+            flip
+            variant='h3'
+            src={srcWiseVisLeft}
+            bgPosition='left'
+            animate
+          >
             {t('home.section2.body')}
           </VisualizationSection>
         </Box>
@@ -150,7 +164,7 @@ export default function Home() {
           <LayoutGrid xs={1} sm={3} spacing={3}>
             <EntranceAnimation>
               <Box flex={1}>
-                <SmallVideo poster={srcSimulationPoster} src={videoSrcLidar} />
+                <FeatureImage src={srcSimulation} />
                 <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
               </Box>
               <Box order={isXs ? null : 4} mt={1}>
@@ -166,7 +180,7 @@ export default function Home() {
             </EntranceAnimation>
             <EntranceAnimation delay={isXs ? 0 : 0.4}>
               <Box flex={1}>
-                <SmallVideo poster={srcCloudPoster} src={videoSrcWiseVis} />
+                <FeatureImage src={srcCloud} />
                 <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
               </Box>
               <Box order={isXs ? null : 4} mt={1}>
@@ -175,7 +189,7 @@ export default function Home() {
             </EntranceAnimation>
             <EntranceAnimation delay={isXs ? 0 : 0.8}>
               <Box flex={1}>
-                <SmallVideo poster={srcDigitalTwinPoster} src={srcDigitalTwinVideo} />
+                <FeatureImage src={srcDigitalTwin} />
                 <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
               </Box>
               <Box order={isXs ? null : 4} mt={1}>

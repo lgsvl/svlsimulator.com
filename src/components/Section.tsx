@@ -280,10 +280,11 @@ const FullWidthSection = ({ children, src, title, variant = 'h5' }: BaseSectionP
   </SpacedSectionContainer>
 );
 
-export type VisualizationSectionProps = BoxProps & SectionProps & { animate?: boolean };
+export type VisualizationSectionProps = BoxProps & SectionProps & { animate?: boolean; bgPosition?: string };
 
 const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   animate,
+  bgPosition,
   buttonProps,
   buttonText = 'contactUs',
   children,
@@ -316,13 +317,13 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   return (
     <Box {...rest}>
       <EntranceAnimation disabled={!animate}>
-        <Grid container spacing={2} alignItems='center' direction={flip ? 'row-reverse' : 'row'}>
-          <Grid item xs={12} md={columnsForImage} style={{ overflow: 'hidden', height: 570 }}>
+        <Grid container spacing={2} alignItems='center' justify='center' direction={flip ? 'row-reverse' : 'row'}>
+          <Grid item xs={10} md={columnsForImage} style={{ overflow: 'hidden', height: 570 }}>
             <ShadowBox position='relative' height={1} overflow='hidden' flip={flip}>
               <VisualizationFrame
-                poster={src}
-                src={video}
+                src={src}
                 style={{ position: 'absolute', right: flip ? 'auto' : 0, height: '100%' }}
+                bgPosition={bgPosition}
               />
             </ShadowBox>
           </Grid>

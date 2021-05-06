@@ -3,13 +3,17 @@ import Box, { BoxProps } from '@material-ui/core/Box';
 import React from 'react';
 import styled from 'styled-components';
 
-export type ImageProps = BoxProps & { fit?: 'cover' | 'contain'; src?: HTMLImageElement['src'] };
+export type ImageProps = BoxProps & {
+  fit?: 'cover' | 'contain';
+  src?: HTMLImageElement['src'];
+  bgPosition?: string;
+};
 
 // Set up just a Box with a covering background image.
-const ImageBase = withTheme(styled(({ fit, src, ...rest }: ImageProps) => <Box {...rest} />)`
+const ImageBase = withTheme(styled(({ fit, src, bgPosition, ...rest }: ImageProps) => <Box {...rest} />)`
   background-image: url(${({ src }) => src});
   background-size: ${({ fit = 'cover' }) => fit};
-  background-position: center center;
+  background-position: ${({ bgPosition = 'center center' }) => bgPosition};
   background-repeat: no-repeat;
 `) as React.FC<ImageProps>;
 
