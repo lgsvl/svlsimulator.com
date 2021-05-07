@@ -17,4 +17,4 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({ children, fit = 'cont
 );
 
 export default BackgroundImage;
-export { BackgroundImage, BgImageAlt, BgImageAlt2 };
+export { BackgroundImage };

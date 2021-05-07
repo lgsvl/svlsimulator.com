@@ -1,8 +1,10 @@
 import Box, { BoxProps } from '@material-ui/core/Box';
 import { ButtonProps } from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { fade, withTheme } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
+import { fade, withTheme, useTheme } from '@material-ui/core/styles';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 import Button, { ReadMoreButton, RequestDemoButton } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
@@ -179,14 +181,8 @@ const Content = ({
       )}
       <BodyGridBox item flip={flip} contained={contained} tuckImage={tuckImage}>
         {typeof children === 'string' || typeof children === 'number' ? <Typography>{children}</Typography> : children}
+        {buttonText && <Box mt={{ xs: 2 }}>{button}</Box>}
       </BodyGridBox>
-      {buttonText && (
-        <GridBox item mt={{ xs: 2, md: 5 }}>
-          <Box ml={!flip && contained ? -2 : 0} mr={flip && contained ? -2 : 0}>
-            {button}
-          </Box>
-        </GridBox>
-      )}
     </GridBox>
   );
 };
@@ -206,6 +202,11 @@ const Section = ({
   variant,
   video
 }: SectionProps) => {
+  const theme = useTheme();
+  const isNarrow = useMediaQuery(theme.breakpoints.down('sm'), {
+    defaultMatches: true
+  });
+
   // If an amount of imageColumns was not set, but it is a tuckImage, go ahead and set a default value.
   if (!imageColumns) {
     imageColumns = tuckImage ? 8 : 6;
@@ -243,7 +244,12 @@ const Section = ({
 
   return (
     <SpacedSectionContainer component='section' id={title ? title.toLowerCase().replace(/\s+/g, '-') : undefined}>
-      <Grid container spacing={tuckImage ? 0 : 3} direction={flip ? 'row-reverse' : 'row'} alignItems='center'>
+      <Grid
+        container
+        spacing={tuckImage && !isNarrow ? 0 : 3}
+        direction={flip ? 'row-reverse' : 'row'}
+        alignItems='center'
+      >
         <Grid item xs={12} md={columnsForImage} style={{ alignSelf: 'stretch' }}>
           {imageTag}
         </Grid>
@@ -318,15 +324,17 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
     <Box {...rest}>
       <EntranceAnimation disabled={!animate}>
         <Grid container spacing={2} alignItems='center' justify='center' direction={flip ? 'row-reverse' : 'row'}>
-          <Grid item xs={10} md={columnsForImage} style={{ overflow: 'hidden', height: 570 }}>
-            <ShadowBox position='relative' height={1} overflow='hidden' flip={flip}>
-              <VisualizationFrame
-                src={src}
-                style={{ position: 'absolute', right: flip ? 'auto' : 0, height: '100%' }}
-                bgPosition={bgPosition}
-              />
-            </ShadowBox>
-          </Grid>
+          <Hidden xsDown>
+            <Grid item xs={10} md={columnsForImage} style={{ overflow: 'hidden', height: 570 }}>
+              <ShadowBox position='relative' height={1} overflow='hidden' flip={flip}>
+                <VisualizationFrame
+                  src={src}
+                  style={{ position: 'absolute', right: flip ? 'auto' : 0, height: '100%' }}
+                  bgPosition={bgPosition}
+                />
+              </ShadowBox>
+            </Grid>
+          </Hidden>
           <Grid item xs={12} md={columnsForText}>
             {/* <Typography variant='h4'>{title}</Typography>
           {children}
