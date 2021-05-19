@@ -14,6 +14,7 @@ import BackgroundImage from 'src/components/BackgroundImage';
 import Input, { InputProps } from 'src/components/Input';
 import { useTranslation } from 'src/hooks/useTranslations';
 import imgSrcSubscribe from 'src/images/subscription.jpg';
+import webpSrcSubscribe from 'src/images/subscription.webp';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import Button, { ButtonProps } from './Button';
@@ -110,6 +111,7 @@ const SubscribeBox: React.FC<BoxProps & { animate?: boolean }> = ({ animate, ...
       <Box mb={4} position='relative' {...rest}>
         <BackgroundImage
           src={imgSrcSubscribe}
+          webp={webpSrcSubscribe}
           position='absolute'
           fit='cover'
           title='Lidar point-cloud following a simulated autonomous vehicle'

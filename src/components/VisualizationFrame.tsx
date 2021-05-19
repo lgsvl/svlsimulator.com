@@ -63,7 +63,7 @@ const FakeWiseHeader: React.FC<BoxProps> = props => (
   </Box>
 );
 
-export type VisualizationFrameProps = PaperProps & Pick<BackgroundImageProps, 'src' | 'bgPosition'>;
+export type VisualizationFrameProps = PaperProps & Pick<BackgroundImageProps, 'src' | 'webp' | 'bgPosition'>;
 
 const VisualizationFrame = ({ children, src, bgPosition, ...rest }: VisualizationFrameProps) => {
   const theme = useTheme();

@@ -286,7 +286,12 @@ const FullWidthSection = ({ children, src, title, variant = 'h5' }: BaseSectionP
   </SpacedSectionContainer>
 );
 
-export type VisualizationSectionProps = BoxProps & SectionProps & { animate?: boolean; bgPosition?: string };
+export type VisualizationSectionProps = BoxProps &
+  SectionProps & {
+    animate?: boolean;
+    bgPosition?: string;
+    webp?: string;
+  };
 
 const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   animate,
@@ -304,6 +309,7 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   tuckImage,
   variant,
   video,
+  webp,
   ...rest
 }) => {
   // If an amount of imageColumns was not set, but it is a tuckImage, go ahead and set a default value.
@@ -329,6 +335,7 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
               <ShadowBox position='relative' height={1} overflow='hidden' flip={flip}>
                 <VisualizationFrame
                   src={src}
+                  webp={webp}
                   style={{ position: 'absolute', right: flip ? 'auto' : 0, height: '100%' }}
                   bgPosition={bgPosition}
                 />

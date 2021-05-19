@@ -7,6 +7,7 @@ import Image from './Image';
 export interface BackgroundImageProps extends BoxProps {
   fit?: 'cover' | 'contain';
   src?: HTMLImageElement['src'];
+  webp?: string;
   bgPosition?: string;
 }
 

@@ -65,6 +65,7 @@
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.7.3",
     "styled-components": "^5.2.1",
+    "supports-webp-sync": "^1.0.1",
     "universal-cookie": "^4.0.4",
     "yup": "^0.31.0"
   },

@@ -21,9 +21,14 @@ import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloud from 'src/images/feature/cloud-simulation.jpg';
 import srcDigitalTwin from 'src/images/feature/digital-twin.jpg';
 import srcSimulation from 'src/images/feature/simulation-platform.jpg';
+import webpCloud from 'src/images/feature/cloud-simulation.webp';
+import webpDigitalTwin from 'src/images/feature/digital-twin.webp';
+import webpSimulation from 'src/images/feature/simulation-platform.webp';
 import videoSrcHero from 'src/videos/vis-1.mp4';
 import srcWiseVisLeft from 'src/images/cloud-simulation-preview-left.jpg';
 import srcWiseVisRight from 'src/images/cloud-simulation-preview-right.jpg';
+import webpWiseVisLeft from 'src/images/cloud-simulation-preview-left.jpg';
+import webpWiseVisRight from 'src/images/cloud-simulation-preview-right.jpg';
 import videoSrcWiseVis from 'src/videos/vis-borregas.mp4';
 import styled from 'styled-components';
 import Link from 'src/components/Link';
@@ -125,6 +130,7 @@ export default function Home() {
             title={t('home.section1.title')}
             variant='h3'
             src={srcWiseVisRight}
+            webp={webpWiseVisRight}
             bgPosition='right'
             animate
           >
@@ -140,6 +146,7 @@ export default function Home() {
             flip
             variant='h3'
             src={srcWiseVisLeft}
+            webp={webpWiseVisLeft}
             bgPosition='left'
             animate
           >
@@ -162,7 +169,7 @@ export default function Home() {
           <LayoutGrid xs={1} sm={3} spacing={3}>
             <EntranceAnimation>
               <Box flex={1}>
-                <FeatureImage src={srcSimulation} />
+                <FeatureImage src={srcSimulation} webp={webpSimulation} />
                 <SectionContent title={t('home.features.0.title')}>{t('home.features.0.body')}</SectionContent>
               </Box>
               <Box order={isXs ? null : 4} mt={1}>
@@ -178,7 +185,7 @@ export default function Home() {
             </EntranceAnimation>
             <EntranceAnimation delay={isXs ? 0 : 0.4}>
               <Box flex={1}>
-                <FeatureImage src={srcCloud} />
+                <FeatureImage src={srcCloud} webp={webpCloud} />
                 <SectionContent title={t('home.features.1.title')}>{t('home.features.1.body')}</SectionContent>
               </Box>
               <Box order={isXs ? null : 4} mt={1}>
@@ -187,7 +194,7 @@ export default function Home() {
             </EntranceAnimation>
             <EntranceAnimation delay={isXs ? 0 : 0.8}>
               <Box flex={1}>
-                <FeatureImage src={srcDigitalTwin} />
+                <FeatureImage src={srcDigitalTwin} webp={webpDigitalTwin} />
                 <SectionContent title={t('home.features.2.title')}>{t('home.features.2.body')}</SectionContent>
               </Box>
               <Box order={isXs ? null : 4} mt={1}>
