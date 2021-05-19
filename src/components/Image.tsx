@@ -13,7 +13,8 @@ export type ImageProps = BoxProps & {
 
 // Set up just a Box with a covering background image.
 const ImageBase = withTheme(styled(({ fit, src, webp, bgPosition, ...rest }: ImageProps) => <Box {...rest} />)`
-  background-image: url(${({ src, webp }) => (webp && checkWebPSupport() ? webp : src)});
+  background-image: url(${({ src, webp }) =>
+    webp && (typeof window === 'undefined' || checkWebPSupport()) ? webp : src});
   background-size: ${({ fit = 'cover' }) => fit};
   background-position: ${({ bgPosition = 'center center' }) => bgPosition};
   background-repeat: no-repeat;
