@@ -35,8 +35,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        serialize: ({ site, allSitePage }) => {
-          const allPages = allSitePage?.nodes || allSitePage?.edges?.map(edge => edge.node);
+        serialize: ({ site = {}, allSitePage = {} }) => {
+          const allPages = allSitePage.nodes || (allSitePage.edges || []).map(edge => edge.node);
           const allPagesWithStatic = (allPages || [])
             .map(p => p.path)
             .concat(
@@ -51,7 +51,7 @@ module.exports = {
             );
 
           return allPagesWithStatic.map(pagePath => ({
-            url: (site.siteMetadata?.siteUrl ?? '') + pagePath,
+            url: ((site.siteMetadata && site.siteMetadata.siteUrl) || '') + pagePath,
             changefreq: 'daily',
             priority: 0.7
           }));
