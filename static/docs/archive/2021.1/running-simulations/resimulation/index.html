@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title><a name="top"></a> Resimulation - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "<a name=\"top\"></a> Resimulation";
+    var mkdocs_page_input_path = "running-simulations/resimulation.md";
+    var mkdocs_page_url = "/docs/running-simulations/resimulation/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li><a name="top"></a> Resimulation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/running-simulations/resimulation.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1><a name="top"></a> Resimulation</h1>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#package-overview">Package Overview</a></li>
+<li><a href="#resimulation-workflow">Resimulation Workflow</a></li>
+</ul>
+</li>
+<li><a href="#requirements">Requirements</a><ul>
+<li><a href="#downloading-simulator">Downloading and using the SVL Simulator</a></li>
+<li><a href="#installing-docker">Installing Docker</a></li>
+<li><a href="#installing-docker-compose">Installing Docker Compose</a></li>
+</ul>
+</li>
+<li><a href="#recording-simulation">Recording a simulation</a><ul>
+<li><a href="#setting-up-the-test-case">Setting up the test case</a></li>
+<li><a href="#sensor-config">Sensor Configuration</a></li>
+<li><a href="#creating-simulations">Creating simulations in the Web UI</a><ul>
+<li><a href="#create-recording-sim">Creating the recording simulation</a></li>
+<li><a href="#create-resim-sim">Creating a simulation to run resimulations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#recording-rosbag">Recording a rosbag</a></li>
+<li><a href="#resimulate">Resimulating the recording</a></li>
+<li><a href="#apollo-resim">Resimulation with Apollo in control of ego vehicle</a></li>
+<li><a href="#command-line-args">Resimulation command-line arguments</a></li>
+</ul>
+</div>
+<h2 id="introduction">Introduction <a class="wikilink" href="#top">top</a><a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
+<p>Resimulation is a tool for the SVL Simulator with the with the purpose of recreating and generating driving scenarios based on recorded sensor data of simulated and real-world driving sequences.</p>
+<p>Among the use-cases of resimulation are:</p>
+<ul>
+<li>Generating easily repeatable scenarios for testing</li>
+<li>Recreating interesting cases encountered in real or simulated drives for further study</li>
+<li>Modifying environmental conditions, including lighting, weather, and road wetness on previously observed driving sequences</li>
+</ul>
+<p>The current release provides the ability to resimulate previously recorded simulations (provided that the ego vehicle uses ROS bridge) and to use Apollo to control the ego vehicle during the resimulation. This document will describe how to use this feature.</p>
+<p>Resimulation from simulation enables users to record and replay traffic agents' behaviors during a simulation. This allows users to discover, during randomized testing, edge cases and interesting failure cases of their AD system. They can reproduce these exact cases to analyze what went wrong to then improve and retest their system. In addition, by varying environmental conditions, they can create permutations to enable better test coverage.</p>
+<p><img alt="" src="../../images/resimulation/overview.png" /></p>
+<h3 id="package-overview">Package overview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#package-overview" title="Permanent link">#</a></h3>
+<p>Resimulation is delivered as a zip archive with the following directory layout:</p>
+<pre><code>lgsvl-resimulation-&lt;release-tag&gt;
+├── data
+├── docker
+│ ├── docker-compose.yml
+│ └── lgsvl_resimulate-&lt;release-tag&gt;.tar
+├── docs
+│ ├── images
+│ └── README.md
+└── scripts
+  ├── functions
+  ├── record.sh
+  └── resimulate.sh
+</code></pre>
+
+<ul>
+<li>The <code>data</code> directory is the default location for storing rosbag recordings or pickle files.</li>
+<li>To use a different directory for saving rosbags set the <code>DATA_VOLUME</code> environment variable to the new path:</li>
+</ul>
+<pre><code class="bash">export DATA_VOLUME=/path/to/some/folder/to/save/rosbags
+</code></pre>
+
+<ul>
+<li>The <code>docker</code> directory contains two docker images saved as tarballs.</li>
+<li><code>lgsvl_resimulate-&lt;release-tag&gt;.tar</code> contains the resimulation tool.</li>
+<li><code>lgsvl_ros_recorder-&lt;release-tag&gt;.tar</code> is a ROS container which also includes <code>rosbridge_suite</code> and <code>lgsvl_msgs</code>. This image is used for recording rosbags from simulations.</li>
+<li>The <code>scripts</code> directory holds scripts for loading and launching the docker images.</li>
+<li><code>record.sh</code> starts the recording docker container which launches a rosbridge and records incoming messages from the simulator.</li>
+<li><code>resimulate.sh</code> starts the resimulation container which will parse recorded rosbags, recreate them as scenarios, and play them in the simulator through the simulator's Python API.</li>
+</ul>
+<h3 id="resimulation-workflow">Resimulation from simulation workflow  <a class="wikilink" href="#top">top</a><a class="headerlink" href="#resimulation-workflow" title="Permanent link">#</a></h3>
+<ol>
+<li>Setup simulation in web UI</li>
+<li>Run simulation</li>
+<li>Record rosbag of gps and ground truth sensors published by the simulator</li>
+<li>Run the resimulation script</li>
+</ol>
+<h2 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<p>Resimulation has the following dependencies:</p>
+<ol>
+<li>SVL Simulator -- the release tag of the simulator should match the release tag of resimulation to ensure compatibility.</li>
+<li>Docker</li>
+<li>Docker compose</li>
+</ol>
+<h3 id="downloading-simulator">Downloading and using the SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#downloading-simulator" title="Permanent link">#</a></h3>
+<p>The Simulator release can be downloaded as a prebuilt binary from the premium release download page. Make sure to download the simulator binary from the same release as the resimulation release under use.</p>
+<p>Download and extract the zip archive at the desired location. In the unzipped directory, run the executable file named <code>simulator</code> to launch the SVL Simulator.The main window of the simulator will open up as seen below. Click on the <code>Open Browser</code> button to launch the simulator Web UI in a web browser. The Web UI controls all aspects of the simulator.</p>
+<p><img alt="" src="../../images/resimulation/main_window.png" /></p>
+<p>You will need to create an account to login to the Web UI. Once logged in you will be able to configure vehicles sensor arrangements, select maps, and create simulations to run in the simulator.</p>
+<h3 id="installing-docker">Installing Docker <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-docker" title="Permanent link">#</a></h3>
+<p>To install docker, follow <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">this guide</a> on the docker website.</p>
+<p>Also complete the first section (titled "Manage Docker as a non-root user") of the <a href="https://docs.docker.com/install/linux/linux-postinstall/">post-installation steps for Linux</a>.</p>
+<h3 id="installing-docker-compose">Installing Docker Compose <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-docker-compose" title="Permanent link">#</a></h3>
+<p>To install Docker Compose follow the steps in <a href="https://docs.docker.com/compose/install/#install-compose-on-linux-systems">this guide</a>.</p>
+<h2 id="recording-simulation">Recording a simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#recording-simulation" title="Permanent link">#</a></h2>
+<h3 id="setting-up-the-test-case">Setting up the test case <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setting-up-the-test-case" title="Permanent link">#</a></h3>
+<p>Running a simulation requires AssetBundles for the map and vehicle as well as configuration parameters for sensors.</p>
+<p>See <a href="../../user-interface/web/library/">simulator documentation</a> for how to add a map and how to add a vehicle.</p>
+<h3 id="sensor-config">Sensor configuration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-config" title="Permanent link">#</a></h3>
+<p>Currently, recording a simulation requires a using a vehicle in the simulator that uses the ROS bridge type. While other bridge types are not supported for recording, they can be used during playback of a resimulation. At a minimum the following three sensors are required for a recording to be resimulated:</p>
+<ul>
+<li>The <code>3D Ground Truth</code> sensor which publishes 3D bounding box data for vehicles and pedestrians within a configurable radius of the sensor</li>
+<li>The <code>Signal</code> sensor which provides ground truth information on the state of traffic lights facing the ego vehicle within a configurable radius of the sensor</li>
+<li>The <code>GPS Odometry</code> sensor which publishes localization information in the form of accurate GPS coordinates and orientation.</li>
+<li>(Optional) The <code>Manual Control</code> sensor enables keyboard control of the ego vehicle. Without a control sensor the ego vehicle will remain stationary.</li>
+</ul>
+<p>Sensors and their configuration parameters can be entered into the vehicle configuration window in the Web UI, formatted as JSON.</p>
+<p><img alt="" src="../../images/resimulation/sensor_config.png" /></p>
+<p>A simple JSON config including the required sensors and car control would be as follows:</p>
+<pre><code class="json">[
+  {
+    &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
+    &quot;name&quot;: &quot;3D Ground Truth&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;Topic&quot;: &quot;/simulator/ground_truth/3d_detections&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;,
+      &quot;MaxDistance&quot;: 300
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  },
+  {
+    &quot;type&quot;: &quot;SignalSensor&quot;,
+    &quot;name&quot;: &quot;Signal&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 10,
+      &quot;Topic&quot;: &quot;/simulator/ground_truth/signals&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;,
+      &quot;MaxDistance&quot;: 300
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  },
+  {
+    &quot;type&quot;: &quot;GpsOdometrySensor&quot;,
+    &quot;name&quot;: &quot;GPS Odometry&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 50,
+      &quot;Topic&quot;: &quot;/simulator/sensor/gps&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;,
+      &quot;IgnoreMapOrigin&quot;: false
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  },
+  {
+    &quot;type&quot;: &quot;KayboardControlSensor&quot;,
+    &quot;name&quot;: &quot;Manual Car Control&quot;
+  }
+]
+</code></pre>
+
+<p>The <strong>Bridge Type</strong> should be set to <strong>ROS</strong>.</p>
+<p>Note the topic names for each sensor; these topics will be recorded and used for resimulation. The frequency of the topics is also important as it will affect the accuracy of resimulation. It is advisable to have a high frequency for GPS Odometry (&gt;= 50). Increasing the publishing frequency for Ground Truth 3D past 10 hz is not advisable as it will not improve accuracy much, but will significantly increase the parsing time for the rosbag.</p>
+<p>The <code>transform</code> field determines the location and orientation of the sensor on the ego vehicle. The GPS Odometry sensor, Ground Truth 3D sensor, and Signal sensor <em>must</em> all have the same transform values.</p>
+<h3 id="creating-simulations">Creating simulations in the Web UI <a class="wikilink" href="#top">top</a><a class="headerlink" href="#creating-simulations" title="Permanent link">#</a></h3>
+<p>The simulator Web UI provides functionality to create simulations to be run in the simulator. We suggest creating one simulation for recording rosbags and another for running resimulations from the recordings.</p>
+<h4 id="create-recording-sim">Creating the recording simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#create-recording-sim" title="Permanent link">#</a></h4>
+<ol>
+<li>On the <strong>Simulations</strong> page in the Web UI click on <strong>Add New</strong> in the upper right corner.</li>
+<li>Enter a name for the simulation, select the appropriate cluster, and enter a description (optional) and click <strong>Next</strong>.
+    <img alt="" src="../../images/resimulation/simulation1.png" /></li>
+<li>
+<p>On the <strong>Test case</strong> tab:</p>
+<ul>
+<li>Set the <strong>Runtime Template</strong> to <strong>Random Traffic</strong>.</li>
+<li>Select the <strong>Map</strong> from the drop down menu.</li>
+<li>Select the vehicle created earlier under <strong>Vehicle</strong>.</li>
+<li>Set <strong>Date and Weather</strong> to desired values (or leave at default).</li>
+<li>Enable <strong>Random Traffic</strong> and <strong>Random Pedestrians</strong> and click <strong>Next</strong>.</li>
+</ul>
+<p><img alt="" src="../../images/resimulation/simulation2.png" />
+4. On the <strong>Autopilot</strong> tab:</p>
+<ul>
+<li>Select any of the AD stacks that use ROS (<strong>Autoware AI v1.12</strong> or <strong>Autoware AI v1.14</strong>).</li>
+<li>Under <strong>Bridge IP</strong> enter bridge IP and Port number (<code>localhost:9090</code> if bridge is running on the same machine)
+<img alt="" src="../../images/resimulation/simulation3.png" /></li>
+</ul>
+</li>
+<li>
+<p>On the <strong>Publish</strong> tab, click <strong>Make Private</strong> or <strong>Make Public</strong> to publish the simulation (simulations must be published before they can be run).
+    <img alt="" src="../../images/resimulation/simulation4.png" /></p>
+</li>
+</ol>
+<h4 id="create-resim-sim">Creating a simulation to run resimulations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#create-resim-sim" title="Permanent link">#</a></h4>
+<p>Follow these steps to create a second simulation which will be used for running the resimulation from a recording.</p>
+<ol>
+<li>On the <strong>Simulations</strong> page in the Web UI click on <strong>Add New</strong> in the upper right corner.</li>
+<li>On the <strong>General</strong> tab, enter a name for the simulation, choose a cluster, enter a description and tags (optional) and click <strong>Next</strong>.
+    <img alt="" src="../../images/resimulation/simulation5.png" /></li>
+<li>On the <strong>Test case</strong> tab select <strong>API Only</strong> as the runtime template and click <strong>Next</strong>.</li>
+<li>There will be no need to specify an <strong>Autopilot</strong>, click <strong>Next</strong> and publish on the last tab.</li>
+</ol>
+<p>See simulator documentation on the <a href="../../user-interface/web/simulations/">Simulations page</a> for more information on setting up simulations.</p>
+<h2 id="recording-rosbag">Recording the rosbag <a class="wikilink" href="#top">top</a><a class="headerlink" href="#recording-rosbag" title="Permanent link">#</a></h2>
+<p>To record a rosbag we first need to start a test case from the Web UI and then use the script provided in the resimulation package to record it. Currently, recording resimulation only supports recording ROS 1 bags (not ROS 2 or CyberRT records).</p>
+<ol>
+<li>In the Web UI, go to the <strong>Simulations</strong> page and run the resimulation recording simulation by clicking on the <strong>Run Simulation</strong> button.</li>
+<li>
+<p>Navigate to the unzipped directory of the resimulation package in a terminal window and run the record script. The name of the recording cab be provided as a command-line argument:</p>
+<pre><code>cd scripts
+./record.sh sample.bag
+</code></pre>
+</li>
+<li>
+<p>Start driving around in the simulator using the arrow keys on the keyboard.</p>
+</li>
+<li>End the recording by pressing <strong>Ctrl+C</strong> in the terminal window. The recorded rosbag should appear in the <code>data</code> directory.</li>
+<li>Stop the simulation from the Web UI by pressing the <strong>Stop Simulation</strong> button.</li>
+</ol>
+<h2 id="resimulate">Resimulating the recording <a class="wikilink" href="#top">top</a><a class="headerlink" href="#resimulate" title="Permanent link">#</a></h2>
+<p>The resimulation tool parses recordings, processes them, and recreates them as resimulations. The parsed recordings can also be saved as scenario files with a <code>.p</code> extension which can be later used as input to the resimulation tool to avoid re-parsing recordings each time a resimulation is to be run.</p>
+<p>To run a resimulation from a rosbag follow these steps:</p>
+<ul>
+<li>From the simulator Web UI start the API-only simulation which was created for resimulation.</li>
+<li>
+<p>Navigate to the unzipped directory of the resimulation package and run the <code>resimulate.sh</code> script:</p>
+<pre><code>cd scripts
+./resimulate.sh -m "map name" sample.bag
+</code></pre>
+</li>
+<li>
+<p>Use the flag <code>-m</code> to specify the map the rosbag was recorded in.</p>
+</li>
+<li>For more command line arguments, including spawning and specifying an ego vehicle and specifying weather and road conditions, run <code>./resimulate.sh --help</code>.</li>
+<li>Once the resimulation is ready to be run you will be prompted to press the <strong>Enter</strong> key to start. Pressing <strong>Enter</strong> will start the playback in the simulator window.</li>
+</ul>
+<p>Once a specific recording has been resimulated, the parsed scenario file will be stored in a hidden folder within the <code>data</code> directory. If a cached parse file is available for a recording, the parsing step will be skipped and the parsed scenario file will be used as input for resimulation. If you wish to parse the rosbag recording again, use the <code>--force-parse</code> command-line argument. The cached scenario file can also be retrieved and stored in-place of the rosbag.</p>
+<p>By default the ego vehicle is not loaded. To load the ego vehicle the command-line argument <code>--ego</code> will spawn a <code>Lincoln2017MKZ (apollo 5.0)</code> vehicle (if the vehicle is added in <strong>My Library</strong>) in the appropriate location. To specify the vehicle model, enter its name following the <code>-v</code> flag. For example: <code>./resimulate.sh -m "map name" --ego -v "Hyundai2018Nexo" sample.bag</code>.</p>
+<p>Here are some examples of what a resimulation would look like with different road wetness conditions:</p>
+<p><img alt="" src="../../images/resimulation/env1.png" /></p>
+<p>​   Resimulating the original simulation in daylight environment</p>
+<p><img alt="" src="../../images/resimulation/env2.png" /></p>
+<p>​   Resimulating the same scenario, with road wetness</p>
+<p><img alt="" src="../../images/resimulation/env3.png" /></p>
+<p>​   Resimulating the scenario, with wet road and in night time</p>
+<h2 id="apollo-resim">Resimulation with Apollo in control of ego vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apollo-resim" title="Permanent link">#</a></h2>
+<p>The resimulation package includes functionality to run a resimulation while the ego vehicle is controlled by Apollo. This requires Apollo and the resimulation to be synchronized to ensure that all agents are at the correct state when Apollo begins to drive. For this to happen, an additional sensor plugin has been developed for the simulator which waits for the first control command from Apollo to be received by the simulator before starting the resimulation. Follow these steps to run Apollo with a resimulation:</p>
+<ul>
+<li>
+<p>Start the SVL Simulator</p>
+</li>
+<li>
+<p>In the web UI, add a sensor configuration for the <code>ApolloControlSensor</code> to the Apollo vehicle by choosing the vehicle in <strong>My Library</strong>, choosing <strong>Set Up Sensors</strong>  and adding the following entry to the JSON. Note that if you are not the owner of the vehilce you will need to <strong>Clone</strong> the vehicle to edit the sensor configuration by clicking on the <strong>Clone</strong> button. Clones vehicles will need to have a different name than the original vehicle's name so make sure to take note of this name and use it later for resimulation.</p>
+<pre><code>{
+  "type" : "ApolloControlSensor",
+  "name" : "Apollo Control Sensor",
+    "params": {
+      "Topic": "/apollo/control"
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>From the <strong>Test Cases</strong> tab, start the API-only test case</p>
+</li>
+<li>
+<p>Start Apollo 5.0</p>
+<ul>
+<li>Open a terminal, change directory to the <code>apollo-5.0</code> project (Use the <a href="https://github.com/lgsvl/apollo-5.0">lgsvl fork</a> to ensure compatibility)</li>
+<li>Start the Apollo container: <code>./docker/dev_start.sh</code></li>
+</ul>
+</li>
+<li>Enter the Apollo container: <code>./docker/dev_into.sh</code><ul>
+<li>If Apollo has not been built with the GPU option, build it using: <code>./apollo.sh build_gpu</code></li>
+<li>Start dreamview and cyber bridge: <code>bootstrap &amp;&amp; bridge.sh &amp;</code></li>
+<li>Open browser, enter address <a href="lhttp://localhost:8888">http://localhost:8888</a> to open dreamview and select the desired Map and Vehicle in the top right corner.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> Apollo modules will be started and stopped by the resimulation script, make sure all modules are off before running resimulation.</p>
+<ul>
+<li>
+<p>Start Resimulation</p>
+<ul>
+<li>
+<p>Navigate to the unzipped directory of the resimulation package and run the resimulate.sh script:</p>
+<pre><code>cd scripts
+./resimulate.sh -m "map name" --apollo --ego -v "your apollo 5.0 vehicle" sample.bag
+</code></pre>
+</li>
+<li>
+<p>Once the Simulator receives the control message from Apollo 5.0, resimulation will spawn agents and become ready to be run. You will be prompted to press the <strong>Enter</strong> key to start. Pressing <strong>Enter</strong> key will start the playback in the simulator window.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> resimulation will automatically set the destination in Apollo 5.0 as the nearest lane point of the recorded last position of ego vehicle. If you are recording your own data, make sure the ego vehicle's last pose is at a proper location.</p>
+<p>Here is an example of what a resimulation will look like when running with Apollo:
+<img alt="" src="../../images/resimulation/resimulation_apollo.png" /></p>
+<h2 id="command-line-args">Resimulation command-line arguments <a class="wikilink" href="#top">top</a><a class="headerlink" href="#command-line-args" title="Permanent link">#</a></h2>
+<p>Resimulation supports the following command-line arguments:</p>
+<table>
+<thead>
+<tr>
+<th>Command-line argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--simulator-api-host, -H</td>
+<td>IP address of machine running the  simulator</td>
+<td>SIMULATOR_HOST or 127.0.0.1</td>
+</tr>
+<tr>
+<td>--simulator-api-port, -P</td>
+<td>Simulator API port number</td>
+<td>8181</td>
+</tr>
+<tr>
+<td>--scene, -m</td>
+<td>Name of scene to load in simulator</td>
+<td>BorregasAve</td>
+</tr>
+<tr>
+<td>--ego</td>
+<td>Spawn ego vehicle</td>
+<td></td>
+</tr>
+<tr>
+<td>--vehicle, -v</td>
+<td>Specifies name of the ego vehicle model</td>
+<td>Lincoln2017MKZ (Apollo 5.0)</td>
+</tr>
+<tr>
+<td>--time-of-day, -t</td>
+<td>Time of the day as float [0..24]</td>
+<td></td>
+</tr>
+<tr>
+<td>--fix-time-of-day, -x</td>
+<td>Fixed time of day</td>
+<td></td>
+</tr>
+<tr>
+<td>--wetness, -w</td>
+<td>Road wetness as a float [0..1]</td>
+<td></td>
+</tr>
+<tr>
+<td>--rain, -r</td>
+<td>Rain intensity as a float [0..1]</td>
+<td></td>
+</tr>
+<tr>
+<td>--fog, -f</td>
+<td>Fog intensity as a float [0..1]</td>
+<td></td>
+</tr>
+<tr>
+<td>--save-waypoints, -p</td>
+<td>Path to save waypoints file</td>
+<td></td>
+</tr>
+<tr>
+<td>--nowait, -W</td>
+<td>Start simulation without user confirmation</td>
+<td></td>
+</tr>
+<tr>
+<td>--log-level, -L</td>
+<td>Specify logging level</td>
+<td>INFO</td>
+</tr>
+<tr>
+<td>--config, -c</td>
+<td>Path to configuration file</td>
+<td></td>
+</tr>
+<tr>
+<td>--gen-config</td>
+<td>Generate configuration file</td>
+<td></td>
+</tr>
+<tr>
+<td>--force-parse</td>
+<td>Do not use cached pickle files</td>
+<td>False</td>
+</tr>
+<tr>
+<td>--start, -s</td>
+<td>Start <code>SEC</code> seconds into the bag file</td>
+<td></td>
+</tr>
+<tr>
+<td>--duration, -d</td>
+<td>Play only the next <code>SEC</code> seconds from the bag file</td>
+<td></td>
+</tr>
+<tr>
+<td>--apollo</td>
+<td>Drive ego vehicle using Apollo during a resimulation</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

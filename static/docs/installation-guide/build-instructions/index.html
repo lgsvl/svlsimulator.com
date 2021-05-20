@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Building from source";
     var mkdocs_page_input_path = "installation-guide/build-instructions.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/installation-guide/build-instructions/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -127,7 +127,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -332,6 +332,10 @@
 		
     <span class="caption-text">Simulation Content</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../simulation-content/assets/">Building content</a>
@@ -597,7 +601,7 @@
 <h2 id="build-stand-alone">Building a standalone executable <a class="wikilink" href="#top">top</a><a class="headerlink" href="#build-stand-alone" title="Permanent link">#</a></h2>
 <ol>
 <li>
-<p>Clone simulator from GitHub (open-source) release branch.</p>
+<p>Clone simulator project from <a href="https://github.com/lgsvl/simulator">GitHub</a> (open-source) release branch.</p>
 <ul>
 <li>Open a terminal and navigate to where you want the Simulator to be downloaded to<ul>
 <li>If you want the Simulator in your <code>Documents</code> folder, use <code>cd</code> in the terminal so that the input for the terminal is similar to <code>/Documents$</code></li>
@@ -621,6 +625,7 @@
 </ul>
 </li>
 </ul>
+<p><strong>Note:</strong> Please checkout the "release-*" branches or release tags for stable (ready features) and "master" branch for unstable (preview of work in progress).</p>
 </li>
 <li>
 <p>Run Unity Hub</p>
@@ -635,6 +640,7 @@
 <p>Double-click the name of the project to launch Unity Editor</p>
 </li>
 </ol>
+<p><strong>Note:</strong> On Ubuntu 18.04, create an empty sample project before adding an existing project as mentioned in step 1. </p>
 </li>
 <li>
 <p>Open the <strong>Simulator</strong> menu from the top toolbar and select <strong>Build...</strong> to open the build window (shown below with a red outline)</p>

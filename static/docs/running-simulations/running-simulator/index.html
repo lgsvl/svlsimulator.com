@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Running Simulator";
     var mkdocs_page_input_path = "running-simulations/running-simulator.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/running-simulations/running-simulator/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -332,6 +332,10 @@
 		
     <span class="caption-text">Simulation Content</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../simulation-content/assets/">Building content</a>
@@ -821,7 +825,7 @@ This guide will walk you through the steps of adding assets from the <strong>Sto
 <li>The TestCaseRunner for VSE won't turn off apollo modules when the scenario finishes. You need to disable the modules once you finish the testing.</li>
 <li>If your VSE based simulation is not working correctly, please make sure apollo has corresponding HD maps (HD map folder name should match the map name) and vehicle calibration files, and bridge is running.</li>
 <li>Visual scenario editor template simulations with Autopilot only work on Linux at the moment. We are working on adding the Windows support.</li>
-<li>VSE based simulations only support Apollo 5.0 at the moment as it is based on <a href="../../python-api/dreamview-api/">dreamview-python-api</a>.</li>
+<li>VSE based simulations only support Apollo 5.0 and above at the moment as it is based on <a href="../../python-api/dreamview-api/">dreamview-python-api</a>.</li>
 </ul>
 </li>
 </ol>

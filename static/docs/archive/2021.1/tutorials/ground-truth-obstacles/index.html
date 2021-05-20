@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Viewing and subscribing to ground truth obstacles - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Viewing and subscribing to ground truth obstacles";
+    var mkdocs_page_input_path = "tutorials/ground-truth-obstacles.md";
+    var mkdocs_page_url = "/docs/tutorials/ground-truth-obstacles/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Viewing and subscribing to ground truth obstacles</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>Viewing and subscribing to ground truth obstacles</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/tutorials/ground-truth-obstacles.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Ground Truth Obstacles</h1>
+<p>You can use the SVL Simulator to view, publish, and compare ground truth obstacle information. The simulator allows visualization of 2D or 3D bounding boxes of vehicles and pedestrians, and publishes detailed information about the ground truth obstacles.</p>
+<h2 id="sensor-configuration-for-ground-truth-sensors">Sensor Configuration for Ground Truth Sensors <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-configuration-for-ground-truth-sensors" title="Permanent link">#</a></h2>
+<pre><code class="JSON">[
+    {
+        &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
+        &quot;name&quot;: &quot;3D Ground Truth Sensor&quot;,
+        &quot;params&quot;: {
+            &quot;Topic&quot;: &quot;/simulator/ground_truth/3d_detections&quot;
+        },
+        &quot;transform&quot;: {
+            &quot;x&quot;: 0,
+            &quot;y&quot;: 1.96,
+            &quot;z&quot;: 1.0510799,
+            &quot;pitch&quot;: 0,
+            &quot;roll&quot;: 0,
+            &quot;yaw&quot;: 0
+        }
+    },
+    {
+        &quot;type&quot;: &quot;PerceptionSensor2D&quot;,
+        &quot;name&quot;: &quot;2D Ground Truth Sensor&quot;,
+        &quot;params&quot;: {
+            &quot;Topic&quot;: &quot;/simulator/ground_truth/2d_detections&quot;
+        },
+        &quot;transform&quot;: {
+            &quot;x&quot;: 0,
+            &quot;y&quot;: 1.348,
+            &quot;z&quot;: 1.219,
+            &quot;pitch&quot;: 0,
+            &quot;roll&quot;: 0,
+            &quot;yaw&quot;: 0
+        }
+    },
+    {
+        &quot;type&quot;: &quot;KeyboardControlSensor&quot;,
+        &quot;name&quot;: &quot;Keyboard Control Sensor&quot;
+    }
+]
+</code></pre>
+
+<h2 id="view-ground-truth-obstacles-in-simulator">View Ground Truth Obstacles in Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#view-ground-truth-obstacles-in-simulator" title="Permanent link">#</a></h2>
+<p>Ground truth obstacles for vehicles and pedestrians can be visualized in the simulator with both 3D bounding boxes and 2D bounding boxes.</p>
+<p>To view 3D Bounding boxes in the simulator:</p>
+<ul>
+<li>Launch SVL simulator and click the <code>Open Browser</code> button</li>
+<li>Create a sensor configuration with <code>ROS</code> bridge and the sensors listed above on your desired vehicle</li>
+<li>Create a simulation:<ul>
+<li>Set <code>Random Traffic</code> mode</li>
+<li>Set your desired map (e.g., <code>BorregasAve</code>)</li>
+<li>Set your desried vehicle (e.g., <code>Lincoln2017MKZ</code>) with the sensor configuration created above</li>
+<li>Enable <code>Random Traffic</code> and <code>Random Pedestrians</code></li>
+</ul>
+</li>
+<li>Run simulation</li>
+<li>Enable visualization for <code>3D Ground Truth Sensor</code> inside the simulator</li>
+</ul>
+<p>You should see 3D bounding boxes highlighting NPC vehicles and pedestrians in the simulator main view.</p>
+<p><img alt="Ground Truth 3D Visualization" src="../../images/ground-truth-obstacles/ground-truth-3d.png" /></p>
+<p>To view 2D bounding boxes:</p>
+<ul>
+<li>Follow the steps listed above</li>
+<li>Enable visualization for <code>2D Ground Truth Sensor</code> inside the simulator</li>
+</ul>
+<p>You should see 2D bounding boxes highlighting NPC vehicles and pedestrians in the camera view.</p>
+<p><img alt="Ground Truth 2D Visualization" src="../../images/ground-truth-obstacles/ground-truth-2d.png" /></p>
+<h3 id="bounding-box-colors">Bounding Box Colors <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bounding-box-colors" title="Permanent link">#</a></h3>
+<ul>
+<li>Green: Vehicles</li>
+<li>Yellow: Pedestrians</li>
+</ul>
+<h2 id="subscribe-to-ground-truth-ros-messages">Subscribe to Ground Truth ROS Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#subscribe-to-ground-truth-ros-messages" title="Permanent link">#</a></h2>
+<p>SVL Simulator also publishes custom ROS messages describing the ground truth data of non-ego vehicles.</p>
+<p>In order to subscribe to the ground truth messages, you will need the ROS package <a href="https://github.com/lgsvl/lgsvl_msgs">lgsvl_msgs</a>. It contains custom ROS message types for 2D and 3D bounding boxes. You will also need to be running rosbridge.</p>
+<h3 id="install-the-lgsvl_msgs-ros-package">Install the <code>lgsvl_msgs</code> ROS Package<a class="headerlink" href="#install-the-lgsvl_msgs-ros-package" title="Permanent link">#</a></h3>
+<ol>
+<li>Clone <code>lgsvl_msgs</code> to your ROS workspace or <code>msgs</code> directory:</li>
+</ol>
+<p><code>$ git clone https://github.com/lgsvl/lgsvl_msgs {MY_ROS_WS}</code></p>
+<ol>
+<li>Build the ROS workspace:</li>
+</ol>
+<p><code>$ catkin_make</code></p>
+<h3 id="ros-topics-and-message-types-for-ground-truth-messages">ROS Topics and Message Types for Ground Truth Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#ros-topics-and-message-types-for-ground-truth-messages" title="Permanent link">#</a></h3>
+<ul>
+<li>Ground Truth 2D messages<ul>
+<li>Topic: /simulator/ground_truth/2d_detections</li>
+<li>Message type: lgsvl_msgs/Detection2DArray: <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/Detection2DArray.msg">Link</a></li>
+</ul>
+</li>
+<li>Ground Truth 3D messages<ul>
+<li>Topic: /simulator/ground_truth/3d_detections</li>
+<li>Message type: lgsvl_msgs/Detection3DArray: <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/Detection3DArray.msg">Link</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="view-object-detections-from-apollo-in-svl-simulator">View Object Detections from Apollo in SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#view-object-detections-from-apollo-in-svl-simulator" title="Permanent link">#</a></h2>
+<p>If you are running Apollo with SVL Simulator, you can also visualize object detection outputs from Apollo in the simulator using the <a href="../../simulation-content/sensors-list/#apollo-perception-visualizer-3d">Apollo Perception Visualizer 3D Sensor</a>. Make sure that the Apollo perception module is running and detecting obstacles in Dreamview as below:</p>
+<p><img alt="Apollo Dreamview" src="../../images/ground-truth-obstacles/dreamview.png" /></p>
+<p>To view object detections from Apollo:</p>
+<ul>
+<li>Launch SVL simulator and click the <code>Open Browser</code> button</li>
+<li>Add the <code>Apollo Perception Visualizer 3D Sensor</code> into your Apollo sensor configuration with the <code>CyberRT</code> bridge<ul>
+<li>Set sensor topic as <code>/apollo/perception/obstacles</code></li>
+</ul>
+</li>
+<li>Create a simulation:<ul>
+<li>Set <code>Random Traffic</code> mode</li>
+<li>Set your desired map (e.g., <code>BorregasAve</code>)</li>
+<li>Set your desried vehicle (e.g., <code>Lincoln2017MKZ</code>) with the sensor configuration created above</li>
+<li>Enable <code>Random Traffic</code> and <code>Random Pedestrians</code></li>
+</ul>
+</li>
+<li>Run simulation</li>
+<li>Enable visualization for the <code>Apollo Perception Visualizer 3D Sensor</code> inside the simulator</li>
+</ul>
+<p>You should see 3D bounding boxes highlighting Apollo LiDAR detections in the simulator main view.</p>
+<p><img alt="Apollo Perception Visualization" src="../../images/ground-truth-obstacles/apollo-perception-visualizer.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../user-interface/web/store/" class="btn btn-neutral float-right" title="Store">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../create-ros2-ad-stack/" class="btn btn-neutral" title="Creating a simple ROS2-based AD stack"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../create-ros2-ad-stack/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../user-interface/web/store/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

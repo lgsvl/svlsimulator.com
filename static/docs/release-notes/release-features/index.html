@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Release features";
     var mkdocs_page_input_path = "release-notes/release-features.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/release-notes/release-features/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -127,7 +127,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -334,6 +334,10 @@
     <ul class="subnav">
                 <li class="">
                     
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../simulation-content/assets/">Building content</a>
                 </li>
                 <li class="">
@@ -524,25 +528,16 @@
           <div role="main">
             <div class="section">
               
-                <h1>2021.1 Release Features</h1>
-<h2 id="new-online-web-user-interface">New online web user interface <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-online-web-user-interface" title="Permanent link">#</a></h2>
-<p>With the 2021.1 release, we introduce a new online <a href="https://wise.svlsimulator.com">web user interface</a>. You can now log in to your account, link a local simulation cluster, and run a simulation. This means you’ll be able to directly upload maps and vehicle assets that you use for your simulations to your account, without needing to host them online somewhere else. You will also be able to easily share content with other registered users both publicly and privately.</p>
-<p>Set up a simulation with one of our four <a href="../../running-simulations/runtime-templates/">runtime templates</a>, then trigger a simulation to run automatically from your browser.</p>
-<p><strong>Please note</strong>: In order to migrate to 2021.1 release of simulator, you will have to create a new account at our new <a href="https://www.svlsimulator.com">website.</a></p>
-<h2 id="visual-scenario-editor-(vse)">Visual Scenario Editor (VSE) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#visual-scenario-editor-(vse)" title="Permanent link">#</a></h2>
-<p>To enable easy scenario generation, we introduce a simple-to-use <a href="../../creating-scenarios/visual-scenario-editor/">Visual Scenario Editor</a> with support for traffic vehicle and pedestrian waypoints. The VSE allows you to create a scenario in a GUI editor by placing ego vehicle(s), traffic agents, and objects, then set behaviors for agents and objects to create, preview, and save a scenario to run as a simulation.</p>
-<h2 id="simulation-test-reports">Simulation test reports <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simulation-test-reports" title="Permanent link">#</a></h2>
-<p>With use of our new end-to-end automated runtime templates, you can execute repeatable simulated scenario test cases on your autonomous driving stack. To help you analyze the results of such test cases, we have added a new <a href="../../user-interface/web/test-results/">test results</a> section with detailed test reports.</p>
-<p>You can analyze many types of detected events in the reports. These include stop sign violation, speed limit violation, sudden braking, low simulator performance, ego collision, sudden steer, sudden jerk, ego stuck and red light violations. You can also see a <a href="(../simulation-content/sensors-list/#video-recording-sensor)">video playback</a> of the scenario in the test report.</p>
-<p>You can <a href="../../running-simulations/running-simulator/#publiclibrary">Add to Library</a> our example public simulations to quickly try these features or create your own simulations using the different runtime templates for your scenarios.</p>
-<h2 id="road-network-generation">Road network generation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#road-network-generation" title="Permanent link">#</a></h2>
-<p>You can now <a href="../../simulation-content/hd-map-mesh-generation/">create environments</a> directly from imported map annotations. This means that after importing an OpenDrive, Lanelet2, Autoware, or Apollo HD map/vector map, you will be able to procedurally generate an environment in Developer Mode, which you can then use for your simulations, just like any other environment.</p>
-<h2 id="sensor-plugins-and-improvements">Sensor plugins and improvements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-plugins-and-improvements" title="Permanent link">#</a></h2>
-<p>All sensors used in SVL Simulator are now <a href="../../plugins/sensor-plugins/">sensor plugins</a>. Many new sensor plugins are now available on our <a href="https://wise.svlsimulator.com/plugins/public">Asset Store</a>. We have also added the ability to add certain types of noise to sensor data using <a href="../simulation-content/sensors-list/#color-camera">post-processing effects</a>, such as sun-flare, raindrops, greyscale, and video artifacts.</p>
-<p>The <a href="../simulation-content/sensors-list/#lidar">LiDAR sensor</a> performance has also been greatly improved by moving calculations to compute shaders.</p>
-<h2 id="apollo-modular-testing---planning">Apollo modular testing - planning <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apollo-modular-testing---planning" title="Permanent link">#</a></h2>
-<p>With our simulator publishing ground truth information for non-ego agents and obstacles, you can <a href="../../tutorials/modular-testing/">test Apollo by module</a>, including prediction and planning. This means that, if you work on just the planning subsystem, you can quickly create scenarios and test your algorithms in isolation, but still as part of an end-to-end test.</p>
-<h2 id="bug-fixes-and-improvements">Bug Fixes and Improvements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">#</a></h2>
+                <h1>2021.1.1 Release Features</h1>
+<h2 id="new-interactive-3d-sensor-configuration-visualizer">Interactive 3D visualizer for creating sensor configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-interactive-3d-sensor-configuration-visualizer" title="Permanent link">#</a></h2>
+<p>With the 2021.1.1 release, the new interactive <a href="../../user-interface/web/library/#interacting-with-the-visual-editor">3D sensor configuration visualizer</a> helps you create or modify sensor configurations for your vehicles. The 3D visual editor is integrated with the parameter editor and allows you to visually place sensors around the vehicle.</p>
+<h2 id="new-hd-map-preview">HD Map Preview for uploaded assets <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-hd-map-preview" title="Permanent link">#</a></h2>
+<p>You can now preview an interactive <a href="../../user-interface/web/library/#previewing-the-hd-map">HD map</a> in your browser before choosing the map asset to use in the simulation. This will help you check if the road network on this 3D map is suitable for your desired simulation test case and scenario.</p>
+<h2 id="tutorials-on-web-interface-pages">Tutorials on all web user interface pages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#tutorials-on-web-interface-pages" title="Permanent link">#</a></h2>
+<p>We now have tutorial videos on all web user interface pages to better guide you on the workflow for a particular feature.</p>
+<h2 id="sharing-feature">Support for sharing private assets, simulations and test reports <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sharing-feature" title="Permanent link">#</a></h2>
+<p>You can now <a href="../../simulation-content/sharing/">share</a> your private maps, vehicles, plugins, simulations and test reports with other registered users through the web user interface. This enables you to share uploaded content and simulations with team members or other collaborators, as well as quickly reproduce and verify others' results.</p>
+<h2 id="bug-fixes-and-improvements">Bug fixes and improvements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">#</a></h2>
 <p>For a full list of bug fixes, improvements, and all other changes since the last release, please see the <a href="../changelog/">release notes</a>.</p>
               
             </div>

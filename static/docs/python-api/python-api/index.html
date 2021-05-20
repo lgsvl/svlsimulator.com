@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Python API guide";
     var mkdocs_page_input_path = "python-api/python-api.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/python-api/python-api/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -332,6 +332,10 @@
 		
     <span class="caption-text">Simulation Content</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../simulation-content/assets/">Building content</a>
@@ -559,7 +563,7 @@ for more information.</p>
 </li>
 <li><a href="#sensors">Sensors</a><ul>
 <li><a href="#camera-sensor">Camera Sensor</a></li>
-<li><a href="#lidar-sensor">Lidar Sensor</a></li>
+<li><a href="#lidar-sensor">LiDAR Sensor</a></li>
 <li><a href="#imu-sensor">IMU Sensor</a></li>
 <li><a href="#gps-sensor">GPS Sensor</a></li>
 <li><a href="#radar-sensor">Radar Sensor</a></li>
@@ -931,7 +935,7 @@ arguments: <code>(agent, index)</code> - agent instance and waypoint index as in
 <p><a href="#ego-vehicle">EGO vehicles</a> have sensors attached. You can view the configuration of the sensors in the Web Ui. The following sensor classes have been defined to facilitate their use with the Python Api. These classes can only be used if the sensor configuration of the ego vehicle includes the sensor.</p>
 <ul>
 <li><strong>CameraSensor</strong> - see <a href="#camera-sensor">Camera</a> sensor</li>
-<li><strong>LidarSensor</strong> - see <a href="#lidar-sensor">Lidar</a> sensor</li>
+<li><strong>LidarSensor</strong> - see <a href="#lidar-sensor">LiDAR</a> sensor</li>
 <li><strong>ImuSensor</strong> - see <a href="#imu-sensor">IMU</a> sensor</li>
 <li><strong>GpsSensor</strong> - see <a href="#gps-sensor">GPS</a> sensor</li>
 <li><strong>RadarSensor</strong> - see <a href="#radar-sensor">Radar</a> sensor</li>
@@ -967,8 +971,8 @@ for sensor in ego.get_sensors():
 
 <p><code>save</code> method accepts a path relative to the running simulator, and an optional <code>compression</code> for png files (0...9)
 or <code>quality</code> (0..100) for jpeg files.</p>
-<h3 id="lidar-sensor">Lidar Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar-sensor" title="Permanent link">#</a></h3>
-<p>Lidar sensor has following read only properties:</p>
+<h3 id="lidar-sensor">LiDAR Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar-sensor" title="Permanent link">#</a></h3>
+<p>LiDAR sensor has following read only properties:</p>
 <ul>
 <li><code>min_distance</code> - minimal distance for capturing points</li>
 <li><code>max_distance</code> - maximum distance for capturing points</li>
@@ -976,10 +980,10 @@ or <code>quality</code> (0..100) for jpeg files.</p>
 <li><code>rotations</code> - frequency of rotation, typically 10Hz</li>
 <li><code>measurements</code> - how many measurements per rotation each ray is taking</li>
 <li><code>fov</code> - vertical field of view (bottom to top ray) in degrees</li>
-<li><code>angle</code> - angle lidar is tilted (middle of fov view)</li>
-<li><code>compensated</code> - bool, whether lidar point cloud is compensated</li>
+<li><code>angle</code> - angle LiDAR is tilted (middle of fov view)</li>
+<li><code>compensated</code> - bool, whether LiDAR point cloud is compensated</li>
 </ul>
-<p>Lidar point cloud can be saved to disk as a .pcd file by calling <code>save</code>:</p>
+<p>LiDAR point cloud can be saved to disk as a .pcd file by calling <code>save</code>:</p>
 <pre><code class="python">ego = sim.add_agent(&quot;47b529db-0593-4908-b3e7-4b24a32a0f70&quot;, lgsvl.AgentType.EGO)
 
 for sensor in ego.get_sensors():

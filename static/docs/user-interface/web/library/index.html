@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Library";
     var mkdocs_page_input_path = "user-interface/web/library.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/user-interface/web/library/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -334,6 +334,10 @@
     <ul class="subnav">
                 <li class="">
                     
+    <a class="" href="../../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../../simulation-content/assets/">Building content</a>
                 </li>
                 <li class="">
@@ -529,19 +533,20 @@
             <div class="section">
               
                 <h1>Library</h1>
-<p>The Library page in the SVL Simulator user interface displays the set of maps and vehicles that you have added to your account, and which are available for use in simulations. </p>
+<p>The Library page in the SVL Simulator user interface displays the set of maps and vehicles that you have added to your account, and which are available for use in simulations. A tutorial video on adding an asset from the Store, as well as uploading your own asset, can be found <a href="https://youtu.be/KL-PxiHpPH0">here</a>.</p>
 <p><a href="../../../images/my-library/mylibrary-maps-full.png"><img alt="" src="../../../images/my-library/mylibrary-maps-full.png" /></a></p>
 <h2 id="introduction">Introduction <a class="wikilink" href="#top">top</a><a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>Library is the central place for all of the content and data associated with your SVL Simulator account. You can access your maps and vehicles from anywhere once you log in to your account, allowing you to save your content in the cloud, including your own map environments, plugins, vehicle models, and sensor configurations. </p>
 <h2 id="maps">Maps <a class="wikilink" href="#top">top</a><a class="headerlink" href="#maps" title="Permanent link">#</a></h2>
-<p>When you log in for the first time, your Library page will be empty.</p>
+<p>When you log in for the first time, your Library page will show some widely used default assets that are automatically made available to your account.</p>
 <p><a href="../../../images/my-library/mylibrary-maps-empty.png"><img alt="" src="../../../images/my-library/mylibrary-maps-empty.png" /></a></p>
 <p>You can click:</p>
 <ul>
 <li>"All" to see all maps that you have added to your Library.</li>
-<li>"Owned by me" lists maps for which you are the owner (meaning they were built and uploaded by you).</li>
-<li>"Shared by me" lists maps that are owned by you and were to other users (using the Sharing feature).</li>
-<li>"Shared with me" lists maps that were shared with you by others users.</li>
+<li>"My Content" lists maps for which you are the owner (meaning they were built and uploaded by you).</li>
+<li>"My Shares" lists maps that are owned by you and were to other users (using the Sharing feature).</li>
+<li>"Added from Store" lists maps from other users that you have added to your library from store.</li>
+<li>"Shared with Me" lists maps that were shared with you by other users.</li>
 </ul>
 <h3 id="adding-a-map">Adding a map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-a-map" title="Permanent link">#</a></h3>
 <p>You can add maps to your Library from either the <a href="../store/">Store</a> page or by clicking the "Add new" button at the top right. </p>
@@ -572,6 +577,9 @@
 <li>Share: You can share your private maps with other users to allow them to use the map in their simulations.</li>
 <li>Download the associated HD map in various supported formats that were built into the asset. </li>
 </ul>
+<h4 id="previewing-the-hd-map">Previewing the HD Map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#previewing-the-hd-map" title="Permanent link">#</a></h4>
+<p>Select the eye icon in the HD Maps header to open a dialog with an interactive version of the HD map in the browser. The preview includes the lane lines of the roads and can be zoomed or rotated to inspect different parts of the map.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-hdmap.png"><img alt="" src="../../../images/my-library/mylibrary-maps-hdmap.png" /></a></p>
 <h3 id="editing-a-map">Editing a map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-a-map" title="Permanent link">#</a></h3>
 <p>Editing a map allows you to update the details about your new map, including Map Name, Description, License, Copyright, and Tags. If the map is your own, then you can also update the asset bundle of the map and also upload new asset bundles for supporting various 'SVL Simulator' versions.</p>
 <p><a href="../../../images/my-library/mylibrary-maps-edit.png"><img alt="" src="../../../images/my-library/mylibrary-maps-edit.png" /></a></p>
@@ -601,11 +609,11 @@
 <p><a href="../../../images/my-library/mylibrary-vehicles-upload-details.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-upload-details.png" /></a></p>
 </li>
 <li>
-<p>Each vehicle can have multiple configurations and must have at least one configuration to use the vehicle in a simulation. Click "Create New Configuration" to create a new configuration or "Next" to continue without a configuration. You can create a configuration later by <a href="#editing-a-vehicle">editing the vehicle</a>.</p>
+<p>Each vehicle can have multiple configurations and must have at least one configuration to use the vehicle in a simulation. Click "Create New Configuration" to create a new configuration or "Next" to continue without a configuration. You can create a configuration later by <a href="#editing-a-vehicle">editing the vehicle</a>. A tutorial video on creating a sensor configuration for a vehicle can be found <a href="https://youtu.be/CQCk6OK1HP0">here</a>.</p>
 <p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-empty.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-empty.png" /></a></p>
 </li>
 <li>
-<p>If you have created a configuration, enter a name for the configuration, select a <a href="#bridge-types">Bridge</a>, and click "Create".</p>
+<p>To create the configuration, enter a name for the configuration, select a <a href="#bridge-types">Bridge</a>, and click "Create".</p>
 <p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-add.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-add.png" /></a></p>
 </li>
 <li>
@@ -638,7 +646,7 @@
 <p>NOTE: Any changes to the vehicle such as Removing from the Store, or Unpublishing it, or Deleting will not be retroactively applied. That is the changes will have no impact on the users who <strong>already</strong> have the vehicle in their library. For example, if a vehicle is already in a user's library, then that user can continue to use the vehicle in the simulations even if the vehicle has been removed from the store or has been deleted or unpublished by the owner.</p>
 <h3 id="managing-sensor-configurations">Managing Sensor Configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#managing-sensor-configurations" title="Permanent link">#</a></h3>
 <p>Each vehicle can have multiple sensor configurations. When you use a vehicle in a simulation, you will have an opportunity to select the sensor configuration to use in that simulation. The currently available sensor configurations are listed on the vehicle page. If a vehicle was added from the Store or if a vehicle is shared with you, you will also see the configurations created by the owner of the vehicle.</p>
-<p>To create or modify a new sensor configuration when <a href="#viewing-a-vehicle">viewing a vehicle</a>, click the icon to the right of "Sensor Configurations". When <a href="#editing-a-vehicle">editing a vehicle</a>, click the "Sensor Configurations" tab at the top of the view.</p>
+<p>To create or modify a new sensor configuration when <a href="#viewing-a-vehicle">viewing a vehicle</a>, click the icon to the right of "Sensor Configurations". When <a href="#editing-a-vehicle">editing a vehicle</a>, click the "Sensor Configurations" tab at the top of the view.  A tutorial video on creating a sensor configuration for a vehicle can be found <a href="https://youtu.be/CQCk6OK1HP0">here</a>.</p>
 <p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-edit.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-edit.png" /></a></p>
 <p>The Sensor Configurations tab provides several actions:</p>
 <ul>
@@ -663,9 +671,20 @@
 <blockquote>
 <p><strong>Note:</strong> You do not need to "Save" after editing a sensor but must click "Save" to commit all of the changes you have made.</p>
 </blockquote>
+<h4 id="interacting-with-the-visual-editor">Interacting with the Visual Editor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#interacting-with-the-visual-editor" title="Permanent link">#</a></h4>
+<p>The visual editor is integrated with the parameter editor and allows you to visually place sensors around the vehicle. It includes several tools for manipulating a sensor:</p>
+<ul>
+<li><strong>Selection tool</strong> selects the active sensor. </li>
+<li><strong>Move tool</strong> moves the sensor along the X, Y, or Z axis.</li>
+<li><strong>Rotate tool</strong> rotates the sensor around the X, Y, or Z axis.</li>
+<li><strong>Vehicle Transparency tool</strong> toggles the transparency of the vehicle model to help when placing sensors in or below the vehicle.</li>
+<li><strong>Orientation tool</strong> illustrates the current orientation of the vehicle. Clicking one of the axis cones will snap the camera to look down that axis.</li>
+</ul>
+<p><a href="../../../images/my-library/mylibrary-vehicles-page-visualeditor.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-visualeditor.png" /></a></p>
+<p>The editor also includes buttons to <strong>Undo</strong> and <strong>Redo</strong> any changes you've made to the sensor configuration. These actions will undo any sensor configuration changes include parameter values are not restricted to changes made in the visual editor.</p>
 <h3 id="migrating-legacy-sensor-configurations">Migrating Legacy Sensor Configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#migrating-legacy-sensor-configurations" title="Permanent link">#</a></h3>
 <p>If you have an older legacy sensor configuration that uses the <code>type</code> instead of the <code>plugin</code> field to identify the plugins, you can select the "&lt;&gt;" icon in the Preview header to paste this configuration into the JSON Editor. Clicking "Save" will validate and save the configuration and return an updated version compatible with the current schema.</p>
-<p><em>NOTE</em>: Most of the sensor <code>type</code> names have changed since 2021.1 release. You can find the latest <code>type</code> names from <a href="../../../simulation-content/sensors-list/">sensors</a> documentation.
+<p><em>NOTE</em>: Most of the sensor <code>type</code> names have changed for the 2021.1 release. You can find the latest <code>type</code> names from the <a href="../../../simulation-content/sensors-list/">sensors</a> documentation.
   <a href="../../../images/my-library/mylibrary-vehicles-page-sensor-config-json.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-sensor-config-json.png" /></a></p>
 <h3 id="working-with-sensor-configurations-created-by-other-users">Working with Sensor Configurations created by other users <a class="wikilink" href="#top">top</a><a class="headerlink" href="#working-with-sensor-configurations-created-by-other-users" title="Permanent link">#</a></h3>
 <p>When a vehicle is shared with you or when a vehicle is added to the library, you also gain access to the sensor configurations created by the owner of the vehicle. Sometimes, these sensor configurations may contain plugins that you do not have in your library. When that occurs, you will see warning messages with available actions for each type of problem.</p>
@@ -695,7 +714,7 @@
 <p>The JSON includes:</p>
 <ul>
 <li>a GPS sensor in the center of the vehicle that publishes data on the "/nmea_sentence" topic</li>
-<li>a LIDAR sensor 2.312m above the center of the vehicle that publishes data on the "/points_raw" topic</li>
+<li>a LiDAR sensor 2.312m above the center of the vehicle that publishes data on the "/points_raw" topic</li>
 <li>a Keyboard Control input which allows the keyboard input to control the car</li>
 <li>a Vehicle Control input which subscribes to the Autoware AD Stack control commands</li>
 </ul>

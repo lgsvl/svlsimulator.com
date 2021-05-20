@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Running Apollo 6.0 with SVL Simulator [](#top)";
     var mkdocs_page_input_path = "system-under-test/apollo6-0-instructions.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/system-under-test/apollo6-0-instructions/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -330,6 +330,10 @@
 		
     <span class="caption-text">Simulation Content</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../simulation-content/assets/">Building content</a>
@@ -552,7 +556,7 @@
 <p>This guide outlines the steps required to setup Apollo for use with the SVL Simulator. If you have not already set up the simulator, please do so first by following the instructions in <a href="../../installation-guide/installing-simulator/">Installing the SVL Simulator</a>.</p>
 <h2 id="prerequisites">Prerequisites <a class="wikilink" href="#top">top</a><a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
-<li>Ubuntu 16.04 or later (Ubuntu 18.04 is preferred)</li>
+<li>Ubuntu 18.04 or later</li>
 <li>NVIDIA graphics card (required for perception and prediction)<ul>
 <li>NVIDIA proprietary driver (>=410.48) must be installed</li>
 </ul>
@@ -630,7 +634,7 @@ The Apollo build may fail on machines with less than 1GB of RAM per CPU core due
 <li>Create a new folder with the new vehicle's name under <code>APOLLO_ROOT/modules/calibration/data</code>.</li>
 <li>Copy all calibration files of <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/calibration/data/Lincoln2017MKZ_LGSVL">Lincoln 2017 MKZ</a> to the folder.</li>
 <li>Update vehicle parameters in <code>vehicle_param.pb.txt</code> if your new vehicle is different from Lincoln 2017 MKZ.</li>
-<li>Update lidar calibration files in <code>velodyne_params</code> folder. If you have different configuration for lidar with respect to novatel, you need to update lidar's height and extrinsics.</li>
+<li>Update LiDAR calibration files in <code>velodyne_params</code> folder. If you have different configuration for LiDAR with respect to novatel, you need to update LiDAR's height and extrinsics.</li>
 <li>Update camera calibration files in <code>camera_params</code> folder. You need to update camera intrinsics and extrinsics for your own camera and sensor configurations.</li>
 <li>You may also need to update other sensor calibration files if you are using them on your vehicle.</li>
 </ul>

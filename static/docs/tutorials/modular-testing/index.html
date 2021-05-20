@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Modular testing with the Apollo AD stack";
     var mkdocs_page_input_path = "tutorials/modular-testing.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/tutorials/modular-testing/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -332,6 +332,10 @@
 		
     <span class="caption-text">Simulation Content</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../simulation-content/assets/">Building content</a>
@@ -578,7 +582,7 @@
 <li>Topic: <strong>/apollo/perception/traffic_light</strong></li>
 </ul>
 <h3 id="sensor-json">Sensor JSON <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-json" title="Permanent link">#</a></h3>
-<p>The following sensor parameters can be added to a vehicle sensor configuration (and can replace the lidar and camera sensors which will improve simulation performance). Refer to <a href="../../user-interface/web/library/#vehicles">Vehicles in My Library</a> for more information on vehicle sensor configuration.</p>
+<p>The following sensor parameters can be added to a vehicle sensor configuration (and can replace the LiDAR and camera sensors which will improve simulation performance). Refer to <a href="../../user-interface/web/library/#vehicles">Vehicles in My Library</a> for more information on vehicle sensor configuration.</p>
 <pre><code class="JSON">  {
     &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
     &quot;name&quot;: &quot;3D Ground Truth&quot;,
@@ -625,7 +629,7 @@
 <li>Vehicle<ul>
 <li>Choose <em>Lincoln2017MKZ</em> vehicle for Apollo</li>
 <li>Attach <code>3D Ground Truth sensor</code> and <code>Signal sensor</code> with the sensor parameters above</li>
-<li>Optionally, you can remove <code>Color Camera</code> and <code>Lidar</code> sensors from the sensor configuration as these sensors are not required for modular testing</li>
+<li>Optionally, you can remove <code>Color Camera</code> and <code>LiDAR</code> sensors from the sensor configuration as these sensors are not required for modular testing</li>
 </ul>
 </li>
 <li>Run simulation with <code>Random Traffic</code> enabled</li>
@@ -663,7 +667,7 @@
         <a href="../lane-following/" class="btn btn-neutral float-right" title="Deep learning lane following model">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../getting-started/getting-started/" class="btn btn-neutral" title="First start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../getting-started/getting-started/" class="btn btn-neutral" title="Run a simulation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
