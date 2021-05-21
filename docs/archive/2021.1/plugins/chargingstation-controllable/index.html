@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Controllable - ChargingStation - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Controllable - ChargingStation";
+    var mkdocs_page_input_path = "plugins/chargingstation-controllable.md";
+    var mkdocs_page_url = "/docs/plugins/chargingstation-controllable/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Controllable - ChargingStation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/plugins/chargingstation-controllable.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Controllable - ChargingStation</h1>
+<p>This contains detailed documentation on the ChargingStation controllable plugin.</p>
+<p>To use this Controllable Plugin:</p>
+<p>1) Clone the repo into Assets/External/Controllables/ChargingStation inside of your Simulator Unity Project</p>
+<p>2) Build the Controllable Plugin for use with the Simulator, navigate to the <code>Simulator -&gt; Build Controllables</code> Unity Editor menu item. Select ChargingStation controllable and build.  Output bundle will be in AssetBundles/Controllables folder in root of Simulator Unity Project</p>
+<p>3) Simulator will load, at runtime, all custom Controllable Plugin bundles in AssetBundles/Controllables directory</p>
+<h2 id="custom-logic">Custom Logic <a class="wikilink" href="#top">top</a><a class="headerlink" href="#custom-logic" title="Permanent link">#</a></h2>
+<p>To implement custom logic, contained in a given Controllable Plugin project there must be an IControllable<Type> implementation. An example of this is in TrafficCone.cs</p>
+<p>The interface requires the following to be implemented:</p>
+<pre><code class="c#">public bool Spawned { get; set; } = false;
+public string UID { get; set; }
+public string GUID =&gt; UID;
+public string ControlType { get; set; } = &quot;chargingstation&quot;;
+public string CurrentState { get; set; }
+public string[] ValidStates { get; set; } = new[] { &quot;on&quot;, &quot;off&quot; };
+public string[] ValidActions { get; set; } = new string[] { };
+public List&lt;ControlAction&gt; DefaultControlPolicy { get; set; } =
+    new List&lt;ControlAction&gt;
+    {
+        new ControlAction { Action = &quot;state&quot;, Value = &quot;off&quot; }
+    };
+
+public List&lt;ControlAction&gt; CurrentControlPolicy { get; set; }
+
+public Control(List&lt;ControlAction&gt; controlActions)
+{
+    //
+}
+</code></pre>
+
+<p>On <code>Awake()</code> CurrentControlPolicy and CurrentState must be set, e.g.</p>
+<pre><code class="c#">private void Awake()
+{
+    Lights.AddRange(GetComponentsInChildren&lt;Light&gt;());
+    SetLights(false);
+    ChargingStationRenderer = GetComponent&lt;Renderer&gt;();
+    foreach (var mat in ChargingStationRenderer.materials)
+    {
+        if (mat.name.Contains(&quot;Emission&quot;))
+        {
+            EmissionMaterials.Add(mat);
+        }
+    }
+
+    CurrentControlPolicy = DefaultControlPolicy;
+    Control(CurrentControlPolicy);
+}
+</code></pre>
+
+<p>Control checks the parsed ControlActions and sets the CurrentState</p>
+<pre><code class="c#">public void Control(List&lt;ControlAction&gt; controlActions)
+{
+    foreach (var action in controlActions)
+    {
+        switch (action.Action)
+        {
+            case &quot;state&quot;:
+                SetChargingStationState(action.Value);
+                break;
+            default:
+                Debug.LogError($&quot;'{action.Value}' is an invalid action for '{ControlType}'&quot;);
+                break;
+        }
+    }
+}
+
+public void SetChargingStationState(string value)
+{
+    if (!ValidStates.Contains(value))
+    {
+        Debug.LogError($&quot;'{value}' is an invalid state for '{ControlType}'&quot;);
+        return;
+    }
+
+    CurrentState = value;
+    switch (CurrentState)
+    {
+        case &quot;on&quot;:
+            EmissionMaterials?.ForEach(x =&gt; x.SetColor(&quot;_EmissiveColor&quot;, Color.white));
+            EmissionMaterials?.ForEach(x =&gt; x.SetFloat(&quot;_EmissiveIntensity&quot;, 3f));
+            SetLights(true);
+            break;
+        case &quot;off&quot;:
+            EmissionMaterials?.ForEach(x =&gt; x.SetColor(&quot;_EmissiveColor&quot;, Color.black));
+            EmissionMaterials?.ForEach(x =&gt; x.SetFloat(&quot;_EmissiveIntensity&quot;, 0f));
+            SetLights(false);
+            break;
+        default:
+            break;
+    }
+}
+
+private void SetLights(bool state)
+{
+    Lights.ForEach(l =&gt; l.enabled = state);
+}
+</code></pre>
+
+<h2 id="python-api-example">Python API example <a class="wikilink" href="#top">top</a><a class="headerlink" href="#python-api-example" title="Permanent link">#</a></h2>
+<p>Each controllable object has its own <code>valid actions</code> (e.g., green, yellow, red, trigger, wait, loop, on, off, "") that it can take and is controlled based on <code>control policy</code>, which defines rules for control actions.</p>
+<p>To get a list of controllable objects in a scene:</p>
+<pre><code class="python">controllables = sim.get_controllables()
+</code></pre>
+
+<p>For a controllable object of interest, you can get following information:</p>
+<pre><code class="python">station = controllables[0]
+print(&quot;Type:&quot;, station.type)
+print(&quot;Transform:&quot;, station.transform)
+print(&quot;Current state:&quot;, station.current_state)
+print(&quot;Valid actions:&quot;, station.valid_actions)
+</code></pre>
+
+<p>For control policy, each controllable object always has default control policy (read-only). When you load a scene for the first time or reset a scene to the initial state, a controllable object resets current control policy to default one follows it.</p>
+<p>You can get default control policy and current control policy as follows:</p>
+<pre><code class="python">print(&quot;Default control policy:&quot;, station.default_control_policy)
+print(&quot;Current control policy:&quot;, station.control_policy)
+</code></pre>
+
+<p>To change a current control policy, you can create a new control policy and call <code>control</code> function as below:</p>
+<pre><code class="python">control_policy = &quot;on&quot;
+station.control(control_policy)
+</code></pre>
+
+<p>To add a plugin controllable and set object state</p>
+<pre><code class="python">state = lgsvl.ObjectState()
+state.transform.position = lgsvl.Vector(0,0,0)
+state.transform.rotation = lgsvl.Vector(0,0,0)
+state.velocity = lgsvl.Vector(0,10,0)
+state.angular_velocity = lgsvl.Vector(6.5,0,0)
+
+cone = sim.controllable_add(&quot;ChargingStation&quot;, state)
+</code></pre>
+
+<p>To get plugin controllable object state</p>
+<pre><code class="python">station.object_state
+</code></pre>
+
+<p>To set plugin controllable object state</p>
+<pre><code class="python">state = lgsvl.ObjectState()
+state.transform.position = lgsvl.Vector(0, 0, -10)
+station.object_state = state
+</code></pre>
+
+<p>Controllables can also have a Unity RigidBody component at the root and apply velocity from the API.   If no rigidbody exists then the velocity is ignored.</p>
+<pre><code class="python">#!/usr/bin/env python3
+#
+# Copyright (c) 2020-2021 LG Electronics, Inc.
+#
+# This software contains code licensed as described in LICENSE.
+#
+
+from environs import Env
+import lgsvl
+
+sim = lgsvl.Simulator(env.str(&quot;LGSVL__SIMULATOR_HOST&quot;, lgsvl.wise.SimulatorSettings.simulator_host), env.int(&quot;LGSVL__SIMULATOR_PORT&quot;, lgsvl.wise.SimulatorSettings.simulator_port))
+if sim.current_scene == lgsvl.wise.DefaultAssets.map_borregasave:
+    sim.reset()
+else:
+    sim.load(lgsvl.wise.DefaultAssets.map_borregasave)
+
+spawns = sim.get_spawn()
+
+state = lgsvl.AgentState()
+forward = lgsvl.utils.transform_to_forward(spawns[0])
+right = lgsvl.utils.transform_to_right(spawns[0])
+up = lgsvl.utils.transform_to_up(spawns[0])
+state.transform = spawns[0]
+
+ego = sim.add_agent(env.str(&quot;LGSVL__VEHICLE_0&quot;, lgsvl.wise.DefaultAssets.ego_lincoln2017mkz_apollo5), lgsvl.AgentType.EGO, state)
+
+print(&quot;Python API Quickstart #28: How to Add/Control Charging Station&quot;)
+
+obj_state = lgsvl.ObjectState()
+obj_state.transform.position = lgsvl.Vector(38, 0, 7)
+obj_state.transform.rotation = lgsvl.Vector(0, 180, 0)
+
+station = sim.controllable_add(&quot;ChargingStation&quot;, obj_state)
+
+station = sim.get_controllable(lgsvl.Vector(38, 0, 7), &quot;chargingstation&quot;)
+print(&quot;\n# Charging Station of interest:&quot;)
+print(station)
+
+seconds = 1
+input(&quot;\nPress Enter to run simulation for {} seconds&quot;.format(seconds))
+print(&quot;\nRunning simulation for {} seconds...&quot;.format(seconds))
+sim.run(seconds)
+
+# Get current controllable state
+print(&quot;\n# Current charging station control policy:&quot;)
+print(station.control_policy)
+
+print(&quot;\n# Current charging station object state&quot;)
+print(station.object_state)
+
+print(&quot;\n# Update charging station object state&quot;)
+new_state = lgsvl.ObjectState()
+new_state.transform.position = lgsvl.Vector(38, 0, 7)
+new_state.transform.rotation = lgsvl.Vector(0, 180, 0)
+station.object_state = new_state
+
+print(&quot;\n# New object state&quot;)
+print(station.object_state)
+
+# Set time of day for light effects
+sim.set_time_of_day(19.0)
+print(sim.time_of_day)
+
+# Create a new control policy
+control_policy = &quot;on&quot;
+
+# Control this traffic light with a new control policy
+station.control(control_policy)
+
+print(&quot;\n# Updated control policy:&quot;)
+print(station.control_policy)
+
+# Get current state of charging station
+print(&quot;\n# Current station state:&quot;)
+print(station.current_state)
+
+print(&quot;\nDone!&quot;)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

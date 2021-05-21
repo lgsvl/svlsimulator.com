@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Visualizing Test Results [[top]] {: #how-to-visualize-test-results data-toc-label='Visualizing Test Results'} - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Visualizing Test Results [[top]] {: #how-to-visualize-test-results data-toc-label='Visualizing Test Results'}";
+    var mkdocs_page_input_path = "user-interface/web/test-results-visualization.md";
+    var mkdocs_page_url = "/docs/user-interface/web/test-results-visualization/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Visualizing Test Results [[top]] {: #how-to-visualize-test-results data-toc-label='Visualizing Test Results'}</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/user-interface/web/test-results-visualization.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 data-toc-label="Visualizing Test Results" id="how-to-visualize-test-results">Visualizing Test Results <a class="wikilink" href="#top">top</a></h1>
+<p><a href="../../../images/full_size_images/wise-visualization.png"><img alt="The simulation visualization user interface" src="../../../images/wise-visualization.png" /></a></p>
+<p>The visualization tab allows you to playback a simulation and see the current state of each sensor over time. The visualization tab is only available in test reports of completed <strong>cloud simulations</strong>. For local simulations, you can use an interactive visualizer tool on the autonomous driving system side such as RViz for ROS or cyber_visualizer for Apollo.</p>
+<p>To navigate to the visualizer from Test Results,</p>
+<ol>
+<li>Select <code>View</code> for a test result.
+   <a href="../../../images/full_size_images/wise-visualization-test-result-view.png"><img alt="" src="../../../images/wise-visualization-test-result-view.png" /></a></li>
+<li>If there are multiple vehicles, select a vehicle.
+   <a href="../../../images/full_size_images/wise-visualization-test-result-vehicle.png"><img alt="" src="../../../images/wise-visualization-test-result-vehicle.png" /></a></li>
+<li>Select the <code>Visualization</code> tab.
+   <a href="../../../images/full_size_images/wise-visualization-test-result-tab.png"><img alt="" src="../../../images/wise-visualization-test-result-tab.png" /></a></li>
+</ol>
+<blockquote>
+<p>Note: Only Apollo-based recordings are currently supported by cloud simulations and the visualizer.</p>
+</blockquote>
+<p>The visualization section breaks down into the following features:</p>
+<ul>
+<li><a href="#viewer">Viewer</a></li>
+<li><a href="#sensor-menu">Sensor Menu</a></li>
+<li><a href="#playback-control">Playback Control</a></li>
+<li><a href="#widgets">Widgets</a></li>
+<li><a href="#callbacks">Callbacks</a></li>
+</ul>
+<h3 id="viewer">Viewer <a class="wikilink" href="#top">top</a><a class="headerlink" href="#viewer" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../../images/wise-visualization-viewer.png" /></p>
+<p>The primary feature of the Visualization Tab is the Viewer which creates a rendering of available sensor data to aid inspecting the results of a simulation.</p>
+<ul>
+<li>LiDAR is rendered as dots ranging from white to red illustrating the altitude relative to the ground.</li>
+<li>Detected obstacles are rendered enclosed in a blue box with labels above them.</li>
+<li>Trajectories are rendered as a wide line at ground level indicating the planned route for the vehicle.</li>
+</ul>
+<p>Each sensor can be enabled or disabled using the <a href="#sensor-menu">Sensor Menu</a> to aid in focusing on specific results.</p>
+<h4 id="viewer-full-screen-mode">Full Screen Mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#viewer-full-screen-mode" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../../images/wise-visualization-fullscreen.png" /></p>
+<p>The Viewer can switch to full screen mode using the full screen button to gain more space to view the visualization and widgets. Pressing the <code>Escape</code> key or clicking the full screen button a second time will exit full screen.</p>
+<h4 id="camera-angles-top">Camera Angles <a class="wikilink" href="#top">top</a><a class="headerlink" href="#camera-angles-top" title="Permanent link">#</a></h4>
+<p><img alt="" src="../../../images/wise-visualization-camera.png" /></p>
+<ul>
+<li>Perspective - The camera is positioned above and behind the vehicle. Pan, tilt, zoom, and rotate are all available.</li>
+<li>Driver - The camera is fixed at the front of the vehicle. Only rotate is available.</li>
+<li>Top down - The camera is fixed above the vehicle looking down. Pan, zoom, and rotate are available.</li>
+</ul>
+<h4 id="pan-tilt-zoom-rotate-top">Pan / Tilt / Zoom / Rotate <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pan-tilt-zoom-rotate-top" title="Permanent link">#</a></h4>
+<p>The camera position can be further refined by panning, tilting, zooming, or rotating if supported by the current camera angle.</p>
+<ul>
+<li>To <strong>pan</strong> or <strong>tilt</strong>, click and drag within the viewer.</li>
+<li>To <strong>zoom</strong>, hold Control (Command on Mac) and scroll with the scroll wheel within the viewer.</li>
+<li>To <strong>rotate</strong>, hold Control (Command on Mac), click, and drag within the viewer.</li>
+</ul>
+<p><img alt="" src="../../../images/wise-visualization-recenter.png" /></p>
+<p>To recenter the viewer after panning or rotating, click the recenter button. Note that zoom and tilt values are maintained when re-centering.</p>
+<h3 id="sensor-menu">Sensor Menu <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-menu" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../../images/wise-visualization-sensor-menu.png" /></p>
+<p>The Sensor menu contains a list of all available sensors for the selected vehicle in this simulation. They are arranged in a tree based on the full name of the sensor from the simulation. Branches of the tree can be collapsed or expanded using the triangle icon.</p>
+<p>If the sensor can be visualized in the viewer, selecting the sensor will toggle it on and off in the viewer. When the sensor is visible, the eye icon will be green. To view the details of the sensor at the current time, click the message icon to display the Message Widget. When the widget is visible, the message icon will be green.</p>
+<p>If the sensor cannot be visualized in the view, selecting the sensor will toggle a widget for that sensor. When the widget is visible, the widget icon will be green.</p>
+<h4 id="hiding-the-sensor-menu-top">Hiding the sensor menu <a class="wikilink" href="#top">top</a><a class="headerlink" href="#hiding-the-sensor-menu-top" title="Permanent link">#</a></h4>
+<p>The Sensor menu can be hidden using the close button to reveal more of the viewer. When hidden, the menu is collapsed to a menu icon. To expand the menu, click the menu icon.</p>
+<h3 id="playback-control">Playback Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#playback-control" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../../images/wise-visualization-playback.png" /></p>
+<p>The playback control manages the playback of the simulation results. The control consists of the following components:</p>
+<ul>
+<li>A slider component which can be selected or dragged to move to a specific time of the simulation.</li>
+<li>Tick labels above the slider which indicate the time relative to the start of the simulation.</li>
+<li>The play/pause button which toggles automatic playback of the simulation at the current time.</li>
+<li>The simulation time which displays the current time according to the simulation's time.</li>
+<li>The lookahead slider allows selection of the amount of time, in seconds, to display lookahead predictions if supported by the simulation.</li>
+</ul>
+<h3 id="widgets">Widgets <a class="wikilink" href="#top">top</a><a class="headerlink" href="#widgets" title="Permanent link">#</a></h3>
+<p><img alt="" src="../../../images/wise-visualization-widgets.png" /></p>
+<p>Each sensor can be further visualized with floating widgets displayed on top of the <a href="#viewer">viewer</a>. By default, all widgets are hidden but may be shown by selecting the eye icon from the <a href="#sensor-menu">sensor menu</a>. Once displayed, each widget may be moved, resized, and closed.</p>
+<p><a href="../../../images/full_size_images/wise-visualization-widget-diagram.png"><img alt="" src="../../../images/wise-visualization-widget-diagram.png" /></a></p>
+<ul>
+<li>To <strong>move a widget</strong>, click and drag anywhere where the cursor changes to the move icon.</li>
+<li>To <strong>resize a widget</strong>, click and drag from the lower right corner of the widget.</li>
+<li>To <strong>close a widget</strong>, click the close button in the upper right corner of the widget.</li>
+</ul>
+<p>To view a different sensor in an open widget, click the sensor name in the title bar which will open a dropdown menu. This menu will only include sensors that can be displayed in the current widget. Typing part of the desired sensor's name will filter the dropdown to only those that match the entered text.</p>
+<p><a href="../../../images/full_size_images/wise-visualization-widget-dropdown.png"><img alt="" src="../../../images/wise-visualization-widget-dropdown.png" /></a></p>
+<h4 id="camera-widget-top">Camera Widget <a class="wikilink" href="#top">top</a><a class="headerlink" href="#camera-widget-top" title="Permanent link">#</a></h4>
+<p><a href="../../../images/full_size_images/wise-visualization-widget-camera.png"><img alt="" src="../../../images/wise-visualization-widget-camera.png" /></a></p>
+<p>The camera widget displays the image captured by a camera sensor at the current playback time.</p>
+<h4 id="meter-widget-top">Meter Widget <a class="wikilink" href="#top">top</a><a class="headerlink" href="#meter-widget-top" title="Permanent link">#</a></h4>
+<p><a href="../../../images/full_size_images/wise-visualization-widget-meter.png"><img alt="" src="../../../images/wise-visualization-widget-meter.png" /></a></p>
+<p>The meter widget includes a gauge component that displays a numeric value within a predefined range. The range and unit of the value are pre-configured by the simulator. This widget is used for data streams like the current velocity or acceleration.</p>
+<blockquote>
+<p>Note: The meter widget does not support resizing.</p>
+</blockquote>
+<h4 id="message-widget-top">Message Widget <a class="wikilink" href="#top">top</a><a class="headerlink" href="#message-widget-top" title="Permanent link">#</a></h4>
+<p><a href="../../../images/full_size_images/wise-visualization-widget-message.png"><img alt="" src="../../../images/wise-visualization-widget-message.png" /></a></p>
+<p>The message widget displays the data for the selected sensor at the current playback time. The data is presented as a tree which can be expanded or collapsed using the triangle icon. The entire tree can be expanded or collapsed using the expand button in the title bar. The data, in JSON format, may also be copied to the clipboard using the clipboard icon in the title bar.</p>
+<blockquote>
+<p>Note: Because the content of the widget is selectable, you must click and drag the border around the message in order to move the widget.</p>
+</blockquote>
+<h3 id="callbacks">Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#callbacks" title="Permanent link">#</a></h3>
+<p>Callback events are categorized as one-time events during a test case that either affect the ego vehicle, or that the ego vehicle causes in the environment. The following types of events are supported:</p>
+<ul>
+<li>Collision involving ego (EgoCollision)</li>
+<li>Speed limit violation (SpeedViolation)</li>
+<li>Sudden braking (SuddenBrake)</li>
+<li>Sudden steer (SuddenSteer)</li>
+<li>Low simulation performance (LowFPS)</li>
+</ul>
+<p>The occurrence of at least one of these  events will cause a simulation to be evaluated as "Failed". </p>
+<p><a href="../../../images/test-results/test-results-callbacks.png"><img alt="" src="../../../images/test-results/test-results-callbacks.png" /></a></p>
+<p>For each callback event, the returned information is reported, including the simulation time at which the event occurred.</p>
+<p>Selecting the <code>eye</code> icon will cause the visualization to seek to the time of the event in order to view the state of each sensor at that time.</p>
+<h4 id="egocollision">EgoCollision <a class="wikilink" href="#top">top</a><a class="headerlink" href="#egocollision" title="Permanent link">#</a></h4>
+<p>A collision involving an ego vehicle.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OtherType</td>
+<td>Type of agent with which ego collided</td>
+<td>NPC|Pedestrian|Obstacle</td>
+</tr>
+<tr>
+<td>EgoVelocity</td>
+<td>Velocity vector of ego at time at collision time</td>
+<td>x, y, z in m/s</td>
+</tr>
+<tr>
+<td>OtherVelocity</td>
+<td>Velocity vector of agent/object at collision time</td>
+<td>km/hr</td>
+</tr>
+<tr>
+<td>EgoCollisionTotal</td>
+<td>Number of ego collisions in the event</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="speedviolation">SpeedViolation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#speedviolation" title="Permanent link">#</a></h4>
+<p>A speed limit violation by an ego vehicle, based on the lane speed limit in the map annotations.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duration</td>
+<td>Duration of speed limit violation event</td>
+<td>time</td>
+</tr>
+<tr>
+<td>Max speed</td>
+<td>Maximum speed of ego vehicle during event.</td>
+<td>m/s</td>
+</tr>
+<tr>
+<td>SpeedLimit</td>
+<td>The ego lane's annotated speed limit of the HD map</td>
+<td>m/s</td>
+</tr>
+</tbody>
+</table>
+<h4 id="egostuck">EgoStuck <a class="wikilink" href="#top">top</a><a class="headerlink" href="#egostuck" title="Permanent link">#</a></h4>
+<p>An ego stuck event by the ego vehicle, in which the ego travels a threshold distance and then stops moving for a threshold time</p>
+<h4 id="suddenbrake">SuddenBrake <a class="wikilink" href="#top">top</a><a class="headerlink" href="#suddenbrake" title="Permanent link">#</a></h4>
+<p>A sudden braking event by the ego vehicle, in which it exceeds a threshold deceleration value.</p>
+<h4 id="suddensteer">SuddenSteer <a class="wikilink" href="#top">top</a><a class="headerlink" href="#suddensteer" title="Permanent link">#</a></h4>
+<p>A sudden steering event by the ego vehicle, in which absolute magnitude of steering angle exceeds a threshold value.</p>
+<h4 id="lowfps">LowFPS <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lowfps" title="Permanent link">#</a></h4>
+<p>A low simulation performance to indicate that results may not be accurate due to sufficiently low framerate during simulation on the cluster.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../javascripts/clipboard.js" defer></script>
+      <script src="../../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

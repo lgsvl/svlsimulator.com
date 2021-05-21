@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Sensors Distribution [](#top)";
     var mkdocs_page_input_path = "distributed-simulation/sensors-distribution.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/distributed-simulation/sensors-distribution/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -332,6 +332,10 @@
     <ul class="subnav">
                 <li class="">
                     
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../simulation-content/assets/">Building content</a>
                 </li>
                 <li class="">
@@ -525,7 +529,7 @@
 <h2 id="sensors-load-balancing">Sensors Load Balancing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensors-load-balancing" title="Permanent link">#</a></h2>
 <p>The current load balancing algorithm divides sensors into groups by their type. Master distributes sensors by counting overhead sum and assigning each next sensor to the least overloaded machine.</p>
 <ul>
-<li><em>UltraHighLoad</em> sensors are assigned first and adds 1.0 overhead to a machine. Sensors like <code>LIDAR</code>, which parses the camera images and performs complex maths operations, should be classified under this type.</li>
+<li><em>UltraHighLoad</em> sensors are assigned first and adds 1.0 overhead to a machine. Sensors like <code>LiDAR</code>, which parses the camera images and performs complex maths operations, should be classified under this type.</li>
 <li><em>HighLoad</em> sensors are assigned next and each sensor adds 0.1 overhead to a machine. Sensors like <code>RadarSensor</code>, which performs complex maths operations, should be classified under this type.</li>
 <li><em>LowLoad</em> sensors are assigned last and each sensor adds 0.05 overhead to a machine. Sensors like <code>GpsSensor</code>, which performs simple maths operations, should be classified under this type.</li>
 <li><em>DoNotDistribute</em> sensors are assigned only to the master machine. Sensors like <code>VehicleControlSensor</code>, which controls objects in a simulation, have to be classified under this type.</li>

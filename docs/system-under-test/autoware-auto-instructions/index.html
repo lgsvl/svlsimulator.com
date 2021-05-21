@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Autoware.Auto";
     var mkdocs_page_input_path = "system-under-test/autoware-auto-instructions.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/system-under-test/autoware-auto-instructions/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -125,7 +125,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -334,6 +334,10 @@
     <ul class="subnav">
                 <li class="">
                     
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../simulation-content/assets/">Building content</a>
                 </li>
                 <li class="">
@@ -538,10 +542,12 @@
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#install-docker-ce">Install Docker CE</a></li>
 <li><a href="#install-nvidia-container-toolkit">Install NVIDIA Container Toolkit</a></li>
-<li><a href="#install-autoware-auto">Install Autoware.auto</a></li>
 <li><a href="#simulator-installation">Simulator Installation</a></li>
+<li><a href="#install-autoware-auto">Install Autoware.auto</a><ul>
 <li><a href="#Install-ADE">Install ADE</a></li>
-<li><a href="#install-autowareauto-top">Install Autoware.Auto top</a></li>
+<li><a href="#download-autowareauto-top">Download Autoware.Auto top</a></li>
+</ul>
+</li>
 <li><a href="#install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge</a><ul>
 <li><a href="#1-using-the-package-manager">1. Using the Package Manager</a></li>
 <li><a href="#2-building-source-code">2. Building source code.</a></li>
@@ -592,10 +598,6 @@
 </code></pre>
 
 <p>The installation steps for the NVIDIA Container Toolkit are available from the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">official documentation</a>.</p>
-<h3 id="install-autoware-auto">Install Autoware.auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-autoware-auto" title="Permanent link">#</a></h3>
-<ul>
-<li>Follow the <a href="https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation.html">installation and development setup</a> guide for Autoware.auto.</li>
-</ul>
 <h3 id="simulator-installation">Simulator installation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simulator-installation" title="Permanent link">#</a></h3>
 <ul>
 <li>Download and extract the latest <a href="https://github.com/lgsvl/simulator/releases/latest">simulator release</a> under the ~/adehome folder.</li>
@@ -605,9 +607,10 @@
 pip3 install --user .
 </code></pre>
 
-<h3 id="Install-ADE">Install ADE <a class="wikilink" href="#top">top</a><a class="headerlink" href="#Install-ADE" title="Permanent link">#</a></h3>
+<h3 id="install-autoware-auto">Install Autoware.auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-autoware-auto" title="Permanent link">#</a></h3>
+<h4 id="Install-ADE">Install ADE <a class="wikilink" href="#top">top</a><a class="headerlink" href="#Install-ADE" title="Permanent link">#</a></h4>
 <pre><code class="bash"># https://ade-cli.readthedocs.io/en/latest/install.html
-mkdir -p ~/.local/bin
+cd ~/.local/bin
 wget https://gitlab.com/ApexAI/ade-cli/uploads/f6c47dc34cffbe90ca197e00098bdd3f/ade+x86_64
 $ mv ade+x86_64 ade
 $ chmod +x ade
@@ -617,16 +620,18 @@ $ ./ade update-cli
 $ ./ade --version
 &lt;latest-version&gt;
 PATH=$PATH:~/.local/bin
+mkdir -p ~/adehome
 cd ~/adehome
 touch .adehome
 </code></pre>
 
-<h3 _install-autowareauto-toc-label="Install Autoware.Auto" id="install-autowareauto-top">Install Autoware.Auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-autowareauto-top" title="Permanent link">#</a></h3>
+<h4 _install-autowareauto-toc-label="Install Autoware.Auto" id="download-autowareauto-top">Download Autoware.Auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#download-autowareauto-top" title="Permanent link">#</a></h4>
 <p>Download Autoware.Auto under the ~/adehome folder.</p>
 <pre><code>cd ~/adehome
 git clone https://gitlab.com/autowarefoundation/autoware.auto/AutowareAuto.git
 </code></pre>
 
+<p>Installation and Development: <a href="https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation.html">Setup guide</a> guide for Autoware.auto.</p>
 <h3 id="install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-bridge" title="Permanent link">#</a></h3>
 <p>There are two ways of installing ros2-lgsvl-bridge:</p>
 <ul>
@@ -706,7 +711,7 @@ export ADE_DISABLE_NVIDIA_DOCKER=false
 export ADE_IMAGES=&quot;
   registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/ade-foxy:master   registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/binary-foxy:master
   registry.gitlab.com/autowarefoundation/autoware.auto/ade-lgsvl/foxy:2020.06
-  nvidia/cuda
+  nvidia/cuda:11.0-base
 &quot;
 </code></pre>
 
@@ -767,7 +772,7 @@ $ lgsvl_bridge
 </code></pre>
 
 <p><strong>NOTE</strong> <a href="#lgsvl-bridge-running">ROS2 LGSVL Bridge</a> needs to be running.</p>
-<p>You should now be able to see the lidar point cloud in rviz (see image below).</p>
+<p>You should now be able to see the LiDAR point cloud in rviz (see image below).</p>
 <p>If the pointcloud is not visible make sure the Fixed Frame (under Global Options) is set to <code>lidar_front</code> and that a PointCloud2 message is added which listens on the <code>/lidar_front/points_raw</code> topic.</p>
 <p><img alt="" src="../../images/autoware-auto-rviz.png" /></p>
               

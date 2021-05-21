@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Library - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Library";
+    var mkdocs_page_input_path = "user-interface/web/library.md";
+    var mkdocs_page_url = "/docs/user-interface/web/library/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../getting-started/getting-started/">First start</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../store/">Store</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Library</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Web User Interface &raquo;</li>
+        
+      
+        
+          <li>User Interface &raquo;</li>
+        
+      
+    
+    <li>Library</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/user-interface/web/library.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Library</h1>
+<p>The Library page in the SVL Simulator user interface displays the set of maps and vehicles that you have added to your account, and which are available for use in simulations. </p>
+<p><a href="../../../images/my-library/mylibrary-maps-full.png"><img alt="" src="../../../images/my-library/mylibrary-maps-full.png" /></a></p>
+<h2 id="introduction">Introduction <a class="wikilink" href="#top">top</a><a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
+<p>Library is the central place for all of the content and data associated with your SVL Simulator account. You can access your maps and vehicles from anywhere once you log in to your account, allowing you to save your content in the cloud, including your own map environments, plugins, vehicle models, and sensor configurations. </p>
+<h2 id="maps">Maps <a class="wikilink" href="#top">top</a><a class="headerlink" href="#maps" title="Permanent link">#</a></h2>
+<p>When you log in for the first time, your Library page will be empty.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-empty.png"><img alt="" src="../../../images/my-library/mylibrary-maps-empty.png" /></a></p>
+<p>You can click:</p>
+<ul>
+<li>"All" to see all maps that you have added to your Library.</li>
+<li>"Owned by me" lists maps for which you are the owner (meaning they were built and uploaded by you).</li>
+<li>"Shared by me" lists maps that are owned by you and were to other users (using the Sharing feature).</li>
+<li>"Shared with me" lists maps that were shared with you by others users.</li>
+</ul>
+<h3 id="adding-a-map">Adding a map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-a-map" title="Permanent link">#</a></h3>
+<p>You can add maps to your Library from either the <a href="../store/">Store</a> page or by clicking the "Add new" button at the top right. </p>
+<p>To upload your own map:</p>
+<ol>
+<li>
+<p>From the Library, click the "Add new" button.</p>
+</li>
+<li>
+<p>Drag and drop or click to upload an AssetBundle which you have built for the version of SVL Simulator you are running.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-upload.png"><img alt="" src="../../../images/my-library/mylibrary-maps-upload.png" /></a></p>
+</li>
+<li>
+<p>Once the upload has finished and the AssetBundle has been processed, fill in the details about your new map, including Map Name, Description, License, Copyright, and Tags.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-upload-details.png"><img alt="" src="../../../images/my-library/mylibrary-maps-upload-details.png" /></a></p>
+</li>
+<li>
+<p>Click "Publish" to publish the map to your personal library, allowing it to be used in your simulation configurations. You can click "Keep as draft" to save and publish later.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-upload-publish.png"><img alt="" src="../../../images/my-library/mylibrary-maps-upload-publish.png" /></a></p>
+</li>
+</ol>
+<h3 id="viewing-a-map">Viewing a map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#viewing-a-map" title="Permanent link">#</a></h3>
+<p>Once you have successfully added a map to your Library, you will be able to see the map and its details when you select it.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-page.png"><img alt="" src="../../../images/my-library/mylibrary-maps-page.png" /></a></p>
+<p>There are several additional actions possible on a map page:</p>
+<ul>
+<li>Edit: You can edit the map's detail information.</li>
+<li>Share: You can share your private maps with other users to allow them to use the map in their simulations.</li>
+<li>Download the associated HD map in various supported formats that were built into the asset. </li>
+</ul>
+<h3 id="editing-a-map">Editing a map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-a-map" title="Permanent link">#</a></h3>
+<p>Editing a map allows you to update the details about your new map, including Map Name, Description, License, Copyright, and Tags. If the map is your own, then you can also update the asset bundle of the map and also upload new asset bundles for supporting various 'SVL Simulator' versions.</p>
+<p><a href="../../../images/my-library/mylibrary-maps-edit.png"><img alt="" src="../../../images/my-library/mylibrary-maps-edit.png" /></a></p>
+<p>There are several additional actions possible when editing:</p>
+<ul>
+<li>Add to Store: You can make the map public so that other users may add it to their library.</li>
+<li>Unpublish: You can "unpublish" the map and return it to the "draft" status, disabling the ability for you to use it in a valid simulation.</li>
+<li>Delete Map: Delete the map entirely from your account and library. Once you do this, you will need to go back to where you obtained the map (or re-upload it) in order to add it to your library again.</li>
+</ul>
+<p>NOTE: Any changes to the map such as Removing from the Store, or Unpublishing it, or Deleting will not be retroactively applied. That is the changes will have no impact on the users who <strong>already</strong> have the map in their library. For example, if a map is already in a user's library, then that user can continue to use the map in the simulations even if the map has been removed from the store or has been deleted or unpublished by the owner.</p>
+<h3 id="creating-a-map">Creating a map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#creating-a-map" title="Permanent link">#</a></h3>
+<p>Please see the <a href="../../../simulation-content/assets/">Assets</a> document for more information on creating and building custom maps and vehicles for SVL Simulator in Developer Mode. You can read the <a href="../../../simulation-content/map-annotation/">Map Annotation</a> page for instructions on annotating, importing, and exporting HD maps.</p>
+<h2 id="vehicles">Vehicles <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicles" title="Permanent link">#</a></h2>
+<p>The Vehicle tab under Library contains the list of vehicles available for you to use in your simulations.</p>
+<h3 id="adding-a-vehicle">Adding a vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-a-vehicle" title="Permanent link">#</a></h3>
+<p>You can add vehicles to your Library from either the <a href="../store/">Store</a> page or by clicking the "Add new" button at the top right.</p>
+<p>To upload your own vehicle:</p>
+<ol>
+<li>
+<p>From your Library, click the "Add new" button.</p>
+</li>
+<li>
+<p>Drag and drop or click to upload an AssetBundle which you have built for the version of 'SVL Simulator' you are running. You can see how to create and build your own vehicle <a href="../../../simulation-content/assets/#build-an-asset">here</a>.</p>
+</li>
+<li>
+<p>Once your vehicle has successfully uploaded, you can fill in its information. Click "Next" to configure the sensors for this vehicle.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-upload-details.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-upload-details.png" /></a></p>
+</li>
+<li>
+<p>Each vehicle can have multiple configurations and must have at least one configuration to use the vehicle in a simulation. Click "Create New Configuration" to create a new configuration or "Next" to continue without a configuration. You can create a configuration later by <a href="#editing-a-vehicle">editing the vehicle</a>.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-empty.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-empty.png" /></a></p>
+</li>
+<li>
+<p>If you have created a configuration, enter a name for the configuration, select a <a href="#bridge-types">Bridge</a>, and click "Create".</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-add.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-add.png" /></a></p>
+</li>
+<li>
+<p>Once you have created a configuration, you may add sensors using the "+" icon next to the "Root (Base Link)". More information about sensor configuration is available in <a href="#editing-a-vehicle">Editing Vehicles</a></p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-new.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-new.png" /></a></p>
+</li>
+<li>
+<p>Click "Publish" to publish the vehicle to your personal Library, allowing it to be used in your simulation configurations. You can click "Keep as draft" to save and publish later.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-publish.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-publish.png" /></a></p>
+</li>
+</ol>
+<h3 id="viewing-a-vehicle">Viewing a Vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#viewing-a-vehicle" title="Permanent link">#</a></h3>
+<p>Once you have successfully added a vehicle to your Library page, you will be able to see the vehicle and its details when you select it.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-page.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page.png" /></a></p>
+<p>On a vehicle page, there are several additional actions you can take:</p>
+<ul>
+<li>Share: You can share your private vehicles with other users to allow them to use the vehicle in their simulations.</li>
+<li>Edit: Change the vehicle's detailed information including Name, Description, License, Copyright, and Tags.</li>
+<li><a href="#managing-sensor-configurations">Sensor Configurations</a>: Add, Modify, Copy, or Delete a sensor configuration for the vehicle.</li>
+</ul>
+<h3 id="editing-a-vehicle">Editing a Vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-a-vehicle" title="Permanent link">#</a></h3>
+<p>Editing a vehicle allows you to update the details about your new vehicle, including Name, Description, License, Copyright, and Tags. If the vehicle is your own, then you can also update the asset bundle of the vehicle and also upload new asset bundles for supporting various 'SVL Simulator' versions.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-edit.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-edit.png" /></a></p>
+<p>There are several additional actions possible when editing:</p>
+<ul>
+<li>Add to Store: You can make the vehicle public so that other users may add it to their library.</li>
+<li>Unpublish: You can "unpublish" the vehicle and return it to the "draft" status, disabling the ability for you to use it in a valid simulation.</li>
+<li>Delete Vehicle: Delete the vehicle entirely from your account and library. Once you do this, you will need to go back to where you obtained the vehicle (or re-upload it) in order to add it to your library again.</li>
+</ul>
+<p>NOTE: Any changes to the vehicle such as Removing from the Store, or Unpublishing it, or Deleting will not be retroactively applied. That is the changes will have no impact on the users who <strong>already</strong> have the vehicle in their library. For example, if a vehicle is already in a user's library, then that user can continue to use the vehicle in the simulations even if the vehicle has been removed from the store or has been deleted or unpublished by the owner.</p>
+<h3 id="managing-sensor-configurations">Managing Sensor Configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#managing-sensor-configurations" title="Permanent link">#</a></h3>
+<p>Each vehicle can have multiple sensor configurations. When you use a vehicle in a simulation, you will have an opportunity to select the sensor configuration to use in that simulation. The currently available sensor configurations are listed on the vehicle page. If a vehicle was added from the Store or if a vehicle is shared with you, you will also see the configurations created by the owner of the vehicle.</p>
+<p>To create or modify a new sensor configuration when <a href="#viewing-a-vehicle">viewing a vehicle</a>, click the icon to the right of "Sensor Configurations". When <a href="#editing-a-vehicle">editing a vehicle</a>, click the "Sensor Configurations" tab at the top of the view.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-sensor-config-edit.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-sensor-config-edit.png" /></a></p>
+<p>The Sensor Configurations tab provides several actions:</p>
+<ul>
+<li>Create: You can create a new configuration using the "Create New Configuration" button.</li>
+<li>View / Edit: You can view any configuration or edit a configuration you own by selecting the configuration or the Edit icon for a configuration.</li>
+<li>Copy: You can create a copy of an existing configuration using the Copy icon. If you want to modify a configuration from a different users, you must first create your own copy of that configuration and then modify the copy.</li>
+<li>Delete: You can delete any configuration that you own using the Delete icon which will permanently remove it entirely from the vehicle. You will be prompted to confirm the deletion before continuing.</li>
+</ul>
+<h3 id="modifying-a-sensor-configuration">Modifying a Sensor Configuration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#modifying-a-sensor-configuration" title="Permanent link">#</a></h3>
+<p>The sensor configuration editor allows you to visually update the position and properties of a sensor used in this configuration.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-page-sensor-config.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-sensor-config.png" /></a></p>
+<p>Each sensor has a parent which is either the "Root (Base Link)" or is another sensor. To add new sensors, click the "+" icon next to the parent and select the sensors you wish to add.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-page-sensor-config-add.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-sensor-config-add.png" /></a></p>
+<p>Each sensor can be customized by selecting the senor from the tree view and modifying the values in the form that loads below.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-page-sensor-config-select.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-sensor-config-select.png" /></a></p>
+<ul>
+<li>The "Sensor Type" field is read-only and represents the plugin name.</li>
+<li>The "Name" field must be unique for this sensor configuration and helps to identify the sensor in the tree view and in the simulation.</li>
+<li>The transformation fields, "X", "Y", "Z", "Pitch", "Yaw", and "Roll" configure the position of the sensor relative to its parent position and orientation.</li>
+</ul>
+<p>Many sensors have additional configuration properties that can be customized. These fields are displayed below the transformation fields.</p>
+<blockquote>
+<p><strong>Note:</strong> You do not need to "Save" after editing a sensor but must click "Save" to commit all of the changes you have made.</p>
+</blockquote>
+<h3 id="migrating-legacy-sensor-configurations">Migrating Legacy Sensor Configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#migrating-legacy-sensor-configurations" title="Permanent link">#</a></h3>
+<p>If you have an older legacy sensor configuration that uses the <code>type</code> instead of the <code>plugin</code> field to identify the plugins, you can select the "&lt;&gt;" icon in the Preview header to paste this configuration into the JSON Editor. Clicking "Save" will validate and save the configuration and return an updated version compatible with the current schema.</p>
+<p><em>NOTE</em>: Most of the sensor <code>type</code> names have changed since 2021.1 release. You can find the latest <code>type</code> names from <a href="../../../simulation-content/sensors-list/">sensors</a> documentation.
+  <a href="../../../images/my-library/mylibrary-vehicles-page-sensor-config-json.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-sensor-config-json.png" /></a></p>
+<h3 id="working-with-sensor-configurations-created-by-other-users">Working with Sensor Configurations created by other users <a class="wikilink" href="#top">top</a><a class="headerlink" href="#working-with-sensor-configurations-created-by-other-users" title="Permanent link">#</a></h3>
+<p>When a vehicle is shared with you or when a vehicle is added to the library, you also gain access to the sensor configurations created by the owner of the vehicle. Sometimes, these sensor configurations may contain plugins that you do not have in your library. When that occurs, you will see warning messages with available actions for each type of problem.</p>
+<p><a href="../../../images/my-library/mylibrary-vehicles-page-sensor-config-shared-errors.png"><img alt="" src="../../../images/my-library/mylibrary-vehicles-page-sensor-config-shared-errors.png" /></a></p>
+<ul>
+<li>If a plugin is available in the store but not in your Library, you can add it by clicking "Add to Library" next to the warning.</li>
+<li>If a plugin is owned by another user but not in the Store, you can request access to it from the owner by clicking "Request Access" next to the warning.</li>
+<li>If a plugin has been deleted by the owner but still exists in the sensor configuration, it must be removed by the owner before you can use this sensor configuration in a simulation.</li>
+</ul>
+<h3 id="bridge-types">Bridge Types<a class="headerlink" href="#bridge-types" title="Permanent link">#</a></h3>
+<ul>
+<li><code>No bridge</code>: This is the default. This is used when there is no need to connect to an AD Stack. This selection does not require any additional information while setting up the Simulation.</li>
+<li><code>ROS</code>: This bridge allows connecting to ROS1 based AV stacks. (like Autoware). The ROS1 Bridge requires an IP address and port number while setting up the Simulation.</li>
+<li><code>ROS Apollo</code>: This bridge allows connecting to ROS1 based AV stacks which requires protobuf message format. (like Apollo 3.0). ROS1 Apollo Bridge requires an IP address and port number while setting up the Simulation.</li>
+<li><code>ROS2</code>: This bridge allows connecting to ROS2 based AV stacks. ROS2 Bridge requires an IP address and port number while setting up the Simulation.</li>
+<li><code>CyberRT</code>: This bridge allows connections to Apollo 5.0. CyberRT Bridge. CyberRT requires an IP address and port number while setting up the Simulation.</li>
+</ul>
+<h4 id="example-json">Example sensor configuration JSON<a class="headerlink" href="#example-json" title="Permanent link">#</a></h4>
+<p>You can find example sensor configurations for several Autopilot systems on the following pages:</p>
+<ul>
+<li><a href="../../../system-under-test/apollo5-0-json-example/">Apollo 5.0 JSON</a></li>
+<li><a href="../../../system-under-test/apollo-json-example/">Apollo 3.0 JSON</a></li>
+<li><a href="../../../system-under-test/autoware-json-example/">Autoware.AI JSON</a></li>
+<li><a href="../../../system-under-test/autoware-auto-json-example/">Autoware.Auto JSON</a></li>
+</ul>
+<p>Below is a shortened version of the JSON configuration on the <code>Jaguar2015XE (Autoware)</code> default vehicle. It uses a <code>ROS</code> bridge type.</p>
+<p>The JSON includes:</p>
+<ul>
+<li>a GPS sensor in the center of the vehicle that publishes data on the "/nmea_sentence" topic</li>
+<li>a LiDAR sensor 2.312m above the center of the vehicle that publishes data on the "/points_raw" topic</li>
+<li>a Keyboard Control input which allows the keyboard input to control the car</li>
+<li>a Vehicle Control input which subscribes to the Autoware AD Stack control commands</li>
+</ul>
+<pre><code class="JSON">[
+  {
+    &quot;type&quot;: &quot;GPS Device&quot;,
+    &quot;name&quot;: &quot;GPS&quot;,
+    &quot;params&quot;: {
+      &quot;Frequency&quot;: 12.5,
+      &quot;Topic&quot;: &quot;/nmea_sentence&quot;,
+      &quot;Frame&quot;: &quot;gps&quot;,
+      &quot;IgnoreMapOrigin&quot;: true
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0,
+      &quot;z&quot;: 0,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  },
+  {
+    &quot;type&quot;: &quot;Lidar&quot;,
+    &quot;name&quot;: &quot;Lidar&quot;,
+    &quot;params&quot;: {
+      &quot;LaserCount&quot;: 32,
+      &quot;MinDistance&quot;: 0.5,
+      &quot;MaxDistance&quot;: 100,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;MeasurementsPerRotation&quot;: 360,
+      &quot;FieldOfView&quot;: 41.33,
+      &quot;CenterAngle&quot;: 10,
+      &quot;Compensated&quot;: true,
+      &quot;PointColor&quot;: &quot;#ff000000&quot;,
+      &quot;Topic&quot;: &quot;/points_raw&quot;,
+      &quot;Frame&quot;: &quot;velodyne&quot;
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 2.312,
+      &quot;z&quot;: -0.3679201,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    }
+  },
+  {
+    &quot;type&quot;: &quot;Keyboard Control&quot;,
+    &quot;name&quot;: &quot;Keyboard Car Control&quot;
+  },
+  {
+    &quot;type&quot;: &quot;Vehicle Control&quot;,
+    &quot;name&quot;: &quot;Autoware Car Control&quot;,
+    &quot;params&quot;: {
+      &quot;Topic&quot;: &quot;/vehicle_cmd&quot;
+    }
+  }
+]
+</code></pre>
+
+<h2 id="plugins">Plugins <a class="wikilink" href="#top">top</a><a class="headerlink" href="#plugins" title="Permanent link">#</a></h2>
+<p>When you log in for the first time, your Library page will contain the default Bridge plugins.</p>
+<p><a href="../../../images/my-library/mylibrary-plugins-empty.png"><img alt="" src="../../../images/my-library/mylibrary-plugins-empty.png" /></a></p>
+<p>You can click:</p>
+<ul>
+<li>"All" to see all plugins that you have added to your Library.</li>
+<li>"Owned by me" lists plugins for which you are the owner (meaning that these were built and uploaded by you).</li>
+<li>"Shared by me" lists plugins for which you are the owner were shared to other users by you.</li>
+<li>"Shared with me" lists plugins that were shared to you by other users.</li>
+</ul>
+<h3 id="adding-a-plugin">Adding a plugin <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-a-plugin" title="Permanent link">#</a></h3>
+<p>You can add plugins to your Library from either the <a href="../store/">Store</a> page or by clicking the "Add new" button at the top right. </p>
+<p>To upload your own plugin:</p>
+<ol>
+<li>
+<p>From the Library, click the "Add new" button.</p>
+</li>
+<li>
+<p>Drag and drop, or click to upload an AssetBundle which you have built for the version of SVL Simulator you are running.</p>
+<p><a href="../../../images/my-library/mylibrary-plugins-upload.png"><img alt="" src="../../../images/my-library/mylibrary-plugins-upload.png" /></a></p>
+</li>
+<li>
+<p>Once the upload has finished and the AssetBundle has been processed, fill in the details about your new plugin, including Plugin Name, Description, License, Copyright, and Tags.</p>
+<p><a href="../../../images/my-library/mylibrary-plugins-upload-details.png"><img alt="" src="../../../images/my-library/mylibrary-plugins-upload-details.png" /></a></p>
+</li>
+<li>
+<p>Click "Publish" to publish the plugin to your personal library, allowing it to be used in your simulations. You can click "Keep as draft" to save and publish later.</p>
+<p><a href="../../../images/my-library/mylibrary-plugins-upload-publish.png"><img alt="" src="../../../images/my-library/mylibrary-plugins-upload-publish.png" /></a></p>
+</li>
+</ol>
+<h3 id="viewing-a-plugin">Viewing a plugin <a class="wikilink" href="#top">top</a><a class="headerlink" href="#viewing-a-plugin" title="Permanent link">#</a></h3>
+<p>Once you have successfully added a plugin to your Library page, you will be able to see the plugin and its details.</p>
+<p><a href="../../../images/my-library/mylibrary-plugins-page.png"><img alt="" src="../../../images/my-library/mylibrary-plugins-page.png" /></a></p>
+<p>There are several additional actions possible on a plugin page:</p>
+<ul>
+<li>Edit: You can edit the plugin's detail information.</li>
+<li>Share: You can share your private plugins with other users to allow them to use the plugin in their simulations.</li>
+</ul>
+<h3 id="editing-a-plugin">Editing a plugin <a class="wikilink" href="#top">top</a><a class="headerlink" href="#editing-a-plugin" title="Permanent link">#</a></h3>
+<p>Editing a plugin allows you to update the details about your new plugin, including Plugin Name, Description, License, Copyright, and Tags. If the plugin is your own, then you can also update the asset bundle of the plugin and also upload new asset bundles for supporting various 'SVL Simulator' versions.</p>
+<p><a href="../../../images/my-library/mylibrary-plugins-edit.png"><img alt="" src="../../../images/my-library/mylibrary-plugins-edit.png" /></a></p>
+<p>There are several additional actions possible when editing:</p>
+<ul>
+<li>Add to Store: You can make the plugin public so that other users may add it to their library.</li>
+<li>Unpublish: You can "unpublish" the plugin and return it to "draft" status, disabling the ability for you to use it in a valid simulation.</li>
+<li>Delete Plugin: Delete the plugin entirely from your account and library. Once you do this, you will need to go back to where you obtained the plugin (or re-upload it) in order to add it to your library again.</li>
+</ul>
+<p>NOTE: Any changes to the plugin such as Removing from the Store, or Unpublishing it, or Deleting will not be retroactively applied. That is the changes will have no impact on the users who <strong>already</strong> have the plugin in their library. For example, if a plugin is already in a user's library, then that user can continue to use the plugin in sensor configurations and use them in simulations even if the plugin has been removed from the store or has been deleted or unpublished by the owner.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../clusters/" class="btn btn-neutral float-right" title="Clusters">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../store/" class="btn btn-neutral" title="Store"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../store/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../clusters/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../javascripts/clipboard.js" defer></script>
+      <script src="../../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>

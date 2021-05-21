@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Installation procedure";
     var mkdocs_page_input_path = "installation-guide/installing-simulator.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/docs/installation-guide/installing-simulator/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -127,7 +127,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../getting-started/getting-started/">First start</a>
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
                 </li>
     </ul>
 	    </li>
@@ -332,6 +332,10 @@
 		
     <span class="caption-text">Simulation Content</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../simulation-content/assets/">Building content</a>
@@ -609,7 +613,7 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 <p>Docker v19.03 or later must be installed on Linux in order to run local simulations that use the <code>Python API</code> or <code>VSE</code> <a href="../../running-simulations/runtime-templates/">runtime templates</a>.</p>
 <p>Follow the <a href="https://docs.docker.com/engine/install/ubuntu/">Docker installation instructions</a> to install Docker.</p>
 <h2 id="installing-simulator">Installing the simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-simulator" title="Permanent link">#</a></h2>
-<p>The Simulator release can be downloaded as a prebuilt binary from the simulator distribution.</p>
+<p>The Simulator release can be downloaded as a prebuilt binary from the <a href="https://github.com/lgsvl/simulator/releases/latest">simulator distribution</a>.</p>
 <ol>
 <li>
 <p>Download and extract the simulator binary zip file for your OS to a desired location.</p>
@@ -648,8 +652,7 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 <p>You should now see the <strong>Clusters</strong> view, where you need to enter a <strong>cluster name</strong> (e.g. "local-sim") for your local machine which is running SVL Simulator and click <strong>Create cluster</strong>.</p>
 <p>If you wish to link additional machines into a cluster for distributed simulation, refer to <a href="../../user-interface/web/clusters/">Clusters Tab</a> for more information.</p>
 <p><img alt="clusters-page" src="../../images/running-simulator/clusters-page.png" title="Default initial page after logging in to SVL Simulator" /></p>
-<p>If you don't see the <strong>New Cluster</strong> form, your running simulator may be offline. Return to the SVL Simulator program window and click the <strong>Offline</strong> button to re-connect the simulator to the cloud, then click <strong>Link to Cloud</strong> to return to the Clusters view. You should now be able to enter a name for your local machine (e.g. "local-sim") and click <strong>Create cluster</strong>.</p>
-<p>If you get an error when creating the cluster, your running simulator may be offline. Return to the SVL Simulator program window and click the <strong>Offline</strong> button to re-connect the simulator to the cloud, then click <strong>Link to Cloud</strong> to return to the Clusters view. You should now be able to enter a name for your local machine (e.g. "local-sim") and click <strong>Create cluster</strong>.</p>
+<p>If you don't see the <strong>New Cluster</strong> form or get an error when <strong>Creating the Cluster</strong>, your running simulator may be offline. Return to the SVL Simulator program window and click the <strong>Offline</strong> button to re-connect the simulator to the cloud, then click <strong>Link to Cloud</strong> to return to the Clusters view. You should now be able to enter a name for your local machine (e.g. "local-sim") and click <strong>Create cluster</strong>.</p>
 </li>
 <li>
 <p>At this point your local machine should now be linked to the cloud in your new default ("local-sim") cluster.</p>
