@@ -43,7 +43,8 @@
       "forDevelopers": "For developers",
       "about": "About us",
       "contactUs": "Contact",
-      "signin": "Sign in"
+      "signin": "Sign in",
+      "signup": "Sign up"
     },
     "links": {
       "github": "GitHub",

@@ -258,24 +258,25 @@ const DesktopMenu = () => {
       <Grid item>
         <Grid container direction='row' justify='space-between' alignItems='stretch' spacing={1}>
           <Grid item>
-            <StyledRequestDemoButton
+            <StyledLinkButton
               color='secondary'
-              variant='outlined'
+              buttonVariant='outlined'
               fullWidth
-              mode={RequestDemoFormMode.ContactUs}
+              to='https://wise.svlsimulator.com/sign-in'
+              alia-label='Sign-in button'
             >
-              {t('main.header.contactUs')}
-            </StyledRequestDemoButton>
+              {t('main.header.signin')}
+            </StyledLinkButton>
           </Grid>
           <Grid item>
             <StyledLinkButton
               color='secondary'
               buttonVariant='outlined'
               fullWidth
-              to='https://wise.svlsimulator.com/'
-              alia-label='Sign-in button'
+              to='https://wise.svlsimulator.com/register'
+              alia-label='Sign-up button'
             >
-              {t('main.header.signin')}
+              {t('main.header.signup')}
             </StyledLinkButton>
           </Grid>
         </Grid>

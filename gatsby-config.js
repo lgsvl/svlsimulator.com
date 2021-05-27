@@ -16,7 +16,10 @@ const glob = require('glob');
 
 module.exports = {
   siteMetadata: {
-    title: 'SVL Simulator',
+    title:
+      'SVL Simulator by LG - Autonomous and Robotics real-time sensor Simulation, LiDAR, ' +
+      'Camera simulation for ROS1, ROS2, Autoware, Baidu Apollo. Perception, Planning, ' +
+      'Localization, SIL and HIL Simulation, Open Source and Free.',
     description: 'Simulation software to accelerate safe autonomous vehicle development',
     author: 'LGEUS ARL',
     siteUrl: 'https://www.svlsimulator.com'

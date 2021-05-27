@@ -105,7 +105,7 @@ export default function Home() {
                           <LinkButton
                             color='primary'
                             buttonVariant='contained'
-                            to='/docs/getting-started/getting-started/'
+                            to='https://wise.svlsimulator.com'
                             target='_blank'
                           >
                             {t('main.buttons.getStarted')}
