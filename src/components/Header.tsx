@@ -274,9 +274,9 @@ const DesktopMenu = () => {
               buttonVariant='outlined'
               fullWidth
               to='https://wise.svlsimulator.com/register'
-              alia-label='Sign-up button'
+              alia-label='Register button'
             >
-              {t('main.header.signup')}
+              {t('main.header.register')}
             </StyledLinkButton>
           </Grid>
         </Grid>
