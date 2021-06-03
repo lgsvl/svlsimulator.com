@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
       <List>
         <FooterLink primary={t('main.links.github')} to='https://github.com/lgsvl/simulator' />
         <FooterLink primary={t('main.links.documentation')} to='/docs/' target='_blank' />
-        <FooterLink primary={t('main.footer.content')} to='https://content.lgsvlsimulator.com' />
+        <FooterLink primary={t('main.footer.content')} to='https://wise.svlsimulator.com' />
       </List>
     </>
   );
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
         {t('main.footer.about')}
       </Typography>
       <List>
-        <FooterLink primary={t('main.footer.meetUs')} to='/about/' />
+        <FooterLink primary={t('main.footer.aboutUs')} to='/about/' />
         <FooterLink primary={t('news.navTitle')} to='/news/' />
         <FooterLink primary={t('main.footer.contactUs')} onClick={handleRequestDemoClick} />
       </List>

@@ -27,7 +27,7 @@ You can still login and access content for old version of simulator at:
 
 * Asset content: [https://content.lgsvlsimulator.com/](https://content.lgsvlsimulator.com/)
 
-* Docs for 2020.06 and older: [Documentation Archive] (https://www.svlsimulator.com/docs/archive/)
+* Docs for 2020.06 and older: [Documentation Archive](https://www.svlsimulator.com/docs/archive/)
 
 The content is also linked in the footer of our [new website](https://www.svlsimulator.com/) for easy access.
 

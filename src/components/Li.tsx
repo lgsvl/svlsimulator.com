@@ -13,6 +13,7 @@ const LiText = withTheme(styled(ListItemText)`
     &::before {
       content: '–';
       display: inline-block;
+      position: absolute;
       color: ${({ theme }) => theme.palette.text.secondary};
       // color: ${({ theme }) => theme.palette.secondary.dark};
       text-indent: -1.6ex; // Position the - just inside the Mui-LI's padding

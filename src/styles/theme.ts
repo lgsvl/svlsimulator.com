@@ -181,6 +181,10 @@ const theme = createMuiTheme({
       }
     },
     MuiTypography: {
+      colorPrimary: {
+        // Override primary color as we want an alternate color for text specifically.
+        color: '#EF7F9E'
+      },
       gutterBottom: {
         marginBottom: 40,
         marginTop: 40, // It's not technically "correct" to set this here, but

@@ -35,7 +35,7 @@ const StyledIconOut = withTheme(styled(IconOut)`
   margin-inline-start: 0.75ex;
 `) as typeof IconOut;
 
-export type LinkProps = Merge<MuiLinkProps, I18nGatsbyLinkProps>;
+export type LinkProps = Merge<MuiLinkProps, I18nGatsbyLinkProps> & { noArrow?: boolean };
 
 // Gatsby bug needs a custom thing to work...
 // https://github.com/gatsbyjs/gatsby/issues/16682
@@ -44,7 +44,7 @@ export type LinkProps = Merge<MuiLinkProps, I18nGatsbyLinkProps>;
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }: LinkProps, ref) => {
+const Link = React.forwardRef(({ to, activeClassName, partiallyActive, noArrow, ...rest }: LinkProps, ref) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
@@ -69,7 +69,7 @@ const Link = React.forwardRef(({ to, activeClassName, partiallyActive, ...rest }
     return (
       <MuiLink component={FwdOutbound} to={to} target='_blank' {...rest} ref={ref as React.Ref<HTMLAnchorElement>}>
         {rest.children}
-        {(/^[^/]/.test(to) || /^\/docs/.test(to)) && <StyledIconOut />}
+        {!noArrow && (/^[^/]/.test(to) || /^\/docs/.test(to)) && <StyledIconOut />}
       </MuiLink>
     );
   }

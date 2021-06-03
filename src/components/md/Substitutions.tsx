@@ -66,7 +66,7 @@ const MdLink: React.FC<MdLinkProps> = ({ to, href = '#', ...rest }) =>
   ) : isAnchorLink(to || href) ? (
     <AnchorLink {...rest} href={to || href} />
   ) : (
-    <StyledLink {...rest} to={to || href} />
+    <StyledLink {...rest} to={to || href} noArrow />
   );
 const Ol: React.FC<BoxProps> = props => <StyledOlBox pl={3} {...props} component='ol' />;
 const Ul: React.FC<BoxProps> = props => <Box pl={3} {...props} component='ul' />;

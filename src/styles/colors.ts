@@ -11,7 +11,7 @@ const colors = {
     white: '#FFFFFF',
     azureishWhite: '#E2E8F4',
     lightSteelBlue: '#B6C5E4',
-    slateGrey: '#6D7B97',
+    slateGrey: '#8B93AC',
     yankeesBlue: '#1F2940',
     eerieBlack: '#141B2D'
   },
