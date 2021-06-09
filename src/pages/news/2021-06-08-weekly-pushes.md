@@ -1,6 +1,6 @@
 ---
 date: 2021-06-08
-title: SVL Simulator: Latest on github master
+title: SVL Simulator latest github master
 author: Lokesh Kumar Goel 
 preview: More frequent updates coming to SVL Simulator github master.
 category: announcement
