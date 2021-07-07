@@ -8,7 +8,7 @@
   
   <meta name="author" content="LG Electronics America R&D Lab">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Traffic behavior plugins - SVL Simulator</title>
+  <title>NPC plugins - SVL Simulator</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Traffic behavior plugins";
+    var mkdocs_page_name = "NPC plugins";
     var mkdocs_page_input_path = "plugins/npc-plugins.md";
     var mkdocs_page_url = "/docs/plugins/npc-plugins/";
   </script>
@@ -107,6 +107,10 @@
                 <li class="">
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
                 </li>
     </ul>
 	    </li>
@@ -421,9 +425,13 @@
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Traffic behavior plugins</a>
+    <a class="current" href="./">NPC plugins</a>
     <ul class="subnav">
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -514,7 +522,7 @@
         
       
     
-    <li>Traffic behavior plugins</li>
+    <li>NPC plugins</li>
     <li class="wy-breadcrumbs-aside">
       
       <!-- edited to not display Github edit link -->
@@ -529,12 +537,14 @@
             <div class="section">
               
                 <h1>NPC Plugins <a href="#top"></a></h1>
-<p>Non ego traffic vehicles (NPCs) are plugins that have the ability to be customized in appearance and behavior in your simulations. This allows you to add local variations of vehicle styles and brands or implement encounters with vehicles displaying distinguished behaviors, such as erratic driving or vehicles stopping frequently (e.g., delivery vehicles, trash pick up).</p>
+<p>Non ego traffic vehicles (NPCs) are plugins that have the ability to be customized in appearance and behavior in your simulations. This allows you to add local variations of vehicle styles and brands or implement encounters with vehicles displaying distinguished behaviors, such as erratic driving or vehicles stopping frequently (e.g., delivery vehicles, trash pick up, bicycles).</p>
+<p><strong>NOTE:</strong> Default NPCs are no longer included in simulator source and must be built locally from source for custom binaries.  See <a href="../../installation-guide/build-instructions/">build instructions</a>.</p>
 <h2> Table of Contents</h2>
 
 <div class="toc">
 <ul>
 <li><a href="#npc-models">NPC Models</a></li>
+<li><a href="#npc-animations">NPC Animations</a></li>
 <li><a href="#building-npc-plugins">Building NPC Plugins</a></li>
 <li><a href="#npc-behaviors">NPC Behaviors</a></li>
 <li><a href="#creating-npc-behavior-plugins">Creating NPC Behavior Plugins</a></li>
@@ -547,6 +557,8 @@
 <h2 id="npc-models">NPC Models <a class="wikilink" href="#top">top</a><a class="headerlink" href="#npc-models" title="Permanent link">#</a></h2>
 <p>NPC Models allow customization of NPC visuals, most notably the 3D model of vehicles, but also the material used for the car paint or windows.
 With supporting custom NPC models we also added the support for motorbikes and vehicles with more two axles as well as more than one steering axle as is found on heavy vehicles.</p>
+<p>NPC models must include a named <code>Collider</code> node that is a simplified mesh to attach a Unity mesh collider.  The mesh renderer is <strong>NOT</strong> active and the collider must be marked Convex.</p>
+<p><a href="../../images/full_size_images/npc-collider.png"><img alt="" src="../../images/npc-collider.png" /></a></p>
 <p>We classify NPCs into size categories which decide the spawning frequency as well as which paint colors are more common for which NPC size type.
 The following table lists all currently implemented size types and the weight that correlates to their relative probability of encountering this type.</p>
 <table>
@@ -605,11 +617,20 @@ The following table lists all currently implemented size types and the weight th
 <td align="center">Motorcycle</td>
 <td align="center">1</td>
 </tr>
+<tr>
+<td align="center">Bicycle</td>
+<td align="center">1</td>
+</tr>
 </tbody>
 </table>
 <p>In this example, trailer type has a weight of zero, indicating that it should not spawn by itself, while MidSize type has the highest weight, indicating that it is the most frequent vehicle on the road. The NPC Type is configured via a <a href="#npc-meta-data">Component added to the root of the prefab</a>.</p>
 <p>Similarly, colors for each spawned vehicle is picked from a table for each vehicle type.</p>
 <p>NPC asset bundles are detected from <code>&lt;simulator installation path&gt;/AssetBundles/NPCs</code> and added to the simulation automatically.</p>
+<h2 id="npc-animations">NPC Animations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#npc-animations" title="Permanent link">#</a></h2>
+<p>NPC animations are supported in SVL Simulator. They must be included in the model data and require an AnimationController.controller asset.  This controller is the animation state machine that is referenced in the Animator component on the model root object.</p>
+<p><a href="../../images/full_size_images/npc-animator.png"><img alt="" src="../../images/npc-animator.png" /></a></p>
+<p>In the animation controller, the animation parameter named <code>speed</code> must be setup and set as a transition condition. With this parameter, npc animation speed and transitions can be effected by the npc rigidbody speed. This is the only default parameter supported in the npc controller.</p>
+<p><a href="../../images/full_size_images/npc-animation-controller.png"><img alt="" src="../../images/npc-animation-controller.png" /></a></p>
 <h2 id="building-npc-plugins">Building NPC Plugins <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-npc-plugins" title="Permanent link">#</a></h2>
 <p>NPCs can be grouped into collections to allow you to import regional collections of vehicles. Place NPCs in <code>Assets/External/NPCs/CollectionFolder/</code> in separate named folders to have all <code>CollectionFolder</code> vehicles show up in the build menu in a group.</p>
 <p>To build an external NPC,</p>
@@ -620,7 +641,7 @@ The following table lists all currently implemented size types and the weight th
 </ol>
 <p><a href="../../images/full_size_images/build-npcs.png"><img alt="" src="../../images/build-npcs.png" /></a></p>
 <p>The bundle named <code>npc_XXX</code> will be placed in the <code>AssetBundles/NPCs/CollectionFolder</code> folder in source code.  This is where simulator loads NPC bundles at runtime. To have NPCs load in a binary, they must be placed in the AssetBundles/NPCs/ folder in that binary.</p>
-<p>See <a href="build-instructions">build instructions</a> for more details.</p>
+<p>See <a href="../../installation-guide/build-instructions/">build instructions</a> for more details.</p>
 <h2 id="npc-behaviors">NPC Behaviors <a class="wikilink" href="#top">top</a><a class="headerlink" href="#npc-behaviors" title="Permanent link">#</a></h2>
 <p>NPC Behaviors allow NPC Vehicles to behave in custom ways different from the provided built-in NPC behavior and are enabled and configured through the Python API.</p>
 <p>Before running the simulator (running the executable or pressing <code>Play</code> in the Editor) NPC behavior plugins must be built by the simulator using <code>Simulator -&gt; Build...</code> menu and the built asset placed in the <code>AssetBundles/NPCs</code> folder in the source code or binary.</p>
@@ -853,7 +874,7 @@ All assets of a NPC such as textures, additional materials or scripts are expect
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../digital-twin/gomentum-dtl/" class="btn btn-neutral float-right" title="Digital Twin Lite example map">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../pedestrian-plugins/" class="btn btn-neutral float-right" title="Pedestrian plugins">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../controllable-plugins/" class="btn btn-neutral" title="Controllable plugins"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -889,7 +910,7 @@ All assets of a NPC such as textures, additional materials or scripts are expect
         <span><a href="../controllable-plugins/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../digital-twin/gomentum-dtl/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../pedestrian-plugins/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -559,7 +567,7 @@
 </ul>
 </li>
 <li>
-<p>Download and install Unity 2019.4.18f1 with Windows and Linux build support modules (<a href="https://unity3d.com/get-unity/download/archive">https://unity3d.com/get-unity/download/archive</a>)</p>
+<p>Download and install Unity 2020.3.3f1 with Windows and Linux build support modules (<a href="https://unity3d.com/get-unity/download/archive">https://unity3d.com/get-unity/download/archive</a>)</p>
 <ul>
 <li><strong>IMPORTANT</strong> include support for both Windows and Linux when installing Unity</li>
 <li>(Optional) include support for Visual Studio for easier debugging</li>
@@ -587,11 +595,24 @@ Git LFS initialized.</code></p>
 <li>
 <p>Clone simulator from GitHub: $ git clone --single-branch https://github.com/lgsvl/simulator.git Be sure to clone latest release branch, not master.</p>
 </li>
-<li>Run Unity Hub</li>
-<li>In the <code>Projects</code> tab, click <code>Add</code> and select the folder that the Simulator was cloned to</li>
-<li>In the <code>Installs</code> tab, click <code>Locate</code> and choose the <code>Unity</code> launcher in the <code>Unity2019.4.18f1</code> folder</li>
-<li>In the <code>Projects</code> tab, verify that the Simulator is using Unity Version 2019.4.18f1 from the dropdown</li>
-<li>Double-click the name of the project to launch Unity Editor</li>
+<li>
+<p>Run Unity Hub</p>
+</li>
+<li>
+<p>In the <code>Projects</code> tab, click <code>Add</code> and select the folder that the Simulator was cloned to</p>
+</li>
+<li>
+<p>In the <code>Installs</code> tab, click <code>Locate</code> and choose the <code>Unity</code> launcher in the <code>Unity2020.3.3f1</code> folder</p>
+</li>
+<li>
+<p>In the <code>Projects</code> tab, verify that the Simulator is using Unity Version 2020.3.3f1 from the dropdown</p>
+</li>
+<li>
+<p>Double-click the name of the project to launch Unity Editor</p>
+</li>
+<li>
+<p>If this is an updated Unity version, let Unity recompile shaders and then close Unity and open the project again.</p>
+</li>
 </ol>
               
             </div>

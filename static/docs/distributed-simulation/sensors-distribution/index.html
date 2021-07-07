@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -421,7 +425,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -523,18 +531,19 @@
             <div class="section">
               
                 <h1>Sensors Distribution <a href="#top"></a></h1>
-<p>Distribution sensors between different machines are the advantage of the cluster simulation. Sensors are not synchronized between simulation, one sensor can be simulated only on one machine, but one machine can still simulate multiple sensors. </p>
+<p>Distribution sensors between different machines are the advantage of the cluster simulation. Distributed simulation synchronizes sensors' transforms between every cluster machine. One sensor can be simulated only on one machine, but one machine can still simulate multiple sensors. </p>
 <h2 id="sensor-setup">Sensor Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-setup" title="Permanent link">#</a></h2>
-<p>Sensors distributed to the clients will not be simulated on the master, those sensors will not affect the simulation (for example manual control sensor has to be simulated on the master) and API requests callbacks will be delayed. Due to these restrictions distribution is disabled by default and enabling it requires additional setup. Every sensor which can be distributed to clients has to override the <code>DistributionType</code> property with <em>LowLoad</em>, <em>HighLoad</em>, <em>UltraHighLoad</em> value according to its performance overhead.</p>
+<p>Sensors distributed to the clients will not be simulated on the main, those sensors will not affect the simulation (for example manual control sensor has to be simulated on the main) and API requests callbacks will be delayed. Due to these restrictions distribution is disabled by default and enabling it requires additional setup. Every sensor which can be distributed to clients has to override the <em>MainOnly</em> value of the <code>DistributionType</code> property with <em>MainOrClient</em> or <em>ClientOnly</em> value.</p>
 <h2 id="sensors-load-balancing">Sensors Load Balancing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensors-load-balancing" title="Permanent link">#</a></h2>
-<p>The current load balancing algorithm divides sensors into groups by their type. Master distributes sensors by counting overhead sum and assigning each next sensor to the least overloaded machine.</p>
+<p>The current load balancing algorithm divides sensors into groups by their <code>DistributionType</code> type. Main distributes sensors by counting overhead sum and assigning each next sensor to the least overloaded machine available for the selected distribution type. Sensors can override the <code>PerformanceLoad</code> property to determine their load. The value <em>0.0</em> means that the sensor will not impact the performance at all, and the value <em>1.0</em> means that that the distributed simulation will try to simulate this sensor on a dedicated machine if possible, default value is <em>0.5</em>. </p>
+<p>Example sensors configurations are listed below:</p>
 <ul>
-<li><em>UltraHighLoad</em> sensors are assigned first and adds 1.0 overhead to a machine. Sensors like <code>LiDAR</code>, which parses the camera images and performs complex maths operations, should be classified under this type.</li>
-<li><em>HighLoad</em> sensors are assigned next and each sensor adds 0.1 overhead to a machine. Sensors like <code>RadarSensor</code>, which performs complex maths operations, should be classified under this type.</li>
-<li><em>LowLoad</em> sensors are assigned last and each sensor adds 0.05 overhead to a machine. Sensors like <code>GpsSensor</code>, which performs simple maths operations, should be classified under this type.</li>
-<li><em>DoNotDistribute</em> sensors are assigned only to the master machine. Sensors like <code>VehicleControlSensor</code>, which controls objects in a simulation, have to be classified under this type.</li>
+<li><em>1.0</em> <code>PerformanceLoad</code> for sensors like <code>LiDAR</code>, which parses the camera images and performs complex maths operations, should be classified under <em>ClientOnly</em> <code>DistributionType</code> type.</li>
+<li><em>0.2</em> <code>PerformanceLoad</code> for sensors like <code>RadarSensor</code>, which performs complex maths operations, should be classified under <em>MainOrClient</em> <code>DistributionType</code> type.</li>
+<li><em>0.05</em> <code>PerformanceLoad</code> for sensors like <code>GpsSensor</code>, which performs simple maths operations, should be classified under <em>MainOrClient</em> <code>DistributionType</code> type.</li>
+<li>Sensors like <code>KeyboardControlSensor</code>, which control objects in a simulation, have to be classified under <em>MainOnly</em> <code>DistributionType</code> type.</li>
 </ul>
-<p>As the master machine requires more resources <em>UltraHighLoad</em> sensors that can be distributed will never be assigned to the master, additionally master starts the algorithm with 0.15 overhead.</p>
+<p>As the main machine requires more resources it starts the algorithm with <em>0.15</em> overhead.</p>
               
             </div>
           </div>

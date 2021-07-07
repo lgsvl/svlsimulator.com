@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Running Simulator - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Running Simulator";
+    var mkdocs_page_input_path = "running-simulations/running-simulator.md";
+    var mkdocs_page_url = "/docs/running-simulations/running-simulator/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-6', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../runtime-templates/">Runtime templates</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Running Simulator</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Running Simulations &raquo;</li>
+        
+      
+    
+    <li>Running Simulator</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/running-simulations/running-simulator.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Running SVL Simulator</h1>
+<p>Before running SVL Simulator make sure to go through <a href="../../installation-guide/installing-simulator/">the guide</a> for installing and starting it for the first time. This guide assumes that SVL Simulator is installed and you are ready to run a simulation.
+This guide will walk you through the steps of adding assets from the <strong>Store</strong> to <strong>My Library</strong>, and creating and running following types of simulations:</p>
+<ol>
+<li>A random interactive simulation</li>
+<li>An API-only simulation</li>
+<li>A Python Test Case simulation</li>
+<li>A Visual scenario editor based simulation</li>
+</ol>
+<h2> Table of Contents</h2>
+
+<div class="toc">
+<ul>
+<li><a href="#video">Video</a></li>
+<li><a href="#store">Add Assets from the Store</a></li>
+<li><a href="#mylibrary">Review Assets in your Library</a></li>
+<li><a href="#randominteractivesimulation">Create and run a random interactive simulation</a></li>
+<li><a href="#apionlysimulation">API Only Simulation</a></li>
+<li><a href="#pythontestcasesimulation">Creating and running a Python Test Case Simulation</a></li>
+<li><a href="#vsesimulation">Creating and running a Visual Scenario Editor based Simulation</a></li>
+</ul>
+</div>
+<h2 id="video">Video <a class="wikilink" href="#top">top</a><a class="headerlink" href="#video" title="Permanent link">#</a></h2>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/C-Z9DXFbIhY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p><br></p>
+<h2 id="store">Add Assets from the Store <a class="wikilink" href="#top">top</a><a class="headerlink" href="#store" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Click tabs under <strong>Store</strong> to view available maps, vehicles, and sensors that are available for you to use. You'll need to add maps and vehicles from the Store to your own library (or upload maps and vehicles of your own) before you can use them in a simulation.</p>
+<p>Scroll through the list of all <strong>Free</strong> maps available, or click <strong>Trending</strong> to see most commonly downloaded maps or click <strong>Shared with me</strong> to see private maps shared to you by other users.</p>
+<p>Locate the <strong>BorregasAve</strong> map and click <strong>"+"</strong> to add it to your library if not already added (for <a href="#randominteractivesimulation">Random Interactive Simulation</a> below).</p>
+<p>Locate the <strong>SanFrancisco</strong> map and click <strong>"+"</strong> to add it to your library if not already added (for <a href="#pythontestcasesimulation">Python Test Case Simulation</a> below).</p>
+<p><a href="../../images/running-simulator/public-library.png"><img alt="public-library" src="../../images/running-simulator/public-library.png" title="Store page shows available maps, vehicles, and sensors" /></a></p>
+</li>
+<li>
+<p>Click any tab under <strong>Store</strong> (if needed) to return to the <strong>Store</strong> view.</p>
+<p>Scroll through the list of all <strong>Free</strong> vehicles available, or click <strong>Trending</strong> to see most commonly downloaded maps or click <strong>Shared with me</strong> to see private maps shared to you by other users.</p>
+<p>Locate the <strong>Lincoln2017MKZ</strong> vehicle and click <strong>"+"</strong> to add it to your library if not already added (for <a href="#randominteractivesimulation">Random Interactive Simulation</a> or <a href="#pythontestcasesimulation">Python Test Case Simulation</a> below).</p>
+<p>Locate the added vehicle in your library and click on the "Apollo 5.0" sensor configuration to confirm if there are any missing sensors in your library (for <a href="#randominteractivesimulation">Random Interactive Simulation</a> below).</p>
+<p><a href="../../images/running-simulator/missing-sensors.png"><img alt="missing-sensors" src="../../images/running-simulator/missing-sensors.png" title="Vehicle Sensor configuration page showing missing sensors" /></a></p>
+<p>Locate the added vehicle in your library and click on the "Apollo 5.0 (full analysis)" sensor configuration to confirm if there are any missing sensors in your library (for <a href="#pythontestcasesimulation">Python Test Case Simulation</a> below).</p>
+<p>If any sensors are missing, then locate them under "Sensors" tab under <strong>Store</strong> and add them to your library OR follow the instructions on the sensor configuration page.</p>
+<p><strong>NOTE:</strong> All test scripts load map by name or UUID and vehicle's sensor configuration by UUID. So take care to add the specific vehicles, sensors and maps to your library that are needed for the scripts or test cases that you intend to run. Please use UUID instead of name in your Python Test Case scripts. You can get UUID from the url when you open the asset profile in your browser.</p>
+<p><a href="../../images/running-simulator/map-uuid.png"><img alt="map-uuid" src="../../images/running-simulator/map-uuid.png" title="How to get Map UUID" /></a></p>
+<p><a href="../../images/running-simulator/sensor-conf-uuid1.png"><img alt="sensor-configuration-uuid1" src="../../images/running-simulator/sensor-conf-uuid1.png" title="How to get sensor configuration UUID - 1" /></a></p>
+<p><a href="../../images/running-simulator/sensor-conf-uuid2.png"><img alt="sensor-configuration-uuid2" src="../../images/running-simulator/sensor-conf-uuid2.png" title="How to get sensor configuration UUID - 2" /></a></p>
+</li>
+</ol>
+<h2 id="mylibrary">Review Assets in your Library <a class="wikilink" href="#top">top</a><a class="headerlink" href="#mylibrary" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Click Library and then click <strong>Maps</strong>, <strong>Vehicles</strong> and <strong>Sensors</strong> to view the map, vehicle and sensors that you just added to your library.</p>
+<p><strong>NOTE</strong>: You may notice some maps, vehicles and sensors in your library that you did not explicitly add; these were automatically added when your account was created.</p>
+<p><a href="../../images/running-simulator/mylibrary-maps.png"><img alt="mylibrary-maps" src="../../images/running-simulator/mylibrary-maps.png" title="Library view with Add New button" /></a></p>
+</li>
+</ol>
+<h2 id="randominteractivesimulation">Create and run a random interactive simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#randominteractivesimulation" title="Permanent link">#</a></h2>
+<p>In this section we will create an Interactive Mode simulation which allows you to control the vehicle and interact with the environment while the simulation is running. Random Traffic Scenarios are simulations in which NPCs and pedestrians exhibit randomly generated behavior. This random behavior is deterministic, meaning that the same behavior will be repeated if the same <strong>random seed</strong> is used in the simulation set up.</p>
+<ol>
+<li>
+<p>Click <strong>Simulations</strong>. Click <strong>Add New</strong> to create a new simulation.</p>
+<p><a href="../../images/running-simulator/simulations-tab.png"><img alt="simulations-tab" src="../../images/running-simulator/simulations-tab.png" title="Simulations view with Add New button" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>General</strong> pane, enter a name for your new simulation (e.g. "Random Interactive"), and select the cluster you created <a href="../../installation-guide/installing-simulator/#linktocloud">during installation</a> (e.g. "local-sim") from the cluster list.</p>
+<p>Click the switch next to <strong>Interactive mode</strong> to enable interactive mode for this simulation, if you wish to be able to play/pause the simulation and change settings after the simulation has started.</p>
+<p>Click the switch next to <strong>Headless mode</strong> if you do not wish the simulation to be rendered on the screen.</p>
+<p>Click the switch next to <strong>Create test report</strong> to enable cloud to create a <a href="../../user-interface/web/test-results/">test report</a> at the end of simulation run with analytics and event data from sensors on your vehicle.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Test Case</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-general-random-interactive.png"><img alt="simulation-general-random-interactive" src="../../images/running-simulator/simulation-general-random-interactive.png" title="Creating a random interactive simulation, General pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Test Case</strong> pane, select <strong>Random Traffic</strong> from the Runtime Template list.</p>
+<p>Next select the <strong>BorregasAve</strong> map, the <strong>Lincoln2017MKZ</strong> vehicle and <strong>Apollo 5.0</strong> sensor configuration from the dropdown lists.</p>
+<p><em>IMPORTANT:</em> If you have not already added a Map, Vehicle or needed Sensors to your library, refer to the <a href="#store">Store</a> above for information on how to add them.</p>
+<p>(Optional) Click <strong>+ Add another vehicle</strong> to add additional Ego vehicles. Note that each ego vehicle will need to be controlled by a separate AD stack and must have it's own bridge connection which would be specified in the <strong>Autopilot</strong> tab.</p>
+<p>You could also specify date, time, and environmental settings here but since we are creating an interactive simulation those can interactively be modified while the simulation is running.</p>
+<p>Click the switches next to <strong>Random Traffic</strong> and <strong>Random Pedestrians</strong> to enable these NPCs (non-player characters) in this random simulation.</p>
+<p>The <strong>Random Bicyclists</strong> feature is not yet supported and will be available in future releases.</p>
+<p>Enable <strong>Use Pre-defined Seed</strong> and manually enter a number to be used as the seed for all random behavior in the simulator. Using a pre-defined seed makes it possible to have deterministic and repeatable random simulations.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Autopilot</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-testcase-random-done.png"><img alt="simulation-testcase-random-done" src="../../images/running-simulator/simulation-testcase-random-done.png" title="Creating a random interactive simulation, Test Case pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Autopilot</strong> pane, select <strong>Apollo 5.0</strong> from the Autopilot list.</p>
+<p>For all ego vehicles in your simulation, enter the details of where can simulator connect to Autopilot.</p>
+<p>In the Bridge IP, enter "localhost:9090" or you can replace "localhost" with the IP address of your autopilot system if it is different from the machine on which SVL Simulator is running.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Publish</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-autopilot-done.png"><img alt="simulation-autopilot-done" src="../../images/running-simulator/simulation-autopilot-done.png" title="Creating a random interactive simulation, Autopilot pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Publish</strong> pane, click <strong>Publish</strong> to save (and <strong>publish</strong>) the simulation to your library. The simulation will be private and only accessible from your account.</p>
+<p><a href="../../images/running-simulator/simulation-publish-random.png"><img alt="simulation-publish" src="../../images/running-simulator/simulation-publish-random.png" title="Creating a random interactive simulation, Publish pane" /></a></p>
+</li>
+<li>
+<p>You should now see the Simulations view, with the newly created <strong>Random Interactive</strong> simulation.</p>
+<p>The simulation should indicate <strong>Idle</strong> as shown.</p>
+<p>If instead it says <strong>Offline</strong>, return to the SVL Simulator program window and click the <strong>Online</strong> button from drop-down menu on top-right corner to re-connect the simulator to the cloud. You can then switch back to the SVL Simulator browser window or click <strong>Open Browser</strong> in the Simulator (and then click <strong>Simulations</strong> to return to the Simulations view).</p>
+<p>To run the <strong>random interactive</strong> simulation you just created, click <strong>Run Simulation</strong>.</p>
+<p><a href="../../images/running-simulator/mysimulations.png"><img alt="mysimulations" src="../../images/running-simulator/mysimulations.png" title="Simulations page with random interactive simulation" /></a></p>
+</li>
+<li>
+<p>Switch back to the SVL Simulator and you may see a message indicating that any newly added maps, vehicles and sensors are downloading, after which the simulation should initialize.</p>
+<p>Since this is an interactive simulation, click the <strong>Play</strong> button at the bottom left corner of the screen to begin the simulation. You should see the random traffic driving and random pedestrians walking.</p>
+<p>Click the joystick icon at the bottom of the screen to get a list of keyboard controls. Click the settings icon to adjust the Environment settings. Click the <strong>eye</strong> icon to enable or disable individual sensor visualizations.</p>
+<p><a href="../../images/running-simulator/simulator-random-interactive.png"><img alt="simulator-random-interactive" src="../../images/running-simulator/simulator-random-interactive.png" title="SVL Simulator running random interactive simulation" /></a></p>
+</li>
+<li>
+<p>If Apollo 5.0 is available and running, then SVL Simulator should connect to the Apollo bridge, and Apollo should be able to drive the ego vehicle in it. Refer to <a href="../../system-under-test/apollo5-0-instructions/">Running Apollo 5.0 with SVL Simulator</a> for more information.</p>
+</li>
+<li>
+<p>To stop the simulation, switch back to the SVL Simulator browser window, click <strong>Simulations</strong> and click <strong>Stop Simulation</strong>.</p>
+</li>
+</ol>
+<h2 id="apionlysimulation">API Only Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apionlysimulation" title="Permanent link">#</a></h2>
+<p>In this section we will create an API Only simulation which allows you to control the simulation from the command line using a Python script or Python scenario runner.</p>
+<ol>
+<li>
+<p>Click <strong>Simulations</strong>. Click <strong>Add New</strong> to create a new simulation.</p>
+<p><a href="../../images/running-simulator/simulations-tab.png"><img alt="simulations-tab" src="../../images/running-simulator/simulations-tab.png" title="Simulations view with Add New button" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>General</strong> pane, enter a name for your new simulation (e.g. "API Only Mode"), and select the cluster you created <a href="../../installation-guide/installing-simulator/#linktocloud">during installation</a> (e.g. "local-sim") from the cluster list.</p>
+<p>Click the switch next to <strong>Create test report</strong> if you wish to generate a test report to review for each simulation.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Test Case</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-general-apionly.png"><img alt="simulation-general-apionly" src="../../images/running-simulator/simulation-general-apionly.png" title="Creating an API Only simulation, General pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Test Case</strong> pane, select <strong>API Only</strong> from the Runtime Template list.</p>
+<p>In API Only mode, there are no additional parameters to specify.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Autopilot</strong> pane.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Publish</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-testcase-apionly.png"><img alt="simulation-testcase-apionly" src="../../images/running-simulator/simulation-testcase-apionly.png" title="Creating an API Only simulation, Test Case pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Publish</strong> pane, click <strong>Publish</strong> to save (and <strong>publish</strong>) the simulation to your library. The simulation will be private and only accessible from your account.</p>
+<p><a href="../../images/running-simulator/simulation-publish-apionly.png"><img alt="simulation-publish-apionly" src="../../images/running-simulator/simulation-publish-apionly.png" title="Creating an API Only simulation, Publish pane" /></a></p>
+</li>
+<li>
+<p>You should now see the Simulations view, with the newly created <strong>API Only</strong> simulation.</p>
+<p>The simulation should indicate <strong>Idle</strong> as shown.</p>
+<p>If instead it says <strong>Offline</strong>, return to the SVL Simulator program window and click the <strong>Online</strong> button in drop-down menu on top-right corner to re-connect SVL Simulator to the cloud. You can then switch back to the SVL Simulator browser window or click <strong>Open Browser</strong> in the Simulator (and then click <strong>Simulations</strong> to return to the Simulations view).</p>
+<p>To run the <strong>API Only</strong> simulation you just created, click <strong>Run Simulation</strong>.</p>
+<p><a href="../../images/running-simulator/mysimulations-apionly.png"><img alt="mysimulations-apionly" src="../../images/running-simulator/mysimulations-apionly.png" title="Simulations page with API Only simulation" /></a></p>
+</li>
+<li>
+<p>Switch back to the SVL Simulator and you may see a message "API ready!" indicating that simulator is ready to connect to your API script.</p>
+</li>
+<li>
+<p>You may now control the simulation using any Python script. Refer to <a href="../../python-api/python-api/">Python API</a> for information on using the Python API to control simulation.</p>
+</li>
+<li>
+<p>To stop the simulation, switch back to the SVL Simulator browser window, click <strong>Simulations</strong> and click <strong>Stop Simulation</strong>.</p>
+</li>
+</ol>
+<h2 id="pythontestcasesimulation">Creating and running a Python Test Case Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pythontestcasesimulation" title="Permanent link">#</a></h2>
+<p>In this section we will create and run a Python Test Case simulation available under "Available from Others" view in <strong>Simulations</strong> tab.</p>
+<p>Note that Python Test Case simulation currently requires the binary build of the latest SVL Simulator running on Linux. Contact us if you need to use this with a self-built or editor build of SVL Simulator.</p>
+<ol>
+<li>
+<p>Click <strong>Simulations</strong> tab and then switch to <strong>Available from Others</strong> view to see simulations that are available for you to use.</p>
+<p><a href="../../images/running-simulator/public-library-simulations.png"><img alt="public-library-simulations" src="../../images/running-simulator/public-library-simulations.png" title="&quot;Avaiable from Others&quot; view under Simulations page showing available public simulations" /></a></p>
+</li>
+<li>
+<p>Type <code>test-case</code> into the search field and hit <code>enter</code> to show available test-case simulations.</p>
+<p>Locate the "Cut-in Scenario" simulation and click on it to view the details.</p>
+<p>You could of course select any test-case or other simulation that matches the autopilot software and version that you might be using, but this test-case simulation will work fine to demonstrate how to create a test-case simulation.</p>
+<p><a href="../../images/running-simulator/public-library-test-cases.png"><img alt="public-library-test-cases" src="../../images/running-simulator/public-library-test-cases.png" title="&quot;Avaiable from Others&quot; view under Simulations page showing available test case simulations" /></a></p>
+</li>
+<li>
+<p>Click <strong>Customize and Add Simulation</strong> button to add it to your library.</p>
+<p><a href="../../images/running-simulator/public-library-cut-in.png"><img alt="public-library-cut-in" src="../../images/running-simulator/public-library-cut-in.png" title="Simulation profile page showing cut-in scenario simulation details" /></a></p>
+<p><strong>Known Issue</strong>: Currently, <em>Customize and Add Simulation</em> doesn't clone the settings of "Create Test Report" button and "Sensor Configuration" value under vehicle to the new simulation.</p>
+</li>
+<li>
+<p>On the simulation <strong>General</strong> pane, you may customize the name of the simulation, description, and tags (if desired) but it is not necessary to do so.</p>
+<p>Select the cluster you created <a href="../../installation-guide/installing-simulator/#linktocloud">during installation</a> (e.g. "local-sim") from the cluster list.</p>
+<p>Click the switch next to <strong>Create test report</strong> to generate a test report to review after running this simulation.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Test Case</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-general-cutin.png"><img alt="simulation-general-cutin" src="../../images/running-simulator/simulation-general-cutin.png" title="Adding a cut-in scenario simulation, General pane" /></a></p>
+</li>
+<li>
+<p>On the simulation <strong>Test Case</strong> pane, you will be see the Python script that controls this test case.</p>
+<p>Review the Python script and take note of the map specified in the <code>sim.load</code> statement (e.g. <code>SanFrancisco</code>) as well as the ego vehicles' sensor configurations specified in <code>ego = sim.add_agent</code> statements (e.g. <code>Lincoln2017MKZ vehicle with Apollo 5.0 (full analysis) sensor configuration</code>). Make sure that these appear in the <strong>Map</strong>, <strong>Vehicle</strong> and <strong>Sensor configuration</strong> fields. If they are not present in the drop down menus, add them to your library following the instructions in <a href="#store">Store</a> above.</p>
+<p>For this cut-in scenario simulation, there are no additional parameters to specify.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Autopilot</strong> pane, select <strong>Apollo 5.0</strong> from the Autopilot list.</p>
+<p>In the Bridge IP, enter "localhost:9090" or you can replace "localhost" with the IP address of your autopilot system if it is different from the machine on which SVL Simulator is running.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Publish</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-testcase-cutin.png"><img alt="simulation-testcase-cutin" src="../../images/running-simulator/simulation-testcase-cutin.png" title="Adding a cut-in scenario simulation, Test Case pane" /></a></p>
+</li>
+<li>
+<p>On the simulation <strong>Publish</strong> pane, click "Publish" to save (and <strong>publish</strong>) the simulation to your library. The simulation will be private and only accessible from your account.</p>
+<p><a href="../../images/running-simulator/simulation-publish-cutin.png"><img alt="simulation-publish-cutin" src="../../images/running-simulator/simulation-publish-cutin.png" title="Adding a cut-in scenario simulation, Publish pane" /></a></p>
+</li>
+<li>
+<p>You should now see the Simulations view, with the newly created <strong>Cut-in Scenario</strong> simulation.</p>
+<p>The simulation should indicate <strong>Idle</strong> as shown.</p>
+<p>If instead it says <strong>Offline</strong>, return to the SVL Simulator program window and click the <strong>Online</strong> button in the drop-down menu on top right corner to re-connect SVL Simulator to the cloud. You can then switch back to the SVL Simulator browser window or click <strong>Open Browser</strong> in the Simulator (and then click <strong>Simulations</strong> to return to the Simulations view).</p>
+<p>To run the <strong>Cut-in Scenario</strong> simulation you just created, click <strong>Run Simulation</strong>.</p>
+<p><a href="../../images/running-simulator/mysimulations-cutin.png"><img alt="mysimulations-cutin" src="../../images/running-simulator/mysimulations-cutin.png" title="Simulations page with cut-in scenario simulation" /></a></p>
+</li>
+<li>
+<p>Switch back to the SVL Simulator and you may see a message indicating that any newly added maps, vehicles and sensors are downloading, after which the simulation should initialize.</p>
+</li>
+<li>
+<p>At this point you should configure Apollo in Dreamview for the correct map and vehicle, enable the required modules, set a destination point, and send a routing request. Refer to <a href="../python-testcase/">Python Test Cases</a> and <a href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a> or <a href="../../system-under-test/apollo-master-instructions/">Apollo master</a> if needed for information on executing test case scenarios like cut-in with Apollo.</p>
+</li>
+<li>
+<p>The simulation should stop automatically when finished (or if it times out). When the simulation is finished, switch back to the SVL Simulator browser window.</p>
+</li>
+<li>
+<p>Click <strong>Test Results</strong> to view results of simulation runs.</p>
+<p><a href="../../images/running-simulator/testresults-summary.png"><img alt="testresults-summary" src="../../images/running-simulator/testresults-summary.png" title="Test Results page showing available test results" /></a></p>
+</li>
+<li>
+<p>Review the list of test results and click <strong>View</strong> to view test results from a specific simulation run.
+    <a href="../../images/running-simulator/testresults-cutin-report.png"><img alt="testresults-cutin-report" src="../../images/running-simulator/testresults-cutin-report.png" title="Test Results page showing cut-in scenario test results" /></a></p>
+</li>
+<li>
+<p>Troubleshooting tips for Python runtime template based simulations</p>
+<p>If python script throws errors in simulation, follow guide <a href="../python-runtime/#reading-logs">here</a>.</p>
+<p>Many <a href="../../creating-scenarios/api-example-descriptions/">examples</a> of pythonAPI runtime scenarios can be found in <a href="https://github.com/lgsvl/PythonAPI/tree/master/examples">PythonAPI</a> repository on github. You can also find a quick example script <a href="../python-runtime/#example-python-script">here</a>.</p>
+<p>For Python API simulation to work properly, it should include proper <a href="../python-runtime/#environment-variables">environment variables</a>.</p>
+</li>
+</ol>
+<h2 id="vsesimulation">Creating and running a Visual Scenario Editor based Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vsesimulation" title="Permanent link">#</a></h2>
+<p>In this section we will create and run a Visual Scenario Editor based simulation.</p>
+<p>Note that Visual Scenario Editor based simulation currently requires the binary build of the latest SVL Simulator running on Linux. Contact us if you need to use this with a self-built or editor build of SVL Simulator.</p>
+<ol>
+<li>
+<p>Launch SVL Simulator binary and create a scenario using <a href="../../creating-scenarios/visual-scenario-editor/">Visual Scenario Editor</a> and save the scenario as "sample-vse-test-case.json".</p>
+</li>
+<li>
+<p>Now on the web UI, click <strong>Simulations</strong> tab in the left panel. Click <strong>Add New</strong> to create a new simulation.</p>
+<p><a href="../../images/running-simulator/simulations-tab.png"><img alt="simulations-tab" src="../../images/running-simulator/simulations-tab.png" title="Simulations view with Add New button" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>General</strong> pane, enter a name for your new simulation (e.g. "VSE Simulation"), and select the cluster you created <a href="../../installation-guide/installing-simulator/#linktocloud">during installation</a> (e.g. "local-sim") from the cluster list.</p>
+<p>Click the switch next to <strong>Interactive mode</strong> to disable interactive mode for this simulation as we want the runner to control the simulation execution automatically.</p>
+<p>Click the switch next to <strong>Create test report</strong> to enable cloud to create a test report at the end of simulation run with analytics and event data from sensors on your vehicle.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Test Case</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-general-vse.png"><img alt="simulation-general-vse.png" src="../../images/running-simulator/simulation-general-vse.png" title="Creating a VSE simulation, General pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Test Case</strong> pane, select <strong>Visual scenario editor</strong> from the Runtime Template list.</p>
+<p>Next select the cloud shaped upload button for "Scenario" field and upload the Visual scenario editor created json file "sample-vse-test-case.json"</p>
+<p>Next make sure that map is automatically set properly to what you used when creating the scenario in Visual scenario editor tool. eg:  <strong>BorregasAve</strong></p>
+<p>Next make sure that vehicle is automatically set to what you used when creating the scenario in Visual scenario editor tool. eg: <strong>Lincoln2017MKZ</strong> vehicle and <strong>Apollo 5.0</strong> sensor configuration</p>
+<p><strong>IMPORTANT:</strong> If you have not already added a Map, Vehicle or needed Sensors to your library, refer to the <a href="#store">Store</a> above for information on how to add them.</p>
+<p>You could also specify date, time, and environmental settings here.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Autopilot</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-testcase-vse-done.png"><img alt="simulation-testcase-vse-done" src="../../images/running-simulator/simulation-testcase-vse-done.png" title="Creating a VSE simulation, Test Case pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Autopilot</strong> pane, select <strong>Apollo 5.0</strong> from the Autopilot list.</p>
+<p>In the Bridge IP, enter "localhost:9090" or you can replace "localhost" with the IP address of your autopilot system if it is different from the machine on which SVL Simulator is running.</p>
+<p>Click the <strong>Next</strong> button to advance to the <strong>Publish</strong> pane.</p>
+<p><a href="../../images/running-simulator/simulation-autopilot-done.png"><img alt="simulation-autopilot-done" src="../../images/running-simulator/simulation-autopilot-done.png" title="Creating a VSE simulation, Autopilot pane" /></a></p>
+</li>
+<li>
+<p>On the New Simulation <strong>Publish</strong> pane, click <strong>Publish</strong> to save (and <strong>publish</strong>) the simulation to your library. The simulation will be private and only accessible from your account.</p>
+<p><a href="../../images/running-simulator/simulation-publish-vse.png"><img alt="simulation-publish" src="../../images/running-simulator/simulation-publish-vse.png" title="Creating a VSE simulation, Publish pane" /></a></p>
+</li>
+<li>
+<p>You should now see the Simulations view, with the newly created <strong>Visual scenario editor</strong> based simulation.</p>
+<p>The simulation should indicate <strong>Idle</strong> as shown.</p>
+<p>If instead it says <strong>Offline</strong>, return to the SVL Simulator program window and click the <strong>Online</strong> button from drop-down menu on top-right corner to re-connect the simulator to the cloud. You can then switch back to the SVL Simulator browser window or click <strong>Open Browser</strong> in the Simulator (and then click <strong>Simulations</strong> to return to the Simulations view).</p>
+<p>To run the <strong>Visual scenario editor</strong> based simulation you just created, click <strong>Run Simulation</strong>.</p>
+<p><a href="../../images/running-simulator/vse-simulation-ready.png"><img alt="vse-simulation-ready" src="../../images/running-simulator/vse-simulation-ready.png" title="VSE simulation profile page" /></a></p>
+</li>
+<li>
+<p>Switch back to the SVL Simulator and you may see a message indicating that any newly added maps, vehicles and sensors are downloading, after which the simulation should initialize.</p>
+<p>Since this is Visual scenario editor based  simulation, "TestCaseRunner" in background will take care of configuring, enabling &amp; disabling the Autopilot automatically.</p>
+</li>
+<li>
+<p>If Apollo 5.0 is available and running, then SVL Simulator should connect to the Apollo bridge, and Apollo should be able to drive the ego vehicle in it. Refer to <a href="../../system-under-test/apollo5-0-instructions/">Running Apollo 5.0 with SVL Simulator</a> for more information.</p>
+</li>
+<li>
+<p>The simulation should stop automatically when finished (or if it times out or errors). When the simulation is finished, switch back to the SVL Simulator browser window.</p>
+</li>
+<li>
+<p>Click <strong>Test Results</strong> to view results of simulation runs.</p>
+<p><a href="../../images/running-simulator/vse-testresults-summary.png"><img alt="vse-testresults-summary" src="../../images/running-simulator/vse-testresults-summary.png" title="Test Results page showing available test results" /></a></p>
+</li>
+<li>
+<p>Review the list of test results and click <strong>View</strong> to view test results from a specific simulation run.
+    <a href="../../images/running-simulator/testresults-vse-report.png"><img alt="testresults-vse-report" src="../../images/running-simulator/testresults-vse-report.png" title="Test Results page showing VSE scenario test results" /></a></p>
+</li>
+<li>
+<p>Known issues with Visual scenario editor based simulations</p>
+<ul>
+<li>The TestCaseRunner for VSE won't turn off apollo modules when the scenario finishes. You need to disable the modules once you finish the testing.</li>
+<li>If your VSE based simulation is not working correctly, please make sure apollo has corresponding HD maps (HD map folder name should match the map name) and vehicle calibration files, and bridge is running.</li>
+<li>Visual scenario editor template simulations with Autopilot only work on Linux at the moment. We are working on adding the Windows support.</li>
+<li>VSE based simulations only support Apollo 5.0 and above at the moment as it is based on <a href="../../python-api/dreamview-api/">dreamview-python-api</a>.</li>
+</ul>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../offline-mode/" class="btn btn-neutral float-right" title="Offline mode">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../runtime-templates/" class="btn btn-neutral" title="Runtime templates"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../runtime-templates/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../offline-mode/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

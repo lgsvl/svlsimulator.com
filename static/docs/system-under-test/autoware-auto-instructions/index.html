@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -662,14 +670,14 @@ colcon build --packages-select lgsvl_bridge --cmake-args '-DCMAKE_BUILD_TYPE=Rel
 
 <h6 id="lgsvl-bridge-running">Running</h6>
 <p>Refer to README.md in the repo.</p>
-<pre><code class="bash">source ~/AutowareAuto/install/setup.bash
+<pre><code class="bash">source ~/AutowareAuto/src/external/ros2-lgsvl-bridge/install/setup.bash
 lgsvl_bridge
 </code></pre>
 
 <h3 id="install-ros2-lgsvl-messages">Install ROS2 LGSVL Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-messages" title="Permanent link">#</a></h3>
 <h6>Downloading</h6>
-<pre><code class="bash">mkdir -p ~/adehome/AutowareAuto/src/external/lgsvl_msgs
-cd ~/adehome/AutowareAuto/src/external/lgsvl_msgs
+<pre><code class="bash">mkdir -p ~/adehome/AutowareAuto/src/external/
+cd ~/adehome/AutowareAuto/src/external/
 git clone https://github.com/lgsvl/lgsvl_msgs.git
 </code></pre>
 

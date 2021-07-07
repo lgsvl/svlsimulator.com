@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -639,6 +647,7 @@
 </ol>
 <h3 id="creating-navmesh-for-pedestrians">Creating NavMesh for pedestrians <a class="wikilink" href="#top">top</a><a class="headerlink" href="#creating-navmesh-for-pedestrians" title="Permanent link">#</a></h3>
 <p>If you plan to use pedestrians on generated environment, you'll have to bake navigation meshes for pathfinding. After road meshes are created and the scene have been saved, follow the steps below to prepare NavMesh.</p>
+<p><strong>NOTE:</strong> Pedestrian annotations must be created for pedestrians to navigate the NavMesh.  See <a href="../map-annotation/#create-pedestrian-navmesh">Map Annotation</a>.</p>
 <ol>
 <li>Access Navigation window through <code>Window/AI/Navigation</code> menu item.</li>
 <li>In the <code>Object</code> tab, select <code>Mesh Renderers</code> filtering option.</li>

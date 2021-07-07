@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -556,8 +564,8 @@ will be used by simulator to instantiate at runtime. This prefab must have the s
 textures, etc...).</p>
 <p>Sensor plugins must have <code>SensorType</code> attribute which specifies the kind of sensor being
 implemented as well as the type of data that the sensor sends over the bridge. In addition,
-it must have <code>SensorBase</code> as the base class and must implement the <code>OnBridgeSetup</code>, <code>OnVisualize</code>,
-and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code>CheckVisible</code> method to prevent NPC or Pedestrians from spawning in bounds of the sensor.  See the below codeblock from the ColorCamera sensor:</p>
+it must have <code>SensorBase</code> as the base class and must implement the <code>Initialize</code>, <code>Deinitialize</code>, <code>OnBridgeSetup</code>, <code>OnVisualize</code>,
+and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code>CheckVisible</code> method to prevent NPC or Pedestrians from spawning in bounds of the sensor. If the sensor can be simulated on the client machine in a distributed simulation, see <a href="../../distributed-simulation/sensors-distribution/">sensors distribution</a> to learn how to configure it.  See the below codeblock from the ColorCamera sensor:</p>
 <pre><code class="c#">namespace Simulator.Sensors
 {
 
@@ -581,11 +589,21 @@ and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code
         [Range(1, 128)]
         public int JpegQuality = 75;
 
-    // By adding the AnalysisMeasurement tag, the last recorded value of this field
-    // will be reported in the analysis tab in WISE. MeasurementType allows you to
-    // control what units the field will be represented with
+        // By adding the AnalysisMeasurement tag, the last recorded value of this field
+        // will be reported in the analysis tab in WISE. MeasurementType allows you to
+        // control what units the field will be represented with
         [AnalysisMeasurement(MeasurementType.Fps)]
         public float TargetFPS = 0f;
+
+        // Called to initialize the sensor plugin
+        protected override void Initialize() 
+        {
+        }
+
+        // Called to deinitialize the sensor plugin
+        protected override void Deinitialize() 
+        {
+        }
 
         //Sets up the bridge to send this sensor's data
         public override void OnBridgeSetup(IBridge bridge) 
@@ -615,9 +633,9 @@ and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code
             return GeometryUtility.TestPlanesAABB(activeCameraPlanes, bounds);
         }
 
-    // Sensors can implement custom analysis event callbacks for failing criteria,
-    // collect relevant data and log it in the post simulation analysis. id should
-    // be ego vehicle id which all sensors are childed to
+        // Sensors can implement custom analysis event callbacks for failing criteria,
+        // collect relevant data and log it in the post simulation analysis. id should
+        // be ego vehicle id which all sensors are childed to
         private void LowFPSEvent(uint id)
         {
             Hashtable data = new Hashtable

@@ -110,6 +110,10 @@
     <ul class="subnav">
     </ul>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -529,7 +537,7 @@
             <div class="section">
               
                 <h1><a name="top"></a>Simulator Build Instructions</h1>
-<p>This document provides instructions on building the simulator and assets from source using the Unity Editor.</p>
+<p>This document provides instructions on building the simulator and assets from source using the Unity Editor in <a href="../../running-simulations/developer-mode/">developer mode</a>.</p>
 <p><strong>Note:</strong> When a terminal is mentioned, it refers to <code>cmd.exe</code> on Windows and <code>Terminal</code> on Ubuntu.</p>
 <h2> Table of Contents</h2>
 
@@ -562,15 +570,15 @@
 </ul>
 </li>
 <li>
-<p>Download and Install Unity 2019.4.18f1 from the <a href="https://unity3d.com/get-unity/download/archive">Unity Download Archive</a>:
+<p>Download and Install Unity 2020.3.3f1 from the <a href="https://unity3d.com/get-unity/download/archive">Unity Download Archive</a>:
     <a href="../../images/building-from-src/download-unity.png"><img alt="" src="../../images/building-from-src/download-unity.png" /></a></p>
 <ul>
 <li>Click the <strong>Unity Hub</strong> button to have Unity Hub start the installation process<ul>
 <li>If the installation process fails to start on Ubuntu:<ul>
 <li>Right click the <strong>Unity Hub</strong> button and select <strong>Copy Link Address</strong></li>
 <li>In a terminal, type <code>&lt;PATH_TO_UNITY_HUB&gt; &lt;COPIED_LINK&gt;</code><ul>
-<li>The copied link will be in the form <code>unityhub://Unity-VERSION/XXXXXX</code> (e.g. <code>unityhub://2019.4.18f1/3310a4d4f880</code>)</li>
-<li>Thus, if the Unity Hub application is in the current directory, type <code>./UnityHub.AppImage unityhub://2019.4.18f1/3310a4d4f880</code></li>
+<li>The copied link will be in the form <code>unityhub://Unity-VERSION/XXXXXX</code> (e.g. <code>unityhub://2020.3.3f1/76626098c1c4</code>)</li>
+<li>Thus, if the Unity Hub application is in the current directory, type <code>./UnityHub.AppImage unityhub://2020.3.3f1/76626098c1c4</code></li>
 </ul>
 </li>
 <li>Unity Hub will open and guide you through the installation of Unity Editor</li>
@@ -634,7 +642,7 @@
 <p>In the <strong>Projects</strong> tab, click <strong>Add</strong> and select the <code>Simulator</code> folder that was created by <code>git clone</code> in Step 5</p>
 </li>
 <li>
-<p>In the <strong>Projects</strong> tab, verify that the Simulator is using Unity Version 2019.4.18f1 from the dropdown</p>
+<p>In the <strong>Projects</strong> tab, verify that the Simulator is using Unity Version 2020.3.3f1 from the dropdown</p>
 </li>
 <li>
 <p>Double-click the name of the project to launch Unity Editor</p>
@@ -710,8 +718,9 @@
 </li>
 </ol>
 <h2 id="building-assets">Building assets <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-assets" title="Permanent link">#</a></h2>
-<p>The simulator build tools allow developers to build assets as well as standalone simulator binaries. Assets refer to maps, vehicles, sensors, controllables, and bridges. Asset bundles are built without needing to rebuild the entire simulator.</p>
-<p><strong>Note:</strong> AssetBundles built with one version of the simulator are <strong>NOT</strong> guaranteed to work with other versions of the simulator.</p>
+<p>The simulator build tools allow developers to build assets as well as standalone simulator binaries. Assets refer to maps, vehicles, sensors, controllables, npcs, pedestrians and bridges. Asset bundles are built without needing to rebuild the entire simulator.</p>
+<p><strong>NOTE:</strong> AssetBundles built with one version of the simulator are <strong>NOT</strong> guaranteed to work with other versions of the simulator.  Asset bundles will need to be re-created.</p>
+<p><strong>NOTE:</strong> NPCs and Pedestrians must be built locally for custom binaries.  They must be added to AssetBundles folder to be loaded by the custom simulator binary. </p>
 <p>Follow these steps to build assets:</p>
 <ol>
 <li>
@@ -720,6 +729,7 @@
 <li><code>Environments</code></li>
 <li><code>Vehicles</code></li>
 <li><code>NPCs</code></li>
+<li><code>Pedestrians</code></li>
 <li><code>Sensors</code></li>
 <li><code>Controllables</code></li>
 <li><code>Bridges</code></li>
@@ -740,7 +750,7 @@
 <p>To use built assets with the simulator binary they must first be uploaded to the cloud. For more information on this see the <a href="../../user-interface/web/library/">Library</a> guide.</p>
 <h3 id="testing-custom-assets-with-the-unity-editor">Testing custom assets with the Unity editor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#testing-custom-assets-with-the-unity-editor" title="Permanent link">#</a></h3>
 <p>Custom assets can be tested with the Unity Editor by using the <strong>Developer Settings</strong> panel accessible from the <strong>Simulator</strong> menu located in the top toolbar.  Only local assets are supported and JSON must be manually added so <strong>Developer Settings</strong> can look up sensor data.</p>
-<p>Users can toggle Sensor Debug in Simulator drop down menu to load local sensors at runtime to be able to access break point functionality.  Be sure to toggle off when finished debugging.</p>
+<p>Users can toggle Developer Debug Mode in Simulator drop down menu to load local asset classes at runtime to be able to access break point functionality.  Be sure to toggle off when finished debugging.</p>
               
             </div>
           </div>
@@ -748,7 +758,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../getting-started/introduction/" class="btn btn-neutral float-right" title="Introduction">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../running-with-wsl2/" class="btn btn-neutral float-right" title="Running with WSL2">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../installing-simulator/" class="btn btn-neutral" title="Installation procedure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -784,7 +794,7 @@
         <span><a href="../installing-simulator/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../getting-started/introduction/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../running-with-wsl2/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
