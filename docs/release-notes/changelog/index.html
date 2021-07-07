@@ -110,6 +110,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -530,8 +538,105 @@
               
                 <h1>Changelog</h1>
 <p>All notable changes and release notes for SVL Simulator will be documented in this file.</p>
-<h2 id="202111-2021-05-20">[2021.1.1] - 2021-05-20<a class="headerlink" href="#202111-2021-05-20" title="Permanent link">#</a></h2>
+<h2 id="20212-2021-06-30">[2021.2] - 2021-06-30<a class="headerlink" href="#20212-2021-06-30" title="Permanent link">#</a></h2>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">#</a></h3>
+<ul>
+<li>External <a href="../../plugins/pedestrian-plugins/">Pedestrians</a> and <a href="../../plugins/npc-plugins/">NPC</a> (other traffic vehicles) with animation support</li>
+<li>New <a href="../../plugins/npc-plugins/">NPCs</a> and <a href="../../plugins/pedestrian-plugins/">Pedestrians</a> like Scooters, Bicyclists and Animals</li>
+<li>External <a href="../../plugins/bridge-plugins/">Bridge</a> Support</li>
+<li>Multiple simulator asset bundle versions support</li>
+<li>Rain Collision effect</li>
+<li>Support for simulations without EGO (<a href="https://github.com/lgsvl/SpectatorEgo">Spectator Ego</a>)</li>
+<li>New “Driver view” camera state</li>
+<li>New API to set simulator camera state</li>
+<li><a href="../../simulation-content/map-annotation/">Annotation tool</a> to set accurate values (position, rotation and scale) for MapOrigin</li>
+<li>New “clear cache” option</li>
+<li>Ability to use proxy server for cloud_url in config.yml</li>
+<li>New enhanced web user interface:<ul>
+<li>Improved <a href="../../user-interface/web/library/#interacting-with-the-visual-editor">visual sensor editor</a></li>
+<li>Ability to clone Sensors in <a href="../../user-interface/web/library/#managing-sensor-configurations">sensor configuration</a></li>
+<li>User warning messages for privilege based restriction</li>
+<li>Markdown support for Asset description</li>
+</ul>
+</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<ul>
+<li>Unity Upgrade to 2020.3.3f1<ul>
+<li>Revert FBX package to 3.2.1-preview.2</li>
+<li>Remove overdraw with HDRP flare</li>
+</ul>
+</li>
+<li>Improved <a href="../../plugins/npc-plugins/">NPC</a> handling:<ul>
+<li>Fixed rotating NPC wheels when using NPCWaypointBehaviour</li>
+<li>Pedestrian ground truth from bounds</li>
+</ul>
+</li>
+<li>Improvements and bug fixes around <a href="../../distributed-simulation/distributed-simulation-introduction/">Distributed Simulation</a> with multi-ego support:<ul>
+<li>Fixed API mode for distributed simulation on a single machine</li>
+<li>Fixed pedestrian animations on client machine</li>
+<li>Improved distributing VehicleActions</li>
+<li>Support for the ArticulationBody in distributed simulations</li>
+<li>Improved load balancing of the sensors</li>
+</ul>
+</li>
+<li>Updated <a href="../../simulation-content/sensors-list/">Sensor</a> support:<ul>
+<li>Fix TF visual and sensor hierarchy</li>
+<li>update input for g920 wheel for windows</li>
+<li>Publish camera intrinsic parameters to ROS and ROS2</li>
+<li>Rework lidar to use cubemap</li>
+</ul>
+</li>
+<li>Improved lighting and rain:<ul>
+<li>Fix brown lighting</li>
+<li>Rotate sun and moon to match map rotation</li>
+<li>Rain collision improvements and fixes</li>
+<li>Fix overlapping rain chunks</li>
+</ul>
+</li>
+<li>Enhanced <a href="../../creating-scenarios/visual-scenario-editor/">Visual Scenario Editor</a> support:<ul>
+<li>Minor UX fixes</li>
+<li>Fixed changing agents' variants</li>
+<li>Fix issue with agent dropdown not refreshing on click</li>
+<li>Loading pedestrians from config</li>
+</ul>
+</li>
+<li>Improvements around <a href="../../simulation-content/hd-map-mesh-generation/">HD Map Mesh Generator</a>:<ul>
+<li>Improve data handling in HD map mesh builder</li>
+<li>Erosion and re-leveling for point cloud mesh</li>
+</ul>
+</li>
+<li>Work in progress improvements on Developer mode:<ul>
+<li>Rework developer settings</li>
+<li>Bundle version uptick and unity editor check on developer debug mode for bridges</li>
+<li>Sensor debug developer loading</li>
+</ul>
+</li>
+<li>More enhanced and user friendly web user interface:<ul>
+<li>Password Sensitivity improvements</li>
+<li><a href="../../user-interface/web/library/#interacting-with-the-visual-editor">GLTF editor</a> bug fixes and improvements</li>
+<li><a href="../../user-interface/web/library/#previewing-the-hd-map">HD map preview</a> improvements</li>
+<li>Simulation invalid items management</li>
+<li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG accessibility</a> UI compatibility</li>
+<li>Live <a href="../../user-interface/web/test-results/">Test Results</a> view in Simulation Profile</li>
+<li>Updated algorithm for <a href="https://wise.svlsimulator.com/maps/public/trending">Trending</a> assets view</li>
+<li>Simulation form auto-save</li>
+</ul>
+</li>
+<li>Misc Improvements:<ul>
+<li>Support default light layers in point cloud renderer</li>
+<li>Loads assembly with the ego name from asset bundle</li>
+<li>Added public driver view transform to be set in the Inspector</li>
+<li>Asmdef added, loader fixed to deal with bundle/WISE name mismatch</li>
+<li>Loader: improve the error message about BundleFormat</li>
+<li>Make sure Simulator.Editor.Build.Run exits on any exception</li>
+<li>Trimming last slash in the cloud url if needed.</li>
+<li>get full path from data path provided</li>
+</ul>
+</li>
+</ul>
+<h2 id="202111-2021-05-20">[2021.1.1] - 2021-05-20<a class="headerlink" href="#202111-2021-05-20" title="Permanent link">#</a></h2>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="../../user-interface/web/library/#interacting-with-the-visual-editor">3D Visualizer</a> to help create sensor configuration on a vehicle</li>
 <li><a href="../../user-interface/web/library/#previewing-the-hd-map">HD map visualizer</a> on map profile pages</li>
@@ -542,7 +647,7 @@
 <li>Tutorials to help new users on how to interact with the web user interface pages</li>
 <li>Email confirmation upon sensor plugin sharing</li>
 </ul>
-<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Improved quick filters on Store and Library pages</li>
 <li>Redirect to existing asset profile page when uploading an already uploaded asset</li>
@@ -555,7 +660,7 @@
 <li>Proper error messages when maximum allowed cluster limit is reached</li>
 </ul>
 <h2 id="20211-2021-03-23">[2021.1] - 2021-03-23<a class="headerlink" href="#20211-2021-03-23" title="Permanent link">#</a></h2>
-<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">#</a></h3>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">#</a></h3>
 <ul>
 <li>New cloud-based <a href="https://wise.svlsimulator.com/">web user interface</a> including:<ul>
 <li><a href="../../user-interface/web/store/">Asset Store</a> for downloading assets, uploading and sharing assets publicly</li>
@@ -656,7 +761,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
 <ul>
 <li>Product branding changed from "LGSVL Simulator" to "SVL Simulator"</li>
 <li>Old local web user interface is now deprecated. Users need to migrate to new  <a href="https://wise.svlsimulator.com">web user interface</a></li>
@@ -683,7 +788,7 @@
 <li>HD map import: Fix map origin update during OpenDrive map import</li>
 </ul>
 <h2 id="202006-2020-08-31">[2020.06] - 2020-08-31<a class="headerlink" href="#202006-2020-08-31" title="Permanent link">#</a></h2>
-<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">#</a></h3>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">#</a></h3>
 <ul>
 <li>Support <a href="../../tutorials/modular-testing/">modular testing</a> of planning with Apollo 5.0</li>
 <li>Bridge plugin system with example (<a href="https://github.com/lgsvl/LoggingBridge">LoggingBridge</a>)</li>
@@ -694,7 +799,7 @@
 <li>Python API: added ability to set speed at WalkWaypoints</li>
 <li>Python API: Added waypoint trigger system</li>
 </ul>
-<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed 90 degree orientation offset in GPS odometry sensor</li>
 <li>Replaced default ROS2 bridge to improved <a href="../../system-under-test/ros2-bridge/">custom ROS2 bridge</a> instead of ros2-web-bridge</li>
@@ -705,7 +810,7 @@
 <li>Improved OpenDrive map exporter to export parametric cubic curves instead of simple lines for each reference line segment</li>
 </ul>
 <h2 id="202005-2020-06-02">[2020.05] - 2020-06-02<a class="headerlink" href="#202005-2020-06-02" title="Permanent link">#</a></h2>
-<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">#</a></h3>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">#</a></h3>
 <ul>
 <li>Support for custom <a href="../../plugins/npc-plugins/">traffic vehicle behavior plugins</a></li>
 <li>Support for <a href="../../system-under-test/apollo-master-instructions/">Apollo 5.5</a> (<a href="https://github.com/ApolloAuto/apollo/tree/master">latest master</a>)</li>
@@ -715,7 +820,7 @@
 <li>Unlit shadows support for point cloud environment rendering</li>
 <li>AD system-agnostic message definitions to "lgsvl_msgs" for vehicle control, CAN bus and status data, etc.</li>
 </ul>
-<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">#</a></h3>
 <ul>
 <li>Refactored traffic agent Waypoint Mode with fixes for idle and trigger waypoints</li>
 <li>Changed gnss_odom message coordinate system to right-handed coordinate system</li>
@@ -726,7 +831,7 @@
 <li>Removed and replaced documentation source files from main repository to separate Documentation <a href="https://github.com/lgsvl/Documentation">repository</a></li>
 </ul>
 <h2 id="202003-2020-04-03">[2020.03] - 2020-04-03<a class="headerlink" href="#202003-2020-04-03" title="Permanent link">#</a></h2>
-<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">#</a></h3>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">#</a></h3>
 <ul>
 <li>Velodyne VLP-16 and VLP-32C support through custom LiDAR sensor plugin</li>
 <li>Support for LiDAR sensor plugin with direct UDP socket interface</li>
@@ -737,7 +842,7 @@
 <li>Support for sensor_msgs/NavSatFix message type for GPS messages in ROS2</li>
 <li>Vehicle Odometry sensor for reporting steering angles and velocity in ROS2</li>
 </ul>
-<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">#</a></h3>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">#</a></h3>
 <ul>
 <li>Upgraded to Unity 2019.3.3f1</li>
 <li>Fixed black artifacts in Linux bug</li>
@@ -746,7 +851,7 @@
 <li>3D Ground Truth sensor now generates different ID for vehicle after each respawn</li>
 </ul>
 <h2 id="202001-2020-01-31">[2020.01] - 2020-01-31<a class="headerlink" href="#202001-2020-01-31" title="Permanent link">#</a></h2>
-<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">#</a></h3>
+<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">#</a></h3>
 <ul>
 <li>Controllable Object plugin support, dynamically add and control Controllables with the Python API</li>
 <li>Ability to create LiDAR sensor with non-uniform beam distribution</li>
@@ -756,7 +861,7 @@
 <li>TransformSensor which can act as a parent for other sensors</li>
 <li>VehicleStateSensor which is needed by Autoware.Auto</li>
 </ul>
-<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">#</a></h3>
+<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">#</a></h3>
 <ul>
 <li>Added SanFrancisco map as a default map option</li>
 <li>Allow null texture bundles without an error</li>
@@ -768,12 +873,12 @@
 <li>Fixed ROS2 GPS</li>
 </ul>
 <h2 id="201912-2020-01-21">[2019.12] - 2020-01-21<a class="headerlink" href="#201912-2020-01-21" title="Permanent link">#</a></h2>
-<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">#</a></h3>
+<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">#</a></h3>
 <ul>
 <li>Custom callback for Python API, useful in sensor plugins.</li>
 <li>Ability to specify count and types of NPCs to spawn on the map.</li>
 </ul>
-<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">#</a></h3>
+<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">#</a></h3>
 <ul>
 <li>Optimized texture usage in maps - significantly reduces size on disk and GPU memory used.</li>
 <li>Allow boundary type to be optional for Apollo HD map import.</li>
@@ -784,7 +889,7 @@
 <li>Fixed Sedan NPC mesh.</li>
 </ul>
 <h2 id="201911-2019-11-19">[2019.11] - 2019-11-19<a class="headerlink" href="#201911-2019-11-19" title="Permanent link">#</a></h2>
-<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">#</a></h3>
+<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">#</a></h3>
 <ul>
 <li>OpenDrive 1.4 HD map import.</li>
 <li>Rain drops on ground when it is raining.</li>
@@ -795,7 +900,7 @@
 <li>Allow Color, Depth and Semantic cameras to have higher capture &amp; publish rate.</li>
 <li>Building &amp; loading custom sensors as plugins.</li>
 </ul>
-<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">#</a></h3>
+<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed traffic lights signal colors on Shalun map.</li>
 <li>Fixed exceptions when NPCs are despawned while still in intersection.</li>
@@ -807,7 +912,7 @@
 <li>Limit number of spawned NPCs and vehicles for large maps.</li>
 </ul>
 <h2 id="201910-2019-10-28">[2019.10] - 2019-10-28<a class="headerlink" href="#201910-2019-10-28" title="Permanent link">#</a></h2>
-<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">#</a></h3>
+<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">#</a></h3>
 <ul>
 <li>Apollo HD map import</li>
 <li>Accurate sun position in sky based of map location. Including time of sunrise and sunset.</li>
@@ -823,7 +928,7 @@
 <li>Visualize data values for non-image senors (GPS, IMU, etc).</li>
 <li>Populate scene with required objects when new scene is created in Unity Editor.</li>
 </ul>
-<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">#</a></h3>
+<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed exceptions in ROS Bridge where if it receives message on topic that it has not subscribed.</li>
 <li>Fixed 3D Ground Truth sensor to report correct NPC orientation angles.</li>
@@ -844,7 +949,7 @@
 <li>Improved error messages when simulation fails to start.</li>
 </ul>
 <h2 id="201909-2019-09-06">[2019.09] - 2019-09-06<a class="headerlink" href="#201909-2019-09-06" title="Permanent link">#</a></h2>
-<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">#</a></h3>
+<h3 id="added_10">Added<a class="headerlink" href="#added_10" title="Permanent link">#</a></h3>
 <ul>
 <li>Sensor visualization UI</li>
 <li>HD map export to OpenDrive 1.4 format</li>
@@ -853,7 +958,7 @@
 <li>Python API with ability to control traffic lights on map</li>
 <li>Hyundai Nexo vehicle</li>
 </ul>
-<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">#</a></h3>
+<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">#</a></h3>
 <ul>
 <li>Improved NPC movement and right turns on red traffic light</li>
 <li>Fixed NPC vehicle despawning logic so they don't get stuck in intersections</li>
@@ -863,7 +968,7 @@
 <li>Fixed 3D and 2D Ground Truth bounding box locations</li>
 </ul>
 <h2 id="201907-2019-08-09">[2019.07] - 2019-08-09<a class="headerlink" href="#201907-2019-08-09" title="Permanent link">#</a></h2>
-<h3 id="added_10">Added<a class="headerlink" href="#added_10" title="Permanent link">#</a></h3>
+<h3 id="added_11">Added<a class="headerlink" href="#added_11" title="Permanent link">#</a></h3>
 <ul>
 <li>Separate Asset Bundles for environments and vehicles</li>
 <li>Fully deterministic physics simulation</li>
@@ -883,7 +988,7 @@
 <li>Better sky rendering, including clouds</li>
 <li>Ability to import point cloud files for visualization</li>
 </ul>
-<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">#</a></h3>
+<h3 id="changed_11">Changed<a class="headerlink" href="#changed_11" title="Permanent link">#</a></h3>
 <ul>
 <li>User interface - use web UI for main user interaction</li>
 <li>Render pipeline - Unity High Definition Render Pipeline</li>

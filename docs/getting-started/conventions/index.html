@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -535,7 +543,10 @@
 <ul>
 <li><a href="#svl-simulator-coordinate-systems">SVL Simulator Coordinate Systems</a><ul>
 <li><a href="#converting-between-coordinate-systems">Converting Between Coordinate Systems</a></li>
-<li><a href="#map-origin">Map-Origin</a></li>
+<li><a href="#map-origin">Map-Origin</a><ul>
+<li><a href="#aligning-map-origin-to-real-world-coordinates">Aligning Map Origin to real world coordinates</a></li>
+</ul>
+</li>
 <li><a href="#map-orientation-in-unity">Map-Orientation-in-Unity</a></li>
 <li><a href="#vehicle-root-position">Vehicle-Root-Position</a><ul>
 <li><a href="#setting-up-baselink">Setting up BaseLink</a></li>
@@ -697,6 +708,11 @@
 <h3 id="map-origin">Map Origin <a class="wikilink" href="#top">top</a><a class="headerlink" href="#map-origin" title="Permanent link">#</a></h3>
 <p>Each simulator map includes a gameObject called <code>MapOrigin</code>. The Map Origin is the reference point of the map within Unity and has coordinate values of (0, 0, 0). The real-world position of the Map Origin is needed to output world coordinates using GNSS sensors. These values are stored within the gameObject as Easting and Northing values expressed in the <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM coordinate system</a> as expressed below:</p>
 <p><img alt="" src="../../images/mapOrigin.png" /></p>
+<h4 id="aligning-map-origin-to-real-world-coordinates">Aligning Map Origin to real world coordinates<a class="headerlink" href="#aligning-map-origin-to-real-world-coordinates" title="Permanent link">#</a></h4>
+<p>The position, rotation, and scale of the <code>MapOrigin</code> object are also involved in the transform between the virtual environment and real world map coordinates. Therefore, if the map is not perfect, instead of rotating and scaling the map, you can appropriately set values of the Transform component. </p>
+<p>In order make this process easier and achieve a good mapping of the virtual world to the real world, you can use Reference Points. Just add a Reference Point by clicking on the button in <code>MapOrigin</code>, then move the Point to a characteristic place and enter the coordinates of this point in the real world. Add at least 2 such points, then click <code>Update Map Origin using Reference Points</code> in <code>MapOrigin</code>. </p>
+<p>The values will be set to minimize mean squared error. You can see the error by selecting Reference Points. The green sphere shows GPS coordinates of the selected point (Latitude,Longitude).</p>
+<p><img alt="" src="../../images/referencePoint.png" /></p>
 <h3 id="map-orientation-in-unity">Map Orientation in Unity <a class="wikilink" href="#top">top</a><a class="headerlink" href="#map-orientation-in-unity" title="Permanent link">#</a></h3>
 <p>To ensure proper heading values in GNSS related topics, the map must be oriented in such a way the the Z-axis of the unity world coordinate is pointing East. Otherwise all orientation values will have an offset. This can be a bit unintuitive, since by default Unity will have the Z-axis pointing upward on the screen which can lead to users assuming that it aligns to the geographic North.</p>
 <p>The images below illustrate the map of GoMentum Station with the correct orientation in Unity compared to a satellie image of the area from Google Maps:

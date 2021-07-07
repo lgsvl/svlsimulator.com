@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -421,7 +425,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -530,20 +538,20 @@
               
                 <h1>Introduction to Distributed Simulation <a href="#top"></a></h1>
 <h3 id="what-is-distributed-simulation">What is Distributed Simulation? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#what-is-distributed-simulation" title="Permanent link">#</a></h3>
-<p>Distributed simulation enables a cluster to run with multiple computing instances (master, clients). This enables you to run simulations that may require a large number of sensors, or with multiple ego vehicles, which may normally require a large amount of computing resources. Distributed simulation solves the inherent limitations of trying to run real-time simulations on one single-GPU instance by synchronizing across multiple machines (each with a GPU).</p>
+<p>Distributed simulation enables a cluster to run with multiple computing instances (main, clients). This enables you to run simulations that may require a large number of sensors, or with multiple ego vehicles, which may normally require a large amount of computing resources. Distributed simulation solves the inherent limitations of trying to run real-time simulations on one single-GPU instance by synchronizing across multiple machines (each with a GPU).</p>
 <h3 id="what-is-a_cluster">What is a cluster? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#what-is-a_cluster" title="Permanent link">#</a></h3>
-<p>A <code>Cluster</code> is a single unit of simulation. It includes one or more machines that will perform a simulation. There is always one master machine in every cluster; the master machine performs the simulation updates like physics and synchronizes the simulation state with every client. </p>
+<p>A <code>Cluster</code> is a single unit of simulation. It includes one or more machines that will perform a simulation. There is always one main machine in every cluster; the main machine performs the simulation updates like physics and synchronizes the simulation state with every client. </p>
 <p>See <a href="/user-interface/web/clusters/">Clusters</a> for details on editing clusters in the SVL Simulator web user interface.</p>
 <h3 id="simulation-synchronization">Simulation Synchronization <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simulation-synchronization" title="Permanent link">#</a></h3>
-<p>For the proper functioning of the sensors distributed to the clients, it is required to synchronize the whole simulation environment. When the simulation changes on master, the master sends update messages to every client. Simulator by default synchronizes every <code>Rigidbody</code> in ego vehicles, NPCs, pedestrians and controllable objects instantiated by Simulator Manager.</p>
-<p>Master receives and distributes vehicle actions like setting lights state or wipers state, and distributes controllables control actions so every client can clone the simulation state. </p>
+<p>For the proper functioning of the sensors distributed to the clients, it is required to synchronize the whole simulation environment. When the simulation changes on main, the main sends update messages to every client. Simulator by default synchronizes every <code>Rigidbody</code> in ego vehicles, NPCs, pedestrians and controllable objects instantiated by Simulator Manager.</p>
+<p>Main receives and distributes vehicle actions like setting lights state or wipers state, and distributes controllables control actions so every client can clone the simulation state. </p>
 <h3 id="components-synchronization">Components Synchronization <a class="wikilink" href="#top">top</a><a class="headerlink" href="#components-synchronization" title="Permanent link">#</a></h3>
-<p>Every component that has to be synchronized between cluster machines requires messages sends on the master and messages receiver on the clients. Taking a vehicle with <code>Rigidbody</code> as an example, Simulator adds <code>DistributedObject</code>component to the vehicle GameObject to synchronize <em>enable</em> and <em>disable</em> calls and <code>DistributedRigidbody</code> components which send required data to mock the state of <code>Rigidbody</code> on clients.</p>
+<p>Every component that has to be synchronized between cluster machines requires messages sender on the main and messages receiver on the clients. Taking a vehicle with <code>Rigidbody</code> as an example, Simulator adds <code>DistributedObject</code>component to the vehicle GameObject to synchronize <em>enable</em> and <em>disable</em> calls and <code>DistributedRigidbody</code> components which send required data to mock the state of <code>Rigidbody</code> on clients.</p>
 <p>By default, it is required that each <code>DistributedObject</code> has a unique path in the hierarchy - objects on the same hierarchy level require unique GameObject names.</p>
 <p>See <a href="../distributed-objects/">Distributed Objects</a> for details on distributing simulation objects.</p>
 <p>See <a href="../distributed-components/">Distributed Components</a> for details on distributing components data.</p>
 <h3 id="sensors-distribution">Sensors Distribution <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensors-distribution" title="Permanent link">#</a></h3>
-<p>Master delegates sensors to clients, every sensor is simulated only on one machine. Some sensors like controls are simulated only on the master machine, and ultra high load sensors will always be delegated to the clients.</p>
+<p>Main machine delegates sensors to clients, every sensor is simulated only on one machine. Some sensors like controls are simulated only on the main machine, and some sensors like camera sensors will always be delegated to the clients.</p>
 <p>See <a href="../sensors-distribution/">Sensors Distribution</a> for details on distributing sensors.</p>
 <h3 id="custom-implementations">Custom Implementations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#custom-implementations" title="Permanent link">#</a></h3>
 <p>Distributed simulation can be extended with custom implementations.</p>

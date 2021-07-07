@@ -108,6 +108,10 @@
                     
     <a class="" href="../../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -539,7 +547,7 @@
 <p>On the left-hand side of the web user interface, clicking "Test Results" brings up the Test Results page. This page contains a table of all executed test cases which enabled test report generation. </p>
 <p>For each test case, you can see when the report was created, the name of the test case for the report, an evaluated test case result, and a button to view the detailed report.</p>
 <p>In order to create and view a test case report, make sure to enable the "Create Test Case report" radio button when creating a <a href="../simulations/">simulation</a>.</p>
-<p>Test Cases must have test report generation enabled when they are executed in order to be shown in Test Results. Additionally, the Analysis Sensor must be included in the ego vehicle used in the simulation. For video recording, the Video Recording sensor must also be included. Please see the <a href="../../../simulation-content/sensors-list/">sensor configurations</a> page for the JSON.</p>
+<p>Test Cases must have test report generation enabled when they are executed in order to be shown in Test Results. For video recording, the <a href="../../../simulation-content/sensors-list/#video-recording-sensor">Video Recording</a> sensor must also be included. Please see the <a href="../../../simulation-content/sensors-list/">sensor configurations</a> page for the JSON.</p>
 <p>Each test result will show the evaluated result, with either "Success", "Failed", or "In Progress". You can view each test report for additional details or messages about the reason for the evaluation.</p>
 <h2 id="viewing-a-test-report">Viewing a Test Report <a class="wikilink" href="#top">top</a><a class="headerlink" href="#viewing-a-test-report" title="Permanent link">#</a></h2>
 <p>To view a detailed test report, click the "View" button on the right for a given test result.</p>
@@ -578,7 +586,7 @@
 <p>In the vehicle section, for each ego vehicle in the test case, you can view the vehicle bridge type, bridge IP and port location.</p>
 <p>If you included the Video Recording sensor in at least one ego vehicle, you can see the file location where the recorded video of the simulation has been stored.</p>
 <p>The following section, Sensors, exists for every ego vehicle involved in the test case. In test cases involving multiple ego vehicles, you will be able to see sensor statistics and callback event information for each ego vehicle.</p>
-<h3 id="sensors-statistics">Sensors: Statistics<a class="headerlink" href="#sensors-statistics" title="Permanent link">#</a></h3>
+<h3 id="sensors-statistics">Sensors: Statistics <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensors-statistics" title="Permanent link">#</a></h3>
 <p>The Callbacks section gives notable information about the ego vehicle during the test case run.</p>
 <p><a href="../../../images/test-results/test-results-stats.png"><img alt="" src="../../../images/test-results/test-results-stats.png" /></a></p>
 <table>

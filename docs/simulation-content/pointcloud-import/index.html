@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -618,8 +626,23 @@
 <td align="center">Mesh Detail Level</td>
 <td align="center">Level of the tree that should be used for mesh generation. This should corelate with represented area size - for single intersection level 2 is usually enough, while larger areas with multiple roads might require level 5 or higher.</td>
 </tr>
+<tr>
+<td align="center">Erosion Passes</td>
+<td align="center">Number of erosion passes that will be performed after mesh generation. Erosion will remove and flatten steep surfaces. See <a href="#erosion">erosion</a> for details.</td>
+</tr>
+<tr>
+<td align="center">Erosion Angle Threshold</td>
+<td align="center">Surfaces angled steeper than this threshold will be processed during erosion passes.</td>
+</tr>
+<tr>
+<td align="center">Remove Small Surfaces</td>
+<td align="center">If this option is enabled, small, secluded surfaces that are not attached to larger clusters will be removed after mesh generation.</td>
+</tr>
 </tbody>
 </table>
+<h4 id="erosion">Erosion <a class="wikilink" href="#top">top</a><a class="headerlink" href="#erosion" title="Permanent link">#</a></h4>
+<p>Depending on the mesh detail and point cloud quality, you might get some unwanted obstacles included in the mesh generation process. If you prefer a flat surface that's easier to drive on, you can include one or more erosion passes during import. This will remove steep sections of the mesh and flatten the underlying geometry. You can see how the erosion process affects the final mesh in the image below.</p>
+<p><a href="../../images/full_size_images/pointcloud-erode.png"><img alt="" src="../../images/pointcloud-erode.png" /></a></p>
 <h3 id="build-settings">Build Settings <a class="wikilink" href="#top">top</a><a class="headerlink" href="#build-settings" title="Permanent link">#</a></h3>
 <p>This tab contains options related to import process and initial point cloud transformations.</p>
 <p><img alt="" src="../../images/pointcloud-importBuild.png" /></p>

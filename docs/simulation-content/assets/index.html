@@ -108,6 +108,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -529,8 +537,8 @@
             <div class="section">
               
                 <h1>Adding Assets <a href="#top"></a></h1>
-<p>The main repository for the SVL Simulator does not contain and environments or vehicles.
-Currently there are several open-source examples.</p>
+<p>The main repository for the SVL Simulator does not contain art assets.  We have moved these assets to external repositories so users can easily add their own. Adding assets is only supported when cloning simulator source with Unity Editor in <a href="../../running-simulations/developer-mode/">developer mode</a>.</p>
+<p>Currently there are several open-source examples.</p>
 <p>Environments:</p>
 <ul>
 <li><a href="https://github.com/lgsvl/CubeTown">CubeTown</a></li>
@@ -542,50 +550,49 @@ Currently there are several open-source examples.</p>
 <ul>
 <li><a href="https://github.com/lgsvl/Jaguar2015XE">Jaguar2015XE</a></li>
 </ul>
+<p>NPCs:</p>
+<ul>
+<li><a href="https://github.com/lgsvl/DefaultNPC">DefaultNPC</a></li>
+</ul>
+<p>Pedestrians:</p>
+<ul>
+<li><a href="https://github.com/lgsvl/Walkers">Walkers</a></li>
+</ul>
 <h2>Table of Contents</h2>
 
 <div class="toc">
 <ul>
 <li><a href="#adding-an-asset">Adding an Asset</a></li>
-<li><a href="#building-an-asset">Building an Asset</a></li>
-<li><a href="#how-to-annotate-a-map">How to Migrate Map</a></li>
+<li><a href="#setup-an-asset">Setup an Asset</a></li>
+<li><a href="#building-assets">Building Assets</a></li>
 </ul>
 </div>
 <h2 id="adding-an-asset">Adding an Asset <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-an-asset" title="Permanent link">#</a></h2>
+<p>All assets have been removed from Simulator source code.  When working in <a href="../../running-simulations/developer-mode/">developer mode</a> and building custom binaries, users must build assets locally for npcs and pedestrians.</p>
 <p>Assets need to be cloned into a specific location in the project:</p>
 <ul>
 <li><code>simulator/Assets/External/Environments</code> for Environments</li>
 <li><code>simulator/Assets/External/Vehicles</code> for Vehicles</li>
+<li><code>simulator/Assets/External/NPCs</code> for NPCs and Bicycles</li>
+<li><code>simulator/Assets/External/Pedestrians</code> for Walkers, Scooters and Animals</li>
 </ul>
 <p>Clone the desired asset into the appropriate folder. 
 Do not change the name of the folder that the asset is cloned into, it must match the name of the asset.</p>
 <p>For environments: <code>simulator/Assets/External/Environments/Mars</code> must contain <code>simulator/Assets/External/Environments/Mars/Mars.unity</code></p>
 <p>For vehicles: <code>simulator/Assets/External/Vehicles/Rover</code> must contain <code>simulator/Assets/External/Vehicles/Rover/Rover.prefab</code></p>
-<h2 id="building-an-asset">Building an Asset <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-an-asset" title="Permanent link">#</a></h2>
-<p>Assets are built using the same build script as the simulator. Follow the <a href="../../installation-guide/build-instructions/">build instructions</a> through step 17.</p>
-<p><strong>IMPORTANT</strong> Windows and Linux support must be installed with Unity to build assetbundles</p>
-<h2 id="how-to-annotate-a-map">How to Migrate a Map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-to-annotate-a-map" title="Permanent link">#</a></h2>
-<p>If you have created maps in our <a href="https://github.com/lgsvl/simulator-2019.05-obsolete">old simulator</a> (before HDRP), you can reuse those maps in current HDRP simulator by following steps:</p>
+<p>For npcs: <code>simulator/Assets/External/NPCs/DefaultNPC</code> must contain <code>simulator/Assets/External/NPCs/DefaultNPC/Jeep/Jeep.prefab</code></p>
+<p>For pedestrians: <code>simulator/Assets/External/Pedestrians/Walkers</code> must contain <code>simulator/Assets/External/Pedestrians/Walkers/Bob/Bob.prefab</code> </p>
+<h2 id="setup-an-asset">Setup an Asset <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup-an-asset" title="Permanent link">#</a></h2>
 <ul>
-<li>In old simulator</li>
-<li>You need to make some changes in header inside <code>HDMapTool.cs</code> (line 148-154):<ul>
-<li>Convert your MapOrigin Northing/Easting to Longitude/Latitude.</li>
-<li>Replace values for <code>left</code> and <code>right</code> with Longitude.</li>
-<li>Replace values for <code>top</code> and <code>bottom</code> with Latitude.</li>
-<li>You also need to change zone in header.
-  <img alt="" src="../../images/migration-header.png" /></li>
+<li>For map assets setup see <a href="../add-new-map/">here</a>.</li>
+<li>For ego vehicle asset setup see <a href="../add-new-ego-vehicle/">here</a>.</li>
+<li>For npc asset setup see <a href="../../plugins/npc-plugins/">here</a>.</li>
+<li>For pedestrian asset setup see <a href="../../plugins/pedestrian-plugins/">here</a>.</li>
 </ul>
-</li>
-<li>If you have intersections annotated, you need to annotate junctions like <a href="../map-annotation/#create-junction">here</a> for each intersection in the old simulator since we are importing intersections based on <code>junction</code> in HDRP simulator. Otherwise, signals/signs will not be grouped correctly, every signal/sign will be created as an intersection object.
-    <img alt="" src="../../images/migration-junction.png" /></li>
-<li>Export map to Apollo Map file: <code>base_map.bin</code>.
-    <img alt="" src="../../images/migration-export.png" /></li>
-<li>In current HDRP simulator</li>
-<li>Select <code>Simulator-&gt;Import HD Map</code>, and set <code>Import Format</code> as <code>Apollo 5 HD Map</code>.</li>
-<li>Select the exported map and import.
-    <img alt="" src="../../images/migration-imported.png" /></li>
-<li>Note, you need to check intersections, some signals/signs may be grouped incorrectly.</li>
-</ul>
+<h2 id="building-assets">Building Assets <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-assets" title="Permanent link">#</a></h2>
+<p>Assets are built using the same build script as the simulator. Follow the <a href="../../installation-guide/build-instructions/">build instructions</a> through step 17.</p>
+<p>NPCs and Pedestrians must be built locally for custom binaries.  They must be added to AssetBundles folder to be loaded by the simulator binary or in editor source in <a href="../../running-simulations/developer-mode/">developer mode</a>. </p>
+<p><strong>IMPORTANT</strong> Windows and Linux support must be installed with Unity to build assetbundles</p>
               
             </div>
           </div>

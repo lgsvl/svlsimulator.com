@@ -110,6 +110,10 @@
                     
     <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
     </ul>
 	    </li>
           
@@ -423,7 +427,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../plugins/npc-plugins/">Traffic behavior plugins</a>
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
                 </li>
     </ul>
 	    </li>
@@ -528,15 +536,23 @@
           <div role="main">
             <div class="section">
               
-                <h1>2021.1.1 Release Features</h1>
-<h2 id="new-interactive-3d-sensor-configuration-visualizer">Interactive 3D visualizer for creating sensor configurations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-interactive-3d-sensor-configuration-visualizer" title="Permanent link">#</a></h2>
-<p>With the 2021.1.1 release, the new interactive <a href="../../user-interface/web/library/#interacting-with-the-visual-editor">3D sensor configuration visualizer</a> helps you create or modify sensor configurations for your vehicles. The 3D visual editor is integrated with the parameter editor and allows you to visually place sensors around the vehicle.</p>
-<h2 id="new-hd-map-preview">HD Map Preview for uploaded assets <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-hd-map-preview" title="Permanent link">#</a></h2>
-<p>You can now preview an interactive <a href="../../user-interface/web/library/#previewing-the-hd-map">HD map</a> in your browser before choosing the map asset to use in the simulation. This will help you check if the road network on this 3D map is suitable for your desired simulation test case and scenario.</p>
-<h2 id="tutorials-on-web-interface-pages">Tutorials on all web user interface pages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#tutorials-on-web-interface-pages" title="Permanent link">#</a></h2>
-<p>We now have tutorial videos on all web user interface pages to better guide you on the workflow for a particular feature.</p>
-<h2 id="sharing-feature">Support for sharing private assets, simulations and test reports <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sharing-feature" title="Permanent link">#</a></h2>
-<p>You can now <a href="../../simulation-content/sharing/">share</a> your private maps, vehicles, plugins, simulations and test reports with other registered users through the web user interface. This enables you to share uploaded content and simulations with team members or other collaborators, as well as quickly reproduce and verify others' results.</p>
+                <h1>2021.2 Release Features</h1>
+<h2 id="support-for-external-peds-npcs">Support for external Pedestrians and NPCs <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-external-peds-npcs" title="Permanent link">#</a></h2>
+<p><a href="../../plugins/pedestrian-plugins/">Pedestrians</a> and <a href="../../plugins/npc-plugins/">NPCs</a> are separated from <a href="https://github.com/lgsvl/simulator">simulator</a> and can be loaded from asset bundles. User still has to build <a href="https://github.com/lgsvl/DefaultNPC">NPCs</a> and <a href="https://github.com/lgsvl/Walkers">Pedestrians</a> as external assets with Simulator, as these are still not fully supported from <a href="https://wise.svlsimulator.com">web user interface</a>. Now, users can build their own <a href="../../plugins/npc-plugins/#building-npc-plugins">NPCs</a> and <a href="../../plugins/pedestrian-plugins/#building-pedestrian-plugins">pedestrians</a> with <a href="../../plugins/npc-plugins/#npc-animations">animations</a> more easily with the simulator. 
+We have also added some new NPCs and Pedestrians like Scooters, Bicyclists and Animals. These are available through our binary builds (<a href="https://github.com/lgsvl/simulator/releases/download/2021.2/svlsimulator-windows64-2021.2.zip">win</a>, <a href="https://github.com/lgsvl/simulator/releases/download/2021.2/svlsimulator-linux64-2021.2.zip">linux</a>) only.</p>
+<h2 id="support-for-external-bridges">Support for External Bridges <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-external-bridges" title="Permanent link">#</a></h2>
+<p><a href="../../plugins/bridge-plugins/">Bridges</a> from simulator to Autonomous-Driving or Robotics stack are also separated from <a href="https://github.com/lgsvl/simulator">simulator</a> and can be loaded as asset bundles from the <a href="https://wise.svlsimulator.com">web user interface</a>. Users can now <a href="../../plugins/bridge-plugins/">build</a> their own bridge to SVL Simulator and upload it as an asset bundle to user's <a href="../../user-interface/web/library/">library</a> on web user interface to include in the simulation. Following bridges are supported as default: <a href="https://github.com/lgsvl/ROS">ROS</a>, <a href="https://github.com/lgsvl/ROS2">ROS2</a>, <a href="https://github.com/lgsvl/CyberRT">CyberRT</a> and <a href="https://github.com/lgsvl/LoggingBridge">here</a> is an example of a custom bridge implementation.</p>
+<h2 id="support-for-multiple-versions">Support for multiple versions of asset bundles on web user interface <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-multiple-versions" title="Permanent link">#</a></h2>
+<p>SVL Simulator's cloud based <a href="https://wise.svlsimulator.com">web user interface</a> can now manage and serve content for different <a href="https://github.com/lgsvl/simulator/releases">versions</a> of SVL Simulator. User can now <a href="../../user-interface/web/library/#editing-a-plugin">edit</a> asset bundles for different simulator versions to already <a href="../../user-interface/web/library/#adding-a-plugin">added</a> assets on the web user interface instead of creating duplicate assets per version. The web user interface can confirm validity of asset versions against the simulator version under test before it is run, to avoid simulation failures due to mismatched asset versions.</p>
+<h2 id="support-for-multi-ego">New improved distributed simulation with multi-ego support <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-multi-ego" title="Permanent link">#</a></h2>
+<p>We have made several bug fixes, stability and performance improvements to support running multiple ego vehicles in a <a href="https://www.svlsimulator.com/docs/distributed-simulation/distributed-simulation-introduction/">distributed simulation</a> environment.</p>
+<h2 id="improvements-in-sensor-editor">Multiple improvements in the Interactive 3D sensor configuration editor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#improvements-in-sensor-editor" title="Permanent link">#</a></h2>
+<p>With the 2021.2 release, we have significantly improved the user experience on our new <a href="../../user-interface/web/library/#interacting-with-the-visual-editor">3D sensor configuration editor</a> that helps you create or modify sensor configurations for your vehicles. Some improvements include: better zoom and centering of the vehicle, opacity and grid toggles, axes color updates, mouse based controls, and some critical bug fixes on parent-child sensor transform.</p>
+<h2 id="spectator-ego">Support for simulations without EGO vehicle (Spectator EGO) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#spectator-ego" title="Permanent link">#</a></h2>
+<p><a href="https://github.com/lgsvl/SpectatorEgo">Spectator EGO</a> is an empty Ego vehicle without colliders, geometry, and vehicle dynamics. Use this vehicle when there is no need for Ego to be present during simulation. You can still attach sensors or observe simulation.</p>
+<h2 id="new-cubemap-lidar-improvements">Significant performance improvements on Lidar Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-cubemap-lidar-improvements" title="Permanent link">#</a></h2>
+<p>Full rework of Lidar sensor - it will now use cubemap texture instead of a pool of tall, 2D textures. This change fixes artifacts due to tall textures and solid point cloud rendering. This change improves lidar scaling - high beam counts, scans per rotation and frequency, should yield significantly more FPS than previous versions.</p>
+<p><em>Note</em>: Performance improvement is not noticeable if CyberRT is used, due to massive conversion performance cost.</p>
 <h2 id="bug-fixes-and-improvements">Bug fixes and improvements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">#</a></h2>
 <p>For a full list of bug fixes, improvements, and all other changes since the last release, please see the <a href="../changelog/">release notes</a>.</p>
               
