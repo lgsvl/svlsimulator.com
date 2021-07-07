@@ -173,6 +173,7 @@ module.exports = {
               backgroundColor: 'none'
             }
           },
+          'gatsby-remark-gifs',
           'gatsby-remark-autolink-headers'
         ]
       }

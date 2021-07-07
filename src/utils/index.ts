@@ -59,6 +59,6 @@ export const setObjFromPath = (obj: Record<string, any>, path: string, value: an
  *
  * @param uri a URI to a potential image
  */
-export const isImageUri = (uri: string) => Boolean(uri.match(/\.(jpg|jpeg|png)$/));
+export const isImageUri = (uri: string) => Boolean(uri.match(/\.(jpg|jpeg|png|gif)$/));
 
 export const isAnchorLink = (uri: string) => /^#.+/.test(uri);

@@ -27,6 +27,14 @@ const OverlayBox = withTheme(styled(Box)`
   text-shadow: 0px 1px 3px black, 0px 1px 20px rgba(0, 0, 0, 0.7);
 `) as React.FC<BoxProps>;
 
+const MarkdownContainer = withTheme(styled(Box)`
+  /* Ensure markdown-injected gifs are displayed in a similar manner to other images*/
+  img[src$='.gif'] {
+    display: block;
+    margin: auto;
+  }
+`) as React.FC<BoxProps>;
+
 export interface LayoutProps extends PageProps {
   location: PageProps['location'];
   pageContext: PageProps['pageContext'] & {
@@ -67,7 +75,7 @@ export default function Layout({ children, location, pageContext, ...rest }: Rea
           </Box>
         </PageSection>
         <PageSection component='section' maxWidth='md'>
-          <Box>
+          <MarkdownContainer>
             {title ? (
               featuredImageURL ? (
                 <OverlayBox position='relative' mb={3} py={6}>
@@ -81,7 +89,7 @@ export default function Layout({ children, location, pageContext, ...rest }: Rea
               )
             ) : null}
             {children}
-          </Box>
+          </MarkdownContainer>
         </PageSection>
       </Page>
     </MDXProvider>
