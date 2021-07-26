@@ -569,9 +569,9 @@ If running in Unity Editor (Developer Mode), the sensor will be built into the f
 that implements IBridgeInstance interface.</p>
 <p>2) <code>Register</code> - called by simulator allow factory register supported functionality with plugin interface. See the section below on plugin registration.</p>
 <p>3) <code>RegPublisher</code> and <code>RegSubscriber</code> - called by custom sensors to register custom data types for publisher or subscriber functionality. Factory can use this method itself to register its supported data types for simulator built-in sensors.</p>
-<p>Classes inheriting from this interface must have <code>BridgeName</code> attribute applied to inform name that will be
+<p>Classes inheriting from this interface must have <code>BridgeName</code>and <code>BridgeType</code> attribute applied to inform name and type that will be
 used to identify this bridge. For example:</p>
-<pre><code>    [BridgeName(&quot;MyCustomBridge&quot;)]
+<pre><code>    [BridgeName(&quot;MyCustomBridge&quot;, &quot;MyCustomBridgeType&quot;)]
     public class MyCustomBridgeFactory : IBridgeFactory
     {
         ...

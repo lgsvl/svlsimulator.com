@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Contributing - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Contributing";
+    var mkdocs_page_input_path = "support/contributing.md";
+    var mkdocs_page_url = "/docs/support/contributing/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">Frequently asked questions</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Contributing</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Support &raquo;</li>
+        
+      
+    
+    <li>Contributing</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/support/contributing.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1>Contributing to SVL Simulator</h1>
+<p>As an open project and community, we welcome and highly encourage contributions back to SVL Simulator. </p>
+<p>Through feedback, questions, bug reports/issues, new features, documentation, or demonstrations showing your use case of SVL Simulator, you can help contribute to the SVL Simulator project in several different ways. </p>
+<h3 id="feedback,-questions,-bug-reports,-and-issues">Feedback, questions, bug reports, and issues <a class="wikilink" href="#top">top</a><a class="headerlink" href="#feedback,-questions,-bug-reports,-and-issues" title="Permanent link">#</a></h3>
+<p>The best way to give feedback, raise an issue, or ask a question about SVL Simulator is to <a href="https://github.com/lgsvl/simulator/issues">submit a Github issue</a> to our main Github repository: <a href="https://www.github.com/lgsvl/simulator">https://www.github.com/lgsvl/simulator</a>. Please also check first if your question has already been answered in an existing issue or on our <a href="../faq/">Frequently Asked Questions</a> page. We will try to respond to open issues as quickly as possible.</p>
+<p>If you would like to get in touch about partnerships, licensing, or larger collaborations, please email us at <a href="mailto:contact@svlsimulator.com">contact@svlsimulator.com</a>.</p>
+<h3 id="submitting-a-pull-request">Submitting a Pull Request <a class="wikilink" href="#top">top</a><a class="headerlink" href="#submitting-a-pull-request" title="Permanent link">#</a></h3>
+<p>We welcome pull requests for new features or bug fixes to SVL Simulator. You can submit a pull request <a href="https://github.com/lgsvl/simulator/pulls">here</a>. After submitting the initial pull request, you will be prompted to agree to our <a href="https://github.com/lgsvl/simulator/blob/master/CONTRIBUTING.md">Contributor License Agreement</a>. Your pull request will then be ready for review and merging. Below are a few notes/guidelines on submitting pull requests and working on our project.</p>
+<ul>
+<li>While we are an open project, please be aware that we have a custom <a href="https://github.com/lgsvl/simulator/blob/master/LICENSE">license</a>. You must agree to the terms of our license to use and contribute back to our project.</li>
+<li>Please make sure that any preexisting licenses/terms of your contributions are compatible with our terms.</li>
+<li>Under the terms of the <a href="https://unity3d.com/legal/as_terms">Unity Asset Store Terms of Service and EULA</a>, you cannot contribute back to our project anything which you have obtained from the Unity Asset Store (unless you have separate agreements in place with Unity).</li>
+<li>Our team synchronizes the <a href="https://www.github.com/lgsvl/simualtor">lgsvl/simulator</a> repository internally first, then pushes to Github approximately once a week.</li>
+<li>When we merge pull requests, it will first be merged into our internal source, then pushed to Github, so there may be a slight delay for your merged PR to show up in the public repository.</li>
+<li>We always rebase and do not merge branches - when submitting a pull request, please make sure your code is rebased on the latest version of the master branch.</li>
+<li>If you are working on a large feature or a big change to how the simulator works, please submit a Github issue first or reach out to us to discuss the idea before you start working on it or submit a pull request.</li>
+<li>SVL Simulator is cross platform. Please do not write platform-specific code, or if you do, please make sure you do so while supporting all of our supported platforms.</li>
+</ul>
+<h3 id="documentation">Documentation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#documentation" title="Permanent link">#</a></h3>
+<p>We currently use <a href="https://www.mkdocs.org/">mkdocs</a> version 1.0.4 to build our <a href="https://www.svlsimulator.com/docs">documentation website</a>. To submit a piece of documentation, please submit a PR to the lgsvl/simulator repository, placing your materials in the <a href="https://github.com/lgsvl/simulator/tree/master/Docs">Docs</a> directory. After merging, our team will build and upload to the public website.</p>
+<h3 id="demonstrations">Demonstrations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#demonstrations" title="Permanent link">#</a></h3>
+<p>If you are using the SVL Simulator for your development, we would like to hear from you. We are also always excited to see any demonstration videos, blog posts, or articles showing use cases for the SVL Simulator. Please reach out to us at <a href="mailto:contact@svlsimulator.com">contact@svlsimulator.com</a> to let us know about your application.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../faq/" class="btn btn-neutral" title="Frequently asked questions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
