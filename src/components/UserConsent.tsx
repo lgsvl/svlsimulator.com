@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { useTheme, withTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Button from 'src/components/Button';
 import { IconX } from 'src/components/Icons';
 import Link from 'src/components/Link';
@@ -45,14 +45,23 @@ const UserConsent = () => {
   const theme = useTheme();
   const isXs = !useMediaQuery(theme.breakpoints.up('sm'));
   const [open, setOpen] = useState<boolean>(cookies.get('gatsby-gdpr-google-analytics') !== 'true');
+  const [tracking, setTracking] = useState<boolean>(false);
+  const handleTracking = useCallback(() => {
+    if (!tracking && open && typeof window !== undefined) {
+      const cookieExpiry = new Date();
+      cookieExpiry.setFullYear(cookieExpiry.getFullYear() + 10);
+      cookies.set('gatsby-gdpr-google-analytics', 'true', { expires: cookieExpiry });
+      initializeAndTrack(window.location);
+      setTracking(true);
+    }
+  }, [tracking, open, setTracking]);
   const handleClose = useCallback(() => setOpen(false), [setOpen]);
   const handleAccept = useCallback(() => {
-    const cookieExpiry = new Date();
-    cookieExpiry.setFullYear(cookieExpiry.getFullYear() + 10);
-    cookies.set('gatsby-gdpr-google-analytics', 'true', { expires: cookieExpiry });
-    initializeAndTrack(window.location);
     setOpen(false);
-  }, [setOpen]);
+    handleTracking();
+  }, [setOpen, handleTracking]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => handleTracking(), []);
   const { t } = useTranslation();
 
   return (
