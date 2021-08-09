@@ -93,6 +93,24 @@ const FooterGrid = withTheme(styled(Grid)`
   margin-top: auto;
 `) as React.FC<GridProps<'footer', { component: string }>>;
 
+if (typeof window !== 'undefined') {
+  if (!navigator.userAgent.toLowerCase().includes('firefox')) {
+    // Firefox doesn't support images
+    console.log(
+      '%c+',
+      'font-size: 0px; width: 96px; height: 96px; padding: 48px 48px; color: transparent; ' +
+        'background-image: url(https://www.svlsimulator.com/icons/icon-96x96.png); ' +
+        'background-repeat: no-repeat; background-position: center; background-size: 96px 96px;'
+    );
+  }
+  console.log(
+    '%cLG Electronics%c is looking for exceptional front-end and back-end developers.',
+    'color: #C20028; font-weight: bold; font-size: 1.2em;',
+    'font-size: 1.2em;'
+  );
+  console.log('Interested? Check out our open positions at https://www.linkedin.com/company/lg-electronics/jobs/');
+}
+
 const App: React.FC<{ animate?: boolean; children: React.ReactNode }> = ({ animate, children }) => {
   const theme = useTheme();
   const { appState, setAppState } = useAppState();

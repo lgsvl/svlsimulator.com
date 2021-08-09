@@ -4,6 +4,7 @@ import Grid, { GridProps } from '@material-ui/core/Grid';
 // import Hidden from '@material-ui/core/Hidden';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
+import Konami from 'react-konami-code';
 import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { MapFunction } from 'src/@types/utils';
 import { RequestDemoButton } from 'src/components/Button';
@@ -41,11 +42,38 @@ const TypoWrapper: MapFunction<string> = (str, i) => (
   </Typography>
 );
 
+const easterEgg = () => {
+  import('emojisplosion').then(({ emojisplosions }) => {
+    const { cancel } = emojisplosions({
+      emojiCount: 35,
+      physics: {
+        gravity: 0.25,
+        initialVelocities: {
+          rotation: {
+            max: 45,
+            min: -45
+          },
+          x: {
+            max: 17,
+            min: -17
+          },
+          y: {
+            max: 14,
+            min: -21.7
+          }
+        }
+      }
+    });
+    setTimeout(cancel, 15000);
+  });
+};
+
 export default function About() {
   const { t, tMap } = useTranslation();
   return (
     <Page title={t('about.title')}>
       <PageSection>
+        <Konami action={easterEgg} code={[38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]} />
         <Box height={{ xs: '50vh', md: '70vh' }} maxHeight={720} position='relative'>
           <Image
             src={srcSVLLogo}
