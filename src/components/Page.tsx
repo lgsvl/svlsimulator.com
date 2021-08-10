@@ -104,11 +104,11 @@ if (typeof window !== 'undefined') {
     );
   }
   console.log(
-    '%cLG Electronics%c is looking for exceptional front-end and back-end developers.',
+    '%cLG Electronics%c is looking for exceptional software engineers.',
     'color: #C20028; font-weight: bold; font-size: 1.2em;',
     'font-size: 1.2em;'
   );
-  console.log('Interested? Check out our open positions at https://www.linkedin.com/company/lg-electronics/jobs/');
+  console.log('Interested? Check out our open positions at https://lgecareers.com/search/?=&zip=95050&within=50');
 }
 
 const App: React.FC<{ animate?: boolean; children: React.ReactNode }> = ({ animate, children }) => {
