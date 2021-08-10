@@ -17,6 +17,11 @@ import styled from 'styled-components';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
+// Omit any 'tracking analytics' logs from `gatsby-plugin-gdpr-cookies`
+const log = console.log;
+console.log = (...args: any[]) => {
+  if (args[0] !== 'tracking analytics') log(...args);
+};
 
 const BannerDialog = styled(Dialog)`
   pointer-events: none;
