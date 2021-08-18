@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -530,13 +546,12 @@
           <div role="main">
             <div class="section">
               
-                <h1>Running Apollo 6.0 with SVL Simulator <a href="#top"></a></h1>
+                <h1 id="running-apollo-60-with-svl-simulator">Running Apollo 6.0 with SVL Simulator <a href="#top"></a><a class="headerlink" href="#running-apollo-60-with-svl-simulator" title="Permanent link">#</a></h1>
 <p>These instructions have been tested with the <code>r6.0.0</code> branch from the Apollo repository (<a href="https://github.com/ApolloAuto/apollo/commit/00711729e46c3e4685bb184f4ab969fdcdc206f7">latest commit</a> at the time of writing).</p>
 <p>Apollo 6.0 introduced major changes to the perception stack and as a result camera perception is not yet working, and LiDAR perception is unstable. Because of this, this guide will focus on using the <a href="../../tutorials/modular-testing/">modular testing</a> feature of the SVL Simulator to simulate perception instead of using Apollo's perception module.</p>
 <p><strong>For those who used our fork of Apollo 5.0 before: please note the new step to select the correct setup mode in Dreamview</strong>.</p>
 <p><a href="../../images/full_size_images/apollo-sim.png"><img alt="" src="../../images/apollo-sim.png" /></a></p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#getting-started">Getting Started</a></li>
@@ -604,33 +619,27 @@ To test if nvidia drivers are properly installed enter <code>nvidia-smi</code> i
     |    0     17619      G   ...uest-channel-token=14399957398263092148    40MiB |
     +-----------------------------------------------------------------------------+
 </code></pre>
-
 <p>The installation steps for nvidia-docker are available at the <a href="https://github.com/NVIDIA/nvidia-docker">official repo</a>.</p>
 <h3 id="cloning-the-repository">Cloning the Repository <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cloning-the-repository" title="Permanent link">#</a></h3>
 <p>Clone the Apollo using the following command:</p>
-<pre><code class="bash">git clone https://github.com/ApolloAuto/apollo
+<pre><code class="language-bash">git clone https://github.com/ApolloAuto/apollo
 </code></pre>
-
 <p>Checkout the <code>r6.0.0</code> branch:</p>
-<pre><code class="bash">cd apollo
+<pre><code class="language-bash">cd apollo
 git checkout r6.0.0
 </code></pre>
-
 <p><strong>Do not</strong> checkout the <code>v6.0.0</code> tag as it does not include the latest changes.</p>
 <h3 id="building-apollo-and-bridge">Building Apollo and the bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-apollo-and-bridge" title="Permanent link">#</a></h3>
 <p>Now everything should be in place to build Apollo. Apollo must be built from the container. To launch the container navigate to the directory where the repository was cloned and enter:</p>
-<pre><code class="bash">./docker/scripts/dev_start.sh
+<pre><code class="language-bash">./docker/scripts/dev_start.sh
 </code></pre>
-
 <p>This should launch the container and mount a few volumes. It could take a few minutes to pull the latest volumes on the first run.</p>
 <p>To get into the container:</p>
-<pre><code class="bash">./docker/scripts/dev_into.sh
+<pre><code class="language-bash">./docker/scripts/dev_into.sh
 </code></pre>
-
 <p>Build Apollo (optimized, not debug, with GPU support):</p>
-<pre><code class="bash">./apollo.sh build_opt_gpu
+<pre><code class="language-bash">./apollo.sh build_opt_gpu
 </code></pre>
-
 <p><strong>NOTE</strong>
 The Apollo build may fail on machines with less than 1GB of RAM per CPU core due to aggressive parallelization in the build, as discussed in <a href="https://github.com/ApolloAuto/apollo/issues/7719">Apollo issue 7719</a>.</p>
 <p>If the build fails, you can try re-start it until it succeeds, but if it continues to fail (especially when running the linker) then you'll need to address the low memory situation by either adding more memory to your build machine or enabling or <a href="https://bogdancornianu.com/change-swap-size-in-ubuntu/">increasing available swap space</a>. If your Apollo build is crashing on a 16GB machine with little or no swap, try setting it to 16GB.</p>
@@ -693,15 +702,13 @@ The Apollo build may fail on machines with less than 1GB of RAM per CPU core due
 <p>Note: you may receive errors about Dreamview not being built if you do not run the script from the <code>/apollo</code> directory.</p>
 </li>
 </ul>
-<pre><code class="bash">./scripts/bootstrap_lgsvl.sh
+<pre><code class="language-bash">./scripts/bootstrap_lgsvl.sh
 </code></pre>
-
 <ul>
 <li>Launch bridge (inside docker container):</li>
 </ul>
-<pre><code class="bash">./scripts/bridge.sh
+<pre><code class="language-bash">./scripts/bridge.sh
 </code></pre>
-
 <ul>
 <li>Run the SVL Simulator outside of docker. See instructions for <a href="../../getting-started/getting-started/#running-the-simulator">Running the Simulator</a><ul>
 <li>Create a Simulation the <code>BorregasAve</code> map and <code>Lincoln2017MKZ (Apollo 5.0)</code> vehicle</li>
@@ -784,6 +791,9 @@ The Apollo build may fail on machines with less than 1GB of RAM per CPU core due
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

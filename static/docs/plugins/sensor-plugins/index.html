@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a>Sensor Plugins</h1>
+                <h1 id="sensor-plugins"><a name="top"></a>Sensor Plugins<a class="headerlink" href="#sensor-plugins" title="Permanent link">#</a></h1>
 <p>Sensor plugins are custom sensors that can be added to a vehicle configuration. Sensor plugins
 must be built by the simulator and the resultant bundle named <code>sensor_XXX</code> must be placed in
 the <code>AssetBundles/Sensors</code> folder. If running the binary, this folder is included in the downloaded .zip. 
@@ -566,7 +582,7 @@ textures, etc...).</p>
 implemented as well as the type of data that the sensor sends over the bridge. In addition,
 it must have <code>SensorBase</code> as the base class and must implement the <code>Initialize</code>, <code>Deinitialize</code>, <code>OnBridgeSetup</code>, <code>OnVisualize</code>,
 and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code>CheckVisible</code> method to prevent NPC or Pedestrians from spawning in bounds of the sensor. If the sensor can be simulated on the client machine in a distributed simulation, see <a href="../../distributed-simulation/sensors-distribution/">sensors distribution</a> to learn how to configure it.  See the below codeblock from the ColorCamera sensor:</p>
-<pre><code class="c#">namespace Simulator.Sensors
+<pre><code class="language-c#">namespace Simulator.Sensors
 {
 
     // The SensorType's name will match the `type` when defining a sensor in the JSON configuration of a vehicle
@@ -649,7 +665,6 @@ and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code
     }
 }
 </code></pre>
-
 <p><code>SensorBase</code> in inherited from Unity's <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html">Monobehavior</a> so any of the <code>Messages</code> can be used to control how and when the sensor collects data.</p>
 <p>Open-source examples are available:</p>
 <ul>
@@ -665,7 +680,7 @@ and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code
         <a href="../bridge-plugins/" class="btn btn-neutral float-right" title="Bridge plugins">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../simulation-content/lane-line-sensor/" class="btn btn-neutral" title="Lane-line sensor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../simulation-content/differential-drive-control/" class="btn btn-neutral" title="Differential Drive Control sensor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -695,7 +710,7 @@ and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code
           <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../simulation-content/lane-line-sensor/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../simulation-content/differential-drive-control/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../bridge-plugins/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -706,6 +721,9 @@ and <code>OnVisualizeToggle</code> methods. Sensors can optionally include <code
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Running a Distributed Simulation <a href="#top"></a></h1>
+                <h1 id="running-a-distributed-simulation">Running a Distributed Simulation <a href="#top"></a><a class="headerlink" href="#running-a-distributed-simulation" title="Permanent link">#</a></h1>
 <p>When distributed simulation starts working, a simulation on each machine will start, and you can check the list of sensors allocated to the machine in <a href="../../user-interface/sensor-visualizers/">Sensor Visualizers</a>.</p>
 <h2 Requirements_="Requirements'" id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <p>Distributed simulation needs multiple computers connected to the same router. The operating system of each computer can be either Linux or Windows 10. In this document, we'll use:</p>
@@ -547,22 +563,19 @@
 <h2 id="instructions">Instructions <a class="wikilink" href="#top">top</a><a class="headerlink" href="#instructions" title="Permanent link">#</a></h2>
 <h3 id="install-apollo-5" label="Install Apollo 5">Install Apollo 5 <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-apollo-5" title="Permanent link">#</a></h3>
 <p>If you already installed and built Apollo 5, jump to launching Apollo. </p>
-<pre><code class="sh">docker pull lgsvl/apollo-5.0
+<pre><code class="language-sh">docker pull lgsvl/apollo-5.0
 git clone --recurse-submodules https://github.com/lgsvl/apollo-5.0.git ~/apollo-5.0
 </code></pre>
-
 <h3 id="building-apollo-and-bridge" label="Building Apollo and bridge">Building Apollo and bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-apollo-and-bridge" title="Permanent link">#</a></h3>
-<pre><code class="sh">cd ~/apollo-5.0
+<pre><code class="language-sh">cd ~/apollo-5.0
 ./docker/scripts/dev_start.sh
 ./docker/scripts/dev_into.sh
 ./apollo.sh build_gpu
 </code></pre>
-
 <h3 id="launching-apollo-5" label="Launching Apollo 5">Launching Apollo 5 <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launching-apollo-5" title="Permanent link">#</a></h3>
-<pre><code class="sh">bootstrap.sh
+<pre><code class="language-sh">bootstrap.sh
 bridge.sh
 </code></pre>
-
 <p>You can check the network address of your bridge. This network address should be used in bridge setup in the web user interface.</p>
 <h3 id="launching-svl-simulator-and-setting-cluster" label="Launching SVL Simulator and Setting Cluster">Launching SVL Simulator and Setting Cluster <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launching-svl-simulator-and-setting-cluster" title="Permanent link">#</a></h3>
 <p>In Master Simulator,</p>
@@ -736,6 +749,9 @@ bridge.sh
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

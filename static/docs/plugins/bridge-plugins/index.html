@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a>Bridge Plugins</h1>
+                <h1 id="bridge-plugins"><a name="top"></a>Bridge Plugins<a class="headerlink" href="#bridge-plugins" title="Permanent link">#</a></h1>
 <p>Bridge plugins are custom bridge implementations that can be used by an ego vehicle to send and receive sensor data.
 Bridge plugins must be built by the simulator and the resulting bundle named <code>bridge_XXX</code> must be placed in the <code>AssetBundles/Bridges</code> folder. If running the binary, this folder is included in the downloaded .zip file.
 If running in Unity Editor (Developer Mode), the sensor will be built into the folder directly. This must be done before running the simulator (running the executable or pressing <code>Play</code> in the Editor).</p>
@@ -563,7 +579,6 @@ If running in Unity Editor (Developer Mode), the sensor will be built into the f
         void RegSubscriber&lt;DataType, BridgeType&gt;(IBridgePlugin plugin, Func&lt;BridgeType, DataType&gt; converter);
     }
 </code></pre>
-
 <p>This interface requires the class to expose four public methods:</p>
 <p>1) <code>CreateInstance</code> - called to create new bridge instance. Typically this method simply returns new object of class
 that implements IBridgeInstance interface.</p>
@@ -577,7 +592,6 @@ used to identify this bridge. For example:</p>
         ...
     }
 </code></pre>
-
 <h3 id="bridge-instance">Bridge Instance <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bridge-instance" title="Permanent link">#</a></h3>
 <pre><code>    public interface IBridgeInstance
     {
@@ -586,7 +600,6 @@ used to identify this bridge. For example:</p>
         void Disconnect();
     }
 </code></pre>
-
 <p>This interface requires the class to expose three public methods:</p>
 <p>1) <code>Status</code> - getter that will be called by simulator to query status of bridge. For example, sensors will be sending data only if Status is set to <code>Connected</code> state.</p>
 <p>1) <code>Connect</code> - called when simulator wants to initate new connection. Connection string is passed unmodified from web interface where it can be set to anything. It is responsibility of bridge implementation to validate then accept or reject this string.</p>
@@ -599,7 +612,6 @@ This is performed by calling <code>AddType&lt;DataType&gt;(string bridgeTypeName
 <pre><code>void AddSubscriberCreator&lt;DataType&gt;(SubscriberCreator&lt;DataType&gt; subscriber);
 void AddPublisherCreator&lt;DataType&gt;(PublisherCreator&lt;DataType&gt; publisher);
 </code></pre>
-
 <p>See <code>IBridgePlugin.cs</code> source code for more information on delegate arguments and return values.</p>
 <p>Typically, the bridge will call <code>AddType</code> + <code>AddSubscriberCreator</code> from <code>RegSubscriber</code> method, and <code>AddType</code> + <code>AddPublisherCreator</code> from <code>RegPublisher</code> method. This should be done for all default simulator data types simulator supports.</p>
 <p>Additionally, custom sensor plugins may choose to call your bridge <code>RegPublisher</code> and <code>RegSubscriber</code> methods to add custom data types they which to publish or subscribe. Please refer to <code>ComfortSensor</code> and <code>LaneFollowingSensor</code> sensor plugins for examples of this functionality.</p>
@@ -663,6 +675,9 @@ void AddPublisherCreator&lt;DataType&gt;(PublisherCreator&lt;DataType&gt; publis
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

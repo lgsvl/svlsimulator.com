@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>SVL Simulator FAQ <a href="#top"></a></h1>
+                <h1 id="svl-simulator-faq">SVL Simulator FAQ <a href="#top"></a><a class="headerlink" href="#svl-simulator-faq" title="Permanent link">#</a></h1>
 <div class="toc">
 <ul>
 <li><a href="#what-are-the-recommended-system-specs-what-are-the-minimum-required-system-specs">What are the recommended system specs? What are the minimum REQUIRED system specs?</a></li>
@@ -586,7 +602,6 @@ support macOS at this time.</p>
 <p>The Simulator requires the vulkan libraries to be installed on Linux:</p>
 <pre><code>sudo apt install libvulkan1
 </code></pre>
-
 <h4 id="which-unity-version-is-required-and-how-do-i-get-it">Which Unity version is required and how do I get it? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#which-unity-version-is-required-and-how-do-i-get-it" title="Permanent link">#</a></h4>
 <p>SVL Simulator is currently on Unity version 2020.3.3f1, and can be downloaded from the
 Unity Download Archive.</p>
@@ -607,7 +622,6 @@ which supports all of our required functionality.</p>
         libx11-6 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 \
         libxrender1 libxtst6 zlib1g debconf libgtk2.0-0 libsoup2.4-1 libarchive13 libpng16-16
 </code></pre>
-
 <ol>
 <li>Download and install Unity 2020.3.3f1:</li>
 </ol>
@@ -615,7 +629,6 @@ which supports all of our required functionality.</p>
     chmod +x UnitySetup
     ./UnitySetup --unattended --install-location=/opt/Unity --components=Unity,Windows-Mono,Mac-Mono
 </code></pre>
-
 <ol>
 <li>Install .NET Core SDK, available from <a href="https://dotnet.microsoft.com/download">https://dotnet.microsoft.com/download</a></li>
 </ol>
@@ -626,7 +639,6 @@ which supports all of our required functionality.</p>
     sudo apt-get update
     sudo apt-get install dotnet-sdk-2.2
 </code></pre>
-
 <ol>
 <li>Install Mono, available from <a href="https://www.mono-project.com/download/stable/#download-lin">https://www.mono-project.com/download/stable/#download-lin</a></li>
 </ol>
@@ -637,7 +649,6 @@ which supports all of our required functionality.</p>
     sudo apt update
     sudo apt install mono-devel
 </code></pre>
-
 <ol>
 <li>
 <p>Install Visual Studio Code, available in Ubuntu Software or from <a href="https://code.visualstudio.com/docs/setup/linux">https://code.visualstudio.com/docs/setup/linux</a></p>
@@ -662,7 +673,6 @@ which supports all of our required functionality.</p>
 </ol>
 <pre><code>    which code
 </code></pre>
-
 <h4 id="where-are-unity-log-files-located">Where are Unity log files located? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#where-are-unity-log-files-located" title="Permanent link">#</a></h4>
 <table>
 <thead>
@@ -696,26 +706,22 @@ install and run <code>git lfs install</code>. Then repeat the git clone process.
 Git LFS installation instructions here: <a href="https://github.com/git-lfs/git-lfs/wiki/Installation">https://github.com/git-lfs/git-lfs/wiki/Installation</a></p>
 <p>Typically if you do not have Git LFS installed or configured then you will see the following error
 when opening Unity project:</p>
-<pre><code class="output">error CS026: The type or namespace name &quot;WebSocketSharp&quot; could not be found.
+<pre><code class="language-output">error CS026: The type or namespace name &quot;WebSocketSharp&quot; could not be found.
 Are you missing a using directive or an assembly reference?
 </code></pre>
-
 <h4 id="why-do-i-get-an-error-saying-som-files-e-g-rosbridge-websocket-launch-are-missing-in-apollo">Why do I get an error saying some files (e.g. rosbridge_websocket.launch) are missing in Apollo? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#why-do-i-get-an-error-saying-som-files-e-g-rosbridge-websocket-launch-are-missing-in-apollo" title="Permanent link">#</a></h4>
 <p>If you see that some files are missing from <code>ros_pkgs</code> folder in Apollo repository, you need
 to make sure that you are cloning all submodules:</p>
 <pre><code>git clone --recurse-submodules https://github.com/lgsvl/apollo.git
 </code></pre>
-
 <h4 connect_="connect?'" id="ros-bridge-won-t-connect" t="t">ROS Bridge won't connect? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#ros-bridge-won-t-connect" title="Permanent link">#</a></h4>
 <p>First make sure you are running rosbridge.</p>
 <p>If using our Apollo docker image, run:</p>
 <pre><code>rosbridge.sh
 </code></pre>
-
 <p>For standalone ROS environments run:</p>
 <pre><code>roslaunch rosbridge_server rosbridge_websocket.launch
 </code></pre>
-
 <p>If you are running ROS bridge on different machine, verify that simulator can connect to it and
 you do not have firewall blocking ports.</p>
 <h4 id="how-do-i-control-the-ego-vehicle-my-vehicle-spawn-position">How do I control the ego vehicle (my vehicle) spawn position? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-do-i-control-the-ego-vehicle-my-vehicle-spawn-position" title="Permanent link">#</a></h4>
@@ -732,7 +738,6 @@ See <a href="../../simulation-content/sensors-list/">Sensor JSON Options</a> for
   0 fy cy
   0  0  1]
 </code></pre>
-
 <p>Our reference camera sensors use the pinhole camera model, where all of these parameters can be calculated from other parameters.</p>
 <p>For focal lengths, i.e. <code>fx</code> and <code>fy</code>, the pinhole camera has same focal lengths in both horizontal and vertical directions as: <code>fx = fy = Height / 2 / Mathf.Tan(FieldOfView / 2.0f * Mathf.Deg2Rad)</code>. Note that since <code>FieldOfView</code> is the vertical FOV, we use half of <code>Height</code> in the calculation.</p>
 <p>For optical center, i.e. <code>cx</code> and <code>cy</code>, since Unity uses symmetric view frustum by default, the optical center is always at the center of the image. So we have <code>cx = Width / 2.0f</code> and <code>cy = Height / 2.0f</code></p>
@@ -751,7 +756,6 @@ You need to run them as non-root user, without sudo.</p>
 <p>Typically you will see following error:</p>
 <pre><code>Check failed: error == cudaSuccess (8 vs. 0) invalid device function
 </code></pre>
-
 <p>This means one of two things:</p>
 <p>1) GPU you are using is not supported by Apollo. Apollo requires CUDA 8 compatible hardware, it won't
 work if GPU is too old or too new. Apollo officially supports only GTX 1080. RTX 2080 will not work.</p>
@@ -773,9 +777,8 @@ has many annotations and Rviz cannot handle them efficiently. It will either cra
 many minutes if not hours.</p>
 <p>You can checkout older commit of <code>autoware-data</code> repository that has annotations only for smaller
 part of SanFrancisco.</p>
-<pre><code class="bash">git checkout e3cfe709e4af32ad2ea8ea4de85579b9916fe516
+<pre><code class="language-bash">git checkout e3cfe709e4af32ad2ea8ea4de85579b9916fe516
 </code></pre>
-
 <h4 id="why-are-there-no-maps-when-i-make-a-local-build">Why are there no maps when I make a local build? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#why-are-there-no-maps-when-i-make-a-local-build" title="Permanent link">#</a></h4>
 <p>See <a href="../../installation-guide/build-instructions/">Build Instructions</a>. It is not required to build the whole simulator using this tool.</p>
 <h4 id="what-is-the-target-waypoint-missing-when-using-the-map-annotation-tool">Why is the <code>TARGET_WAYPOINT</code> missing when using the <code>Map Annotation Tool</code>? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#what-is-the-target-waypoint-missing-when-using-the-map-annotation-tool" title="Permanent link">#</a></h4>
@@ -789,12 +792,10 @@ part of SanFrancisco.</p>
 <p>PythonAPI quickstart scripts use Python libraries that are available publicly. To install all the required libraries, execute the command below inside the PythonAPI directory.</p>
 <pre><code>pip3 install --user -e .
 </code></pre>
-
 <h4 id="how-to-fix-the-runtime-the-current-numpy-installation-error">How to fix the "RuntimeError: The current Numpy installation" error? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-to-fix-the-runtime-the-current-numpy-installation-error" title="Permanent link">#</a></h4>
 <p>There is a known issue with Numpy on Windows with the newest updates. See this issue for more information: <a href="https://tinyurl.com/y3dm3h86">https://tinyurl.com/y3dm3h86</a>. To fix this issue, execute the command below.</p>
 <pre><code>pip install numpy==1.19.3
 </code></pre>
-
 <h4 id="other-questions">Other questions? <a class="wikilink" href="#top">top</a><a class="headerlink" href="#other-questions" title="Permanent link">#</a></h4>
 <p>See our <a href="https://github.com/lgsvl/simulator/issues">Github issues</a> page, or email us at <a href="mailto:contact@svlsimulator.com">contact@svlsimulator.com</a>.</p>
               
@@ -848,6 +849,9 @@ part of SanFrancisco.</p>
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

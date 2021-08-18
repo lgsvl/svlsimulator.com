@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
                     
     <a class="" href="../ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>ROS2 End-to-End Lane Following Model with SVL Simulator</h1>
+                <h1 id="ros2-end-to-end-lane-following-model-with-svl-simulator">ROS2 End-to-End Lane Following Model with SVL Simulator<a class="headerlink" href="#ros2-end-to-end-lane-following-model-with-svl-simulator" title="Permanent link">#</a></h1>
 <p>This documentation describes applying a deep learning neural network for lane following in <a href="https://www.svlsimulator.com/">SVL Simulator</a>. In this project, we use SVL Simulator for customizing sensors (one main camera and two side cameras) for a car, collect data for training, and deploying and testing a trained model.</p>
 <blockquote>
 <p>This project was inspired by <a href="https://devblogs.nvidia.com/deep-learning-self-driving-cars/">NVIDIA's End-to-End Deep Learning Model for Self-Driving Cars</a></p>
@@ -545,7 +561,6 @@
 <div class="video-container">
 <iframe style="display:block;margin:auto;" width="560" height="340" src="https://www.youtube.com/embed/uMfA1-wTB7I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
 <p></br></p>
 <h2 id="table-of-contents">Table of Contents <a class="wikilink" href="#top">top</a><a class="headerlink" href="#table-of-contents" title="Permanent link">#</a></h2>
 <ul>
@@ -579,23 +594,18 @@
 <p>First, clone this repository:</p>
 <pre><code>git clone --recurse-submodules https://github.com/lgsvl/lanefollowing.git
 </code></pre>
-
 <p>Next, pull the latest Docker image:</p>
 <pre><code>docker pull lgsvl/lanefollowing:latest
 </code></pre>
-
 <p>To build ROS2 packages:</p>
 <pre><code>docker-compose up build_ros
 </code></pre>
-
 <p>Now, launch the lane following model:</p>
 <pre><code>docker-compose up drive
 </code></pre>
-
 <p>(Optional) If you want visualizations, run drive_visual instead of drive:</p>
 <pre><code>docker-compose up drive_visual
 </code></pre>
-
 <p>That's it! Now, the lane following ROS2 node and the rosbridge should be up and running, waiting for SVL Simulator to connect.</p>
 <h2 id="prerequisites">Prerequisites <a class="wikilink" href="#top">top</a><a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
@@ -609,7 +619,7 @@
 <h3 id="installing-nvidia-docker">Installing NVIDIA Docker <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-nvidia-docker" title="Permanent link">#</a></h3>
 <p>Before installing nvidia-docker make sure that you have an appropriate NVIDIA driver installed.
 To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear.</p>
-<pre><code class="output">    +-----------------------------------------------------------------------------+
+<pre><code class="language-output">    +-----------------------------------------------------------------------------+
     | NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
     |-------------------------------+----------------------+----------------------+
     | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
@@ -630,12 +640,10 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
     |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
     +-----------------------------------------------------------------------------+
 </code></pre>
-
 <p>The installation steps for nvidia-docker are available at the <a href="https://github.com/NVIDIA/nvidia-docker">official repo</a>.</p>
 <h3 id="pulling-docker-image">Pulling Docker Image <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pulling-docker-image" title="Permanent link">#</a></h3>
 <pre><code>docker pull lgsvl/lanefollowing:latest
 </code></pre>
-
 <h3 id="whats-inside-docker-image">What's inside Docker Image<a class="headerlink" href="#whats-inside-docker-image" title="Permanent link">#</a></h3>
 <ul>
 <li>Ubuntu 18.04</li>
@@ -775,7 +783,7 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 - Right camera: /simulator/sensor/camera/right/compressed (sensor_msgs/CompressedImage)
 - Control command: /simulator/control/command (lgsvl_msgs/CanBusData)</p>
 <h4 id="complete-sensor-json-configuration">Complete sensor JSON configuration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#complete-sensor-json-configuration" title="Permanent link">#</a></h4>
-<pre><code class="JSON">[
+<pre><code class="language-JSON">[
     {
         &quot;type&quot;: &quot;LaneFollowingSensor&quot;,
         &quot;name&quot;: &quot;Lane Following Sensor&quot;,
@@ -863,7 +871,6 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
     }
 ]
 </code></pre>
-
 <p>To drive a car and publish messages over rosbridge in training mode:
 - Launch <strong>SVL Simulator</strong>
 - Create a simulation in <strong>Random Traffic</strong> mode
@@ -874,7 +881,6 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 <p>Finally, to launch <em>rosbridge</em> and <em>collect</em> ROS2 node in a terminal:</p>
 <pre><code>docker-compose up collect
 </code></pre>
-
 <p>The node will start collecting data as you drive the car around. You should be able to check log messages in the terminal where the <em>collect</em> node is running. The final data is saved in <code>lanefollowing/ros2_ws/src/lane_following/train/data/</code> as csv and jpg files.</p>
 <h3 id="data-preprocessing">Data preprocessing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#data-preprocessing" title="Permanent link">#</a></h3>
 <p>Before start training your model with the data you collected, data preprocessing is required. This task includes:
@@ -886,14 +892,12 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 <p>To run data preprocessing and obtain datasets for training:</p>
 <pre><code>docker-compose up preprocess
 </code></pre>
-
 <p>This will preprocess your data and write outputs in <code>lanefollowing/ros2_ws/src/lane_following/train/data/hdf5/</code> into HDF5 format for better I/O performance for training.</p>
 <h3 id="train-a-model">Train a model <a class="wikilink" href="#top">top</a><a class="headerlink" href="#train-a-model" title="Permanent link">#</a></h3>
 <p>We use Keras with TensorFlow backend for training our model as an example. The hyperparameters such as learning rate, batch size, or number of epochs were chosen empirically. You can train a model as is but you are also welcome to modify the model architecture or any hyperparameters as you like in the code.</p>
 <p>To start training:</p>
 <pre><code>docker-compose up train
 </code></pre>
-
 <p>After training is done, your final trained model will be in <code>lanefollowing/ros2_ws/src/lane_following/train/model/{current-date-and-time-in-utc}.h5</code> and your model is ready to drive autonomously.</p>
 <h3 id="drive-with-your-trained-model-in-svl-simulator">Drive with your trained model in SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#drive-with-your-trained-model-in-svl-simulator" title="Permanent link">#</a></h3>
 <p>Now, it's time to deploy your trained model and test drive with it using SVL Simulator. You can replace your trained model with an existing one in <code>lanefollowing/ros2_ws/src/lane_following/model/model.h5</code> as this is the path for deployment.</p>
@@ -908,11 +912,9 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
 <p>To launch <em>rosbridge</em> and <em>drive</em> ROS2 node in a terminal:</p>
 <pre><code>docker-compose up drive
 </code></pre>
-
 <p>Or, if you want visualizations as well, run drive_visual instead:</p>
 <pre><code>docker-compose up drive_visual
 </code></pre>
-
 <p>Your car will start driving autonomously and try to mimic your driving behavior when training the model. Note that the model only controls steering inputs as you drive your vehicle forward.</p>
 <h2 id="future-works-and-contributing">Future Works and Contributing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#future-works-and-contributing" title="Permanent link">#</a></h2>
 <p>Though the network can successfully drive and follow lanes on the bridge, there's still a lot of room for future improvements (i.e., biased to drive straight, afraid of shadows, few training data, and etc).
@@ -981,6 +983,9 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

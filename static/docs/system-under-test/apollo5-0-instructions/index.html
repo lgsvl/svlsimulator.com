@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -540,10 +556,9 @@
           <div role="main">
             <div class="section">
               
-                <h1>Running Apollo 5.0 with SVL Simulator <a href="#top"></a></h1>
+                <h1 id="running-apollo-50-with-svl-simulator">Running Apollo 5.0 with SVL Simulator <a href="#top"></a><a class="headerlink" href="#running-apollo-50-with-svl-simulator" title="Permanent link">#</a></h1>
 <p><a href="../../images/full_size_images/apollo-sim.png"><img alt="" src="../../images/apollo-sim.png" /></a></p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#getting-started">Getting Started</a></li>
@@ -587,7 +602,7 @@ Apollo 5.0 does not work if the Docker is started with <code>sudo</code>.
 We suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">post installation steps</a>.</p>
 <h4 id="installing-nvidia-container-toolkit">Installing NVIDIA Container Toolkit <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-nvidia-container-toolkit" title="Permanent link">#</a></h4>
 <p>Before installing the NVIDIA Container Toolkit, make sure that you have the appropriate NVIDIA drivers installed. To test if the NVIDIA drivers are properly installed, enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear:</p>
-<pre><code class="console">+-----------------------------------------------------------------------------+
+<pre><code class="language-console">+-----------------------------------------------------------------------------+
 | NVIDIA-SMI 450.102.04   Driver Version: 450.102.04   CUDA Version: 11.0     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
@@ -611,44 +626,36 @@ We suggest following through with the <a href="https://docs.docker.com/install/l
 |    0   N/A  N/A      3423      G   ...AAAAAAAA== --shared-files       12MiB |
 +-----------------------------------------------------------------------------+
 </code></pre>
-
 <p>The installation steps for the NVIDIA Container Toolkit are available from the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">official documentation</a>.</p>
 <h4 id="pulling-lgsvl-docker-image">Pulling LGSVL Docker image <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pulling-lgsvl-docker-image" title="Permanent link">#</a></h4>
 <p>LGSVL maintains a Docker image to be used alongside this repository. The Docker image is available <a href="https://hub.docker.com/r/lgsvl/apollo-5.0/">from Docker Hub</a>.</p>
 <p>To pull the image use the following command:</p>
-<pre><code class="console">docker pull lgsvl/apollo-5.0
+<pre><code class="language-console">docker pull lgsvl/apollo-5.0
 </code></pre>
-
 <h3 id="cloning-the-repository">Cloning the Repository <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cloning-the-repository" title="Permanent link">#</a></h3>
 <p>This repository includes the <a href="https://github.com/lgsvl/lgsvl_msgs/tree/protobuf">protobuf branch of <strong>lgsvl_msgs</strong></a> as a submodule. To make sure that the submodule is also cloned use the following command:</p>
-<pre><code class="console">git clone --recurse-submodules https://github.com/lgsvl/apollo-5.0.git
+<pre><code class="language-console">git clone --recurse-submodules https://github.com/lgsvl/apollo-5.0.git
 </code></pre>
-
 <h3 id="building-apollo-and-bridge">Building Apollo and bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-apollo-and-bridge" title="Permanent link">#</a></h3>
 <p>Now everything should be in place to build Apollo. Apollo must be built from inside the container. To launch the container, navigate to the directory where the repository was cloned and enter:</p>
-<pre><code class="console">docker/scripts/dev_start.sh
+<pre><code class="language-console">docker/scripts/dev_start.sh
 </code></pre>
-
 <p>This should launch the container and mount a few volumes. It could take a few minutes to pull the latest volumes on the first run.</p>
 <p>Enter the container:</p>
-<pre><code class="console">docker/scripts/dev_into.sh
+<pre><code class="language-console">docker/scripts/dev_into.sh
 </code></pre>
-
 <p>Build Apollo 5.0 (optimized, not debug, with GPU support):</p>
-<pre><code class="console">./apollo.sh build_opt_gpu
+<pre><code class="language-console">./apollo.sh build_opt_gpu
 </code></pre>
-
 <p><strong>NOTE:</strong><br/>
 The Apollo 5.0 build may run out of memory and crash on some machines due to aggressive parallelization in the build, as discussed in <a href="https://github.com/ApolloAuto/apollo/issues/7719">Apollo issue 7719</a>.</p>
 <p>If the build fails, either re-start it until it succeeds, or try changing line ~150 of <code>function build()</code> in <code>apollo.sh</code> as follows:</p>
 <p>Replace this:</p>
-<pre><code class="console">JOB_ARG=&quot;--jobs=$(nproc) --ram_utilization_factor 80&quot;
+<pre><code class="language-console">JOB_ARG=&quot;--jobs=$(nproc) --ram_utilization_factor 80&quot;
 </code></pre>
-
 <p>With this, which will use all but two cores for the build:</p>
-<pre><code class="console">JOB_ARG=&quot;--jobs=$(expr $(nproc) - 2) --ram_utilization_factor 70&quot;
+<pre><code class="language-console">JOB_ARG=&quot;--jobs=$(expr $(nproc) - 2) --ram_utilization_factor 70&quot;
 </code></pre>
-
 <p>Alternatively, you can analyze with <code>top</code> while building, and decide how many jobs to enable to avoid running out of memory; then set a specific value in <code>JOB_ARG</code>, e.g. <code>--jobs=6</code>.</p>
 <p>If it continues to fail (especially when running the linker) then you'll need to address the low memory situation by either adding more memory to your build machine or enabling or <a href="https://bogdancornianu.com/change-swap-size-in-ubuntu/">increasing available swap space</a>. If your Apollo 5.0 build is crashing on a 16GB machine with little or no swap, try setting it to 16GB.</p>
 <h2 id="launching-apollo-alongide-the-simulator">Launching Apollo alongside the Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launching-apollo-alongide-the-simulator" title="Permanent link">#</a></h2>
@@ -796,6 +803,9 @@ generate_map.sh YOUR_MAP_FOLDER_NAME
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -530,12 +546,12 @@
           <div role="main">
             <div class="section">
               
-                <h1>TestCaseRunner</h1>
+                <h1 id="testcaserunner">TestCaseRunner<a class="headerlink" href="#testcaserunner" title="Permanent link">#</a></h1>
 <h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">#</a></h2>
-<p><div class="video-container">
+<div class="video-container">
     <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/WV3JPNURSfs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<br></p>
+<p><br></p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>TestCaseRunner is a tool for the SVL Simulator which executes test cases created with the <a href="../../creating-scenarios/visual-scenario-editor/">Visual Scenario Editor</a> (as well as other Python tests). These tests are executed by the TestCaseRunner using the <a href="../../python-api/python-api/">LGSVL Python API</a>.</p>
 <p><strong>Note</strong>: This tool is only supported on Linux.</p>
@@ -547,7 +563,6 @@
 │       └── docker
 │       └── scenario_runner.sh 
 </code></pre>
-
 <ul>
 <li>The <code>docker</code> directory contains a docker image saved as a tarball.</li>
 <li><code>scenario_runner.sh</code> along with the above docker image is used for <a href="../running-simulator/#pythontestcasesimulation">Python API</a> / <a href="../running-simulator/#vsesimulation">Visual scenario editor a.k.a VSE</a>" runtime templates in web UI to run the scenarios automatically. Visual Scenario runtime template is a way to upload and run VSE test cases directly from web UI.</li>
@@ -639,7 +654,6 @@
 <pre><code>$ export SCENARIOS_DIR=/home/&lt;user&gt;/my-vse-scripts/
 $ ./scenario_runner.sh run my-vse-test.json -d 30
 </code></pre>
-
 <p>Setting <code>SCENARIOS_DIR</code> is not necessary if you specify the path to the script.</p>
 <p>In addition, when finished testing in API-Only mode, click on the red "Stop" (square/stop) button (at the bottom of the Web UI) to end the API-only simulation.</p>
 <h3 id="running-vse-runtime-template">Running VSE runtime template <a class="wikilink" href="#top">top</a><a class="headerlink" href="#running-vse-runtime-template" title="Permanent link">#</a></h3>
@@ -688,6 +702,9 @@ $ ./scenario_runner.sh run my-vse-test.json -d 30
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

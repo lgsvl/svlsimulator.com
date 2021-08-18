@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Robot simulation with ROS 2 Navigation Stack - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Robot simulation with ROS 2 Navigation Stack";
+    var mkdocs_page_input_path = "tutorials/robotics-ros2.md";
+    var mkdocs_page_url = "/docs/tutorials/robotics-ros2/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Robot simulation with ROS 2 Navigation Stack</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+    
+    <li>Robot simulation with ROS 2 Navigation Stack</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/tutorials/robotics-ros2.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="running-a-ros2-robotics-simulation-with-nav2">Running a ROS2 Robotics Simulation with Nav2<a class="headerlink" href="#running-a-ros2-robotics-simulation-with-nav2" title="Permanent link">#</a></h1>
+<p>The SVL Simulator robotics release adds support for robots as ego vehicles. Robots differ from ego vehicles in the way their motion is controlled. The robotics release of the simulator makes use of Unity's <a href="https://blog.unity.com/manufacturing/use-articulation-bodies-to-easily-prototype-industrial-designs-with-realistic-motion">Articulation Body</a> physics components to realistically model joints for robotic movements. This robotics release of the SVL Simulator also provides an ego vehicle, the LG CLOi robot, and an accompanying control plugin that defines the robot motion.</p>
+<p>Autonomous navigation of the robot in simulated environments is possible using the simulator with the <a href="https://navigation.ros.org/">ROS 2 Navigation stack (Nav2)</a>. This document guides users through setting up and running a simulation alongside Nav2.</p>
+<h2> Table of Contents</h2>
+<div class="toc">
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installing-ros2">Installing ROS 2</a><ul>
+<li><a href="#svl-robot-startup">SVL robot startup</a></li>
+</ul>
+</li>
+<li><a href="#setup-simulation">Setting up a Simulation</a></li>
+<li><a href="#cloi">CLOi robot ego vehicle</a><ul>
+<li><a href="#clock">Clock Sensor</a></li>
+<li><a href="#lidar">LiDAR Sensor</a></li>
+<li><a href="#diff-drive">Differential Drive Control Sensor</a></li>
+</ul>
+</li>
+<li><a href="#sim-setup">Setting up a simulation</a></li>
+<li><a href="#nav2">Running a simulation with Nav2</a></li>
+</ul>
+</div>
+<h2 id="prerequisites">Prerequisites <a class="wikilink" href="#top">top</a><a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<ul>
+<li>SVL Simulator release 2021.2.2 or later</li>
+<li>Linux operating system (preferably Ubuntu 18.04 or later)</li>
+</ul>
+<p>For a guide to setting up and using the simulator see the <a href="/getting-started/getting-started">Getting Started</a> guide.</p>
+<h2 id="installing-ros2">Installing ROS 2 <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-ros2" title="Permanent link">#</a></h2>
+<p>ROS2 can be installed by following the steps in the <a href="https://docs.ros.org/en/foxy/Installation.html">official installation guide</a>.</p>
+<h3 id="svl-robot-startup">SVL Robot Startup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#svl-robot-startup" title="Permanent link">#</a></h3>
+<p>Robots often have many 3D coordinate frames that change in position and orientation over time. <a href="https://wiki.ros.org/tf2">tf2</a> is a transform library used to keep track of the relative transformation between these coordinate frames in ROS/ROS 2. The simulator does not directly broadcast tf transforms. Therefore, an external ROS2 node is needed for this. <code>svl_robot_startup</code> is a ROS2 package that publishes static transforms for the robot sensors and subscribes to the <code>/odom</code> topic published by the simulator to figure out and broadcast the transform between the <code>odom</code> and <code>basefootprint</code> frames.</p>
+<p>In addition, the launch file in the package also uses <code>pointcloud_to_laserscan</code> to convert the single beam LiDAR's <code>PointCloud2</code> message to a <code>LaserScan</code> message type.</p>
+<p>The SVL Simulator's ROS 2 bridge <code>lgsvl_bridge</code> is included as a dependency and added to the launch file to enable communication with the simulator.</p>
+<p>The <code>navigation2</code> and <code>nav2_bringup</code> packages are also added as dependencies as they will be needed for running Nav2.</p>
+<p>Follow these steps to setup the package and install dependencies:</p>
+<pre><code class="language-bash">source /opt/ros/foxy/setup.bash
+mkdir -p robot_ws/src
+cd robot_ws/src
+git clone https://github.com/lgsvl/svl_robot_bringup.git
+cd ..
+rosdep update
+rosdep install --from-path src -iy --rosdistro foxy
+colcon build --symlink-install
+</code></pre>
+<h2 id="setup-simulation">Setting up a Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup-simulation" title="Permanent link">#</a></h2>
+<p>To run a simulation, we must have an ego vehicle (CLOi robot) and an environment available on the web user interface as well as a valid sensor configuration. We will go through the steps of setting these up here. To access the web user interface, run the Simulator executable and click <strong>OPEN BROWSER</strong>. Note that you may need to link to cloud and build an account/login if you have not already done so.</p>
+<h2 id="cloi">CLOi robot ego vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cloi" title="Permanent link">#</a></h2>
+<p>The CLOi robot is available by default in the store and is located under <strong>Store &gt; Vehicles</strong> in the web user interface. The ego vehicle includes the implementation of the vehicle dynamics for the robot. See <a href="/simulation-content/ego-vehicle-dynamics/#Robotics">dynamics documentation</a> to read more about this.</p>
+<p>The steps here are only provided to give insight into how the sensor configuration is setup and how changes can be made. <em>You may skip this section if you wish to quickly run a simulation.</em></p>
+<p><a href="../../images/robotics/vehicle_store.png"><img alt="vehicle_store" src="../../images/robotics/vehicle_store.png" /></a></p>
+<p>If it is not already added to your library click the red button with a <strong>+</strong> sign on it to add it. Click on the model to expand it and under <strong>Sensor Configurations</strong> choose the <strong>Nav2</strong> configuration.
+The <strong>Nav2</strong> sensor configuration is a basic sensor configuration for running the simulator with Nav2 that has the following sensors:</p>
+<p><a href="../../images/robotics/sensor_config.png"><img alt="sensor_config" src="../../images/robotics/sensor_config.png" /></a></p>
+<p>We will go through the noteworthy details of each sensor below.</p>
+<h3 id="clock">Clock Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#clock" title="Permanent link">#</a></h3>
+<p>Click on the Clock Sensor to view its parameters.</p>
+<p><a href="../../images/robotics/clock.png"><img alt="clock" src="../../images/robotics/clock.png" /></a></p>
+<p>The only notable parameter here is the topic which must be set to <code>/clock</code>. ROS2 will use the time provided in this topic as reference time when the <code>use_sim_time</code> parameter is set to <code>true</code>.</p>
+<h3 id="lidar">LiDAR Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar" title="Permanent link">#</a></h3>
+<p>Click on the LiDAR Sensor to view its details.</p>
+<p><a href="../../images/robotics/lidar.png"><img alt="lidar" src="../../images/robotics/lidar.png" /></a></p>
+<p>The position of the sensor is set to <code>{0.27, 0, 0.1125}</code>. These are the coordinates of the sensor relative to <code>base_link</code>.</p>
+<p>The <strong>LaserCount</strong> parameter is set to <code>1</code> which is the number of beams the LiDAR will have. To simulate a planar LiDAR we set this value to <code>1</code> and also set the <strong>CenterAngle</strong> parameter to <code>0</code>. The <strong>RotationFrequency</strong> was set to <code>10</code> (Hz) and the <strong>Compensated</strong> parameter was marked as <strong>No</strong>. The <strong>Topic</strong> name is set to <code>/cloud_in</code> which is the topic name the <code>pointcloud_to_laserscan</code> node expects. <strong>Frame</strong> name is set to <code>base_scan</code> which is the same frame that will be passed on to the <code>LaserScan</code> message which Nav2 expects.</p>
+<h3 id="diff-drive">Differential Drive Control Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#diff-drive" title="Permanent link">#</a></h3>
+<p>The Differential Drive Control Sensor is responsible for subscribing to control commands from Nav2 and driving the robot as well as publishing the <code>Odometry</code> message. Click on the sensor to view its details.</p>
+<p><a href="../../images/robotics/diffdrive.png"><img alt="diffdrive" src="../../images/robotics/diffdrive.png" /></a></p>
+<p>This sensor translates a commanded velocity pose into motion for each of the two drive wheels on the robot. To do this the sensor requires the path to the links for the left and right wheels of the robot model. For the CLOi robot model these paths are <strong>LeftWheelLinkPath</strong>: <code>link_MainBody/SuspensionLeft/link/wheel_left/link</code> and <strong>RightWheelLinkPath</strong>: <code>link_MainBody/SuspensionRight/link/wheel_right/link</code>.</p>
+<p>To find the path for a different robot the user would need to open the robot in the Unity Editor and take note of the path between the main body of the robot and each of the drive wheels. For example, the image below shows the expanded hierarchy for the CLOi robot in the Unity Editor.</p>
+<p><a href="../../images/robotics/cloi_tree.png"><img alt="cloi_tree" src="../../images/robotics/cloi_tree.png" /></a></p>
+<p>The gain values for the PID controller can also be set here, and are by default set to <strong>P_Gain</strong>: <code>1</code>, <strong>I_Gain</strong>: <code>0.05</code>, <strong>D_Gain:</strong> <code>0</code>.</p>
+<p>The <strong>OdometryTopic</strong> is <code>/odom</code> and the <strong>OdometryChildFrame</strong> is set to <code>odom</code>. The <strong>Frame</strong> name is set to <code>base_footprint</code>.</p>
+<p>The <strong>Topic</strong> name which refers to the Control Command topic coming from Nav2 is set to <code>/cmd_vel</code>.</p>
+<h2 id="sim-setup">Setting up a Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sim-setup" title="Permanent link">#</a></h2>
+<p>Click on the <strong>Simulations</strong> tab and click <strong>Add New</strong> to create a new simulation.</p>
+<ul>
+<li>Enter a <strong>Simulation Name</strong> and select the <strong>Cluster</strong>. Click <strong>Next</strong>.</li>
+<li>Optional - Enable <strong>Interactive Mode</strong> to be able to start the simulation at the desired time by pressing a play button in the simulator screen.</li>
+<li>Select the <strong>Random Traffic</strong> Runtime Template. Select <strong>LGSeocho</strong> under <strong>Map</strong> (if it is not present you will need to go back to the store and add the map to your library). Select the <strong>LGCloi</strong> ego vehicle and the <strong>Nav2</strong> Sensor Configuration. Click <strong>Next</strong>.</li>
+<li>Select <strong>Other ROS2 Autopilot</strong> under <strong>Autopilot</strong> and enter the <strong>Bridge Connection</strong> address (by default <code>localhost:9090</code>).</li>
+<li>Click <strong>Publish</strong></li>
+</ul>
+<h2 id="nav2">Running a simulation with Nav2 <a class="wikilink" href="#top">top</a><a class="headerlink" href="#nav2" title="Permanent link">#</a></h2>
+<p>After completing the setup outlined above follow these steps to run a simulation with Nav2.</p>
+<ul>
+<li>
+<p>Start the simulation in the SVL Simulator</p>
+</li>
+<li>
+<p>Run the Simulator binary and click <strong>OPEN BROWSER</strong></p>
+</li>
+<li>In the web user interface, open the <strong>Simulations</strong> page, select the recently built simulation and click <strong>Run Simulation</strong></li>
+</ul>
+<p><a href="../../images/robotics/robot_at_spawn_point.png"><img alt="robot_at_spawn_point" src="../../images/robotics/robot_at_spawn_point.png" /></a></p>
+<ul>
+<li>In a new terminal start the <code>robot_tf_launch</code>:</li>
+</ul>
+<p><code>bash
+  source /opt/ros/foxy/setup.bash
+  cd robot_ws
+  source install/setup.bash
+  ros2 launch svl_robot_bringup robot_tf_launch.py</code></p>
+<p>This launch file will start the <code>lgsvl_bridge</code> node, the <code>pointcloud_to_laserscan</code> node, the <code>odom_tf</code> node and a set of static tf nodes.</p>
+<ul>
+<li>In a new terminal launch Nav2:</li>
+</ul>
+<p><code>bash
+  source /opt/ros/foxy/setup.bash
+  ros2 launch nav2_bringup bringup_launch.py map:=robot_ws/src/svl_robot_bringup/maps/seocho.yaml params:=robot_ws/src/svl_robot_bringup/params/nav2_params.yml</code></p>
+<ul>
+<li>In a new terminal launch rviz:</li>
+</ul>
+<p><code>bash
+  source /opt/ros/foxy/setup.bash
+  ros2 launch nav2_bringup rviz_launch.py rviz_config:=robot_ws/src/svl_robot_bringup/rviz/nav2_cloi.rviz</code></p>
+<ul>
+<li>In rviz you will need to set the initial pose using the <strong>2D Pose Estimate</strong> button. You will need to mark the current position of the robot on the map in rviz. The default starting position in the Seocho map is shown below.</li>
+</ul>
+<p><a href="../../images/robotics/initial_pose.png"><img alt="inital_pose" src="../../images/robotics/initial_pose.png" /></a></p>
+<p>Once the pose is set, the costmaps will be loaded and the particle cloud from AMCL will be displayed.</p>
+<p><a href="../../images/robotics/cost_map.png"><img alt="cost_map" src="../../images/robotics/cost_map.png" /></a></p>
+<ul>
+<li>
+<p>In rviz give the robot a destination using the <strong>2D Goal Pose</strong> button.</p>
+</li>
+<li>
+<p>The robot should now navigate to its destination.</p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../user-interface/web/store/" class="btn btn-neutral float-right" title="Store">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../robotics-pub-sub/" class="btn btn-neutral" title="Running a basic Robotics Simulation with ROS 2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../robotics-pub-sub/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../user-interface/web/store/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,11 +552,10 @@
           <div role="main">
             <div class="section">
               
-                <h1>NPC Plugins <a href="#top"></a></h1>
+                <h1 id="npc-plugins">NPC Plugins <a href="#top"></a><a class="headerlink" href="#npc-plugins" title="Permanent link">#</a></h1>
 <p>Non ego traffic vehicles (NPCs) are plugins that have the ability to be customized in appearance and behavior in your simulations. This allows you to add local variations of vehicle styles and brands or implement encounters with vehicles displaying distinguished behaviors, such as erratic driving or vehicles stopping frequently (e.g., delivery vehicles, trash pick up, bicycles).</p>
 <p><strong>NOTE:</strong> Default NPCs are no longer included in simulator source and must be built locally from source for custom binaries.  See <a href="../../installation-guide/build-instructions/">build instructions</a>.</p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#npc-models">NPC Models</a></li>
@@ -653,7 +668,7 @@ The following table lists all currently implemented size types and the weight th
 <p>Create a folder in under your collection folder for each behavior, eg. <code>Assets/External/NPCs/BehavioursNPC/DrunkDriver/</code>.</p>
 <p>If your plugin is a pure behavior, that is it has no visual components, we require one C# file to have the same name as the folder under the collection folder, for example note how the name <code>DrunkDriver</code> repeats in both the folder name and file name: <code>Assets/External/NPCs/BehavioursNPC/DrunkDriver/DrunkDriver.cs</code>.</p>
 <p>The main class has to inherit from <code>NPCBehaviourBase</code> and implement its abstract methods to hook into the NPC simulation framework. It is also possible to inherit from <code>NPCLaneFollowingBehaviour</code> if you want to implement a slight modification of the default lane following behavior, such as this simple <code>DrunkDriver</code> example:</p>
-<pre><code class="c#">using System.Collections;
+<pre><code class="language-c#">using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -699,9 +714,8 @@ public class NPCDrunkDriverBehaviour : NPCLaneFollowBehaviour
     }
 }
 </code></pre>
-
 <p>If you want to configure aspects of your NPC behavior from the Python API, you can add a class implementing the <code>ICommand</code> interface as shown in this example:</p>
-<pre><code class="c#">class DrunkDriverControl : ICommand
+<pre><code class="language-c#">class DrunkDriverControl : ICommand
 {
     public string Name =&gt; &quot;agent/drunk/config&quot;;
 
@@ -732,9 +746,8 @@ public class NPCDrunkDriverBehaviour : NPCLaneFollowBehaviour
     }
 }
 </code></pre>
-
 <p>example usage from Python:</p>
-<pre><code class="python"># common setup code omitted, check PythonAPI/quickstart for examples
+<pre><code class="language-python"># common setup code omitted, check PythonAPI/quickstart for examples
 # you can check if it has been loaded:
 behaviours = sim.available_npc_behaviours
 for i in range(len(behaviours)):
@@ -752,7 +765,6 @@ if (inp == &quot;y&quot; or inp == &quot;Y&quot;):
 # can still use lane following methods as those are inherited
 npc.follow_closest_lane(True, 5.6)
 </code></pre>
-
 <h2 id="creating-npc-model-plugins">Creating NPC Model Plugins <a class="wikilink" href="#top">top</a><a class="headerlink" href="#creating-npc-model-plugins" title="Permanent link">#</a></h2>
 <p>Create a folder under your collection folder for each Model, eg. <code>Assets/External/NPCs/YourCollection/YourNPC/</code>.
 All assets of a NPC such as textures, additional materials or scripts are expected to live inside its folder.</p>
@@ -918,6 +930,9 @@ All assets of a NPC such as textures, additional materials or scripts are expect
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -530,10 +546,9 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a> LiDAR Sensor Plugin</h1>
+                <h1 id="lidar-sensor-plugin"><a name="top"></a> LiDAR Sensor Plugin<a class="headerlink" href="#lidar-sensor-plugin" title="Permanent link">#</a></h1>
 <p>This page introduces the Velodyne LiDAR Sensor plugin, as well as how to build your own LiDAR sensor plugin.</p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#velodyne-lidar-sensor-plugins">Velodyne LiDAR Sensor Plugin</a><ul>
@@ -723,7 +738,7 @@ of exhausted bridge bandwidth. </p>
 <li><code>VerticalRayAngles</code>, <code>LaserCount</code>, <code>FieldOfView</code>, and <code>CenterAngle</code> will be ignored for Velodyne LiDAR since they will be set internally following the corresponding model spec.</li>
 </ul>
 <p>VLP-32C configuration sample:</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;VelodyneLidarSensor&quot;,
     &quot;name&quot;: &quot;Velodyne VLP-32C&quot;,
     &quot;params&quot;: {
@@ -750,29 +765,24 @@ of exhausted bridge bandwidth. </p>
     }
 }
 </code></pre>
-
 <h3 id="velodyne-lidar-sensor-usage">Velodyne LiDAR Sensor Usage <a class="wikilink" href="#top">top</a><a class="headerlink" href="#velodyne-lidar-sensor-usage" title="Permanent link">#</a></h3>
 <h4 id="running-with-autoware">Running with Autoware <a class="wikilink" href="#top">top</a><a class="headerlink" href="#running-with-autoware" title="Permanent link">#</a></h4>
 <p>Autoware is based on ROS. For ROS-based systems, <a href="https://github.com/ros-drivers/velodyne">ROS Velodyne driver</a>
 can be used. </p>
 <p>Detailed steps of running ROS Velodyne driver are as follows:</p>
 <p><span>1.</span> Create a workspace folder and enter it</p>
-<pre><code class="bash">mkdir velodyne_ws &amp;&amp; cd velodyne_ws
+<pre><code class="language-bash">mkdir velodyne_ws &amp;&amp; cd velodyne_ws
 </code></pre>
-
 <p><span>2.</span> Clone ROS Velodyne driver into <code>src</code> folder</p>
-<pre><code class="bash">git clone https://github.com/ros-drivers/velodyne.git src
+<pre><code class="language-bash">git clone https://github.com/ros-drivers/velodyne.git src
 </code></pre>
-
 <p><span>3.</span> Build the Velodyne drive as a ROS node</p>
-<pre><code class="bash">catkin_make
+<pre><code class="language-bash">catkin_make
 </code></pre>
-
 <p><span>4.</span> Setup running environment</p>
-<pre><code class="bash">source /opt/$ROS_DISTRO/setup.bash
+<pre><code class="language-bash">source /opt/$ROS_DISTRO/setup.bash
 source devel/setup.bash
 </code></pre>
-
 <p><span>5.</span> Configuration of device IP
 Before running the Velodyne driver, you need to modify the launch files to setup device IP (i.e. the IP of the machine where the SVL Simulator is running).</p>
 <ul>
@@ -782,13 +792,11 @@ Before running the Velodyne driver, you need to modify the launch files to setup
 </ul>
 <p><span>6.</span> Launch Velodyne driver</p>
 <p>For VLP-16:</p>
-<pre><code class="bash">roslaunch velodyne_pointcloud VLP16_points.launch
+<pre><code class="language-bash">roslaunch velodyne_pointcloud VLP16_points.launch
 </code></pre>
-
 <p>For VLP-32C:</p>
-<pre><code class="bash">roslaunch velodyne_pointcloud VLP-32C_points.launch
+<pre><code class="language-bash">roslaunch velodyne_pointcloud VLP-32C_points.launch
 </code></pre>
-
 <p>If you have SVL Simulator running on client machine, you should be able to see UDP packets received on both data port and position port, 
 and ROS topic <code>/velodyne_points</code> is published by the driver. You can also use RViz to visualize the point cloud in that topic.</p>
 <p>Fig. 1 shows point cloud of VLP-32C visualized in the simulator,</p>
@@ -906,6 +914,9 @@ so that you can reuse most of the code there, focusing only on raw data generati
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

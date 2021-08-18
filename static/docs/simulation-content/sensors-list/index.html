@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -540,10 +556,9 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a> Sensors List</h1>
+                <h1 id="sensors-list"><a name="top"></a> Sensors List<a class="headerlink" href="#sensors-list" title="Permanent link">#</a></h1>
 <p>This page details the different available sensors and the configuration options possible. For more on how to build sensor plugins, please see <a href="../../plugins/sensor-plugins/">Sensor Plugins</a>.</p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#examples">Examples</a></li>
@@ -564,6 +579,7 @@
 <li><a href="#gps-ins-status">GPS-INS Status</a></li>
 <li><a href="#vehicle-control">LGSVL Control</a></li>
 <li><a href="#apollo-control">Apollo Control</a></li>
+<li><a href="#differential-drive-control">Differential Drive Control</a></li>
 <li><a href="#keyboard-control">Keyboard Control</a></li>
 <li><a href="#wheel-control">Wheel Control</a></li>
 <li><a href="#cruise-control">Cruise Control</a></li>
@@ -601,15 +617,14 @@
 </ul>
 <h3 id="how-to-specify-a-sensor">How to Specify a Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#how-to-specify-a-sensor" title="Permanent link">#</a></h3>
 <p>A vehicle configuration is in the following format:</p>
-<pre><code class="output">[
+<pre><code class="language-output">[
     SENSOR,
     SENSOR,
     SENSOR
 ]
 </code></pre>
-
 <p>A <code>SENSOR</code> is defined in the JSON configuration in the following format:</p>
-<pre><code class="output">{
+<pre><code class="language-output">{
     &quot;type&quot;: STRING,
     &quot;name&quot;: STRING,
     &quot;params&quot;: {PARAMS},
@@ -624,7 +639,6 @@
     }
 }
 </code></pre>
-
 <ul>
 <li><code>type</code> is the type of sensor.</li>
 <li><code>name</code> is the name of the sensor. This is how the sensor will be identified.</li>
@@ -678,7 +692,7 @@ The only parameter to use is topic/channel name.</p>
 <p>For ROS, you can add <code>&lt;param name="/use_sim_time" value="true"&gt;</code> to their ROS launch file, or use <code>rosparam set /use_sim_time true</code>
 in command line, to have a ROS node use simulation time according to the <code>/clock</code> topic. For more details please refer to <a href="http://wiki.ros.org/Clock#Using_Simulation_Time_from_the_.2BAC8-clock_Topic">this page</a>.</p>
 <p>For CyberRT, you can set <code>clock_mode</code> in <a href="https://github.com/ApolloAuto/apollo/blob/master/cyber/conf/cyber.pb.conf#L30">cyber.pb.conf</a> as <code>MODE_MOCK</code> to have CyberRT use simulation time according to the <code>/clock</code> topic.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;ClockSensor&quot;,
     &quot;name&quot;: &quot;Clock Sensor&quot;,
     &quot;params&quot;: {
@@ -686,7 +700,6 @@ in command line, to have a ROS node use simulation time according to the <code>/
     }
 }
 </code></pre>
-
 <h3 id="color-camera">Color Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#color-camera" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/3d4f1e08-4c62-4e9f-b859-b26d4910b85e">AssetBundle</a></p>
 <p>This is the type of sensor that would be used for the <code>Main Camera</code> in Apollo or other AD stacks.</p>
@@ -820,7 +833,7 @@ If <code>Distorted</code> is <code>false</code>, <code>DistortionParameters</cod
 <p>** If <code>Fisheye</code> is <code>true</code>, <code>Xi</code> should be a value from calibration result of real camera. Setting arbitrary value may cause undefined result.
 If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
 <p>*** <code>CubemapSize</code> should only be 512, 1024, or 2048.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;ColorCameraSensor&quot;,
     &quot;name&quot;: &quot;Main Camera&quot;,
     &quot;params&quot;: {
@@ -850,7 +863,6 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
     }
 }
 </code></pre>
-
 <h4 id="sensor-effects">Sensor Effects <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-effects" title="Permanent link">#</a></h4>
 <p>Color Camera has multiple post processing sensor effects that can be added to the <code>Postprocessing</code> field in <code>params</code>.  Effects can be combined with an array of <code>Postprocessing</code> fields but order is hard coded.</p>
 <p><strong>SunFlare</strong> - creates a sun flare effect</p>
@@ -900,7 +912,7 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
 </tr>
 </tbody>
 </table>
-<pre><code class="json">&quot;Postprocessing&quot;: [
+<pre><code class="language-json">&quot;Postprocessing&quot;: [
     {
         &quot;type&quot;: &quot;SunFlare&quot;,
         &quot;sunIntensity&quot;: 1,
@@ -909,7 +921,6 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
     }
 ]
 </code></pre>
-
 <p><strong>Rain</strong> - creates rain drops on the lens</p>
 <table>
 <thead>
@@ -941,14 +952,13 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
 </tr>
 </tbody>
 </table>
-<pre><code class="json">&quot;Postprocessing&quot;: [
+<pre><code class="language-json">&quot;Postprocessing&quot;: [
     {
         &quot;type&quot;: &quot;Rain&quot;,
         &quot;size&quot;: 1
     }
 ]
 </code></pre>
-
 <p><strong>GreyScale</strong> - converts color to grey scale</p>
 <table>
 <thead>
@@ -980,14 +990,13 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
 </tr>
 </tbody>
 </table>
-<pre><code class="json">&quot;Postprocessing&quot;: [
+<pre><code class="language-json">&quot;Postprocessing&quot;: [
     {
         &quot;type&quot;: &quot;GreyScale&quot;,
         &quot;intensity&quot;: 1
     }
 ]
 </code></pre>
-
 <p><strong>VideoArtifacts</strong> - creates jpeg compression artifacts</p>
 <table>
 <thead>
@@ -1027,7 +1036,7 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
 </tr>
 </tbody>
 </table>
-<pre><code class="json">&quot;Postprocessing&quot;: [
+<pre><code class="language-json">&quot;Postprocessing&quot;: [
     {
           &quot;type&quot;: &quot;VideoArtifacts&quot;,
           &quot;intensity&quot;: 0.25,
@@ -1035,7 +1044,6 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
     }
 ]
 </code></pre>
-
 <h3 id="depth-camera">Depth Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#depth-camera" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/290af702-b42a-4dce-800e-0999a07d49d2">AssetBundle</a></p>
 <p>This sensor returns an image where the shades on the grey-scale correspond to the depth of objects.</p>
@@ -1165,7 +1173,7 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
 <p>* See notes on <code>DistortionParameters</code> for Color Camera.</p>
 <p>** See notes on <code>Xi</code> for Color Camera.</p>
 <p>*** See notes on <code>CubemapSize</code> for Color Camera.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;DepthCameraSensor&quot;,
     &quot;name&quot;: &quot;Depth Camera&quot;,
     &quot;params&quot;: {
@@ -1188,7 +1196,6 @@ If <code>Fisheye</code> is <code>false</code>, <code>Xi</code> is ignored.</p>
     }
 }
 </code></pre>
-
 <h3 id="segmentation-camera">Segmentation Camera <a class="wikilink" href="#top">top</a><a class="headerlink" href="#segmentation-camera" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/dbd171ab-66bc-4c7a-a523-d4e72afe1d0f">AssetBundle</a></p>
 <p>This sensor returns an image where objects are colored corresponding to their tag:</p>
@@ -1386,7 +1393,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 <p>* See notes on <code>DistortionParameters</code> for Color Camera.</p>
 <p>** See notes on <code>Xi</code> for Color Camera.</p>
 <p>*** See notes on <code>CubemapSize</code> for Color Camera.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;SegmentationCameraSensor&quot;,
     &quot;name&quot;: &quot;Segmentation Camera&quot;,
     &quot;params&quot;: {
@@ -1410,16 +1417,14 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <p>Example of Instance Segmentation Tags. Be aware that this effects performance greatly.</p>
-<pre><code class="json">&quot;InstanceSegmentationTags&quot;: [
+<pre><code class="language-json">&quot;InstanceSegmentationTags&quot;: [
           &quot;Car&quot;,
           &quot;Pedestrian&quot;,
           &quot;Obstacle&quot;,
           &quot;Building&quot;
       ],
 </code></pre>
-
 <h3 id="lidar">LiDAR <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/b30d0478-8c7b-4687-bfc2-b3cdb3f5faff">AssetBundle</a></p>
 <p>This sensor returns a point cloud after 1 revolution.</p>
@@ -1539,7 +1544,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </table>
 <p>* If <code>VerticalRayAngles</code> is not empty, <code>LaserCount</code> will be automatically set to the length of <code>VerticalRayAngles</code>, and <code>FieldOfView</code> and <code>CenterAngle</code> will be ignored.</p>
 <p>A sample of uniformly distributed angles:</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;LidarSensor&quot;,
     &quot;name&quot;: &quot;Lidar-Uniform&quot;,
     &quot;params&quot;: {
@@ -1565,9 +1570,8 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <p>A sample of non-uniformly distributed angles:</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;LidarSensor&quot;,
     &quot;name&quot;: &quot;Lidar-NonUniform&quot;,
     &quot;params&quot;: {
@@ -1600,7 +1604,6 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <h3 id="3d-ground-truth">3D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#3d-ground-truth" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/e3fef197-9724-48ec-b98e-c5a0892d09c4">AssetBundle</a></p>
 <p>This sensor returns 3D ground truth data for training and creates bounding boxes around the detected objects. The color of the object corresponds to the object's type:</p>
@@ -1663,7 +1666,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
     &quot;name&quot;: &quot;3D Ground Truth&quot;,
     &quot;params&quot;: {
@@ -1680,7 +1683,6 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <h3 id="apollo-perception-visualizer-3d">Apollo Perception Visualizer 3D <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apollo-perception-visualizer-3d" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/ab5d574b-4b32-490f-bc71-f2631d43d5df">AssetBundle</a></p>
 <p>This sensor will visualize 3D bounding boxes on objects as detected by Apollo. It does not publish any data and instead subscribes to the perception topic from Apollo. The color of the boxes are:</p>
@@ -1710,7 +1712,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;ApolloPerceptionVisualizer3D&quot;,
     &quot;name&quot;: &quot;Apollo Perception Visualizer 3D Sensor&quot;,
     &quot;params&quot;: {
@@ -1726,7 +1728,6 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <h3 id="can-bus">CAN-Bus <a class="wikilink" href="#top">top</a><a class="headerlink" href="#can-bus" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/b0bdc474-ac09-4355-901d-d7012a8c57a8">AssetBundle</a></p>
 <p>This sensor sends data about the vehicle chassis. The data includes:</p>
@@ -1777,7 +1778,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;CanBusSensor&quot;,
     &quot;name&quot;: &quot;CAN Bus&quot;,
     &quot;params&quot;: {
@@ -1794,7 +1795,6 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <h3 id="gps-device">GPS Device <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-device" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/75bbcbfa-fdca-4703-8e82-abf8078f7991">AssetBundle</a></p>
 <p>This sensor outputs the GPS location of the vehicle in Longitude/Latitude and Northing/Easting coordintates. </p>
@@ -1831,7 +1831,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;GpsSensor&quot;,
     &quot;name&quot;: &quot;GPS&quot;,
     &quot;params&quot;: {
@@ -1850,7 +1850,6 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <h3 id="gps-odometry">GPS Odometry <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-odometry" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/483f7b90-2f76-42ee-82c1-22f02f25f924">AssetBundle</a></p>
 <p>This sensor outputs the GPS location of the vehicle in Longitude/Latitude and Northing/Easting coordintates and the vehicle velocity.</p>
@@ -1896,7 +1895,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;GpsOdometrySensor&quot;,
     &quot;name&quot;: &quot;GPS Odometry&quot;,
     &quot;params&quot;: {
@@ -1915,7 +1914,6 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
   }
 </code></pre>
-
 <h3 id="gps-ins-status">GPS-INS Status <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-ins-status" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/77250db2-82c9-47dd-9785-c38cc4cb566d">AssetBundle</a></p>
 <p>This sensor outputs the status of the GPS correction due to INS. The Simulator is an ideal environment in which GPS is always corrected.</p>
@@ -1943,7 +1941,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;GpsInsSensor&quot;,
     &quot;name&quot;: &quot;GPS INS Status&quot;,
     &quot;params&quot;: {
@@ -1961,11 +1959,10 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
   }
 </code></pre>
-
 <h3 id="vehicle-control">LGSVL Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/a5696615-d3e2-45e9-afa3-9b5ae7359e02">AssetBundle</a></p>
 <p>This sensor is required for a vehicle to subscribe to a control topic published in ROS or ROS2 with message type <code>lgsvl_msgs/VehicleControlData</code>.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;LGSVLControlSensor&quot;,
     &quot;name&quot;: &quot;AD Car Control&quot;,
     &quot;params&quot;: {
@@ -1973,11 +1970,10 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <h3 id="apollo-control">Apollo Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#apollo-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/03ea1a65-03ae-4f2e-b670-d7244e48deb4">AssetBundle</a></p>
 <p>This sensor is required for a vehicle to subscribe to the control topic from Apollo using the CyberRT bridge.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;ApolloControlSensor&quot;,
     &quot;name&quot;: &quot;Apollo Car Control&quot;,
     &quot;params&quot;: {
@@ -1985,10 +1981,9 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
-
 <p>The sensor also demonstrates how a user can check when SVL Simulator receives the first control message from the AD stack like Apollo. Based on this time, you can start the rest of the simulation or do some other interesting things.</p>
 <p>To wait for control message from apollo in a Python script, you can call <code>on_custom()</code> of the ego agent. For example, the following code set <code>isControlReceived</code> of agent <code>self.ego</code> to be <code>True</code> when the simulator first receives a message of the /apollo/control topic.</p>
-<pre><code class="python">def on_control_received(agent, kind, context):
+<pre><code class="language-python">def on_control_received(agent, kind, context):
     if kind == &quot;checkControl&quot;:
         agent.isControlReceived = True
         log.info(&quot;Control message recieved&quot;)
@@ -1996,25 +1991,40 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 self.ego.on_custom(on_control_received)
 
 </code></pre>
-
+<h3 id="differential-drive-control">Differential Drive Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#differential-drive-control" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/">AssetBundle</a></p>
+<p>The sensor allows an ego vehicle (robot) with a differential drive setup to subscribe to control commands using the Ros2 bridge to drive the robot. Internally, the sensor track wheel movement and calculates an odometry pose based on wheel motion which can be published to a topic. The wheel motion is also used as feedback in a PID controller internal to the sensor which can be tuned using sensor parameters.</p>
+<p>This sensor requires a path to be defined to each of the two drive wheels under <code>RightWheelLinkPath</code> and <code>LeftWheelLinkPath</code> as seen below.
+The <code>Topic</code> parameter is the name of the topic which the sensor subscribes to in order to receive control commands. The <code>OdometryTopic</code> provides the name of the topic odometry is to be published to and <code>Frame</code> and <code>OdometryChildFrame</code> populate the frame and odometry frame of the odometry message. For more information on the odometry frame in ROS see <a href="https://www.ros.org/reps/rep-0105.html#odom">REP 105</a>.</p>
+<pre><code class="language-JSON">{
+    &quot;params&quot;: {
+        &quot;OdometryTopic&quot;: &quot;/odom&quot;,
+        &quot;Topic&quot;: &quot;/cmd_vel&quot;,
+        &quot;OdometryChildFrame&quot;: &quot;odom&quot;,
+        &quot;Frame&quot;: &quot;base_footprint&quot;,
+        &quot;RightWheelLinkPath&quot;: &quot;link_MainBody/SuspensionRight/link/wheel_right/link&quot;,
+        &quot;LeftWheelLinkPath&quot;: &quot;link_MainBody/SuspensionLeft/link/wheel_left/link&quot;
+    },
+    &quot;name&quot;: &quot;Differential Drive Control Sensor&quot;,
+    &quot;type&quot;: &quot;DifferentialDriveControlSensor&quot;
+}
+</code></pre>
 <h3 id="keyboard-control">Keyboard Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#keyboard-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/a2ff904a-ff06-4f06-9e45-cb58217a7142">AssetBundle</a></p>
 <p>This sensor is required for a vehicle to accept keyboard control commands. Parameters are not required.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;KeyboardControlSensor&quot;,
     &quot;name&quot;: &quot;Keyboard Car Control&quot;
 }
 </code></pre>
-
 <h3 id="wheel-control">Wheel Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#wheel-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/3d5dea8d-232a-46ea-9a16-57ef4c99df03">AssetBundle</a></p>
 <p>This sensor is required for a vehicle to accept Logitech G920 wheel control commands. Parameters are not required.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;WheelControlSensor&quot;,
     &quot;name&quot;: &quot;Wheel Car Control&quot;
 }
 </code></pre>
-
 <h3 id="cruise-control">Cruise Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cruise-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/1726cbc8-85f2-4e29-8c61-0ca93948b8e3">AssetBundle</a></p>
 <p>This sensor causes the vehicle to accelerate to the desired speed and then maintain the desired speed. </p>
@@ -2042,7 +2052,7 @@ self.ego.on_custom(on_control_received)
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;CruiseControlSensor&quot;,
     &quot;name&quot;: &quot;AD Car Control&quot;,
     &quot;params&quot;: {
@@ -2050,7 +2060,6 @@ self.ego.on_custom(on_control_received)
     }
 }
 </code></pre>
-
 <h3 id="imu">IMU <a class="wikilink" href="#top">top</a><a class="headerlink" href="#imu" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/9c34ec28-627d-4e73-9bb0-9c2aa7e978f5">AssetBundle</a></p>
 <p>This sensor output at a fixed rate of 100 Hz. IMU publishes data on topics where the 2nd topic has corrected IMU data.</p>
@@ -2072,7 +2081,7 @@ self.ego.on_custom(on_control_received)
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;ImuSensor&quot;,
     &quot;name&quot;: &quot;IMU&quot;,
     &quot;params&quot;: {
@@ -2089,7 +2098,6 @@ self.ego.on_custom(on_control_received)
     }
 }
 </code></pre>
-
 <h3 id="2d-ground-truth">2D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#2d-ground-truth" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/e0bfb6cc-a8f0-425e-9b6c-a643ca1e255a">AssetBundle</a></p>
 <p>This sensor outputs an image where objects are encased in a box. The color of the box depends on the type of object.</p>
@@ -2197,7 +2205,7 @@ self.ego.on_custom(on_control_received)
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;PerceptionSensor2D&quot;,
     &quot;name&quot;: &quot;2D Ground Truth&quot;,
     &quot;params&quot;: {
@@ -2214,7 +2222,6 @@ self.ego.on_custom(on_control_received)
     }
 }
 </code></pre>
-
 <h3 id="radar">Radar <a class="wikilink" href="#top">top</a><a class="headerlink" href="#radar" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/215b7d1e-7ad3-4fe6-b3d9-db0e229eb0a4">AssetBundle</a></p>
 <p>This sensor outputs the objects detected by the radar. Detected objects are visualized with a box colored by their type:</p>
@@ -2264,7 +2271,7 @@ self.ego.on_custom(on_control_received)
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;RadarSensor&quot;,
     &quot;name&quot;: &quot;Radar&quot;,
     &quot;params&quot;: {
@@ -2281,7 +2288,6 @@ self.ego.on_custom(on_control_received)
     }
 }
 </code></pre>
-
 <h3 id="ultrasonic">Ultrasonic <a class="wikilink" href="#top">top</a><a class="headerlink" href="#ultrasonic" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/fb1d98b9-fb45-431a-893d-1634f760bde1">AssetBundle</a></p>
 <p>This sensor outputs the distance (to the center of the sensor) of the closest point within the sensor's FOV.</p>
@@ -2363,7 +2369,7 @@ self.ego.on_custom(on_control_received)
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;UltrasonicSensor&quot;,
     &quot;name&quot;: &quot;Ultrasonic Sensor&quot;,
     &quot;params&quot;: {
@@ -2387,7 +2393,6 @@ self.ego.on_custom(on_control_received)
     }
 }
 </code></pre>
-
 <h3 id="control-calibration">Control Calibration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#control-calibration" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/ef77d2d3-32ff-4627-9f0c-8eca68c18f71">AssetBundle</a></p>
 <p>This sensor outputs control calibration criteria collected by AD Stacks (Apollo, Autoware). It generates steering, throttle or brakes with gear commands between minimum and maximum of velocity during duration.</p>
@@ -2461,7 +2466,7 @@ self.ego.on_custom(on_control_received)
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;ControlCalibrationSensor&quot;,
     &quot;name&quot;: &quot;Control Calibration&quot;,
     &quot;params&quot;: {
@@ -2487,7 +2492,6 @@ self.ego.on_custom(on_control_received)
     }
 }
 </code></pre>
-
 <p><a href="../total-control-calibration-criteria/">Total Control Calibration Criteria:</a></p>
 <h3 id="transform-sensor">Transform Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#transform-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/71b0976e-cb87-4c11-ace2-14434aeec8a0">AssetBundle</a></p>
@@ -2495,7 +2499,7 @@ self.ego.on_custom(on_control_received)
 For example, if there is a cluster of sensors a <code>Transform</code> sensor can be added at the location of the cluster
 and then the individual sensors can have a transform that is relative to the location of the <code>Transform</code> sensor`.</p>
 <p>Example usage</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;type&quot;: &quot;TransformSensor&quot;,
     &quot;name&quot;: &quot;Cluster Reference&quot;,
     &quot;transform&quot;: {
@@ -2562,7 +2566,6 @@ and then the individual sensors can have a transform that is relative to the loc
     }
 }
 </code></pre>
-
 <h3 id="signal-sensor">Signal Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#signal-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/c4ba9b81-b274-4c05-b78e-636e61b4590e">AssetBundle</a></p>
 <p>This sensor returns ground truth data for traffic light signals connected to the current lane of ego vehicle and creates bounding boxes around the detected signals. The color of the bounding box corresponds to the signal's type:</p>
@@ -2621,7 +2624,7 @@ and then the individual sensors can have a transform that is relative to the loc
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;SignalSensor&quot;,
     &quot;name&quot;: &quot;Signal Sensor&quot;,
     &quot;params&quot;: {
@@ -2639,7 +2642,6 @@ and then the individual sensors can have a transform that is relative to the loc
     }
 }
 </code></pre>
-
 <h3 id="video-recording-sensor">Video Recording Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#video-recording-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/06aef741-23e6-444b-b6d9-18f84f9ace06">AssetBundle</a></p>
 <p>This sensor records a video for test cases. For local simulations, the path to the recorded video will be shown in the <code>Video Recording Sensor</code> section of the <a href="../../user-interface/web/test-results/#simulation-evaluation">Test Results</a> for each simulation.</p>
@@ -2712,7 +2714,7 @@ and then the individual sensors can have a transform that is relative to the loc
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;VideoRecordingSensor&quot;,
     &quot;name&quot;: &quot;Video Recording Sensor&quot;,
     &quot;params&quot;: {
@@ -2733,7 +2735,6 @@ and then the individual sensors can have a transform that is relative to the loc
     }
 }
 </code></pre>
-
 <h3 id="comfort-sensor">Comfort Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#comfort-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/f96ddc31-02b9-48d9-add5-a920a738236a">AssetBundle</a></p>
 <p>Comfort Sensor will detect whether a vehicle's acceleration, rotation or other values are out of acceptable ranges.
@@ -2807,7 +2808,7 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
 </tr>
 </tbody>
 </table>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
 &quot;type&quot; : &quot;Comfort&quot;,
 &quot;name&quot; : &quot;Comfort Sensor&quot;,    
 &quot;params&quot;: {
@@ -2820,20 +2821,18 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
     }
 }
 </code></pre>
-
 <h3 id="stopline-sensor">Stop Line Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#stopline-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/1b94ebcd-0057-4ef5-a9de-23e7f0628e19">AssetBundle</a></p>
 <p>The Stop Line sensor is a sensor used purely for analyzing the results of a simulation when the <strong>Create test report</strong> option is enabled for the simulation (See <a href="../../user-interface/web/test-results/">here</a> for more information on test reports). The sensor will allow the simulator to detect and report stop line violations.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
 &quot;name&quot;: &quot;Stop Line Sensor&quot;,
 &quot;type&quot;: &quot;StopLineSensor&quot;
 }
 </code></pre>
-
 <h3 id="vehicle-odometry">Vehicle Odometry <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-odometry" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/662072f8-8123-4e18-9b45-ee801e0bc020">AssetBundle</a></p>
 <p>The Vehicle Odometry sensor publishes information on the vehicle velocity and front and rear angles in ROS and ROS2 using the <code>lgsvl_msgs/VehicleOdometry</code> message type.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
 &quot;type&quot;: &quot;VehicleOdometrySensor&quot;,
 &quot;name&quot;: &quot;Vehicle Odometry Sensor&quot;,
 &quot;params&quot;: {
@@ -2841,11 +2840,10 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
   },
 }
 </code></pre>
-
 <h3 id="vehicle-state">Vehicle State <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-state" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/8aff00f2-a5e4-4bd3-a778-517f9307fa99">AssetBundle</a></p>
 <p>The Vehicle State sensor publishes information on the state of the vehicle that is not captured in the Can Bus sensor, such as the state of the headlights, blinkers, and wipers. The sensor publishes in ROS and ROS2 using the <code>lgsvl_msgs/VehicleStateData</code> message type. See <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/VehicleStateData.msg">here</a> for all the fields published by the sensor.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
 &quot;type&quot;: &quot;VehicleStateSensor&quot;,
 &quot;name&quot;: &quot;Vehicle State Sensor&quot;,
 &quot;params&quot;: {
@@ -2853,7 +2851,6 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
   },
 }
 </code></pre>
-
 <h3 id="hud-keyboard-control">HUD Keyboard Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#hud-keyboard-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/41fdc7b2-5e2b-4f78-ba1f-e195a5604ad4">AssetBundle</a></p>
 <p>The HUD Keyboard Control sensor is a <a href="./#keyboard-control">Keyboard Control</a> sensor with an additional Heads Up Display (HUD) that displays the following information:</p>
@@ -2865,16 +2862,15 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
 <li>Parking brake indicator</li>
 </ul>
 <p>The HUD is shown by enabling the <a href="../../user-interface/sensor-visualizers/">sensor visualization</a> for the HUD Keyboard Sensor.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
 &quot;type&quot;: &quot;HUDKeyboardControlSensor&quot;,
 &quot;name&quot;: &quot;HUD Keyboard Control Sensor&quot;
 }
 </code></pre>
-
 <h3 id="autowareai-control">AutowareAI Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#autowareai-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/76ff7bd1-81bf-4284-b9bf-e8173dc6053e">AssetBundle</a></p>
 <p>The AutowareAI Control sensor subscribes to the vehicle control topic from Autoware AI in ROS and allows the ego vehicle to react to control commands. The sensor subscribes to <code>autoware_msgs/VehicleCmd</code> message type.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
 &quot;type&quot;: &quot;VehicleStateSensor&quot;,
 &quot;name&quot;: &quot;Vehicle State Sensor&quot;,
 &quot;params&quot;: {
@@ -2882,7 +2878,6 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
   },
 }
 </code></pre>
-
 <h3 id="lane-line-sensor">Lane-line Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-line-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/5ae0c053-92e5-46e0-b22b-142a3d433dde">AssetBundle</a></p>
 <p>This sensor outputs lines data for the current lane in third-degree polynomial format, along with line type and color. More details are available on the <a href="../lane-line-sensor/">lane-line sensor</a> page.</p>
@@ -2974,7 +2969,7 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
 </tbody>
 </table>
 <p>* These parameters only affect the preview, not the output data itself.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;LaneLineSensor&quot;,
     &quot;name&quot;: &quot;LaneLineSensor&quot;,
     &quot;params&quot;: {
@@ -2998,11 +2993,10 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
     }
 }
 </code></pre>
-
 <h3 id="lane-following">Lane Following <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-following" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/111c4f5f-12a3-48b6-b3df-7d87e158e7d9">AssetBundle</a></p>
 <p>The Lane Following sensor is used to steer an ego vehicle using a deep learning model. The sensor subscribes to steering commands from the model which are sent as <code>lgsvl_msgs/VehicleControlData</code> messages in ROS2 and applies them to the ego vehicle. Read <a href="../../tutorials/lane-following/">this tutorial</a> to learn more.</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
     &quot;type&quot;: &quot;LaneFollowingSensor&quot;,
     &quot;name&quot;: &quot;Lane Following Sensor&quot;,
     &quot;params&quot;: {
@@ -3061,6 +3055,9 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,14 +552,13 @@
           <div role="main">
             <div class="section">
               
-                <h1>Controllable Plugins <a href="#top"></a></h1>
+                <h1 id="controllable-plugins">Controllable Plugins <a href="#top"></a><a class="headerlink" href="#controllable-plugins" title="Permanent link">#</a></h1>
 <p>Controllable plugins are custom controllables that can be added to a scene at runtime with the API. Before running the simulator (running the executable or pressing <code>Play</code> in the Editor) controllable plugins must be built by the simulator using <code>Simulator -&gt; Build...</code> menu and the built asset placed in the <code>AssetBundles/Controllables</code> folder.</p>
 <p>Open-source example:</p>
 <ul>
 <li><a href="https://github.com/lgsvl/TrafficCone">TrafficCone</a></li>
 </ul>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#building-controllable-plugins">Building Controllable Plugins</a></li>
@@ -580,7 +595,7 @@
 <h2 id="controllable-logic">Controllable Logic <a class="wikilink" href="#top">top</a><a class="headerlink" href="#controllable-logic" title="Permanent link">#</a></h2>
 <p>Additionally place a C# script which will be compiled &amp; bundled with prefab, as well as any additional Unity resources (shaders, materials, textures, etc...). <strong>This is required even for simple objects such as a Traffic Cone.</strong></p>
 <p>Controllable scripts must inherit interface <code>IControllable</code> which allows controllables to receive API commands. In addition, it must implement all interface variables and methods.  See the below code block from TrafficCone.cs:</p>
-<pre><code class="c#">namespace Simulator.Controllable
+<pre><code class="language-c#">namespace Simulator.Controllable
 {
     public class TrafficCone : MonoBehaviour, IControllable
     {
@@ -679,6 +694,9 @@
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

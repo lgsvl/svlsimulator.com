@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,10 +552,26 @@
           <div role="main">
             <div class="section">
               
-                <h1>Changelog</h1>
+                <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">#</a></h1>
 <p>All notable changes and release notes for SVL Simulator will be documented in this file.</p>
-<h2 id="202121-2021-07-23">[2021.2.1] - 2021-07-23<a class="headerlink" href="#202121-2021-07-23" title="Permanent link">#</a></h2>
+<h2 id="202122-2021-08-18">[2021.2.2] - 2021-08-18<a class="headerlink" href="#202122-2021-08-18" title="Permanent link">#</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">#</a></h3>
+<ul>
+<li>Support for indoor robotics and Nav2 <a href="../../tutorials/robotics-ros2/">navigation stack</a></li>
+<li>Sample indoor environment for robots: LGSeocho</li>
+<li>Sample two-wheel drive robot model: LGCLOi</li>
+<li>DifferentialDriveControl sensor to control two-wheel drive robots in ROS/ROS 2</li>
+<li>Support for Unity's ArticulationBody for ego vehicles (robot models)</li>
+</ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">#</a></h3>
+<ul>
+<li>Fixed error reporting for bridge connection</li>
+<li>Fixed baselink offset in sensor visualizer for sensor configurations</li>
+<li>Added Development as version for custom builds or when running in Developer Mode</li>
+<li>Fixed NPC vehicle and pedestrian spawn position issue</li>
+</ul>
+<h2 id="202121-2021-07-23">[2021.2.1] - 2021-07-23<a class="headerlink" href="#202121-2021-07-23" title="Permanent link">#</a></h2>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Reduce duplicate bridge messages by only loading one bridge in Developer Mode</li>
 <li>Add log about which assembly a sensor was loaded from to help debug bridges</li>
@@ -551,7 +583,7 @@
 <li>Remove error when disconnecting from <a href="https://wise.svlsimulator.com">cloud</a> (WebException: task was cancelled)</li>
 </ul>
 <h2 id="20212-2021-06-30">[2021.2] - 2021-06-30<a class="headerlink" href="#20212-2021-06-30" title="Permanent link">#</a></h2>
-<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">#</a></h3>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">#</a></h3>
 <ul>
 <li>External <a href="../../plugins/pedestrian-plugins/">Pedestrians</a> and <a href="../../plugins/npc-plugins/">NPC</a> (other traffic vehicles) with animation support</li>
 <li>New <a href="../../plugins/npc-plugins/">NPCs</a> and <a href="../../plugins/pedestrian-plugins/">Pedestrians</a> like Scooters, Bicyclists and Animals</li>
@@ -572,7 +604,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">#</a></h3>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
 <ul>
 <li>Unity Upgrade to 2020.3.3f1<ul>
 <li>Revert FBX package to 3.2.1-preview.2</li>
@@ -648,7 +680,7 @@
 </li>
 </ul>
 <h2 id="202111-2021-05-20">[2021.1.1] - 2021-05-20<a class="headerlink" href="#202111-2021-05-20" title="Permanent link">#</a></h2>
-<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">#</a></h3>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="../../user-interface/web/library/#interacting-with-the-visual-editor">3D Visualizer</a> to help create sensor configuration on a vehicle</li>
 <li><a href="../../user-interface/web/library/#previewing-the-hd-map">HD map visualizer</a> on map profile pages</li>
@@ -659,7 +691,7 @@
 <li>Tutorials to help new users on how to interact with the web user interface pages</li>
 <li>Email confirmation upon sensor plugin sharing</li>
 </ul>
-<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">#</a></h3>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
 <ul>
 <li>Improved quick filters on Store and Library pages</li>
 <li>Redirect to existing asset profile page when uploading an already uploaded asset</li>
@@ -672,7 +704,7 @@
 <li>Proper error messages when maximum allowed cluster limit is reached</li>
 </ul>
 <h2 id="20211-2021-03-23">[2021.1] - 2021-03-23<a class="headerlink" href="#20211-2021-03-23" title="Permanent link">#</a></h2>
-<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">#</a></h3>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">#</a></h3>
 <ul>
 <li>New cloud-based <a href="https://wise.svlsimulator.com/">web user interface</a> including:<ul>
 <li><a href="../../user-interface/web/store/">Asset Store</a> for downloading assets, uploading and sharing assets publicly</li>
@@ -773,7 +805,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">#</a></h3>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">#</a></h3>
 <ul>
 <li>Product branding changed from "LGSVL Simulator" to "SVL Simulator"</li>
 <li>Old local web user interface is now deprecated. Users need to migrate to new  <a href="https://wise.svlsimulator.com">web user interface</a></li>
@@ -800,7 +832,7 @@
 <li>HD map import: Fix map origin update during OpenDrive map import</li>
 </ul>
 <h2 id="202006-2020-08-31">[2020.06] - 2020-08-31<a class="headerlink" href="#202006-2020-08-31" title="Permanent link">#</a></h2>
-<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">#</a></h3>
+<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">#</a></h3>
 <ul>
 <li>Support <a href="../../tutorials/modular-testing/">modular testing</a> of planning with Apollo 5.0</li>
 <li>Bridge plugin system with example (<a href="https://github.com/lgsvl/LoggingBridge">LoggingBridge</a>)</li>
@@ -811,7 +843,7 @@
 <li>Python API: added ability to set speed at WalkWaypoints</li>
 <li>Python API: Added waypoint trigger system</li>
 </ul>
-<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">#</a></h3>
+<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed 90 degree orientation offset in GPS odometry sensor</li>
 <li>Replaced default ROS2 bridge to improved <a href="../../system-under-test/ros2-bridge/">custom ROS2 bridge</a> instead of ros2-web-bridge</li>
@@ -822,7 +854,7 @@
 <li>Improved OpenDrive map exporter to export parametric cubic curves instead of simple lines for each reference line segment</li>
 </ul>
 <h2 id="202005-2020-06-02">[2020.05] - 2020-06-02<a class="headerlink" href="#202005-2020-06-02" title="Permanent link">#</a></h2>
-<h3 id="added_4">Added<a class="headerlink" href="#added_4" title="Permanent link">#</a></h3>
+<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">#</a></h3>
 <ul>
 <li>Support for custom <a href="../../plugins/npc-plugins/">traffic vehicle behavior plugins</a></li>
 <li>Support for <a href="../../system-under-test/apollo-master-instructions/">Apollo 5.5</a> (<a href="https://github.com/ApolloAuto/apollo/tree/master">latest master</a>)</li>
@@ -832,7 +864,7 @@
 <li>Unlit shadows support for point cloud environment rendering</li>
 <li>AD system-agnostic message definitions to "lgsvl_msgs" for vehicle control, CAN bus and status data, etc.</li>
 </ul>
-<h3 id="changed_5">Changed<a class="headerlink" href="#changed_5" title="Permanent link">#</a></h3>
+<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">#</a></h3>
 <ul>
 <li>Refactored traffic agent Waypoint Mode with fixes for idle and trigger waypoints</li>
 <li>Changed gnss_odom message coordinate system to right-handed coordinate system</li>
@@ -843,7 +875,7 @@
 <li>Removed and replaced documentation source files from main repository to separate Documentation <a href="https://github.com/lgsvl/Documentation">repository</a></li>
 </ul>
 <h2 id="202003-2020-04-03">[2020.03] - 2020-04-03<a class="headerlink" href="#202003-2020-04-03" title="Permanent link">#</a></h2>
-<h3 id="added_5">Added<a class="headerlink" href="#added_5" title="Permanent link">#</a></h3>
+<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">#</a></h3>
 <ul>
 <li>Velodyne VLP-16 and VLP-32C support through custom LiDAR sensor plugin</li>
 <li>Support for LiDAR sensor plugin with direct UDP socket interface</li>
@@ -854,7 +886,7 @@
 <li>Support for sensor_msgs/NavSatFix message type for GPS messages in ROS2</li>
 <li>Vehicle Odometry sensor for reporting steering angles and velocity in ROS2</li>
 </ul>
-<h3 id="changed_6">Changed<a class="headerlink" href="#changed_6" title="Permanent link">#</a></h3>
+<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">#</a></h3>
 <ul>
 <li>Upgraded to Unity 2019.3.3f1</li>
 <li>Fixed black artifacts in Linux bug</li>
@@ -863,7 +895,7 @@
 <li>3D Ground Truth sensor now generates different ID for vehicle after each respawn</li>
 </ul>
 <h2 id="202001-2020-01-31">[2020.01] - 2020-01-31<a class="headerlink" href="#202001-2020-01-31" title="Permanent link">#</a></h2>
-<h3 id="added_6">Added<a class="headerlink" href="#added_6" title="Permanent link">#</a></h3>
+<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">#</a></h3>
 <ul>
 <li>Controllable Object plugin support, dynamically add and control Controllables with the Python API</li>
 <li>Ability to create LiDAR sensor with non-uniform beam distribution</li>
@@ -873,7 +905,7 @@
 <li>TransformSensor which can act as a parent for other sensors</li>
 <li>VehicleStateSensor which is needed by Autoware.Auto</li>
 </ul>
-<h3 id="changed_7">Changed<a class="headerlink" href="#changed_7" title="Permanent link">#</a></h3>
+<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">#</a></h3>
 <ul>
 <li>Added SanFrancisco map as a default map option</li>
 <li>Allow null texture bundles without an error</li>
@@ -885,12 +917,12 @@
 <li>Fixed ROS2 GPS</li>
 </ul>
 <h2 id="201912-2020-01-21">[2019.12] - 2020-01-21<a class="headerlink" href="#201912-2020-01-21" title="Permanent link">#</a></h2>
-<h3 id="added_7">Added<a class="headerlink" href="#added_7" title="Permanent link">#</a></h3>
+<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">#</a></h3>
 <ul>
 <li>Custom callback for Python API, useful in sensor plugins.</li>
 <li>Ability to specify count and types of NPCs to spawn on the map.</li>
 </ul>
-<h3 id="changed_8">Changed<a class="headerlink" href="#changed_8" title="Permanent link">#</a></h3>
+<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">#</a></h3>
 <ul>
 <li>Optimized texture usage in maps - significantly reduces size on disk and GPU memory used.</li>
 <li>Allow boundary type to be optional for Apollo HD map import.</li>
@@ -901,7 +933,7 @@
 <li>Fixed Sedan NPC mesh.</li>
 </ul>
 <h2 id="201911-2019-11-19">[2019.11] - 2019-11-19<a class="headerlink" href="#201911-2019-11-19" title="Permanent link">#</a></h2>
-<h3 id="added_8">Added<a class="headerlink" href="#added_8" title="Permanent link">#</a></h3>
+<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">#</a></h3>
 <ul>
 <li>OpenDrive 1.4 HD map import.</li>
 <li>Rain drops on ground when it is raining.</li>
@@ -912,7 +944,7 @@
 <li>Allow Color, Depth and Semantic cameras to have higher capture &amp; publish rate.</li>
 <li>Building &amp; loading custom sensors as plugins.</li>
 </ul>
-<h3 id="changed_9">Changed<a class="headerlink" href="#changed_9" title="Permanent link">#</a></h3>
+<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed traffic lights signal colors on Shalun map.</li>
 <li>Fixed exceptions when NPCs are despawned while still in intersection.</li>
@@ -924,7 +956,7 @@
 <li>Limit number of spawned NPCs and vehicles for large maps.</li>
 </ul>
 <h2 id="201910-2019-10-28">[2019.10] - 2019-10-28<a class="headerlink" href="#201910-2019-10-28" title="Permanent link">#</a></h2>
-<h3 id="added_9">Added<a class="headerlink" href="#added_9" title="Permanent link">#</a></h3>
+<h3 id="added_10">Added<a class="headerlink" href="#added_10" title="Permanent link">#</a></h3>
 <ul>
 <li>Apollo HD map import</li>
 <li>Accurate sun position in sky based of map location. Including time of sunrise and sunset.</li>
@@ -940,7 +972,7 @@
 <li>Visualize data values for non-image senors (GPS, IMU, etc).</li>
 <li>Populate scene with required objects when new scene is created in Unity Editor.</li>
 </ul>
-<h3 id="changed_10">Changed<a class="headerlink" href="#changed_10" title="Permanent link">#</a></h3>
+<h3 id="changed_11">Changed<a class="headerlink" href="#changed_11" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed exceptions in ROS Bridge where if it receives message on topic that it has not subscribed.</li>
 <li>Fixed 3D Ground Truth sensor to report correct NPC orientation angles.</li>
@@ -961,7 +993,7 @@
 <li>Improved error messages when simulation fails to start.</li>
 </ul>
 <h2 id="201909-2019-09-06">[2019.09] - 2019-09-06<a class="headerlink" href="#201909-2019-09-06" title="Permanent link">#</a></h2>
-<h3 id="added_10">Added<a class="headerlink" href="#added_10" title="Permanent link">#</a></h3>
+<h3 id="added_11">Added<a class="headerlink" href="#added_11" title="Permanent link">#</a></h3>
 <ul>
 <li>Sensor visualization UI</li>
 <li>HD map export to OpenDrive 1.4 format</li>
@@ -970,7 +1002,7 @@
 <li>Python API with ability to control traffic lights on map</li>
 <li>Hyundai Nexo vehicle</li>
 </ul>
-<h3 id="changed_11">Changed<a class="headerlink" href="#changed_11" title="Permanent link">#</a></h3>
+<h3 id="changed_12">Changed<a class="headerlink" href="#changed_12" title="Permanent link">#</a></h3>
 <ul>
 <li>Improved NPC movement and right turns on red traffic light</li>
 <li>Fixed NPC vehicle despawning logic so they don't get stuck in intersections</li>
@@ -980,7 +1012,7 @@
 <li>Fixed 3D and 2D Ground Truth bounding box locations</li>
 </ul>
 <h2 id="201907-2019-08-09">[2019.07] - 2019-08-09<a class="headerlink" href="#201907-2019-08-09" title="Permanent link">#</a></h2>
-<h3 id="added_11">Added<a class="headerlink" href="#added_11" title="Permanent link">#</a></h3>
+<h3 id="added_12">Added<a class="headerlink" href="#added_12" title="Permanent link">#</a></h3>
 <ul>
 <li>Separate Asset Bundles for environments and vehicles</li>
 <li>Fully deterministic physics simulation</li>
@@ -1000,7 +1032,7 @@
 <li>Better sky rendering, including clouds</li>
 <li>Ability to import point cloud files for visualization</li>
 </ul>
-<h3 id="changed_12">Changed<a class="headerlink" href="#changed_12" title="Permanent link">#</a></h3>
+<h3 id="changed_13">Changed<a class="headerlink" href="#changed_13" title="Permanent link">#</a></h3>
 <ul>
 <li>User interface - use web UI for main user interaction</li>
 <li>Render pipeline - Unity High Definition Render Pipeline</li>
@@ -1066,6 +1098,9 @@
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

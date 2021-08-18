@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,10 +552,9 @@
           <div role="main">
             <div class="section">
               
-                <h1>Autoware.AI 1.14.0 with SVL Simulator <a href="#top"></a></h1>
+                <h1 id="autowareai-1140-with-svl-simulator">Autoware.AI 1.14.0 with SVL Simulator <a href="#top"></a><a class="headerlink" href="#autowareai-1140-with-svl-simulator" title="Permanent link">#</a></h1>
 <p><strong>The software and source code in this repository are intended only for use with the SVL Simulator and <em>should not</em> be used in a real vehicle.</strong></p>
 <h2>Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#general">General</a></li>
@@ -578,7 +593,7 @@
 <p>To install Docker CE please refer to the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">official documentation</a>. We also suggest following through with the <a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">post installation steps</a> to run docker as a non-root user.</p>
 <h3 id="install-nvidia-container-toolkit">Install NVIDIA Container Toolkit <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-nvidia-container-toolkit" title="Permanent link">#</a></h3>
 <p>Before installing the NVIDIA Container Toolkit, make sure that you have the appropriate NVIDIA drivers installed. To test if the NVIDIA drivers are properly installed, enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear:</p>
-<pre><code class="console">+-----------------------------------------------------------------------------+
+<pre><code class="language-console">+-----------------------------------------------------------------------------+
 | NVIDIA-SMI 440.59       Driver Version: 440.59       CUDA Version: 10.2     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
@@ -599,7 +614,6 @@
 |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
 +-----------------------------------------------------------------------------+
 </code></pre>
-
 <p>The installation steps for the NVIDIA Container Toolkit are available from the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">official documentation</a>.</p>
 <h3 id="install-lgsvl-simulator">Install SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-lgsvl-simulator" title="Permanent link">#</a></h3>
 <p>This guide outlines the steps required to setup Autoware.AI for use with the SVL Simulator. If you have not already set up the simulator, please do so first by following the instructions in <a href="../../installation-guide/installing-simulator/">Installing the SVL Simulator</a>.</p>
@@ -617,48 +631,39 @@ Git LFS initialized.
 </li>
 </ul>
 <p>Create a directory called <code>shared_dir</code> in your home directory to hold HD maps and launch files for the simulator. The Autoware Docker container will mount this folder.</p>
-<pre><code class="bash">mkdir ~/shared_dir
+<pre><code class="language-bash">mkdir ~/shared_dir
 cd ~/shared_dir
 git clone https://github.com/lgsvl/autoware-data.git
 </code></pre>
-
 <p>If there wasn't a line beginning with <code>Filtering content:</code> output, then Git LFS hasn't been installed. Remove the <code>autoware-data</code> directory, install Git LFS with <code>git lfs install</code>, and then re-issue the <code>git clone</code>.</p>
 <p>Clone the <code>docker</code> repository from <code>autoware.ai</code> into a working directory:</p>
-<pre><code class="bash">cd $WORKING_DIRECTORY
+<pre><code class="language-bash">cd $WORKING_DIRECTORY
 git clone https://github.com/Autoware-AI/docker.git
 </code></pre>
-
 <h2 id="launch-autoware-alongside-lgsvl-simulator">Launch Autoware Alongside SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launch-autoware-alongside-lgsvl-simulator" title="Permanent link">#</a></h2>
 <p>Run the Autoware 1.14.0 container and enter into it:</p>
-<pre><code class="bash">cd $WORKING_DIRECTORY/docker/generic
+<pre><code class="language-bash">cd $WORKING_DIRECTORY/docker/generic
 ./run.sh -t 1.14.0
 </code></pre>
-
 <p>If you get the usermod error as follows:</p>
 <pre><code>usermod: user autoware is currently used by process 1
 </code></pre>
-
 <p>Check if the $UID is 1000</p>
 <pre><code>$ echo $UID
 </code></pre>
-
 <p>If your $UID is 1000, you would not have usermod error. Otherwise, it's better to build container locally to avoid usermod error as follows:</p>
 <pre><code>$ ./build.sh --version 1.14.0
 $ ./run.sh -t local
 </code></pre>
-
 <p>Once inside the container, install a missing ROS package:</p>
-<pre><code class="bash">sudo apt update &amp;&amp; sudo apt install ros-$ROS_DISTRO-image-transport-plugins -y
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install ros-$ROS_DISTRO-image-transport-plugins -y
 </code></pre>
-
 <p>If you need to check which $ROS_DISTRO you have installed run the following:</p>
-<pre><code class="bash">ls /opt/ros/
+<pre><code class="language-bash">ls /opt/ros/
 </code></pre>
-
 <p>Launch the runtime manager:</p>
-<pre><code class="bash">roslaunch runtime_manager runtime_manager.launch
+<pre><code class="language-bash">roslaunch runtime_manager runtime_manager.launch
 </code></pre>
-
 <p>A few terminals will open, as well as a GUI for the runtime manager. In the runtime manager, click on the 'Quick Start' tab and load the following launch files from <code>~/shared_dir/autoware-data/BorregasAve/</code> by clicking "Ref" to the right of each text box:</p>
 <ul>
 <li><code>my_map.launch</code></li>
@@ -706,7 +711,7 @@ After choosing a valid destination the route will be highlighted in blue in rviz
         <a href="../autoware-auto-instructions/" class="btn btn-neutral float-right" title="Autoware.Auto">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../lgsvl-msgs/" class="btn btn-neutral" title="The lgsvl_msgs package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sensor-message-publishing/" class="btn btn-neutral" title="Sensor message publishing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -736,7 +741,7 @@ After choosing a valid destination the route will be highlighted in blue in rviz
           <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../lgsvl-msgs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../sensor-message-publishing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../autoware-auto-instructions/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -747,6 +752,9 @@ After choosing a valid destination the route will be highlighted in blue in rviz
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

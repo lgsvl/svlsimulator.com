@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Example map: GoMentum Station Digital Twin Lite</h1>
+                <h1 id="example-map-gomentum-station-digital-twin-lite">Example map: GoMentum Station Digital Twin Lite<a class="headerlink" href="#example-map-gomentum-station-digital-twin-lite" title="Permanent link">#</a></h1>
 <p>We are providing the <em>GoMentum Station Digital Twin Lite (GoMentum DTL)</em> map as an example of a point cloud based environment. The <em>GoMentum Station</em> area is a testing ground dedicated for autonomous vehicles located in <em>Concord, California</em>. We drove our data collection car and collected sensor data in this area for generating the <em>GoMentum DTL</em> map. Using the <a href="../../simulation-content/pointcloud-import/">point cloud importer</a> and <a href="../../simulation-content/pointcloud-rendering/">point cloud renderer</a>, the Simulator can dynamically load and unload the point clouds based on the location of the ego vehicles. Thus, there is no limitation on the size of the map with improved performance of simulations.</p>
 <p><img alt="GoMentum DTL preview" src="../../images/gomentum-dtl/dtl-preview.png" /></p>
 <p><em>Figure: Preview of GoMentum Station Digital Twin Lite map</em></p>
@@ -702,6 +718,9 @@
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>
