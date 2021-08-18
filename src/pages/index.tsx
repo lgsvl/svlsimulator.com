@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import React, { useCallback, useState } from 'react';
 import BackgroundImage, { BackgroundImageProps } from 'src/components/BackgroundImage';
 import BackgroundVideo, { BackgroundVideoProps } from 'src/components/BackgroundVideo';
-import { Button, LinkButton, ReadMoreButton, RequestDemoButton } from 'src/components/Button';
+import { Button, LinkButton, ReadMoreButton, UseFreeButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import EntranceAnimation from 'src/components/EntranceAnimation';
 import { IconApollo, IconUnity, IconVelodyne } from 'src/components/Icons';
@@ -96,7 +96,7 @@ export default function Home() {
                     <Box mt={6}>
                       <Grid container spacing={4} justify='center'>
                         <Grid item>
-                          <RequestDemoButton variant='outlined' />
+                          <UseFreeButton buttonVariant='outlined' />
                         </Grid>
                         <Grid item>
                           <DownloadButton />
@@ -108,7 +108,7 @@ export default function Home() {
                             to='https://wise.svlsimulator.com'
                             target='_blank'
                           >
-                            {t('main.buttons.getStarted')}
+                            {t('main.buttons.explore')}
                           </LinkButton>
                         </Grid>
                       </Grid>

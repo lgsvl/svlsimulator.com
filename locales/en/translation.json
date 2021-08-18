@@ -2,8 +2,10 @@
   "main": {
     "buttons": {
       "getDemo": "Request Demo",
+      "explore": "Explore",
       "getStarted": "Get Started",
-      "contactUs": "Contact us",
+      "useFree": "Use for Free",
+      "contactUs": "Contact Us",
       "readMore": "Read More",
       "readNews": "Read",
       "download": {

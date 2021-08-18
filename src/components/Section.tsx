@@ -6,7 +6,7 @@ import { fade, withTheme, useTheme } from '@material-ui/core/styles';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
-import Button, { ReadMoreButton, RequestDemoButton } from 'src/components/Button';
+import Button, { ReadMoreButton, RequestDemoButton, UseFreeButton } from 'src/components/Button';
 import GridBox, { GridBoxProps } from 'src/components/GridBox';
 import Image, { ImageProps } from 'src/components/Image';
 import { PageSection, PageSectionProps } from 'src/components/Page';
@@ -165,6 +165,9 @@ const Content = ({
       break;
     case 'getDemo':
       button = <RequestDemoButton {...buttonProps} />;
+      break;
+    case 'useFree':
+      button = <UseFreeButton {...buttonProps} />;
       break;
     case 'readMore':
       button = <ReadMoreButton {...buttonProps} />;

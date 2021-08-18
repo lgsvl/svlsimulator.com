@@ -22,7 +22,7 @@ export default function CloudSimAAS() {
   return (
     <Page title={t('cloud.title')}>
       <Section
-        buttonText='getDemo'
+        buttonText='useFree'
         contained
         src={srcCloudImg1}
         title={t('cloud.title')}

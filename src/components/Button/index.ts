@@ -5,3 +5,4 @@ export * from './PopperButton';
 export * from './DownloadButton';
 export * from './ReadMoreButton';
 export * from './RequestDemoButton';
+export * from './UseFreeButton';

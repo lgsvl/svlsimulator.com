@@ -16,9 +16,9 @@ import Hidden from '@material-ui/core/Hidden';
 // import List from '@material-ui/core/List';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
+import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { MapFunction } from 'src/@types/utils';
-import { RequestDemoButton } from 'src/components/Button';
-import LinkButton from 'src/components/Button/LinkButton';
+import { RequestDemoButton, UseFreeButton } from 'src/components/Button';
 import { IconCheck, IconPartial, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
 import Page, { PageSection } from 'src/components/Page';
@@ -281,7 +281,7 @@ export default function Simulation() {
   return (
     <Page title={t('simulation.title')}>
       <Section
-        buttonText='getDemo'
+        buttonText='useFree'
         contained
         src={srcSimulationPoster}
         title={t('simulation.title')}
@@ -327,16 +327,10 @@ export default function Simulation() {
             <TableRow>
               <StyledTableCell noBorder></StyledTableCell>
               <StyledTableCell noBorder>
-                <LinkButton
-                  buttonVariant='outlined'
-                  title={t('simulation.featuresTable.try')}
-                  to='https://github.com/lgsvl/simulator/releases/latest'
-                >
-                  {t('simulation.featuresTable.try')}
-                </LinkButton>
+                <UseFreeButton buttonVariant='outlined' title={t('simulation.featuresTable.try')} />
               </StyledTableCell>
               <StyledTableCell noBorder>
-                <RequestDemoButton />
+                <RequestDemoButton mode={RequestDemoFormMode.ContactUs} />
               </StyledTableCell>
             </TableRow>
           </TableBody>
