@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Running with Windows Subsystem for Linux</h1>
+                <h1 id="running-with-windows-subsystem-for-linux">Running with Windows Subsystem for Linux<a class="headerlink" href="#running-with-windows-subsystem-for-linux" title="Permanent link">#</a></h1>
 <h2 id="introduction">Introduction <a class="wikilink" href="#top">top</a><a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>Some of the tools commonly used with SVL Simulator, like <a href="../../system-under-test/apollo-master-instructions/">Apollo</a> or <a href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>, might require Linux operating system to run. If you don't have Linux available or prefer using Windows, it's now possible to run Linux-exclusive programs using <a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux</a> (WSL).</p>
 <p>Features available in WSL are dependent on its version, which is tied to the <a href="#verify-windows-10-version">version of Windows 10</a>. Starting with build 20149, WSL supports GPU Paravirtualization (GPU-PV) that will let you run CUDA applications inside your WSL instance and in Docker containers. Build 21362 adds support for GUI applications (as an alternative, you can also set up <a href="#set-up-desktop-environment-(optional)">desktop environment</a>).</p>
@@ -548,31 +564,26 @@
 <p>In the Windows command line, enter:</p>
 <pre><code>winver
 </code></pre>
-
 <p>Reported OS Build should be 20149 or higher. If the build number is lower, and your system is up to date, required Windows version is not yet a part of public release. To use it, you will have to join <a href="https://insider.windows.com/en-us/">Windows Insider Program</a> on Dev Channel that will let you use early builds of Windows 10. If you're interested, please follow <a href="https://insider.windows.com/en-us/getting-started">official instructions</a> and update your Windows version.</p>
 <h3 id="install-wsl-2">Install WSL 2 <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-wsl-2" title="Permanent link">#</a></h3>
 <p>To install WSL 2, please refer to the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">official documentation</a>. We recommend using Ubuntu 18.04 or Ubuntu 20.04 Linux distribution. This tutorial will assume Ubuntu 20.04 is installed.</p>
 <p>If you have installed WSL previously, make sure you're using WSL version 2. To check for version, enter:</p>
 <pre><code>wsl -l -v
 </code></pre>
-
 <p>The distribution you're planning to use should report 2 under <code>VERSION</code>. If you're using WSL 1, <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#set-your-distribution-version-to-wsl-1-or-wsl-2">update it</a> to WSL 2.</p>
 <p>Make sure your Linux kernel version is up to date. You can update it through an elevated Windows command line, by entering:</p>
 <pre><code>wsl --update
 </code></pre>
-
 <h3 id="install-nvidia-drivers">Install NVIDIA drivers <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-nvidia-drivers" title="Permanent link">#</a></h3>
 <p>At the time of writing, NVIDIA drivers for CUDA on WSL are still in public preview. Version 470.14 (with CUDA 11.3) or higher is required. You can check your current driver version through Windows command line, by entering:</p>
 <pre><code>nvidia-smi
 </code></pre>
-
 <p>If your driver version is older, you can download required version from official NVIDIA <a href="https://developer.nvidia.com/cuda/wsl">web page</a>.</p>
 <p>To verify that your GPU is working inside WSL, you can build and run one of default CUDA examples using WSL terminal:</p>
 <pre><code>cd /usr/local/cuda/samples/4_Finance/BlackScholes
 make
 ./BlackScholes
 </code></pre>
-
 <p>Your console should provide you with output similar to the one shown below. This means that your GPU is accessible inside of WSL and can be used to run CUDA programs.</p>
 <pre><code>[./BlackScholes] - Starting...
 GPU Device 0: &quot;Pascal&quot; with compute capability 6.1
@@ -611,7 +622,6 @@ NOTE: The CUDA Samples are not meant for performance measurements. Results may v
 
 Test passed
 </code></pre>
-
 <h3 id="install-docker-desktop-for-windows">Install Docker Desktop for Windows <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-docker-desktop-for-windows" title="Permanent link">#</a></h3>
 <p>If you plan to use Docker inside your WSL 2 distro, we suggest to install Docker Desktop by following <a href="https://docs.docker.com/docker-for-windows/install/">official documentation</a>. Alternatively, you can decide to skip Docker Desktop and use Docker and NVIDIA Container Toolkit installed directly from your WSL 2. We recommend the first option - this tutorial will assume Docker Desktop for Windows is used. If you insist on using the second option, you can find instructions in <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html#setting-containers">official NVIDIA documentation</a>.</p>
 <p>If you're already using Docker Desktop for Windows, make sure version 3.1 or higher is installed.</p>
@@ -620,7 +630,6 @@ Test passed
 <p>To verify that Docker environment is running properly, enter your WSL terminal and launch a sample CUDA docker image from NVIDIA:</p>
 <pre><code>docker run --rm -it --gpus=all --env NVIDIA_DISABLE_REQUIRE=1 nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark
 </code></pre>
-
 <blockquote>
 <p><strong>NOTE:</strong> Parameter <code>--env NVIDIA_DISABLE_REQUIRE=1</code> disables CUDA version check. This is required at the time of writing due to <a href="https://github.com/NVIDIA/nvidia-docker/issues/1409">bug</a> in NVIDIA drivers (CUDA version reported in WSL is lower than installed).</p>
 </blockquote>
@@ -650,17 +659,14 @@ GPU Device 0: &quot;Pascal&quot; with compute capability 6.1
 = 249.832 billion interactions per second
 = 4996.645 single-precision GFLOP/s at 20 flops per interaction
 </code></pre>
-
 <h3 id="set-up-desktop-environment-(optional)">Set up desktop environment (optional) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#set-up-desktop-environment-(optional)" title="Permanent link">#</a></h3>
 <p>If you want to run any GUI-based applications inside your WSL or Docker environment, you have configure X Window System. By default, display options inside of WSL are not configured and no valid output device is registered. This means not only that GUI will not be displayed, but also that any program attempting to output something to screen might not work correctly or fail to launch.</p>
 <p>If you have Windows 10 build 21362 or higher, you don't have to do anything - along your WSL instance, <a href="https://github.com/microsoft/wslg">WSLg</a> should have been automatically installed. WSLg pipes X11 and Wayland (used to run Linux GUI applications) directly into Windows graphical user interface. This means that any GUI application launched inside WSL will simply open on your Windows desktop. To verify that's the case, run any GUI-based application from your WSL instance. As an example, you can use one of OpenGL test applications. In your WSL terminal, enter:</p>
 <pre><code>glxgears
 </code></pre>
-
 <p>This should open new window with three spinning gears. If your Linux distro does not have this installed by default, you can get <code>glxgears</code> application from <code>mesa-utils</code> package:</p>
 <pre><code>sudo apt install mesa-utils
 </code></pre>
-
 <p>If you are able to launch Linux GUI applications directly on your Windows desktop, you can safely skip the rest of this section. However, if your Windows build version is lower than 21362 and you don't have access to WLSg, you can still use GUI applications through remote desktop.</p>
 <p>Remote desktop solution shown here will use <a href="https://www.xfce.org/">xfce4</a> desktop environment for Linux and <a href="http://xrdp.org/">xrdp</a> RDP server. Both modified configuration files (<code>/etc/xrdp/xrdp.ini</code> and <code>/etc/xrdp/startwm.sh</code>) are backed up with <code>.bak</code> extension if you ever need their original version.</p>
 <p>To install and configure the remote desktop for WSL, run commands shown below in your WSL terminal:</p>
@@ -674,11 +680,9 @@ sudo cp /etc/xrdp/startwm.sh /etc/xrdp/startwm.sh.bak
 sudo sed -i 's+test -x /etc/X11/Xsession \&amp;\&amp; exec /etc/X11/Xsession+#test -x /etc/X11/Xsession \&amp;\&amp; exec /etc/X11 Xsession+g' /etc/xrdp/startwm.sh
 sudo sed -i 's+exec /bin/sh /etc/X11/Xsession+#exec /bin/sh /etc/X11/Xsession\nstartxfce4+g' /etc/xrdp/startwm.sh
 </code></pre>
-
 <p>To start RDP server that will allow you to connect to WSL desktop, run:</p>
 <pre><code>sudo /etc/init.d/xrdp start
 </code></pre>
-
 <p>After the setup, run Remote Desktop Connection application in your Windows environment (<code>mstsc</code> from Windows start menu). Enter <code>localhost:3390</code> as the address and click <code>Connect</code>.</p>
 <p><img alt="" src="../../images/wsl-remote-desktop.png" /></p>
 <p>You will be welcomed with xrdp login screen. Enter your WSL credentials and click <code>OK</code> to connect.</p>
@@ -743,6 +747,9 @@ sudo sed -i 's+exec /bin/sh /etc/X11/Xsession+#exec /bin/sh /etc/X11/Xsession\ns
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -540,7 +556,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>SVL Simulator ROS 2 Bridge</h1>
+                <h1 id="svl-simulator-ros-2-bridge">SVL Simulator ROS 2 Bridge<a class="headerlink" href="#svl-simulator-ros-2-bridge" title="Permanent link">#</a></h1>
 <p>The SVL Simulator can publish and subscribe to ROS 2 messages by connecting to the <a href="https://github.com/lgsvl/ros2-lgsvl-bridge">ROS2 LGSVL Bridge</a>. This custom, native ROS2 bridge yields higher performance than the previously used <a href="https://github.com/RobotWebTools/ros2-web-bridge">ros2-web-bridge</a>.</p>
 <p>This document describes the installation process.</p>
 <h2 id="installing-dependencies">Installing Dependencies <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-dependencies" title="Permanent link">#</a></h2>
@@ -553,15 +569,13 @@
 <p>The ROS 2 LGSVL Bridge supports Dashing Diademata and newer distributions. For Ubuntu versions older than 18.04, which would require older ROS 2 distributions, we suggest using <a href="https://hub.docker.com/_/ros">ROS 2 docker images</a>.</p>
 <h3 id="installing-colcon">Installing Colcon <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-colcon" title="Permanent link">#</a></h3>
 <p>Colcon is a command line tool that facilitates building ROS packages. To install:</p>
-<pre><code class="bash">sudo apt update
+<pre><code class="language-bash">sudo apt update
 sudo apt install python3-colcon-common-extensions
 </code></pre>
-
 <h3 id="installing-boost">Installing Boost <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-boost" title="Permanent link">#</a></h3>
 <p>To install boost run:</p>
-<pre><code class="bash">sudo apt install libboost-all-dev
+<pre><code class="language-bash">sudo apt install libboost-all-dev
 </code></pre>
-
 <h2 id="installing-the-ros-2-lgsvl-bridge">Installing the ROS 2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-the-ros-2-lgsvl-bridge" title="Permanent link">#</a></h2>
 <p>There are two ways of installing ros2-lgsvl-bridge:</p>
 <ul>
@@ -569,41 +583,36 @@ sudo apt install python3-colcon-common-extensions
 <li>Building source code</li>
 </ul>
 <h4 id="1.-using-the-package-manager">1. Using the Package Manager <a class="wikilink" href="#top">top</a><a class="headerlink" href="#1.-using-the-package-manager" title="Permanent link">#</a></h4>
-<pre><code class="bash">source /opt/ros/(name\of\ros2\distro)/setup.bash
+<pre><code class="language-bash">source /opt/ros/(name\of\ros2\distro)/setup.bash
 sudo apt update
 sudo apt install ros-$ROS_DISTRO-lgsvl-bridge
 </code></pre>
-
 <h4 id="2.-building-source-code.">2. Building source code. <a class="wikilink" href="#top">top</a><a class="headerlink" href="#2.-building-source-code." title="Permanent link">#</a></h4>
 <p>Follow these steps to install the ROS2 LGSVL Bridge:</p>
 <ul>
 <li>Clone the ros2-lgsvl-bridge repository from github:</li>
 </ul>
-<pre><code class="bash">    git clone https://github.com/lgsvl/ros2-lgsvl-bridge.git
+<pre><code class="language-bash">    git clone https://github.com/lgsvl/ros2-lgsvl-bridge.git
 </code></pre>
-
 <ul>
 <li>Source the installed ROS2 distribution in the terminal window:</li>
 </ul>
-<pre><code class="bash">    source /opt/ros/(name\of\ros2\distro)/setup.bash
+<pre><code class="language-bash">    source /opt/ros/(name\of\ros2\distro)/setup.bash
 </code></pre>
-
 <ul>
 <li>Switch to the correct devel branch for the installed ROS 2 distribution:</li>
 </ul>
-<pre><code class="bash">    cd ros2-lgsvl-bridge
+<pre><code class="language-bash">    cd ros2-lgsvl-bridge
     git checkout ${ROS_DISTRO}-devel
 </code></pre>
-
 <ul>
 <li>Build using colcon:</li>
 </ul>
-<pre><code class="bash">    colcon build --cmake-args '-DCMAKE_BUILD_TYPE=Release'
+<pre><code class="language-bash">    colcon build --cmake-args '-DCMAKE_BUILD_TYPE=Release'
 </code></pre>
-
 <h2 id="running-the-ros2-lgsvl-bridge">Running the ROS2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#running-the-ros2-lgsvl-bridge" title="Permanent link">#</a></h2>
 <p>If the Bridge is already built, to run ROS2 bridge:</p>
-<pre><code class="bash">    source (path\to\bridge\repository)/install/setup.bash
+<pre><code class="language-bash">    source (path\to\bridge\repository)/install/setup.bash
     lgsvl_bridge
 </code></pre>
               
@@ -657,6 +666,9 @@ sudo apt install ros-$ROS_DISTRO-lgsvl-bridge
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
                     
     <a class="" href="../ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,11 +552,10 @@
           <div role="main">
             <div class="section">
               
-                <h1>How to create a ROS2-based AD stack with SVL Simulator</h1>
+                <h1 id="how-to-create-a-ros2-based-ad-stack-with-svl-simulator">How to create a ROS2-based AD stack with SVL Simulator<a class="headerlink" href="#how-to-create-a-ros2-based-ad-stack-with-svl-simulator" title="Permanent link">#</a></h1>
 <p>This documentation describes how to develop ROS2 nodes to receive sensor data from SVL Simulator and send control commands to drive a car.</p>
 <p><a href="https://github.com/lgsvl/lanefollowing">The Lane Following model</a> is a <a href="https://index.ros.org/doc/ros2/">ROS2</a>-based Autonomous Driving stack developed with <a href="https://www.svlsimulator.com/">SVL Simulator</a>. In high-level overview, the model is composed of three modules: a sensor module, a perception module, and a control module. The sensor module receives raw sensor data such as camera images from the simulator and preprocess the data before feeding into the perception module. Then, the perception module takes in the preprocessed data, extracts lane information, and predicts steering wheel commands. Finally, the control module sends a predicted control command back to the simulator, which would drive a car autonomously.</p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#requirements">Requirements</a></li>
@@ -586,7 +601,7 @@
 <h3 id="installing-nvidia-docker">Installing NVIDIA Docker <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-nvidia-docker" title="Permanent link">#</a></h3>
 <p>Before installing nvidia-docker make sure that you have an appropriate NVIDIA driver installed.
 To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> in a terminal. If the drivers are installed properly an output similar to the following should appear.</p>
-<pre><code class="output">    +-----------------------------------------------------------------------------+
+<pre><code class="language-output">    +-----------------------------------------------------------------------------+
     | NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
     |-------------------------------+----------------------+----------------------+
     | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
@@ -607,12 +622,10 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
     |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
     +-----------------------------------------------------------------------------+
 </code></pre>
-
 <p>The installation steps for nvidia-docker are available at the <a href="https://github.com/NVIDIA/nvidia-docker">official repo</a>.</p>
 <h3 id="pulling-docker-image">Pulling Docker Image <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pulling-docker-image" title="Permanent link">#</a></h3>
 <pre><code>docker pull lgsvl/lanefollowing:latest
 </code></pre>
-
 <h3 id="whats-inside-docker-image">What's inside Docker Image<a class="headerlink" href="#whats-inside-docker-image" title="Permanent link">#</a></h3>
 <ul>
 <li>Ubuntu 18.04</li>
@@ -633,7 +646,6 @@ To test if NVIDIA drivers are properly installed enter <code>nvidia-smi</code> i
             setup.py
             package.xml
 </code></pre>
-
 <h3 id="setuppy"><code>setup.py</code><a class="headerlink" href="#setuppy" title="Permanent link">#</a></h3>
 <pre><code>from setuptools import setup
 
@@ -680,7 +692,6 @@ setup(
     },
 )
 </code></pre>
-
 <h3 id="packagexml"><code>package.xml</code><a class="headerlink" href="#packagexml" title="Permanent link">#</a></h3>
 <pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;package format=&quot;2&quot;&gt;
@@ -704,20 +715,17 @@ setup(
   &lt;/export&gt;
 &lt;/package&gt;
 </code></pre>
-
 <h2 id="building-a-ros2-package">Building a ROS2 Package <a class="wikilink" href="#top">top</a><a class="headerlink" href="#building-a-ros2-package" title="Permanent link">#</a></h2>
 <p>Now, you can build your package as below:</p>
 <pre><code>source /opt/ros/dashing/setup.bash
 cd ~/ros2_ws
 colcon build --symlink-install
 </code></pre>
-
 <h2 id="running-ros2-lgsvl-bridge">Running ROS2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#running-ros2-lgsvl-bridge" title="Permanent link">#</a></h2>
 <p><a href="https://www.svlsimulator.com/docs/ros2-bridge">ROS2 LGSVL Bridge</a> provides a JSON API to ROS functionality for non-ROS programs such as SVL Simulator. It is not provided as part of a default ROS2 Dashing installation, but has been installed separately for you in the Docker image already. You can run ROS2 LGSVL Bridge to connect your ROS node with SVL Simulator as below:</p>
 <pre><code>source /path/to/ros2-lgsvl-bridge/install/setup.bash
 lgsvl_bridge
 </code></pre>
-
 <h2 id="writing-ros2-subscriber-node">Writing ROS2 Subscriber Node <a class="wikilink" href="#top">top</a><a class="headerlink" href="#writing-ros2-subscriber-node" title="Permanent link">#</a></h2>
 <p>ROS nodes communicate with each other by passing messages. Messages are routed via a topic with publish/subscribe concepts. A node sends out a message by publishing it to a given topic. Then, a node that is interested in a certain kind of data will subscribe to the appropriate topic. In our cases, SVL Simulator publishes sensor data such as camera images or LiDAR point clouds via rosbridge, and then the Lane Following model subscribes to that topic to receive sensor data, preprocesses the data, feeds them into the pretrained model, and finally computes a control command based on perceived sensor data. Below is an example of how to subscribe to sensor data topics from a ROS node. You can subscribe to a single topic only or multiple topics simultaneously.</p>
 <h3 id="subscribe-to-a-single-topic">Subscribe to a single topic <a class="wikilink" href="#top">top</a><a class="headerlink" href="#subscribe-to-a-single-topic" title="Permanent link">#</a></h3>
@@ -745,7 +753,6 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 </code></pre>
-
 <h3 id="subscribe-to-multiple-topics-simultaneously">Subscribe to multiple topics simultaneously <a class="wikilink" href="#top">top</a><a class="headerlink" href="#subscribe-to-multiple-topics-simultaneously" title="Permanent link">#</a></h3>
 <p>In order to subscribe to ROS messages of different types from multiple sources, we need to take the timestamps of those messages into account. <a href="https://github.com/intel/ros2_message_filters">ROS2 Message Filters</a> is the ROS package that synchronizes incoming messages by the timestamps contained in their headers and outputs them in the form of a single callback. Install this package in your ROS2 workspace and build it.</p>
 <pre><code>cd ~/ros2_ws/src
@@ -753,7 +760,6 @@ git clone https://github.com/intel/ros2_message_filters.git
 cd ..
 colcon build --symlink-install
 </code></pre>
-
 <p>Then, you can import it in your Python script by <code>import message_filters</code> and use it as below:</p>
 <pre><code>import rclpy
 from rclpy.node import Node
@@ -787,7 +793,6 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 </code></pre>
-
 <h2 id="writing-ros2-publisher-node">Writing ROS2 Publisher Node <a class="wikilink" href="#top">top</a><a class="headerlink" href="#writing-ros2-publisher-node" title="Permanent link">#</a></h2>
 <p>The publisher sends data to a topic. When you create a publisher you have to tell ROS of which type the data will be. In order to drive a car autonomously, the Lane Following model publishes a predicted control command back to the simulator via rosbridge.</p>
 <h3 id="publish-command-back-to-svl-simulator">Publish command back to SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#publish-command-back-to-svl-simulator" title="Permanent link">#</a></h3>
@@ -821,14 +826,12 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 </code></pre>
-
 <h2 id="running-ros2-node">Running ROS2 Node <a class="wikilink" href="#top">top</a><a class="headerlink" href="#running-ros2-node" title="Permanent link">#</a></h2>
 <p>Once you have setup the rosbridge connection to SVL Simulator, you can launch your ROS node as follows:</p>
 <pre><code>source /opt/ros/dashing/setup.bash
 source /path/to/ros2_ws/install/local_setup.bash
 ros2 run {your_package} {your_node}
 </code></pre>
-
 <h2 id="references">References <a class="wikilink" href="#top">top</a><a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://github.com/lgsvl/lanefollowing">Lane Following Github Repository</a></li>
@@ -887,6 +890,9 @@ ros2 run {your_package} {your_node}
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Reinforcement Learning with OpenAI Gym</h1>
+                <h1 id="reinforcement-learning-with-openai-gym">Reinforcement Learning with OpenAI Gym<a class="headerlink" href="#reinforcement-learning-with-openai-gym" title="Permanent link">#</a></h1>
 <p><a href="https://gym.openai.com">OpenAI Gym</a> is a toolkit for developing reinforcement learning algorithms. Gym provides a collection of test problems called environments which can be used to train an agent using a reinforcement learning. Each environment defines the reinforcement learnign problem the agent will try to solve.</p>
 <p>To facilitate developing reinforcement learning algorithms with the <a href="https://www.svlsimulator.com">SVL Simulator</a>, we have developed <code>gym-lgsvl</code>, a custom environment that using the openai gym interface. <code>gym-lgsvl</code> can be used with general reinforcement learning algorithms implementations that are compatible with openai gym. Developers can modify the environment to define the specific reinforcement learning problem they are trying to solve.</p>
 <h2 id="requirements">Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
@@ -571,12 +587,10 @@ pip install --user -e .</code></p>
 <p>The script named <code>random_agent.py</code> will launch a random agent which will sample acceleration and steering values for the ego vehicle for every step of the episode. Run the agent to test your setup:</p>
 <pre><code>./random_agent.py
 </code></pre>
-
 <p>After a few seconds the <code>BorregasAve</code> scene should load and spawn the ego vehicle along with some NPC vehicles. The ego vehicle will drive randomly.</p>
 <p><code>gym_lgsvl</code> can be used with RL libraries that support openai gym environments. Below is an example of training using the A2C implementation from <a href="https://github.com/openai/baselines">baselines</a>:</p>
 <pre><code>python -m baselines.run --alg=a2c --env=gym_lgsvl:lgsvl-v0 --num_timesteps=1e5
 </code></pre>
-
 <h2 id="customizing-the-environment">Customizing the environment <a class="wikilink" href="#top">top</a><a class="headerlink" href="#customizing-the-environment" title="Permanent link">#</a></h2>
 <p>The specifics of the environment you will need will depend on the reinforcement learning problem you are trying to solve. By default, the <code>gym-lgsvl</code> environment has a simple setup intended to be a starting point for building more advanced problems. Training an agent with the default environment would be difficult without modiification. In the default configuration, the vehicle uses a single front facing camera as observation and uses continuous control parameters for driving the vehicle. For more advanced state representations, modifications will be needed. The entire environment is defined in <a href="https://github.com/lgsvl/gym-lgsvl/blob/master/gym_lgsvl/envs/lgsvl_env.py">lgsvl_env.py</a>.</p>
 <h3 id="config">CONFIG <a class="wikilink" href="#top">top</a><a class="headerlink" href="#config" title="Permanent link">#</a></h3>
@@ -589,7 +603,6 @@ pip install --user -e .</code></p>
     dtype=np.float32,
   ),
 </code></pre>
-
 <p>which defines a continuous action space defined as a 2-D array. The first element is the steering value and the second is braking/throttle (negative values are braking and positive are throttle).</p>
 <p>The observation space is defined as a single camera image from the front camera using the Box space from gym:</p>
 <pre><code>&quot;observation_space&quot; : 
@@ -600,7 +613,6 @@ pip install --user -e .</code></p>
       dtype=np.uint8
     ) # RGB image from front camera
 </code></pre>
-
 <p>The shape tuple specifies the image size. The simulator API will always send 1920x1080 images. If any other size is used to define the observation space, the camera images will be resized to the specified size before being passed on as an observation.</p>
 <h3 id="reward-calculation">Reward calculation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#reward-calculation" title="Permanent link">#</a></h3>
 <p>The environment also calculates a reward function based on the distance travelled by the ego vehicle and collisions. The reward is calculated in the <code>_calculate_reward()</code> function based on distance travelled. The collision penalty is added on at the end (if applicable) when the collision callback is invoked (<code>_on_collision</code>). The collision callback will also terminate the episode and start a new episode.</p>
@@ -659,6 +671,9 @@ pip install --user -e .</code></p>
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

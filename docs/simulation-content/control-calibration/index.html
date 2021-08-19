@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -530,7 +546,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>How to Collect Data with Control Calibration Sensor</h1>
+                <h1 id="how-to-collect-data-with-control-calibration-sensor">How to Collect Data with Control Calibration Sensor<a class="headerlink" href="#how-to-collect-data-with-control-calibration-sensor" title="Permanent link">#</a></h1>
 <p>Control Calibration Sensor is for collecting control data to generate control calibration table which can be referred by control module to decide throttle, brake and steering command.</p>
 <h2 id="setup">Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
 <ol>
@@ -538,7 +554,6 @@
 </ol>
 <pre><code>ls /apollo/modules/map/data/wide_flat_map
 </code></pre>
-
 <h2 id="instructions">Instructions <a class="wikilink" href="#top">top</a><a class="headerlink" href="#instructions" title="Permanent link">#</a></h2>
 <ol>
 <li>
@@ -636,6 +651,9 @@
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

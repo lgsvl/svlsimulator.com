@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -402,6 +414,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -530,7 +546,7 @@
           <div role="main">
             <div class="section">
               
-                <h1>Controllable - ChargingStation</h1>
+                <h1 id="controllable-chargingstation">Controllable - ChargingStation<a class="headerlink" href="#controllable-chargingstation" title="Permanent link">#</a></h1>
 <p>This contains detailed documentation on the ChargingStation controllable plugin.</p>
 <p>To use this Controllable Plugin:</p>
 <p>1) Clone the repo into Assets/External/Controllables/ChargingStation inside of your Simulator Unity Project</p>
@@ -539,7 +555,7 @@
 <h2 id="custom-logic">Custom Logic <a class="wikilink" href="#top">top</a><a class="headerlink" href="#custom-logic" title="Permanent link">#</a></h2>
 <p>To implement custom logic, contained in a given Controllable Plugin project there must be an IControllable<Type> implementation. An example of this is in TrafficCone.cs</p>
 <p>The interface requires the following to be implemented:</p>
-<pre><code class="c#">public bool Spawned { get; set; } = false;
+<pre><code class="language-c#">public bool Spawned { get; set; } = false;
 public string UID { get; set; }
 public string GUID =&gt; UID;
 public string ControlType { get; set; } = &quot;chargingstation&quot;;
@@ -559,9 +575,8 @@ public Control(List&lt;ControlAction&gt; controlActions)
     //
 }
 </code></pre>
-
 <p>On <code>Awake()</code> CurrentControlPolicy and CurrentState must be set, e.g.</p>
-<pre><code class="c#">private void Awake()
+<pre><code class="language-c#">private void Awake()
 {
     Lights.AddRange(GetComponentsInChildren&lt;Light&gt;());
     SetLights(false);
@@ -578,9 +593,8 @@ public Control(List&lt;ControlAction&gt; controlActions)
     Control(CurrentControlPolicy);
 }
 </code></pre>
-
 <p>Control checks the parsed ControlActions and sets the CurrentState</p>
-<pre><code class="c#">public void Control(List&lt;ControlAction&gt; controlActions)
+<pre><code class="language-c#">public void Control(List&lt;ControlAction&gt; controlActions)
 {
     foreach (var action in controlActions)
     {
@@ -627,34 +641,29 @@ private void SetLights(bool state)
     Lights.ForEach(l =&gt; l.enabled = state);
 }
 </code></pre>
-
 <h2 id="python-api-example">Python API example <a class="wikilink" href="#top">top</a><a class="headerlink" href="#python-api-example" title="Permanent link">#</a></h2>
 <p>Each controllable object has its own <code>valid actions</code> (e.g., green, yellow, red, trigger, wait, loop, on, off, "") that it can take and is controlled based on <code>control policy</code>, which defines rules for control actions.</p>
 <p>To get a list of controllable objects in a scene:</p>
-<pre><code class="python">controllables = sim.get_controllables()
+<pre><code class="language-python">controllables = sim.get_controllables()
 </code></pre>
-
 <p>For a controllable object of interest, you can get following information:</p>
-<pre><code class="python">station = controllables[0]
+<pre><code class="language-python">station = controllables[0]
 print(&quot;Type:&quot;, station.type)
 print(&quot;Transform:&quot;, station.transform)
 print(&quot;Current state:&quot;, station.current_state)
 print(&quot;Valid actions:&quot;, station.valid_actions)
 </code></pre>
-
 <p>For control policy, each controllable object always has default control policy (read-only). When you load a scene for the first time or reset a scene to the initial state, a controllable object resets current control policy to default one follows it.</p>
 <p>You can get default control policy and current control policy as follows:</p>
-<pre><code class="python">print(&quot;Default control policy:&quot;, station.default_control_policy)
+<pre><code class="language-python">print(&quot;Default control policy:&quot;, station.default_control_policy)
 print(&quot;Current control policy:&quot;, station.control_policy)
 </code></pre>
-
 <p>To change a current control policy, you can create a new control policy and call <code>control</code> function as below:</p>
-<pre><code class="python">control_policy = &quot;on&quot;
+<pre><code class="language-python">control_policy = &quot;on&quot;
 station.control(control_policy)
 </code></pre>
-
 <p>To add a plugin controllable and set object state</p>
-<pre><code class="python">state = lgsvl.ObjectState()
+<pre><code class="language-python">state = lgsvl.ObjectState()
 state.transform.position = lgsvl.Vector(0,0,0)
 state.transform.rotation = lgsvl.Vector(0,0,0)
 state.velocity = lgsvl.Vector(0,10,0)
@@ -662,19 +671,16 @@ state.angular_velocity = lgsvl.Vector(6.5,0,0)
 
 cone = sim.controllable_add(&quot;ChargingStation&quot;, state)
 </code></pre>
-
 <p>To get plugin controllable object state</p>
-<pre><code class="python">station.object_state
+<pre><code class="language-python">station.object_state
 </code></pre>
-
 <p>To set plugin controllable object state</p>
-<pre><code class="python">state = lgsvl.ObjectState()
+<pre><code class="language-python">state = lgsvl.ObjectState()
 state.transform.position = lgsvl.Vector(0, 0, -10)
 station.object_state = state
 </code></pre>
-
 <p>Controllables can also have a Unity RigidBody component at the root and apply velocity from the API.   If no rigidbody exists then the velocity is ignored.</p>
-<pre><code class="python">#!/usr/bin/env python3
+<pre><code class="language-python">#!/usr/bin/env python3
 #
 # Copyright (c) 2020-2021 LG Electronics, Inc.
 #
@@ -790,6 +796,9 @@ print(&quot;\nDone!&quot;)
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

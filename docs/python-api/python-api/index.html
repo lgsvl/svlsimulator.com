@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,7 +552,7 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a> Python API Guide</h1>
+                <h1 id="python-api-guide"><a name="top"></a> Python API Guide<a class="headerlink" href="#python-api-guide" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>SVL Simulator exposes runtime functionality to a Python API which you can use
 to manipulate object placement and vehicle movement in a loaded scene, retrieve
@@ -545,7 +561,6 @@ sensor configuration and data, control weather, time state, and more.</p>
 <a href="../../user-interface/config-and-cmd-line-params/">Configuration File and Command-Line Parameters</a>
 for more information.</p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#overview">Overview</a></li>
@@ -642,16 +657,14 @@ z points forward, and y points up.</p>
 latitude/longitude and northing/easting values.</p>
 <h2 id="simulation">Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simulation" title="Permanent link">#</a></h2>
 <p>To connect to the simulator you need to an instance of the <code>Simulator</code> class:</p>
-<pre><code class="python">import lgsvl
+<pre><code class="language-python">import lgsvl
 sim = lgsvl.Simulator(address = &quot;localhost&quot;, port = 8181)
 </code></pre>
-
 <p>You can specify a different address as hostname or IP address. By default only port <strong>8181</strong> is
 used for API connection. Only one client can be connected to simulator at a time.</p>
 <p>Next, load the scene (sometimes called map). This is done by the <code>load</code> method:</p>
-<pre><code class="python">sim.load(scene = &quot;aae03d2a-b7ca-4a88-9e41-9035287a12cc&quot;, seed = 650387)
+<pre><code class="language-python">sim.load(scene = &quot;aae03d2a-b7ca-4a88-9e41-9035287a12cc&quot;, seed = 650387)
 </code></pre>
-
 <p><code>scene</code> is a string representing the UUID of the <em>Map</em> in the Web UI. Scenes can be added either from the map tab under <strong>Store</strong> or by manually uploading. Some of the well-known scenes available in the <em>Map</em> tab under <strong>Store</strong> are:</p>
 <table>
 <thead>
@@ -705,15 +718,13 @@ used for API connection. Only one client can be connected to simulator at a time
 the <a href="#agents">Agents</a> section on how to create vehicles and pedestrians.</p>
 <p>Loading scenes takes a while, to reset a scene to the initial state without reloading it call the <code>reset</code>
 method:</p>
-<pre><code class="python">sim.reset()
+<pre><code class="language-python">sim.reset()
 </code></pre>
-
 <p>This will remove any vehicles or callbacks currently registered.</p>
 <p>After setting up the scene in a desired state you can start advancing time.
 During Python code execution time is stopped in the simulator. To run the simulator in realtime, call the <code>run</code> method:</p>
-<pre><code class="python">sim.run(time_limit = 5.0)
+<pre><code class="language-python">sim.run(time_limit = 5.0)
 </code></pre>
-
 <p><code>run</code> accepts an optional argument for a time limit specifying how long to run. The default
 value of 0 will run infinitely.</p>
 <p>Diagram illustrating API execution:</p>
@@ -721,9 +732,8 @@ value of 0 will run infinitely.</p>
 <h3 id="non-realtime-simulation">Non-real-time Simulation <a class="wikilink" href="#top">top</a><a class="headerlink" href="#non-realtime-simulation" title="Permanent link">#</a></h3>
 <p>The simulator can be run at faster-than-real-time speeds depending on the performance of the computer running the simulator.
 This is done by calling the <code>run</code> method with the <code>time_scale</code> argument:</p>
-<pre><code class="python">sim.run(time_limit = 6, time_scale = 2)
+<pre><code class="language-python">sim.run(time_limit = 6, time_scale = 2)
 </code></pre>
-
 <p><code>run</code> takes a 2nd optional argument specifying how much faster to run.
 In the above example, if the computer is fast enough, the run call will finish in 3 seconds (6 divided by 2),
 but 6 virtual seconds of data would be generated. If only <code>time_scale</code> is specified or <code>time_limit</code> = 0,
@@ -732,10 +742,9 @@ then simulation will run continuously at non-realtime speed.</p>
 <h2 id="agents">Agents <a class="wikilink" href="#top">top</a><a class="headerlink" href="#agents" title="Permanent link">#</a></h2>
 <p>You can create vehicles and pedestrians by calling the <code>add_agent</code> method of the <code>Simulator</code>
 object. Example:</p>
-<pre><code class="python">ego = sim.add_agent(name = &quot;511086bd-97ad-4109-b0ad-654ba662fbcf&quot;, \
+<pre><code class="language-python">ego = sim.add_agent(name = &quot;511086bd-97ad-4109-b0ad-654ba662fbcf&quot;, \
 agent_type = lgsvl.AgentType.EGO, state = None)
 </code></pre>
-
 <p>This will create the <code>Lincoln2017MKZ</code> vehicle with the <strong>Keyboard Control</strong> sensor configuration. This vehicle and sensor configuration are available by default in <strong>My Library</strong>. In this instance the UUID for the desired sensor configuration is entered for the <code>name</code> argument.</p>
 <p>The currently available <code>AgentTypes</code> are:</p>
 <ul>
@@ -770,21 +779,19 @@ agent_type = lgsvl.AgentType.EGO, state = None)
 <p>If an incorrect name is entered, a Python exception will be thrown.</p>
 <p>Optionally you can create agents in specific positions and orientations in the scene.
 For this you need to use the <code>AgentState</code> class. For example:</p>
-<pre><code class="python">state = lgsvl.AgentState()
+<pre><code class="language-python">state = lgsvl.AgentState()
 state.transform.position = lgsvl.Vector(10, 0, 30)
 state.transform.rotation.y = 90
 ego = sim.add_agent(&quot;511086bd-97ad-4109-b0ad-654ba662fbcf&quot;, lgsvl.AgentType.EGO, state)
 </code></pre>
-
 <p>This will create a vehicle at position <em>x = 10</em>, <em>z = 30</em>  which is rotated <em>90</em> degrees around the
 vertical axis. The position and rotation are set in the world coordinates space.</p>
 <p>You can always adjust the position, rotation, velocity and angular velocity of the agent
 at any later time:</p>
-<pre><code class="python">s = ego.state
+<pre><code class="language-python">s = ego.state
 s.velocity.x = -50
 ego.state = s
 </code></pre>
-
 <p>This will set x component of velocity (in world coordinate space) to <em>-50</em> meters
 per second and leave <em>y</em> and <em>z</em> components of velocity unmodified.</p>
 <p>All agents have the following common functionality:</p>
@@ -812,12 +819,11 @@ per second and leave <em>y</em> and <em>z</em> components of velocity unmodified
 <p>You can control the movement of the EGO vehicle either by manually specifying state, applying
 manual control, or connecting through the bridge.</p>
 <p>Example to apply constant 20% throttle to EGO vehicle:</p>
-<pre><code class="python">ego = sim.add_agent(&quot;Lincoln2017MKZ (Apollo 5.0)&quot;, lgsvl.AgentType.EGO)
+<pre><code class="language-python">ego = sim.add_agent(&quot;Lincoln2017MKZ (Apollo 5.0)&quot;, lgsvl.AgentType.EGO)
 c = lgsvl.VehicleControl()
 c.throttle = 0.2
 ego.apply_control(c, True)
 </code></pre>
-
 <h3 id="npc-vehicles">NPC vehicles <a class="wikilink" href="#top">top</a><a class="headerlink" href="#npc-vehicles" title="Permanent link">#</a></h3>
 <p>You can create multiple NPC vehicles on the map to drive along the lanes or follow specific
 waypoints on the map.</p>
@@ -837,7 +843,7 @@ waypoints on the map.</p>
 instructing it to follow waypoints or lanes.</p>
 <p>To make an NPC follow waypoints prepare a list of <code>DriveWaypoint</code> objects and call
 the <code>follow</code> method for the npc vehicle:</p>
-<pre><code class="python">npc = sim.add_agent(&quot;Sedan&quot;, lgsvl.AgentType.NPC)
+<pre><code class="language-python">npc = sim.add_agent(&quot;Sedan&quot;, lgsvl.AgentType.NPC)
 waypoints = [
   lgsvl.DriveWaypoint(lgsvl.Vector(1,0,3), 5, lgsvl.Vector(0, 0, 0), 0, False, 0),
   lgsvl.DriveWaypoint(lgsvl.Vector(5,0,3), 10, lgsvl.Vector(0, 0, 0), 0, False, 0),
@@ -845,13 +851,12 @@ waypoints = [
 ]
 npc.follow(waypoints, loop=True)
 </code></pre>
-
 <p>Each waypoint has a position in world coordinates, a desired velocity in m/s, a desired angular orientation as a vector of Euler angles, an optional wait-time for the vehicle to stay idle, an bool on whether the NPC should be active while idling, and an optional trigger distance. The NPC
 will ignore all traffic rules and will not avoid collisions to try to get to the next
 waypoint. The angular orientation of the NPC will be interpolated in such a manner that it will pass through the waypoint at the angle specified in the <code>DriveWaypoint</code>. The trigger distance, if used, provides a method to pause the NPC until an ego vehicle approaches. The NPC will begin to drive as soon as its distance to an ego vehicle drops below the value specified as trigger distance in the <code>DriveWaypoint</code>.
 You can receive information on progress by setting the <code>on_waypoint_reached</code>
 callback. Example (see <a href="#callbacks">callbacks</a> for more details):</p>
-<pre><code class="python">npc = sim.add_agent(&quot;Sedan&quot;, lgsvl.AgentType.NPC)
+<pre><code class="language-python">npc = sim.add_agent(&quot;Sedan&quot;, lgsvl.AgentType.NPC)
 
 def on_waypoint(agent, index):
   print(&quot;waypoint {} reached&quot;.format(index))
@@ -861,13 +866,11 @@ npc.on_waypoint_reached(on_waypoint)
 
 sim.run()
 </code></pre>
-
 <p><code>follow_closest_lane</code> will make the NPC vehicle follow whatever lane is the closest.
 Upon reaching intersections it will randomly decide to either drive straight or turn.</p>
 <p>You can also spawn a pool of NPC vehicles with the same behavior as NPCs added to a non-API simulation. They will follow the map annotations, obey speed limits, obey traffic signals, and attempt to avoid accidents. These NPCs cannot be directly controlled.</p>
-<pre><code class="python">sim.add_random_agents(lgsvl.AgentType.NPC)
+<pre><code class="language-python">sim.add_random_agents(lgsvl.AgentType.NPC)
 </code></pre>
-
 <h3 id="pedestrians">Pedestrians <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pedestrians" title="Permanent link">#</a></h3>
 <p>You can create <code>Pedestrian</code> agents that will allow you to create pedestrians on sidewalks
 and make them walk.</p>
@@ -882,7 +885,7 @@ and make them walk.</p>
 instructing them to follow waypoints or walk randomly.</p>
 <p>To make pedestrians follow waypoints prepare a list of <code>WalkWaypoint</code> objects and call
 the <code>follow</code> method for pedestrians:</p>
-<pre><code class="python">npc = sim.add_agent(&quot;Bob&quot;, lgsvl.AgentType.PEDESTRIAN)
+<pre><code class="language-python">npc = sim.add_agent(&quot;Bob&quot;, lgsvl.AgentType.PEDESTRIAN)
 waypoints = [
   lgsvl.WalkWaypoint(lgsvl.Vector(1,0,3), 5, 0),
   lgsvl.WalkWaypoint(lgsvl.Vector(5,0,3), 10, 0),
@@ -890,14 +893,12 @@ waypoints = [
 ]
 npc.follow(waypoints, loop=True)
 </code></pre>
-
 <p>Each waypoint has a position in world coordinates, an optional idle time that the pedestrian will
 spend standing in-place when it reaches the waypoint, and an optional trigger distance. You can receive information on progress by
 setting the <code>on_waypoint_reached</code> callback.</p>
 <p>You can also spawn a pool of pedestrians with the same behavior as pedestrians added to a non-API simulation. They will follow the map annotations and path find. These pedestrians cannot be directly controlled.</p>
-<pre><code class="python">sim.add_random_agents(lgsvl.AgentType.PEDESTRIAN)
+<pre><code class="language-python">sim.add_random_agents(lgsvl.AgentType.PEDESTRIAN)
 </code></pre>
-
 <h2 id="callbacks">Callbacks <a class="wikilink" href="#top">top</a><a class="headerlink" href="#callbacks" title="Permanent link">#</a></h2>
 <p>The Python API can invoke callbacks to inform you of specific events that occur during
 simulator runtime. Callbacks are invoked from inside the <code>Simulator.run()</code> method and
@@ -912,14 +913,13 @@ callback is handled.</p>
 <p><code>on_collision</code> - called when agent collides with something (other agent or stationary
 obstacle).</p>
 <p>Example usage:</p>
-<pre><code class="python">def on_collision(agent1, agent2, contact):
+<pre><code class="language-python">def on_collision(agent1, agent2, contact):
   name1 = &quot;STATIC OBSTACLE&quot; if agent1 is None else agent1.name
   name2 = &quot;STATIC OBSTACLE&quot; if agent2 is None else agent2.name
   print(&quot;{} collided with {} at {}&quot;.format(name1, name2, contact))
 
 ego.on_collision(on_collision)
 </code></pre>
-
 <p>Callback receives three arguments: <code>(agent1, agent2, contact)</code> - the first two are the agents that collide,
 one of them can be None if it is a stationary obstacle like a building or a traffic light pole,
 and the third is the world position of the contact point.</p>
@@ -970,13 +970,12 @@ arguments: <code>(agent, index)</code> - agent instance and waypoint index as in
    "SEGMENTATION" - 24-bit color image with semantic/instance segmentation)</li>
 </ul>
 <p>Camera image can be saved to disk by calling <code>save</code>:</p>
-<pre><code class="python">ego = sim.add_agent(&quot;47b529db-0593-4908-b3e7-4b24a32a0f70&quot;, lgsvl.AgentType.EGO)
+<pre><code class="language-python">ego = sim.add_agent(&quot;47b529db-0593-4908-b3e7-4b24a32a0f70&quot;, lgsvl.AgentType.EGO)
 
 for sensor in ego.get_sensors():
   if sensor.name = &quot;Main Camera&quot;:
     sensor.save(&quot;main-camera.png&quot;, compression=0)
 </code></pre>
-
 <p><code>save</code> method accepts a path relative to the running simulator, and an optional <code>compression</code> for png files (0...9)
 or <code>quality</code> (0..100) for jpeg files.</p>
 <h3 id="lidar-sensor">LiDAR Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar-sensor" title="Permanent link">#</a></h3>
@@ -992,22 +991,20 @@ or <code>quality</code> (0..100) for jpeg files.</p>
 <li><code>compensated</code> - bool, whether LiDAR point cloud is compensated</li>
 </ul>
 <p>LiDAR point cloud can be saved to disk as a .pcd file by calling <code>save</code>:</p>
-<pre><code class="python">ego = sim.add_agent(&quot;47b529db-0593-4908-b3e7-4b24a32a0f70&quot;, lgsvl.AgentType.EGO)
+<pre><code class="language-python">ego = sim.add_agent(&quot;47b529db-0593-4908-b3e7-4b24a32a0f70&quot;, lgsvl.AgentType.EGO)
 
 for sensor in ego.get_sensors():
   if sensor.name = &quot;Lidar&quot;:
     sensor.save(&quot;lidar.pcd&quot;)
 </code></pre>
-
 <p>A <code>.pcd</code> file is in the <a href="http://pointclouds.org/documentation/tutorials/pcd_file_format.html">binary Point Cloud Data format</a> where each point has x/y/z coordinates as 4-byte floats and a 1-byte unsigned int as intensity (0...255).</p>
 <h3 id="imu-sensor">IMU Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#imu-sensor" title="Permanent link">#</a></h3>
 <p>You can use the IMU sensor to get its position in the vehicle. All measurements an IMU would provide can be obtained by using the <code>transform</code> property of the agent.</p>
 <h3 id="gps-sensor">GPS Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#gps-sensor" title="Permanent link">#</a></h3>
 <p>You can retrieve the current GPS location from the GPS sensor by calling <code>data</code>:</p>
-<pre><code class="python">data = gps_sensor.data()
+<pre><code class="language-python">data = gps_sensor.data()
 print(&quot;Latitude:&quot;, data.latitude)
 </code></pre>
-
 <p>Returned data will contain following fields:</p>
 <ul>
 <li><code>latitude</code></li>
@@ -1037,23 +1034,20 @@ print(&quot;Latitude:&quot;, data.latitude)
 <h2 id="weather-and-time-of-day-control">Weather and Time of Day Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#weather-and-time-of-day-control" title="Permanent link">#</a></h2>
 <p>You can control the weather properties of the simulation by reading or writing to the <code>weather</code> property. You can
 set <code>rain</code>, <code>fog</code>, <code>wetness</code>, <code>cloudiness</code>, and <code>damage</code> (referring to road damage) as a float in 0..1 range. Example:</p>
-<pre><code class="python">w = sim.weather
+<pre><code class="language-python">w = sim.weather
 w.rain = 0.5     # set rain to 50%
 sim.weather = w
 </code></pre>
-
 <p>Changing time of day allows to control whether the loaded scene appears as day or night.
 To get the current time read the <code>time_of_day</code> property:</p>
-<pre><code class="python">print(&quot;Current time of day:&quot;, sim.time_of_day)
+<pre><code class="language-python">print(&quot;Current time of day:&quot;, sim.time_of_day)
 </code></pre>
-
 <p>It will return a float between 0 and 24. To set time of day call <code>set_time_of_day</code>:</p>
-<pre><code class="python">sim.set_time_of_day(10, fixed=True)
+<pre><code class="language-python">sim.set_time_of_day(10, fixed=True)
 </code></pre>
-
 <p>This will set current time of day to 10 AM of the current date. The date and time of day are important because they determine the position of the sun and directly effect lighting in the scene. The optional bool argument <code>fixed</code> indicates whether the simulation should advance this time automatically or freeze it and not change it (<code>fixed=True</code>).</p>
 <p>For fine-tuned control of time of day, or to set a custom date along with the time of day call <code>set_datetime</code> which takes a Python <code>datetime</code> object as input:</p>
-<pre><code class="python">from datetime import datetime
+<pre><code class="language-python">from datetime import datetime
 
 dt = datetime(
   year=2020,
@@ -1065,7 +1059,6 @@ dt = datetime(
 )
 sim.set_datetime(dt)
 </code></pre>
-
 <h2 id="controllable-objects">Controllable Objects <a class="wikilink" href="#top">top</a><a class="headerlink" href="#controllable-objects" title="Permanent link">#</a></h2>
 <p>A controllable object is an object that you can control by performing an action using Python APIs. Each controllable object has its own <code>valid actions</code> (e.g., green, yellow, red, trigger, wait, loop) that it can take and is controlled based on <code>control policy</code>, which defines rules for control actions.</p>
 <p>For example, a traffic light is a controllable object, and you can change its behavior by updating control policy: <code>"trigger=50;green=1;yellow=1.5;red=2;loop"</code></p>
@@ -1083,30 +1076,26 @@ sim.set_datetime(dt)
 </ul>
 <p>All Controllable objects can be added or removed dynamically. When reset() is called, all Controllables are removed and the ones in the map (if any) are added back. Controllable objects can be loaded plugins at runtime.  Plugin must include <code>IControllable</code> and be built using the Simulator build process from the <code>Assets/External/Controllables</code> folder.</p>
 <p>To get a list of controllable objects in a scene:</p>
-<pre><code class="python">controllables = sim.get_controllables()
+<pre><code class="language-python">controllables = sim.get_controllables()
 </code></pre>
-
 <p>For a controllable object of interest, you can get following information:</p>
-<pre><code class="python">signal = controllables[0]
+<pre><code class="language-python">signal = controllables[0]
 print(&quot;Type:&quot;, signal.type)
 print(&quot;Transform:&quot;, signal.transform)
 print(&quot;Current state:&quot;, signal.current_state)
 print(&quot;Valid actions:&quot;, signal.valid_actions)
 </code></pre>
-
 <p>For control policy, each controllable object always has default control policy (read-only). When you load a scene for the first time or reset a scene to the initial state, a controllable object resets current control policy to default one follows it.</p>
 <p>You can get default control policy and current control policy as follows:</p>
-<pre><code class="python">print(&quot;Default control policy:&quot;, signal.default_control_policy)
+<pre><code class="language-python">print(&quot;Default control policy:&quot;, signal.default_control_policy)
 print(&quot;Current control policy:&quot;, signal.control_policy)
 </code></pre>
-
 <p>To change a current control policy, you can create a new control policy and call <code>control</code> function as below:</p>
-<pre><code class="python">control_policy = &quot;trigger=50;green=1;yellow=1.5;red=2;loop&quot;
+<pre><code class="language-python">control_policy = &quot;trigger=50;green=1;yellow=1.5;red=2;loop&quot;
 signal.control(control_policy)
 </code></pre>
-
 <p>To add a plugin controllable and set object state</p>
-<pre><code class="python">state = lgsvl.ObjectState()
+<pre><code class="language-python">state = lgsvl.ObjectState()
 state.transform.position = lgsvl.Vector(0,0,0)
 state.transform.rotation = lgsvl.Vector(0,0,0)
 state.velocity = lgsvl.Vector(0,10,0)
@@ -1114,17 +1103,14 @@ state.angular_velocity = lgsvl.Vector(6.5,0,0)
 
 cone = sim.controllable_add(&quot;TrafficCone&quot;, state)
 </code></pre>
-
 <p>To get plugin controllable object state</p>
-<pre><code class="python">cone.object_state
+<pre><code class="language-python">cone.object_state
 </code></pre>
-
 <p>To set plugin controllable object state</p>
-<pre><code class="python">state = lgsvl.ObjectState()
+<pre><code class="language-python">state = lgsvl.ObjectState()
 state.transform.position = lgsvl.Vector(0, 0, -10)
 cone.object_state = state
 </code></pre>
-
 <h2 id="helper-functions">Helper Functions <a class="wikilink" href="#top">top</a><a class="headerlink" href="#helper-functions" title="Permanent link">#</a></h2>
 <p>Simulator class offers following helper functions:</p>
 <ul>
@@ -1144,19 +1130,17 @@ cone.object_state = state
 <li><code>raycast</code> - shoots a ray from specific location and returns closest object it hits</li>
 </ul>
 <p><code>map_from_gps</code> accepts two different inputs - latitude/longitude or northing/easting. Examples:</p>
-<pre><code class="python">tr1 = sim.map_from_gps(latitude=10, longitude=-30)
+<pre><code class="language-python">tr1 = sim.map_from_gps(latitude=10, longitude=-30)
 tr2 = sim.map_from_gps(northing=123455, easting=552341)
 </code></pre>
-
 <p>Optionally you can pass altitude and orientation.</p>
 <p><code>raycast</code> method can be used in following way:</p>
-<pre><code class="python">origin = lgsvl.Vector(10, 0, 20)
+<pre><code class="language-python">origin = lgsvl.Vector(10, 0, 20)
 direction = lgsvl.Vector(1, 0, 0)
 hit = sim.raycast(origin, direction, layer_mask=1)
 if hit:
   print(&quot;Distance right:&quot;, hit.distance)
 </code></pre>
-
 <p>This will shoot a ray in the positive <em>x</em>-axis direction from the <em>(10, 0, 20)</em> coordinates.
 A <code>RaycastHit</code> object with <code>distance</code>, <code>point</code> and <code>normal</code> fields is returned if something is hit, otherwise <code>None</code> is returned.</p>
 <p>When raycasting you should specify a <code>layer_mask</code> argument that specifies which objects to check
@@ -1336,6 +1320,9 @@ collision with. It corresponds to layers in the Unity project - check the projec
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

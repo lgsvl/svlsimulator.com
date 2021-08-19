@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
     <ul class="subnav">
     </ul>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,10 +552,10 @@
           <div role="main">
             <div class="section">
               
-                <h1>Ground Truth Obstacles</h1>
+                <h1 id="ground-truth-obstacles">Ground Truth Obstacles<a class="headerlink" href="#ground-truth-obstacles" title="Permanent link">#</a></h1>
 <p>You can use the SVL Simulator to view, publish, and compare ground truth obstacle information. The simulator allows visualization of 2D or 3D bounding boxes of vehicles and pedestrians, and publishes detailed information about the ground truth obstacles.</p>
 <h2 id="sensor-configuration-for-ground-truth-sensors">Sensor Configuration for Ground Truth Sensors <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-configuration-for-ground-truth-sensors" title="Permanent link">#</a></h2>
-<pre><code class="JSON">[
+<pre><code class="language-JSON">[
     {
         &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
         &quot;name&quot;: &quot;3D Ground Truth Sensor&quot;,
@@ -576,7 +592,6 @@
     }
 ]
 </code></pre>
-
 <h2 id="view-ground-truth-obstacles-in-simulator">View Ground Truth Obstacles in Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#view-ground-truth-obstacles-in-simulator" title="Permanent link">#</a></h2>
 <p>Ground truth obstacles for vehicles and pedestrians can be visualized in the simulator with both 3D bounding boxes and 2D bounding boxes.</p>
 <p>To view 3D Bounding boxes in the simulator:</p>
@@ -661,7 +676,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../user-interface/web/store/" class="btn btn-neutral float-right" title="Store">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../robotics-pub-sub/" class="btn btn-neutral float-right" title="Running a basic Robotics Simulation with ROS 2">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../create-ros2-ad-stack/" class="btn btn-neutral" title="Creating a simple ROS2-based AD stack"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -697,7 +712,7 @@
         <span><a href="../create-ros2-ad-stack/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../user-interface/web/store/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../robotics-pub-sub/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -705,6 +720,9 @@
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

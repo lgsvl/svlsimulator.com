@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -239,6 +247,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,11 +552,10 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a> Dreamview API</h1>
+                <h1 id="dreamview-api"><a name="top"></a> Dreamview API<a class="headerlink" href="#dreamview-api" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>The Dreamview API is a subpackage of the the SVL Simulator <a href="../python-api/">Python API</a> which communicates with Apollo's Dreamview module. Apollo's Dreamview provides a web ui that allows users to enable/disable different modules within Apollo and to set destinations to navigate to. The Dreamview API enables users to automate this procedure with Python scripts. This document provides an overview of the API.</p>
 <h2> Table of Contents</h2>
-
 <div class="toc">
 <ul>
 <li><a href="#overview">Overview</a></li>
@@ -579,9 +594,8 @@
 <h2 id="usage-guide">Usage Guide <a class="wikilink" href="#top">top</a><a class="headerlink" href="#usage-guide" title="Permanent link">#</a></h2>
 <h3 id="connection">Connection <a class="wikilink" href="#top">top</a><a class="headerlink" href="#connection" title="Permanent link">#</a></h3>
 <p>The main class in the Dreamview API is the <code>Connection</code> class that allows establishing a connection with Dreamview. To instantiate, the constructor may be called as follows:</p>
-<pre><code class="python">dreamview.Connection(simulator, ego_agent, ip='localhost', port='8888')
+<pre><code class="language-python">dreamview.Connection(simulator, ego_agent, ip='localhost', port='8888')
 </code></pre>
-
 <p>where:</p>
 <ul>
 <li>
@@ -599,54 +613,44 @@
 </ul>
 <h3 id="methods">Methods <a class="wikilink" href="#top">top</a><a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
 <h4 id="check_module_status">check_module_status <a class="wikilink" href="#top">top</a><a class="headerlink" href="#check_module_status" title="Permanent link">#</a></h4>
-<pre><code class="python">check_module_status(self, modules)
+<pre><code class="language-python">check_module_status(self, modules)
 </code></pre>
-
 <p>Checks if all modules in a provided list are enabled.</p>
 <h4 id="disable_apollo">disable_apollo <a class="wikilink" href="#top">top</a><a class="headerlink" href="#disable_apollo" title="Permanent link">#</a></h4>
-<pre><code class="python">disable_apollo(self)
+<pre><code class="language-python">disable_apollo(self)
 </code></pre>
-
 <p>Disables all Apollo modules.</p>
 <h4 id="disable_module">disable_module <a class="wikilink" href="#top">top</a><a class="headerlink" href="#disable_module" title="Permanent link">#</a></h4>
-<pre><code class="python">disable_module(self, module)
+<pre><code class="language-python">disable_module(self, module)
 </code></pre>
-
 <p>Disables a specific Apollo module. <code>module</code> is the name of the Apollo 5.0 module as seen in the "Module Controller" tab of Dreamview.</p>
 <h4 id="enable_apollo">enable_apollo <a class="wikilink" href="#top">top</a><a class="headerlink" href="#enable_apollo" title="Permanent link">#</a></h4>
-<pre><code class="python">enable_apollo(self, dest_x, dest_z, modules)
+<pre><code class="language-python">enable_apollo(self, dest_x, dest_z, modules)
 </code></pre>
-
 <p>Enables a list of modules and then sets the destination.</p>
 <h4 id="enable_module">enable_module <a class="wikilink" href="#top">top</a><a class="headerlink" href="#enable_module" title="Permanent link">#</a></h4>
-<pre><code class="python">enable_module(self, module)
+<pre><code class="language-python">enable_module(self, module)
 </code></pre>
-
 <p>Enables a specific Apollo module. <code>module</code> is the name of the Apollo 5.0 module as seen in the "Module Controller" tab of Dreamview.</p>
 <h4 id="get_current_map">get_current_map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#get_current_map" title="Permanent link">#</a></h4>
-<pre><code class="python">get_current_map(self)
+<pre><code class="language-python">get_current_map(self)
 </code></pre>
-
 <p>Returns the current HD map loaded in Dreamview.</p>
 <h4 id="get_current_vehicle">get_current_vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#get_current_vehicle" title="Permanent link">#</a></h4>
-<pre><code class="python">get_current_vehicle(self)
+<pre><code class="language-python">get_current_vehicle(self)
 </code></pre>
-
 <p>Returns the current Vehicle configuration loaded in Dreamview.</p>
 <h4 id="get_module_status">get_module_status <a class="wikilink" href="#top">top</a><a class="headerlink" href="#get_module_status" title="Permanent link">#</a></h4>
-<pre><code class="python">get_module_status(self)
+<pre><code class="language-python">get_module_status(self)
 </code></pre>
-
 <p>Returns a dict where the key is the name of the module and value is a bool based on the module's current status.</p>
 <h4 id="reconnect">reconnect <a class="wikilink" href="#top">top</a><a class="headerlink" href="#reconnect" title="Permanent link">#</a></h4>
-<pre><code class="python">reconnect(self)
+<pre><code class="language-python">reconnect(self)
 </code></pre>
-
 <p>Closes the websocket connection and re-creates it so that data can be received again.</p>
 <h4 id="set_destination">set_destination <a class="wikilink" href="#top">top</a><a class="headerlink" href="#set_destination" title="Permanent link">#</a></h4>
-<pre><code class="python">set_destination(self, x_long_east, z_lat_north, y=0, coord_type=CoordType.Unity)
+<pre><code class="language-python">set_destination(self, x_long_east, z_lat_north, y=0, coord_type=CoordType.Unity)
 </code></pre>
-
 <p>Sends a RoutingRequest to Apollo for the provided coordinates. This function can accept a variety of Coordinate systems.</p>
 <p>If using Unity World Coordinate System:</p>
 <pre><code>
@@ -654,23 +658,19 @@ x_long_east = x
 z_lat_north = z
 y = y
 </code></pre>
-
 <p>If using Latitude/Longitude:</p>
 <pre><code>
 x_long_east = Longitude
 z_lat_north = Latitude
 </code></pre>
-
 <p>If using Easting/Northing:</p>
 <pre><code>
 x_long_east = Easting
 z_lat_north = Northing
 </code></pre>
-
 <h4 id="set_hd_map">set_hd_map <a class="wikilink" href="#top">top</a><a class="headerlink" href="#set_hd_map" title="Permanent link">#</a></h4>
-<pre><code class="python">set_hd_map(self, map)
+<pre><code class="language-python">set_hd_map(self, map)
 </code></pre>
-
 <p>Selects the provided HD map. Folders in /apollo/modules/map/data/ are the available HD maps.
 Map options in Dreamview are the folder names with the following changes:</p>
 <ul>
@@ -680,14 +680,12 @@ Map options in Dreamview are the folder names with the following changes:</p>
 <p><code>map</code> parameter is the modified folder name.
 <code>map</code> should match one of the options in the right-most drop down in the top-right corner of Dreamview.</p>
 <h4 id="set_setup_mode">set_setup_mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#set_setup_mode" title="Permanent link">#</a></h4>
-<pre><code class="python">set_setup_mode(self, mode)
+<pre><code class="language-python">set_setup_mode(self, mode)
 </code></pre>
-
 <p><code>mode</code> is the name of the Apollo 5.0 mode as seen in the left-most drop down in the top-right corner of Dreamview.</p>
 <h4 id="set_vehicle">set_vehicle <a class="wikilink" href="#top">top</a><a class="headerlink" href="#set_vehicle" title="Permanent link">#</a></h4>
-<pre><code class="python">set_vehicle(self, vehicle, gps_offset_x=0.0, gps_offset_y=0.0, gps_offset_z=-1.348)
+<pre><code class="language-python">set_vehicle(self, vehicle, gps_offset_x=0.0, gps_offset_y=0.0, gps_offset_z=-1.348)
 </code></pre>
-
 <p>Selects the provided vehicle configuration. Folders in /apollo/modules/calibration/data/ are the available vehicle calibrations.
     Vehicle options in Dreamview are the folder names with the following changes:</p>
 <ul>
@@ -697,14 +695,13 @@ Map options in Dreamview are the folder names with the following changes:</p>
 <p><code>vehicle</code> parameter is the modified folder name.
 <code>vehicle</code> should match one of the options in the middle drop down in the top-right corner of Dreamview.</p>
 <h4 id="setup_apollo">setup_apollo <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setup_apollo" title="Permanent link">#</a></h4>
-<pre><code class="python">setup_apollo(self, dest_x, dest_z, modules, default_timeout=60.0)
+<pre><code class="language-python">setup_apollo(self, dest_x, dest_z, modules, default_timeout=60.0)
 </code></pre>
-
 <p>Starts a list of Apollo modules and sets the destination. Will wait for Control module to send a message before returning. Control sending a message indicates that all modules are working and Apollo is ready to continue.</p>
 <h2 id="example">Example <a class="wikilink" href="#top">top</a><a class="headerlink" href="#example" title="Permanent link">#</a></h2>
 <p>This example will start a simulation that will drive an ego vehicle to a destination using Apollo. The simulation will start once Apollo is ready.</p>
 <p>To run this example you will need to have an Apollo vehicle with the ApolloControl sensor added. To add the sensor to the vehicle, add the following to the vehicle configuration JSON file:</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
   &quot;type&quot; : &quot;ApolloControlSensor&quot;,
   &quot;name&quot; : &quot;Apollo Control Sensor&quot;,
     &quot;params&quot;: {
@@ -712,15 +709,13 @@ Map options in Dreamview are the folder names with the following changes:</p>
     }
 }
 </code></pre>
-
 <p>Before running the Python script, start the Apollo docker container (see <a href="https://www.svlsimulator.com/docs/apollo5-0-instructions/">instructions</a>) and start dreamview and the cyber bridge using the following commands:</p>
-<pre><code class="bash">bootstrap.sh
+<pre><code class="language-bash">bootstrap.sh
 bridge.sh
 </code></pre>
-
 <p>You should not start any modules or interact with dreamview manually. You can view dreamview by navigating to <a href="http://localhost:8888">localhost:8888</a> in a web browser.</p>
 <p>Now you can start an API only simulation and run the Python script below:</p>
-<pre><code class="python">import os
+<pre><code class="language-python">import os
 import lgsvl
 
 SIMULATOR_HOST = os.environ.get(&quot;SIMULATOR_HOST&quot;, &quot;127.0.0.1&quot;)
@@ -762,7 +757,6 @@ dv.setup_apollo(destination.position.x, destination.position.z, modules)
 
 sim.run()
 </code></pre>
-
 <p>Upon successful execution, the Ego vehicle should navigate to a destination on the far side of the map. Note that Apollo setup can take quite a while (often up to 30 seconds) before it is ready for the simulation to be run.</p>
               
             </div>
@@ -815,6 +809,9 @@ sim.run()
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -154,6 +154,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
     <a class="current" href="./">The lgsvl_msgs package</a>
     <ul class="subnav">
     </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -540,7 +556,7 @@
           <div role="main">
             <div class="section">
               
-                <h1><a name="top"></a>lgsvl_msgs</h1>
+                <h1 id="lgsvl_msgs"><a name="top"></a>lgsvl_msgs<a class="headerlink" href="#lgsvl_msgs" title="Permanent link">#</a></h1>
 <p><code>lgsvl_msgs</code> is a ROS / ROS2 hybrid package that provides AD stack agnostic message definitions for interfacing with the SVL Simulator.</p>
 <p>The package contains the following definitions:</p>
 <pre><code>  - Detection3DArray.msg    # A list of 3D detections
@@ -557,50 +573,44 @@
   - Ultrasonic.msg          # Minimum detected distance by an ultrasonic sensor
   - VehicleOdometry.msg     # Odometry for an ego vehicle
 </code></pre>
-
-<h1>Installation</h1>
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h1>
 <p><code>lgsvl_msgs</code> is built by the ROS build farm. Binaries can be installed on Ubuntu as follows:</p>
-<pre><code class="bash">sudo apt update
+<pre><code class="language-bash">sudo apt update
 sudo apt install ros-$ROS_DISTRO-lgsvl_msgs
 </code></pre>
-
 <p><strong>Note:</strong> It may take up to a week for the builds to become available after a release.</p>
-<h1>Building from source</h1>
-<h1>ROS</h1>
+<h1 id="building-from-source">Building from source<a class="headerlink" href="#building-from-source" title="Permanent link">#</a></h1>
+<h1 id="ros">ROS<a class="headerlink" href="#ros" title="Permanent link">#</a></h1>
 <ul>
 <li>Create a catkin workspace for the package and clone the repository into the source folder:</li>
 </ul>
-<pre><code class="bash">    mkdir -p catkin_ws/src
+<pre><code class="language-bash">    mkdir -p catkin_ws/src
     cd catkin_ws/src
     git clone https://github.com/lgsvl/lgsvl_msgs.git
 </code></pre>
-
 <ul>
 <li>Build the package from workspace root:</li>
 </ul>
-<pre><code class="bash">    cd ..
+<pre><code class="language-bash">    cd ..
     catkin_make
 </code></pre>
-
 <ul>
 <li>Source in terminal where rosnodes who publish / subscribe to the messages are running:</li>
 </ul>
-<pre><code class="bash">    source devel/setup.bash
+<pre><code class="language-bash">    source devel/setup.bash
 </code></pre>
-
-<h1>ROS 2</h1>
+<h1 id="ros-2">ROS 2<a class="headerlink" href="#ros-2" title="Permanent link">#</a></h1>
 <ul>
 <li>Clone repository and build with colcon:</li>
 </ul>
-<pre><code class="bash">    git clone https://github.com/lgsvl/lgsvl_msgs.git
+<pre><code class="language-bash">    git clone https://github.com/lgsvl/lgsvl_msgs.git
     cd lgsvl_msgs
     colcon build
 </code></pre>
-
 <ul>
 <li>Source in terminal where rosnodes who publish / subscribe to the messages are running:</li>
 </ul>
-<pre><code class="bash">    source install/setup.bash
+<pre><code class="language-bash">    source install/setup.bash
 </code></pre>
               
             </div>
@@ -609,7 +619,7 @@ sudo apt install ros-$ROS_DISTRO-lgsvl_msgs
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../autoware-instructions/" class="btn btn-neutral float-right" title="ROS (Autoware.AI)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sensor-message-publishing/" class="btn btn-neutral float-right" title="Sensor message publishing">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../simulator-messages/" class="btn btn-neutral" title="Simulator messages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -645,7 +655,7 @@ sudo apt install ros-$ROS_DISTRO-lgsvl_msgs
         <span><a href="../simulator-messages/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../autoware-instructions/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../sensor-message-publishing/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -653,6 +663,9 @@ sudo apt install ros-$ROS_DISTRO-lgsvl_msgs
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
                     
     <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,23 +552,14 @@
           <div role="main">
             <div class="section">
               
-                <h1>2021.2.1 Release Features</h1>
-<h2 id="support-for-external-peds-npcs">Support for external Pedestrians and NPCs <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-external-peds-npcs" title="Permanent link">#</a></h2>
-<p><a href="../../plugins/pedestrian-plugins/">Pedestrians</a> and <a href="../../plugins/npc-plugins/">NPCs</a> are separated from <a href="https://github.com/lgsvl/simulator">simulator</a> and can be loaded from asset bundles. User still has to build <a href="https://github.com/lgsvl/DefaultNPC">NPCs</a> and <a href="https://github.com/lgsvl/Walkers">Pedestrians</a> as external assets with Simulator, as these are still not fully supported from <a href="https://wise.svlsimulator.com">web user interface</a>. Now, users can build their own <a href="../../plugins/npc-plugins/#building-npc-plugins">NPCs</a> and <a href="../../plugins/pedestrian-plugins/#building-pedestrian-plugins">pedestrians</a> with <a href="../../plugins/npc-plugins/#npc-animations">animations</a> more easily with the simulator. 
-We have also added some new NPCs and Pedestrians like Scooters, Bicyclists and Animals. These are available through our binary builds (<a href="https://github.com/lgsvl/simulator/releases/download/2021.2/svlsimulator-windows64-2021.2.zip">win</a>, <a href="https://github.com/lgsvl/simulator/releases/download/2021.2/svlsimulator-linux64-2021.2.zip">linux</a>) only.</p>
-<h2 id="support-for-external-bridges">Support for External Bridges <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-external-bridges" title="Permanent link">#</a></h2>
-<p><a href="../../plugins/bridge-plugins/">Bridges</a> from simulator to Autonomous-Driving or Robotics stack are also separated from <a href="https://github.com/lgsvl/simulator">simulator</a> and can be loaded as asset bundles from the <a href="https://wise.svlsimulator.com">web user interface</a>. Users can now <a href="../../plugins/bridge-plugins/">build</a> their own bridge to SVL Simulator and upload it as an asset bundle to user's <a href="../../user-interface/web/library/">library</a> on web user interface to include in the simulation. Following bridges are supported as default: <a href="https://github.com/lgsvl/ROS">ROS</a>, <a href="https://github.com/lgsvl/ROS2">ROS2</a>, <a href="https://github.com/lgsvl/CyberRT">CyberRT</a> and <a href="https://github.com/lgsvl/LoggingBridge">here</a> is an example of a custom bridge implementation.</p>
-<h2 id="support-for-multiple-versions">Support for multiple versions of asset bundles on web user interface <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-multiple-versions" title="Permanent link">#</a></h2>
-<p>SVL Simulator's cloud based <a href="https://wise.svlsimulator.com">web user interface</a> can now manage and serve content for different <a href="https://github.com/lgsvl/simulator/releases">versions</a> of SVL Simulator. User can now <a href="../../user-interface/web/library/#editing-a-plugin">edit</a> asset bundles for different simulator versions to already <a href="../../user-interface/web/library/#adding-a-plugin">added</a> assets on the web user interface instead of creating duplicate assets per version. The web user interface can confirm validity of asset versions against the simulator version under test before it is run, to avoid simulation failures due to mismatched asset versions.</p>
-<h2 id="support-for-multi-ego">New improved distributed simulation with multi-ego support <a class="wikilink" href="#top">top</a><a class="headerlink" href="#support-for-multi-ego" title="Permanent link">#</a></h2>
-<p>We have made several bug fixes, stability and performance improvements to support running multiple ego vehicles in a <a href="https://www.svlsimulator.com/docs/distributed-simulation/distributed-simulation-introduction/">distributed simulation</a> environment.</p>
-<h2 id="improvements-in-sensor-editor">Multiple improvements in the Interactive 3D sensor configuration editor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#improvements-in-sensor-editor" title="Permanent link">#</a></h2>
-<p>With the 2021.2 release, we have significantly improved the user experience on our new <a href="../../user-interface/web/library/#interacting-with-the-visual-editor">3D sensor configuration editor</a> that helps you create or modify sensor configurations for your vehicles. Some improvements include: better zoom and centering of the vehicle, opacity and grid toggles, axes color updates, mouse based controls, and some critical bug fixes on parent-child sensor transform.</p>
-<h2 id="spectator-ego">Support for simulations without EGO vehicle (Spectator EGO) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#spectator-ego" title="Permanent link">#</a></h2>
-<p><a href="https://github.com/lgsvl/SpectatorEgo">Spectator EGO</a> is an empty Ego vehicle without colliders, geometry, and vehicle dynamics. Use this vehicle when there is no need for Ego to be present during simulation. You can still attach sensors or observe simulation.</p>
-<h2 id="new-cubemap-lidar-improvements">Significant performance improvements on Lidar Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#new-cubemap-lidar-improvements" title="Permanent link">#</a></h2>
-<p>Full rework of Lidar sensor - it will now use cubemap texture instead of a pool of tall, 2D textures. This change fixes artifacts due to tall textures and solid point cloud rendering. This change improves lidar scaling - high beam counts, scans per rotation and frequency, should yield significantly more FPS than previous versions.</p>
-<p><em>Note</em>: Performance improvement is not noticeable if CyberRT is used, due to massive conversion performance cost.</p>
+                <h1 id="202122-release-features">2021.2.2 Release Features<a class="headerlink" href="#202122-release-features" title="Permanent link">#</a></h1>
+<h2 id="indoor-robotics-and-nav2-support">Indoor robotics and Nav2 support<a class="headerlink" href="#indoor-robotics-and-nav2-support" title="Permanent link">#</a></h2>
+<p>This release adds support for indoor robot simulation. Building on top of our default support for ROS 1 and ROS 2, SVL Simulator now enables you to add autonomous mobile robots for indoor environments. </p>
+<p>Previously, SVL Simulator supported autonomous vehicle and simulation use cases with automotive vehicle models and outdoor, HD map-based environments. Now, with a sample indoor environment and support for Unity's ArticulationBody, you can run simulations for your indoor robot scenarios. The first indoor environment we are releasing, LGSeocho, does not have an HD map, and instead enables robots to drive around anywhere on the map floor.</p>
+<p>With support for ArticulationBody-based ego vehicles and robots, you can create more sophisticated ego models that involve more complex physics linkages or dynamics that do not follow the traditional dynamics behaviors of cars. Also, with our example <a href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>, you can see how to modify or create sensor plugins that work directly with your own robot model, by specifying the topics published and subscribed to in order to control your robot(s).</p>
+<p>With SVL Simulator indoor robot support, you will be able to more easily run single and multi-robot simulations to test algorithms for indoor autonomous mobile robot applications that include hospitality, warehouse, and factory robots.</p>
+<p>We have created two new tutorials to help you get started with indoor robotics simulation. </p>
+<p>The <a href="../../tutorials/robotics-pub-sub/">first one</a> walks you through creating a basic simulation where you can directly publish simple control commands with ROS 2. The <a href="../../tutorials/robotics-ros2/">second tutorial</a> builds on this by connecting your robot to the Nav2 navigation stack, enabling you to start modifying and testing your autonomous robot's algorithms for e.g. planning and control.</p>
 <h2 id="bug-fixes-and-improvements">Bug fixes and improvements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">#</a></h2>
 <p>For a full list of bug fixes, improvements, and all other changes since the last release, please see the <a href="../changelog/">release notes</a>.</p>
               
@@ -606,6 +613,9 @@ We have also added some new NPCs and Pedestrians like Scooters, Bicyclists and A
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>

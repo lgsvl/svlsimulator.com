@@ -48,7 +48,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
         <!-- edit link, open in new tab -->
-        <a href="https://svlsimulator.com/docs" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,6 +156,14 @@
                     
     <a class="" href="../ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
     </ul>
 	    </li>
           
@@ -241,6 +249,10 @@
                 <li class="toctree-l3">
                     
     <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
                 </li>
     </ul>
                 </li>
@@ -404,6 +416,10 @@
                     
     <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
                 </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -536,18 +552,18 @@
           <div role="main">
             <div class="section">
               
-                <h1>Modular Testing</h1>
+                <h1 id="modular-testing">Modular Testing<a class="headerlink" href="#modular-testing" title="Permanent link">#</a></h1>
 <p>Our <code>3D Ground Truth sensor</code> and <code>Signal sensor</code> now publish ground truth perception data to Apollo stack via CyberRT bridge or ROS Apollo bridge. The modular testing feature is useful for testing planning module of Apollo stack based on the assumption that the perception output is 100% accurate without any errors. In other words, we can completely bypass Apollo's perception modules (i.e., object detection and traffic light detection) and use ground truth labels for perception published by our simulator instead.</p>
 <h3 id="video-modular-testing-introduction">Video: Modular Testing Introduction<a class="headerlink" href="#video-modular-testing-introduction" title="Permanent link">#</a></h3>
-<p><div class="video-container">
+<div class="video-container">
     <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/Sr-OGw3aGKI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<br></p>
+<p><br></p>
 <h3 id="video-how-to-run-modular-testing-random-traffic-simulation-from-cloud-based-web-ui">Video: How to run modular testing random traffic simulation from cloud-based web UI<a class="headerlink" href="#video-how-to-run-modular-testing-random-traffic-simulation-from-cloud-based-web-ui" title="Permanent link">#</a></h3>
-<p><div class="video-container">
+<div class="video-container">
     <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/7JpxbXf8oZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<br></p>
+<p><br></p>
 <h2 id="sensor-specifications">Sensor Specifications <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-specifications" title="Permanent link">#</a></h2>
 <h3 id="3d-ground-truth-sensor-more-details">3D Ground Truth Sensor <a href="../../simulation-content/sensors-list/#3d-ground-truth">(more details)</a><a class="headerlink" href="#3d-ground-truth-sensor-more-details" title="Permanent link">#</a></h3>
 <p><a href="../../images/modular-testing/full_size_images/ground-truth-sensor.png"><img alt="Ground Truth sensor visualization" src="../../images/modular-testing/ground-truth-sensor.png" /></a></p>
@@ -591,7 +607,7 @@
 </ul>
 <h3 id="sensor-json">Sensor JSON <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-json" title="Permanent link">#</a></h3>
 <p>The following sensor parameters can be added to a vehicle sensor configuration (and can replace the LiDAR and camera sensors which will improve simulation performance). Refer to <a href="../../user-interface/web/library/#vehicles">Vehicles in My Library</a> for more information on vehicle sensor configuration.</p>
-<pre><code class="JSON">  {
+<pre><code class="language-JSON">  {
     &quot;type&quot;: &quot;PerceptionSensor3D&quot;,
     &quot;name&quot;: &quot;3D Ground Truth&quot;,
     &quot;params&quot;: {
@@ -626,7 +642,6 @@
     }
   }
 </code></pre>
-
 <h2 id="how-to-run-apollo-modular-testing-on-gomentumdtl-map-top-how-to-run-apollo-modular-testing-on-gomentumdtl-map-data-toc-labelhow-to-run-apollo-modular-testing-on-gomentumdtl-map">How to Run Apollo Modular Testing on <em>GoMentumDTL</em> Map <a class="wikilink" href="#top">top</a> {: #how-to-run-apollo-modular-testing-on-<em>gomentumdtl</em>-map data-toc-label='How to Run Apollo Modular Testing on <em>GoMentumDTL</em> Map'}<a class="headerlink" href="#how-to-run-apollo-modular-testing-on-gomentumdtl-map-top-how-to-run-apollo-modular-testing-on-gomentumdtl-map-data-toc-labelhow-to-run-apollo-modular-testing-on-gomentumdtl-map" title="Permanent link">#</a></h2>
 <ul>
 <li>Configure and run simulator<ul>
@@ -716,6 +731,9 @@
     <script src="../../js/theme.js" defer></script>
       <script src="../../javascripts/clipboard.js" defer></script>
       <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../../search/main.js" defer></script>
 
 </body>
