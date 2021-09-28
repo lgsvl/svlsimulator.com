@@ -5,14 +5,14 @@ date: N/A
 
 ### 1. Governing Terms and Acceptance
 
-These Terms of Use (“Terms”) govern your use of the SVL Simulator website located at [www.svlsimulator.com](https://www.svlsimulator.com) (“Website”) and all services, software, and related products provided to you on, from, or through the Website (collectively “Simulator Services”) by Zenith Electronics, LLC, a subsidiary of LG Electronics USA, Inc “LG”).
+These Terms of Use (“Terms”) govern your use of the SVL Simulator website located at [www.svlsimulator.com](https://www.svlsimulator.com) (“Website”) and all services, software, and related products provided to you on, from, or through the Website (collectively “Simulator Services”) by Zenith Electronics LLC, a subsidiary of LG Electronics USA, Inc. “LG”).
 
 For purposes of these Terms, “We” or “Us” refers to LG and “You” and “Your” refer to you, the individual accessing, browsing, or registering to use the Simulator Services, or your employer or other entity for whose benefit you act, as applicable.
 
 PLEASE NOTE: THESE TERMS CONTAIN AN ARBITRATION REQUIREMENT. EXCEPT WHERE PROHIBITED BY LAW, SUCH PROVISIONS REQUIRE YOU TO ARBITRATE ANY CLAIMS YOU MAY HAVE AGAINST LG AND MEANS THAT YOU WILL NOT HAVE, AND YOU WAIVE, THE RIGHT FOR A JUDGE OR JURY TO DECIDE YOUR CLAIMS. PLEASE SEE SECTION 13.2 BELOW FOR MORE INFORMATION. IF YOU DO NOT AGREE TO THIS ARBITRATION REQUIREMENT, PLEASE DO NOT ACCESS OR USE THE SIMULATOR SERVICES.
 
 BY USING ANY PORTION OF THE SIMULATOR SERVICES, YOU ARE AGREEING AND WARRANTING THAT YOU HAVE
- 
+
 READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS.
 
 ### 2. Your Account
@@ -29,7 +29,7 @@ LG’s privacy policy details and explains how We treat and protect Your Persona
 
 ### 4. Misuse of the Simulator Services
 
-You agree not to misuse the Simulator Services . You agree that, You must not: (i) upload, publish, transmit, or disseminate any information or content on or via the Simulator Services that is:
+You agree not to misuse the Simulator Services. You agree that, You must not: (i) upload, publish, transmit, or disseminate any information or content on or via the Simulator Services that is:
 - a. Unlawful or tortious;
 - b. Defamatory or libelous;
 - c. Vulgar or obscene;
@@ -82,18 +82,26 @@ The above information must be submitted to the LG designated Copyright Agent:
 
 ##### 7.1 The Simulator Software
 
-When You use the Simulator Services, LG permits You to download the simulator software and accompanying documentation, code, and content owned or provided by LG (the “Simulator Software”). Your use of the Software is governed by the Simulator Software License Agreement, which is hereby incorporated and made part of these Terms by reference. You can find the Simulator Software License Agreement by clicking
-[https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE](https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE).
+When You use the Simulator Services, LG permits You to download the simulator software and accompanying documentation, code, and content owned or provided by LG (the “Simulator Software”). Your use of the Software is governed by the Simulator Software License Agreement, which is hereby incorporated and made part of these Terms by reference. You can find the Simulator Software License Agreement by clicking [https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE](https://raw.githubusercontent.com/lgsvl/simulator/master/LICENSE).
 
-##### 7.2	License From You ("User Content License")
 
-Unless otherwise agreed in a separate license and subject to any limitations in your licensing rights, You hereby acknowledge and agree that We and our designees have a non-exclusive, sub-licensable, transferable, royalty-free, worldwide, perpetual, and irrevocable license to use, reproduce, modify, adapt, publicly display, publish, create derivative works from, transmit, distribute, and otherwise exploit any Content uploaded, published, transmitted, or disseminated by You to the Simulator Services, in any media now known or hereafter developed, without compensation or notice to You, or any right of prior review or approval. 
+##### 7.2	License From You – General Content ("User General Content License")
+
+Unless otherwise agreed in a separate license and subject to any limitations in your licensing rights, You hereby acknowledge and agree that We and our designees have a non-exclusive, sub-licensable, transferable, royalty-free, worldwide, perpetual, and irrevocable license to use, reproduce, modify, adapt, publicly display, publish, create derivative works from, transmit, distribute, and otherwise exploit any Content uploaded, published, transmitted, or disseminated by You to the Simulator Services, that is not designated as “Premium”, in any media now known or hereafter developed, without compensation or notice to You, or any right of prior review or approval.
 
 In addition to the above granted license to LG, You may also choose at the time you upload any Content to the Simulator Services to make such Content “private” and in such cases the Content will not be available to be used by any other user of the Simulator Services but You, or You may designate the Content as available to only selected users of the Simulator Services, or You may designate such Content as “public” and available to all users of the Simulator Services.
 
-As used in this section,”Content” shall include, but not be limited to 3D environments, vehicle models, HD maps, sensor configurations, configuration files, scenarios, plugins, and Simulation Test Results.  Content could be user created content or 3rd party licensed or open source content.
+As used in this Section 7, ”Content” shall include, but not be limited to 3D environments, vehicle models, HD maps, sensor configurations, configuration files, scenarios, plugins, runners and Simulation Test Results. Content could be user created content or 3rd party licensed or open source content.
 
-##### 7.3 Proprietary Rights
+##### 7.3. License From You – Premium Content ("User Premium Content License")
+
+Any Content that You upload, publish, transmit, or disseminate to the Simulator Services and designate as “Premium” will be subject to following license terms: 
+
+Unless otherwise agreed in a separate agreement and subject to any limitations in your licensing rights, You hereby acknowledge and agree that We and our designees have a non-exclusive, non-sublicensable, non-transferable, royalty-free, worldwide, perpetual, and irrevocable license to store, transmit, and redistribute any Content uploaded, published, transmitted, or disseminated by You to the Simulator Services and designated as “Premium”, to satisfy Your use of the Simulator Services. 
+
+In addition, unless you list any specialized licensing rights with your Premium Content, You hereby acknowledge and agree that users of the Simulator Services have a non-exclusive, non-sublicensable, non-transferable, royalty-free, worldwide, perpetual, and irrevocable license to store, transmit, and redistribute Your Premium Content. For the avoidance of doubt, this license will extend to any use of Your Premium Content by users within the Simulator Services should You permit such use.
+
+##### 7.4 Proprietary Rights
 
 The content and materials contained on the Website and Simulator Services are protected by the applicable trademark and copyright laws.
 
@@ -110,6 +118,8 @@ You agree that if You provide LG with comments concerning the Simulator Services
 9.2 We strive to provide You with the best services possible. Therefore, You acknowledge and agree that our Simulator Services may be modified, withdrawn, or updated from time to time without prior notice to You and that such updates and modifications may adversely affect the manner in which You access or communicate with the Simulator Services.
 
 9.3 You also acknowledge and agree that LG may, in its sole discretion and for any reason, terminate Your account or Your access to the Website and/or the Simulator Services, unless otherwise agree, in writing, by LG. You agree that any termination of Your access may be without prior notice, and You agree that LG will not be liable to You or any third party.
+
+9.4 We reserve the right to change or update these Terms from time to time in Our sole discretion. When We do, We will revise the "last update" date at the top of these Terms and, if material changes are made, We will notify You by placing a prominent notice on the Services or via email at the email address We have on file for You. We encourage You to periodically review these Terms. Your continued use of the Simulator Services marks Your acceptance to any updated Terms.
 
 ### 10. EXCLUSION OF WARRANTIES
 
@@ -140,3 +150,7 @@ Except where prohibited by law, You will indemnify, defend, or at its option set
 13.3 No waiver by LG of any covenant or right under the Terms will be effective unless memorialized in a writing duly authorized by LG.
 
 13.4 You acknowledge and hereby agree that the invalidity or unenforceability of any provision of the Terms shall not affect the validity or enforceability of any other sections of the Terms, which shall remain in full force and effect.
+
+***
+
+Last updated: September 28, 2021

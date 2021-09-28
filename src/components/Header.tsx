@@ -1,4 +1,4 @@
-import { withTheme } from '@material-ui/core';
+import { fade, withTheme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Button, { ButtonProps } from '@material-ui/core/Button';
@@ -17,6 +17,7 @@ import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import Toolbar from '@material-ui/core/Toolbar';
+import Typography, { TypographyProps } from '@material-ui/core/Typography';
 import React from 'react';
 import { RequestDemoFormMode } from 'src/@types/shared.d';
 import { useTranslation } from 'src/hooks/useTranslations';
@@ -25,6 +26,16 @@ import { LinkButton, LinkButtonProps, RequestDemoButton } from './Button';
 import EntranceAnimation from './EntranceAnimation';
 import { IconSVLSimulator, IconMenu, IconX } from './Icons';
 import Link from './Link';
+
+// Temporary notice banner
+const Notice = withTheme(styled(Typography)`
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid ${fade('#8b93ac', 0.6)};
+  color: #8b93ac;
+  font-size: 0.9rem;
+  background-color: #151925;
+`) as React.FC<TypographyProps>;
 
 const buttonColors = css`
   font-size: 16px;
@@ -380,6 +391,9 @@ interface HeaderProps {
 
 const Header = React.forwardRef<unknown, HeaderProps>(({ animate, ...rest }, ref) => (
   <AppBar position='fixed' color='default' {...rest} elevation={0} ref={ref}>
+    <Notice display='block'>
+      <strong>Notice:</strong> Terms of use have been updated. <Link to='/terms'>Read more.</Link>
+    </Notice>
     <Toolbar component='nav'>
       <EntranceAnimation disabled={!animate} reverse delay={0.4}>
         <NavGrid container alignItems='center' justify='space-between'>
