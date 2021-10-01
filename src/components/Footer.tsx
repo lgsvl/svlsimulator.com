@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
         {t('main.footer.social')}
       </Typography>
       <List>
-        <FooterLink primary={t('main.links.twitter')} to='https://twitter.com/LGSVLSimulator' />
+        <FooterLink primary={t('main.links.twitter')} to='https://twitter.com/SVLSimulator' />
         <FooterLink primary={t('main.links.youtube')} to='https://www.youtube.com/channel/UChrPZIYAnKEKiQjmPmBwPKA' />
       </List>
     </>
