@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Sensor message publishing - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Sensor message publishing";
+    var mkdocs_page_input_path = "system-under-test/sensor-message-publishing.md";
+    var mkdocs_page_url = "/docs/system-under-test/sensor-message-publishing/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sut-introduction/">Introduction</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Sensor message publishing</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Messages &raquo;</li>
+        
+      
+        
+          <li>System Under Test &raquo;</li>
+        
+      
+    
+    <li>Sensor message publishing</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/system-under-test/sensor-message-publishing.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="sensor-message-publishing">Sensor Message Publishing<a class="headerlink" href="#sensor-message-publishing" title="Permanent link">#</a></h1>
+<h2 id="overview">Overview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>One of the main functionalities of SVL Simulator is its ability to work with third-party tools, which include autonomous driving systems. Simulator provides output from virtual sensors that can be received and parsed by tools like Apollo or Autoware.Auto. Third-party systems can then provide instructions back to Simulator, which will execute them on virtual vehicle. The whole communication aims to be indistinguishable from its real-world equivalent, which means that each message sent and received by Simulator follows the data format expected by third party tools.</p>
+<p>Since multiple bridge plugins are supported, all the sensor plugins have to be bridge-agnostic. Plugins can check if the bridge is connected and decide when and what to send, but do not know the bridge type, and therefore its expected format. This splits responsibility for publishing a message between two plugin types:</p>
+<ul>
+<li>Sensor prepares data in bridge-agnostic format and requests for it to be sent</li>
+<li>Bridge converts message to bridge-specific format and sends it</li>
+</ul>
+<p>This article covers subjects of creating and dispatching bridge messages from sensor plugins. For details about creating new sensor plugins, see <a href="../../plugins/sensor-plugins/">sensor plugins</a> page.</p>
+<p>If you're creating a bridge plugin and want to make sure that sensor data is properly handled, see <a href="../../plugins/sensor-plugins/">sensor plugins</a> page.</p>
+<h2 id="sensor-data-types">Sensor data types <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sensor-data-types" title="Permanent link">#</a></h2>
+<p>Data types for sensors don't have to follow any particular guidelines, but next to the data that sensor produces, you should consider including fields that might be required by some bridge plugins. Often used examples include timestamp or sequential message number. You do not need to worry about how bridge plugin will consume this data - just make sure all the fields have public read accessors.</p>
+<p>If your sensor produces small amount of data that's easy to convert, you can decide to call the <a href="#bridge-registration">publishing delegate</a> directly and perform the whole operation synchronously. If instead you opt to use asynchronous approach (see <a href="#asynchronous-publishing">asynchronous publishing</a>), you have to be aware about including any reused, heap-allocated resources (e.g. single large buffer included in each message), since the order of updating and accessing data from multiple threads will not be defined.</p>
+<p>Probably the most common examples that would call for reused resources are large array buffers. Of course it's possible to allocate completely new array for each message, but this would add unnecessary work for garbage collector and could affect performance. You might consider using pool of pre-allocated buffers, and while it's certainly possible to do so, you would have to depend on callbacks to track which buffers are actively in use. Fortunately, there is a built-in, simpler way to handle this kinds of cases.</p>
+<p>If you want to reuse resources and use asynchronous publishing, your data type should be a class, provide parameterless constructor, and implement the <code>IThreadCachedBridgeData</code> interface. This interface defines only a single method: <code>CopyToCache</code>. Your implementation should perform a full deep copy of current instance data into the container of the same type, provided through parameter. Provided target instance is part of a pooling system that will make sure this data will not be accessed again until conversion and publishing on the bridge side are complete. This means only one thread will ever access it at a time, and you don't have to worry about thread safety. Implementing this interface is enough to enable this functionality and no further changes are required on sensor side, as long as you're using <code>BridgeMessageDispatcher</code> (see <a href="#asynchronous-publishing">asynchronous publishing</a> section for details).</p>
+<p>The instance provided by <code>IThreadCachedBridgeData</code> interface is persistent, pooled resource. Depending on previous usage, its fields may or may not be initialized - make sure to clear any optional fields. If you're using arrays, consider storing valid data size in separate parameter - it would allow you to use larger arrays to store varying amounts of data without the need to reallocate them every single time.</p>
+<p>For an example of <code>IThreadCachedBridgeData</code> interface usage, see <code>Simulator.Bridge.Data.PointCloudData</code> type in Simulator repository. This example includes good practices described above.</p>
+<h2 id="asynchronous-publishing">Asynchronous publishing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#asynchronous-publishing" title="Permanent link">#</a></h2>
+<p>When you expect the conversion process to take a long time, you might want to avoid occupying main thread of the application, and perform the process asynchronously. You might also consider using multiple threads to increase overall processing speed. Both of these cases, and more, are covered by the <code>BridgeMessageDispatcher</code> class. Its default instance is created for each simulation and is accessible through the class' static field <code>Instance</code>. Note that this instance only exists during simulation.</p>
+<p>Interacting with the message dispatcher is simplified to a single method, <code>TryQueueTask</code>. Its signature and detailed description can be found below.</p>
+<pre><code class="language-c#">public bool TryQueueTask&lt;T&gt;(
+    Publisher&lt;T&gt; publisher,
+    T data,
+    Action&lt;bool&gt; callback = null,
+    object exclusiveToken = null) where T : class, new()
+</code></pre>
+<p>Parameters:</p>
+<ul>
+<li><code>publisher</code> - Publisher delegate for active bridge, created by calling <code>AddPublisher&lt;T&gt;(Topic)</code> on bridge instance. See <a href="#bridge-registration">bridge registration</a> section for an example.</li>
+<li><code>data</code> - Sensor data to convert and send. If type of the data implements <code>IThreadCachedBridgeData</code> interface, thread-exclusive cache will be used to store copy of the data. Original data will never be accessed by worker thread in such case. See <a href="#sensor-data-types">sensor data types</a> section for more details.</li>
+<li><code>callback</code> (optional) - Delegate that will be called after conversion and publishing process was resolved. This will always be executed, but if delegate boolean parameter is set to <code>false</code>, the process has failed. See <a href="#callback">callback</a> section for more information.</li>
+<li><code>exclusiveToken</code> (optional) - Token used to enforce exclusivity for given task. Only one publishing process with the same token can be active or queued at a time - new requests with the same token will be dropped. See <a href="#exclusive-publishing">exclusive publishing</a> section for more details.</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>bool</code> - True if message was enqueued and is expected to be converted and sent. False if it was immediately dropped for any reason (see <a href="#dropping-messages">dropping messages</a> section for a list of possible causes).</li>
+</ul>
+<h3 id="multi-threading">Multi-threading <a class="wikilink" href="#top">top</a><a class="headerlink" href="#multi-threading" title="Permanent link">#</a></h3>
+<p><code>BridgeMessageDispatcher</code> internally manages a number of background threads that execute conversion and publishing code defined in bridge plugins. By default, only a single background thread is running, but dispatcher will automatically spawn new ones if the queue is not expected to be unloaded in a single cycle. Maximum number of worker threads is defined by logical core count of your CPU. If one or more threads are idle for a while, thread count will be reduced. This means that threads will be scaled up and down dynamically, based on current bridge data throughput.</p>
+<p>It's possible for extreme situations to occur, in which thread count reached its limit and yet queue size keeps growing. This can happen if large messages requiring long processing are send very often. At this stage CPU is usually close to 100% utilization on all cores and not much can be done. In this situation, dispatcher will block main thread execution until one of worker threads is finished with its work. This will usually severely reduce framerate, so you should consider reducing bridge data throughput or using more powerful CPU at that stage. Warning is displayed when this situation occurs.</p>
+<h3 id="dropping-messages">Dropping messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#dropping-messages" title="Permanent link">#</a></h3>
+<p>There are situations in which calling <code>TryQueueTask</code> will not publish the data. <code>BridgeMessageDispatcher</code> considers message as published when publisher delegate for active bridge finishes execution without throwing any exception. Note that this doesn't always mean that message was properly received, or even sent. This is heavily dependent on bridge implementation. If you're implementing your own bridge, it's suggested to throw exception whenever something goes wrong with publishing process. <code>BridgeMessageDispatcher</code> class will catch the exception, allow sensor to react to it, and display it in console. The exception will not be thrown again to prevent worker thread from crashing.</p>
+<p>For standard causes of dropping messages (unrelated to bridge implementation), consult the list below. Most of them will occur when enqueuing attempt happens, in which case <code>TryQueueTask</code> will return <code>false</code>. If task was enqueued correctly, and problem occurred during delegate execution, <code>TryQueueTask</code> will return true, but the problem still can be reacted to through <a href="#callback">callback</a>.</p>
+<ul>
+<li>
+<p>Time is paused (<code>TryQueueTask</code> returns <code>false</code>, callback executes with <code>false</code>)</p>
+<p>If time in simulation is paused, every module should hold its execution. If sensor ignores time state and attempts to publish data during pause, message will be dropped.</p>
+</li>
+<li>
+<p>Exclusive token is already in use (<code>TryQueueTask</code> returns <code>false</code>, callback executes with <code>false</code>)</p>
+<p>Message with the same token is either queued or being processed. See <a href="#exclusive-publishing">exclusive publishing</a> for details about token usage.</p>
+</li>
+<li>
+<p>Exception was thrown by publisher delegate (<code>TryQueueTask</code> returns <code>true</code>, callback executes with <code>false</code>)</p>
+<p>Reasons for exception occurring at this stage are dependent on bridge type. Possible causes include lack of compatible publisher, errors during conversion process or problems with connection. For more details check console (if you're running Simulator in Unity Editor) or application logs.</p>
+</li>
+</ul>
+<h3 id="callback">Callback <a class="wikilink" href="#top">top</a><a class="headerlink" href="#callback" title="Permanent link">#</a></h3>
+<p>When attempting to enqueue bridge message, you can provide optional delegate (<code>callback</code>) with a single boolean parameter. This delegate will always be invoked, even if message was dropped immediately and never enqueued. If bridge properly executed publisher delegate, <code>callback</code> will be invoked with <code>true</code> passed as its parameter. Details depends on bridge implementation, but this usually means that message was properly converted and sent. If message was dropped for any reason (see <a href="#dropping-messages">dropping messages</a>), or if exception was thrown anywhere in publisher delegate code, <code>callback</code> will be invoked with <code>false</code> passed as its parameter.</p>
+<p>Some uses of the callback include cleaning up resources after message is published, reacting to expected failures, or waiting for very expensive bridge operations to finish before continuing with sensor work.</p>
+<h3 id="exclusive-publishing">Exclusive publishing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#exclusive-publishing" title="Permanent link">#</a></h3>
+<p>There are use cases in which multi-threaded character of the publishing process, mixed with unknown processing times, can have undesired implications. If, for example, you enqueue two subsequent messages with timestamps, older message might, in theory, finish publishing later. If message order is critical and you want to enforce it, there are a few options:</p>
+<ul>
+<li>publish messages synchronously - will block main thread</li>
+<li>publish using your own, single background thread - requires synchronization between main thread (that can access time) and background thread</li>
+<li>use callbacks, start new publishing process when previous finishes</li>
+<li>provide exclusive token</li>
+</ul>
+<p>While all options are viable, providing exclusive token is probably the easiest solution if synchronous execution is undesired.</p>
+<p>The exclusive token can be an instance of any object. Its purpose is simple - only one publish request with individual token can be active at a time. If you call <code>TryQueueTask</code> and provide exclusive token, two things can happen:</p>
+<ul>
+<li>if another request using the same token is currently active, message is immediately dropped and <code>TryQueueTask</code> returns <code>false</code></li>
+<li>if the token is not used by any of the active requests, message is processed as usual - if it's not dropped for different reason, message is enqueued, token becomes active and <code>TryQueueTask</code> returns <code>true</code></li>
+</ul>
+<p>The token becomes active immediately when request using it becomes enqueued, and becomes inactive when publish delegate execution either succeeds or crashes. If you provide the exclusive token, messages using it will always be published in chronological order, although their frequency depends on conversion time and queue load.</p>
+<p>Please note that using the exclusive token will drop already prepared message. If the performance cost of preparing the message is significant, you should consider using <a href="#callback">callback</a> instead to wait for previous message to finish publishing before preparing the next one.</p>
+<h2 id="frequency-based-publishing">Frequency-based publishing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#frequency-based-publishing" title="Permanent link">#</a></h2>
+<p>Many sensors have predefined frequency at which they collect and publish data. If your sensor is supposed to work with a set frequency, the easiest way to achieve this is to use <code>FrequencySensorBase</code>.</p>
+<p><code>FrequencySensorBase</code> is an abstract class that preserves all standard <code>SensorBase</code> class behavior, but provides functionality that is supposed to simplify, or even completely remove any need for time tracking in your sensor code.</p>
+<p>When you create sensor derived from <code>FrequencySensorBase</code> class, you will need provide implementation for its abstract member, <code>UseFixedUpdate</code>. It's boolean property with only a read accessor. Simply make it return <code>false</code> if you want to use standard update loop, or <code>true</code> if your use case depends on using Unity's <code>FixedUpdate</code> loop. For vast majority of cases, using standard update loop should be enough.</p>
+<p>In both cases sensor updates will happen with set frequency, but you shouldn't expect perfect intervals. Your code will be executed when either <code>Update</code> (with intervals dependent on framerate) or <code>FixedUpdate</code> (with fixed intervals, 10 ms default in SVL Simulator) is executed by Unity. In both cases, most of the updates in the loop are ignored, and the ones closest to sensor intervals are chosen. Your code will be executed at that point.</p>
+<p>Sensor frequency is defined through <code>Frequency</code> parameter. It's marked as sensor parameter, and therefore will be visible among sensor settings. See <a href="../../plugins/sensor-plugins/">sensor plugins</a> page for more information about sensor parameters. Frequency is based on simulation time, so sensor will handle pause or non-realtime mode properly.</p>
+<p>Last thing that has to be done is overriding <code>SensorUpdate</code> method. Code inside will be executed with set frequency, unless simulation is paused. If you need to use either <code>Update</code> or <code>FixedUpdate</code> method directly, you can override them too, but remember to call their base implementation before your code.</p>
+<p>For an example of <code>FrequencySensorBase</code> usage, see <a href="#publishing-with-set-frequency">publishing with set frequency</a> section.</p>
+<h2 id="code-examples">Code examples <a class="wikilink" href="#top">top</a><a class="headerlink" href="#code-examples" title="Permanent link">#</a></h2>
+<p>Snippets presented here are intended to explain parts of the sensor code responsible for message publishing. Large parts of the sensor code are omitted - see <a href="../../plugins/sensor-plugins/">sensor plugins</a> page for more complete examples.</p>
+<h3 id="custom-sensor-data-type">Custom sensor data type <a class="wikilink" href="#top">top</a><a class="headerlink" href="#custom-sensor-data-type" title="Permanent link">#</a></h3>
+<p>This example shows data type that supports thread-side caching through <code>IThreadCachedBridgeData</code> interface (see <a href="#sensor-data-types">sensor data types</a> for details).</p>
+<p><code>array</code> field in this use case will contain reference to persistent buffer used by sensor. The same buffer is passed for all messages. For the sake of this example, let's assume that buffer size is constant, but data size is not. <code>dataSize</code> field will contain size of valid data in the buffer. Check <a href="#publishing-using-exclusive-token">one of publishing examples</a> below to see how data is prepared.</p>
+<pre><code class="language-c#">public class FloatArray : IThreadCachedBridgeData&lt;FloatArray&gt;
+{
+    // Array reference passed from sensor. Shared across multiple messages.
+    public float[] array;
+
+    // Specifies size of valid data in array.
+    public int dataSize;
+
+    // Timestamp that is required by receiving side.
+    public double timestamp;
+
+    // Method defined by IThreadCachedBridgeData interface.
+    // This will be called internally by BridgeMessageDispatcher before enqueuing message.
+    // Parameter target contains instance provided by pooling system.
+    // Implementation must perform deep copy from current instance to target.
+    public void CopyToCache(FloatArray target)
+    {
+        // If array in target instance was not initialized or is too small, allocate new one.
+        if (target.array == null || target.array.Length &lt; dataSize)
+            target.array = new float[dataSize];
+
+        // Copy all valid data to array in target instance.
+        // Data beyond dataSize (if present) has undefined value, so it's skipped.
+        Array.Copy(array, target.array, dataSize);
+
+        // Value types can be simply assigned in target instance.
+        target.dataSize = dataSize;
+        target.timestamp = timestamp;
+    }
+}
+</code></pre>
+<h3 id="bridge-registration">Bridge registration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bridge-registration" title="Permanent link">#</a></h3>
+<p>During initialization process, each sensor must define its expected interactions with bridge.</p>
+<p><code>OnBridgeSetup</code> is an abstract method defined in <code>SensorBase</code> class, that is invoked once for each sensor if bridge instance is present. Each sensor must implement it. You can use it to get reference to the bridge instance and register publisher (or subscriber) of your data type. Delegate returned by <code>AddPublisher</code> method is responsible for converting and publishing messages.</p>
+<p>Data type used for this example (<code>FloatArray</code>) is described in <a href="#custom-sensor-data-type">its own section</a>. Note that bridge plugin must implement conversion between this type and its own, bridge-specific message format. You can find more information about bridge plugin implementation on the <a href="../../plugins/bridge-plugins/">bridge plugins</a> page.</p>
+<pre><code class="language-c#">// Declare sensor name and types of data that it will publish over the bridge.
+[SensorType(&quot;Float Array Sensor&quot;, new[] {typeof(FloatArray)})]
+public class FloatArraySensor : SensorBase
+{
+    // Field used to store reference to the bridge instance.
+    BridgeInstance Bridge;
+
+    // Field used to store publisher delegate.
+    Publisher&lt;ClockData&gt; Publish;
+
+    // OnSetupBridge will be called during initialization if any bridge is present.
+    public override void OnBridgeSetup(BridgeInstance bridge)
+    {
+        // Store reference to bridge instance so we can track its state.
+        Bridge = bridge;
+
+        // Register publisher of FloatArray data type for the bridge.
+        // Returned delegate can be used to convert and publish messages.
+        Publish = bridge.AddPublisher&lt;FloatArray&gt;(Topic);
+    }
+
+    // Visualization and sensor update code is omitted in this example.
+    [...]
+}
+</code></pre>
+<h3 id="publishing-using-exclusive-token">Publishing using exclusive token <a class="wikilink" href="#top">top</a><a class="headerlink" href="#publishing-using-exclusive-token" title="Permanent link">#</a></h3>
+<p>This example shows how custom data can be published using <a href="#exclusive-publishing">exclusive token</a> - it assumes that message order is critical and enforces it by dropping any messages until previously enqueued one is published.</p>
+<p>Since <code>array</code> used as buffer is reused every frame, <a href="#custom-sensor-data-type">data type</a> in this example utilizes <a href="#sensor-data-types">thread-side caching</a>. Exact time that conversion and publishing will take is unknown, so there's a risk that this data might be overwritten before conversion finishes. Using data type that supports caching is invisible from sensor code (as shown below), but all cross-thread access issues - like the one mentioned - are mitigated.</p>
+<pre><code class="language-c#">// Declare sensor name and types of data that it will publish over the bridge.
+[SensorType(&quot;Float Array Sensor&quot;, new[] {typeof(FloatArray)})]
+public class FloatArraySensor : SensorBase
+{
+    // Field used to store reference to the bridge instance.
+    BridgeInstance Bridge;
+
+    // Field used to store publisher delegate.
+    Publisher&lt;ClockData&gt; Publish;
+
+    // Preallocated array used as a buffer.
+    public float[] array;
+
+    // Update is called every frame.
+    private void Update()
+    {
+        // Theoretical method that would calculate output for this sensor.
+        // This is executed even if bridge is not connected, as data might be used inside Simulator.
+        // Data is put in array. Since data size is dynamic, and array is not, dataSize stores valid data count.
+        PrepareSensorData(array, out var dataSize);
+
+        // Check if bridge exists and is currently connected.
+        if (Bridge is {Status: Status.Connected})
+        {
+            // Fetch current time from simulation manager.
+            var time = SimulatorManager.Instance.CurrentTime;
+
+            // Create data object for new message. Note that persistent buffer is passed as reference.
+            var data = new FloatArray {array = array, dataSize = dataSize, timestamp = time};
+
+            // Try enqueueing publish request. Instance of this sensor is used as exclusive token.
+            // If simulation is paused or token is already in use, this message will be dropped.
+            // Sensor doesn't care whether message dropped or not, so returned value is ignored.
+            BridgeMessageDispatcher.Instance.TryQueueTask(Publish, data, this);
+        }
+    }
+
+    // Initialization and visualization code is omitted in this example.
+    [...]
+}
+</code></pre>
+<h3 id="publishing-with-set-frequency">Publishing with set frequency <a class="wikilink" href="#top">top</a><a class="headerlink" href="#publishing-with-set-frequency" title="Permanent link">#</a></h3>
+<p>This example shows how <code>FrequencySensorBase</code> can be used to calculate and publish data with set interval. See <a href="#frequency-based-publishing">frequency-based publishing</a> section for details.</p>
+<p>Similar to previous example, used data type utilizes <a href="#sensor-data-types">thread-side caching</a> to prevent simultaneous access from multiple threads to <code>array</code> buffer.</p>
+<pre><code class="language-c#">// Declare sensor name and types of data that it will publish over the bridge.
+// Sensor type is derived from FrequencySensorBase instead of usual SensorBase.
+[SensorType(&quot;Float Array Sensor&quot;, new[] {typeof(FloatArray)})]
+public class FloatArraySensor : FrequencySensorBase
+{
+    // Field used to store reference to the bridge instance.
+    BridgeInstance Bridge;
+
+    // Field used to store publisher delegate.
+    Publisher&lt;ClockData&gt; Publish;
+
+    // Preallocated array used as a buffer.
+    public float[] array;
+
+    // FixedUpdate is not required - standard update loop will be used.
+    protected override bool UseFixedUpdate =&gt; false;
+
+    // SensorUpdate is executed with frequency defined by Frequency sensor parameter in base class.
+    // Frequency is based on simulation time, so pause or non-realtime mode will be handled properly.
+    private override void SensorUpdate()
+    {
+        // Theoretical method that would calculate output for this sensor.
+        // This is executed even if bridge is not connected, as data might be used inside Simulator.
+        // Data is put in array. Since data size is dynamic, and array is not, dataSize stores valid data count.
+        PrepareSensorData(array, out var dataSize);
+
+        // Check if bridge exists and is currently connected.
+        if (Bridge is {Status: Status.Connected})
+        {
+            // Fetch current time from simulation manager.
+            var time = SimulatorManager.Instance.CurrentTime;
+
+            // Create data object for new message. Note that persistent buffer is passed as reference.
+            var data = new FloatArray {array = array, dataSize = dataSize, timestamp = time};
+
+            // Try enqueueing publish request. This will always succeed, as both requirements are met:
+            // - time is not paused (SensorUpdate wouldn't be called if it was)
+            // - optional exclusive token is not provided
+            BridgeMessageDispatcher.Instance.TryQueueTask(Publish, data);
+        }
+    }
+
+    // Initialization and visualization code is omitted in this example.
+    [...]
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../autoware-instructions/" class="btn btn-neutral float-right" title="ROS (Autoware.AI)">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lgsvl-msgs/" class="btn btn-neutral" title="The lgsvl_msgs package"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../lgsvl-msgs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../autoware-instructions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

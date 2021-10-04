@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -384,7 +422,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -420,6 +466,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -617,6 +677,119 @@ void AddPublisherCreator&lt;DataType&gt;(PublisherCreator&lt;DataType&gt; publis
 <p>Additionally, custom sensor plugins may choose to call your bridge <code>RegPublisher</code> and <code>RegSubscriber</code> methods to add custom data types they which to publish or subscribe. Please refer to <code>ComfortSensor</code> and <code>LaneFollowingSensor</code> sensor plugins for examples of this functionality.</p>
 <h2 id="registering-plugin-with-web-ui">Registering Plugin with Web UI <a class="wikilink" href="#top">top</a><a class="headerlink" href="#registering-plugin-with-web-ui" title="Permanent link">#</a></h2>
 <p>All bridge plugins must be registered with the SVL Simulator Web UI to be usable. This currently needs to be done manually by <a href="mailto:contact@svlsimulator.com">contacting us</a>.</p>
+<p>Custom bridge should have same name in the followings: a folder, a file, a class.</p>
+<ol>
+<li>Rename folder name.</li>
+</ol>
+<p><code>cd Simulator/Assets/External/Bridges
+   mv ROS2 ROS2CustomBridge</code></p>
+<ol>
+<li>Rename file name.</li>
+</ol>
+<p><code>cd ROS2CustomBridge
+   mv ROS2.cs ROS2CustomBridge.cs</code></p>
+<ol>
+<li>Rename class and bridge name. The following diff block shows how to register ROS2CustomBridge renamed from ROS2.</li>
+</ol>
+<p>```diff
+   --- a/ROS2.cs
+   +++ b/ROS2CustomBridge.cs</p>
+<pre><code>       Publish = 3,
+    }
+</code></pre>
+<ul>
+<li>public partial class Ros2BridgeInstance : IBridgeInstance</li>
+<li>public partial class ROS2CustomBridge : IBridgeInstance</li>
+</ul>
+<p>...</p>
+<pre><code>        public Status Status { get; private set; } = Status.Disconnected;
+</code></pre>
+<ul>
+<li>public Ros2BridgeInstance()</li>
+<li>public ROS2CustomBridge()</li>
+</ul>
+<p>--- a/Ros2BridgeFactory.cs
+   +++ b/Ros2BridgeFactory.cs
+   -    [BridgeName("ROS2", "ROS2")]
+   +    [BridgeName("ROS2CustomBridge", "ROS2")]
+        public class Ros2BridgeFactory : IBridgeFactory                                  {
+   -        public IBridgeInstance CreateInstance() =&gt; new Ros2BridgeInstance();
+   +        public IBridgeInstance CreateInstance() =&gt; new ROS2CustomBridge();</p>
+<pre><code>            public void Register(IBridgePlugin plugin)
+</code></pre>
+<p>...</p>
+<pre><code>            plugin.AddPublisherCreator(
+                (instance, topic) =&gt;
+                {
+</code></pre>
+<ul>
+<li>var ros2Instance = instance as Ros2BridgeInstance;</li>
+<li>var ros2Instance = instance as ROS2CustomBridge;
+                        ros2Instance.AddPublisher<PointCloud2>(topic);</li>
+</ul>
+<p>...</p>
+<pre><code>        public void RegPublisher&lt;DataType, BridgeType&gt;(IBridgePlugin plugin, Func&lt;DataType, BridgeType&gt; converter)
+        {
+</code></pre>
+<ul>
+<li>plugin.AddType<DataType>(Ros2Utils.GetMessageType<BridgeType>());</li>
+<li>plugin.AddType<DataType>("ROS2CustomBridge");
+                plugin.AddPublisherCreator(
+                    (instance, topic) =&gt;
+                    {</li>
+<li>var ros2Instance = instance as Ros2BridgeInstance;</li>
+<li>var ros2Instance = instance as ROS2CustomBridge;
+                        ros2Instance.AddPublisher<BridgeType>(topic);
+   ...<pre><code>    public void RegSubscriber&lt;DataType, BridgeType&gt;(IBridgePlugin plugin, Func&lt;BridgeType, DataType&gt; converter)
+    {
+</code></pre>
+<ul>
+<li>plugin.AddType<DataType>(Ros2Utils.GetMessageType<BridgeType>());</li>
+<li>plugin.AddType<DataType>("ROS2CustomBridge");
+            plugin.AddSubscriberCreator<DataType>(</li>
+<li>(instance, topic, callback) =&gt; (instance as Ros2BridgeInstance).AddSubscriber<BridgeType>(topic,</li>
+<li>(instance, topic, callback) =&gt; (instance as ROS2CustomBridge).AddSubscriber<BridgeType>(topic,
+                    rawData =&gt; callback(converter(Ros2Serialization.Unserialize<BridgeType>(rawData)))
+                )
+            );</li>
+</ul>
+</li>
+</ul>
+<p>--- a/Ros2Writer.cs
+   +++ b/Ros2Writer.cs</p>
+<pre><code>    public class Ros2Writer&lt;BridgeType&gt;
+    {
+</code></pre>
+<ul>
+<li>Ros2BridgeInstance Instance;</li>
+<li>
+<p>ROS2CustomBridge Instance;
+            byte[] Topic;</p>
+</li>
+<li>
+<p>public Ros2Writer(Ros2BridgeInstance instance, string topic)</p>
+</li>
+<li>
+<p>public Ros2Writer(ROS2CustomBridge instance, string topic)
+            {
+                Instance = instance;
+                Topic = Encoding.ASCII.GetBytes(topic);
+   ...</p>
+</li>
+<li>
+<p>public Ros2PointCloudWriter(Ros2BridgeInstance instance, string topic)</p>
+</li>
+<li>
+<p>public Ros2PointCloudWriter(ROS2CustomBridge instance, string topic)
+            {
+                Writer = new Ros2Writer<PointCloud2>(instance, topic);
+            }
+   ```</p>
+</li>
+<li>
+<p>Build the custom bridge in Unity Editor and upload it into Plugins under Library in WISE.</p>
+</li>
+</ul>
 <h2 id="examples">Examples <a class="wikilink" href="#top">top</a><a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <p>Open-source examples are available:</p>
 <p><a href="https://github.com/lgsvl/ROS">ROS Bridge</a> - ROS bridge implementation for Autoware</p>

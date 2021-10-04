@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -604,6 +664,11 @@
 <li>Add mesh colliders to all meshes that need physics collisions, especially roads.</li>
 </ol>
 <h2 id="extra-steps-not-in-video">Extra Steps not in video <a class="wikilink" href="#top">top</a><a class="headerlink" href="#extra-steps-not-in-video" title="Permanent link">#</a></h2>
+<h3 id="navmesh-and-occlusion-culling">NavMesh and occlusion culling <a class="wikilink" href="#top">top</a><a class="headerlink" href="#navmesh-and-occlusion-culling" title="Permanent link">#</a></h3>
+<p>NavMesh must be baked if you want pedestrians to be able to move in your environment. <a href="https://docs.unity3d.com/Manual/OcclusionCulling.html">Occlusion Culling</a> can help improve performance on complex scenes.</p>
+<p><a href="../../images/full_size_images/map-nav-mesh-window.png"><img alt="" src="../../images/map-nav-mesh-window.png" /></a></p>
+<p><a href="../../images/full_size_images/map-nav-mesh-layer.png"><img alt="" src="../../images/map-nav-mesh-layer.png" /></a></p>
+<p><a href="../../images/full_size_images/map-occulusion.png"><img alt="" src="../../images/map-occulusion.png" /></a></p>
 <ol>
 <li>Select Window -&gt; AI -&gt; Navigation.</li>
 <li>Select Object tab in this panel.</li>
@@ -615,7 +680,27 @@
 <li>Select Bake tab.</li>
 <li>Click the Bake button.  This creates an occlusion object that helps with frame rate.</li>
 </ol>
+<h3 id="adding-rain-colliders">Adding rain colliders <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-rain-colliders" title="Permanent link">#</a></h3>
+<p>These steps have to be performed if you want rain to be stopped by obstacles (e.g. roofs).</p>
+<p><a href="../../images/full_size_images/map-rain-colliders.png"><img alt="" src="../../images/map-rain-colliders.png" /></a></p>
+<ol>
+<li>Locate all meshes that should stop rain.</li>
+<li>Review import settings for each mesh - in Model tab, the Read/Write Enabled option must be enabled.</li>
+<li>Select meshes one by one, or select their common hierarchy parent.<ul>
+<li>Note: you can have multiple colliders on multiple objects on the scene.</li>
+<li>Note: if you choose to use the parent, all children meshes will be treated as single, merged collider.</li>
+</ul>
+</li>
+<li>In the Inspector, select Add Component -&gt; Rain Collider.</li>
+<li>In the newly added component, change Resolution based on mesh size - larger meshes should use higher resolution.<ul>
+<li>Note: unless the mesh covers a large area, resolution of 128 or lower is usually enough.</li>
+</ul>
+</li>
+<li>Click "Calculate Size" and make sure that calculated value does not exceed Memory Limit.</li>
+<li>After all colliders have been added, save the scene.</li>
+</ol>
 <h3 id="finalize-other-map-features">Finalize other map features <a class="wikilink" href="#top">top</a><a class="headerlink" href="#finalize-other-map-features" title="Permanent link">#</a></h3>
+<p><a href="../../images/full_size_images/map-finalize.png"><img alt="" src="../../images/map-finalize.png" /></a></p>
 <ol>
 <li>Select MapOrigin object in the Hierarchy Panel.</li>
 <li>Set Northing, Easting, UTM and TimeZone.</li>
@@ -627,6 +712,39 @@
 <li>Select Simulator -&gt; Build...</li>
 <li>Select NewMap and click the Build button.</li>
 </ol>
+<h3 id="map-preview">Map Preview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#map-preview" title="Permanent link">#</a></h3>
+<p><a href="../../images/full_size_images/map-preview.png"><img alt="" src="../../images/map-preview.png" /></a></p>
+<p><strong>Map Preview</strong> is a feature in simulator to force a camera position and rotation for AssetBundle preview images in the web user interface.</p>
+<ol>
+<li>
+<p>Create a empty game object and place it at the root of the scene.</p>
+</li>
+<li>
+<p>Add MapPreview.cs to the new object.</p>
+</li>
+<li>
+<p>Rotate and Position the object in the editor z forward and Y up at the position you want.</p>
+</li>
+<li>
+<p>You can view the scene from the object by selecting the menu GameObject -&gt; Align View to Selected.</p>
+</li>
+</ol>
+<p><a href="../../images/full_size_images/map-preview-view.png"><img alt="" src="../../images/map-preview-view.png" /></a></p>
+<ol>
+<li>
+<p>Save the scene.</p>
+</li>
+<li>
+<p>Build the environment map bundle.</p>
+</li>
+<li>
+<p>Upload to your SVL Simulator account.</p>
+</li>
+<li>
+<p>See the preview image in the web user interface.</p>
+</li>
+</ol>
+<p><a href="../../images/full_size_images/map-preview-web.png"><img alt="" src="../../images/map-preview-web.png" /></a></p>
               
             </div>
           </div>

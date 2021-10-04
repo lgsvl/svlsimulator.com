@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Lighting for indoor environments - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Lighting for indoor environments";
+    var mkdocs_page_input_path = "simulation-content/lighting-for-interiors.md";
+    var mkdocs_page_url = "/docs/simulation-content/lighting-for-interiors/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Building content</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Lighting for indoor environments</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lane-line-sensor/">Lane-line sensor</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Maps &raquo;</li>
+        
+      
+        
+          <li>Simulation Content &raquo;</li>
+        
+      
+    
+    <li>Lighting for indoor environments</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/simulation-content/lighting-for-interiors.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="lighting-set-up-for-interior-environments">Lighting Set Up for Interior Environments<a class="headerlink" href="#lighting-set-up-for-interior-environments" title="Permanent link">#</a></h1>
+<p>This document will describe how to set up lighting for environments that do not receive exterior lighting.</p>
+<h2 id="getting-started">Getting Started <a class="wikilink" href="#top">top</a><a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<h4 id="light-layers-what-are-they">Light Layers: What are they ?<a class="headerlink" href="#light-layers-what-are-they" title="Permanent link">#</a></h4>
+<p>Unity provides us with tools that allow us to set up lights that only affect meshes specified to receive light from those light sources.  This opens up the possibility to exclude exterior lighting from interiors and bake Mixed Lighting for higher quality visuals when running the simulator.  This is especially useful when creating interior environments.</p>
+<h4 id="light-layers-how-do-we-use-them">Light Layers: How do we use them ?<a class="headerlink" href="#light-layers-how-do-we-use-them" title="Permanent link">#</a></h4>
+<p>The SVL simulator is already setup to employ <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@7.1/manual/Light-Layers.html">Light Layers</a> but you will need to do some extra preparation to use them.  This includes proper setup of the interior post-processing volume, lights, meshes and then baking the lighting. To do this, you must be in <a href="../../running-simulations/developer-mode/">Developer Mode</a>. </p>
+<h2 id="interior-environment-setup">Interior Environment Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#interior-environment-setup" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Create an empty game object and name it LightingSetup (Right click in Hierarchy &gt; Create Empty) then zero out the transforms (Click the 3 dots on the right of the Transform section &gt; Reset).  This is where you will place your rendering volumes, light probes and reflection probes and will help keep the hierarchy organized.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-directory-setup.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-directory-setup.png" /></a>)</p>
+</li>
+<li>
+<p>Create a Box Volume (Right click in Hierarchy &gt; Volume &gt; Box Volume) and zero out the transforms.  Adjust the position and size of the volume to contain your interior environment. Multiple volumes can be used.  Place this inside your LightingSetup game object in the Hierarchy.  Be sure to name it so that it is defined as an interior lighting post processing volume. Example: <em>NameOfEnvironment</em>PostProcessingVolumeInterior.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-interior-ppv.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-interior-ppv.png" /></a>)</p>
+</li>
+<li>
+<p>Create a new Volume Profile (Assets &gt; Create &gt; Volume Profile).  This Post-Processing Volume Profile will override the Simulator profile that is used at runtime for exterior lighting. Be sure to name it so that it is defined as an interior lighting post processing volume ex: <em>NameOfEnvironment</em>PostProcessingProfileInterior.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-ppv-profile.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-ppv-profile.png" /></a>)</p>
+</li>
+<li>
+<p>Add your profile overrides for the interior (Select your <em>NameOfEnvironment</em>PostProcessingProfileInterior in the project view &gt; Add Override &gt; Select and adjust desired override).</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-add-overrides.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-add-overrides.png" /></a>)</p>
+</li>
+<li>
+<p>Add a <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@6.7/manual/Reflection-Proxy-Volume.html">Reflection Proxy Volume</a> (Right click in Hierarchy &gt; Volume &gt; Select desired volume shape) and zero out the transforms.  Be sure to name it so that it is defined as your interior environment reflection proxy volume. Example: <em>NameOfEnvironment</em>ReflectionProxyVolume.  </p>
+</li>
+<li>
+<p>Add the Reflection Proxy Volume Script (Select your <em>NameOfEnvironment</em>ReflectionProxyVolume in the project view &gt; Add Component &gt; Search for and select Reflection Proxy Volume).</p>
+</li>
+<li>
+<p>Remove Box Collider and Volume components from the Reflection Proxy Volume asset. (Select your <em>NameOfEnvironment</em>ReflectionProxyVolume in the project view &gt; click the 3 dots on the right for each section &gt; Remove Component)  Do not remove the Reflection Proxy Volume component.</p>
+</li>
+<li>
+<p>Move and adjust the size of the Reflection Proxy Volume asset to envelope the desired space in your interior.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-reflection-proxy.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-reflection-proxy.png" /></a>)</p>
+</li>
+<li>
+<p>Add <a href="https://docs.unity3d.com/Manual/class-ReflectionProbe.html">Reflection Probes</a> to the scene  (Right click in Hierarchy &gt; Light &gt; Reflection Probe).  This is vital to proper lighting for interior spaces. For environments requiring multiple reflection probes create an empty game object inside of the LightingSetUp game object, reset transforms and place your probes inside. Naming for reflection probes and reflection probe group should be descriptive ex: <em>NameOfEnvironment</em>ReflectionProbe.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-reflection-probes.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-reflection-probes.png" /></a></p>
+</li>
+<li>
+<p>Add the Reflection Proxy Volume asset to your Reflection Probes (Select your Reflection Probe &gt; Projection Settings Section &gt; Proxy Volume field &gt; add your Proxy Volume).</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-add-proxy-vol.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-add-proxy-vol.png" /></a>)</p>
+</li>
+<li>
+<p>Adjust the size of each Reflection Probe to the desired size for your interior space.</p>
+</li>
+<li>
+<p>Add <a href="https://docs.unity3d.com/Manual/LightProbes.html">Light Probes</a> to the scene (Right click in Hierarchy &gt; Light &gt; Light Probe Group).  <strong>This step is optional</strong> but can improve the lighting fidelity for dynamic objects as they move through the environment.  Place this inside your LightingSetup game object in the Hierarchy.  Naming for the group should be descriptive ex: <em>NameOfEnvironment</em>LightProbeGroup.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-light-probes.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-light-probes.png" /></a>)</p>
+</li>
+</ol>
+<h2 id="setting-up-the-lights">Setting Up the Lights <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setting-up-the-lights" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Add lights to your scene if none already exist and adjust settings for the desired visuals (Right click in Hierarchy &gt; Light &gt; choose the desired light)</p>
+</li>
+<li>
+<p>Select the light in the inspector and in the General dropdown change Mode to Mixed.</p>
+</li>
+<li>
+<p>Next set the Light Layer to Light Layer 7 (Expand More Options in General drop down by clicking the gear icon).</p>
+</li>
+<li>
+<p>If Shadows are enabled make sure that Link Light Layer is also enabled (Expand More Options in General drop down by clicking the gear icon).</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-lights.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-lights.png" /></a>)</p>
+</li>
+</ol>
+<h2 id="static-mesh-setup">Static Mesh Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#static-mesh-setup" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Set all meshes to Reflection Probe Static (Select mesh &gt; Top right "Static" drop down &gt; Reflection Probe Static).</p>
+</li>
+<li>
+<p>Set Rendering Layer Mask to Light Layer 7 (Select mesh &gt; Expand Mesh Renderer &gt; Expand Additional Settings &gt; Rendering Layer Mask).</p>
+</li>
+</ol>
+<p><a href="../../images/full_size_images/lighting-for-interiors-mesh.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-mesh.png" /></a>)</p>
+<h2 id="dynamic-mesh-setup-top-dynamic-mesh-setup-data-toc-labeldynamic-mesh-setup">Dynamic Mesh Setup <a class="wikilink" href="#top">top</a> {: #dynamic-mesh-setup data-toc-label='Dynamic Mesh Setup'}}<a class="headerlink" href="#dynamic-mesh-setup-top-dynamic-mesh-setup-data-toc-labeldynamic-mesh-setup" title="Permanent link">#</a></h2>
+<ol>
+<li>Set Rendering Layer Mask to Light Layer 7 (See above).</li>
+<li>If you have a vehicle that includes lights, those lights will need to be set to Light Layer 7 and Link Light Layer enabled (See above).</li>
+</ol>
+<h2 id="bake-reflections-and-lighting-top-baking-the-lighting-data-toc-labelbaking-the-lighting">Bake Reflections and Lighting <a class="wikilink" href="#top">top</a> {: #baking-the-lighting data-toc-label='Baking the Lighting'}}<a class="headerlink" href="#bake-reflections-and-lighting-top-baking-the-lighting-data-toc-labelbaking-the-lighting" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Open the Lighting tab to access Unity's lighting options (Window &gt; Rendering &gt; Lighting).</p>
+</li>
+<li>
+<p>In the Scene section select your Lighting Settings asset.  If you don't already have a Lighting Settings asset then create a new one using the button under the input field.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-lighting-window.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-lighting-window.png" /></a>)</p>
+</li>
+<li>
+<p>Be sure that the Mixed Lighting Section has Baked Global Illumination checked and Lighting Mode is set to Baked Indirect.</p>
+</li>
+<li>
+<p>Adjust settings to match the quality expectations.  For development purposes it's useful to have a draft version with lower quality settings and then a high quality version for final rendering.</p>
+</li>
+<li>
+<p>In the Environment section add the PostProcessingProfileInterior that you made earlier.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-environment-tab.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-environment-tab.png" /></a>)</p>
+</li>
+<li>
+<p>Finally click the Generate Lighting.  Once the lighting has finished processing click the Generate Lighting drop down and click Bake Reflection Probes.</p>
+<p><a href="../../images/full_size_images/lighting-for-interiors-bake-reflections.png"><img alt="" src="../../images/lighting-for-interiors/lighting-for-interiors-bake-reflections.png" /></a>)</p>
+</li>
+<li>
+<p>If you need to make changes to the lighting or the environment you will need to re-bake all lighting data.</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../add-new-ego-vehicle/" class="btn btn-neutral float-right" title="Creating a new ego vehicle">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../lane-line-detector/" class="btn btn-neutral" title="Lane-line detector"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../lane-line-detector/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../add-new-ego-vehicle/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

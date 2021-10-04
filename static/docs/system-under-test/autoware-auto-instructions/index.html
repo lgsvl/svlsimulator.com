@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -311,6 +323,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -320,7 +336,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -571,17 +631,23 @@
 <li><a href="#download-autowareauto-top">Download Autoware.Auto top</a></li>
 </ul>
 </li>
-<li><a href="#install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge</a><ul>
+<li><a href="#install-ros2-lgsvl-bridge">Install ROS 2 LGSVL Bridge</a><ul>
 <li><a href="#1-using-the-package-manager">1. Using the Package Manager</a></li>
 <li><a href="#2-building-source-code">2. Building source code.</a></li>
 </ul>
 </li>
-<li><a href="#install-ros2-lgsvl-messages">Install ROS2 LGSVL Messages</a></li>
+<li><a href="#install-ros2-lgsvl-messages">Install ROS 2 LGSVL Messages</a></li>
 </ul>
 </li>
 <li><a href="#run-simulator-alongside-autoware-auto">Run Simulator alongside Autoware.Auto</a><ul>
 <li><a href="#start-the-autowareauto-containers-without-nvidia-setup">Start the Autoware.Auto containers without NVIDIA setup:</a></li>
 <li><a href="#start-the-autowareauto-containers-with-nvidia-setup">Start the Autoware.Auto containers with NVIDIA setup:</a></li>
+</ul>
+</li>
+<li><a href="#run-simulator-alongside-autoware-auto-in-ade-docker-container">Run Simulator alongside Autoware.Auto in ADE docker container</a><ul>
+<li><a href="#1build-ade-docker-container">1.Build ADE docker container</a></li>
+<li><a href="#2build-and-start-ade-docker-container">2.Build and start ADE docker container</a></li>
+<li><a href="#3run-simulator-in-docker-container">3.Run simulator in docker container</a></li>
 </ul>
 </li>
 </ul>
@@ -651,7 +717,7 @@ touch .adehome
 git clone https://gitlab.com/autowarefoundation/autoware.auto/AutowareAuto.git
 </code></pre>
 <p>Installation and Development: <a href="https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation.html">Setup guide</a> guide for Autoware.auto.</p>
-<h3 id="install-ros2-lgsvl-bridge">Install ROS2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-bridge" title="Permanent link">#</a></h3>
+<h3 id="install-ros2-lgsvl-bridge">Install ROS 2 LGSVL Bridge <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-bridge" title="Permanent link">#</a></h3>
 <p>There are two ways of installing ros2-lgsvl-bridge:</p>
 <ul>
 <li>Using the Package Manager</li>
@@ -681,7 +747,7 @@ colcon build --packages-select lgsvl_bridge --cmake-args '-DCMAKE_BUILD_TYPE=Rel
 <pre><code class="language-bash">source ~/AutowareAuto/src/external/ros2-lgsvl-bridge/install/setup.bash
 lgsvl_bridge
 </code></pre>
-<h3 id="install-ros2-lgsvl-messages">Install ROS2 LGSVL Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-messages" title="Permanent link">#</a></h3>
+<h3 id="install-ros2-lgsvl-messages">Install ROS 2 LGSVL Messages <a class="wikilink" href="#top">top</a><a class="headerlink" href="#install-ros2-lgsvl-messages" title="Permanent link">#</a></h3>
 <h6 id="downloading_1">Downloading<a class="headerlink" href="#downloading_1" title="Permanent link">#</a></h6>
 <pre><code class="language-bash">mkdir -p ~/adehome/AutowareAuto/src/external/
 cd ~/adehome/AutowareAuto/src/external/
@@ -701,7 +767,7 @@ ros2 msg list |grep lgsvl_msgs
 # If you can see the list of lgsvl_msgs, they're ready to be used.
 </code></pre>
 <h2 id="run-simulator-alongside-autoware-auto">Run Simulator alongside Autoware.Auto <a class="wikilink" href="#top">top</a><a class="headerlink" href="#run-simulator-alongside-autoware-auto" title="Permanent link">#</a></h2>
-<p>The ROS2 web bridge allows the simulator and Autoware.auto to communicate. To test this connection we can visualize sensor data from the simulator in rviz2 (running in the Autoware.auto container).</p>
+<p>The ROS 2 web bridge allows the simulator and Autoware.auto to communicate. To test this connection we can visualize sensor data from the simulator in rviz2 (running in the Autoware.auto container).</p>
 <h4 id="start-the-autowareauto-containers-without-nvidia-setup">Start the Autoware.Auto containers without NVIDIA setup:<a class="headerlink" href="#start-the-autowareauto-containers-without-nvidia-setup" title="Permanent link">#</a></h4>
 <pre><code class="language-bash">cd ~/adehome/AutowareAuto
 source .aderc-amd64-foxy-lgsvl
@@ -719,7 +785,8 @@ export ADE_GITLAB=gitlab.com
 export ADE_REGISTRY=registry.gitlab.com
 export ADE_DISABLE_NVIDIA_DOCKER=false
 export ADE_IMAGES=&quot;
-  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/ade-foxy:master   registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/binary-foxy:master
+  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/ade-foxy:master
+  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/binary-foxy:master
   registry.gitlab.com/autowarefoundation/autoware.auto/ade-lgsvl/foxy:2020.06
   nvidia/cuda:11.0-base
 &quot;
@@ -770,16 +837,177 @@ rviz2 -d /home/&quot;${USER}&quot;/AutowareAuto/install/autoware_auto_examples/s
 </ul>
 </li>
 <li>
-<p>Launch ROS2 LGSVL bridge in a new terminal:</p>
+<p>Launch ROS 2 LGSVL bridge in a new terminal:</p>
 </li>
 </ul>
 <pre><code class="language-bash"># In the ADE container
 $ lgsvl_bridge
 </code></pre>
-<p><strong>NOTE</strong> <a href="#lgsvl-bridge-running">ROS2 LGSVL Bridge</a> needs to be running.</p>
+<p><strong>NOTE</strong> <a href="#lgsvl-bridge-running">ROS 2 LGSVL Bridge</a> needs to be running.</p>
 <p>You should now be able to see the LiDAR point cloud in rviz (see image below).</p>
 <p>If the pointcloud is not visible make sure the Fixed Frame (under Global Options) is set to <code>lidar_front</code> and that a PointCloud2 message is added which listens on the <code>/lidar_front/points_raw</code> topic.</p>
 <p><img alt="" src="../../images/autoware-auto-rviz.png" /></p>
+<h2 id="run-simulator-alongside-autoware-auto-in-ade-docker-container">Run Simulator alongside Autoware.Auto in ADE docker container <a class="wikilink" href="#top">top</a><a class="headerlink" href="#run-simulator-alongside-autoware-auto-in-ade-docker-container" title="Permanent link">#</a></h2>
+<h4 id="1build-ade-docker-container">1.Build ADE docker container<a class="headerlink" href="#1build-ade-docker-container" title="Permanent link">#</a></h4>
+<p>Copy the following Dockerfile into ~/adehome/AutowareAuto/tools/ade_image folder.</p>
+<pre><code class="language-dockerfile">FROM ubuntu:20.04
+CMD [&quot;bash&quot;]
+
+ARG ROS_DISTRO=foxy
+
+# https://docs.ros.org/en/foxy/Installation/Ubuntu-Development-Setup.html
+RUN apt update &amp;&amp; apt install locales
+RUN locale-gen en_US en_US.UTF-8
+RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+RUN export LANG=en_US.UTF-8
+
+# tz America/Los_Angeles
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone
+RUN apt-get install -y tzdata
+
+RUN apt update &amp;&amp; apt install -y curl gnupg2 lsb-release python3-pip gettext
+RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+RUN echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main&quot; | tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
+# /https://docs.ros.org/en/foxy/Installation/Ubuntu-Development-Setup.html
+
+RUN apt-get update &amp;&amp; \
+    apt-get install -y \
+      python3-vcstool \
+      ros-$ROS_DISTRO-cyclonedds \
+      ros-$ROS_DISTRO-rmw-cyclonedds-cpp &amp;&amp; \
+    rm -rf /var/lib/apt/lists/* #/tmp/ros-deps
+
+COPY apt-packages /tmp/
+RUN apt-get update &amp;&amp; \
+    apt-get install -y \
+        $(cat /tmp/apt-packages | cut -d# -f1 | envsubst) \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* /tmp/apt-packages
+
+RUN echo 'ALL ALL=(ALL) NOPASSWD:ALL' &gt;&gt; /etc/sudoers
+RUN echo 'Defaults env_keep += &quot;DEBUG ROS_DISTRO&quot;' &gt;&gt; /etc/sudoers
+
+
+COPY pip3-packages /tmp/
+RUN pip3 install -U \
+        $(cut -d# -f1 &lt;/tmp/pip3-packages) \
+    &amp;&amp; rm -rf /root/.cache /tmp/pip-* /tmp/pip3-packages
+
+
+RUN git clone https://github.com/rigtorp/udpreplay &amp;&amp; mkdir -p udpreplay/build \
+      &amp;&amp; cd udpreplay/build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; make install \
+      &amp;&amp; cd - &amp;&amp; rm -rf udpreplay/
+
+
+COPY bashrc-git-prompt /
+RUN cat /bashrc-git-prompt &gt;&gt; /etc/skel/.bashrc &amp;&amp; \
+    rm /bashrc-git-prompt
+COPY gdbinit /etc/gdb/
+
+
+# ===================== CLEAN UP ZONE ===================== #
+# Commands in the cleanup zone will be cleaned up before every release
+# and put into the correct place.
+RUN apt-get update \
+  &amp;&amp; apt-get install -y \
+    unzip \
+    ca-certificates \
+    libx11-6 \
+    libxau6 \
+    libxcb1 \
+    libxdmcp6 \
+    libxext6 \
+    libvulkan1 \
+    libgl1 \
+    libgtk2.0-0 \
+    vulkan-utils \
+    docker.io \
+    xdg-utils \
+  &amp;&amp; apt-get clean
+
+ADD &quot;https://gitlab.com/nvidia/container-images/vulkan/raw/master/nvidia_icd.json&quot; /etc/vulkan/icd.d/nvidia_icd.json
+RUN chmod 644 /etc/vulkan/icd.d/nvidia_icd.json
+
+# ===================== END OF CLEAN UP ZONE ===================== #
+
+# Add print url into tty part.
+COPY print-tty.desktop /usr/share/applications/print-tty.desktop
+COPY print-tty.sh /usr/bin/print-tty.sh
+RUN chmod 755 /usr/bin/print-tty.sh
+RUN apt-get update \
+  &amp;&amp; apt-get install -y \
+    ros-$ROS_DISTRO-lgsvl-bridge \
+  &amp;&amp; apt-get clean
+# /Add print url into tty part.
+
+# Do full package upgrade as last step
+# to avoid disrupting layer caching
+RUN apt-get update &amp;&amp; \
+    apt-get -y dist-upgrade &amp;&amp; \
+    rm -rf /var/lib/apt/lists/*
+
+COPY env.sh /etc/profile.d/ade_env.sh
+COPY gitconfig /etc/gitconfig
+COPY entrypoint /ade_entrypoint
+COPY colcon-defaults.yaml /usr/local/etc/colcon-defaults.yaml
+RUN echo &quot;export COLCON_DEFAULTS_FILE=/usr/local/etc/colcon-defaults.yaml&quot; &gt;&gt; \
+    /etc/skel/.bashrc
+ENTRYPOINT [&quot;/ade_entrypoint&quot;]
+CMD [&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;trap 'exit 147' TERM; tail -f /dev/null &amp; wait ${!}&quot;]
+
+</code></pre>
+<p>Copy the following print-tty.desktop file into ~/adehome/AutowareAuto/tools/ade_image folder.</p>
+<pre><code>[Desktop Entry]
+Name=PrintTty
+GenericName=Print On Tty
+Comment=Prints text on first tty
+TryExec=echo
+Exec=print-tty.sh %F
+Terminal=true
+Type=Application
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
+</code></pre>
+<p>Copy the following print-tty.sh file into ~/adehome/AutowareAuto/tools/ade_image folder.</p>
+<pre><code class="language-bash">#!/bin/sh
+
+echo &quot;$@&quot; &gt;/dev/tty
+</code></pre>
+<p>Build docker container and tag it:</p>
+<pre><code class="language-bash">cd ~/adehome/AutowareAuto/tools/ade_image
+docker build -t registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/ade-foxy:local .
+</code></pre>
+<h4 id="2build-and-start-ade-docker-container">2.Build and start ADE docker container<a class="headerlink" href="#2build-and-start-ade-docker-container" title="Permanent link">#</a></h4>
+<p>Copy the following .aderc-amd64-foxy-lgsvl-nvidia into ~/adehome/AutowareAuto folder:</p>
+<pre><code class="language-bash">export ADE_DOCKER_RUN_ARGS=&quot;--cap-add=SYS_PTRACE --net=host --privileged --add-host ade:127.0.0.1 -e RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+-e NVIDIA_VISIBLE_DEVICES=all \
+-e NVIDIA_DRIVER_CAPABILITIES=compute,utility,display&quot;
+export ADE_GITLAB=gitlab.com
+export ADE_REGISTRY=registry.gitlab.com
+export ADE_DISABLE_NVIDIA_DOCKER=false
+export ADE_IMAGES=&quot;
+  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/ade-foxy:local
+  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/amd64/binary-foxy:master
+registry.gitlab.com/apexai/ade-lgsvl:2021.2.1
+  nvidia/cuda:11.0-base
+&quot;
+</code></pre>
+<p>If you have registry.gitlab.com/apexai/ade-lgsvl:2021.2.1 simulator docker container, you may include it in .aderc-amd64-foxy-lgsvl-nvidia file but it you don't you can mount local simulator into /opt/lgsvl in ade docker container when you start ade container.</p>
+<p>Source the .aderc-amd64-foxy-lgsvl-nvidia:</p>
+<pre><code class="language-bash">source .aderc-amd64-foxy-lgsvl-nvidia
+</code></pre>
+<p>3.Install</p>
+<p>unzip svlsimulator-linux64-2021.2.1.zip -d ~</p>
+<p>Start ade:</p>
+<pre><code class="language-bash">ade start -- -e DISPLAY -e XAUTHORITY=/tmp/.Xauthority -v ${XAUTHORITY}:/tmp/.Xauthority -v /tmp/.X11-unix:/tmp/.X11-unix -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/LGElectronics/:/tmp/LGElectronics/ -v ~/svlsimulator-linux64-2021.2.1:/opt/lgsvl
+</code></pre>
+<h4 id="3run-simulator-in-docker-container">3.Run simulator in docker container<a class="headerlink" href="#3run-simulator-in-docker-container" title="Permanent link">#</a></h4>
+<pre><code>ade enter
+lgsvl_bridge &amp;
+/opt/lgsvl/simulator
+</code></pre>
+<p>Click link to cluster and URL is printed on the terminal.</p>
+<p>Copy and paste the URL on your web browser.</p>
               
             </div>
           </div>

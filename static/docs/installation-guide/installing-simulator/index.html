@@ -112,7 +112,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -163,6 +167,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -311,6 +323,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -320,7 +336,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -558,16 +618,20 @@
 <ul>
 <li><a href="#graphicsdrivers">Graphics Drivers</a><ul>
 <li><a href="#windows">Windows</a></li>
-<li><a href="#linux">Linux</a></li>
+<li><a href="#linux">Linux</a><ul>
+<li><a href="#vulkan">Linux Vulkan Drivers</a></li>
 </ul>
 </li>
-<li><a href="#otherlinuxrequirements">Other Linux Requirements</a><ul>
-<li><a href="#vulkan">Vulkan</a></li>
-<li><a href="#docker">Docker</a></li>
 </ul>
 </li>
 <li><a href="#installing-simulator">Installing the simulator</a></li>
 <li><a href="#linktocloud">Link to Cloud</a></li>
+<li><a href="#docker">Docker</a><ul>
+<li><a href="#docker-linux">Installing Docker under Linux</a></li>
+<li><a href="#docker-linux">Installing Docker under Windows</a></li>
+<li><a href="#testing-docker-integration">Testing Docker integration</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="graphicsdrivers">Graphics Drivers <a class="wikilink" href="#top">top</a><a class="headerlink" href="#graphicsdrivers" title="Permanent link">#</a></h2>
@@ -623,17 +687,13 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 </code></pre>
 </li>
 </ul>
-<h2 id="otherlinuxrequirements">Other Linux Requirements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#otherlinuxrequirements" title="Permanent link">#</a></h2>
-<h3 id="vulkan">Vulkan <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vulkan" title="Permanent link">#</a></h3>
+<h4 id="vulkan">Vulkan Drivers <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vulkan" title="Permanent link">#</a></h4>
 <p>Make sure the Vulkan userspace library is installed:</p>
 <pre><code>$ sudo apt install libvulkan1
 </code></pre>
 <p>NOTE: If you also have <code>mesa-vulkan-drivers</code> installed (e.g. for Intel motherboard video) they can prevent the simulator from being able to access your NVIDIA GPU. If the simulator crashes when starting, try removing the mesa vulkan drivers:</p>
 <pre><code>$ sudo apt remove mesa-vulkan-drivers
 </code></pre>
-<h3 id="docker">Docker <a class="wikilink" href="#top">top</a><a class="headerlink" href="#docker" title="Permanent link">#</a></h3>
-<p>Docker v19.03 or later must be installed on Linux in order to run local simulations that use the <code>Python API</code> or <code>VSE</code> <a href="../../running-simulations/runtime-templates/">runtime templates</a>.</p>
-<p>Follow the <a href="https://docs.docker.com/engine/install/ubuntu/">Docker installation instructions</a> to install Docker.</p>
 <h2 id="installing-simulator">Installing the simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-simulator" title="Permanent link">#</a></h2>
 <p>The Simulator release can be downloaded as a prebuilt binary from the <a href="https://github.com/lgsvl/simulator/releases/latest">simulator distribution</a>.</p>
 <ol>
@@ -682,6 +742,21 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 </li>
 </ol>
 <p>You are now ready to run simulations. Follow the instructions in <a href="../../getting-started/getting-started/#running-the-simulator">Running the Simulator</a> to run your first simulation.</p>
+<h2 id="docker">Docker <a class="wikilink" href="#top">top</a><a class="headerlink" href="#docker" title="Permanent link">#</a></h2>
+<p>Docker v20.10 or later must be installed on Linux or the latest version of Docker Desktop for Windows must be installed in order to run local simulations that use the <code>Python API</code> or <code>VSE</code> <a href="../../running-simulations/runtime-templates/">runtime templates</a>.</p>
+<h3 id="docker-linux">Installing Docker under Linux <a class="wikilink" href="#top">top</a><a class="headerlink" href="#docker-linux" title="Permanent link">#</a></h3>
+<p>Follow the <a href="https://docs.docker.com/engine/install/ubuntu/">Docker installation instructions</a> to install Docker.</p>
+<p>Alternatively, since Docker v20.10.7 is now supplied by the package <code>docker.io</code> available for 18.04 and 20.04 from the Ubuntu package repos, installation can be done with:</p>
+<pre><code>sudo apt update &amp;&amp; sudo apt install --no-install-recommends docker.io
+</code></pre>
+<h3 id="docker-linux">Installing Docker under Windows <a class="wikilink" href="#top">top</a><a class="headerlink" href="#docker-linux" title="Permanent link">#</a></h3>
+<p>Install <a href="https://www.docker.com/get-started">Docker Desktop using the installation binary from the docker site</a>.</p>
+<h3 id="testing-docker-integration">Testing docker integration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#testing-docker-integration" title="Permanent link">#</a></h3>
+<p>You can test Docker integration by pressing the <code>ESC</code> key to open the console and entering  </p>
+<pre><code>$ bash
+</code></pre>
+<p>Simulator should start pulling, extracting and running the bash image from docker hub. After you see the bash prompt, you should be able to type <code>exit</code> to terminate the shell and then the  <code>Enter</code> to close the console tab.</p>
+<p><img alt="" src="../../images/docker-bash-test.png" /></p>
               
             </div>
           </div>

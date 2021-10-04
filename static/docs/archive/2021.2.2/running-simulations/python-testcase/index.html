@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Python testcase - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Python testcase";
+    var mkdocs_page_input_path = "running-simulations/python-testcase.md";
+    var mkdocs_page_url = "/docs/running-simulations/python-testcase/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../simulation-content/assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/ego-vehicle-dynamics/">Vehicle dynamics</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lane-line-sensor/">Lane-line sensor</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Python testcase</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/running-simulations/python-testcase.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="python-test-cases">Python Test Cases<a class="headerlink" href="#python-test-cases" title="Permanent link">#</a></h1>
+<h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">#</a></h2>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/Kh4dnP1YCI8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p><br></p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
+<p>Test Case mode is a new feature in the SVL Simulator which executes test cases written in Python using the <a href="../../python-api/python-api/">LGSVL Python API</a>.</p>
+<p>Python scripts can be used to implement many different kinds of tests to run in the SVL Simulator.</p>
+<p>Among the general use-cases of Python Test Case mode are:</p>
+<ul>
+<li>Generating and testing random variations of various driving test cases</li>
+<li>Performing automated (e.g. acceptance) tests based on a set of repeatable test cases</li>
+<li>Performing automated regressions tests</li>
+</ul>
+<p>Python Test Case mode provides the ability to configure and execute several sample test cases available under "Available from Others" view in Simulations, using Apollo for Autonomous Driving.</p>
+<p>Refer to <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> for an illustrated step-by-step walk through on selecting and configuring a python test case simulation.</p>
+<p>This document describes how to set up and run these test cases with Apollo.</p>
+<p>For example, one provided example is a "cut-in" test case which is performed on the San Francisco map (shown below).</p>
+<p>Another provided example is a "sudden braking" test case which is performed on the SingleLaneRoad map (shown below). </p>
+<p>Additional examples demonstrate pedestrian-crossing test case which can be performed on the Straight1LanePedestrianCrosswalk map and the red-light runner test case which is performed on the Borregas Ave map. </p>
+<p><img alt="" src="../../images/python-testcase/cut-in-sim.png" />
+(Screenshot of the "cut-in" test case on the San Francisco map, above)</p>
+<p><img alt="" src="../../images/python-testcase/sudden-braking-sim.png" />
+(Screenshot of the "sudden-braking" test case on the SingleLandRoad map, above)</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<p>Python Test Case Mode has these dependencies:</p>
+<ol>
+<li>SVL Simulator -- the release tag of the simulator should match the release tag of Python Runner to ensure compatibility</li>
+<li>Apollo 5.0 lgsvl fork</li>
+<li>Docker and Docker-compose</li>
+</ol>
+<h3 id="downloading-and-launching-svl-simulator">Downloading and launching SVL Simulator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#downloading-and-launching-svl-simulator" title="Permanent link">#</a></h3>
+<p>The Simulator release can be downloaded as a prebuilt binary from the <a href="https://github.com/lgsvl/simulator/releases">github release page</a>.</p>
+<p>Download and extract the zip archive at the desired location. In the unzipped directory, run the executable file named simulator to launch the SVL Simulator.</p>
+<p>The main window of the simulator will open. Click on the "Link to Cloud" or "Open Browser" button to launch the simulator Web UI in a web browser. The Web UI controls all aspects of the simulator.</p>
+<p>You will need to create an account to login to the Web UI. Once logged in you will be able to link your simulator into a cluster, select maps, configure vehicles, and create simulations to run in the simulator.</p>
+<p>For more information on initial setup of the simulator, refer to the <a href="../running-simulator/#installingsimulator">Installing Simuator</a> and <a href="../running-simulator/#linktocloud">Link to Cloud</a> sections of the <a href="../running-simulator/">Running SVL Simulator</a> documentation for an illustrated step-by-step walk through of this process.</p>
+<h3 id="installing-and-building-apollo-5.0">Installing and Building Apollo 5.0 <a class="wikilink" href="#top">top</a><a class="headerlink" href="#installing-and-building-apollo-5.0" title="Permanent link">#</a></h3>
+<p>Please follow the instructions on the SVL Simulator documentation website to for <a href="../../system-under-test/apollo5-0-instructions/">Running Apollo 5.0 with SVL Simulator</a> if you have not already done so.</p>
+<p>This will involve installing Docker CE, Nvidia Docker and the LGSVL Docker image, then cloning the lgsvl fork of the Apollo 5.0 sources, and finally building Apollo and the bridge.</p>
+<p><strong>Important</strong>: Confirm that Apollo is able to drive the car to a selected destination when running in a "Random Interactive" simulation before attempting to use Test Case Mode. Refer to <a href="../running-simulator/#randominteractivesimulation">Random Interactive Simulation</a> for instructions on setting up a random interactive simulation you can use to test Apollo functionality with the simulator.</p>
+<h2 id="python-test-case-mode-workflow">Python Test Case Mode workflow<a class="headerlink" href="#python-test-case-mode-workflow" title="Permanent link">#</a></h2>
+<ol>
+<li>Configure Test Case simulation in Web UI</li>
+<li>Launch Apollo, configure Dreamview, and enable modules</li>
+<li>Start SVL Simulator in Test Case mode</li>
+<li>Configure ego destination in Dreamview </li>
+</ol>
+<h3 id="configure-test-case-simulation-in-web-ui-(if-needed)">Configure Test Case simulation in Web UI (if needed) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#configure-test-case-simulation-in-web-ui-(if-needed)" title="Permanent link">#</a></h3>
+<p>From the simulator Web UI, you will need to locate in the Store, a map and vehicle, and add each of them to your library.</p>
+<p>Refer to the <a href="../running-simulator/#store">Store</a> for information on how to add the "SanFrancisco" map, "Lincoln2017MKZ" vehicle and sensors needed for "Apollo 5.0 (full analysis)" sensor configuration on this vehicle.</p>
+<p>Refer to <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> for an illustrated step-by-step walk through on selecting and configuring a Python test case simulation.</p>
+<p><strong>Note</strong>: The public "Cut-in Scenario" test case simulation should be ready to use if Apollo is running on the same machine as the simulator but if Apollo is running elsewhere, be sure to update the <code>BRIDGE_HOST</code> as described in the <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> walk through.</p>
+<h3 id="launch-apollo,-configure-dreamview,-and-enable-modules">Launch Apollo, Configure Dreamview, and Enable Modules <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launch-apollo,-configure-dreamview,-and-enable-modules" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Open a terminal, change directory to the apollo-5.0 project (lgsvl fork: https://github.com/lgsvl/apollo-5.0), and type:</p>
+<ul>
+<li><code>./docker/dev_start.sh</code> to start apollo container</li>
+<li><code>./docker/dev_into.sh</code> to enter the container</li>
+<li>Make sure you have built Apollo with GPU enabled options; for more details, refer to <a href="../../system-under-test/apollo5-0-instructions/">Running Apollo 5.0 with SVL Simulator</a>.</li>
+<li><code>bootstrap.sh &amp;&amp; bridge.sh &amp;</code> to start the Apollo Dreamview Web UI and cyber_bridge.</li>
+</ul>
+</li>
+<li>
+<p>Open browser, enter address <code>localhost:8888</code> to load Dreamview, and select <code>Lincoln2017MKZ</code> from the <code>vehicle</code> menu.</p>
+<ul>
+<li>
+<p>Be sure to also select the correct map in Dreamview for the desired test case:</p>
+<ul>
+<li>For the <code>Cut In</code> scenario, select <code>San Francisco</code> from the <code>map</code> menu.</li>
+<li>For the <code>Pedestrian Crossing</code> scenario, select <code>Straight 1 Lane Pedestrian Crosswalk</code> from the <code>map</code> menu.</li>
+<li>For the <code>Red Light Runner</code> scenario, select <code>Borregas Ave</code> from the <code>map</code> menu.</li>
+<li>For the <code>Sudden Braking</code> scenario, select <code>Single Lane Road</code> from the <code>map</code> menu.</li>
+</ul>
+<p><img alt="" src="../../images/python-testcase/dreamview-taskview.png" /></p>
+</li>
+<li>
+<p>Enable required modules in the <code>Module Controller</code> view before using the Python Runner including <code>Camera</code>, <code>Localization</code>, <code>Perception</code>, <code>Planning</code>, <code>Prediction</code>, <code>Routing</code>, <code>Traffic Light</code>, and <code>Transform</code>.</p>
+</li>
+<li>
+<p>Enable the <code>Control</code> module in the <code>Module Controller</code> view as well.</p>
+<p><img alt="" src="../../images/python-testcase/dreamview-modules.png" /></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Note</strong>: The ego vehicle will not drive until a destination is selected and a routing request is made in the <code>Route Editing</code> view. However, a destination cannot be selected until the simulation is started and Apollo is able to localize the ego on the map. </p>
+<p><strong>Note</strong>: When changing the map selection in Dreamview, all modules will be disabled and will need to be re-enabled.</p>
+<h3 id="start-svl-simulator-in-test-case-mode">Start SVL Simulator in Test Case mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#start-svl-simulator-in-test-case-mode" title="Permanent link">#</a></h3>
+<ol>
+<li>In the <code>Simulations</code> tab in the Web UI locate the <code>Cut-in Scenario</code> scenario simulation.</li>
+<li>Then click the red "Run Simulation" button under the Cut-in Scenario to start the simulation.</li>
+</ol>
+<p><strong>Note</strong>: The ego vehicle will not drive until a destination is selected and a routing request is made in the <code>Route Editing</code> view. However, a destination cannot be selected until the simulation is started and Apollo is able to localize the ego on the map. </p>
+<h3 id="configure-ego-destination-in-dreamview">Configure Ego Destination in Dreamview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#configure-ego-destination-in-dreamview" title="Permanent link">#</a></h3>
+<p>After starting the simulation, Apollo should receive sensor information and localize the car onto the selected map.</p>
+<p>In Dreamview, switch to <code>Route Editing</code> view, zoom out, scroll if needed, and click to set the destination in the same ego lane before the next intersection. Then click "Send Routing Request" to plan the route. </p>
+<p><img alt="" src="../../images/python-testcase/dreamview-routing.png" /></p>
+<p>In <code>Module View</code> make sure all required modules are still enabled.</p>
+<p>The ego vehicle should begin driving. The NPC should cut in front of the ego vehicle, and the ego vehicle should slow or stop to avoid hitting the NPC.</p>
+<p><img alt="" src="../../images/python-testcase/dreamview-cutin-fence.png" /></p>
+<p>This test case can be repeated by clicking the red "Run" (triangle/play) button in the Web UI. Since the destination and route plan are already configured, re-starting the simulation will reset the ego start location and Apollo should immediately being driving.</p>
+<h2 id="example-test-cases">Example Test Cases<a class="headerlink" href="#example-test-cases" title="Permanent link">#</a></h2>
+<p>There are several example test cases provided in this preview release. Each test case has a required map, and a suggested destination, as summarized in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Vehicle</th>
+<th>Sensor configuration</th>
+<th>Map</th>
+<th>Destination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cut-in.py</td>
+<td>Lincoln2017MKZ</td>
+<td>Apollo 5.0 (full analysis)</td>
+<td>San Francisco</td>
+<td>same lane before next intersection</td>
+</tr>
+<tr>
+<td>ped-crossing.py</td>
+<td>Lincoln2017MKZ</td>
+<td>Apollo 5.0 (full analysis)</td>
+<td>Straight1LanePedestrianCrosswalk</td>
+<td>end of the map</td>
+</tr>
+<tr>
+<td>red-light-runner.py</td>
+<td>Lincoln2017MKZ</td>
+<td>Apollo 5.0 (full analysis)</td>
+<td>Borregas Ave</td>
+<td>other side of intersection</td>
+</tr>
+<tr>
+<td>sudden-braking.py</td>
+<td>Lincoln2017MKZ</td>
+<td>Apollo 5.0 (full analysis)</td>
+<td>SingleLaneRoad</td>
+<td>end of the map</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to the <a href="../running-simulator/#store">Store</a> for information on how to add the "SanFrancisco" map, "Lincoln2017MKZ" vehicle and sensors needed for "Apollo 5.0 (full analysis)" sensor configuration.</p>
+<p>Refer to <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> for an illustrated step-by-step walk through on selecting and configuring a python test case simulation.</p>
+<p>Note that each map (environment) must be available in the Simulator Maps view, and the corresponding Apollo HD map must be selected in Dreamview. </p>
+<p>Also note that changing maps in Dreamview will disable the modules so you will need to re-enable them as described above.</p>
+<p>Details for each of the test cases are provided below.</p>
+<h3 id="cut-in-test-case">Cut-in Test Case <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cut-in-test-case" title="Permanent link">#</a></h3>
+<p>On a two lane road, an NPC cuts in front of ego vehicle from an adjacent lane while maintaining previous speed, with a small enough distance in front of ego vehicle such that ego vehicle will need to react by either changing speed (braking) or turning or swerving away.</p>
+<p>This test case runs on the San Francisco map with the Lincoln MKZ ego vehicle driven by Apollo.</p>
+<p>Be sure that the San Francisco map is selected in Dreamview, and that all required modules are enabled.</p>
+<p>To run the Cut-in test case, select the "Cut In" test case file as described above.</p>
+<p>Then switch to the <code>Route Editing</code> view of Dreamview. Scroll (or zoom out) and click to set a destination in the same ego lane before the next intersection. Then click <code>Send Routing Request</code> and return to the <code>Module Controller</code> view to confirm that <code>Control</code> (and other modules) are enabled.</p>
+<h3 id="pedestrian-crossing-test-case">Pedestrian Crossing Test Case <a class="wikilink" href="#top">top</a><a class="headerlink" href="#pedestrian-crossing-test-case" title="Permanent link">#</a></h3>
+<p>A pedestrian begins crossing a crosswalk as the ego vehicle approaches the intersection. The ego vehicle will need to slow down or come to a stop to wait for the pedestrian to finish crossing.</p>
+<p>This test case runs on the Straight1LanePedestrianCrosswalk map with the Lincoln MKZ ego vehicle driven by Apollo.</p>
+<p>Be sure that the Straight1LanePedestrianCrosswalk map is selected in Dreamview, and that all required modules are enabled.</p>
+<p>To run the Cut-in test case, select the "Pedestrian Crossing" test case file as described above.</p>
+<p>Then switch to the <code>Route Editing</code> view of Dreamview. Scroll (or zoom out) and click to set a destination at the end of the map. Then click <code>Send Routing Request</code> and return to the <code>Module Controller</code> view to confirm that <code>Control</code> (and other modules) are enabled.</p>
+<h3 id="red-light-runner-test-case">Red Light Runner Test Case <a class="wikilink" href="#top">top</a><a class="headerlink" href="#red-light-runner-test-case" title="Permanent link">#</a></h3>
+<p>While the ego vehicle attempts to cross a 4-way intersection with a green traffic light, an NPC crossing the intersection from the right runs a red light and crosses the intersection. The Ego must react by braking, stopping, or turning in order to avoid a collision.</p>
+<p>This test case runs on the Borregas Ave map with the Lincoln MKZ ego vehicle driven by Apollo.</p>
+<p>Be sure that the Borregas Ave map is selected in Dreamview, and that all required modules are enabled.</p>
+<p>To run the Cut-in test case, select the "Red Light Runner" test case file as described above.</p>
+<p>Then switch to the <code>Route Editing</code> view of Dreamview. Scroll (or zoom out) and click to set a destination on the other side of the intersection. Then click <code>Send Routing Request</code> and return to the <code>Module Controller</code> view to confirm that <code>Control</code> (and other modules) are enabled.</p>
+<h3 id="sudden-braking-test-case">Sudden Braking Test Case <a class="wikilink" href="#top">top</a><a class="headerlink" href="#sudden-braking-test-case" title="Permanent link">#</a></h3>
+<p>The ego vehicle follows an NPC vehicle that is traveling at the speed limit. The NPC suddenly brakes and comes to a stop. The ego vehicle will need to greatly reduce its speed to avoid a collision. After a few seconds, the NPC speeds back up gradually to the speed limit.</p>
+<p>This test case runs on the SingleLaneRoad map with the Lincoln MKZ ego vehicle driven by Apollo.</p>
+<p>Be sure that the Single Lane Road map is selected in Dreamview, and that all required modules are enabled.</p>
+<p>To run the Cut-in test case, select the "Sudden Braking" test case file as described above.</p>
+<p>Then switch to the <code>Route Editing</code> view of Dreamview. Scroll (or zoom out) and click to set a destination at the end of the map. Then click <code>Send Routing Request</code> and return to the <code>Module Controller</code> view to confirm that <code>Control</code> (and other modules) are enabled.</p>
+<h3 id="known-issues">Known issues <a class="wikilink" href="#top">top</a><a class="headerlink" href="#known-issues" title="Permanent link">#</a></h3>
+<ul>
+<li>The NPC usually waits until the ego vehicle starts driving but in some cases it might start before a route has been requested for the ego. In that case wait for the simulation to finish and then run it again while leaving the modules enabled and the route to the destination already specified.  </li>
+<li>If errors appear due to previously-downloaded (maps or vehicle) asset bundles from a previous version the Simulator, delete the Simulator persistent data folder located at <code>/home/[username]/.config/unity3d/LGElectronics/SVLSimulator</code>.</li>
+<li>If <code>Straight 1 Lane Pedestrian Crosswalk</code> is not available in the Dreamview map menu, try updating your apollo-5.0 sources (from the <a href="https://github.com/lgsvl/apollo-5.0">lgsvl fork</a>), then stop and re-start Apollo, and re-load Dreamview.</li>
+<li>The AD stack (e.g. Apollo) is not currently controlled by the Python Runner, so you will need to manually set a destination in Dreamview.</li>
+<li>You can control the AD stack through your Python Script using the python <a href="../../python-api/dreamview-api/">dreamview-API</a> module. <a href="../../python-api/dreamview-api/">Dreamview-API</a> module only supports Apollo at the moment. Using these APIs, you can configure hd_map and vehicle settings in Apollo Dreamview, enable/disable Apollo modules, set destination, etc..</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
