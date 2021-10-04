@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="LG Electronics America R&D Lab">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Vehicle dynamics - SVL Simulator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vehicle dynamics";
+    var mkdocs_page_input_path = "simulation-content/ego-vehicle-dynamics.md";
+    var mkdocs_page_url = "/docs/simulation-content/ego-vehicle-dynamics/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-130546445-1', 'svlsimulator.com');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <!-- edit link, open in new tab -->
+        <a href="https://svlsimulator.com/docs/" class="icon icon-home" target="_blank_"> SVL Simulator</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Release Notes</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-features/">Release features</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/changelog/">Release notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/release-contents/">Contents of this release</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../release-notes/limitations-license-notice/">Limitations and license notice</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../archive/">Previous releases</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Installation Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/system-requirements/">System requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/installing-simulator/">Installation procedure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/build-instructions/">Building from source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/conventions/">Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/getting-started/">Run a simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tutorials/modular-testing/">Modular testing with the Apollo AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/lane-following/">Deep learning lane following model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/create-ros2-ad-stack/">Creating a simple ROS2-based AD stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/ground-truth-obstacles/">Viewing and subscribing to ground truth obstacles</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-pub-sub/">Running a basic Robotics Simulation with ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Interface</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Web User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/store/">Store</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/library/">Library</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/clusters/">Clusters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/simulations/">Simulations</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/web/test-results/">Test Results</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Simulation User Interface</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulator-main-menu/">Simulator main menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/simulation-menu/">Simulation menu</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/sensor-visualizers/">Sensor visualizers</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/bridge-connection-ui/">Bridge connection UI</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/config-and-cmd-line-params/">Configuration file and command line parameters</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../user-interface/keyboard-shortcuts/">Keyboard shortcuts</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">System Under Test</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/sut-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Messages</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/simulator-messages/">Simulator messages</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/lgsvl-msgs/">The lgsvl_msgs package</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/sensor-message-publishing/">Sensor message publishing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../system-under-test/autoware-instructions/">ROS (Autoware.AI)</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">ROS 2</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/ros2-bridge/">Setting up ROS 2 bridge</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Apollo</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo-master-instructions/">Latest Apollo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../system-under-test/apollo5-0-instructions/">Apollo 5.0</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Running Simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/runtime-templates/">Runtime templates</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/running-simulator/">Running Simulator</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/offline-mode/">Offline mode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Creating Scenarios</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python API</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../python-api/python-api/">Python API guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/api-quickstart-descriptions/">Python API quickstart guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api/dreamview-api/">Dreamview API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Simulation Content</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sharing/">Sharing assets</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../assets/">Building content</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Maps</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-new-map/">Creating a new map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../map-annotation/">Map annotation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../hd-map-mesh-generation/">Road network generation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-destinations/">Adding destinations to a map</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-import/">Point cloud import</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../pointcloud-rendering/">Point cloud rendering</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Vehicles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../add-new-ego-vehicle/">Creating a new ego vehicle</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Vehicle dynamics</a>
+    <ul class="subnav">
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Sensors</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sensors-list/">List of sensors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lane-line-sensor/">Lane-line sensor</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../differential-drive-control/">Differential Drive Control sensor</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Plugins</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../plugins/sensor-plugins/">Sensor plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/bridge-plugins/">Bridge plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/controllable-plugins/">Controllable plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/npc-plugins/">NPC plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Digital Twin</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../digital-twin/gomentum-dtl/">Digital Twin Lite example map</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Distributed Simulation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/distributed-simulation-introduction/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distributed-simulation/running-distributed-simulation/">Running distributed simulation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Third Party Integration</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../third-party-integration/openai-gym/">OpenAI Gym</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../support/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/unity-help/">Unity help</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/faq/">Frequently asked questions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../support/contributing/">Contributing</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SVL Simulator</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Vehicles &raquo;</li>
+        
+      
+        
+          <li>Simulation Content &raquo;</li>
+        
+      
+    
+    <li>Vehicle dynamics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+      <!-- edited to not display Github edit link -->
+        <a style="display:none;" href="https://github.com/lgsvl/simulator/edit/master/Docs/simulation-content/ego-vehicle-dynamics.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="ego-vehicle-dynamics">EGO Vehicle Dynamics<a href="#top"></a><a class="headerlink" href="#ego-vehicle-dynamics" title="Permanent link">#</a></h1>
+<p>SVL Simulator supports multiple dynamics models for EGO vehicles.  The default dynamics model is a C# based model that uses Unity's PhysX physics engine and components.  The model receives controller input and applies force to the Unity wheel colliders.  For users who would like to change or replace vehicle dynamics with their own models, the simulator offers the following ways to do so.</p>
+<ul>
+<li>Simple Model Interface - pure C# dynamics</li>
+<li>Full Model Interface - <a href="https://fmi-standard.org/">FMI 2.0</a> supported dynamics</li>
+<li>Robotics - unique class extending IVehicleDynamics.cs and a unique class extending AgentController.cs</li>
+<li>Spectator - no dynamics class with a class extending AgentController.cs</li>
+</ul>
+<h2 id="simple-model-interface">Simple Model Interface <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simple-model-interface" title="Permanent link">#</a></h2>
+<p>Simple Model Interface is our C# dynamic model.  Most SVL Simulator vehicles that are provided, use the VehicleSMI class.  It is located in Assets -&gt; Scripts -&gt; Dynamics -&gt; Examples.  This class inherits IVehicleDynamics and has required methods for simulation.  Users can make any C# dynamic model class as long as it inherits IVehicleDynamics and Monobehavior.  It can be compiled in SVL Simulator run-time executable or the vehicle bundle itself.</p>
+<h2 id="simple-model-interface-setup">Simple Model Interface Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#simple-model-interface-setup" title="Permanent link">#</a></h2>
+<p><a href="../../images/full_size_images/smi-setup.png"><img alt="" src="../../images/smi-setup.png" /></a></p>
+<ol>
+<li>
+<p>Create or select an EGO vehicle prefab in the Project panel only, not in scene</p>
+</li>
+<li>
+<p>Double click this EGO vehicle prefab.  This opens the prefab editor scene</p>
+</li>
+<li>
+<p>Remove VehicleSMI.cs from the vehicle component list in the Inspector panel.  This is the component that you are replacing with your own</p>
+</li>
+<li>
+<p>Add your new c# dynamics class component that inherits IVehicleDynamics</p>
+</li>
+<li>
+<p>If you plan to use Unity's physics engine, be sure to look at how VehicleSMI caches references to the wheel colliders and wheel meshes.  This AxleInfo, in the C# example, enables you to apply force to the wheels and match the movement to the wheel models.</p>
+<p><a href="../../images/full_size_images/smi-unity-physics-setup.png"><img alt="" src="../../images/smi-unity-physics-setup.png" /></a></p>
+</li>
+<li>
+<p>Set any public references needed for your new dynamics model and save the prefab, Ctrl-S</p>
+</li>
+<li>
+<p>Open Simulator -&gt; Build... to open the SVL Simulator bundle creation window</p>
+</li>
+<li>
+<p>Select Ego vehicle</p>
+</li>
+<li>
+<p>Select Build and after it is completed, in the root of the SVL Simulator you will have a folder called AssetBundles where the new bundles will be created. The new vehicle will be in AssetBundles/Vehicles folder.</p>
+</li>
+<li>
+<p>Open Loader.scene, run in editor and open the WebUI by pressing the <code>Open Browser</code> button in the Game panel view</p>
+</li>
+<li>
+<p>Under Library -&gt; Vehicles select <code>Add New</code></p>
+</li>
+<li>
+<p>Drag the new bundle into the target area to upload the vehicle or select from file folders.</p>
+</li>
+<li>
+<p>Set the vehicle details. Be sure to rename the vehicle so it isn't confused with other dynamics.</p>
+</li>
+<li>
+<p>Create a new sensor configuration.</p>
+</li>
+<li>
+<p>Publish the new vehicle.</p>
+</li>
+</ol>
+<h2 id="full-model-interface">Full Model Interface <a class="wikilink" href="#top">top</a><a class="headerlink" href="#full-model-interface" title="Permanent link">#</a></h2>
+<p>Full Model Interface supports <a href="https://github.com/modelica/fmi-standard">FMI2.0 Functional Mock-up Interface</a>.  Since user FMU's can vary greatly, we have provided an exampleFMU.fmu for testing in Windows only.  It can be found in the source code in Assets -&gt; Resources.  ExampleVehicleFMU.cs is provided to see how the Full Model Interface system works.  It is located in Assets -&gt; Scripts -&gt; Dynamics -&gt; Examples. Users can create their own FMU class that inherits from IVehicleDynamics.</p>
+<p><a href="../../images/full_size_images/fmi-setup-0.png"><img alt="" src="../../images/fmi-setup-0.png" /></a></p>
+<ol>
+<li>Create or select an EGO vehicle prefab in the Project panel only, not in scene</li>
+<li>Double click this EGO vehicle prefab.  This opens the prefab editor scene</li>
+<li>Remove VehicleSMI.cs from the vehicle component list in the Inspector panel.  This is the component that you are replacing</li>
+<li>Add Component ExampleVehicleFMU.cs</li>
+</ol>
+<p><strong>ExampleFMU.fmu requires Unity physics solver</strong></p>
+<p><a href="../../images/full_size_images/fmi-setup-1.png"><img alt="" src="../../images/fmi-setup-1.png" /></a></p>
+<ol>
+<li>Toggle button Non Unity Physics to Unity Physics</li>
+<li>Set Axles size to 2</li>
+<li>Setup Axles data.  You will be dragging gameobjects from the Hierarchy panel to the Inspector panel</li>
+<li>Drag the correct wheel colliders and wheel meshes to public references from the prefab, see SMI setup</li>
+<li>Enable Motor and Steering for the front axle</li>
+<li>Set Brake Bias to 0.5f for front and back axles</li>
+</ol>
+<p><strong>Import the ExampleFMU.fmu</strong></p>
+<p><a href="../../images/full_size_images/fmi-setup-2.png"><img alt="" src="../../images/fmi-setup-2.png" /></a></p>
+<ol>
+<li>Toggle button Import FMU</li>
+<li>Choose ExampleFMU.fmu in Assets -&gt; Resources -&gt; ExampleFMU.fmu</li>
+<li>FMU will unpack in the repository vehicle folder in External -&gt; Vehicles -&gt; VehicleName -&gt; FMUName folder</li>
+<li>FMUImporter.cs will parse the XML file into FMUData in the VehicleFMU class instance on prefab</li>
+<li>Model Variables will be listed so users can reference by index</li>
+<li>Each model variable has multiple values that are displayed in the scroll area</li>
+<li>Open Simulator -&gt; Build... to open the SVL Simulator bundle creation window</li>
+<li>Select the new Ego vehicle to build</li>
+<li>Select Build and after it is completed, in the root of the SVL Simulator you will have a folder called AssetBundles/Vehicles where the new bundles will be created.</li>
+<li>Open Loader.scene, run in editor and open the WebUI by pressing the Open Browser... button in the Game panel view</li>
+<li>Under Library -&gt; Vehicles select <code>Add New</code></li>
+<li>Drag the new bundle into the target area to upload the vehicle or select from file folders.</li>
+<li>Set the vehicle details. Be sure to rename the vehicle so it isn't confused with other dynamics.</li>
+<li>Create a new sensor configuration.</li>
+<li>Publish the new vehicle.</li>
+</ol>
+<h2 id="full-model-interface-run-time-behavior">Full Model Interface Run-time behavior <a class="wikilink" href="#top">top</a><a class="headerlink" href="#full-model-interface-run-time-behavior" title="Permanent link">#</a></h2>
+<p>SVL Simulator only supports one FMU vehicle and for Windows only.</p>
+<h2 id="robotics">Robotics <a class="wikilink" href="#top">top</a><a class="headerlink" href="#robotics" title="Permanent link">#</a></h2>
+<p>Robotics is similar to SMI C# dynamic model.  It requires a class that inherits IVehicleDynamics and implements the needed methods for simulation.  Users can make any C# dynamic model class as long as it inherits IVehicleDynamics and Monobehavior.  It can be compiled in SVL Simulator run-time executable or the vehicle bundle itself. Robotics also requires a Controller class that inherits AgentController and implements the needed methods for simulation.</p>
+<h2 id="robotics-setup">Robotics Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#robotics-setup" title="Permanent link">#</a></h2>
+<p><a href="../../images/full_size_images/robotics-setup.png"><img alt="" src="../../images/robotics-setup.png" /></a></p>
+<ol>
+<li>Create an EGO robot prefab in the Project panel only, not in scene</li>
+<li>Double click this EGO robot prefab.  This opens the prefab editor scene</li>
+<li>Robotics requires ArticulationBody components, not Rigidbody components. Set all ArticulationBody components in the Hierarchy Panel.</li>
+<li>Add your new c# dynamics class component that inherits IVehicleDynamics. Be sure to reference the ArticulationBody, not a rigidbody.</li>
+</ol>
+<p><a href="../../images/full_size_images/robotics-smi.png"><img alt="" src="../../images/robotics-smi.png" /></a></p>
+<ol>
+<li>Be sure BaseLink Transform is a child of the root prefab and set manually in the class.</li>
+<li>Add your new controller class component that inherits AgentController.</li>
+<li>Be sure Driver View Transform is a child of the root prefab and set manually in the class.</li>
+<li>Save the prefab, Ctrl-S.</li>
+<li>Open Simulator -&gt; Build... to open the SVL Simulator bundle creation window</li>
+<li>Select Ego vehicle</li>
+<li>Select Build and after it is completed, in the root of the SVL Simulator you will have a folder called AssetBundles where the new bundles will be created. The new vehicle will be in AssetBundles/Vehicles folder.</li>
+<li>Open Loader.scene, run in editor and open the WebUI by pressing the <code>Open Browser</code> button in the Game panel view</li>
+<li>Under Library -&gt; Vehicles select <code>Add New</code></li>
+<li>Drag the new bundle into the target area to upload the vehicle or select from file folders.</li>
+<li>Set the vehicle details.</li>
+<li>Create a new sensor configuration.</li>
+<li>Publish the new vehicle.</li>
+</ol>
+<h2 id="spectator">Spectator <a class="wikilink" href="#top">top</a><a class="headerlink" href="#spectator" title="Permanent link">#</a></h2>
+<p>Spectator is not a vehicle at all.  No dynamics class is needed and only a rigidbody with a class extending AgentController.cs.  It can be compiled in SVL Simulator run-time executable or the vehicle bundle itself. Spectator vehicles that have no physics interaction just requires a Controller class that inherits AgentController and implements the needed methods for simulation.</p>
+<h2 id="spectator-setup">Spectator Setup <a class="wikilink" href="#top">top</a><a class="headerlink" href="#spectator-setup" title="Permanent link">#</a></h2>
+<p><a href="../../images/full_size_images/spectator-setup.png"><img alt="" src="../../images/spectator-setup.png" /></a></p>
+<ol>
+<li>Create an EGO robot prefab in the Project panel only, not in scene</li>
+<li>Double click this EGO robot prefab.  This opens the prefab editor scene</li>
+<li>Add a RigidBody component and tick disable Use Gravity.</li>
+<li>Add your new controller class component that inherits AgentController. This can be mostly empty</li>
+</ol>
+<p><a href="../../images/full_size_images/spectator-controller.png"><img alt="" src="../../images/spectator-controller.png" /></a></p>
+<ol>
+<li>Be sure Driver View Transform is a child of the root prefab and set manually in the class.</li>
+<li>Save the prefab, Ctrl-S.</li>
+<li>Open Simulator -&gt; Build... to open the SVL Simulator bundle creation window</li>
+<li>Select Ego vehicle</li>
+<li>Select Build and after it is completed, in the root of the SVL Simulator you will have a folder called AssetBundles where the new bundles will be created. The new vehicle will be in AssetBundles/Vehicles folder.</li>
+<li>Open Loader.scene, run in editor and open the WebUI by pressing the <code>Open Browser</code> button in the Game panel view</li>
+<li>Under Library -&gt; Vehicles select <code>Add New</code></li>
+<li>Drag the new bundle into the target area to upload the vehicle or select from file folders.</li>
+<li>Set the vehicle details.</li>
+<li>Create a new sensor configuration.</li>
+<li>Publish the new vehicle.</li>
+<li>Create a new simulation.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../sensors-list/" class="btn btn-neutral float-right" title="List of sensors">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../add-new-ego-vehicle/" class="btn btn-neutral" title="Creating a new ego vehicle"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019-2021 LG Electronics Inc.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../add-new-ego-vehicle/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../sensors-list/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../javascripts/clipboard.js" defer></script>
+      <script src="../../javascripts/copy-to-clipboard.js" defer></script>
+      <script src="../../javascripts/config.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

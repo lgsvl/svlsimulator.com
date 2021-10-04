@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -815,6 +875,8 @@ per second and leave <em>y</em> and <em>z</em> components of velocity unmodified
 <li><code>get_sensors</code> - method to return list of Python-Api compatible <a href="#sensors">sensors</a></li>
 <li><code>connect_bridge</code> - method to connect to ROS or Cyber RT bridge</li>
 <li><code>bridge_connected</code> - bool property, <code>True</code> if bridge is connected</li>
+<li><code>set_initial_pose</code> - method to publish an initial pose of EGO vehicle to ROS</li>
+<li><code>set_destination</code> - method to publish a destination pose of EGO vehicle to ROS</li>
 </ul>
 <p>You can control the movement of the EGO vehicle either by manually specifying state, applying
 manual control, or connecting through the bridge.</p>
@@ -1279,7 +1341,7 @@ collision with. It corresponds to layers in the Unity project - check the projec
         <a href="../api-quickstart-descriptions/" class="btn btn-neutral float-right" title="Python API quickstart guide">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../creating-scenarios/visual-scenario-editor/" class="btn btn-neutral" title="Visual scenario editor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../visual-scenario-editor/vse-extensions/" class="btn btn-neutral" title="VSE Extensions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -1309,7 +1371,7 @@ collision with. It corresponds to layers in the Unity project - check the projec
           <a href="https://github.com/lgsvl/simulator/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../creating-scenarios/visual-scenario-editor/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../visual-scenario-editor/vse-extensions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../api-quickstart-descriptions/" style="color: #fcfcfc">Next &raquo;</a></span>

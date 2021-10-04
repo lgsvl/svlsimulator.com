@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -163,6 +167,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -311,6 +323,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -320,7 +336,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -721,11 +781,11 @@
 </tbody>
 </table>
 <h3 id="map-origin">Map Origin <a class="wikilink" href="#top">top</a><a class="headerlink" href="#map-origin" title="Permanent link">#</a></h3>
-<p>Each simulator map includes a gameObject called <code>MapOrigin</code>. The Map Origin is the reference point of the map within Unity and has coordinate values of (0, 0, 0). The real-world position of the Map Origin is needed to output world coordinates using GNSS sensors. These values are stored within the gameObject as Easting and Northing values expressed in the <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM coordinate system</a> as expressed below:</p>
+<p>Each simulator map includes a game object called <strong>MapOrigin</strong>. The <strong>MapOrigin</strong> is the reference point of the map within Unity and has position coordinate values of (0, 0, 0) and rotation coordinate values of (0, <strong>-90</strong>, 0). Position values can be changed to match Origin Easting and Origin Northing in the Scene but rotation values <strong>MUST</strong> stay at (0, -90, 0). The real-world position of the Map Origin is needed to output world coordinates using GNSS sensors. These values are stored within the gameObject as Easting and Northing values expressed in the <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">UTM coordinate system</a> as expressed below:</p>
 <p><img alt="" src="../../images/mapOrigin.png" /></p>
 <h4 id="aligning-map-origin-to-real-world-coordinates">Aligning Map Origin to real world coordinates<a class="headerlink" href="#aligning-map-origin-to-real-world-coordinates" title="Permanent link">#</a></h4>
-<p>The position, rotation, and scale of the <code>MapOrigin</code> object are also involved in the transform between the virtual environment and real world map coordinates. Therefore, if the map is not perfect, instead of rotating and scaling the map, you can appropriately set values of the Transform component. </p>
-<p>In order make this process easier and achieve a good mapping of the virtual world to the real world, you can use Reference Points. Just add a Reference Point by clicking on the button in <code>MapOrigin</code>, then move the Point to a characteristic place and enter the coordinates of this point in the real world. Add at least 2 such points, then click <code>Update Map Origin using Reference Points</code> in <code>MapOrigin</code>. </p>
+<p>The position, rotation, and scale of the <strong>MapOrigin</strong> object are also involved in the transform between the virtual environment and real world map coordinates. Therefore, if the map is not perfect, instead of rotating and scaling the map, you can appropriately set values of the Transform component. </p>
+<p>In order make this process easier and achieve a good mapping of the virtual world to the real world, you can use Reference Points. Just add a Reference Point by clicking on the button in <strong>MapOrigin</strong>, then move the Point to a characteristic place and enter the coordinates of this point in the real world. Add at least 2 such points, then click <code>Update Map Origin using Reference Points</code> in <strong>MapOrigin</strong>. </p>
 <p>The values will be set to minimize mean squared error. You can see the error by selecting Reference Points. The green sphere shows GPS coordinates of the selected point (Latitude,Longitude).</p>
 <p><img alt="" src="../../images/referencePoint.png" /></p>
 <h3 id="map-orientation-in-unity">Map Orientation in Unity <a class="wikilink" href="#top">top</a><a class="headerlink" href="#map-orientation-in-unity" title="Permanent link">#</a></h3>
@@ -735,13 +795,13 @@
 <img alt="" src="../../images/gomentum_gmaps.png" /></p>
 <p>As evident above, upon the first glance it appears that the GoMentum Station map in Unity is oriented incorrectly; however, if the user were to rotate the view-point so that the Z-axis would be pointing to the right-side of the screen (where the geographic East normally points), the two maps would align as seen in the image below:</p>
 <p><img alt="" src="../../images/gomentum_unity_rotated.png" /></p>
-<p>To switch Unity Editor scene view to this orientation, select Simulator -&gt; Editor Tools.  Then select <strong>Scene</strong> type and in Scene Tools select <strong>RotateSceneView</strong>. Press <strong>Run</strong> to have the scene view change to this orientation.  This will also change the camera type to <strong>Isometric</strong> for easier alignment.</p>
+<p>To switch Unity Editor scene view to this orientation, select the <strong>MapOrigin</strong> and click the top left button, <code>Orient Scene</code>. This will orient the scene view to the correct orientation and change the camera type to <strong>Isometric</strong> for easier alignment. The <strong>MapOrigin</strong> transform must stay at rotation (0,-90,0).</p>
 <p><img alt="" src="../../images/gomentum_unity_rotated_editor_tool.png" /></p>
 <h3 id="vehicle-root-position">Vehicle Root Position (BaseLink) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-root-position" title="Permanent link">#</a></h3>
-<p>The vehicle root is the reference point of the ego vehicle model defined in a GameObject called <code>BaseLink</code> under the ego vehicle. <code>BaseLink</code> is intended to be placed at the center of the rear axle, however, if the GameObject does not exist it will be created when the simulation starts and will be placed at the pivot of the ego vehicle model. All sensor positions entered into the sensor configuration in the web UI are defined in the coordinate frame attached to <code>BaseLink</code>.</p>
+<p>The vehicle root is the reference point of the ego vehicle model defined in a game object called <strong>BaseLink</strong> under the ego vehicle. <strong>BaseLink</strong> is intended to be placed at the center of the rear axle, however, if the game object does not exist it will be created when the simulation starts and will be placed at the pivot of the ego vehicle model. All sensor positions entered into the sensor configuration in the web UI are defined in the coordinate frame attached to <strong>BaseLink</strong>.</p>
 <h4 id="setting-up-baselink">Setting up BaseLink <a class="wikilink" href="#top">top</a><a class="headerlink" href="#setting-up-baselink" title="Permanent link">#</a></h4>
 <ol>
-<li>Create a new GameObject named <code>BaseLink</code> and click 'Add Component' to add a script called <code>BaseLink</code>.
+<li>Create a new GameObject named <strong>BaseLink</strong> and click 'Add Component' to add a script called <strong>BaseLink</strong>.
 <img alt="" src="../../images/BaseLink1.png" /></li>
 <li>Move position to the center of the rear axle.
 <img alt="" src="../../images/BaseLink2.png" /></li>

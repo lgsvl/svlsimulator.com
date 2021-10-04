@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -384,7 +422,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -420,6 +466,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -574,6 +634,16 @@
 With supporting custom NPC models we also added the support for motorbikes and vehicles with more two axles as well as more than one steering axle as is found on heavy vehicles.</p>
 <p>NPC models must include a named <code>Collider</code> node that is a simplified mesh to attach a Unity mesh collider.  The mesh renderer is <strong>NOT</strong> active and the collider must be marked Convex.</p>
 <p><a href="../../images/full_size_images/npc-collider.png"><img alt="" src="../../images/npc-collider.png" /></a></p>
+<p>NPCs now support different RigidBody and WheelCollider settings.  Users can add these components exactly like EGO vehicle creation and they will override the NPC defaults.  This allows support for smaller or larger vehicles with very different physics settings.</p>
+<ul>
+<li>RigidBody component can be added to the root of the NPC model.</li>
+<li>RigidBody reference must be set in the inspector if it is added to the model.</li>
+<li>Wheel Collider Holder object can be added to the root of the model with child wheel collider objects, aligned at the origin.</li>
+<li>Wheel Collider Holder object reference must be set in the inspector if it is added to the model.</li>
+<li>Wheel Data must be set for each wheel if a Wheel Collider Holder object was set in the inspector.</li>
+</ul>
+<p><a href="../../images/full_size_images/npc-override-meta.png"><img alt="" src="../../images/npc-override-meta.png" /></a></p>
+<p><a href="../../images/full_size_images/npc-override-wheel.png"><img alt="" src="../../images/npc-override-wheel.png" /></a></p>
 <p>We classify NPCs into size categories which decide the spawning frequency as well as which paint colors are more common for which NPC size type.
 The following table lists all currently implemented size types and the weight that correlates to their relative probability of encountering this type.</p>
 <table>
@@ -634,6 +704,10 @@ The following table lists all currently implemented size types and the weight th
 </tr>
 <tr>
 <td align="center">Bicycle</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">F1Tenth</td>
 <td align="center">1</td>
 </tr>
 </tbody>

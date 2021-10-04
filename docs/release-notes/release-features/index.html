@@ -112,7 +112,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -163,6 +167,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -311,6 +323,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -320,7 +336,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -552,14 +612,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="202122-release-features">2021.2.2 Release Features<a class="headerlink" href="#202122-release-features" title="Permanent link">#</a></h1>
-<h2 id="indoor-robotics-and-nav2-support">Indoor robotics and Nav2 support<a class="headerlink" href="#indoor-robotics-and-nav2-support" title="Permanent link">#</a></h2>
-<p>This release adds support for indoor robot simulation. Building on top of our default support for ROS 1 and ROS 2, SVL Simulator now enables you to add autonomous mobile robots for indoor environments. </p>
-<p>Previously, SVL Simulator supported autonomous vehicle and simulation use cases with automotive vehicle models and outdoor, HD map-based environments. Now, with a sample indoor environment and support for Unity's ArticulationBody, you can run simulations for your indoor robot scenarios. The first indoor environment we are releasing, LGSeocho, does not have an HD map, and instead enables robots to drive around anywhere on the map floor.</p>
-<p>With support for ArticulationBody-based ego vehicles and robots, you can create more sophisticated ego models that involve more complex physics linkages or dynamics that do not follow the traditional dynamics behaviors of cars. Also, with our example <a href="../../simulation-content/differential-drive-control/">Differential Drive Control sensor</a>, you can see how to modify or create sensor plugins that work directly with your own robot model, by specifying the topics published and subscribed to in order to control your robot(s).</p>
-<p>With SVL Simulator indoor robot support, you will be able to more easily run single and multi-robot simulations to test algorithms for indoor autonomous mobile robot applications that include hospitality, warehouse, and factory robots.</p>
-<p>We have created two new tutorials to help you get started with indoor robotics simulation. </p>
-<p>The <a href="../../tutorials/robotics-pub-sub/">first one</a> walks you through creating a basic simulation where you can directly publish simple control commands with ROS 2. The <a href="../../tutorials/robotics-ros2/">second tutorial</a> builds on this by connecting your robot to the Nav2 navigation stack, enabling you to start modifying and testing your autonomous robot's algorithms for e.g. planning and control.</p>
+                <h1 id="20213-release-features">2021.3 Release Features<a class="headerlink" href="#20213-release-features" title="Permanent link">#</a></h1>
+<h2 id="scenario-runner-windows">Scenario runners support for Windows <a class="wikilink" href="#top">top</a><a class="headerlink" href="#scenario-runner-windows" title="Permanent link">#</a></h2>
+<p>With Docker integration, we have extended scenario runners support on SVL Simulator running on Windows. Now it is possible to run end-to-end simulations using <a href="../../running-simulations/running-simulator/#pythontestcasesimulation">Python API</a> and <a href="../../running-simulations/running-simulator/#vsesimulation">Visual Scenario Editor</a> runtime templates on Windows as well. Please follow our updated <a href="../../installation-guide/installing-simulator/#docker">installation instructions</a> to get started.</p>
+<h2 Automation="Automation" _CI_CD_="(CI/CD)" id="local-automation-support" support_="support'">Local Automation (CI/CD) support <a class="wikilink" href="#top">top</a><a class="headerlink" href="#local-automation-support" title="Permanent link">#</a></h2>
+<p>With <a href="../../running-simulations/local-automation/">Local Automation</a>, you can now trigger simulation jobs from scripts without needing to manually interact with the web user interface. This empowers you to begin integrating SVL Simulator with existing automated testing or CI workflows (like Gitlab or Jenkins).</p>
+<h2 Multi-Robot="Multi-Robot" id="extended-multi-robot-support" support_="support'">Extended Multi-Robot support <a class="wikilink" href="#top">top</a><a class="headerlink" href="#extended-multi-robot-support" title="Permanent link">#</a></h2>
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/IQ5Fp3eItjY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p><br></p>
+<p>We have several features to extend support for robotics simulation use cases. We support multi-robot simulations by using namespaces on sensor topics. Please refer to our <a href="https://wise.svlsimulator.com/vehicles/profile/20609b67-6dbd-40ad-9b46-e6bc455278ed/edit/configuration/f9c5ace0-969a-4ade-8208-87d09d1a53f8">multi-robot</a> sensor configuration for an example. We also added new sensors (<a href="https://wise.svlsimulator.com/plugins/profile/2392cabf-47b4-4410-bd81-37545b78feca">Lidar2DSensor</a>, <a href="https://wise.svlsimulator.com/plugins/profile/3f1db91f-4eed-43b2-99ed-c78c129d6aa1">DestinationSensor</a>, <a href="https://wise.svlsimulator.com/plugins/profile/af45d8d4-f5e3-11eb-a493-93b6d1b3c480">IntelRealSense</a>) and new indoor environments (<a href="https://wise.svlsimulator.com/maps/profile/903118ab-7246-48a9-81a4-1be3eca5121f">Warehouse</a>, <a href="https://wise.svlsimulator.com/maps/profile/b0881caf-2727-4cb6-abe7-0f47a27899ea">WarehouseDT</a>) with <a href="../../tutorials/robotics-mapping/">costmaps</a> for robotics development. We have created an <a href="../../simulation-content/sdf-import/">SDF importer</a> to help import robot and environments from SDF world files. The Python API has been extended to enable setting a NavOrigin and destination with ROS2 Navigation stack. Finally, we have added support for <a href="../../simulation-content/lighting-for-interiors/">indoor lighting</a> and <a href="../../simulation-content/add-new-map/#adding-rain-colliders">rain effects</a> for creating improved indoor environments.</p>
+<h2 License="License" Terms_="Terms’" id="updated-license-terms">Updated License Terms <a class="wikilink" href="#top">top</a><a class="headerlink" href="#updated-license-terms" title="Permanent link">#</a></h2>
+<p>There are some updates on our user uploaded content license terms. Please review the updated license terms at our <a href="https://www.svlsimulator.com/terms">website</a>.</p>
+<h2 18.04="18.04" Ubuntu="Ubuntu" id="deprecating-ubuntu-18-04" in="in" next="next" release_="release’">Deprecating Ubuntu 18.04 in next release <a class="wikilink" href="#top">top</a><a class="headerlink" href="#deprecating-ubuntu-18-04" title="Permanent link">#</a></h2>
+<p>We will be deprecating official Simulator support for Ubuntu 18.04 starting with our next 2021.4 release. </p>
+<h2 2D_3D="2D/3D" Ground="Ground" Truth_="Truth’" id="improved-ground-truth">Improved 2D/3D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#improved-ground-truth" title="Permanent link">#</a></h2>
+<p>Perception sensor <a href="https://wise.svlsimulator.com/plugins/profile/e0bfb6cc-a8f0-425e-9b6c-a643ca1e255a">2D</a> and <a href="https://wise.svlsimulator.com/plugins/profile/e3fef197-9724-48ec-b98e-c5a0892d09c4">3D</a> will now use image data to create tight bounding boxes to increase coverage and accuracy. If any pixel is visible, entity will be detected by the ground truth sensor. Vehicles no longer require box colliders, bounds are calculated based on mesh.</p>
+<h2 Debug="Debug" Mode_="Mode’" id="added-developer-debug-mode">Developer Debug Mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#added-developer-debug-mode" title="Permanent link">#</a></h2>
+<p>To help during plugin development, we have added <a href="../../plugins/developer-debug-mode/">Developer Debug Mode</a> to allow for <a href="../../installation-guide/debugging-scripts/">debugging of scripts</a> inside local plugin code.</p>
+<h2 Editor_="Editor’" Scenario="Scenario" Visual="Visual" id="improved-vse">Improved Visual Scenario Editor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#improved-vse" title="Permanent link">#</a></h2>
+<p>You can now create more complex and improved scenarios using our <a href="../../visual-scenario-editor/about-vse/">visual scenario editor</a>. It supports BezierSpline paths, acceleration for agents’ waypoints, improved controllables policies, support for NavOrigin for robotics, and improved scenario playback to validate before running in simulation.</p>
+<h2 Behaviors_="Behaviors’" NPC="NPC" id="extended-npc-behaviors">Extended NPC Behaviors <a class="wikilink" href="#top">top</a><a class="headerlink" href="#extended-npc-behaviors" title="Permanent link">#</a></h2>
+<p>You can now use custom NPC Managers in NPC <a href="https://github.com/lgsvl/BehavioursNPC">behavior plugins</a> to create complex behaviors (like Parking).</p>
+<h2 controls_="controls’" extend="extend" id="extend-input-controls" input="input">Easily extend input controls <a class="wikilink" href="#top">top</a><a class="headerlink" href="#extend-input-controls" title="Permanent link">#</a></h2>
+<p>We have moved simulator input actions to sensor bundles to make it easy to add new input controllers like gamepads and other wheel controllers. You no longer need to make changes to the simulator source code for adding new input devices.</p>
 <h2 id="bug-fixes-and-improvements">Bug fixes and improvements <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bug-fixes-and-improvements" title="Permanent link">#</a></h2>
 <p>For a full list of bug fixes, improvements, and all other changes since the last release, please see the <a href="../changelog/">release notes</a>.</p>
               

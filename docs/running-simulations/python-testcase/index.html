@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -384,7 +422,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -420,6 +466,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -446,6 +502,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -565,8 +625,8 @@
 <p>Refer to <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> for an illustrated step-by-step walk through on selecting and configuring a python test case simulation.</p>
 <p>This document describes how to set up and run these test cases with Apollo.</p>
 <p>For example, one provided example is a "cut-in" test case which is performed on the San Francisco map (shown below).</p>
-<p>Another provided example is a "sudden braking" test case which is performed on the SingleLaneRoad map (shown below). </p>
-<p>Additional examples demonstrate pedestrian-crossing test case which can be performed on the Straight1LanePedestrianCrosswalk map and the red-light runner test case which is performed on the Borregas Ave map. </p>
+<p>Another provided example is a "sudden braking" test case which is performed on the SingleLaneRoad map (shown below).</p>
+<p>Additional examples demonstrate pedestrian-crossing test case which can be performed on the Straight1LanePedestrianCrosswalk map and the red-light runner test case which is performed on the Borregas Ave map.</p>
 <p><img alt="" src="../../images/python-testcase/cut-in-sim.png" />
 (Screenshot of the "cut-in" test case on the San Francisco map, above)</p>
 <p><img alt="" src="../../images/python-testcase/sudden-braking-sim.png" />
@@ -593,13 +653,13 @@
 <li>Configure Test Case simulation in Web UI</li>
 <li>Launch Apollo, configure Dreamview, and enable modules</li>
 <li>Start SVL Simulator in Test Case mode</li>
-<li>Configure ego destination in Dreamview </li>
+<li>Configure ego destination in Dreamview</li>
 </ol>
 <h3 id="configure-test-case-simulation-in-web-ui-(if-needed)">Configure Test Case simulation in Web UI (if needed) <a class="wikilink" href="#top">top</a><a class="headerlink" href="#configure-test-case-simulation-in-web-ui-(if-needed)" title="Permanent link">#</a></h3>
 <p>From the simulator Web UI, you will need to locate in the Store, a map and vehicle, and add each of them to your library.</p>
 <p>Refer to the <a href="../running-simulator/#store">Store</a> for information on how to add the "SanFrancisco" map, "Lincoln2017MKZ" vehicle and sensors needed for "Apollo 5.0 (full analysis)" sensor configuration on this vehicle.</p>
 <p>Refer to <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> for an illustrated step-by-step walk through on selecting and configuring a Python test case simulation.</p>
-<p><strong>Note</strong>: The public "Cut-in Scenario" test case simulation should be ready to use if Apollo is running on the same machine as the simulator but if Apollo is running elsewhere, be sure to update the <code>BRIDGE_HOST</code> as described in the <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> walk through.</p>
+<p><strong>Note</strong>: The public "Cut-in Scenario" test case simulation should be ready to use if Apollo is running on the same machine as the simulator but if Apollo is running elsewhere, be sure to update the <code>LGSVL__AUTOPILOT_0_HOST</code> as described in the <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> walk through.</p>
 <h3 id="launch-apollo,-configure-dreamview,-and-enable-modules">Launch Apollo, Configure Dreamview, and Enable Modules <a class="wikilink" href="#top">top</a><a class="headerlink" href="#launch-apollo,-configure-dreamview,-and-enable-modules" title="Permanent link">#</a></h3>
 <ol>
 <li>
@@ -634,17 +694,17 @@
 </ul>
 </li>
 </ol>
-<p><strong>Note</strong>: The ego vehicle will not drive until a destination is selected and a routing request is made in the <code>Route Editing</code> view. However, a destination cannot be selected until the simulation is started and Apollo is able to localize the ego on the map. </p>
+<p><strong>Note</strong>: The ego vehicle will not drive until a destination is selected and a routing request is made in the <code>Route Editing</code> view. However, a destination cannot be selected until the simulation is started and Apollo is able to localize the ego on the map.</p>
 <p><strong>Note</strong>: When changing the map selection in Dreamview, all modules will be disabled and will need to be re-enabled.</p>
 <h3 id="start-svl-simulator-in-test-case-mode">Start SVL Simulator in Test Case mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#start-svl-simulator-in-test-case-mode" title="Permanent link">#</a></h3>
 <ol>
 <li>In the <code>Simulations</code> tab in the Web UI locate the <code>Cut-in Scenario</code> scenario simulation.</li>
 <li>Then click the red "Run Simulation" button under the Cut-in Scenario to start the simulation.</li>
 </ol>
-<p><strong>Note</strong>: The ego vehicle will not drive until a destination is selected and a routing request is made in the <code>Route Editing</code> view. However, a destination cannot be selected until the simulation is started and Apollo is able to localize the ego on the map. </p>
+<p><strong>Note</strong>: The ego vehicle will not drive until a destination is selected and a routing request is made in the <code>Route Editing</code> view. However, a destination cannot be selected until the simulation is started and Apollo is able to localize the ego on the map.</p>
 <h3 id="configure-ego-destination-in-dreamview">Configure Ego Destination in Dreamview <a class="wikilink" href="#top">top</a><a class="headerlink" href="#configure-ego-destination-in-dreamview" title="Permanent link">#</a></h3>
 <p>After starting the simulation, Apollo should receive sensor information and localize the car onto the selected map.</p>
-<p>In Dreamview, switch to <code>Route Editing</code> view, zoom out, scroll if needed, and click to set the destination in the same ego lane before the next intersection. Then click "Send Routing Request" to plan the route. </p>
+<p>In Dreamview, switch to <code>Route Editing</code> view, zoom out, scroll if needed, and click to set the destination in the same ego lane before the next intersection. Then click "Send Routing Request" to plan the route.</p>
 <p><img alt="" src="../../images/python-testcase/dreamview-routing.png" /></p>
 <p>In <code>Module View</code> make sure all required modules are still enabled.</p>
 <p>The ego vehicle should begin driving. The NPC should cut in front of the ego vehicle, and the ego vehicle should slow or stop to avoid hitting the NPC.</p>
@@ -695,7 +755,7 @@
 </table>
 <p>Refer to the <a href="../running-simulator/#store">Store</a> for information on how to add the "SanFrancisco" map, "Lincoln2017MKZ" vehicle and sensors needed for "Apollo 5.0 (full analysis)" sensor configuration.</p>
 <p>Refer to <a href="../running-simulator/#pythontestcasesimulation">Python Test Case Simulation</a> for an illustrated step-by-step walk through on selecting and configuring a python test case simulation.</p>
-<p>Note that each map (environment) must be available in the Simulator Maps view, and the corresponding Apollo HD map must be selected in Dreamview. </p>
+<p>Note that each map (environment) must be available in the Simulator Maps view, and the corresponding Apollo HD map must be selected in Dreamview.</p>
 <p>Also note that changing maps in Dreamview will disable the modules so you will need to re-enable them as described above.</p>
 <p>Details for each of the test cases are provided below.</p>
 <h3 id="cut-in-test-case">Cut-in Test Case <a class="wikilink" href="#top">top</a><a class="headerlink" href="#cut-in-test-case" title="Permanent link">#</a></h3>
@@ -724,7 +784,7 @@
 <p>Then switch to the <code>Route Editing</code> view of Dreamview. Scroll (or zoom out) and click to set a destination at the end of the map. Then click <code>Send Routing Request</code> and return to the <code>Module Controller</code> view to confirm that <code>Control</code> (and other modules) are enabled.</p>
 <h3 id="known-issues">Known issues <a class="wikilink" href="#top">top</a><a class="headerlink" href="#known-issues" title="Permanent link">#</a></h3>
 <ul>
-<li>The NPC usually waits until the ego vehicle starts driving but in some cases it might start before a route has been requested for the ego. In that case wait for the simulation to finish and then run it again while leaving the modules enabled and the route to the destination already specified.  </li>
+<li>The NPC usually waits until the ego vehicle starts driving but in some cases it might start before a route has been requested for the ego. In that case wait for the simulation to finish and then run it again while leaving the modules enabled and the route to the destination already specified.</li>
 <li>If errors appear due to previously-downloaded (maps or vehicle) asset bundles from a previous version the Simulator, delete the Simulator persistent data folder located at <code>/home/[username]/.config/unity3d/LGElectronics/SVLSimulator</code>.</li>
 <li>If <code>Straight 1 Lane Pedestrian Crosswalk</code> is not available in the Dreamview map menu, try updating your apollo-5.0 sources (from the <a href="https://github.com/lgsvl/apollo-5.0">lgsvl fork</a>), then stop and re-start Apollo, and re-load Dreamview.</li>
 <li>The AD stack (e.g. Apollo) is not currently controlled by the Python Runner, so you will need to manually set a destination in Dreamview.</li>

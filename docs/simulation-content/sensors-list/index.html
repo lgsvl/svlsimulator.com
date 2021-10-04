@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -384,7 +422,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -571,6 +631,7 @@
 <li><a href="#depth-camera">Depth Camera</a></li>
 <li><a href="#segmentation-camera">Segmentation Camera</a></li>
 <li><a href="#lidar">LiDAR</a></li>
+<li><a href="#lidar2d">LiDAR2D top</a></li>
 <li><a href="#3d-ground-truth">3D Ground Truth</a></li>
 <li><a href="#apollo-perception-visualizer-3d">Apollo Perception Visualizer 3D</a></li>
 <li><a href="#can-bus">CAN-Bus</a></li>
@@ -598,14 +659,14 @@
 <li><a href="#hud-keyboard-control">HUD Keyboard Control</a></li>
 <li><a href="#autowareai-control">AutowareAI Control</a></li>
 <li><a href="#lane-line-sensor">Lane-line Sensor</a></li>
-<li><a href="#lane-following">Lane Following</a></li>
+<li><a href="#lane-following-sensor">Lane Following Sensor</a></li>
+<li><a href="#destination-sensor">Destination Sensor</a></li>
 </ul>
 </div>
 <h3 id="examples">Examples <a class="wikilink" href="#top">top</a><a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
 <p>Example JSON configurations are available here:</p>
 <ul>
 <li><a href="../../system-under-test/apollo5-0-json-example/">Apollo 5.0 JSON</a></li>
-<li><a href="../../system-under-test/apollo-json-example/">Apollo 3.0 JSON</a></li>
 <li><a href="../../system-under-test/autoware-instructions/">Autoware.AI</a></li>
 <li><a href="../../system-under-test/autoware-auto-instructions/">Autoware.Auto</a></li>
 <li>Some LiDAR sensor JSONs:<ul>
@@ -669,15 +730,15 @@
 </table>
 </li>
 <li>
-<p><code>parent</code> (OPTIONAL) a sensor's <code>transform</code> can be relative to another sensor. 
-<code>STRING</code> is the <code>name</code> of the base sensor transform to which this sensor is relative.</p>
+<p><code>parent</code> (OPTIONAL) a sensor's <code>transform</code> can be relative to another sensor.
+  <code>STRING</code> is the <code>name</code> of the base sensor transform to which this sensor is relative.</p>
 </li>
 <li>
 <p>If omitted, the <code>transform</code> is relative to the origin of the vehicle.</p>
 </li>
-<li><code>transform</code> is the location and rotation of the sensor relative to the local position of the vehicle. 
-The Unity left-hand coordinate system is used (+x right, +y up, +z forward, +pitch tilts the front down,
- +yaw rotates clockwise when viewed from above, +roll tilts the left side down).</li>
+<li><code>transform</code> is the location and rotation of the sensor relative to the local position of the vehicle.
+  The Unity left-hand coordinate system is used (+x right, +y up, +z forward, +pitch tilts the front down,
+   +yaw rotates clockwise when viewed from above, +roll tilts the left side down).</li>
 <li><code>x</code> is the position of the sensor along the x-axis</li>
 <li><code>y</code> is the position of the sensor along the y-axis</li>
 <li><code>z</code> is the position of the sensor along the z-axis</li>
@@ -1604,6 +1665,154 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
     }
 }
 </code></pre>
+<h3 data-roc-label="LiDAR2D" id="lidar2d">LiDAR2D <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lidar2d" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/2392cabf-47b4-4410-bd81-37545b78feca">AssetBundle</a></p>
+<p>This sensor returns a LaserScan message for a planar (2D) lidar.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="center">Default Value</th>
+<th align="center">Minimum</th>
+<th align="center">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>CenterAngle</code></td>
+<td align="center">defines the center of the FieldOfView cone to the horizon (+ means below horizon)</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">-45</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td align="center"><code>MinDistance</code></td>
+<td align="center">defines how far an object must be from the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">0.5</td>
+<td align="center">0.01</td>
+<td align="center">1000</td>
+</tr>
+<tr>
+<td align="center"><code>MaxDistance</code></td>
+<td align="center">defines how close an object must be to the sensor for it to be detected</td>
+<td align="center">meters</td>
+<td align="center">Float</td>
+<td align="center">100</td>
+<td align="center">0.01</td>
+<td align="center">2000</td>
+</tr>
+<tr>
+<td align="center"><code>RotationFrequency</code></td>
+<td align="center">defines how fast the sensor rotates</td>
+<td align="center">Hz</td>
+<td align="center">Float</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center"><code>MeasurementsPerRotation</code></td>
+<td align="center">defines how many measurements each beam takes per rotation</td>
+<td align="center"></td>
+<td align="center">Int</td>
+<td align="center">1500</td>
+<td align="center">18</td>
+<td align="center">6000</td>
+</tr>
+<tr>
+<td align="center"><code>Compensated</code></td>
+<td align="center">defines whether or not the point cloud is compensated for the movement of the vehicle</td>
+<td align="center"></td>
+<td align="center">Bool</td>
+<td align="center"><code>true</code></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>PointSize</code></td>
+<td align="center">defines how large of points are visualized</td>
+<td align="center">pixels</td>
+<td align="center">Float</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center"><code>PointColor</code></td>
+<td align="center">defines the color of visualized points</td>
+<td align="center">rgba in hex</td>
+<td align="center">Color</td>
+<td align="center">#FF0000FF</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>CubemapSize</code></td>
+<td align="center">defines the size of each face of the cubemap used to model the lidar</td>
+<td align="center">pixels</td>
+<td align="center">Float</td>
+<td align="center">1024</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>ForwardAngle</code></td>
+<td align="center">defines the angle between forward axis of the car and forward axis of the lidar</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">360</td>
+</tr>
+<tr>
+<td align="center"><code>HorizontalAngle</code></td>
+<td align="center">defines the delta view angle</td>
+<td align="center">degrees</td>
+<td align="center">Float</td>
+<td align="center">360</td>
+<td align="center">0</td>
+<td align="center">360</td>
+</tr>
+<tr>
+<td align="center"><code>performanceLoad</code></td>
+<td align="center">defines the weight for distributed simulation</td>
+<td align="center"></td>
+<td align="center">Float</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>A sample json:</p>
+<pre><code class="language-JSON">{
+    &quot;params&quot;: {
+      &quot;CenterAngle&quot;: 0,
+      &quot;RotationFrequency&quot;: 10,
+      &quot;Topic&quot;: &quot;/scan&quot;,
+      &quot;Frame&quot;: &quot;base_scan&quot;,
+      &quot;Compensated&quot;: false
+    },
+    &quot;transform&quot;: {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0.1125,
+      &quot;z&quot;: 0.27,
+      &quot;pitch&quot;: 0,
+      &quot;yaw&quot;: 0,
+      &quot;roll&quot;: 0
+    },
+    &quot;name&quot;: &quot;LiDAR 2D Sensor&quot;,
+    &quot;parent&quot;: null,
+    &quot;type&quot;: &quot;LiDAR2DSensor&quot;
+  },
+</code></pre>
 <h3 id="3d-ground-truth">3D Ground Truth <a class="wikilink" href="#top">top</a><a class="headerlink" href="#3d-ground-truth" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/e3fef197-9724-48ec-b98e-c5a0892d09c4">AssetBundle</a></p>
 <p>This sensor returns 3D ground truth data for training and creates bounding boxes around the detected objects. The color of the object corresponds to the object's type:</p>
@@ -1633,6 +1842,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 </tr>
 </tbody>
 </table>
+<p>This sensor detects objects in all directions and includes occlusion. If any part of an object is visible from the sensor's position, a bounding box for the whole object is created - partial visibility does not affect bounds size.</p>
 <table>
 <thead>
 <tr>
@@ -2011,10 +2221,14 @@ The <code>Topic</code> parameter is the name of the topic which the sensor subsc
 </code></pre>
 <h3 id="keyboard-control">Keyboard Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#keyboard-control" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/a2ff904a-ff06-4f06-9e45-cb58217a7142">AssetBundle</a></p>
-<p>This sensor is required for a vehicle to accept keyboard control commands. Parameters are not required.</p>
+<p>This sensor is required for a vehicle to accept keyboard control commands. Parameters are not required but you can invert the inputs.</p>
 <pre><code class="language-JSON">{
     &quot;type&quot;: &quot;KeyboardControlSensor&quot;,
     &quot;name&quot;: &quot;Keyboard Car Control&quot;
+    &quot;params&quot;: {
+      &quot;InvertAccel&quot;: false,
+      &quot;InvertSteer&quot;: false
+    }
 }
 </code></pre>
 <h3 id="wheel-control">Wheel Control <a class="wikilink" href="#top">top</a><a class="headerlink" href="#wheel-control" title="Permanent link">#</a></h3>
@@ -2127,6 +2341,7 @@ The <code>Topic</code> parameter is the name of the topic which the sensor subsc
 </tr>
 </tbody>
 </table>
+<p>Bounding boxes for objects tightly encase all visible pixels of an object on the 2D image. Partially occluded objects will have only their visible part detected and encased.</p>
 <table>
 <thead>
 <tr>
@@ -2842,7 +3057,7 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
 </code></pre>
 <h3 id="vehicle-state">Vehicle State <a class="wikilink" href="#top">top</a><a class="headerlink" href="#vehicle-state" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/8aff00f2-a5e4-4bd3-a778-517f9307fa99">AssetBundle</a></p>
-<p>The Vehicle State sensor publishes information on the state of the vehicle that is not captured in the Can Bus sensor, such as the state of the headlights, blinkers, and wipers. The sensor publishes in ROS and ROS2 using the <code>lgsvl_msgs/VehicleStateData</code> message type. See <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/VehicleStateData.msg">here</a> for all the fields published by the sensor.</p>
+<p>The Vehicle State sensor subscribes to information about the state of the vehicle that is not captured in the Can Bus sensor, such as the state of the headlights, blinkers, and wipers, and reflects that state in the simulated ego vehicle. The sensor subscribes in ROS and ROS2 to a topic with the <code>lgsvl_msgs/VehicleStateData</code> message type. See <a href="https://github.com/lgsvl/lgsvl_msgs/blob/master/msg/VehicleStateData.msg">here</a> for all the fields subscribed to by the sensor.</p>
 <pre><code class="language-JSON">{
 &quot;type&quot;: &quot;VehicleStateSensor&quot;,
 &quot;name&quot;: &quot;Vehicle State Sensor&quot;,
@@ -2993,7 +3208,7 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
     }
 }
 </code></pre>
-<h3 id="lane-following">Lane Following <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-following" title="Permanent link">#</a></h3>
+<h3 id="lane-following-sensor">Lane Following Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#lane-following-sensor" title="Permanent link">#</a></h3>
 <p><a href="https://svlsim.com/plugins/profile/111c4f5f-12a3-48b6-b3df-7d87e158e7d9">AssetBundle</a></p>
 <p>The Lane Following sensor is used to steer an ego vehicle using a deep learning model. The sensor subscribes to steering commands from the model which are sent as <code>lgsvl_msgs/VehicleControlData</code> messages in ROS2 and applies them to the ego vehicle. Read <a href="../../tutorials/lane-following/">this tutorial</a> to learn more.</p>
 <pre><code class="language-JSON">{
@@ -3001,6 +3216,73 @@ For more details, check <a href="https://github.com/lgsvl/ComfortSensor">github<
     &quot;name&quot;: &quot;Lane Following Sensor&quot;,
     &quot;params&quot;: {
         &quot;Topic&quot;: &quot;/lanefollowing/steering_cmd&quot;,
+    }
+}
+</code></pre>
+<h3 id="destination-sensor">Destination Sensor <a class="wikilink" href="#top">top</a><a class="headerlink" href="#destination-sensor" title="Permanent link">#</a></h3>
+<p><a href="https://svlsim.com/plugins/profile/3f1db91f-4eed-43b2-99ed-c78c129d6aa1">AssetBundle</a></p>
+<p>The Destination Sensor is used to set an initial pose or a destination pose of an attached agent for Navigation2 stack via python API scripts. The sensor publishes to ROS and ROS2 using the <code>geometry_msgs/PoseStamped</code> message type.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th>Description</th>
+<th align="center">Unit</th>
+<th align="center">Type</th>
+<th align="right">Default Value</th>
+<th align="right">Minimum</th>
+<th align="right">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>InitPoseTopic</code></td>
+<td>Topic name for initial pose</td>
+<td align="center"></td>
+<td align="center">String</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="center"><code>InitPoseFrame</code></td>
+<td>Frame name for initial pose</td>
+<td align="center"></td>
+<td align="center">String</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="center"><code>DestinationCheckRadius</code></td>
+<td>Defines how close a destination must be from the sensor in meters to check whether it has been reached</td>
+<td align="center">Meters</td>
+<td align="center">Float</td>
+<td align="right">1.0</td>
+<td align="right">1.0</td>
+<td align="right">10.0</td>
+</tr>
+<tr>
+<td align="center"><code>DestinationCheckAngle</code></td>
+<td>Defines how close a destination must be from the sensor in degrees to check whether it has been reached</td>
+<td align="center">Degrees</td>
+<td align="center">Float</td>
+<td align="right">10.0</td>
+<td align="right">1.0</td>
+<td align="right">360.0</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-JSON">{
+    &quot;type&quot;: &quot;DestinationSensor&quot;,
+    &quot;name&quot;: &quot;Destination Sensor&quot;,
+    &quot;params&quot;: {
+        &quot;Topic&quot;: &quot;/goal_pose&quot;,
+        &quot;Frame&quot;: &quot;map&quot;,
+        &quot;InitPoseTopic&quot;: &quot;/initialpose&quot;,
+        &quot;InitPoseFrame&quot;: &quot;map&quot;,
+        &quot;DestinationCheckRadius&quot;: 1.0,
+        &quot;DestinationCheckAngle&quot;: 10.0
     }
 }
 </code></pre>

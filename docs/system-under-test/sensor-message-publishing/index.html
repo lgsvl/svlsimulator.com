@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -311,6 +323,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -320,7 +336,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -570,8 +630,11 @@
 <p>Data types for sensors don't have to follow any particular guidelines, but next to the data that sensor produces, you should consider including fields that might be required by some bridge plugins. Often used examples include timestamp or sequential message number. You do not need to worry about how bridge plugin will consume this data - just make sure all the fields have public read accessors.</p>
 <p>If your sensor produces small amount of data that's easy to convert, you can decide to call the <a href="#bridge-registration">publishing delegate</a> directly and perform the whole operation synchronously. If instead you opt to use asynchronous approach (see <a href="#asynchronous-publishing">asynchronous publishing</a>), you have to be aware about including any reused, heap-allocated resources (e.g. single large buffer included in each message), since the order of updating and accessing data from multiple threads will not be defined.</p>
 <p>Probably the most common examples that would call for reused resources are large array buffers. Of course it's possible to allocate completely new array for each message, but this would add unnecessary work for garbage collector and could affect performance. You might consider using pool of pre-allocated buffers, and while it's certainly possible to do so, you would have to depend on callbacks to track which buffers are actively in use. Fortunately, there is a built-in, simpler way to handle this kinds of cases.</p>
-<p>If you want to reuse resources and use asynchronous publishing, your data type should be a class, provide parameterless constructor, and implement the <code>IThreadCachedBridgeData</code> interface. This interface defines only a single method: <code>CopyToCache</code>. Your implementation should perform a full deep copy of current instance data into the container of the same type, provided through parameter. Provided target instance is part of a pooling system that will make sure this data will not be accessed again until conversion and publishing on the bridge side are complete. This means only one thread will ever access it at a time, and you don't have to worry about thread safety. Implementing this interface is enough to enable this functionality and no further changes are required on sensor side, as long as you're using <code>BridgeMessageDispatcher</code> (see <a href="#asynchronous-publishing">asynchronous publishing</a> section for details).</p>
-<p>The instance provided by <code>IThreadCachedBridgeData</code> interface is persistent, pooled resource. Depending on previous usage, its fields may or may not be initialized - make sure to clear any optional fields. If you're using arrays, consider storing valid data size in separate parameter - it would allow you to use larger arrays to store varying amounts of data without the need to reallocate them every single time.</p>
+<p>If you want to reuse resources and use asynchronous publishing, your data type should be a class, provide parameterless constructor, and implement the <code>IThreadCachedBridgeData</code> interface. This interface defines two methods:
+- <code>CopyToCache</code> - your implementation should perform a full deep copy of current instance data into the container of the same type, provided through parameter. Provided target instance is part of a pooling system that will make sure this data will not be accessed again until conversion and publishing on the bridge side are complete. This means only one thread will ever access it at a time, and you don't have to worry about thread safety.
+- <code>GetHash</code> - your implementation should return value that groups instances into compatible sub-pools. Returning one value for all instances is valid if you don't need sub-pools. If some instances are not compatible (e.g. they use pre-allocated buffers with different sizes), this should return value calculated based on incompatible parameters.</p>
+<p>Implementing <code>IThreadCachedBridgeData</code> interface is enough to enable thread-side caching functionality and no further changes are required on sensor side, as long as you're using <code>BridgeMessageDispatcher</code> (see <a href="#asynchronous-publishing">asynchronous publishing</a> section for details).</p>
+<p>The instance provided by <code>IThreadCachedBridgeData</code> interface is persistent, pooled resource. Depending on previous usage, its fields may or may not be initialized - make sure to clear any optional fields. If you're using arrays, consider either storing valid data size in separate parameter (it would allow you to use larger arrays to store varying amounts of data without the need to reallocate them every single time) or using <code>GetHash</code> method to split instances into separate sub-pools based on array size.</p>
 <p>For an example of <code>IThreadCachedBridgeData</code> interface usage, see <code>Simulator.Bridge.Data.PointCloudData</code> type in Simulator repository. This example includes good practices described above.</p>
 <h2 id="asynchronous-publishing">Asynchronous publishing <a class="wikilink" href="#top">top</a><a class="headerlink" href="#asynchronous-publishing" title="Permanent link">#</a></h2>
 <p>When you expect the conversion process to take a long time, you might want to avoid occupying main thread of the application, and perform the process asynchronously. You might also consider using multiple threads to increase overall processing speed. Both of these cases, and more, are covered by the <code>BridgeMessageDispatcher</code> class. Its default instance is created for each simulation and is accessible through the class' static field <code>Instance</code>. Note that this instance only exists during simulation.</p>
@@ -640,6 +703,24 @@
 <p>Sensor frequency is defined through <code>Frequency</code> parameter. It's marked as sensor parameter, and therefore will be visible among sensor settings. See <a href="../../plugins/sensor-plugins/">sensor plugins</a> page for more information about sensor parameters. Frequency is based on simulation time, so sensor will handle pause or non-realtime mode properly.</p>
 <p>Last thing that has to be done is overriding <code>SensorUpdate</code> method. Code inside will be executed with set frequency, unless simulation is paused. If you need to use either <code>Update</code> or <code>FixedUpdate</code> method directly, you can override them too, but remember to call their base implementation before your code.</p>
 <p>For an example of <code>FrequencySensorBase</code> usage, see <a href="#publishing-with-set-frequency">publishing with set frequency</a> section.</p>
+<h2 id="asynchronous-gpu-readback">Asynchronous GPU readback<a class="headerlink" href="#asynchronous-gpu-readback" title="Permanent link">#</a></h2>
+<p>In some cases, sensors utilize GPU capabilities to process data. This doesn't only include rendering in camera-based sensors, but also cases where highly parallel computations need to be performed on large data sets. In both cases data is stored on GPU (as either textures or compute buffers), and then read back to process and publish on CPU. Reading back large buffers or textures can take significant time, and may result in latency spikes if main thread is blocked during this process. As usual with long operations, you might want to perform this process asynchronously and make sure that main thread is able to keep stable framerate.</p>
+<p>You can see longer processing times in publishing frames on the frame time chart below. Upper row shows case with synchronous GPU readback, lower row shows the same setup with asynchronous GPU readback. Notice that latency spikes are significantly reduced.</p>
+<p><img alt="" src="../../images/async-gpu-readback-comp.png" /></p>
+<p>Simulator provides an utility class (<code>GpuReadbackPool&lt;TData, T&gt;</code>) that can help with pooling and tracking asynchronous GPU readbacks. It will internally handle some of the problems related to asynchronous reads:
+- Multiple readbacks can be active at once - required resources will be pooled and tracked automatically
+- Requests will always be finished in the same order they were started
+- Timestamp of the readback start will be stored with the data
+- You don't need to track state of active readbacks, callback will be called for each upon completion</p>
+<p>To use this system, you have to create an instance of <code>GpuReadbackPool&lt;TData, T&gt;</code> for your sensor. It requires explicit initialization through <code>Initialize</code> method, which takes buffer size and delegate called on completion as parameters. If the buffer size ever changes (e.g. when output texture resolution for sensor is modified), you can change the buffer size through <code>Resize</code> method.</p>
+<p><code>TData</code> type parameter is usually <code>GpuReadbackData&lt;T&gt;</code>, but can also be a type derived from it. <code>T</code> must be a struct compatible with <a href="https://docs.unity3d.com/ScriptReference/Unity.Collections.NativeArray_1.html"><code>NativeArray&lt;T&gt;</code></a>.</p>
+<p>With this kind of setup, using asynchronous GPU readbacks is very simple - when operations on GPU are finished, you can simply call:</p>
+<pre><code>ReadbackPool.StartReadback(GpuResource);
+</code></pre>
+<p>When readback finishes, delegate declared in <code>Initialize</code> method will be called. Instance of <code>GpuReadbackData&lt;T&gt;</code> will be passed as a parameter, containing <code>gpuData</code> (native array containing data read back from the GPU) and <code>captureTime</code> (timestamp of the request start) fields. If you used your own type derived from <code>GpuReadbackData&lt;T&gt;</code>, your custom fields will be accessible too.</p>
+<p><code>StartReadback</code> has multiple overloads that allow you to specify some of the readback parameters (like texture format, buffer offset etc.). It also returns instance of the <code>GpuReadbackData&lt;T&gt;</code>, so you can populate it with any data at the time of readback start. This is especially useful if you want to include any custom fields.</p>
+<p>Please note that <code>GpuReadbackPool&lt;TData, T&gt;</code> is a passive class and requires explicit updates from outside. You should call <code>Process</code> method whenever you want to trigger a check on pending readbacks. This is usually done from <code>Update</code> method of sensor class.</p>
+<p>For an example of <code>GpuReadbackPool&lt;TData, T&gt;</code> usage, see <a href="#reading-gpu-data-asynchronously">reading GPU data asynchronously</a> section.</p>
 <h2 id="code-examples">Code examples <a class="wikilink" href="#top">top</a><a class="headerlink" href="#code-examples" title="Permanent link">#</a></h2>
 <p>Snippets presented here are intended to explain parts of the sensor code responsible for message publishing. Large parts of the sensor code are omitted - see <a href="../../plugins/sensor-plugins/">sensor plugins</a> page for more complete examples.</p>
 <h3 id="custom-sensor-data-type">Custom sensor data type <a class="wikilink" href="#top">top</a><a class="headerlink" href="#custom-sensor-data-type" title="Permanent link">#</a></h3>
@@ -674,6 +755,14 @@
         target.dataSize = dataSize;
         target.timestamp = timestamp;
     }
+
+    // Method defined by IThreadCachedBridgeData interface.
+    // This should return hash that groups instances into compatible sub-pools.
+    public int GetHash()
+    {
+        // No sub-pools required - return the same value for all instances.
+        return 0;
+    }
 }
 </code></pre>
 <h3 id="bridge-registration">Bridge registration <a class="wikilink" href="#top">top</a><a class="headerlink" href="#bridge-registration" title="Permanent link">#</a></h3>
@@ -688,7 +777,7 @@ public class FloatArraySensor : SensorBase
     BridgeInstance Bridge;
 
     // Field used to store publisher delegate.
-    Publisher&lt;ClockData&gt; Publish;
+    Publisher&lt;FloatArray&gt; Publish;
 
     // OnSetupBridge will be called during initialization if any bridge is present.
     public override void OnBridgeSetup(BridgeInstance bridge)
@@ -716,7 +805,7 @@ public class FloatArraySensor : SensorBase
     BridgeInstance Bridge;
 
     // Field used to store publisher delegate.
-    Publisher&lt;ClockData&gt; Publish;
+    Publisher&lt;FloatArray&gt; Publish;
 
     // Preallocated array used as a buffer.
     public float[] array;
@@ -761,7 +850,7 @@ public class FloatArraySensor : FrequencySensorBase
     BridgeInstance Bridge;
 
     // Field used to store publisher delegate.
-    Publisher&lt;ClockData&gt; Publish;
+    Publisher&lt;FloatArray&gt; Publish;
 
     // Preallocated array used as a buffer.
     public float[] array;
@@ -795,6 +884,84 @@ public class FloatArraySensor : FrequencySensorBase
     }
 
     // Initialization and visualization code is omitted in this example.
+    [...]
+}
+</code></pre>
+<h3 id="reading-gpu-data-asynchronously">Reading GPU data asynchronously <a class="wikilink" href="#top">top</a><a class="headerlink" href="#reading-gpu-data-asynchronously" title="Permanent link">#</a></h3>
+<p>This example shows how <code>GpuReadbackPool&lt;TData, T&gt;</code> can be used to perform GPU readbacks asynchronously.</p>
+<pre><code class="language-c#">// Declare sensor name and types of data that it will publish over the bridge.
+[SensorType(&quot;Float Array Sensor&quot;, new[] {typeof(FloatArray)})]
+public class FloatArraySensor : SensorBase
+{
+    // Field used to store reference to the bridge instance.
+    BridgeInstance Bridge;
+
+    // Field used to store publisher delegate.
+    Publisher&lt;FloatArray&gt; Publish;
+
+    // Preallocated array used as a buffer.
+    public float[] array;
+
+    // Buffer used for storing data on GPU side.
+    private ComputeBuffer computeBuffer;
+
+    // Asynchronous GPU readback pool.
+    private GpuReadbackPool&lt;GpuReadbackData&lt;Vector4&gt;, Vector4&gt; readbackPool;
+
+    // Initialization method - prepare required resources.
+    protected override void Initialize()
+    {
+        // Assume 100 floats will be used per data packet.
+        array = new float[100];
+        computeBuffer = new ComputeBuffer(100, sizeof(float));
+
+        // Initialize GPU readback pool with 100 floats capacity.
+        // OnReadbackComplete delegate will be called for each completed readback.
+        readbackPool = new GpuReadbackPool&lt;GpuReadbackData&lt;float&gt;, float&gt;();
+        readbackPool.Initialize(100, OnReadbackComplete);
+    }
+
+    // Deinitialization method - free any currently used resources.
+    protected override void Deinitialize()
+    {
+        computeBuffer.Release();
+        readbackPool.Dispose();
+    }
+
+    // Update is called every frame.
+    private void Update()
+    {
+        // Explicitly trigger update of all currently pending readbacks.
+        readbackPool.Process();
+
+        // Theoretical method that would calculate output for this sensor.
+        // This is executed even if bridge is not connected, as data might be used inside Simulator.
+        // Data is calculated and kept on the GPU, in the compute buffer.
+        PrepareSensorData(computeBuffer);
+
+        // Request asynchronous read of the GPU resource.
+        // Completion will trigger OnReadbackComplete declared during initialization.
+        readbackPool.StartReadback(computeBuffer);
+    }
+
+    // Delegate called when readback is completed
+    private void OnReadbackComplete(GpuReadbackData&lt;float&gt; data)
+    {
+        // Check if bridge exists and is currently connected.
+        if (Bridge is {Status: Status.Connected})
+        {
+            // data.gpuData contains data read back from the GPU.
+            // Perform copy from NativeArray to managed array, since our message type doesn't support it.
+            data.gpuData.CopyTo(array);
+
+            // Publish data. See previous examples for details.
+            // Note that time passed is capture time, not current time.
+            var data = new FloatArray {array = array, dataSize = 100, timestamp = data.captureTime};
+            BridgeMessageDispatcher.Instance.TryQueueTask(Publish, data);
+        }
+    }
+
+    // Bridge setup and visualization code is omitted in this example.
     [...]
 }
 </code></pre>

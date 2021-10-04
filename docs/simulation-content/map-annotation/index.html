@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -605,15 +665,17 @@
 <ul>
 <li>Make sure your roads belong to the layer of <code>Default</code> since waypoints will be only created on this layer.</li>
 <li>Turn on Gizmos in Unity Editor Scene panel so annotation will be visible.</li>
+<li>Turn off scene lighting.</li>
 </ul>
-<p><a href="../../images/annotation-gizmos.png"><img alt="" src="../../images/annotation-gizmos.png" /></a></p>
+<p><a href="../../images/full_size_images/annotation-gizmos.png"><img alt="" src="../../images/annotation-gizmos.png" /></a></p>
 <ul>
 <li>Make sure your environment has <code>Mesh Collider</code> Unity components added.</li>
 <li>Open <code>HD Map Annotation</code> in <code>Unity</code>: <code>Simulator</code> -&gt; <code>Annotate HD Map</code></li>
 </ul>
-<p><a href="../../images/annotation-window-menu.png"><img alt="" src="../../images/annotation-window-menu.png" /></a></p>
+<p><a href="../../images/full_size_images/annotation-window-menu.png"><img alt="" src="../../images/annotation-window-menu.png" /></a></p>
 <ul>
 <li>By default, map annotation is not shown. Click <code>View All</code>  under <code>View Modes</code> to show all existing map annotations. Or you can click <code>Lock View Selected</code> to only show the annotations you are selecting.  <strong>NOTE</strong> Large maps with heavy annotation will slow the Unity Editor; be sure to only enable what you need to work with. You can also use the Unity Editor features to hide objects that are not needed in the Hierarchy panel.</li>
+<li><code>Gizmo Size</code> enables larger or smaller gizmos for annotation objects.  This value is saved per map, not globally.</li>
 <li>Before annotating, drag in the correct <code>Parent Object</code>, for example <code>TrafficLanes</code>. Then every new object you create will be under <code>TrafficLanes</code> object. </li>
 <li>The expected object hierarchy is as follows:<ul>
 <li><code>Map</code> - This prefab which will be the object containing all the HD Annotations. The <code>MapHolder</code> script should be added to this prefab</li>
@@ -644,7 +706,7 @@
 </ul>
 </li>
 </ul>
-<p><a href="../../images/annotation-mapToolPanel.png"><img alt="" src="../../images/annotation-mapToolPanel.png" /></a></p>
+<p><a href="../../images/full_size_images/annotation-mapToolPanel.png"><img alt="" src="../../images/annotation-mapToolPanel.png" /></a></p>
 <ul>
 <li>To make <code>Map</code> a prefab, drag it from the scene <code>Hierarchy</code> into the Project folder</li>
 </ul>
@@ -652,7 +714,7 @@
 <ul>
 <li>After annotation is done, remember to save: select the <code>Map</code> prefab, in the Inspector click <code>Overrides</code> -&gt; <code>Apply All</code> </li>
 </ul>
-<p><a href="../../images/annotation-apply-changes.png"><img alt="" src="../../images/annotation-apply-changes.png" /></a></p>
+<p><a href="../../images/full_size_images/annotation-apply-changes.png"><img alt="" src="../../images/annotation-apply-changes.png" /></a></p>
 <h2 id="annotate-lanes">Annotate Lanes <a class="wikilink" href="#top">top</a><a class="headerlink" href="#annotate-lanes" title="Permanent link">#</a></h2>
 <h4 id="create-parent-object-lanes">Create Parent Object <a class="wikilink" href="#top">top</a><a class="headerlink" href="#create-parent-object-lanes" title="Permanent link">#</a></h4>
 <p><a href="../../images/full_size_images/annotation-mapLaneSection.png"><img alt="" src="../../images/annotation-mapLaneSection.png" /></a></p>
@@ -717,7 +779,7 @@
 </ul>
 </li>
 </ul>
-<p><a href="../../images/annotation-mapLaneInspector.png"><img alt="" src="../../images/annotation-mapLaneInspector.png" /></a></p>
+<p><a href="../../images/full_size_images/annotation-mapLaneInspector.png"><img alt="" src="../../images/annotation-mapLaneInspector.png" /></a></p>
 <h4 id="make-boundary-lines">Make Boundary Lines <a class="wikilink" href="#top">top</a><a class="headerlink" href="#make-boundary-lines" title="Permanent link">#</a></h4>
 <ul>
 <li>Drag in the appropriate <code>MapLaneSection</code> to be the <code>Parent Object</code></li>
@@ -994,7 +1056,6 @@
 <p>HD Map Annotations may be exported in a variety of formats. Current supported formats are:</p>
 <ul>
 <li>Apollo 5.0 HD Map</li>
-<li>Apollo 3.0 HD Map</li>
 <li>Autoware Vector Map</li>
 <li>Lanelet2 Map</li>
 <li>OpenDrive Map</li>
@@ -1009,7 +1070,9 @@
 </ul>
 <h2 id="import-map-annotations">Import Map Annotations <a class="wikilink" href="#top">top</a><a class="headerlink" href="#import-map-annotations" title="Permanent link">#</a></h2>
 <p><a href="../../images/full_size_images/annotation-import.png"><img alt="" src="../../images/annotation-import.png" /></a></p>
+<p><a href="../../images/full_size_images/annotation-import-no-holder.png"><img alt="" src="../../images/annotation-import-no-holder.png" /></a></p>
 <p>The simulator can import a variety of formats of annotated map.  <strong>NOTE</strong> After importing an HD map, you will be required to check each annotation to make sure import is correct. Simulator will provide logs if there are issues that need resolved. If the importer cannot parse a HD map, it will make holder objects that will need manually edited.</p>
+<p><strong>Note</strong> you must delete any MapHolder existing in a scene before the importer tool will work.</p>
 <p>Current supported formats are:</p>
 <ul>
 <li>Lanelet2 Map</li>

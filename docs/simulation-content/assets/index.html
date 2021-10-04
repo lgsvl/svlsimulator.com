@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -309,6 +321,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -318,7 +334,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -581,6 +641,7 @@
 <li><a href="#adding-an-asset">Adding an Asset</a></li>
 <li><a href="#setup-an-asset">Setup an Asset</a></li>
 <li><a href="#building-assets">Building Assets</a></li>
+<li><a href="#asset-development">Assets development</a></li>
 </ul>
 </div>
 <h2 id="adding-an-asset">Adding an Asset <a class="wikilink" href="#top">top</a><a class="headerlink" href="#adding-an-asset" title="Permanent link">#</a></h2>
@@ -609,6 +670,19 @@ Do not change the name of the folder that the asset is cloned into, it must matc
 <p>Assets are built using the same build script as the simulator. Follow the <a href="../../installation-guide/build-instructions/">build instructions</a> through step 17.</p>
 <p>NPCs and Pedestrians must be built locally for custom binaries.  They must be added to AssetBundles folder to be loaded by the simulator binary or in editor source in <a href="../../running-simulations/developer-mode/">developer mode</a>. </p>
 <p><strong>IMPORTANT</strong> Windows and Linux support must be installed with Unity to build assetbundles</p>
+<h2 id="asset-development">Asset development <a class="wikilink" href="#top">top</a><a class="headerlink" href="#asset-development" title="Permanent link">#</a></h2>
+<p>In the Unity editor, the menu entry <code>Simulator &gt; Development</code> Settings opens a panel of settings helpful while developing and testing assets.</p>
+<p><img alt="" src="../../images/development-settings.png" /></p>
+<p>At the top you will find general information about the cluster instance your editor represents such as the web user interface instance it is linked to and under which id. Below there are convenience buttons to link the instance without opening the Loader scene, managing the cluster on web user interface and to refresh the displayed data.</p>
+<p>Version lets you choose or enter the version string that is used to connect with web user interface and influences linking and asset version matching as served by web user interface to the simulator in the Unity Editor.</p>
+<p>The following simulation settings only apply when you enter play mode from a Map scene instead of the Loader scene.
+You can configure list of simulation variables such as interactive, time of day that influcence the behaviour of the simulation as you hit play in the Unity Editor.</p>
+<p>Ego Vehicle Setup lets you choose and configure the Ego Vehicle used for development runs.
+You can choose between cloud and local vehicles.</p>
+<p>For local vehicles, this lists the vehicle prefabs found under <code>simulator/Assets/External/Vehicles/</code>, and allows you to enter a json sensor configuration to add to the vehicle upon simulation start. The sensor json configuration supports web user interface provided sensors referenced by plugin Id - these will be downloaded as required.
+It also supports local source code of sensors found under <code>simulator/Assets/External/Sensors/</code> if you enable the Debug Mode under <code>Simulator &gt; Developer Debug Mode</code> and (as of 2021.2.2) also have an Assetbundle of your sensor built once.</p>
+<p>For cloud vehicles, it lists all Vehicles in your web user interface library and their sensor configurations, this is intended to quickly iterate on Map development with an already existing vehicle.</p>
+<p>Lastly, you can select which NPCs will be part of the simulation run.</p>
               
             </div>
           </div>

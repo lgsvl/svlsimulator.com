@@ -110,7 +110,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../installation-guide/running-with-wsl2/">Running with WSL2</a>
+    <a class="" href="../../installation-guide/debugging-scripts/">Debugging Unity scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../installation-guide/running-linux-gpu-applications-on-windows/">Running Linux GPU applications on Windows</a>
                 </li>
     </ul>
 	    </li>
@@ -161,6 +165,14 @@
                 <li class="">
                     
     <a class="" href="../../tutorials/robotics-ros2/">Robot simulation with ROS 2 Navigation Stack</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/robotics-mapping/">Mapping a simulation environment in ROS 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tutorials/local-automation-tutorial/">Local Automation (CI/CD) Tutorial</a>
                 </li>
     </ul>
 	    </li>
@@ -311,6 +323,10 @@
                     
     <a class="" href="../../running-simulations/developer-mode/">Developer mode</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../running-simulations/local-automation/">Local Automation (CI/CD)</a>
+                </li>
     </ul>
 	    </li>
           
@@ -320,7 +336,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../creating-scenarios/visual-scenario-editor/">Visual scenario editor</a>
+    <span class="caption-text">Visual scenario editor (VSE)</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/about-vse/">About VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/using-vse/">Using VSE</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-inspector/">VSE Inspector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-editors/">VSE Editors</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../visual-scenario-editor/vse-extensions/">VSE Extensions</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -386,7 +424,15 @@
                 </li>
                 <li class="toctree-l3">
                     
+    <a class="" href="../../simulation-content/pointcloud-export/">Point cloud export</a>
+                </li>
+                <li class="toctree-l3">
+                    
     <a class="" href="../../simulation-content/lane-line-detector/">Lane-line detector</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/lighting-for-interiors/">Lighting for indoor environments</a>
                 </li>
     </ul>
                 </li>
@@ -422,6 +468,16 @@
                 </li>
     </ul>
                 </li>
+                <li class="">
+                    
+    <span class="caption-text">SDF</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../simulation-content/sdf-import/">Importing SDF world files</a>
+                </li>
+    </ul>
+                </li>
     </ul>
 	    </li>
           
@@ -448,6 +504,10 @@
                 <li class="">
                     
     <a class="" href="../../plugins/pedestrian-plugins/">Pedestrian plugins</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../plugins/developer-debug-mode/">Developer Debug mode</a>
                 </li>
     </ul>
 	    </li>
@@ -565,24 +625,27 @@
 <li>Link To Cloud button will open the web browser to the sign up page.  After signing in, users choose the name for the hardware cluster they are currently using and the simulator will be linked. <strong>NOTE</strong> If you have not signed up, do so first, then re-open the simulator and click the Link To Cloud.</li>
 </ol>
 <h2 id="online-mode">Online Mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#online-mode" title="Permanent link">#</a></h2>
-<p>Online mode is available after linking to the cloud is complete.</p>
+<p>Online mode is available after linking to a cluster is complete.</p>
 <p><a href="../../images/full_size_images/simulation-main-menu-online.png"><img alt="" src="../../images/simulation-main-menu-online.png" /></a></p>
 <ol>
-<li>Open Browser button with open the cloud user account page in the web browser.</li>
-<li>Visual Editor button will open the Visual Scenario Editor to create user scenarios.</li>
-<li>Online button will open a drop down menu.</li>
-<li>Go Offline will disconnect the user from the cloud and allow users to run previous run simulations without connecting.</li>
-<li>Unlink will disconnect the user from the cloud and unlink the cluster from the machine.</li>
-<li>Clear Cache will delete all local saved database information.</li>
-<li>Quit will close the application.</li>
+<li><strong>Open Browser</strong> will open the cloud user account page in the web browser.</li>
+<li><strong>Visual Editor</strong> will open the Visual Scenario Editor to create user scenarios.</li>
+<li><strong>Online</strong> will open a drop down menu.</li>
+<li><strong>Go Offline</strong> will disconnect the user from the cloud and allow users to run previous run simulations without connecting.</li>
+<li><strong>Unlink</strong> will disconnect the user from the cloud and unlink the cluster from the machine.</li>
+<li><strong>Clear Cache</strong> will delete local saved database information.</li>
+<li><strong>Loaded Assets</strong> displays all loaded assets with compiled code.  Unity will not release these assets until the application or Editor is closed.</li>
+<li><strong>Settings</strong> allows users to change Fullscreen, Resolution, Graphics Quality Preset or Custom options.</li>
+<li><strong>Quit</strong> will close the application.</li>
+<li>Application information is displayed here including Simulator version, Unity Version and Cloud URL. Reference this for support.</li>
 </ol>
 <h2 id="offline-mode">Offline Mode <a class="wikilink" href="#top">top</a><a class="headerlink" href="#offline-mode" title="Permanent link">#</a></h2>
-<p>When you select offline mode, only previously saved and run simulations can be run without triggering from the online web user interface. Make sure you have at least one simulation configuration set up on your account.</p>
+<p>When you select offline mode, only previously saved and run simulations can be run without using the online web user interface. Make sure you have at least one simulation configuration set up on your account and have run it locally.</p>
 <p><a href="../../images/full_size_images/simulation-main-menu-offline.png"><img alt="" src="../../images/simulation-main-menu-offline.png" /></a></p>
 <ol>
 <li>Drop down menu for all currently cached simulations run on this machine.</li>
-<li>Play button for selected offline simulation.</li>
-<li>Offline button will open a drop down menu for returning to online mode.</li>
+<li><strong>Play</strong> for selected offline simulation.</li>
+<li><strong>Offline</strong> will open a drop down menu for returning to online mode.</li>
 </ol>
               
             </div>
