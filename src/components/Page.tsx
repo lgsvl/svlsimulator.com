@@ -86,7 +86,7 @@ const HeaderGrid = withTheme(styled(Grid)`
   // Make the layout have the same height rules as the toolbar, so it can be fixed
   // (outside the layout) and the content shifts down to accomodate its variable height.
   ${({ theme }) => theme.mixins.toolbar};
-  margin-bottom: ${({ theme }) => px(theme.spacing(2))};
+  margin-bottom: ${({ theme }) => px(theme.spacing(2) + 40)};
 `) as React.FC<GridProps>;
 
 const FooterGrid = withTheme(styled(Grid)`
