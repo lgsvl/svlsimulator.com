@@ -22,7 +22,6 @@ export default function DigitalTwin() {
   return (
     <Page title={t('digitaltwin.title')}>
       <Section
-        buttonText='useFree'
         contained
         src={srcTwinImg1}
         title={t('digitaltwin.title')}
