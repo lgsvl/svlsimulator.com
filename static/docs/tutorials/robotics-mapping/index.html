@@ -626,6 +626,11 @@
 </li>
 <li><a href="#sim-setup">Setting up a simulation</a></li>
 <li><a href="#mapping-the-environment">Mapping the environment</a></li>
+<li><a href="#setting-navorigin-for-your-generated-costmap">Setting NavOrigin for your generated costmap</a><ul>
+<li><a href="#how-to-place-navorigin-using-the-vse-tool">How to place NavOrigin using the VSE tool</a></li>
+<li><a href="#example-usage-in-python-api-script">Example usage in Python API script:</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="prerequisites">Prerequisites <a class="wikilink" href="#top">top</a><a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
@@ -718,6 +723,84 @@ ros2 launch nav2_bringup rviz_launch.py
 <pre><code>ros2 run nav2_map_server map_saver_cli -f ~/map
 </code></pre>
 <p><em>Note on saving maps</em>: Map saving tends to fail due to timeout. Attempting to save multiple times can result in a successful map save. See <a href="https://github.com/ros-planning/navigation2/issues/1864">this issue</a> on GitHub for more information.</p>
+<h2 id="setting-navorigin-for-your-generated-costmap">Setting NavOrigin for your generated costmap<a class="headerlink" href="#setting-navorigin-for-your-generated-costmap" title="Permanent link">#</a></h2>
+<p>In order to be able to use the <a href="../python-api/python-api#ego-vehicle">python API functionalities</a> for setting an initial pose or a destination of a robot along with your generated costmap, a <code>NavOrigin</code> game object should be placed in a scene such that its transform matches with the origin of the costmap you generated. Also, it should have the same offsets as the ones in your costmap yaml file.</p>
+<p>To find transform and offset values of your costmap origin:</p>
+<ul>
+<li>Transform of the origin: Coordinates of the lower-left pixel in the generated map image file.</li>
+</ul>
+<p><a href="../../images/robotics/seocho.png"><img alt="LGSeocho costmap image" src="../../images/robotics/seocho.png" /></a></p>
+<ul>
+<li>Offsets of the origin: The generated YAML file contains an offset for your origin. The offsets are given in 2D position with a third value indicating a rotation.</li>
+</ul>
+<p><a href="../../images/robotics/offset.png"><img alt="LGSeocho costmap YAML" src="../../images/robotics/offset.png" /></a></p>
+<h3 id="how-to-place-navorigin-using-the-vse-tool">How to place NavOrigin using the VSE tool<a class="headerlink" href="#how-to-place-navorigin-using-the-vse-tool" title="Permanent link">#</a></h3>
+<p>You can use the <a href="../../visual-scenario-editor/vse-extensions/">Visual Scenario Editor</a> (VSE) tool of SVL Simulator for a placement of NavOrigin in a scene following the instructions below:</p>
+<ol>
+<li>
+<p>Launch SVL Simulator</p>
+</li>
+<li>
+<p>Click on the <code>Visual Editor</code> button to start the VSE tool</p>
+</li>
+<li>
+<p>Select your map in the <code>Map</code> section (e.g., LGSeocho)</p>
+</li>
+<li>
+<p>Place <code>NavOrigin</code> on a map by clicking the <code>ScenarioNavOrigin</code> button in the <code>Add</code> section</p>
+</li>
+<li>
+<p>Move and rotate the <code>NavOrigin</code> so that its placement matches with your costmap origin</p>
+</li>
+<li>
+<p>Write down the x/y/z position and rotation values of the <code>NavOrigin</code> (e.g., in the attached image below, position is (53.4, 0, -57.6) and rotation is ((0, 0, 0)))</p>
+</li>
+</ol>
+<p><a href="../../images/robotics/navorigin.png"><img alt="NavOrigin placement" src="../../images/robotics/navorigin.png" /></a></p>
+<h3 id="example-usage-in-python-api-script">Example usage in Python API script:<a class="headerlink" href="#example-usage-in-python-api-script" title="Permanent link">#</a></h3>
+<pre><code class="language-python">import lgsvl
+from lgsvl import Vector, Quaternion, Transform
+
+# Establish a connection to SVL Simulator
+sim = lgsvl.Simulator(lgsvl.wise.SimulatorSettings.simulator_host, lgsvl.wise.SimulatorSettings.simulator_port)
+
+# Load LGSeocho map
+scene = lgsvl.wise.DefaultAssets.map_lgseocho
+if sim.current_scene == scene:
+    sim.reset()
+else:
+    sim.load(scene)
+
+# Set up LGCloi robot in a scene
+state = lgsvl.AgentState()
+state.transform = sim.get_spawn()[0]
+robot = sim.add_agent(lgsvl.wise.DefaultAssets.ego_lgcloi_navigation2, lgsvl.AgentType.EGO, state)
+robot.connect_bridge(lgsvl.wise.SimulatorSettings.bridge_host, lgsvl.wise.SimulatorSettings.bridge_port)
+
+# Use x/y/z position and rotation values of NavOrigin
+transform = Transform(Vector(53.4, 0, -57.6), Vector(0, 0, 0))
+# Use offsets from a costmap YAML file
+offset = Vector(-14.7, -24.6, 0)
+# Set NavOrigin in a scene
+sim.set_nav_origin(transform, offset)
+
+# Get NavOrigin from a scene and verify its values
+nav_origin = sim.get_nav_origin()
+print('NavOrigin transform:', nav_origin['transform'])
+print('NavOrigin offset:', nav_origin['offset'])
+
+# Map a destination point in ROS coordinates to Simulator coordinates
+dst_ros = ((7.118, -0.016, 0), (0, 0, 0.0004, 0.999))
+dst_sim = sim.map_from_nav(Vector(*dst_ros[0]), Quaternion(*dst_ros[1]))
+
+# Set initial pose of robot
+robot.set_initial_pose()
+sim.run(5)
+
+# Set destination for Navigation2 stack
+robot.set_destination(dst_sim)
+sim.run()
+</code></pre>
               
             </div>
           </div>
