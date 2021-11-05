@@ -1183,6 +1183,9 @@ cone.object_state = state
 <li><code>current_time</code> - property that returns currently simulation time in seconds as float</li>
 <li><code>get_spawn</code> - method that returns list of <code>Spawn</code> objects representing good positions to place vehicles in the map. This list can be empty, it depends on how the map is prepared in Unity. Returned <code>Spawn</code> objects contain a <code>transform</code> which holds <code>position</code> and <code>rotation</code> members as a <code>Vector</code>, as well as <code>destinations</code> which holds valid destination points for an ego vehicle starting at the spawn point as an array of <code>transforms</code>.</li>
 <li><code>get_agents</code> - method that returns a list of currently available agent objects added with <code>add_agent</code></li>
+<li><code>map_from_nav</code> - method that maps transform (position &amp; rotation) in Nav2 coordinates to Unity coordinates</li>
+<li><code>set_nav_origin</code> - method that sets NavOrigin values in a scene</li>
+<li><code>get_nav_origin</code> - method that gets NavOrigin values in a scene</li>
 </ul>
 <p>To map points in Unity coordinates to GPS coordinates the Simulator class offers the following two functions:</p>
 <ul>
