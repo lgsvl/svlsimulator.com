@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url> <loc>https://www.svlsimulator.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.svlsimulator.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/kitchensink/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/use-cases/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -19,8 +19,8 @@
 <url> <loc>https://www.svlsimulator.com/news/2019-01-21-january-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2019-02-27-lane-following/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2019-03-19-sprint-04-video/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://www.svlsimulator.com/news/2019-03-26-march-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2019-04-23-april-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.svlsimulator.com/news/2019-03-26-march-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2019-04-24-lgsvl-simulator-overview-pdf/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2019-05-10-api-scenario-examples/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2019-07-02-train-dnn-synthetic-data/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -34,16 +34,16 @@
 <url> <loc>https://www.svlsimulator.com/news/2020-04-17-2020-03-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2020-06-04-2020-05-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2020-08-31-2020-06-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.svlsimulator.com/news/2021-03-25-2021-1-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-03-25-account-migration/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-03-25-name-change/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://www.svlsimulator.com/news/2021-03-25-2021-1-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-05-20-2021-1-1-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://www.svlsimulator.com/news/2021-06-08-weekly-pushes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-06-09-ieee-challenge/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.svlsimulator.com/news/2021-06-08-weekly-pushes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-06-30-2021-2-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-08-10-f1tenth-blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://www.svlsimulator.com/news/2021-08-18-2021-2-2-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/2021-10-04-2021-3-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://www.svlsimulator.com/news/2021-08-18-2021-2-2-release/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/autofutures_safer-future/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/news/medium_algorithm-and-simulation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://www.svlsimulator.com/docs/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
