@@ -3,7 +3,6 @@ import { MapFunction } from 'src/@types/utils';
 import Li, { LiText } from 'src/components/Li';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloudImg1 from 'src/images/cloud1.png';
 import srcCloudImg2 from 'src/images/cloud2.png';
@@ -44,8 +43,6 @@ export default function CloudSimAAS() {
       <Section title={t('cloud.section3.title')} flip src={srcCloudImg4}>
         {t('cloud.section3.body')}
       </Section>
-
-      <SubscribeBox />
     </Page>
   );
 }

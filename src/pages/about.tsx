@@ -11,7 +11,6 @@ import { RequestDemoButton } from 'src/components/Button';
 import Center from 'src/components/Center';
 import Image from 'src/components/Image';
 import Page, { PageSection } from 'src/components/Page';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcSVLLogo from 'src/images/about.jpg';
 import { px } from 'src/utils/theme';
@@ -112,11 +111,13 @@ export default function About() {
             <Box mb={5}>{tMap('about.details', TypoWrapper)}</Box>
           </Grid>
 
+          {/*
           <Grid item xs={12} sm={10} md={8}>
             <Box mb={2}>
               <RequestDemoButton mode={RequestDemoFormMode.ContactUs} variant='outlined' color='secondary' />
             </Box>
           </Grid>
+          */}
         </Grid>
 
         {/* <Grid container>
@@ -145,8 +146,6 @@ export default function About() {
           </Grid>
         </Grid> */}
       </PageSection>
-
-      <SubscribeBox />
     </Page>
   );
 }

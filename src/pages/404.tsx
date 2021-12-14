@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import Center from 'src/components/Center';
 import Page from 'src/components/Page';
-import SubscribeBox from 'src/components/SubscribeBox';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 
@@ -37,8 +36,6 @@ export default function About() {
           </Center>
         </HeroGrid>
       </Box>
-
-      <SubscribeBox />
     </Page>
   );
 }

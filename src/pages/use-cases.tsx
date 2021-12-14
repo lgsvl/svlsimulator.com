@@ -4,7 +4,6 @@ import { MapFunction } from 'src/@types/utils';
 import DocumentBox from 'src/components/DocumentBox';
 import Page, { PageSection } from 'src/components/Page';
 import Section from 'src/components/Section';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcUseCases from 'src/images/use-cases.png';
 import srcFiretruck from 'src/images/firetruck.jpg';
@@ -53,8 +52,6 @@ export default function UseCases() {
           to='https://arxiv.org/pdf/2003.07739.pdf'
         />
       </PageSection>
-
-      <SubscribeBox />
     </Page>
   );
 }

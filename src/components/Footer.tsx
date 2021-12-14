@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
       <List>
         <FooterLink primary={t('main.footer.aboutUs')} to='/about/' />
         <FooterLink primary={t('news.navTitle')} to='/news/' />
-        <FooterLink primary={t('main.footer.contactUs')} onClick={handleRequestDemoClick} />
+        {/* <FooterLink primary={t('main.footer.contactUs')} onClick={handleRequestDemoClick} /> */}
       </List>
     </>
   );

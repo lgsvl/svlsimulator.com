@@ -23,7 +23,6 @@ import { IconCheck, IconPartial, IconX } from 'src/components/Icons';
 import Li, { LiText } from 'src/components/Li';
 import Page, { PageSection } from 'src/components/Page';
 import Section from 'src/components/Section';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcTools from 'src/images/diverse-set-of-scenario-generation-tools-for-scalable-testing.png';
 import srcExtensible from 'src/images/open-source-and-extensible-simulation-engine.jpg';
@@ -330,7 +329,7 @@ export default function Simulation() {
                 <UseFreeButton buttonVariant='outlined' title={t('simulation.featuresTable.try')} />
               </StyledTableCell>
               <StyledTableCell noBorder>
-                <RequestDemoButton mode={RequestDemoFormMode.ContactUs} />
+                {/* <RequestDemoButton mode={RequestDemoFormMode.ContactUs} /> */}
               </StyledTableCell>
             </TableRow>
           </TableBody>
@@ -347,8 +346,6 @@ export default function Simulation() {
           </Grid>
         </Grid>
       </PageSectionFullWidth> */}
-
-      <SubscribeBox />
     </Page>
   );
 }

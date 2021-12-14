@@ -16,7 +16,6 @@ import LayoutGrid from 'src/components/LayoutGrid';
 import MoreArrows from 'src/components/MoreArrows';
 import Page, { PageSection } from 'src/components/Page';
 import { SectionContent, VisualizationSection } from 'src/components/Section';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcCloud from 'src/images/feature/cloud-simulation.jpg';
 import srcDigitalTwin from 'src/images/feature/digital-twin.jpg';
@@ -204,7 +203,6 @@ export default function Home() {
           </LayoutGrid>
         </PageSection>
       </Box>
-      <SubscribeBox animate />
     </Page>
   );
 }

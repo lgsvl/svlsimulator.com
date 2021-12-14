@@ -300,7 +300,7 @@ const VisualizationSection: React.FC<VisualizationSectionProps> = ({
   animate,
   bgPosition,
   buttonProps,
-  buttonText = 'contactUs',
+  buttonText,
   children,
   contained,
   flip,

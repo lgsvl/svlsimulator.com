@@ -3,7 +3,6 @@ import React from 'react';
 import { MapFunction } from 'src/@types/utils';
 import Page from 'src/components/Page';
 import Section from 'src/components/Section';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import srcTwinImg1 from 'src/images/digital-twin.jpg';
 import srcTwinImg2 from 'src/images/digitaltwin2.png';
@@ -43,8 +42,6 @@ export default function DigitalTwin() {
       <Section imageColumns={7} flip src={srcTwinImg4}>
         {t('digitaltwin.section3.body')}
       </Section>
-
-      <SubscribeBox />
     </Page>
   );
 }

@@ -10,7 +10,6 @@ import Center from 'src/components/Center';
 import LayoutGrid from 'src/components/LayoutGrid';
 import { Link } from 'src/components/Link';
 import Page, { PageSection } from 'src/components/Page';
-import SubscribeBox from 'src/components/SubscribeBox';
 import { useTranslation } from 'src/hooks/useTranslations';
 import { omitProps } from 'src/utils/react';
 import { px } from 'src/utils/theme';
@@ -365,8 +364,6 @@ export default function News({ data }: { data: NewsIndexQuery }) {
           </StyledTable>
         </Box>
       </PageSection>
-
-      <SubscribeBox />
     </Page>
   );
 }
