@@ -313,7 +313,7 @@ export default function News({ data }: { data: NewsIndexQuery }) {
     .map(edge => getNewsItemData(edge.node))
     .sort((a, b) => b.date.getTime() - a.date.getTime());
 
-  const oldNews = newsData.splice(8);
+  const oldNews = newsData.splice(1);
 
   return (
     <Page title={t('news.title')}>

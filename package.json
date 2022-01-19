@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "GATSBY_EXPERIMENTAL_LAZY_DEVJS=true gatsby develop --host=0.0.0.0",
     "type-check": "tsc --noEmit",
     "lint": "npm run lintfile .",
     "lint:fix": "npm run lintfile:fix .",

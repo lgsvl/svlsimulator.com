@@ -392,7 +392,7 @@ interface HeaderProps {
 const Header = React.forwardRef<unknown, HeaderProps>(({ animate, ...rest }, ref) => (
   <AppBar position='fixed' color='default' {...rest} elevation={0} ref={ref}>
     <Notice display='block'>
-      <strong>Notice:</strong> Terms of use have been updated. <Link to='/terms'>Read more.</Link>
+      <strong>Notice:</strong> Sunsetting SVL Simulator. <Link to='/news/2022-01-20-svl-simulator-sunset'>Read more.</Link>
     </Notice>
     <Toolbar component='nav'>
       <EntranceAnimation disabled={!animate} reverse delay={0.4}>
