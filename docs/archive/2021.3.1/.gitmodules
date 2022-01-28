@@ -1,0 +1,36 @@
+[submodule "archive-2020.06"]
+	path = archive/2020.06
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2020.06
+[submodule "archive-2020.05"]
+	path = archive/2020.05
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2020.05
+[submodule "archive-2020.03"]
+	path = archive/2020.03
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2020.03
+[submodule "archive-2020.01"]
+	path = archive/2020.01
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2020.01
+[submodule "archive/2021.1"]
+	path = archive/2021.1
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2021.1
+[submodule "archive/2021.1.1"]
+	path = archive/2021.1.1
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2021.1.1
+[submodule "archive/2021.2"]
+	path = archive/2021.2
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2021.2
+[submodule "archive/2021.2.1"]
+	path = archive/2021.2.1
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2021.2.1
+[submodule "archive/2021.2.2"]
+	path = archive/2021.2.2
+	url = git@auto-gitlab.lgsvl.net:HDRP/docs-website.git
+	branch = archive-2021.2.2
